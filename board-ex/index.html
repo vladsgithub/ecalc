@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Bulletin board</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/app.css"/>
+	<!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="/assets/css/ie-only.css" />
+	<![endif]-->
+
+	<!--<script src="/assets/js/production.min.js"></script>-->
+	<script src="/assets/js/production.js"></script>
+
+	<base href="/">
+</head>
+<body ng-app="app" ng-cloak="">
+
+<header ng-include="'app/common/header/template/headerTemplate.html'"></header>
+
+<nav class="flex-cont">
+	<a ui-sref="home" ui-sref-active="active animated bounceIn">
+		<i class="icon-home"></i><span class="no-mobile">Home</span>
+	</a>
+    <a ui-sref="adverts" ui-sref-active="active animated bounceIn">
+		<i class="icon-th-list"></i><span class="no-mobile">List of adverts</span>
+	</a>
+	<a ui-sref="newAdvert" ui-sref-active="active animated bounceIn">
+		<i class="icon-file"></i><span class="no-mobile">New advert</span>
+	</a>
+	<a href="https://docs.google.com/spreadsheets/d/11L_ATthTO2XQD4kGKGm_q1EzrHfLOO683L3Csh8llqk/edit" class="animated bounceIn">
+		<span class="no-mobile">P A R T Y !</span>
+	</a>
+</nav>
+
+<main ui-view></main>
+
+<p class="old-ie">Please, use a modern browser</p>
+</body>
+</html>

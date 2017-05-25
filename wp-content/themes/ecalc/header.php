@@ -10,7 +10,7 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); // кодировка ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <title>Ecalc</title>
 
 	<?php /* RSS и всякое */
@@ -33,9 +33,10 @@
 	<base href="/">
 </head>
 
-<body>
+<body ng-app="app" ng-cloak="">
 	<header>
-		<h1>Header</h1>
+		<div ng-include="'/template/headerTemplate.html'"></div>
+
 		<p>
 
 		<?php

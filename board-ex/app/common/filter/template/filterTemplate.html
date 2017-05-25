@@ -1,0 +1,11 @@
+<label>
+	<p>Search in titles<span class="no-mobile"> of adverts</span>:</p>
+	<input ng-model="search.title" ng-change="choosePage()">
+</label>
+<label>
+	<p>Show<span class="no-mobile"> on the page</span>:</p>
+	<select ng-model="qtyOnPage"
+			ng-options="number for number in resultQty"
+			ng-change="choosePage(); updatePagination(results)">
+	</select>
+</label>

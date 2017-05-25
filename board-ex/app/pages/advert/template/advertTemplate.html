@@ -1,0 +1,45 @@
+<form name="advertForm" class="advert-form" ng-class="{'validated': validated}" ng-submit="submit()" novalidate>
+	<h1>{{advert.title}}</h1>
+
+	<div class="advert">
+		<div class="pict-block">
+			<div class="id">{{advert.id}}</div>
+			<div class="picture">
+				<img ng-src="{{advert.pict}}" title="{{advert.title}}" imageonload/>
+			</div>
+			<p>
+				<input name="picture" type="text" ng-model="advert.pict" ng-class="{'invalid': !advert.isPictLoaded}"
+					   placeholder="URL address of picture" required/>
+			</p>
+		</div>
+
+		<ul class="info-block">
+			<li>
+				<label>
+					<span>Type of advert:</span>
+					<select name="type" ng-model="advert.type" required>
+						<option>sale</option>
+						<option>purchase</option>
+						<option>exchange</option>
+					</select>
+				</label>
+			</li>
+			<li>
+				<label>
+					<span>Title of advert:</span>
+					<input name="title" type="text" ng-model="advert.title" required/>
+				</label>
+			</li>
+			<li>
+				<label class="description">
+					<span>Description of advert:</span>
+					<textarea ng-model="advert.desc"></textarea>
+				</label>
+			</li>
+		</ul>
+	</div>
+	<p class="buttons">
+		<button class="submit" type="submit">{{btnName}}</button>
+		<button type="button" ng-if="advert.id" ng-click="deleteItem(advert.id)">Delete</button>
+	</p>
+</form>

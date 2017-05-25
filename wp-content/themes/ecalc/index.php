@@ -6,8 +6,17 @@
  */
 get_header(); // подключаем header.php ?>
 
-<main>
-Main content
-</main>
+<nav>
+	<a ui-sref="home" ui-sref-active="active">
+		<i class="icon-home"></i><span class="no-mobile">Home</span>
+	</a>
+    <a ui-sref="calc" ui-sref-active="active">
+		<i class="icon-th-list"></i><span class="no-mobile">Calculator</span>
+	</a>
+</nav>
+
+<main ui-view></main>
+
+<p class="old-ie">Please, use a modern browser</p>
 
 <?php get_footer(); // подключаем footer.php ?>
