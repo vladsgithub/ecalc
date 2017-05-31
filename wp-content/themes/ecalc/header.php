@@ -6,7 +6,7 @@
  */
 ?>
 <!DOCTYPE html>
-<html <?php language_attributes(); // вывод атрибутов языка ?>>
+<html ng-app="app" <?php language_attributes(); // вывод атрибутов языка ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); // кодировка ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,9 +33,9 @@
 	<base href="/">
 </head>
 
-<body ng-app="app" ng-cloak="">
+<body ng-cloak="">
 	<header>
-		<div ng-include="'/template/headerTemplate.html'"></div>
+		<div ng-include="'/wp-content/themes/ecalc/app/common/header/template/headerTemplate.html'"></div>
 
 		<p>
 

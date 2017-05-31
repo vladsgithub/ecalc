@@ -2,13 +2,19 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 		watch: {
-			files: "less/*.less",
-			tasks: ["less"]
+			less: {
+				files: 'ui/less/*.less',
+				tasks: ['less']
+			},
+			js: {
+				files: ['app/*.js', 'app/*/*.js'],
+				tasks: ['concat']
+			}
 		},
 		less: {
 			development: {
 				files: {
-					'assets/css/app.css': 'less/app.less'
+					'assets/css/app.css': 'ui/less/app.less'
 				}
 			}
 		},
@@ -18,8 +24,8 @@ module.exports = function(grunt) {
 					'node_modules/angular/angular.js',
 					'node_modules/angular-ui-router/release/angular-ui-router.js',
 					'node_modules/angular-resource/angular-resource.js',
-					'js/*.js',
-					'js/*/*.js'
+					'app/*.js',
+					'app/*/*.js'
 				],
 				dest: 'assets/js/production.js'
 			}
@@ -48,6 +54,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	//grunt.loadNpmTasks('grunt-contrib-imagemin');
 
-	grunt.registerTask('default', ['less', 'concat', 'watch', 'uglify']); // 'watch', 'uglify'
+	grunt.registerTask('default', ['less', 'concat', 'watch']); // 'watch', 'uglify'
 
 };
