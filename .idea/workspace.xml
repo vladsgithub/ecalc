@@ -2,142 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44bc63fb-9e01-4d9b-a8dc-1a1fc190dee4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/themes/ecalc/app/pages/expenses/template/expensesTemplate.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/themes/ecalc/app/routes.js" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\api.php" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\app\common\filter\directive\filterDirective.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\app\common\filter\template\filterTemplate.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\app\common\header\template\headerTemplate.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\app\common\item\directive\itemDirective.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\app\common\item\template\itemTemplate.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\app\common\pagination\directive\paginationDirective.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\app\common\pagination\template\paginationTemplate.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\app\pages\advert\controller\advertController.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\app\pages\advert\directive\advertDirective.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\app\pages\advert\service\advertService.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\app\pages\advert\template\advertTemplate.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\app\pages\list\controller\listController.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\app\pages\list\service\listService.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\app\pages\list\template\listTemplate.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\app\routes.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\assets\css\app.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\assets\css\ie-only.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\assets\js\production.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\assets\js\production.min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\app\app.js.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\app\common\filter\directive\filterDirective.js.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\app\common\filter\directive\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\app\common\item\directive\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\app\common\item\directive\itemDirective.js.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\app\common\pagination\directive\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\app\common\pagination\directive\paginationDirective.js.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\app\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\app\pages\advert\controller\advertController.js.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\app\pages\advert\controller\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\app\pages\advert\directive\advertDirective.js.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\app\pages\advert\directive\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\app\pages\advert\service\advertService.js.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\app\pages\advert\service\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\app\pages\list\controller\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\app\pages\list\controller\listController.js.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\app\pages\list\service\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\app\pages\list\service\listService.js.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\app\routes.js.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\base.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\prettify.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\prettify.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\sort-arrow-sprite.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\Chrome 51.0.2704 (Windows 8.1 0.0.0)\sorter.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\app\app.js.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\app\common\filter\directive\filterDirective.js.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\app\common\filter\directive\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\app\common\item\directive\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\app\common\item\directive\itemDirective.js.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\app\common\pagination\directive\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\app\common\pagination\directive\paginationDirective.js.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\app\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\app\pages\advert\controller\advertController.js.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\app\pages\advert\controller\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\app\pages\advert\directive\advertDirective.js.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\app\pages\advert\directive\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\app\pages\advert\service\advertService.js.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\app\pages\advert\service\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\app\pages\list\controller\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\app\pages\list\controller\listController.js.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\app\pages\list\service\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\app\pages\list\service\listService.js.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\app\routes.js.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\base.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\prettify.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\prettify.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\sort-arrow-sprite.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\coverage\PhantomJS 2.1.1 (Windows 8 0.0.0)\sorter.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\json\_adverts.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\json\adverts.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\tests\common\filter\filterDirective.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\tests\common\item\itemDirective.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\tests\common\pagination\paginationDirective.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\tests\pages\advert\advertController.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\tests\pages\advert\advertDirective.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\tests\pages\list\listController.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\font\IndieFlower.ttf" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\font\OFL.txt" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\font\fontawesome-webfont.ttf" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\less\animate.min.less" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\less\app.less" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\less\font-icons.less" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\less\fonts.less" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\less\main.less" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\less\mixins.less" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\less\reset.less" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\less\variables.less" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\pic\lgg1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\pic\lgg10.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\pic\lgg11.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\pic\lgg12.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\pic\lgg13.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\pic\lgg14.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\pic\lgg15.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\pic\lgg16.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\pic\lgg17.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\pic\lgg18.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\pic\lgg19.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\pic\lgg2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\pic\lgg20.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\pic\lgg21.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\pic\lgg22.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\pic\lgg3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\pic\lgg4.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\pic\lgg5.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\pic\lgg6.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\pic\lgg7.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\pic\lgg8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\ui\pic\lgg9.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\board-ex\www.zip" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\wp-content\themes\ecalc\js\app.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\ecalc\www\wp-content\themes\ecalc\js\routes.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.htaccess" afterPath="$PROJECT_DIR$/.htaccess" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/ecalc/Gruntfile.js" afterPath="$PROJECT_DIR$/wp-content/themes/ecalc/Gruntfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/ecalc/assets/css/app.css" afterPath="$PROJECT_DIR$/wp-content/themes/ecalc/assets/css/app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/ecalc/functions.php" afterPath="$PROJECT_DIR$/wp-content/themes/ecalc/functions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/ecalc/header.php" afterPath="$PROJECT_DIR$/wp-content/themes/ecalc/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/ecalc/index.php" afterPath="$PROJECT_DIR$/wp-content/themes/ecalc/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sql/2017-06-02/ecalc.sql" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/themes/ecalc/wp-config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/ecalc/app/pages/expenses/template/expensesTemplate.html" afterPath="$PROJECT_DIR$/wp-content/themes/ecalc/app/pages/expenses/template/expensesTemplate.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/ecalc/assets/js/production.js" afterPath="$PROJECT_DIR$/wp-content/themes/ecalc/assets/js/production.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/ecalc/app/routes.js" afterPath="$PROJECT_DIR$/wp-content/themes/ecalc/app/routes.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\WebServers\home\ecalc\www\board-ex\.htaccess" afterPath="$PROJECT_DIR$/.htaccess_original" />
-      <change type="MOVED" beforePath="D:\WebServers\home\ecalc\www\board-ex\app\app.js" afterPath="$PROJECT_DIR$/wp-content/themes/ecalc/app/app.js" />
-      <change type="MOVED" beforePath="D:\WebServers\home\ecalc\www\board-ex\app\pages\home\template\homeTemplate.html" afterPath="$PROJECT_DIR$/wp-content/themes/ecalc/app/pages/home/template/homeTemplate.html" />
-      <change type="MOVED" beforePath="D:\WebServers\home\ecalc\www\wp-content\themes\ecalc\404.php" afterPath="$PROJECT_DIR$/wp-content/themes/ecalc/404_deleted.php" />
-      <change type="MOVED" beforePath="D:\WebServers\home\ecalc\www\wp-content\themes\ecalc\fonts\glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/wp-content/themes/ecalc/ui/font/glyphicons-halflings-regular.eot" />
-      <change type="MOVED" beforePath="D:\WebServers\home\ecalc\www\wp-content\themes\ecalc\fonts\glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/wp-content/themes/ecalc/ui/font/glyphicons-halflings-regular.svg" />
-      <change type="MOVED" beforePath="D:\WebServers\home\ecalc\www\wp-content\themes\ecalc\fonts\glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/wp-content/themes/ecalc/ui/font/glyphicons-halflings-regular.ttf" />
-      <change type="MOVED" beforePath="D:\WebServers\home\ecalc\www\wp-content\themes\ecalc\fonts\glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/wp-content/themes/ecalc/ui/font/glyphicons-halflings-regular.woff" />
-      <change type="MOVED" beforePath="D:\WebServers\home\ecalc\www\wp-content\themes\ecalc\fonts\glyphicons-halflings-regular.woff2" afterPath="$PROJECT_DIR$/wp-content/themes/ecalc/ui/font/glyphicons-halflings-regular.woff2" />
-      <change type="MOVED" beforePath="D:\WebServers\home\ecalc\www\wp-content\themes\ecalc\less\app.less" afterPath="$PROJECT_DIR$/wp-content/themes/ecalc/ui/less/app.less" />
-      <change type="MOVED" beforePath="D:\WebServers\home\ecalc\www\wp-content\themes\ecalc\template\headerTemplate.html" afterPath="$PROJECT_DIR$/wp-content/themes/ecalc/app/common/header/template/headerTemplate.html" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -159,13 +29,13 @@
     <favorites_list name="www" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.57731307">
+    <splitter split-orientation="horizontal" split-proportion="0.56423175">
       <split-first>
         <leaf>
           <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/wp-content/themes/ecalc/index.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="6" column="15" selection-start="113" selection-end="113" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+                <state line="20" column="21" selection-start="540" selection-end="540" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
                   <folding />
                 </state>
               </provider>
@@ -174,10 +44,8 @@
           <file leaf-file-name="routes.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/wp-content/themes/ecalc/app/routes.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
-                  <folding>
-                    <element signature="e#250#269#0" expanded="false" />
-                  </folding>
+                <state line="102" column="26" selection-start="3207" selection-end="3207" vertical-scroll-proportion="0.0" vertical-offset="1012" max-vertical-offset="1853">
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -185,7 +53,7 @@
           <file leaf-file-name="404_deleted.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/wp-content/themes/ecalc/404_deleted.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="7" column="9" selection-start="150" selection-end="150" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
+                <state line="7" column="9" selection-start="150" selection-end="150" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="408">
                   <folding />
                 </state>
               </provider>
@@ -200,10 +68,55 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name=".htaccess" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name=".htaccess" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/.htaccess">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="17" column="11" selection-start="505" selection-end="505" vertical-scroll-proportion="0.45297804" vertical-offset="0" max-vertical-offset="638">
+                <state line="17" column="11" selection-start="505" selection-end="505" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="wp-settings.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/wp-settings.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="298" column="40" selection-start="12006" selection-end="12010" vertical-scroll-proportion="-9.96" vertical-offset="4817" max-vertical-offset="8092">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="wp-activate.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/wp-activate.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="11" column="46" selection-start="325" selection-end="325" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2856">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="wp-config.php" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/wp-config.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="22" column="27" selection-start="624" selection-end="624" vertical-scroll-proportion="0.41721854" vertical-offset="122" max-vertical-offset="1598">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/wp-content/themes/ecalc/app/app.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="2" column="55" selection-start="88" selection-end="88" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="expensesTemplate.html" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/wp-content/themes/ecalc/app/pages/expenses/template/expensesTemplate.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="4" column="66" selection-start="96" selection-end="96" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="170">
                   <folding />
                 </state>
               </provider>
@@ -213,10 +126,19 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/../../board/public_html/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="21" column="0" selection-start="693" selection-end="693" vertical-scroll-proportion="0.59599334" vertical-offset="0" max-vertical-offset="799">
+                <state line="21" column="0" selection-start="693" selection-end="693" vertical-scroll-proportion="-13.730769" vertical-offset="0" max-vertical-offset="799">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="functions.php" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/wp-content/themes/ecalc/functions.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="100" column="36" selection-start="5881" selection-end="5881" vertical-scroll-proportion="0.592" vertical-offset="1330" max-vertical-offset="3910">
                   <folding />
                 </state>
               </provider>
@@ -242,22 +164,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/wp-content/themes/ecalc/less/app.less" />
         <option value="$PROJECT_DIR$/wp-content/themes/ecalc/js/routes.js" />
         <option value="$PROJECT_DIR$/wp-content/themes/ecalc/app/pages/home/template/homeTemplate.html" />
         <option value="$PROJECT_DIR$/wp-content/themes/ecalc/app/pages/calc/template/calcTemplate.html" />
         <option value="$PROJECT_DIR$/wp-content/themes/ecalc/ui/less/app.less" />
         <option value="$PROJECT_DIR$/wp-content/themes/ecalc/Gruntfile.js" />
-        <option value="$PROJECT_DIR$/wp-content/themes/ecalc/app/pages/expenses/template/expensesTemplate.html" />
-        <option value="$PROJECT_DIR$/wp-content/themes/ecalc/app/routes.js" />
         <option value="$PROJECT_DIR$/wp-content/themes/ecalc/header.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/ecalc/index.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/ecalc/.htaccess" />
-        <option value="$PROJECT_DIR$/wp-content/themes/ecalc/functions.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/ecalc/404.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/ecalc/404_deleted.php" />
         <option value="$PROJECT_DIR$/.htaccess" />
         <option value="$PROJECT_DIR$/.htaccess_original" />
+        <option value="$PROJECT_DIR$/wp-content/themes/ecalc/app/app.js" />
+        <option value="$PROJECT_DIR$/wp-content/themes/ecalc/app/routes.js" />
+        <option value="$PROJECT_DIR$/wp-content/themes/ecalc/functions.php" />
+        <option value="$PROJECT_DIR$/wp-content/themes/ecalc/app/pages/expenses/template/expensesTemplate.html" />
       </list>
     </option>
   </component>
@@ -377,8 +299,8 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -395,14 +317,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -411,6 +325,14 @@
       <option name="saveOutputToFile" value="false" />
       <option name="showConsoleOnStdErr" value="false" />
       <option name="showConsoleOnStdOut" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
       <method />
     </configuration>
     <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
@@ -436,15 +358,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20578778" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.10718114" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28831726" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17291667" sideWeight="0.71168274" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17291667" sideWeight="0.71168274" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290461" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -470,90 +392,14 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/ecalc/header_original.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="12" selection-start="1150" selection-end="1150" vertical-scroll-proportion="0.32027256" vertical-offset="322" max-vertical-offset="1071">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/ecalc/footer_original.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="12" selection-start="139" selection-end="139" vertical-scroll-proportion="0.26064736" vertical-offset="0" max-vertical-offset="587">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/ecalc/category.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="8" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/hello.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.5485519" vertical-offset="909" max-vertical-offset="1496">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/ecalc/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/twentyseventeen/README.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1394">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/ecalc/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="15" selection-start="113" selection-end="113" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/ecalc/app/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
-          <folding>
-            <element signature="e#250#269#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/ecalc/functions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="88" selection-start="527" selection-end="529" vertical-scroll-proportion="0.33333334" vertical-offset="72" max-vertical-offset="3910">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1394" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-admin/includes/file.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="8" selection-start="719" selection-end="722" vertical-scroll-proportion="0.33333334" vertical-offset="157" max-vertical-offset="22389">
-          <folding />
-        </state>
+        <state line="21" column="8" selection-start="719" selection-end="722" vertical-scroll-proportion="0.33333334" vertical-offset="157" max-vertical-offset="22389" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
@@ -577,9 +423,79 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/ecalc/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="21" selection-start="540" selection-end="540" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/ecalc/footer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="807">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../board/public_html/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="0" selection-start="693" selection-end="693" vertical-scroll-proportion="-13.730769" vertical-offset="0" max-vertical-offset="799">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/ecalc/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="55" selection-start="88" selection-end="88" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/ecalc/app/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="102" column="26" selection-start="3207" selection-end="3207" vertical-scroll-proportion="0.0" vertical-offset="1012" max-vertical-offset="1853">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/ecalc/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="100" column="36" selection-start="5881" selection-end="5881" vertical-scroll-proportion="0.592" vertical-offset="1330" max-vertical-offset="3910">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/ecalc/app/pages/expenses/template/expensesTemplate.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="66" selection-start="96" selection-end="96" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="170">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.htaccess">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="11" selection-start="505" selection-end="505" vertical-scroll-proportion="0.45297804" vertical-offset="0" max-vertical-offset="638">
+        <state line="17" column="11" selection-start="505" selection-end="505" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="298" column="40" selection-start="12006" selection-end="12010" vertical-scroll-proportion="-9.96" vertical-offset="4817" max-vertical-offset="8092">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-activate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="46" selection-start="325" selection-end="325" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2856">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="27" selection-start="624" selection-end="624" vertical-scroll-proportion="0.41721854" vertical-offset="122" max-vertical-offset="1598">
           <folding />
         </state>
       </provider>

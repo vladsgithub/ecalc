@@ -82,9 +82,13 @@
 				})
 				.state('expenses', {
 					url: '/expenses',
-					templateUrl: '/wp-content/themes/ecalc/app/pages/expenses/template/expensesTemplate.html'
+					templateUrl: '/wp-content/themes/ecalc/app/pages/expenses/template/expensesTemplate.html',
 //					templateUrl: localized.partials + 'app/pages/expenses/template/expensesTemplate.html'
-//					controller: 'listCtrl'
+					controller: ['$scope', function ($scope) {
+						document.querySelectorAll('[data-test]')[0].addEventListener('click', function() {
+							alert(1);
+						});
+					}]
 				})
 				.state('404', {
 					url: '/404',
