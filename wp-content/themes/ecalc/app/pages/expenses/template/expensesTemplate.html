@@ -2,4 +2,17 @@
 	The calc page!!!
 </h1>
 
-<button type="button" data-test>----------------TEST--------------</button>
+<p>
+	<button type="button" data-test>----------------TEST--------------</button>
+</p>
+
+<p>
+	<button type="button" ng-click="addItem()">Add Item</button>
+	<button type="button" ng-click="deleteLastItem()">Delete last Item</button>
+</p>
+
+<ul>
+	<li ng-repeat="item in items track by $index">
+		{{$index}} *** {{item.n}}
+	</li>
+</ul>

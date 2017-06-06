@@ -7,7 +7,7 @@ module.exports = function(grunt) {
 				tasks: ['less']
 			},
 			js: {
-				files: ['app/*.js', 'app/*/*.js'],
+				files: ['app/*.js', 'app/*/*/*/*.js'],
 				tasks: ['concat']
 			}
 		},
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 					'node_modules/angular-ui-router/release/angular-ui-router.js',
 					'node_modules/angular-resource/angular-resource.js',
 					'app/*.js',
-					'app/*/*.js'
+					'app/*/*/*/*.js'
 				],
 				dest: 'assets/js/production.js'
 			}

@@ -44340,12 +44340,7 @@ angular.module('ngResource', ['ng']).
 				.state('expenses', {
 					url: '/expenses',
 					templateUrl: '/wp-content/themes/ecalc/app/pages/expenses/template/expensesTemplate.html',
-//					templateUrl: localized.partials + 'app/pages/expenses/template/expensesTemplate.html'
-					controller: ['$scope', function ($scope) {
-						document.querySelectorAll('[data-test]')[0].addEventListener('click', function() {
-							alert(1);
-						});
-					}]
+					controller: 'expensesCtrl'
 				})
 				.state('404', {
 					url: '/404',
@@ -44356,5 +44351,48 @@ angular.module('ngResource', ['ng']).
 		}];
 
 	module.config(mainConfig);
+
+}(angular.module("app")));
+
+(function (module) {
+
+	function addEvent() {
+		document.querySelectorAll('[data-test]')[0].addEventListener('click', function() {
+			alert(1);
+		});
+	}
+
+	var expensesCtrl = ['$scope',
+		function ($scope) {
+
+			if (localStorage.getItem('items')) {
+				$scope.items = JSON.parse(localStorage.getItem('items')).arr;
+			} else {
+				$scope.items = [ {n: 0}, {n: 1}, {n: 2} ];
+			}
+
+			addEvent();
+
+			$scope.addItem = function () {
+				$scope.items.push( {n: $scope.items.length} );
+			};
+
+			$scope.deleteLastItem = function () {
+				$scope.items.pop();
+			};
+
+			$scope.updateLocalStorage = function(newValue, oldValue) {
+				if (newValue !== undefined) {
+					var obj = JSON.stringify( { arr: newValue } );
+	console.log('obj=',obj);
+					localStorage.setItem('items', obj);
+				}
+			}
+
+			$scope.$watch('items', $scope.updateLocalStorage, true);
+
+		}];
+
+	module.controller('expensesCtrl', expensesCtrl);
 
 }(angular.module("app")));
