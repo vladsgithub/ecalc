@@ -11534,6 +11534,10 @@ hr {
 .print-view .expenses-table tr:last-child td {
   border-bottom: 20px solid lightgray;
 }
-h1 {
-  color: red;
+.test {
+  color: green;
+  font-weight: bold;
+}
+.test::after {
+  content: "after element";
 }

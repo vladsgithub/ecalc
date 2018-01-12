@@ -2,6 +2,11 @@
 @import (less) "../css/font-awesome.min.css";
 @import (less) "../css/app.css";
 
-h1 {
-	color: red;
+.test {
+	color: green;
+	font-weight: bold;
+
+	&::after {
+		content: "after element";
+	}
 }
