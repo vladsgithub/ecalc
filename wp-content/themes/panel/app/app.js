@@ -7,7 +7,7 @@
 
     var calculatorCtrl = ['$scope', 'getDataService', function ($scope, getDataService) {
 
-        // METHODS OF CREATING ===============================
+        // METHODS OF CREATING ==============================
         $scope.createAccount = function () {
             var accounts = $scope.expCalc.accounts;
             var accountIndex = accounts.length;
