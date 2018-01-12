@@ -1,0 +1,337 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	/*font-size: 100%;*/
+	/*font: inherit;*/
+	/*vertical-align: baseline;*/
+}
+ /*HTML5 display-role reset for older browsers*/
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+/*blockquote, q {*/
+	/*quotes: none;*/
+/*}*/
+/*blockquote:before, blockquote:after,*/
+/*q:before, q:after {*/
+	/*content: '';*/
+	/*content: none;*/
+/*}*/
+/*table {*/
+	/*border-collapse: collapse;*/
+	/*border-spacing: 0;*/
+/*}*/
+
+
+/*=== App styles ===*/
+#angularObject { word-break: break-word; }
+.testing {
+	display: none;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 25%;
+	padding: 20px;
+	overflow: auto;
+	background: aliceblue;
+}
+[data-object-toggle]:checked ~ .testing {
+	display: block;
+}
+.testing div {
+	padding-top: 5px;
+	padding-left: 15px;
+	border-left: 1px solid #cacaca;
+	cursor: pointer;
+}
+.testing div:hover {
+	outline: 1px solid forestgreen;
+}
+.testing hr {
+	margin: 10px 0 0;
+}
+.testing ar {
+	display: block;
+	border-bottom: 1px dashed;
+}
+.testing arr {
+	display: block;
+	border-bottom: 3px dashed;
+}
+.testing .compressed {
+	display: inline-block;
+	height: 15px;
+	overflow: hidden;
+	background: aquamarine;
+}
+
+
+html {
+	font-size: 14px;
+}
+body {
+	font-size: 1.2rem;
+}
+.wrap {
+
+}
+[data-object-toggle]:checked + .wrap {
+	width: 75%;
+}
+header {
+	padding: 10px;
+}
+.toggle-box {
+	display: none;
+	max-height: 90vh;
+	overflow: auto;
+	position: absolute;
+	right: 5px;
+	margin-top: 10px;
+	padding: 20px;
+	background: white;
+	border: 1px solid;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+input:checked + .toggle-box {
+	display: block;
+}
+.currency-bg {
+	background: #9ff3ff;
+	text-align: center;
+	font-weight: normal;
+	font-size: 14px;
+}
+.currencies-box th {
+	text-align: center;
+}
+.secondary-currencies {
+	font-weight: normal;
+	text-transform: uppercase;
+}
+.currencies-box td {
+	text-transform: uppercase;
+}
+.currencies-box td:nth-child(2) {
+	font-weight: bold;
+	text-align: center;
+}
+.currencies-box td:nth-child(2) input {
+	font-weight: bold;
+}
+.currencies-box input {
+	min-width: 100px;
+	text-transform: uppercase;
+	text-align: center;
+}
+.warning {
+	background-color: #ffe2e2;
+	color: #970000;
+}
+hr {
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+.btn {
+	cursor: pointer;
+}
+.big-checkbox {
+	height: 20px;
+	width: 20px;
+	vertical-align: top;
+}
+.inline-block {
+	display: inline-block;
+	width: auto;
+}
+.border-top-1 {
+	border-top: 1px solid;
+}
+.border-bottom-1 {
+	border-bottom: 1px solid;
+}
+.nowrap {
+	line-height: 31px;
+	white-space: nowrap;
+}
+.flex {
+	display: flex;
+}
+.flex > div {
+	padding-left: 5px;
+}
+.flex > div:first-child {
+	padding-left: 0;
+}
+.flex > .flex-grow1 {
+	flex-grow: 1;
+	white-space: nowrap;
+}
+.margin5-0 {
+	margin: 5px 0;
+}
+.paddingD-0 {
+	padding-left: 0;
+	padding-right: 0;
+}
+.padding5-0 {
+	padding: 5px 0;
+}
+.padding10-0 {
+	padding: 10px 0;
+}
+
+.layout {
+	display: flex;
+}
+.layout > li {
+	width: 33.33%;
+	margin: 0;
+	padding: 0 10px 10px;
+	box-sizing: border-box;
+	outline: 1px solid #007eff;
+	border: none;
+}
+.step1 {
+	background: #dfffe2;
+}
+.step1 .bg {
+	background: #afe8af;
+}
+.step1 .participants > li {
+	border-top: 5px solid green;
+}
+.step2 {
+	background: #fffed4;
+}
+.step2 .bg {
+	background: #f1f399;
+}
+.step2 .participants > li {
+ border-top: 5px solid #bdaf00;
+}
+.step3 {
+	background: #ffe1df;
+}
+.step3 .bg {
+	background: #7ee56f;
+}
+.step3 .participants > li {
+	border-top: 5px solid #bd0600;
+}
+.expenses {
+	padding-left: 20px;
+}
+.expenses select {
+	max-width: 90px;
+}
+.expenses .date {
+	width: 120px;
+	font-size: 1.1rem;
+	text-align: center;
+}
+.currency-select {
+	padding: 0;
+	width: 60px;
+	text-transform: uppercase;
+}
+.participant-select {
+	width: 120px;
+}
+.step1 .participants > li:last-child,
+.expenses > li:last-child,
+.part-list {
+	padding-left: 14px;
+}
+.part-list .part-list {
+	padding-left: 0;
+}
+
+.participation {
+	width: 70px;
+}
+.balance {
+	width: 50%;
+}
+.share {
+	width: 50%;
+	text-align: right;
+}
+.debtor .bg {
+	 background: #ffa3a3;
+ }
+.sponsor .bg {
+	background: #e5e984;
+}
+.completed .bg {
+	background: #7ee56f;
+}
+.nowrap {
+	line-height: inherit;
+}
+
+
+@media print {
+	html { font-size: 10px; }
+}
+.print-view {
+	padding: 20px 20px 0;
+}
+.print-view table {
+	margin-bottom: 20px;
+}
+.print-view th,
+.print-view td {
+	padding: 5px;
+	border: 1px solid lightgray;
+	text-align: center;
+}
+.print-view .border-right {
+	border-right: 10px solid lightgray;
+}
+.print-view th {
+	background: lightgray;
+}
+.print-view tr:nth-child(even) td {
+	background: #ebebeb;
+}
+
+.print-view .currencies tr:first-child th {
+	font-size: 1rem;
+}
+.print-view .currencies tr:nth-child(2) th {
+	text-transform: uppercase;
+	font-weight: normal;
+}
+.print-view .currencies tr:nth-child(2) th:first-child {
+	text-transform: none;
+	font-weight: bold;
+}
+.print-view .currencies td:first-child {
+	text-transform: uppercase;
+	font-weight: bold;
+}
+.print-view .expenses-table tr:last-child td {
+	border-bottom: 20px solid lightgray;
+}
