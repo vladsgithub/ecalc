@@ -33370,6 +33370,19 @@ $provide.value("$locale", {
 })(window);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
+var beforeExitFunction;
+
+//window.onbeforeunload = function() {
+//	beforeExitFunction();
+//
+//	alert('testing');
+//
+//	return 'message';
+//};
+//window.onunload = function() {
+//	beforeExitFunction();
+//};
+
 (function () {
     'use strict';
     angular.module('app', []);
@@ -33378,6 +33391,36 @@ $provide.value("$locale", {
 (function (module) {
 
     var calculatorCtrl = ['$scope', 'getDataService', function ($scope, getDataService) {
+
+		beforeExitFunction = function () {
+			$scope.expCalc.settings.wasExit = new Date();
+
+			localStorage.setItem('expensesCalc', JSON.stringify($scope.expCalc));
+		};
+
+		$scope.saveInServer = function () {
+			$scope.expCalc.settings.savedDate = +new Date();
+
+			localStorage.setItem('expensesCalc', JSON.stringify($scope.expCalc));
+
+
+
+			var xhr = new XMLHttpRequest();
+			var stringJSON = JSON.stringify($scope.expCalc);
+
+			xhr.open("POST", '/send.php', true);
+			xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+
+			xhr.onreadystatechange = function() {
+//				console.log('xhr.status=', xhr.status, xhr);
+
+				if (xhr.readyState == 4) {
+					alert(xhr.statusText + '\n' + xhr.responseText);
+				}
+			};
+
+			xhr.send(stringJSON);
+		};
 
         // METHODS OF CREATING ==============================
         $scope.createAccount = function () {

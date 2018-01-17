@@ -171,50 +171,36 @@ add_action( 'wp_head', 'mw_clear_wp_head', 1 );
  remove_action( 'wp_head', 'rest_output_link_wp_head' );
  remove_action( 'template_redirect', 'rest_output_link_header', 11, 0 );
 
-//if (!class_exists('bootstrap_menu')) {
-//	class bootstrap_menu extends Walker_Nav_Menu { // внутри вывод
-//		private $open_submenu_on_hover; // параметр который будет определять раскрывать субменю при наведении или оставить по клику как в стандартном бутстрапе
-//
-//		function __construct($open_submenu_on_hover = true) { // в конструкторе
-//	        $this->open_submenu_on_hover = $open_submenu_on_hover; // запишем параметр раскрывания субменю
-//	    }
-//
-//		function start_lvl(&$output, $depth = 0, $args = array()) { // старт вывода подменюшек
-//			$output .= "\n<ul class=\"dropdown-menu\">\n"; // ул с классом
-//		}
-//		function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) { // старт вывода элементов
-//			$item_html = ''; // то что будет добавлять
-//			parent::start_el($item_html, $item, $depth, $args); // вызываем стандартный метод родителя
-//			if ( $item->is_dropdown && $depth === 0 ) { // если элемент содержит подменю и это элемент первого уровня
-//			   if (!$this->open_submenu_on_hover) $item_html = str_replace('<a', '<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"', $item_html); // если подменю не будет раскрывать при наведении надо добавить стандартные атрибуты бутстрапа для раскрытия по клику
-//			   $item_html = str_replace('</a>', ' <b class="caret"></b></a>', $item_html); // ну это стрелочка вниз
-//			}
-//			$output .= $item_html; // приклеиваем теперь
-//		}
-//		function display_element($element, &$children_elements, $max_depth, $depth = 0, $args, &$output) { // вывод элемента
-//			if ( $element->current ) $element->classes[] = 'active'; // если элемент активный надо добавить бутстрап класс для подсветки
-//			$element->is_dropdown = !empty( $children_elements[$element->ID] ); // если у элемента подменю
-//			if ( $element->is_dropdown ) { // если да
-//			    if ( $depth === 0 ) { // если li содержит субменю 1 уровня
-//			        $element->classes[] = 'dropdown'; // то добавим этот класс
-//			        if ($this->open_submenu_on_hover) $element->classes[] = 'show-on-hover'; // если нужно показывать субменю по хуверу
-//			    } elseif ( $depth === 1 ) { // если li содержит субменю 2 уровня
-//			        $element->classes[] = 'dropdown-submenu'; // то добавим этот класс, стандартный бутстрап не поддерживает подменю больше 2 уровня по этому эту ситуацию надо будет разрешать отдельно
-//			    }
-//			}
-//			parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output); // вызываем стандартный метод родителя
-//		}
-//	}
-//}
-//
-//if (!function_exists('content_class_by_sidebar')) { // если ф-я уже есть в дочерней теме - нам не надо её определять
-//	function content_class_by_sidebar() { // функция для вывода класса в зависимости от существования виджетов в сайдбаре
-//		if (is_active_sidebar( 'sidebar' )) { // если есть
-//			echo 'col-sm-9'; // пишем класс на 80% ширины
-//		} else { // если нет
-//			echo 'col-sm-12'; // контент на всю ширину
-//		}
-//	}
-//}
+
+/*-----------------------------------------------------------------------------------*/
+/* При регистрации нового пользователя в таблице wp_users подставляем json_id
+/* для связки с новым json-объектом
+/*-----------------------------------------------------------------------------------*/
+
+add_action( 'user_register', 'add_user_json_id' );
+function add_user_json_id( $user_id ) {
+	$servername = "localhost";
+	$username = "root";
+	$password = "";
+	$dbname = "ecalc";
+
+	// Create connection
+	$conn = new mysqli($servername, $username, $password, $dbname);
+
+	// Check connection
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+
+	$sql = "UPDATE wp_users SET json_id = $user_id WHERE ID = $user_id;";
+
+	if ($conn->query($sql) === TRUE) {
+//		echo "New record created successfully";
+	} else {
+		echo "Error: " . $sql . "<br>" . $conn->error;
+	}
+
+	$conn->close();
+}
 
 ?>

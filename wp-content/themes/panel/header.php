@@ -27,15 +27,17 @@
 	<header>
 
         <?
-//        $current_user = wp_get_current_user();
-//
-//		echo 'Username: ' . $current_user->user_login . '<br />';
-//		echo 'email: ' . $current_user->user_email . '<br />';
-//		echo 'first name: ' . $current_user->user_firstname . '<br />';
-//		echo 'last name: ' . $current_user->user_lastname . '<br />';
-//		echo 'Отображаемое имя: ' . $current_user->display_name . '<br />';
-//		echo 'ID: ' . $current_user->ID . '<br />';
+        $current_user = wp_get_current_user();
 
+		echo 'Username: ' . $current_user->user_login . '<br />';
+		echo 'email: ' . $current_user->user_email . '<br />';
+		echo 'first name: ' . $current_user->user_firstname . '<br />';
+		echo 'last name: ' . $current_user->user_lastname . '<br />';
+		echo 'Отображаемое имя: ' . $current_user->display_name . '<br />';
+		echo 'ID: ' . $current_user->ID . '<br />';
+		?>
+
+		<?
 //        echo do_shortcode('[clean-login]');
 //        echo do_shortcode('[clean-login-edit]');
 //        echo do_shortcode('[clean-login-register]');
@@ -43,6 +45,9 @@
 		?>
 
 
+		<button class="btn btn-primary" ng-click="saveInServer()">
+        		<i class="fa fa-floppy-o"></i>
+        </button>
 
 
 	</header>

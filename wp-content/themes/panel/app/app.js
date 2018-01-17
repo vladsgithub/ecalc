@@ -1,3 +1,16 @@
+var beforeExitFunction;
+
+//window.onbeforeunload = function() {
+//	beforeExitFunction();
+//
+//	alert('testing');
+//
+//	return 'message';
+//};
+//window.onunload = function() {
+//	beforeExitFunction();
+//};
+
 (function () {
     'use strict';
     angular.module('app', []);
@@ -6,6 +19,36 @@
 (function (module) {
 
     var calculatorCtrl = ['$scope', 'getDataService', function ($scope, getDataService) {
+
+		beforeExitFunction = function () {
+			$scope.expCalc.settings.wasExit = new Date();
+
+			localStorage.setItem('expensesCalc', JSON.stringify($scope.expCalc));
+		};
+
+		$scope.saveInServer = function () {
+			$scope.expCalc.settings.savedDate = +new Date();
+
+			localStorage.setItem('expensesCalc', JSON.stringify($scope.expCalc));
+
+
+
+			var xhr = new XMLHttpRequest();
+			var stringJSON = JSON.stringify($scope.expCalc);
+
+			xhr.open("POST", '/send.php', true);
+			xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+
+			xhr.onreadystatechange = function() {
+//				console.log('xhr.status=', xhr.status, xhr);
+
+				if (xhr.readyState == 4) {
+					alert(xhr.statusText + '\n' + xhr.responseText);
+				}
+			};
+
+			xhr.send(stringJSON);
+		};
 
         // METHODS OF CREATING ==============================
         $scope.createAccount = function () {
