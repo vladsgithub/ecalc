@@ -85,6 +85,12 @@ ol, ul {
 	overflow: hidden;
 	background: aquamarine;
 }
+.uploaded {
+	background: #d1ffc6;
+}
+.not-uploaded {
+	background: #ffbebe;
+}
 
 
 html {

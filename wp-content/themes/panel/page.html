@@ -43,10 +43,12 @@
 						</button>
 					</td>
 					<td>
-						<input type="text" class="form-control" ng-model="expCalc.settings.currencies.names[$index]" />
+						<input type="text" class="form-control"
+							   ng-model="expCalc.settings.currencies.names[$index]" onchange="uploadData()" />
 					</td>
 					<td ng-repeat="array in currencies.rates[nameIndex] track by $index">
-						<input type="number" class="form-control" ng-model="currencies.rates[nameIndex][$index]" />
+						<input type="number" class="form-control"
+							   ng-model="currencies.rates[nameIndex][$index]" onchange="uploadData()" />
 					</td>
 				</tr>
 				<tr>
@@ -85,7 +87,7 @@
 						<i class="fa fa-minus"></i>
 					</button>
 					{{$index + 1}}
-					<input type="text" class="form-control inline-block" ng-model="expensesType.name" />
+					<input type="text" class="form-control inline-block" ng-model="expensesType.name" onchange="uploadData()"/>
 				</li>
 
 				<li class="nowrap padding5-0">
@@ -109,7 +111,8 @@
 	<h5>
 		<label>
 			<div>Название расчёта:</div>
-			<input class="form-control inline-block" ng-model="account.meta.title" data-account-index="$index">
+			<input class="form-control inline-block" data-account-index="$index"
+				   ng-model="account.meta.title" onchange="uploadData()">
 		</label>
 		<button class="btn btn-danger btn-sm" ng-click="removeCurrentAccount()">Удалить расчет</button>
 
@@ -123,7 +126,7 @@
 		<label class="float-right">
 			<div>Основная валюта в расчетах: </div>
 			<select class="form-control currency-select float-right" ng-model="account.settings.accountCurrency"
-					ng-options="key as value for (key, value) in expCalc.settings.currencies.names">
+					ng-options="key as value for (key, value) in expCalc.settings.currencies.names" onchange="uploadData()">
 			</select>
 		</label>
 	</h5>
@@ -153,7 +156,8 @@
 					</button>
 				</div>
 				<div class="flex-grow1">
-					<input class="form-control" type="text" ng-model="participant.meta.title" placeholder="Новый участник">
+					<input class="form-control" type="text" ng-model="participant.meta.title"
+						   onchange="uploadData()" placeholder="Новый участник">
 				</div>
 				<div>
 					<h5 class="nowrap text-uppercase">
@@ -200,7 +204,7 @@
 								   ng-disabled="expense.isPaid">
 						</div>
 						<div>
-							<input type="checkbox" class="big-checkbox" ng-model="expense.isPaid" />
+							<input type="checkbox" class="big-checkbox" ng-model="expense.isPaid" onchange="uploadData()" />
 						</div>
 					</div>
 
@@ -280,7 +284,7 @@
 				</div>
 				<div class="participation">
 					<input class="form-control" type="number"
-						   ng-model="extParticipant.meta.participation">
+						   ng-model="extParticipant.meta.participation" onchange="uploadData()">
 				</div>
 			</div>
 
@@ -310,7 +314,8 @@
 							<label>
 								<input type="checkbox" class="big-checkbox"
 									   ng-model="expense.partList[extParticipantIndex]"
-									   ng-change="checkPartList(expense.partList, extParticipantIndex)">
+									   ng-change="checkPartList(expense.partList, extParticipantIndex)"
+									   onchange="uploadData()">
 							</label>
 
 							{{expense.title}} ({{intParticipant.meta.title}})
@@ -366,7 +371,8 @@
 					<span>{{participant.meta.fullBalance >= 0 ? 'Получит' : 'Вернет:'}}</span>
 										<span class="text-uppercase inline-block" ng-if="participant.meta.fullBalance >= 0">
 											<select class="form-control currency-select" ng-model="participant.meta.preferredCurrency"
-													ng-options="key as value for (key, value) in expCalc.settings.currencies.names">
+													ng-options="key as value for (key, value) in expCalc.settings.currencies.names"
+													onchange="uploadData()">
 											</select>
 										</span>
 										<span class="text-uppercase"

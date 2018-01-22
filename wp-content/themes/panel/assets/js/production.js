@@ -33370,18 +33370,7 @@ $provide.value("$locale", {
 })(window);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-var beforeExitFunction;
-
-//window.onbeforeunload = function() {
-//	beforeExitFunction();
-//
-//	alert('testing');
-//
-//	return 'message';
-//};
-//window.onunload = function() {
-//	beforeExitFunction();
-//};
+var uploadData;
 
 (function () {
     'use strict';
@@ -33392,18 +33381,15 @@ var beforeExitFunction;
 
     var calculatorCtrl = ['$scope', 'getDataService', function ($scope, getDataService) {
 
-		beforeExitFunction = function () {
-			$scope.expCalc.settings.wasExit = new Date();
+		// WORKING WITH DATA FOR THE SERVER ==============================
+var saveCounter = 0;
+		uploadData = function () {
 
-			localStorage.setItem('expensesCalc', JSON.stringify($scope.expCalc));
-		};
-
-		$scope.saveInServer = function () {
-			$scope.expCalc.settings.savedDate = +new Date();
-
-			localStorage.setItem('expensesCalc', JSON.stringify($scope.expCalc));
-
-
+console.log('uploadData = ', ++saveCounter);
+$scope.expCalc.meta.savedDate = +new Date();
+$scope.expCalc.meta.isDataUploaded = true;
+localStorage.setItem('expensesCalc', JSON.stringify($scope.expCalc));
+return;
 
 			var xhr = new XMLHttpRequest();
 			var stringJSON = JSON.stringify($scope.expCalc);
@@ -33412,15 +33398,29 @@ var beforeExitFunction;
 			xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
 			xhr.onreadystatechange = function() {
-//				console.log('xhr.status=', xhr.status, xhr);
+				if (this.readyState != 4) return;
 
-				if (xhr.readyState == 4) {
-					alert(xhr.statusText + '\n' + xhr.responseText);
+				if (xhr.status != 200) {
+					console.error( '!!! We have a problem: ' + xhr.status + ': ' + xhr.statusText );
+				} else {
+					console.info( 'We have received a response: ' + xhr.responseText ); // responseText -- текст ответа.
+					$scope.expCalc.meta.savedDate = +new Date();
+					$scope.expCalc.meta.isDataUploaded = true;
+					localStorage.setItem('expensesCalc', JSON.stringify($scope.expCalc));
 				}
 			};
 
 			xhr.send(stringJSON);
 		};
+
+		$scope.getLoadedData = function (data) {
+			$scope.expCalc.settings.loadedData = data;
+		};
+
+
+
+
+
 
         // METHODS OF CREATING ==============================
         $scope.createAccount = function () {
@@ -33477,6 +33477,8 @@ var beforeExitFunction;
             currentAccount.participants.push(newParticipant);
 
             $scope.addParticipantToPartList();
+
+			uploadData();
         };
 
 
@@ -33502,6 +33504,8 @@ var beforeExitFunction;
                 });
 
                 $scope.expCalc.settings.expensesTypes.splice(typeIndex, 1);
+
+				uploadData();
             }
         };
 
@@ -33546,11 +33550,15 @@ var beforeExitFunction;
                 $scope.expCalc.settings.currencies.rates.forEach(function(rateArr, i, arr) {
                     rateArr.splice(currencyIndex, 1);
                 });
+
+				uploadData();
             }
         };
 
         $scope.removeCurrentAccount = function () {
             $scope.expCalc.accounts.splice($scope.expCalc.settings.currentAccount, 1);
+
+			uploadData();
         };
 
         $scope.removeParticipant = function (participantIndex) {
@@ -33562,6 +33570,8 @@ var beforeExitFunction;
             } else {
                 $scope.expCalc.accounts[accountIndex].participants.splice(participantIndex, 1);
                 $scope.removeParticipantFromPartList(participantIndex);
+
+				uploadData();
             }
         };
 
@@ -33569,6 +33579,8 @@ var beforeExitFunction;
             var accountIndex = $scope.expCalc.settings.currentAccount;
 
             $scope.expCalc.accounts[accountIndex].participants[participantIndex].expenses.splice(expenseIndex, 1);
+
+			uploadData();
         };
 
         $scope.removeParticipantFromPartList = function (participantIndex) {
@@ -33583,10 +33595,14 @@ var beforeExitFunction;
 
         $scope.removePayment = function (debtor, refundIndex) {
             debtor.fixation.whom.splice(refundIndex, 1);
+
+			uploadData();
         };
 
         $scope.removePaymentByBank = function (participant, byBankObjectIndex) {
             participant.fixation.byBank.splice(byBankObjectIndex, 1);
+
+			uploadData();
         };
 
 
@@ -33685,18 +33701,6 @@ var beforeExitFunction;
                 isFixed: false
             });
         };
-
-        // $scope.addSurcharge = function() {
-        //     var commonSurcharge = $scope.expCalc.settings.currencies.commonSurcharge;
-        //
-        //     $scope.expCalc.settings.currencies.rates.forEach(function(ratesRow, i) {
-        //         ratesRow.forEach(function(rate, j) {
-        //             if (i != j) {
-        //                 $scope.expCalc.settings.currencies.rates[i][j] = rate + Math.round(100000 * rate * (commonSurcharge / 100)) / 100000;
-        //             }
-        //         });
-        //     });
-        // };
 
 
 
@@ -34036,7 +34040,11 @@ var beforeExitFunction;
         };
 
         $scope.checkRefundFields = function (refund) {
-            if (refund.number == null || refund.value == null || refund.currency == null) refund.isFixed = false;
+            if (refund.number == null || refund.value == null || refund.currency == null) {
+				refund.isFixed = false;
+			} else {
+				uploadData();
+			}
         };
 
         $scope.checkPartList = function (partList, extParticipantIndex) {
@@ -34193,21 +34201,26 @@ var beforeExitFunction;
         $scope.checkPaymentByBank = function (byBankObject) {
             var currentAccount = $scope.expCalc.accounts[$scope.expCalc.settings.currentAccount];
 
-            if (!byBankObject.isFixed) return;
+            if (!byBankObject.isFixed) {
+				uploadData();
+				return;
+			}
 
             if (byBankObject.value <= 0) {
                 byBankObject.isFixed = false;
 
                 alert('Значение должно быть положительным');
-            }
+            } else {
+				if (byBankObject.token > 0 && byBankObject.value > currentAccount.meta.bank) {
+					byBankObject.isFixed = false;
 
-            if (byBankObject.token > 0 && byBankObject.value > currentAccount.meta.bank) {
-                byBankObject.isFixed = false;
+					alert('В банке ' + currentAccount.meta.bank + ' ' + $scope.getAccountCurrency() + ', сейчас вы можете получить только этот максимум');
 
-                alert('В банке ' + currentAccount.meta.bank + ' ' + $scope.getAccountCurrency() + ', сейчас вы можете получить только этот максимум');
-
-                byBankObject.value = currentAccount.meta.bank;
-            }
+					byBankObject.value = currentAccount.meta.bank;
+				} else {
+					uploadData();
+				}
+			}
         };
 
         $scope.today = function () {
@@ -34271,8 +34284,9 @@ var beforeExitFunction;
                     }
                 });
             });
-        };
 
+			uploadData();
+        };
 
 
 
@@ -34284,7 +34298,6 @@ var beforeExitFunction;
 
         $scope.$watch('expCalc', function (newValue, oldValue) {
             localStorage.setItem('expensesCalc', JSON.stringify(newValue));
-
 
             document.getElementById('testing').innerHTML = JSON.stringify(newValue)
                 .replace(/\[/g, "[<div>").replace(/]/g, "</div>]")
@@ -34374,6 +34387,11 @@ var beforeExitFunction;
                 {name: 'Развлечение', icon: ''}
             ];
             expensesCalc = {
+				meta: {
+					isDataUploaded: true,
+					loadedData: null,
+					savedDate: null
+				},
                 settings: {
                     currentAccount: 0,
                     currencies: currencies,
