@@ -67,6 +67,8 @@
 		$loadedData = str_replace("{{", "{ {", $loadedData);
 		$loadedData = str_replace("}}", "} }", $loadedData);
 		echo "{{getLoadedData('$loadedData')}}";
+//		$loadedData = "getLoadedData('$loadedData')";
+//		echo "<div ng-init=\"$loadedData\"></div>";
 		?>
 
 		<?

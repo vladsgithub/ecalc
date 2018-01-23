@@ -10,17 +10,20 @@ var uploadData;
     var calculatorCtrl = ['$scope', 'getDataService', function ($scope, getDataService) {
 
 		// WORKING WITH DATA FOR THE SERVER ==============================
-var saveCounter = 0;
+//var saveCounter = 0;
 		uploadData = function () {
 
-console.log('uploadData = ', ++saveCounter);
-$scope.expCalc.meta.savedDate = +new Date();
-$scope.expCalc.meta.isDataUploaded = true;
-localStorage.setItem('expensesCalc', JSON.stringify($scope.expCalc));
-return;
+//console.log('uploadData = ', ++saveCounter);
+//$scope.expCalc.meta.savedDate = +new Date();
+//$scope.expCalc.meta.isDataUploaded = true;
+//localStorage.setItem('expensesCalc', JSON.stringify($scope.expCalc));
+//return;
+			$scope.expCalc.meta.loadedData = null;
+			$scope.expCalc.meta.isDataUploaded = false;
 
 			var xhr = new XMLHttpRequest();
 			var stringJSON = JSON.stringify($scope.expCalc);
+			console.log('stringJSON=',stringJSON);
 
 			xhr.open("POST", '/send.php', true);
 			xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
@@ -34,6 +37,7 @@ return;
 					console.info( 'We have received a response: ' + xhr.responseText ); // responseText -- текст ответа.
 					$scope.expCalc.meta.savedDate = +new Date();
 					$scope.expCalc.meta.isDataUploaded = true;
+					$scope.$apply();
 					localStorage.setItem('expensesCalc', JSON.stringify($scope.expCalc));
 				}
 			};
@@ -42,7 +46,7 @@ return;
 		};
 
 		$scope.getLoadedData = function (data) {
-			$scope.expCalc.settings.loadedData = data;
+			$scope.expCalc.meta.loadedData = data;
 		};
 
 
@@ -926,6 +930,8 @@ return;
 
         $scope.$watch('expCalc', function (newValue, oldValue) {
             localStorage.setItem('expensesCalc', JSON.stringify(newValue));
+
+
 
             document.getElementById('testing').innerHTML = JSON.stringify(newValue)
                 .replace(/\[/g, "[<div>").replace(/]/g, "</div>]")
