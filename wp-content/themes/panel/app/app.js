@@ -11,19 +11,24 @@ var uploadData;
 
 		// WORKING WITH DATA FOR THE SERVER ==============================
 //var saveCounter = 0;
+        var updateUploadStatus = function(status) {
+            // 0 - pending
+            // 1 - success
+            // 2 - failure
+            document.getElementById('body').setAttribute('data-upload-status', status);
+        };
+
 		uploadData = function () {
 
 //console.log('uploadData = ', ++saveCounter);
 //$scope.expCalc.meta.savedDate = +new Date();
-//$scope.expCalc.meta.isDataUploaded = true;
 //localStorage.setItem('expensesCalc', JSON.stringify($scope.expCalc));
 //return;
-			$scope.expCalc.meta.loadedData = null;
-			$scope.expCalc.meta.isDataUploaded = false;
+// 			$scope.expCalc.meta.isDataUploaded = false;
+            updateUploadStatus(0);
 
 			var xhr = new XMLHttpRequest();
 			var stringJSON = JSON.stringify($scope.expCalc);
-			console.log('stringJSON=',stringJSON);
 
 			xhr.open("POST", '/send.php', true);
 			xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
@@ -33,11 +38,13 @@ var uploadData;
 
 				if (xhr.status != 200) {
 					console.error( '!!! We have a problem: ' + xhr.status + ': ' + xhr.statusText );
+                    updateUploadStatus(2);
 				} else {
 					console.info( 'We have received a response: ' + xhr.responseText ); // responseText -- текст ответа.
 					$scope.expCalc.meta.savedDate = +new Date();
-					$scope.expCalc.meta.isDataUploaded = true;
-					$scope.$apply();
+					// $scope.expCalc.meta.isDataUploaded = true;
+                    updateUploadStatus(1);
+					$scope.$digest();
 					localStorage.setItem('expensesCalc', JSON.stringify($scope.expCalc));
 				}
 			};
@@ -45,8 +52,9 @@ var uploadData;
 			xhr.send(stringJSON);
 		};
 
-		$scope.getLoadedData = function (data) {
-			$scope.expCalc.meta.loadedData = data;
+		$scope.getDataFromServer = function (data) {
+			$scope.dataFromServer = data;
+			console.log('getDataFromServer!!!!!!!!!!!!!!!!!!!!!!!!!!');
 		};
 
 
@@ -932,7 +940,6 @@ var uploadData;
             localStorage.setItem('expensesCalc', JSON.stringify(newValue));
 
 
-
             document.getElementById('testing').innerHTML = JSON.stringify(newValue)
                 .replace(/\[/g, "[<div>").replace(/]/g, "</div>]")
                 .replace(/{/g, "{<div>").replace(/}/g, "</div>}")
@@ -1022,8 +1029,6 @@ var uploadData;
             ];
             expensesCalc = {
 				meta: {
-					isDataUploaded: true,
-					loadedData: null,
 					savedDate: null
 				},
                 settings: {

@@ -11292,10 +11292,13 @@ ul {
   overflow: hidden;
   background: aquamarine;
 }
-.uploaded {
+[data-upload-status="0"] {
+  background: #ffffbc;
+}
+[data-upload-status="1"] {
   background: #d1ffc6;
 }
-.not-uploaded {
+[data-upload-status="2"] {
   background: #ffbebe;
 }
 html {

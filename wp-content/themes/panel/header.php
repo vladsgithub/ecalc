@@ -23,7 +23,7 @@
 
 </head>
 
-<body ng-app="app" ng-controller="calculatorCtrl" ng-cloak="true" ng-class="(expCalc.meta.isDataUploaded) ? 'uploaded' : 'not-uploaded'">
+<body id="body" ng-app="app" ng-controller="calculatorCtrl" ng-cloak="true" data-upload-status="1">
 	<header>
 
         <?
@@ -66,9 +66,8 @@
 
 		$loadedData = str_replace("{{", "{ {", $loadedData);
 		$loadedData = str_replace("}}", "} }", $loadedData);
-		echo "{{getLoadedData('$loadedData')}}";
-//		$loadedData = "getLoadedData('$loadedData')";
-//		echo "<div ng-init=\"$loadedData\"></div>";
+		echo "{{getDataFromServer('$loadedData')}}";
+//        echo "<div ng-init=getDataFromServer('$loadedData')>data</div>";
 		?>
 
 		<?
