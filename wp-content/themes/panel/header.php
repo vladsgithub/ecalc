@@ -21,15 +21,10 @@
 	
 	<?php wp_head(); // необходимо для работы плагинов и функционала ?>
 
-</head>
-
-<body id="body" ng-app="app" ng-controller="calculatorCtrl" ng-cloak="true" data-upload-status="1">
-	<header>
-
-        <?
-        $current_user = wp_get_current_user();
-        $userID = $current_user->ID;
-        $loadedData = '';
+	<?
+		$current_user = wp_get_current_user();
+		$userID = $current_user->ID;
+		$loadedData = '';
 
 		echo 'Username: ' . $current_user->user_login . '<br />';
 		echo 'email: ' . $current_user->user_email . '<br />';
@@ -40,35 +35,40 @@
 
 		if ($userID > 0) {
 			$servername = "localhost";
-        	$username = "root";
-        	$password = "";
-        	$dbname = "ecalc";
+			$username = "root";
+			$password = "";
+			$dbname = "ecalc";
 
-        	// Create connection
-        	$conn = new mysqli($servername, $username, $password, $dbname);
+			// Create connection
+			$conn = new mysqli($servername, $username, $password, $dbname);
 
-        	// Check connection
-        	if ($conn->connect_error) {
-        		die("Connection failed: " . $conn->connect_error);
-        	}
+			// Check connection
+			if ($conn->connect_error) {
+				die("Connection failed: " . $conn->connect_error);
+			}
 
 			$result = mysql_query("SELECT data FROM json_data WHERE json_id = (SELECT json_id FROM wp_users WHERE ID = '$userID')");
-            if (!$result) {
-                echo 'Request error: ' . mysql_error();
-                exit;
-            } else {
+			if (!$result) {
+				echo 'Request error: ' . mysql_error();
+				exit;
+			} else {
 				$row = mysql_fetch_row($result);
 				$loadedData = $row[0];
-            }
+			}
 
-        	$conn->close();
+			$conn->close();
 		}
 
 		$loadedData = str_replace("{{", "{ {", $loadedData);
 		$loadedData = str_replace("}}", "} }", $loadedData);
-		echo "{{getDataFromServer('$loadedData')}}";
-//        echo "<div ng-init=getDataFromServer('$loadedData')>data</div>";
-		?>
+
+		echo "<script language='JavaScript'>var fromServerData = '$loadedData';</script>";
+    ?>
+
+</head>
+
+<body id="body" ng-app="app" ng-controller="calculatorCtrl" ng-cloak="true" data-upload-status="1">
+	<header>
 
 		<?
 		// В админке в разделе 'страницы', обязательно необходимо вставить (активировать) шорткод на какой-нибудь странице [clean-login]
@@ -81,6 +81,7 @@
 //        echo do_shortcode('[clean-login-restore]');
 		?>
 
+		{{formatDate(expCalc.meta.savedDate)}}
 
 		<button class="btn btn-primary" ng-click="uploadData()">
         		<i class="fa fa-floppy-o"></i>

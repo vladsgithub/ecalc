@@ -10,7 +10,7 @@ var uploadData;
     var calculatorCtrl = ['$scope', 'getDataService', function ($scope, getDataService) {
 
 		// WORKING WITH DATA FOR THE SERVER ==============================
-//var saveCounter = 0;
+
         var updateUploadStatus = function(status) {
             // 0 - pending
             // 1 - success
@@ -19,16 +19,13 @@ var uploadData;
         };
 
 		uploadData = function () {
-
-//console.log('uploadData = ', ++saveCounter);
-//$scope.expCalc.meta.savedDate = +new Date();
-//localStorage.setItem('expensesCalc', JSON.stringify($scope.expCalc));
-//return;
-// 			$scope.expCalc.meta.isDataUploaded = false;
-            updateUploadStatus(0);
-
+			$scope.expCalc.meta.savedDate = +new Date();
+console.log('===savedDate:', $scope.formatDate($scope.expCalc.meta.savedDate));
 			var xhr = new XMLHttpRequest();
 			var stringJSON = JSON.stringify($scope.expCalc);
+
+			updateUploadStatus(0);
+			localStorage.setItem('expensesCalc', stringJSON);
 
 			xhr.open("POST", '/send.php', true);
 			xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
@@ -41,20 +38,11 @@ var uploadData;
                     updateUploadStatus(2);
 				} else {
 					console.info( 'We have received a response: ' + xhr.responseText ); // responseText -- текст ответа.
-					$scope.expCalc.meta.savedDate = +new Date();
-					// $scope.expCalc.meta.isDataUploaded = true;
                     updateUploadStatus(1);
-					$scope.$digest();
-					localStorage.setItem('expensesCalc', JSON.stringify($scope.expCalc));
 				}
 			};
 
 			xhr.send(stringJSON);
-		};
-
-		$scope.getDataFromServer = function (data) {
-			$scope.dataFromServer = data;
-			console.log('getDataFromServer!!!!!!!!!!!!!!!!!!!!!!!!!!');
 		};
 
 
@@ -937,7 +925,7 @@ var uploadData;
 
 
         $scope.$watch('expCalc', function (newValue, oldValue) {
-            localStorage.setItem('expensesCalc', JSON.stringify(newValue));
+//            localStorage.setItem('expensesCalc', JSON.stringify(newValue));
 
 
             document.getElementById('testing').innerHTML = JSON.stringify(newValue)
@@ -1007,43 +995,57 @@ var uploadData;
     var getDataService = function () {
         var currencies, expensesTypes, expensesCalc;
 
-        if (localStorage.getItem('expensesCalc')) {
-            expensesCalc = JSON.parse(localStorage.getItem("expensesCalc"));
-        } else {
-            currencies = {
-                names: ['usd', 'eur', 'rub', 'byn'], // The currency number of 0, 1, 2 and 3
-                rates: [ // Banks sell by these rates
-                    [1,1.1934,0.0174,0.5186], // rates of the currency number 0
-                    [0.8379,1,0.0146,0.4345], // rates of the currency number 1
-                    [57.322,68.4158,1,29.7271], // rates of the currency number 2
-                    [1.928,2.2963,0.0336,1] // rates of the currency number 3
-                ],
-                commonSurcharge: 0
-            };
-            expensesTypes = [
-                {name: 'Общие расходы', icon: ''},
-                {name: 'Продукты питания', icon: ''},
-                {name: 'Жильё', icon: ''},
-                {name: 'Машина', icon: ''},
-                {name: 'Развлечение', icon: ''}
-            ];
-            expensesCalc = {
-				meta: {
-					savedDate: null
-				},
-                settings: {
-                    currentAccount: 0,
-                    currencies: currencies,
-                    baseCurrency: '3', // String type is necessary for select elements - we can see a selected option by default
-                    expensesTypes: expensesTypes
-                },
-                accounts: []
-            };
+		var fromLocalStorage = (localStorage.getItem('expensesCalc')) ? JSON.parse(localStorage.getItem("expensesCalc")) : false;
+		fromServerData = (fromServerData) ? JSON.parse(fromServerData) : false;
 
-            localStorage.setItem('expensesCalc', JSON.stringify(expensesCalc));
-        }
+		if (fromServerData.meta && fromLocalStorage.meta) {
+			if (fromServerData.meta.savedDate > fromLocalStorage.meta.savedDate) {
+				return fromServerData;
+			} else {
+				return fromLocalStorage;
+			}
+		}
 
-        return expensesCalc
+		if (fromServerData.meta) return fromServerData;
+
+		if (fromLocalStorage.meta) return fromLocalStorage;
+
+		currencies = {
+			names: ['usd', 'eur', 'rub', 'byn'], // The currency number of 0, 1, 2 and 3
+			rates: [ // Banks sell by these rates
+				[1,1.1934,0.0174,0.5186], // rates of the currency number 0
+				[0.8379,1,0.0146,0.4345], // rates of the currency number 1
+				[57.322,68.4158,1,29.7271], // rates of the currency number 2
+				[1.928,2.2963,0.0336,1] // rates of the currency number 3
+			],
+			commonSurcharge: 0.4
+		};
+		expensesTypes = [
+			{name: 'Общие расходы', icon: ''},
+			{name: 'Продукты питания', icon: ''},
+			{name: 'Жильё', icon: ''},
+			{name: 'Машина', icon: ''},
+			{name: 'Развлечение', icon: ''},
+			{name: 'Другое', icon: ''}
+		];
+
+		expensesCalc = {
+			meta: {
+				savedDate: +new Date()
+			},
+			settings: {
+				currentAccount: 0,
+				currencies: currencies,
+				baseCurrency: '3', // String type is necessary for select elements - we can see a selected option by default
+				expensesTypes: expensesTypes
+			},
+			accounts: []
+		};
+
+		localStorage.setItem('expensesCalc', JSON.stringify(expensesCalc));
+
+
+        return expensesCalc;
     };
 
     module.factory('getDataService', getDataService);
