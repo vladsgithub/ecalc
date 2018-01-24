@@ -31,9 +31,7 @@ if ($userId > 0) {
 	}
 
 	$data = file_get_contents("php://input"); // Read body
-	//echo $data;
 
-//	$sql = "INSERT IGNORE INTO json_data SET json_id = $userId, data = '$data';";
 	$sql = "INSERT INTO json_data(json_id, data) VALUES($userId, '$data') ON DUPLICATE KEY UPDATE data='$data'";
 
 	if ($conn->query($sql) === TRUE) {
