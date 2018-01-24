@@ -26,13 +26,6 @@
 		$userID = $current_user->ID;
 		$loadedData = '';
 
-		echo 'Username: ' . $current_user->user_login . '<br />';
-		echo 'email: ' . $current_user->user_email . '<br />';
-		echo 'first name: ' . $current_user->user_firstname . '<br />';
-		echo 'last name: ' . $current_user->user_lastname . '<br />';
-		echo 'Отображаемое имя: ' . $current_user->display_name . '<br />';
-		echo 'ID: ' . $current_user->ID . '<br />';
-
 		if ($userID > 0) {
 			$servername = "localhost";
 			$username = "root";
@@ -69,6 +62,15 @@
 
 <body id="body" ng-app="app" ng-controller="calculatorCtrl" ng-cloak="true" data-upload-status="1">
 	<header>
+
+		<?
+			echo 'Username: ' . $current_user->user_login . '<br />';
+			echo 'email: ' . $current_user->user_email . '<br />';
+			echo 'first name: ' . $current_user->user_firstname . '<br />';
+			echo 'last name: ' . $current_user->user_lastname . '<br />';
+			echo 'Отображаемое имя: ' . $current_user->display_name . '<br />';
+			echo 'ID: ' . $current_user->ID . '<br />';
+		?>
 
 		<?
 		// В админке в разделе 'страницы', обязательно необходимо вставить (активировать) шорткод на какой-нибудь странице [clean-login]
