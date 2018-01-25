@@ -35,6 +35,12 @@ module.exports = function(grunt) {
 				src: 'assets/js/production.js',
 				dest: 'assets/js/production.min.js'
 			}
+			// OR THIS METHOD WE CAN USE:
+			// my_target: {
+			// 	files: {
+			// 		'assets/js/production.min.js': ['assets/js/production.js']
+			// 	}
+			// }
 		}
 		//imagemin: {
 		//	dynamic: {
@@ -54,6 +60,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	//grunt.loadNpmTasks('grunt-contrib-imagemin');
 
-	grunt.registerTask('default', ['less', 'concat', 'watch']); // 'watch', 'uglify'
+	grunt.registerTask('default', ['less', 'concat', 'watch', 'uglify']); // 'watch', 'uglify'
 
 };

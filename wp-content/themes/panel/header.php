@@ -85,11 +85,9 @@
 
 		{{formatDate(expCalc.meta.savedDate)}}
 
-		<button class="btn btn-primary" ng-click="getFile()">
+		<button class="btn btn-primary" ng-click="downloadData()">
         		<i class="fa fa-floppy-o"></i>
         </button>
-
-        <a id="downloadData" href="#" download="json.txt">Download</a>
 
         <input type="file" onchange="loadData(event)" />
 

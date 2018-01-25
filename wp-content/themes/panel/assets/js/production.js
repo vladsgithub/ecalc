@@ -34253,6 +34253,185 @@ $provide.value("$locale", {
 })(window);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
+/* https://github.com/eligrey/FileSaver.js
+ *
+ * FileSaver.js
+ * A saveAs() FileSaver implementation.
+ * 1.3.5
+ * 2018-01-22 15:49:54
+ *
+ * By Eli Grey, https://eligrey.com
+ * License: MIT
+ *   See https://github.com/eligrey/FileSaver.js/blob/master/LICENSE.md
+ */
+
+/*global self */
+/*jslint bitwise: true, indent: 4, laxbreak: true, laxcomma: true, smarttabs: true, plusplus: true */
+
+/*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/FileSaver.js */
+
+var saveAs = saveAs || (function(view) {
+        "use strict";
+        // IE <10 is explicitly unsupported
+        if (typeof view === "undefined" || typeof navigator !== "undefined" && /MSIE [1-9]\./.test(navigator.userAgent)) {
+            return;
+        }
+        var
+            doc = view.document
+            // only get URL when necessary in case Blob.js hasn't overridden it yet
+            , get_URL = function() {
+                return view.URL || view.webkitURL || view;
+            }
+            , save_link = doc.createElementNS("http://www.w3.org/1999/xhtml", "a")
+            , can_use_save_link = "download" in save_link
+            , click = function(node) {
+                var event = new MouseEvent("click");
+                node.dispatchEvent(event);
+            }
+            , is_safari = /constructor/i.test(view.HTMLElement) || view.safari
+            , is_chrome_ios =/CriOS\/[\d]+/.test(navigator.userAgent)
+            , throw_outside = function(ex) {
+                (view.setImmediate || view.setTimeout)(function() {
+                    throw ex;
+                }, 0);
+            }
+            , force_saveable_type = "application/octet-stream"
+            // the Blob API is fundamentally broken as there is no "downloadfinished" event to subscribe to
+            , arbitrary_revoke_timeout = 1000 * 40 // in ms
+            , revoke = function(file) {
+                var revoker = function() {
+                    if (typeof file === "string") { // file is an object URL
+                        get_URL().revokeObjectURL(file);
+                    } else { // file is a File
+                        file.remove();
+                    }
+                };
+                setTimeout(revoker, arbitrary_revoke_timeout);
+            }
+            , dispatch = function(filesaver, event_types, event) {
+                event_types = [].concat(event_types);
+                var i = event_types.length;
+                while (i--) {
+                    var listener = filesaver["on" + event_types[i]];
+                    if (typeof listener === "function") {
+                        try {
+                            listener.call(filesaver, event || filesaver);
+                        } catch (ex) {
+                            throw_outside(ex);
+                        }
+                    }
+                }
+            }
+            , auto_bom = function(blob) {
+                // prepend BOM for UTF-8 XML and text/* types (including HTML)
+                // note: your browser will automatically convert UTF-16 U+FEFF to EF BB BF
+                if (/^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(blob.type)) {
+                    return new Blob([String.fromCharCode(0xFEFF), blob], {type: blob.type});
+                }
+                return blob;
+            }
+            , FileSaver = function(blob, name, no_auto_bom) {
+                if (!no_auto_bom) {
+                    blob = auto_bom(blob);
+                }
+                // First try a.download, then web filesystem, then object URLs
+                var
+                    filesaver = this
+                    , type = blob.type
+                    , force = type === force_saveable_type
+                    , object_url
+                    , dispatch_all = function() {
+                        dispatch(filesaver, "writestart progress write writeend".split(" "));
+                    }
+                    // on any filesys errors revert to saving with object URLs
+                    , fs_error = function() {
+                        if ((is_chrome_ios || (force && is_safari)) && view.FileReader) {
+                            // Safari doesn't allow downloading of blob urls
+                            var reader = new FileReader();
+                            reader.onloadend = function() {
+                                var url = is_chrome_ios ? reader.result : reader.result.replace(/^data:[^;]*;/, 'data:attachment/file;');
+                                var popup = view.open(url, '_blank');
+                                if(!popup) view.location.href = url;
+                                url=undefined; // release reference before dispatching
+                                filesaver.readyState = filesaver.DONE;
+                                dispatch_all();
+                            };
+                            reader.readAsDataURL(blob);
+                            filesaver.readyState = filesaver.INIT;
+                            return;
+                        }
+                        // don't create more object URLs than needed
+                        if (!object_url) {
+                            object_url = get_URL().createObjectURL(blob);
+                        }
+                        if (force) {
+                            view.location.href = object_url;
+                        } else {
+                            var opened = view.open(object_url, "_blank");
+                            if (!opened) {
+                                // Apple does not allow window.open, see https://developer.apple.com/library/safari/documentation/Tools/Conceptual/SafariExtensionGuide/WorkingwithWindowsandTabs/WorkingwithWindowsandTabs.html
+                                view.location.href = object_url;
+                            }
+                        }
+                        filesaver.readyState = filesaver.DONE;
+                        dispatch_all();
+                        revoke(object_url);
+                    }
+                    ;
+                filesaver.readyState = filesaver.INIT;
+
+                if (can_use_save_link) {
+                    object_url = get_URL().createObjectURL(blob);
+                    setTimeout(function() {
+                        save_link.href = object_url;
+                        save_link.download = name;
+                        click(save_link);
+                        dispatch_all();
+                        revoke(object_url);
+                        filesaver.readyState = filesaver.DONE;
+                    });
+                    return;
+                }
+
+                fs_error();
+            }
+            , FS_proto = FileSaver.prototype
+            , saveAs = function(blob, name, no_auto_bom) {
+                return new FileSaver(blob, name || blob.name || "download", no_auto_bom);
+            }
+            ;
+        // IE 10+ (native saveAs)
+        if (typeof navigator !== "undefined" && navigator.msSaveOrOpenBlob) {
+            return function(blob, name, no_auto_bom) {
+                name = name || blob.name || "download";
+
+                if (!no_auto_bom) {
+                    blob = auto_bom(blob);
+                }
+                return navigator.msSaveOrOpenBlob(blob, name);
+            };
+        }
+
+        FS_proto.abort = function(){};
+        FS_proto.readyState = FS_proto.INIT = 0;
+        FS_proto.WRITING = 1;
+        FS_proto.DONE = 2;
+
+        FS_proto.error =
+            FS_proto.onwritestart =
+                FS_proto.onprogress =
+                    FS_proto.onwrite =
+                        FS_proto.onabort =
+                            FS_proto.onerror =
+                                FS_proto.onwriteend =
+                                    null;
+
+        return saveAs;
+    }(
+        typeof self !== "undefined" && self
+        || typeof window !== "undefined" && window
+        || this
+    ));
 var uploadData, loadData;
 
 (function () {
@@ -34273,20 +34452,28 @@ var uploadData, loadData;
             document.getElementById('body').setAttribute('data-upload-status', status);
         };
 
-        var updateDownloadLink = function (stringJSON) {
-            var file = new Blob([stringJSON], {type: 'text/plain'});
-            document.getElementById('downloadData').setAttribute('href', URL.createObjectURL(file));
-        };
-
         loadData = function (event) {
             var file = event.target.files[0];
             var reader = new FileReader();
             reader.onload = function(event) {
-                // The file's text will be printed here
-                console.log('*** load data:', event.target.result)
+                try {
+                    var newExpCalc = JSON.parse(event.target.result);
+                    var question = confirm('Загружаемые данные были созданы: ' + $scope.formatDate(newExpCalc.meta.savedDate) +
+                    '\nВы действительно хотите заменить текущие данные на новые?');
+
+                    if (question) {
+                        $scope.expCalc = newExpCalc;
+                        $scope.$apply();
+                        alert('Новые данные загружены успешно!');
+                    }
+                } catch (err) {
+                    alert('ОШИБКА: Файл данных повреждён!');
+                }
             };
 
             reader.readAsText(file);
+
+            event.target.value = '';
         };
 
 		uploadData = function () {
@@ -34297,7 +34484,6 @@ console.log('===savedDate:', $scope.formatDate($scope.expCalc.meta.savedDate));
 
 			updateUploadStatus(0);
 			localStorage.setItem('expensesCalc', stringJSON);
-            updateDownloadLink(stringJSON);
 
 			xhr.open("POST", '/send.php', true);
 			xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
@@ -34317,16 +34503,11 @@ console.log('===savedDate:', $scope.formatDate($scope.expCalc.meta.savedDate));
 			xhr.send(stringJSON);
 		};
 
-        // $scope.getFile = function () {
-        //     function download(text, name, type) {
-        //         var a = document.createElement("a");
-        //         var file = new Blob([text], {type: type});
-        //         a.href = URL.createObjectURL(file);
-        //         a.download = name;
-        //         a.click();
-        //     }
-        //     download(JSON.stringify($scope.expCalc), 'test.txt', 'text/plain');
-        // };
+		$scope.downloadData = function () {
+            var blob = new Blob([JSON.stringify($scope.expCalc)], {type: "text/plain;charset=utf-8"});
+            saveAs(blob, "CostPanel-" + $scope.expCalc.meta.savedDate + ".txt");
+        };
+
 
 
 
@@ -35225,6 +35406,7 @@ console.log('===savedDate:', $scope.formatDate($scope.expCalc.meta.savedDate));
                 .replace(/"currencies": {<div>/g, "\"currencies\": {<div class='compressed'>")
                 .replace(/"expensesTypes": \[<div>/g, "\"expensesTypes\": [<div class='compressed'>");
 
+            // this forEach of querySelectorAll isn't supported on IE10
             document.getElementById('testing').querySelectorAll('div').forEach(function (item, i) {
                 item.addEventListener('click', function (e) {
                     e.stopPropagation();
@@ -35264,7 +35446,6 @@ console.log('===savedDate:', $scope.formatDate($scope.expCalc.meta.savedDate));
 
         if (true) {
             $scope.expCalc = getDataService;
-            updateDownloadLink(JSON.stringify($scope.expCalc));
         } else {
             $scope.expCalc =
                 {"settings":{"currentAccount":0,"currencies":{"commonSurcharge": 0, "names":["usd доллар","eur евро","rub рос.рубль","byn","pln злотый","huf форинт","hrk куна","czk крона"],"rates":[[1,1.1644,0.01687,0.502,0.27496,0.003736,0.15436,0.04561],[0.85892,1,0.01449,0.43113,0.23614,0.003209,0.13266,0.03917],[59.2774,69.0198,1,29.7563,16.2981,0.22145,9.1559,2.7033],[1.995,2.323,0.0337,1,0.554,0.007437,0.309,0.091],[3.6369,4.2348,0.06135,1.8257,1,0.01359,0.56137,0.16586],[267.54,311.67,4.5166,134.37,73.5975,1,41.3455,12.2071],[6.4709,7.5382,0.10924,3.2499,1.7801,0.02419,1,0.29525],[21.9188,25.5318,0.37004,11.0076,6.0291,0.08192,3.3864,1]]},"baseCurrency":"3","expensesTypes":[{"name":"Общие расходы","icon":""},{"name":"Питание","icon":""},{"name":"Жильё","icon":""},{"name":"Машина","icon":""},{"name":"Развлечение","icon":""},{"name":"Товары домой","icon":""},{"name":"Другое","icon":""}],"isPrintView":false},"accounts":[{"settings":{"accountCurrency":"3","fixationDirectly":true},"meta":{"title":"Хорватия","total":5199.176315,"fullRefund":-1423.914111667,"negBalance":-1423.91,"posBalance":1423.91,"negBalanceByBank":0,"posBalanceByBank":0,"bank":0},"participants":[{"meta":{"title":"Стасики","participation":2,"preferredCurrency":"3","total":4890.031655000001,"share":3466.117543333,"balance":1423.914111667,"receivedSum":0,"givenSum":0,"fullBalance":1423.91,"fullBalanceByBank":0,"expensesByTypes":[427.03,386.39,1423.02,786.37,132.02,298.93,12.36]},"expenses":[{"title":"Страховка на машину","type":"3","date":"Fri Nov 10 2017 11:51:42 GMT+0300 (Belarus Standard Time)","value":56,"currency":"0","isPaid":true,"partList":[true,true]},{"title":"Жильё в Подстране","type":"2","date":"Fri Nov 10 2017 11:53:09 GMT+0300 (Belarus Standard Time)","value":840,"currency":"0","isPaid":true,"partList":[true,true]},{"title":"Жильё в Люблине","type":"2","date":"Fri Nov 10 2017 11:53:50 GMT+0300 (Belarus Standard Time)","value":127.8,"currency":"4","isPaid":true,"partList":[true,true]},{"title":"Жильё в Будапеште","type":"2","date":"Fri Nov 10 2017 12:07:18 GMT+0300 (Belarus Standard Time)","value":53,"currency":"0","isPaid":true,"partList":[true,true]},{"title":"Бензин","type":"3","date":"Fri Nov 10 2017 12:07:44 GMT+0300 (Belarus Standard Time)","value":37.5,"currency":"3","isPaid":true,"partList":[true,true]},{"title":"Дьютик","type":"5","date":"Fri Nov 10 2017 12:10:04 GMT+0300 (Belarus Standard Time)","value":46.83,"currency":"3","isPaid":true,"partList":[true,true]},{"title":"Еда Ржешув","type":"1","date":"Fri Nov 10 2017 12:11:51 GMT+0300 (Belarus Standard Time)","value":44,"currency":"4","isPaid":true,"partList":[true,true]},{"title":"Магазин Ржешув","type":"1","date":"Fri Nov 10 2017 12:12:25 GMT+0300 (Belarus Standard Time)","value":13.03,"currency":"4","isPaid":true,"partList":[true,true]},{"title":"Бензин","type":"3","date":"Fri Nov 10 2017 12:13:22 GMT+0300 (Belarus Standard Time)","value":104,"currency":"4","isPaid":true,"partList":[true,true]},{"title":"Бензин","type":"3","date":"Fri Nov 10 2017 12:14:06 GMT+0300 (Belarus Standard Time)","value":14.18,"currency":"1","isPaid":true,"partList":[true,true]},{"title":"Винетка Венгрия","type":"3","date":"Fri Nov 10 2017 12:14:34 GMT+0300 (Belarus Standard Time)","value":2975,"currency":"5","isPaid":true,"partList":[true,true]},{"title":"Жильё Будапешт","type":"2","date":"Fri Nov 10 2017 12:16:35 GMT+0300 (Belarus Standard Time)","value":15000,"currency":"5","isPaid":true,"partList":[true,true]},{"title":"Пиво в Будапеште","type":"4","date":"Fri Nov 10 2017 12:17:06 GMT+0300 (Belarus Standard Time)","value":1500,"currency":"5","isPaid":true,"partList":[true,true]},{"title":"Бензин Будапешт","type":"3","date":"Fri Nov 10 2017 12:18:17 GMT+0300 (Belarus Standard Time)","value":3000,"currency":"5","isPaid":true,"partList":[true,true]},{"title":"Бензин Хорватия","type":"3","date":"Fri Nov 10 2017 12:18:44 GMT+0300 (Belarus Standard Time)","value":210.82,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Платные дороги Хорватия","type":"3","date":"Fri Nov 10 2017 12:20:05 GMT+0300 (Belarus Standard Time)","value":47,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Бензин Хорватия","type":"3","date":"Fri Nov 10 2017 12:20:43 GMT+0300 (Belarus Standard Time)","value":201.76,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Платные дороги Хорватия","type":"3","date":"Fri Nov 10 2017 12:21:39 GMT+0300 (Belarus Standard Time)","value":200,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Покупки в Konzum","type":"0","date":"Fri Nov 10 2017 13:35:49 GMT+0300 (Belarus Standard Time)","value":629.64,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Мороженое и кукуруза","type":"4","date":"Fri Nov 10 2017 13:36:36 GMT+0300 (Belarus Standard Time)","value":17,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Тапки для пляжа","type":"6","date":"Fri Nov 10 2017 13:37:05 GMT+0300 (Belarus Standard Time)","value":60,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Обед в кафе","type":"1","date":"Fri Nov 10 2017 13:40:09 GMT+0300 (Belarus Standard Time)","value":210,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Пекарня","type":"1","date":"Fri Nov 10 2017 13:40:34 GMT+0300 (Belarus Standard Time)","value":13,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Магазин в Омише","type":"1","date":"Fri Nov 10 2017 13:42:07 GMT+0300 (Belarus Standard Time)","value":217.52,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Бензин","type":"3","date":"Fri Nov 10 2017 13:43:18 GMT+0300 (Belarus Standard Time)","value":182.47,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Мороженое и ммдмс","type":"4","date":"Fri Nov 10 2017 13:48:21 GMT+0300 (Belarus Standard Time)","value":17,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Плитвицкие озера","type":"4","date":"Fri Nov 10 2017 13:48:59 GMT+0300 (Belarus Standard Time)","value":540,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Парковка на озерах","type":"3","date":"Fri Nov 10 2017 13:49:57 GMT+0300 (Belarus Standard Time)","value":20,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Еда на озерах","type":"1","date":"Fri Nov 10 2017 13:50:21 GMT+0300 (Belarus Standard Time)","value":215,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Бензин Хорватия","type":"3","date":"Fri Nov 10 2017 13:51:04 GMT+0300 (Belarus Standard Time)","value":187.97,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Платные дороги","type":"3","date":"Fri Nov 10 2017 13:51:43 GMT+0300 (Belarus Standard Time)","value":92,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Магазин","type":"0","date":"Fri Nov 10 2017 13:52:04 GMT+0300 (Belarus Standard Time)","value":45.62,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Пекарня","type":"1","date":"Fri Nov 10 2017 13:53:22 GMT+0300 (Belarus Standard Time)","value":19.5,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Платная парковка","type":"3","date":"Fri Nov 10 2017 13:54:04 GMT+0300 (Belarus Standard Time)","value":70,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Еда конзьюм","type":"1","date":"Fri Nov 10 2017 13:56:21 GMT+0300 (Belarus Standard Time)","value":533.66,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Кепка Виталик","type":"0","date":"Fri Nov 10 2017 13:57:01 GMT+0300 (Belarus Standard Time)","value":50,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Кепка и сувенири Стасикам","type":"5","date":"Fri Nov 10 2017 13:57:27 GMT+0300 (Belarus Standard Time)","value":140,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Пицца в Омише","type":"1","date":"Fri Nov 10 2017 13:59:27 GMT+0300 (Belarus Standard Time)","value":185,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Вход Стасика на башню","type":"4","date":"Fri Nov 10 2017 13:59:56 GMT+0300 (Belarus Standard Time)","value":20,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Водичка и лед в Омише","type":"1","date":"Fri Nov 10 2017 14:01:49 GMT+0300 (Belarus Standard Time)","value":70,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Парковка в Омише","type":"3","date":"Fri Nov 10 2017 14:02:14 GMT+0300 (Belarus Standard Time)","value":70,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Спиртное, шоколад и тд","type":"0","date":"Fri Nov 10 2017 14:02:45 GMT+0300 (Belarus Standard Time)","value":261.88,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Магаз конзьюм в дорогу","type":"0","date":"Fri Nov 10 2017 14:04:12 GMT+0300 (Belarus Standard Time)","value":115.35,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Бензин Хорватия","type":"3","date":"Fri Nov 10 2017 14:04:38 GMT+0300 (Belarus Standard Time)","value":191.74,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Пекарня","type":"1","date":"Fri Nov 10 2017 14:05:11 GMT+0300 (Belarus Standard Time)","value":39,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Винетка Словакия","type":"3","date":"Fri Nov 10 2017 14:05:45 GMT+0300 (Belarus Standard Time)","value":10,"currency":"1","isPaid":true,"partList":[true,true]},{"title":"Бензин Хорватия","type":"3","date":"Fri Nov 10 2017 14:06:41 GMT+0300 (Belarus Standard Time)","value":185.57,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Платные дороги","type":"3","date":"Fri Nov 10 2017 14:07:52 GMT+0300 (Belarus Standard Time)","value":248,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Винетка Австрия","type":"3","date":"Fri Nov 10 2017 14:08:16 GMT+0300 (Belarus Standard Time)","value":8.9,"currency":"1","isPaid":true,"partList":[true,true]},{"title":"Бензин Австрия","type":"3","date":"Fri Nov 10 2017 14:08:44 GMT+0300 (Belarus Standard Time)","value":15.28,"currency":"1","isPaid":true,"partList":[true,true]},{"title":"Бензин Словакия","type":"3","date":"Fri Nov 10 2017 14:09:15 GMT+0300 (Belarus Standard Time)","value":28.67,"currency":"1","isPaid":true,"partList":[true,true]},{"title":"Жильё Братислава","type":"2","date":"Fri Nov 10 2017 14:10:29 GMT+0300 (Belarus Standard Time)","value":41,"currency":"1","isPaid":true,"partList":[true,true]},{"title":"Бензин Словакия","type":"3","date":"Fri Nov 10 2017 14:10:59 GMT+0300 (Belarus Standard Time)","value":15.38,"currency":"1","isPaid":true,"partList":[true,true]},{"title":"Обед Словакия","type":"1","date":"Fri Nov 10 2017 14:11:48 GMT+0300 (Belarus Standard Time)","value":21.2,"currency":"1","isPaid":true,"partList":[true,true]},{"title":"Парковка Краков","type":"3","date":"Fri Nov 10 2017 14:12:51 GMT+0300 (Belarus Standard Time)","value":15,"currency":"4","isPaid":true,"partList":[true,true]},{"title":"Мороженое","type":"4","date":"Fri Nov 10 2017 14:14:41 GMT+0300 (Belarus Standard Time)","value":6,"currency":"4","isPaid":true,"partList":[true,true]},{"title":"Бензин Польша","type":"3","date":"Fri Nov 10 2017 14:15:06 GMT+0300 (Belarus Standard Time)","value":94.56,"currency":"4","isPaid":true,"partList":[true,true]},{"title":"Проживание Варшава","type":"2","date":"Fri Nov 10 2017 14:17:02 GMT+0300 (Belarus Standard Time)","value":37.79,"currency":"0","isPaid":true,"partList":[true,true]},{"title":"Бензин в Польше","type":"3","date":"Fri Nov 10 2017 14:17:31 GMT+0300 (Belarus Standard Time)","value":73.21,"currency":"4","isPaid":true,"partList":[true,true]},{"title":"Майка, рубашка, свитер","type":"5","date":"Fri Nov 10 2017 14:17:58 GMT+0300 (Belarus Standard Time)","value":140.3,"currency":"4","isPaid":true,"partList":[true,true]},{"title":"Кфс + обед","type":"1","date":"Fri Nov 10 2017 14:18:27 GMT+0300 (Belarus Standard Time)","value":45.4,"currency":"4","isPaid":true,"partList":[true,true]},{"title":"Джинсы, свитер, майка","type":"5","date":"Fri Nov 10 2017 14:18:57 GMT+0300 (Belarus Standard Time)","value":119.97,"currency":"4","isPaid":true,"partList":[true,true]},{"title":"Майка мустанг","type":"5","date":"Fri Nov 10 2017 14:19:20 GMT+0300 (Belarus Standard Time)","value":34,"currency":"4","isPaid":true,"partList":[true,true]},{"title":"Одежда Данику","type":"5","date":"Fri Nov 10 2017 14:20:03 GMT+0300 (Belarus Standard Time)","value":50.48,"currency":"4","isPaid":true,"partList":[true,true]},{"title":"Кроссовки Влад","type":"5","date":"Fri Nov 10 2017 14:20:31 GMT+0300 (Belarus Standard Time)","value":140,"currency":"4","isPaid":true,"partList":[true,true]},{"title":"Кроссовки Таня","type":"5","date":"Fri Nov 10 2017 14:20:49 GMT+0300 (Belarus Standard Time)","value":162,"currency":"4","isPaid":true,"partList":[true,true]},{"title":"Бензин","type":"3","date":"Fri Nov 10 2017 14:22:11 GMT+0300 (Belarus Standard Time)","value":23,"currency":"3","isPaid":true,"partList":[true,true]}],"fixation":{"whom":[],"byBank":[],"reserve":0}},{"meta":{"title":"Мама","participation":1,"preferredCurrency":"3","total":309.14466,"share":1733.058771667,"balance":-1423.914111667,"receivedSum":0,"givenSum":0,"fullBalance":-1423.91,"fullBalanceByBank":0,"expensesByTypes":[213.51,193.2,711.51,393.19,66.01,149.46,6.18]},"expenses":[{"title":"Аушан в Люблине","type":"0","date":"Fri Nov 10 2017 14:22:33 GMT+0300 (Belarus Standard Time)","value":489,"currency":"4","isPaid":true,"partList":[true,true]},{"title":"Суп Хорватия","type":"1","date":"Fri Nov 10 2017 14:23:33 GMT+0300 (Belarus Standard Time)","value":30,"currency":"6","isPaid":true,"partList":[true,true]},{"title":"Аушан Варшава","type":"0","date":"Fri Nov 10 2017 14:23:57 GMT+0300 (Belarus Standard Time)","value":52.29,"currency":"4","isPaid":true,"partList":[true,true]}],"fixation":{"whom":[],"byBank":[],"reserve":0}}]}]}
