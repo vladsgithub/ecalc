@@ -961,24 +961,26 @@ console.log('===savedDate:', $scope.formatDate($scope.expCalc.meta.savedDate));
 //            localStorage.setItem('expensesCalc', JSON.stringify(newValue));
 
 
-            document.getElementById('testing').innerHTML = JSON.stringify(newValue)
-                .replace(/\[/g, "[<div>").replace(/]/g, "</div>]")
-                .replace(/{/g, "{<div>").replace(/}/g, "</div>}")
-                .replace(/,/g, ",<hr>").replace(/:/g, ": ")
-                .replace(/},<hr>{/g, "},{").replace(/],<hr>\[/g, "],[")
-                .replace(/],\[/g, "<ar>],[</ar>").replace(/},{/g, "<arr>},{</arr>")
-                .replace(/Участник/g, "<b>Участник</b>")
-                .replace(/"participants": \[/g, "<b>\"participants\": [</b>")
-                .replace(/"currencies": {<div>/g, "\"currencies\": {<div class='compressed'>")
-                .replace(/"expensesTypes": \[<div>/g, "\"expensesTypes\": [<div class='compressed'>");
+			if (document.getElementById('testing')) {
+				document.getElementById('testing').innerHTML = JSON.stringify(newValue)
+					.replace(/\[/g, "[<div>").replace(/]/g, "</div>]")
+					.replace(/{/g, "{<div>").replace(/}/g, "</div>}")
+					.replace(/,/g, ",<hr>").replace(/:/g, ": ")
+					.replace(/},<hr>{/g, "},{").replace(/],<hr>\[/g, "],[")
+					.replace(/],\[/g, "<ar>],[</ar>").replace(/},{/g, "<arr>},{</arr>")
+					.replace(/Участник/g, "<b>Участник</b>")
+					.replace(/"participants": \[/g, "<b>\"participants\": [</b>")
+					.replace(/"currencies": {<div>/g, "\"currencies\": {<div class='compressed'>")
+					.replace(/"expensesTypes": \[<div>/g, "\"expensesTypes\": [<div class='compressed'>");
 
-            // this forEach of querySelectorAll isn't supported on IE10
-            document.getElementById('testing').querySelectorAll('div').forEach(function (item, i) {
-                item.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    e.target.classList.toggle('compressed');
-                });
-            });
+				// this forEach of querySelectorAll isn't supported on IE10
+				document.getElementById('testing').querySelectorAll('div').forEach(function (item, i) {
+					item.addEventListener('click', function (e) {
+						e.stopPropagation();
+						e.target.classList.toggle('compressed');
+					});
+				});
+			}
         }, true);
 
         $scope.copyObjectToBuffer = function () {

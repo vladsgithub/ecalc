@@ -30,6 +30,15 @@ module.exports = function(grunt) {
 				dest: 'assets/js/production.js'
 			}
 		},
+		autoprefixer: {
+			options: {
+				browsers: ['last 2 versions']
+			},
+			single_file: {
+				src: 'assets/css/app.css',
+				dest: 'assets/css/app.pref.css'
+			}
+		},
 		uglify: {
 			build: {
 				src: 'assets/js/production.js',
@@ -58,8 +67,10 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-autoprefixer');
 	//grunt.loadNpmTasks('grunt-contrib-imagemin');
 
-	grunt.registerTask('default', ['less', 'concat', 'watch', 'uglify']); // 'watch', 'uglify'
+	grunt.registerTask('default', ['less', 'concat', 'watch']); // 'watch'
+	// 'uglify', 'autoprefixer' - to rub by command "grunt uglify" and "grunt autoprefixer"
 
 };
