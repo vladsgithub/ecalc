@@ -1,4 +1,4 @@
-var uploadData, loadData;
+var uploadData, loadData, layoutControl;
 
 (function () {
     'use strict';
@@ -8,6 +8,66 @@ var uploadData, loadData;
 (function (module) {
 
     var calculatorCtrl = ['$scope', 'getDataService', function ($scope, getDataService) {
+
+        // WORKING WITH LAYOUT ==============================
+
+        layoutControl = {
+            body: document.getElementById('body'),
+            header: document.getElementById('header'),
+            main: document.getElementById('main'),
+            footer: document.getElementById('footer'),
+            init: function () {
+                this.watcherOfHeader();
+                // this.preventDefaultOfLinkClick();
+                // this.minimizingHeaderByScrolling();
+                // this.mainMenuToggler();
+            },
+            watcherOfHeader: function() {
+                var self = this;
+                var headerIframe = document.getElementById('headerIframe').contentWindow;
+
+console.log('turn on: watcherOfHeader', headerIframe);
+                self.body.style.paddingTop = self.header.offsetHeight + 'px';
+
+                headerIframe.addEventListener('resize', function() {
+                    self.body.style.paddingTop = self.header.offsetHeight + 'px';
+                });
+            },
+            preventDefaultOfLinkClick: function() {
+                $('a').on('click', function(e) {
+                    e.preventDefault();
+                });
+            },
+            minimizingHeaderByScrolling: function() {
+                var self = this;
+
+                $(window).on('scroll', function(e) {
+                    if ($(e.currentTarget).scrollTop() > 100) {
+                        self.$header.addClass('minimized');
+                    } else {
+                        if ($(e.currentTarget).scrollTop() < 10) {
+                            self.$header.removeClass('minimized');
+                        }
+                    }
+                });
+            },
+            mainMenuToggler: function() {
+                var self = this;
+
+                $('.js-show-menu').on('click', function() {
+                    self.$body.toggleClass('shown-menu');
+                });
+            }
+        };
+
+        layoutControl.init();
+
+
+
+
+
+
+
 
 		// WORKING WITH DATA TO UPLOAD/DOWNLOAD ==============================
 
