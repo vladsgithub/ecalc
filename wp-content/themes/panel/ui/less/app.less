@@ -1,12 +1,51 @@
 //@import (less) "../css/bootstrap.min.css";
-@import (less) "../css/font-awesome.min.css";
+@import (less) "../css/fonts.css";
+@import (less) "../css/fontawesome.css";
+@import (less) "../css/reset.css";
+@import (less) "variables.less";
 //@import (less) "../css/app.css";
 
-.test {
-	color: green;
-	font-weight: bold;
 
-	&::after {
-		content: "after element";
+* {
+	-webkit-tap-highlight-color: transparent;
+	-webkit-font-smoothing: antialiased; }
+
+html, body {
+	-webkit-user-select: none;
+	-webkit-touch-callout: none;
+	height: 100%; }
+html {
+	font: normal 16px/22px RobotoSlab;
+}
+body {
+	overflow: auto; -webkit-overflow-scrolling: touch;
+	font-size: 1.2rem;
+
+	&[data-upload-status="0"] .status-line { background: @pending; }
+	&[data-upload-status="2"] .status-line { background: @warning; }
+}
+
+header {
+	position: fixed;
+	height: 50px; width: 100%;
+	margin-bottom: -50px;
+	background: @brand-strong;
+
+	.status-line {
+		position: absolute;
+		bottom: 0; left: 0; right: 0;
+		height: 4px;
+		background: @success;
+		border: 1px solid @white; border-left: 0; border-right: 0;
 	}
+}
+main {
+	min-height: 100%;
+	padding-top: 50px;
+//	padding-bottom: 50px; // for footer
+	box-sizing: border-box;
+}
+footer {
+//	height: 50px;
+//	margin-top: -50px;
 }

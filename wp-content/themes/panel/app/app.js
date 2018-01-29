@@ -48,8 +48,9 @@ console.log('===savedDate:', $scope.formatDate($scope.expCalc.meta.savedDate));
 			var xhr = new XMLHttpRequest();
 			var stringJSON = JSON.stringify($scope.expCalc);
 
-			updateUploadStatus(0);
 			localStorage.setItem('expensesCalc', stringJSON);
+console.log('Именно здесь поставить setTimeout на отправку данных');
+			updateUploadStatus(0);
 
 			xhr.open("POST", '/send.php', true);
 			xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');

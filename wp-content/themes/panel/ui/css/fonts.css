@@ -1,0 +1,61 @@
+@font-face {
+	font-family: 'RobotoSlab';
+	font-style: normal;
+	font-weight: normal;
+	src: url("../../assets/fonts/RobotoSlab-Regular.eot");
+	src: url("../../assets/fonts/RobotoSlab-Regular.eot?#iefix") format("embedded-opentype"),
+	url("../../assets/fonts/RobotoSlab-Regular.woff2") format("woff2"),
+	url("../../assets/fonts/RobotoSlab-Regular.woff") format("woff"),
+	url("../../assets/fonts/RobotoSlab-Regular.ttf") format("truetype"),
+	url("../../assets/fonts/RobotoSlab-Regular.svg") format("svg"); }
+
+@font-face {
+	font-family: 'RobotoSlab';
+	font-style: normal;
+	font-weight: bold;
+	src: url("../../assets/fonts/RobotoSlab-Bold.eot");
+	src: url("../../assets/fonts/RobotoSlab-Bold.eot?#iefix") format("embedded-opentype"),
+	url("../../assets/fonts/RobotoSlab-Bold.woff2") format("woff2"),
+	url("../../assets/fonts/RobotoSlab-Bold.woff") format("woff"),
+	url("../../assets/fonts/RobotoSlab-Bold.ttf") format("truetype"),
+	url("../../assets/fonts/RobotoSlab-Bold.svg") format("svg"); }
+
+/*!
+ * Font Awesome Free 5.0.6 by @fontawesome - http://fontawesome.com
+ * License - http://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+/*@font-face {*/
+	/*font-family: 'Font Awesome 5 Free';*/
+	/*font-style: normal;*/
+	/*font-weight: 400;*/
+	/*src: url("../../assets/fonts/fa-regular-400.eot");*/
+	/*src: url("../../assets/fonts/fa-regular-400.eot?#iefix") format("embedded-opentype"), */
+	/*url("../../assets/fonts/fa-regular-400.woff2") format("woff2"), */
+	/*url("../../assets/fonts/fa-regular-400.woff") format("woff"), */
+	/*url("../../assets/fonts/fa-regular-400.ttf") format("truetype"), */
+	/*url("../../assets/fonts/fa-regular-400.svg#fontawesome") format("svg"); }*/
+
+/*.far {*/
+	/*font-family: 'Font Awesome 5 Free';*/
+	/*font-weight: 400; }*/
+
+
+/*!
+ * Font Awesome Free 5.0.6 by @fontawesome - http://fontawesome.com
+ * License - http://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+@font-face {
+	font-family: 'Font Awesome 5 Free';
+	font-style: normal;
+	font-weight: 900;
+	src: url("../../assets/fonts/fa-solid-900.eot");
+	src: url("../../assets/fonts/fa-solid-900.eot?#iefix") format("embedded-opentype"),
+	url("../../assets/fonts/fa-solid-900.woff2") format("woff2"),
+	url("../../assets/fonts/fa-solid-900.woff") format("woff"),
+	url("../../assets/fonts/fa-solid-900.ttf") format("truetype"),
+	url("../../assets/fonts/fa-solid-900.svg#fontawesome") format("svg"); }
+
+.fa,
+.fas {
+	font-family: 'Font Awesome 5 Free';
+	font-weight: 900; }
