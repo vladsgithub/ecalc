@@ -2832,7 +2832,6 @@ html {
   font: normal 16px/22px RobotoSlab;
 }
 body {
-  padding-top: 226px;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   box-sizing: border-box;
