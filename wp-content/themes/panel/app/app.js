@@ -30,6 +30,7 @@ console.log('turn on: watcherOfHeader', headerIframe);
                 self.body.style.paddingTop = self.header.offsetHeight + 'px';
 
                 headerIframe.addEventListener('resize', function() {
+					console.log('resize');
                     self.body.style.paddingTop = self.header.offsetHeight + 'px';
                 });
             },
