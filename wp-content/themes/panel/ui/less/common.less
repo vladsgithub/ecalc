@@ -2,3 +2,69 @@
   padding: 30px;
   box-sizing: border-box;
 }
+.guide-list {
+	> li {
+		display: flex;
+		flex-wrap: wrap;
+
+		> * {
+			padding: 10px;
+		}
+	}
+}
+
+
+.btn {
+	position: relative;
+	min-height: 44px; min-width: 44px; line-height: 40px;
+	padding: 0 10px;
+	box-sizing: border-box;
+	background: @white;
+	border: 2px solid @brand-strong; border-radius: 4px;
+	font-size: 0;
+	color: @brand-strong;
+	cursor: pointer;
+
+	&:focus {
+		outline: none;
+
+		&::after {
+			content: "";
+			position: absolute; top: 2px; right: 2px; bottom: 2px; left: 2px;
+			border: 2px dashed; border-radius: inherit;
+		}
+	}
+	&.solid {
+		background: @brand-strong;
+		color: @white;
+	}
+
+	i {
+		vertical-align: middle;
+		font-size: 22px;
+
+		+ b { margin-left: 10px; }
+	}
+	b {
+		vertical-align: middle;
+		text-transform: uppercase;
+		font-family: RobotoSlab; font-size: 1.2rem; font-weight: bold;
+	}
+	.tooltip {
+		z-index: @z-tooltip;
+		position: absolute; left: 20%; top: 80%;
+		padding: 0 5px;
+		line-height: 20px;
+		background: white;
+		border-radius: 2px;
+		color: black; font-size: 0.8rem;
+		box-shadow: 0 1px 10px rgba(0,0,0,0.7);
+
+		&::before {
+			content: "";
+			position: absolute; left: 0; top: -10px;
+			height: 0; width: 0;
+			border: 5px solid @white; border-top-color: transparent; border-right-color: transparent;
+		}
+	}
+}

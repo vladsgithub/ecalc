@@ -2818,6 +2818,86 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+.guide {
+  padding: 30px;
+  box-sizing: border-box;
+}
+.guide-list > li {
+  display: flex;
+  flex-wrap: wrap;
+}
+.guide-list > li > * {
+  padding: 10px;
+}
+.btn {
+  position: relative;
+  min-height: 44px;
+  min-width: 44px;
+  line-height: 40px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  background: #fff;
+  border: 2px solid #4c69bd;
+  border-radius: 4px;
+  font-size: 0;
+  color: #4c69bd;
+  cursor: pointer;
+}
+.btn:focus {
+  outline: none;
+}
+.btn:focus::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  left: 2px;
+  border: 2px dashed;
+  border-radius: inherit;
+}
+.btn.solid {
+  background: #4c69bd;
+  color: #fff;
+}
+.btn i {
+  vertical-align: middle;
+  font-size: 22px;
+}
+.btn i + b {
+  margin-left: 10px;
+}
+.btn b {
+  vertical-align: middle;
+  text-transform: uppercase;
+  font-family: RobotoSlab;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.btn .tooltip {
+  z-index: 1000;
+  position: absolute;
+  left: 20%;
+  top: 80%;
+  padding: 0 5px;
+  line-height: 20px;
+  background: white;
+  border-radius: 2px;
+  color: black;
+  font-size: 0.8rem;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
+}
+.btn .tooltip::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -10px;
+  height: 0;
+  width: 0;
+  border: 5px solid #fff;
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
 * {
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
@@ -2829,19 +2909,24 @@ body {
   height: 100%;
 }
 html {
-  font: normal 16px/22px RobotoSlab;
+  font: normal 14px/16px RobotoSlab;
 }
 body {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   box-sizing: border-box;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 body[data-upload-status="0"] .status-line {
   background: #dddd00;
 }
 body[data-upload-status="2"] .status-line {
   background: #dd0000;
+}
+@media only screen and (max-width: 639px) {
+  body {
+    font-size: 1.2rem;
+  }
 }
 header {
   position: fixed;
