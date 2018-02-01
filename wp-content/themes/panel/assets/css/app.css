@@ -2825,9 +2825,42 @@ table {
 .guide-list > li {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 10px;
 }
 .guide-list > li > * {
   padding: 10px;
+}
+.tooltip {
+  z-index: 1000;
+  position: absolute;
+  left: 20%;
+  top: 80%;
+  padding: 0 5px;
+  line-height: 20px;
+  background: white;
+  border: 1px solid #000;
+  border-radius: 0 2px 2px 2px;
+  color: black;
+  font-size: 0.8rem;
+}
+.tooltip::before,
+.tooltip::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -7px;
+  height: 0;
+  width: 0;
+  border: 5px solid #fff;
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+.tooltip::before {
+  left: -1px;
+  top: -9px;
+  border-width: 4px;
+  border-left-color: #000;
+  border-bottom-color: #000;
 }
 .btn {
   position: relative;
@@ -2835,6 +2868,7 @@ table {
   min-width: 44px;
   line-height: 40px;
   padding: 0 10px;
+  overflow: visible;
   box-sizing: border-box;
   background: #fff;
   border: 2px solid #4c69bd;
@@ -2874,29 +2908,29 @@ table {
   font-size: 1.2rem;
   font-weight: bold;
 }
-.btn .tooltip {
-  z-index: 1000;
-  position: absolute;
-  left: 20%;
-  top: 80%;
-  padding: 0 5px;
-  line-height: 20px;
-  background: white;
-  border-radius: 2px;
-  color: black;
-  font-size: 0.8rem;
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
+.text-input {
+  display: inline-block;
+  line-height: 40px;
+  border: 2px solid #4c69bd;
+  font-size: 0;
+  cursor: text;
 }
-.btn .tooltip::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: -10px;
-  height: 0;
-  width: 0;
-  border: 5px solid #fff;
-  border-top-color: transparent;
-  border-right-color: transparent;
+.text-input input {
+  display: none;
+  margin: 0;
+  padding: 0 5px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+.text-input b {
+  display: inline-block;
+  padding: 0 5px;
+  line-height: 1.2rem;
+  vertical-align: middle;
+  font-size: 1rem;
+}
+.text-input b:first-line {
+  font-size: 1.2rem;
 }
 * {
   -webkit-tap-highlight-color: transparent;
@@ -2904,8 +2938,6 @@ table {
 }
 html,
 body {
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
   height: 100%;
 }
 html {
