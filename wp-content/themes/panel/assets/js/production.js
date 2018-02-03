@@ -33575,7 +33575,9 @@ var uploadData, loadData, layoutControl;
             },
             watcherOfHeader: function() {
                 var self = this;
-                var headerIframe = document.getElementById('headerIframe').contentWindow;
+                var headerIframe = (document.getElementById('headerIframe')) ? document.getElementById('headerIframe').contentWindow : null;
+
+				if (!headerIframe) return;
 
 console.log('turn on: watcherOfHeader', headerIframe);
                 self.body.style.paddingTop = self.header.offsetHeight + 'px';

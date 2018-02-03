@@ -2908,29 +2908,63 @@ table {
   font-size: 1.2rem;
   font-weight: bold;
 }
-.text-input {
+label.text-input {
+  position: relative;
   display: inline-block;
+  height: 44px;
+  max-width: 100%;
   line-height: 40px;
+  overflow: hidden;
+  box-sizing: border-box;
   border: 2px solid #4c69bd;
+  background: #fff;
   font-size: 0;
   cursor: text;
 }
-.text-input input {
-  display: none;
+label.text-input::before {
+  content: "";
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+}
+label.text-input input {
+  display: block;
   margin: 0;
   padding: 0 5px;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  vertical-align: top;
   font-family: inherit;
   font-size: 1rem;
+  transform: translateY(-40px);
+  transition: transform 0.2s;
 }
-.text-input b {
+label.text-input input:focus {
+  transform: translateY(0);
+}
+label.text-input input:focus + b {
+  transform: translateY(0);
+}
+label.text-input b {
   display: inline-block;
-  padding: 0 5px;
-  line-height: 1.2rem;
+  width: 100%;
+  min-width: 100px;
+  padding: 3px 5px;
+  overflow: hidden;
+  box-sizing: border-box;
+  line-height: 1;
   vertical-align: middle;
   font-size: 1rem;
-}
-.text-input b:first-line {
-  font-size: 1.2rem;
+  word-wrap: break-word;
+  transform: translateY(-40px);
+  transition: transform 0.2s;
 }
 * {
   -webkit-tap-highlight-color: transparent;

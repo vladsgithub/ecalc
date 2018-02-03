@@ -73,27 +73,69 @@
 		font-family: RobotoSlab; font-size: 1.2rem; font-weight: bold;
 	}
 }
-.text-input {
+label.text-input {
+	position: relative;
 	display: inline-block;
+	height: 44px; max-width: 100%;
 	line-height: 40px;
+	overflow: hidden;
+	box-sizing: border-box;
 	border: 2px solid @brand-strong;
+	background: @white;
 	font-size: 0;
 	cursor: text;
 
+	&::before {
+		content: "";
+		z-index: 1;
+		position: absolute; bottom: 0; left: 0; right: 0;
+		height: 8px;
+		background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+	}
+
 	input {
-		display: none;
+		display: block;
 		margin: 0; padding: 0 5px;
+		height: 100%; width: 100%;
+		box-sizing: border-box;
+		border: none; outline: none;
+		vertical-align: top;
 		font-family: inherit; font-size: 1rem;
+		transform: translateY(-40px);
+		transition: transform @delay;
+
+		&:focus {
+			transform: translateY(0);
+
+			+ b { transform: translateY(0); }
+		}
 	}
 	b {
 		display: inline-block;
-		padding: 0 5px;
-		line-height: 1.2rem;
+		width: 100%; min-width: 100px;
+		padding: 3px 5px;
+		overflow: hidden;
+		box-sizing: border-box;
+		line-height: 1;
 		vertical-align: middle;
 		font-size: 1rem;
+		word-wrap: break-word;
+		transform: translateY(-40px);
+		transition: transform @delay;
 
-		&:first-line {
-			font-size: 1.2rem;
-		}
+//		&::before {
+//			content: ".....";
+//			position: absolute; bottom: 2px; left: 4px; right: 0;
+//			font-size: 1.5rem;
+//			height: 10px;
+//			border-bottom: 5px solid @white;
+//		}
+//		&::after {
+//			content: "";
+//			display: block;
+//			position: relative;
+//			height: 44px;
+//			background: @white;
+//		}
 	}
 }
