@@ -16,34 +16,17 @@
  * Font Awesome Free 5.0.6 by @fontawesome - http://fontawesome.com
  * License - http://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
-/*@font-face {*/
-/*font-family: 'Font Awesome 5 Free';*/
-/*font-style: normal;*/
-/*font-weight: 400;*/
-/*src: url("../../assets/fonts/fa-regular-400.eot");*/
-/*src: url("../../assets/fonts/fa-regular-400.eot?#iefix") format("embedded-opentype"), */
-/*url("../../assets/fonts/fa-regular-400.woff2") format("woff2"), */
-/*url("../../assets/fonts/fa-regular-400.woff") format("woff"), */
-/*url("../../assets/fonts/fa-regular-400.ttf") format("truetype"), */
-/*url("../../assets/fonts/fa-regular-400.svg#fontawesome") format("svg"); }*/
-/*.far {*/
-/*font-family: 'Font Awesome 5 Free';*/
-/*font-weight: 400; }*/
-/*!
- * Font Awesome Free 5.0.6 by @fontawesome - http://fontawesome.com
- * License - http://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
- */
 @font-face {
   font-family: 'Font Awesome 5 Free';
   font-style: normal;
-  font-weight: 900;
+  font-weight: normal;
   src: url("../../assets/fonts/fa-solid-900.eot");
   src: url("../../assets/fonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/fa-solid-900.woff2") format("woff2"), url("../../assets/fonts/fa-solid-900.woff") format("woff"), url("../../assets/fonts/fa-solid-900.ttf") format("truetype"), url("../../assets/fonts/fa-solid-900.svg#fontawesome") format("svg");
 }
 .fa,
 .fas {
   font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
+  font-weight: normal;
 }
 /*!
  * Font Awesome Free 5.0.6 by @fontawesome - http://fontawesome.com
@@ -2931,6 +2914,12 @@ label.text-input::before {
   height: 8px;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
 }
+label.text-input:hover input {
+  transform: translateY(0);
+}
+label.text-input:hover input + b {
+  transform: translateY(0);
+}
 label.text-input input {
   display: block;
   margin: 0;
@@ -2965,6 +2954,96 @@ label.text-input b {
   word-wrap: break-word;
   transform: translateY(-40px);
   transition: transform 0.2s;
+}
+label.text-select {
+  position: relative;
+  display: inline-block;
+  height: 44px;
+  max-width: 100%;
+  padding-right: 26px;
+  line-height: 40px;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 2px solid #4c69bd;
+  background: #fff;
+  font-size: 0;
+  cursor: text;
+}
+label.text-select::before {
+  content: "";
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+}
+label.text-select::after {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  font-family: 'Font Awesome 5 Free';
+  font-weight: normal;
+  content: "\f0dd";
+  position: absolute;
+  top: 2px;
+  right: 8px;
+  line-height: 1;
+  color: #4c69bd;
+  font-size: 26px;
+}
+label.text-select.currency b {
+  min-width: 0;
+  white-space: nowrap;
+  font-size: 18px;
+}
+label.text-select select {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  opacity: 0;
+  font-family: inherit;
+}
+label.text-select select:focus + b::before {
+  content: "";
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 1px solid #4c69bd;
+}
+label.text-select option {
+  font-family: inherit;
+  font-size: 1rem;
+  color: #000;
+}
+label.text-select option[disabled] {
+  color: #888;
+}
+label.text-select b {
+  display: inline-block;
+  width: 100%;
+  min-width: 100px;
+  padding: 3px 5px;
+  overflow: hidden;
+  box-sizing: border-box;
+  line-height: 1;
+  vertical-align: middle;
+  font-size: 1rem;
+  word-wrap: break-word;
 }
 * {
   -webkit-tap-highlight-color: transparent;

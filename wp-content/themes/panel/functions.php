@@ -117,7 +117,8 @@ if (!function_exists('add_styles')) { // если ф-я уже есть в до�
 	    if(is_admin()) return false; // если мы в админке - ничего не делаем
 //	    wp_enqueue_style( 'bs', get_template_directory_uri().'/css/bootstrap.min.css' ); // бутстрап
 //		wp_enqueue_style( 'main', get_template_directory_uri().'/style.css' ); // основные стили шаблона
-		wp_enqueue_style( 'style', get_template_directory_uri().'/assets/css/app.css' ); // основные стили шаблона
+//		wp_enqueue_style( 'style', get_template_directory_uri().'/assets/css/app.css' ); // основные стили шаблона
+		wp_enqueue_style( 'style', get_template_directory_uri().'/assets/css/app.pref.css' ); // основные стили шаблона
 	}
 }
 
