@@ -76,7 +76,7 @@
       <file leaf-file-name="common.less" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="18" selection-start="1033" selection-end="1033" vertical-scroll-proportion="0.7027972" vertical-offset="281" max-vertical-offset="3536">
+            <state line="217" column="31" selection-start="4327" selection-end="4327" vertical-scroll-proportion="0.48979592" vertical-offset="3281" max-vertical-offset="4488">
               <folding />
             </state>
           </provider>
@@ -85,7 +85,7 @@
       <file leaf-file-name="fontawesome.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/css/fontawesome.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="3" selection-start="312" selection-end="313" vertical-scroll-proportion="-8.16" vertical-offset="0" max-vertical-offset="45067">
+            <state line="642" column="17" selection-start="11037" selection-end="11044" vertical-scroll-proportion="-11.44" vertical-offset="10628" max-vertical-offset="45067">
               <folding />
             </state>
           </provider>
@@ -103,9 +103,10 @@
       <file leaf-file-name="guide.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/guide.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="22" selection-start="1289" selection-end="1289" vertical-scroll-proportion="-24.5" vertical-offset="434" max-vertical-offset="1292">
+            <state line="90" column="35" selection-start="1721" selection-end="1721" vertical-scroll-proportion="-24.5" vertical-offset="893" max-vertical-offset="1751">
               <folding>
                 <element signature="n#style#0;n#div#0;n#li#2;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#li#3;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -150,9 +151,10 @@
       <file leaf-file-name="app.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3053" column="1" selection-start="48084" selection-end="48084" vertical-scroll-proportion="0.0" vertical-offset="51336" max-vertical-offset="53074">
+            <state line="3131" column="1" selection-start="49531" selection-end="49531" vertical-scroll-proportion="0.0" vertical-offset="52662" max-vertical-offset="54230">
               <folding>
-                <marker date="1518248775728" expanded="true" signature="46309:46525" placeholder="{...}" />
+                <marker date="1518378421524" expanded="true" signature="46310:46526" placeholder="{...}" />
+                <marker date="1518378421524" expanded="true" signature="47301:47527" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -551,7 +553,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -655,17 +657,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3053" column="1" selection-start="48084" selection-end="48084" vertical-scroll-proportion="0.0" vertical-offset="51336" max-vertical-offset="53074">
+        <state line="3131" column="1" selection-start="49531" selection-end="49531" vertical-scroll-proportion="0.0" vertical-offset="52662" max-vertical-offset="54230">
           <folding>
-            <marker date="1518248775728" expanded="true" signature="46309:46525" placeholder="{...}" />
+            <marker date="1518378421524" expanded="true" signature="46310:46526" placeholder="{...}" />
+            <marker date="1518378421524" expanded="true" signature="47301:47527" placeholder="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/css/fontawesome.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="3" selection-start="312" selection-end="313" vertical-scroll-proportion="-8.16" vertical-offset="0" max-vertical-offset="45067">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -676,15 +672,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/guide.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="22" selection-start="1289" selection-end="1289" vertical-scroll-proportion="-24.5" vertical-offset="434" max-vertical-offset="1292">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#li#2;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="21" selection-start="316" selection-end="323" vertical-scroll-proportion="-17.0" vertical-offset="0" max-vertical-offset="765">
@@ -692,9 +679,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/css/fontawesome.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="642" column="17" selection-start="11037" selection-end="11044" vertical-scroll-proportion="-11.44" vertical-offset="10628" max-vertical-offset="45067">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guide.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="90" column="35" selection-start="1721" selection-end="1721" vertical-scroll-proportion="-24.5" vertical-offset="893" max-vertical-offset="1751">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#li#2;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#li#3;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="18" selection-start="1033" selection-end="1033" vertical-scroll-proportion="0.7027972" vertical-offset="281" max-vertical-offset="3536">
+        <state line="217" column="31" selection-start="4327" selection-end="4327" vertical-scroll-proportion="0.48979592" vertical-offset="3281" max-vertical-offset="4488">
           <folding />
         </state>
       </provider>

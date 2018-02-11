@@ -2870,7 +2870,7 @@ table {
   right: 2px;
   bottom: 2px;
   left: 2px;
-  border: 2px dashed;
+  border: 1px dashed;
   border-radius: inherit;
 }
 .btn.solid {
@@ -3038,6 +3038,74 @@ label.text-select b {
   width: 100%;
   min-width: 100px;
   padding: 3px 5px;
+  overflow: hidden;
+  box-sizing: border-box;
+  line-height: 1;
+  vertical-align: middle;
+  font-size: 1rem;
+  word-wrap: break-word;
+}
+label.checkbox {
+  display: inline-block;
+  position: relative;
+  padding: 0 4px 0 40px;
+  box-sizing: border-box;
+  min-height: 44px;
+  min-width: 44px;
+  line-height: 44px;
+  font-size: 0;
+  cursor: default;
+}
+label.checkbox.thin {
+  min-height: 30px;
+  line-height: 30px;
+}
+label.checkbox.thin i::before {
+  top: 2px;
+}
+label.checkbox input {
+  position: absolute;
+  opacity: 0;
+}
+label.checkbox input:checked + i::before {
+  content: "\f14a";
+}
+label.checkbox input:focus + i::after {
+  content: "";
+}
+label.checkbox i {
+  float: left;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  font-family: 'Font Awesome 5 Free';
+  font-weight: normal;
+  color: #4c69bd;
+  font-size: 26px;
+}
+label.checkbox i::before {
+  content: "\f0c8";
+  position: absolute;
+  top: 9px;
+  left: 11px;
+  line-height: 1;
+}
+label.checkbox i::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 1px dashed;
+  border-radius: 4px;
+}
+label.checkbox b {
+  display: inline-block;
+  width: 100%;
+  min-width: 100px;
+  padding: 8px 0;
   overflow: hidden;
   box-sizing: border-box;
   line-height: 1;

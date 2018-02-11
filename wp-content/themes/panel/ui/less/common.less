@@ -53,7 +53,7 @@
 		&::after {
 			content: "";
 			position: absolute; top: 2px; right: 2px; bottom: 2px; left: 2px;
-			border: 2px dashed; border-radius: inherit;
+			border: 1px dashed; border-radius: inherit;
 		}
 	}
 	&.solid {
@@ -193,6 +193,62 @@ label.text-select {
 		display: inline-block;
 		width: 100%; min-width: 100px;
 		padding: 3px 5px;
+		overflow: hidden;
+		box-sizing: border-box;
+		line-height: 1;
+		vertical-align: middle;
+		font-size: 1rem;
+		word-wrap: break-word;
+	}
+}
+label.checkbox {
+	display: inline-block;
+	position: relative;
+	padding: 0 4px 0 40px;
+	box-sizing: border-box;
+	min-height: 44px; min-width: 44px;
+	line-height: 44px;
+	font-size: 0;
+	cursor: default;
+
+	&.thin {
+		min-height: 30px;
+		line-height: 30px;
+
+		i::before { top: 2px; }
+	}
+
+	input {
+		position: absolute;
+		opacity: 0;
+
+		&:checked + i::before {
+			content: "\f14a";
+		}
+		&:focus + i::after {
+			content: "";
+		}
+	}
+	i {
+		float: left;
+		.icon-font();
+		color: @brand-strong;
+		font-size: 26px;
+
+		&::before {
+			content: "\f0c8";
+			position: absolute; top: 9px; left: 11px;
+			line-height: 1;
+		}
+		&::after {
+			position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+			border: 1px dashed; border-radius: 4px;
+		}
+	}
+	b {
+		display: inline-block;
+		width: 100%; min-width: 100px;
+		padding: 8px 0;
 		overflow: hidden;
 		box-sizing: border-box;
 		line-height: 1;
