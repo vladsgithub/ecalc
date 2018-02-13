@@ -2891,7 +2891,8 @@ table {
   font-size: 1.2rem;
   font-weight: bold;
 }
-label.text-input {
+label.text-input,
+label.number-input {
   position: relative;
   display: inline-block;
   height: 44px;
@@ -2904,7 +2905,8 @@ label.text-input {
   font-size: 0;
   cursor: text;
 }
-label.text-input::before {
+label.text-input::before,
+label.number-input::before {
   content: "";
   z-index: 1;
   position: absolute;
@@ -2914,13 +2916,16 @@ label.text-input::before {
   height: 8px;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
 }
-label.text-input:hover input {
+label.text-input:hover input,
+label.number-input:hover input {
   transform: translateY(0);
 }
-label.text-input:hover input + b {
+label.text-input:hover input + b,
+label.number-input:hover input + b {
   transform: translateY(0);
 }
-label.text-input input {
+label.text-input input,
+label.number-input input {
   display: block;
   margin: 0;
   padding: 0 5px;
@@ -2930,21 +2935,36 @@ label.text-input input {
   border: none;
   outline: none;
   vertical-align: top;
+  text-align: inherit;
   font-family: inherit;
   font-size: 1rem;
+  -moz-appearance: textfield;
   transform: translateY(-40px);
   transition: transform 0.2s;
 }
-label.text-input input:focus {
+label.text-input input:focus,
+label.number-input input:focus {
   transform: translateY(0);
 }
-label.text-input input:focus + b {
+label.text-input input:focus + b,
+label.number-input input:focus + b {
   transform: translateY(0);
 }
-label.text-input b {
+label.text-input input::-ms-clear,
+label.number-input input::-ms-clear {
+  display: none;
+}
+label.text-input input::-webkit-outer-spin-button,
+label.number-input input::-webkit-outer-spin-button,
+label.text-input input::-webkit-inner-spin-button,
+label.number-input input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+label.text-input b,
+label.number-input b {
   display: inline-block;
   width: 100%;
-  min-width: 100px;
   padding: 3px 5px;
   overflow: hidden;
   box-sizing: border-box;
@@ -2954,6 +2974,17 @@ label.text-input b {
   word-wrap: break-word;
   transform: translateY(-40px);
   transition: transform 0.2s;
+}
+label.number-input {
+  text-align: right;
+}
+label.number-input input,
+label.number-input b {
+  font-weight: bold;
+}
+label.number-input input:first-line,
+label.number-input b:first-line {
+  font-size: 1.3rem;
 }
 label.text-select {
   position: relative;
@@ -3001,7 +3032,7 @@ label.text-select.currency b {
   font-size: 18px;
 }
 label.text-select select {
-  z-index: 1;
+  z-index: 2;
   position: absolute;
   top: 0;
   right: 0;
@@ -3109,6 +3140,27 @@ label.checkbox b {
   overflow: hidden;
   box-sizing: border-box;
   line-height: 1;
+  vertical-align: middle;
+  font-size: 1rem;
+  word-wrap: break-word;
+}
+.text-field {
+  position: relative;
+  display: inline-block;
+  min-height: 44px;
+  max-width: 100%;
+  line-height: 44px;
+  box-sizing: border-box;
+  background: #fff;
+  font-size: 0;
+}
+.text-field b {
+  display: inline-block;
+  width: 100%;
+  padding: 3px 5px;
+  overflow: hidden;
+  box-sizing: border-box;
+  line-height: 1.3;
   vertical-align: middle;
   font-size: 1rem;
   word-wrap: break-word;
