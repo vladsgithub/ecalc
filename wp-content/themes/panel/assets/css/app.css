@@ -2813,6 +2813,9 @@ table {
 .guide-list > li > * {
   padding: 10px;
 }
+.background {
+  background: #4c69bd;
+}
 .tooltip {
   z-index: 1000;
   position: absolute;
@@ -2890,6 +2893,10 @@ table {
   font-family: RobotoSlab;
   font-size: 1.2rem;
   font-weight: bold;
+}
+label {
+  vertical-align: top;
+  color: #000;
 }
 label.text-input,
 label.number-input {
@@ -3142,7 +3149,95 @@ label.checkbox b {
   line-height: 1;
   vertical-align: middle;
   font-size: 1rem;
+  font-weight: bold;
+  color: #4c69bd;
   word-wrap: break-word;
+}
+label.toggle {
+  position: relative;
+  display: inline-block;
+  height: 44px;
+  width: 44px;
+  cursor: pointer;
+}
+label.toggle.solid input:checked + i {
+  background: #4c69bd;
+  border-color: #fff;
+}
+label.toggle.solid input:checked + i::before {
+  background: #fff;
+}
+label.toggle.solid input:checked + i::after {
+  border-color: #4c69bd;
+}
+label.toggle.solid i {
+  border-color: #fff;
+  background: #888;
+}
+label.toggle.solid i::before {
+  background: #fff;
+}
+label.toggle.solid i::after {
+  border-color: #888;
+}
+label.toggle input {
+  z-index: -1;
+  position: absolute;
+  outline: none;
+  opacity: 0;
+}
+label.toggle input:checked + i {
+  border-color: #4c69bd;
+}
+label.toggle input:checked + i::before {
+  background: #4c69bd;
+  transform: translateX(16px);
+}
+label.toggle input:checked + i::after {
+  transform: translateX(16px);
+}
+label.toggle input:focus + i {
+  border-width: 3px;
+}
+label.toggle input:focus + i::before,
+label.toggle input:focus + i::after {
+  margin: 1px;
+}
+label.toggle i {
+  position: absolute;
+  top: 8px;
+  height: 28px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #888;
+  border-radius: 6px;
+  background: #fff;
+  transition: border-color 0.2s;
+}
+label.toggle i::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  width: 20px;
+  margin: 2px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background: #888;
+  transition: transform 0.2s, background 0.2s;
+}
+label.toggle i::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  height: 10px;
+  width: 2px;
+  margin: 2px;
+  border: 4px double #fff;
+  border-top: none;
+  border-bottom: none;
+  transition: transform 0.2s;
 }
 .text-field {
   position: relative;
@@ -3152,7 +3247,13 @@ label.checkbox b {
   line-height: 44px;
   box-sizing: border-box;
   background: #fff;
+  vertical-align: top;
   font-size: 0;
+  color: #000;
+}
+.text-field.solid {
+  background: #4c69bd;
+  color: #fff;
 }
 .text-field b {
   display: inline-block;
