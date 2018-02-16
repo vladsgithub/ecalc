@@ -73,23 +73,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="common.less" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="common.less" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="290" column="47" selection-start="5584" selection-end="5584" vertical-scroll-proportion="-6.7272725" vertical-offset="4412" max-vertical-offset="7123">
+            <state line="411" column="14" selection-start="7597" selection-end="7597" vertical-scroll-proportion="0.05204461" vertical-offset="6945" max-vertical-offset="9095">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="guide.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="guide.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/guide.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="97" column="30" selection-start="1940" selection-end="1940" vertical-scroll-proportion="0.34615386" vertical-offset="1352" max-vertical-offset="2788">
+            <state line="161" column="45" selection-start="2999" selection-end="2999" vertical-scroll-proportion="-26.461538" vertical-offset="2049" max-vertical-offset="3077">
               <folding>
                 <element signature="n#style#0;n#div#0;n#li#2;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#li#2;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#li#3;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#li#4;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#li#5;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#li#5;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -154,20 +155,20 @@
       <file leaf-file-name="app.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3294" column="1" selection-start="52853" selection-end="52853" vertical-scroll-proportion="0.0" vertical-offset="55433" max-vertical-offset="56831">
+            <state line="3337" column="1" selection-start="53622" selection-end="53622" vertical-scroll-proportion="0.0" vertical-offset="56164" max-vertical-offset="57341">
               <folding>
-                <marker date="1518586308433" expanded="true" signature="45684:45908" placeholder="{...}" />
-                <marker date="1518586308433" expanded="true" signature="45960:46138" placeholder="{...}" />
-                <marker date="1518586308433" expanded="true" signature="46199:46201" placeholder="{...}" />
-                <marker date="1518586308433" expanded="true" signature="46277:46300" placeholder="{...}" />
-                <marker date="1518586308433" expanded="true" signature="46449:46795" placeholder="{...}" />
-                <marker date="1518586308433" expanded="true" signature="47118:47349" placeholder="{...}" />
-                <marker date="1518586308433" expanded="true" signature="47680:47950" placeholder="{...}" />
-                <marker date="1518586308433" expanded="true" signature="47970:48098" placeholder="{...}" />
-                <marker date="1518586308433" expanded="true" signature="48595:48817" placeholder="{...}" />
-                <marker date="1518586308433" expanded="true" signature="48958:49024" placeholder="{...}" />
-                <marker date="1518586308433" expanded="true" signature="49076:49080" placeholder="{...}" />
-                <marker date="1518586308433" expanded="true" signature="49100:49271" placeholder="{...}" />
+                <marker date="1518761997991" expanded="true" signature="45684:45908" placeholder="{...}" />
+                <marker date="1518761997991" expanded="true" signature="45960:46138" placeholder="{...}" />
+                <marker date="1518761997991" expanded="true" signature="46199:46201" placeholder="{...}" />
+                <marker date="1518761997991" expanded="true" signature="46277:46300" placeholder="{...}" />
+                <marker date="1518761997991" expanded="true" signature="46449:46795" placeholder="{...}" />
+                <marker date="1518761997991" expanded="true" signature="47118:47349" placeholder="{...}" />
+                <marker date="1518761997991" expanded="true" signature="47680:47950" placeholder="{...}" />
+                <marker date="1518761997991" expanded="true" signature="47970:48098" placeholder="{...}" />
+                <marker date="1518761997991" expanded="true" signature="48595:48817" placeholder="{...}" />
+                <marker date="1518761997991" expanded="true" signature="48958:49024" placeholder="{...}" />
+                <marker date="1518761997991" expanded="true" signature="49076:49080" placeholder="{...}" />
+                <marker date="1518761997991" expanded="true" signature="49100:49271" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -214,8 +215,8 @@
         <option value="$PROJECT_DIR$/wp-content/themes/panel/functions.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/css/fonts.css" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less" />
-        <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less" />
         <option value="$PROJECT_DIR$/guide.html" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less" />
       </list>
     </option>
   </component>
@@ -566,7 +567,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -658,20 +659,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3294" column="1" selection-start="52853" selection-end="52853" vertical-scroll-proportion="0.0" vertical-offset="55433" max-vertical-offset="56831">
+        <state line="3337" column="1" selection-start="53622" selection-end="53622" vertical-scroll-proportion="0.0" vertical-offset="56164" max-vertical-offset="57341">
           <folding>
-            <marker date="1518586308433" expanded="true" signature="45684:45908" placeholder="{...}" />
-            <marker date="1518586308433" expanded="true" signature="45960:46138" placeholder="{...}" />
-            <marker date="1518586308433" expanded="true" signature="46199:46201" placeholder="{...}" />
-            <marker date="1518586308433" expanded="true" signature="46277:46300" placeholder="{...}" />
-            <marker date="1518586308433" expanded="true" signature="46449:46795" placeholder="{...}" />
-            <marker date="1518586308433" expanded="true" signature="47118:47349" placeholder="{...}" />
-            <marker date="1518586308433" expanded="true" signature="47680:47950" placeholder="{...}" />
-            <marker date="1518586308433" expanded="true" signature="47970:48098" placeholder="{...}" />
-            <marker date="1518586308433" expanded="true" signature="48595:48817" placeholder="{...}" />
-            <marker date="1518586308433" expanded="true" signature="48958:49024" placeholder="{...}" />
-            <marker date="1518586308433" expanded="true" signature="49076:49080" placeholder="{...}" />
-            <marker date="1518586308433" expanded="true" signature="49100:49271" placeholder="{...}" />
+            <marker date="1518761997991" expanded="true" signature="45684:45908" placeholder="{...}" />
+            <marker date="1518761997991" expanded="true" signature="45960:46138" placeholder="{...}" />
+            <marker date="1518761997991" expanded="true" signature="46199:46201" placeholder="{...}" />
+            <marker date="1518761997991" expanded="true" signature="46277:46300" placeholder="{...}" />
+            <marker date="1518761997991" expanded="true" signature="46449:46795" placeholder="{...}" />
+            <marker date="1518761997991" expanded="true" signature="47118:47349" placeholder="{...}" />
+            <marker date="1518761997991" expanded="true" signature="47680:47950" placeholder="{...}" />
+            <marker date="1518761997991" expanded="true" signature="47970:48098" placeholder="{...}" />
+            <marker date="1518761997991" expanded="true" signature="48595:48817" placeholder="{...}" />
+            <marker date="1518761997991" expanded="true" signature="48958:49024" placeholder="{...}" />
+            <marker date="1518761997991" expanded="true" signature="49076:49080" placeholder="{...}" />
+            <marker date="1518761997991" expanded="true" signature="49100:49271" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -711,23 +712,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="290" column="47" selection-start="5584" selection-end="5584" vertical-scroll-proportion="-6.7272725" vertical-offset="4412" max-vertical-offset="7123">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/guide.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="30" selection-start="1940" selection-end="1940" vertical-scroll-proportion="0.34615386" vertical-offset="1352" max-vertical-offset="2788">
+        <state line="161" column="45" selection-start="2999" selection-end="2999" vertical-scroll-proportion="-26.461538" vertical-offset="2049" max-vertical-offset="3077">
           <folding>
             <element signature="n#style#0;n#div#0;n#li#2;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#li#2;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#li#3;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#li#4;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#li#5;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#li#5;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="411" column="14" selection-start="7597" selection-end="7597" vertical-scroll-proportion="0.05204461" vertical-offset="6945" max-vertical-offset="9095">
+          <folding />
         </state>
       </provider>
     </entry>
