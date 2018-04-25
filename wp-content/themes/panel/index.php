@@ -13,8 +13,8 @@ get_header(); // подключаем header.php ?>
 <!-- BEGIN: SINGLE PAGE/////////////////////////////////////// -->
 
 <?php
-//	include('page.html');
-	include('prototype.html');
+	include('page.html');
+//	include('prototype.html');
 ?>
 
 <!-- END: SINGLE PAGE/////////////////////////////////////// -->

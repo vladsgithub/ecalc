@@ -40,12 +40,12 @@
 				die("Connection failed: " . $conn->connect_error);
 			}
 
-			$result = mysql_query("SELECT data FROM json_data WHERE json_id = (SELECT json_id FROM wp_users WHERE ID = '$userID')");
+			$result = mysqli_query($conn, "SELECT data FROM json_data WHERE json_id = (SELECT json_id FROM wp_users WHERE ID = '$userID')");
 			if (!$result) {
 				echo 'Request error: ' . mysql_error();
 				exit;
 			} else {
-				$row = mysql_fetch_row($result);
+				$row = mysqli_fetch_row($result);
 				$loadedData = $row[0];
 			}
 
@@ -61,7 +61,7 @@
 </head>
 
 <body id="body" ng-app="app" ng-controller="calculatorCtrl" ng-cloak="true" data-upload-status="1">
-<!--
+
 	<header>
 
 		<?
@@ -79,17 +79,16 @@
         // после этого в настройках Clean Login можно будет увидеть вверху, что указанный шорткод уже используется и тогда
         // этот плагин будет нормально работать
 
-//        echo do_shortcode('[clean-login]');
+        echo do_shortcode('[clean-login]');
 //        echo do_shortcode('[clean-login-edit]');
 //        echo do_shortcode('[clean-login-register]');
 //        echo do_shortcode('[clean-login-restore]');
 		?>
 
 		<button class="btn btn-primary" ng-click="downloadData()">
-        		<i class="fa fa-floppy-o"></i>
+        		<i class="fa fa-save"></i>
         </button>
 
         <input type="file" onchange="loadData(event)" />
 
 	</header>
--->

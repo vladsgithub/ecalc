@@ -33656,13 +33656,18 @@ console.log('turn on: watcherOfHeader', headerIframe);
             event.target.value = '';
         };
 
-		uploadData = function () {
-			$scope.expCalc.meta.savedDate = +new Date();
-console.log('===savedDate:', $scope.formatDate($scope.expCalc.meta.savedDate));
-			var xhr = new XMLHttpRequest();
-			var stringJSON = JSON.stringify($scope.expCalc);
+		uploadData = function (isFullObject) {
+			var xhr, localStringJSON, serverStringAccountJSON, currentAccountNumber;
 
-			localStorage.setItem('expensesCalc', stringJSON);
+			currentAccountNumber = $scope.expCalc.settings.currentAccount;
+//			$scope.expCalc.meta.savedDate = $scope.expCalc.accounts[currentAccountNumber].meta.savedDate = +new Date();
+console.log('===savedDate:', $scope.formatDate($scope.expCalc.meta.savedDate));
+
+			xhr = new XMLHttpRequest();
+			localStringJSON = JSON.stringify($scope.expCalc);
+			serverStringAccountJSON = JSON.stringify($scope.expCalc.accounts[currentAccountNumber]);
+
+			localStorage.setItem('expensesCalc', localStringJSON);
 console.log('Именно здесь поставить setTimeout на отправку данных');
 			updateUploadStatus(0);
 
@@ -33681,7 +33686,8 @@ console.log('Именно здесь поставить setTimeout на отпр
 				}
 			};
 
-			xhr.send(stringJSON);
+			console.log('isFullObject=', isFullObject);
+			xhr.send( (isFullObject) ? localStringJSON : serverStringAccountJSON );
 		};
 
 		$scope.downloadData = function () {
@@ -33708,6 +33714,7 @@ console.log('Именно здесь поставить setTimeout на отпр
                     fixationDirectly: true
                 },
                 meta: {
+					index: accountIndex,
                     title: 'Новый расчет ' + accountIndex,
                     total: 0,
                     fullRefund: 0,
@@ -33715,7 +33722,8 @@ console.log('Именно здесь поставить setTimeout на отпр
                     posBalance: 0,
                     negBalanceByBank: 0,
                     posBalanceByBank: 0,
-                    bank: 0
+                    bank: 0,
+					savedDate: 0
                 },
                 participants: []
             };
@@ -33723,10 +33731,10 @@ console.log('Именно здесь поставить setTimeout на отпр
             accounts.push(newAccount);
             $scope.expCalc.settings.currentAccount = accountIndex;
 
-            $scope.createParticipant();
+            $scope.createParticipant(true);
         };
 
-        $scope.createParticipant = function () {
+        $scope.createParticipant = function (updateFullDataOnServer) {
             var currentAccount = $scope.expCalc.accounts[$scope.expCalc.settings.currentAccount];
             var participantIndex = currentAccount.participants.length;
             var newParticipant = {
@@ -33754,7 +33762,7 @@ console.log('Именно здесь поставить setTimeout на отпр
 
             $scope.addParticipantToPartList();
 
-			uploadData();
+			uploadData(updateFullDataOnServer);
         };
 
 
@@ -33781,7 +33789,7 @@ console.log('Именно здесь поставить setTimeout на отпр
 
                 $scope.expCalc.settings.expensesTypes.splice(typeIndex, 1);
 
-				uploadData();
+				uploadData(true);
             }
         };
 
@@ -33827,14 +33835,14 @@ console.log('Именно здесь поставить setTimeout на отпр
                     rateArr.splice(currencyIndex, 1);
                 });
 
-				uploadData();
+				uploadData(true);
             }
         };
 
         $scope.removeCurrentAccount = function () {
             $scope.expCalc.accounts.splice($scope.expCalc.settings.currentAccount, 1);
 
-			uploadData();
+			uploadData(true);
         };
 
         $scope.removeParticipant = function (participantIndex) {
@@ -34561,7 +34569,7 @@ console.log('Именно здесь поставить setTimeout на отпр
                 });
             });
 
-			uploadData();
+			uploadData(true);
         };
 
 
@@ -34648,6 +34656,7 @@ console.log('Именно здесь поставить setTimeout на отпр
 
 		var fromLocalStorage = (localStorage.getItem('expensesCalc')) ? JSON.parse(localStorage.getItem("expensesCalc")) : false;
 		fromServerData = (fromServerData) ? JSON.parse(fromServerData) : false;
+		if (!fromServerData.accounts) { fromServerData = false }; // если не весь объект сохранился на сервере, то брать надо из localStorage
 
 		if (fromServerData.meta && fromLocalStorage.meta) {
 			if (fromServerData.meta.savedDate > fromLocalStorage.meta.savedDate) {
@@ -34682,7 +34691,7 @@ console.log('Именно здесь поставить setTimeout на отпр
 
 		expensesCalc = {
 			meta: {
-				savedDate: +new Date()
+				savedDate: 0
 			},
 			settings: {
 				currentAccount: 0,

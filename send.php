@@ -3,8 +3,6 @@
 // to connect wp-load.php on this file in order to use wordpress functions
 require( dirname(__FILE__) . '/wp-load.php' );
 
-
-
 $current_user = wp_get_current_user();
 
 //echo 'Username: ' . $current_user->user_login . '<br />';
@@ -32,13 +30,33 @@ if ($userId > 0) {
 
 	$data = file_get_contents("php://input"); // Read body
 
-	$sql = "INSERT INTO json_data(json_id, data) VALUES($userId, '$data') ON DUPLICATE KEY UPDATE data='$data'";
+//	echo "\n\n data from currentAccount = ".$data;
 
-	if ($conn->query($sql) === TRUE) {
-		echo "New record created successfully";
+	$dataJSON = json_decode($data);
+
+	if ($dataJSON->{'accounts'}) {
+		echo "Save full object";
 	} else {
-		echo "Error: " . $sql . "<br>" . $conn->error;
+		echo "Save only current account!";
 	}
+
+//	$accountIndex = json_encode($dataJSON->{'meta'}->{'index'});
+//	$now = microtime(true) * 10000; // at microseconds
+//	$savedDate = json_encode($dataJSON->{'meta'}->{'savedDate'} = $now);
+//	$newData = json_encode($dataJSON, JSON_UNESCAPED_UNICODE);
+//    echo "\n accountIndex = ".$accountIndex;
+//    echo "\n savedDate = ".$savedDate;
+//    echo "\n timeOnServer = ".$now;
+//    echo "\n newData = ".$newData;
+
+//	$sql = "INSERT INTO json_data(json_id, data) VALUES($userId, '$data') ON DUPLICATE KEY UPDATE data='$data'";
+//	$sql = "INSERT INTO json_data(json_id, data) VALUES($userId, '$newData') ON DUPLICATE KEY UPDATE data='$newData'";
+//
+//	if ($conn->query($sql) === TRUE) {
+//		echo "New record created successfully";
+//	} else {
+//		echo "Error: " . $sql . "<br>" . $conn->error;
+//	}
 
 	$conn->close();
 } else {
