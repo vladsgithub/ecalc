@@ -33,11 +33,24 @@ if ($userId > 0) {
 //	echo "\n\n data from currentAccount = ".$data;
 
 	$dataJSON = json_decode($data);
+	$now = microtime(true) * 10000; // at microseconds
+	$dataJSON->{'meta'}->{'savedDate'} = $now;
+	$DBdata = json_encode($dataJSON, JSON_UNESCAPED_UNICODE);
 
 	if ($dataJSON->{'accounts'}) {
-		echo "Save full object";
+		$sql = "INSERT INTO json_data(json_id, data) VALUES($userId, '$DBdata') ON DUPLICATE KEY UPDATE data='$DBdata'";
+		echo "Full object was saved \n";
 	} else {
-		echo "Save only current account!";
+		$accountIndex = json_encode($dataJSON->{'meta'}->{'index'});
+		$sql = "UPDATE json_data SET data=JSON_SET(data, '$.accounts[$accountIndex]', '$DBdata') where json_id = $userId";
+//		$sql = "update t1 set data = JSON_SET(data, '$.key3', 'I am ID3') where id = 2;";
+		echo "Only current account was saved \n";
+	}
+
+	if ($conn->query($sql) === TRUE) {
+		echo $DBdata;
+	} else {
+		echo "Error: " . $sql . "<br>" . $conn->error;
 	}
 
 //	$accountIndex = json_encode($dataJSON->{'meta'}->{'index'});

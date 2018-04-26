@@ -73,19 +73,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="send.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="send.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/send.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="42" selection-start="1112" selection-end="1112" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1207">
+            <state line="44" column="122" selection-start="1533" selection-end="1533" vertical-scroll-proportion="0.46153846" vertical-offset="340" max-vertical-offset="1428">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="185" column="70" selection-start="6231" selection-end="6231" vertical-scroll-proportion="1.7801418" vertical-offset="1639" max-vertical-offset="19839">
+            <state line="1108" column="70" selection-start="56668" selection-end="56694" vertical-scroll-proportion="-9.32" vertical-offset="18603" max-vertical-offset="20043">
               <folding />
             </state>
           </provider>
@@ -103,7 +103,7 @@
       <file leaf-file-name="header.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/header.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="90" selection-start="1595" selection-end="1595" vertical-scroll-proportion="0.0" vertical-offset="334" max-vertical-offset="1700">
+            <state line="56" column="0" selection-start="1510" selection-end="1510" vertical-scroll-proportion="0.0" vertical-offset="334" max-vertical-offset="1700">
               <folding />
             </state>
           </provider>
@@ -367,7 +367,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -478,23 +478,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1108" column="70" selection-start="56668" selection-end="56694" vertical-scroll-proportion="-9.32" vertical-offset="18603" max-vertical-offset="20043">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="90" selection-start="1595" selection-end="1595" vertical-scroll-proportion="0.0" vertical-offset="334" max-vertical-offset="1700">
+        <state line="56" column="0" selection-start="1510" selection-end="1510" vertical-scroll-proportion="0.0" vertical-offset="334" max-vertical-offset="1700">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/send.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="42" selection-start="1112" selection-end="1112" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1207">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="185" column="70" selection-start="6231" selection-end="6231" vertical-scroll-proportion="1.7801418" vertical-offset="1639" max-vertical-offset="19839">
+        <state line="44" column="122" selection-start="1533" selection-end="1533" vertical-scroll-proportion="0.46153846" vertical-offset="340" max-vertical-offset="1428">
           <folding />
         </state>
       </provider>

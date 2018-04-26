@@ -135,7 +135,6 @@ console.log('Именно здесь поставить setTimeout на отпр
 				}
 			};
 
-			console.log('isFullObject=', isFullObject);
 			xhr.send( (isFullObject) ? localStringJSON : serverStringAccountJSON );
 		};
 
@@ -290,6 +289,9 @@ console.log('Именно здесь поставить setTimeout на отпр
 
         $scope.removeCurrentAccount = function () {
             $scope.expCalc.accounts.splice($scope.expCalc.settings.currentAccount, 1);
+			$scope.expCalc.accounts.forEach(function(account, accountIndex, accountArr) {
+				account.meta.index = accountIndex;
+			});
 
 			uploadData(true);
         };
@@ -1105,7 +1107,17 @@ console.log('Именно здесь поставить setTimeout на отпр
 
 		var fromLocalStorage = (localStorage.getItem('expensesCalc')) ? JSON.parse(localStorage.getItem("expensesCalc")) : false;
 		fromServerData = (fromServerData) ? JSON.parse(fromServerData) : false;
-		if (!fromServerData.accounts) { fromServerData = false }; // если не весь объект сохранился на сервере, то брать надо из localStorage
+		if (fromServerData.accounts) {
+			console.warm('fromServerData.accounts');
+			fromServerData.accounts.forEach(function(account, i, arr) {
+				console.log('check = ', i, typeof account);
+				if (typeof account == 'string') {
+					arr[i] = JSON.parse(account);
+				}
+			});
+		} else {
+			fromServerData = false; // если не весь объект сохранился на сервере, то брать надо из localStorage
+		}
 
 		if (fromServerData.meta && fromLocalStorage.meta) {
 			if (fromServerData.meta.savedDate > fromLocalStorage.meta.savedDate) {
