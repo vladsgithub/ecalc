@@ -34659,7 +34659,7 @@ console.log('Именно здесь поставить setTimeout на отпр
 		var fromLocalStorage = (localStorage.getItem('expensesCalc')) ? JSON.parse(localStorage.getItem("expensesCalc")) : false;
 		fromServerData = (fromServerData) ? JSON.parse(fromServerData) : false;
 		if (fromServerData.accounts) {
-			console.warm('fromServerData.accounts');
+			console.warn('fromServerData.accounts');
 			fromServerData.accounts.forEach(function(account, i, arr) {
 				console.log('check = ', i, typeof account);
 				if (typeof account == 'string') {

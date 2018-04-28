@@ -54,6 +54,9 @@
 
 		$loadedData = str_replace("{{", "{ {", $loadedData);
 		$loadedData = str_replace("}}", "} }", $loadedData);
+		$loadedData = stripslashes($loadedData);
+		$loadedData = str_replace('"{"', '{"', $loadedData);
+		$loadedData = str_replace('}"', '}', $loadedData);
 
 		echo "<script language='JavaScript'>var fromServerData = '$loadedData';</script>";
     ?>

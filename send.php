@@ -43,7 +43,6 @@ if ($userId > 0) {
 	} else {
 		$accountIndex = json_encode($dataJSON->{'meta'}->{'index'});
 		$sql = "UPDATE json_data SET data=JSON_SET(data, '$.accounts[$accountIndex]', '$DBdata') where json_id = $userId";
-//		$sql = "update t1 set data = JSON_SET(data, '$.key3', 'I am ID3') where id = 2;";
 		echo "Only current account was saved \n";
 	}
 
