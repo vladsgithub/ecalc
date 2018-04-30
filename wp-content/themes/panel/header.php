@@ -65,7 +65,7 @@
 
 <body id="body" ng-app="app" ng-controller="calculatorCtrl" ng-cloak="true" data-upload-status="1">
 
-	<header>
+	<header style="display: none;">
 
 		<?
 //			echo 'Username: ' . $current_user->user_login . '<br />';

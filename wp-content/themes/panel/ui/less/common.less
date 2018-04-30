@@ -19,6 +19,19 @@
 
 
 
+.flex {
+	display: flex;
+
+	&.center-align {
+		align-items: center;
+	}
+
+	.flex-grow {
+		flex-grow: 1;
+	}
+}
+
+
 
 .tooltip {
 	z-index: @z-tooltip;
@@ -41,6 +54,7 @@
 		border-width: 4px; border-left-color: @black; border-bottom-color: @black;
 	}
 }
+
 .btn {
 	position: relative;
 	min-height: 44px; min-width: 44px; line-height: 40px;
@@ -79,6 +93,7 @@
 		font-family: RobotoSlab; font-size: 1.2rem; font-weight: bold;
 	}
 }
+
 label {
 	vertical-align: top;
 	color: @black;
@@ -150,6 +165,7 @@ label {
 			transition: transform @delay;
 		}
 	}
+
 	&.number-input {
 		text-align: right;
 

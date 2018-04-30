@@ -33562,59 +33562,59 @@ var uploadData, loadData, layoutControl;
 
         // WORKING WITH LAYOUT ==============================
 
-        layoutControl = {
-            body: document.getElementById('body'),
-            header: document.getElementById('header'),
-            main: document.getElementById('main'),
-            footer: document.getElementById('footer'),
-            init: function () {
-                this.watcherOfHeader();
-                // this.preventDefaultOfLinkClick();
-                // this.minimizingHeaderByScrolling();
-                // this.mainMenuToggler();
-            },
-            watcherOfHeader: function() {
-                var self = this;
-                var headerIframe = (document.getElementById('headerIframe')) ? document.getElementById('headerIframe').contentWindow : null;
-
-				if (!headerIframe) return;
-
-console.log('turn on: watcherOfHeader', headerIframe);
-                self.body.style.paddingTop = self.header.offsetHeight + 'px';
-
-                headerIframe.addEventListener('resize', function() {
-					console.log('resize');
-                    self.body.style.paddingTop = self.header.offsetHeight + 'px';
-                });
-            },
-            preventDefaultOfLinkClick: function() {
-                $('a').on('click', function(e) {
-                    e.preventDefault();
-                });
-            },
-            minimizingHeaderByScrolling: function() {
-                var self = this;
-
-                $(window).on('scroll', function(e) {
-                    if ($(e.currentTarget).scrollTop() > 100) {
-                        self.$header.addClass('minimized');
-                    } else {
-                        if ($(e.currentTarget).scrollTop() < 10) {
-                            self.$header.removeClass('minimized');
-                        }
-                    }
-                });
-            },
-            mainMenuToggler: function() {
-                var self = this;
-
-                $('.js-show-menu').on('click', function() {
-                    self.$body.toggleClass('shown-menu');
-                });
-            }
-        };
-
-        layoutControl.init();
+//        layoutControl = {
+//            body: document.getElementById('body'),
+//            header: document.getElementById('header'),
+//            main: document.getElementById('main'),
+//            footer: document.getElementById('footer'),
+//            init: function () {
+//                this.watcherOfHeader();
+//                // this.preventDefaultOfLinkClick();
+//                // this.minimizingHeaderByScrolling();
+//                // this.mainMenuToggler();
+//            },
+//            watcherOfHeader: function() {
+//                var self = this;
+//                var headerIframe = (document.getElementById('headerIframe')) ? document.getElementById('headerIframe').contentWindow : null;
+//
+//				if (!headerIframe) return;
+//
+//			console.log('turn on: watcherOfHeader', headerIframe);
+//                self.body.style.paddingTop = self.header.offsetHeight + 'px';
+//
+//                headerIframe.addEventListener('resize', function() {
+//					console.log('resize');
+//                    self.body.style.paddingTop = self.header.offsetHeight + 'px';
+//                });
+//            },
+//            preventDefaultOfLinkClick: function() {
+//                $('a').on('click', function(e) {
+//                    e.preventDefault();
+//                });
+//            },
+//            minimizingHeaderByScrolling: function() {
+//                var self = this;
+//
+//                $(window).on('scroll', function(e) {
+//                    if ($(e.currentTarget).scrollTop() > 100) {
+//                        self.$header.addClass('minimized');
+//                    } else {
+//                        if ($(e.currentTarget).scrollTop() < 10) {
+//                            self.$header.removeClass('minimized');
+//                        }
+//                    }
+//                });
+//            },
+//            mainMenuToggler: function() {
+//                var self = this;
+//
+//                $('.js-show-menu').on('click', function() {
+//                    self.$body.toggleClass('shown-menu');
+//                });
+//            }
+//        };
+//
+//        layoutControl.init();
 
 
 
@@ -34658,15 +34658,8 @@ console.log('Именно здесь поставить setTimeout на отпр
 
 		var fromLocalStorage = (localStorage.getItem('expensesCalc')) ? JSON.parse(localStorage.getItem("expensesCalc")) : false;
 		fromServerData = (fromServerData) ? JSON.parse(fromServerData) : false;
-		if (fromServerData.accounts) {
-			console.warn('fromServerData.accounts');
-			fromServerData.accounts.forEach(function(account, i, arr) {
-				console.log('check = ', i, typeof account);
-				if (typeof account == 'string') {
-					arr[i] = JSON.parse(account);
-				}
-			});
-		} else {
+
+		if (!fromServerData.accounts) {
 			fromServerData = false; // если не весь объект сохранился на сервере, то брать надо из localStorage
 		}
 

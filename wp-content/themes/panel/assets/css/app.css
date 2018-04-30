@@ -2816,6 +2816,15 @@ table {
 .background {
   background: #4c69bd;
 }
+.flex {
+  display: flex;
+}
+.flex.center-align {
+  align-items: center;
+}
+.flex .flex-grow {
+  flex-grow: 1;
+}
 .tooltip {
   z-index: 1000;
   position: absolute;
@@ -3418,37 +3427,37 @@ header {
   transform: translateX(0);
   width: 100%;
 }
-header iframe.ghost {
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
 header .head {
-  position: relative;
-  z-index: 1;
-  min-height: 50px;
-  padding-bottom: 6px;
+  height: 44px;
   background: #4c69bd;
   color: #fff;
 }
-header .status-line {
+header .head h1,
+header .head h2 {
   position: absolute;
+  width: 100%;
+  box-sizing: border-box;
+  line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+header .head h1 {
+  top: 0;
+  padding-left: 6px;
+  font-size: 1.6rem;
+}
+header .head h2 {
   bottom: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: #00c900;
-  border: 1px solid #fff;
-  border-left: 0;
-  border-right: 0;
+  padding-left: 12px;
+  text-align: center;
+}
+header .head .title {
+  position: relative;
+  height: 100%;
 }
 main {
   min-height: 100%;
+  padding-top: 50px;
   box-sizing: border-box;
 }
