@@ -11,6 +11,10 @@ var uploadData, loadData, layoutControl;
 
         // WORKING WITH LAYOUT ==============================
 
+		$scope.mainMenu = {
+
+		};
+
 //        layoutControl = {
 //            body: document.getElementById('body'),
 //            header: document.getElementById('header'),
@@ -109,7 +113,6 @@ var uploadData, loadData, layoutControl;
 			var xhr, localStringJSON, serverStringAccountJSON, currentAccountNumber;
 
 			currentAccountNumber = $scope.expCalc.settings.currentAccount;
-//			$scope.expCalc.meta.savedDate = $scope.expCalc.accounts[currentAccountNumber].meta.savedDate = +new Date();
 console.log('===savedDate:', $scope.formatDate($scope.expCalc.meta.savedDate));
 
 			xhr = new XMLHttpRequest();

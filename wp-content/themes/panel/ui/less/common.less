@@ -63,6 +63,7 @@
 	box-sizing: border-box;
 	background: @white;
 	border: 2px solid @brand-strong; border-radius: 4px;
+	white-space: nowrap;
 	font-size: 0;
 	color: @brand-strong;
 	cursor: pointer;
@@ -91,6 +92,22 @@
 		vertical-align: middle;
 		text-transform: uppercase;
 		font-family: RobotoSlab; font-size: 1.2rem; font-weight: bold;
+
+		&.status-line {
+			position: relative;
+			bottom: 3px;
+			margin-right: 5px;
+
+			&::before {
+				content: "";
+				position: absolute;
+				left: -1px;
+				right: -1px;
+				bottom: -1px;
+				height: 3px;
+				border-radius: 2px;
+			}
+		}
 	}
 }
 

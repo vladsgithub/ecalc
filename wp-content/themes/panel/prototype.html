@@ -17,15 +17,146 @@
 			<h1>Cost panel</h1>
 			<h2>Название расчета</h2>
 		</li>
-		<li>
-			<button class="btn solid"><i class="fas fa-save"></i></button>
+		<li class="separator">
+			<button class="btn solid" title="Сохранить на сервере под текущим аккаунтом">
+				<b class="status-line">ВР</b>
+				<i class="fas fa-save"></i>
+			</button>
 		</li>
-		<li>
-			<button class="btn solid"><i class="fas fa-bars"></i></button>
+		<li class="separator">
+			<button class="btn solid" title="Меню">
+				<i class="fas fa-bars"></i>
+			</button>
 		</li>
 	</ul>
 
 </header>
+
+<nav>
+	<ul class="head flex">
+		<li>
+			Photo
+		</li>
+		<li class="flex-grow">
+			Владислав Стасевич
+		</li>
+		<li>
+			<button class="btn solid" title="Меню">
+				<i class="fas fa-window-close"></i>
+			</button>
+		</li>
+	</ul>
+
+	<div class="body">
+
+		<ul class="menu open" data-level="1">
+			<li class="section-title">
+				<button class="btn" title="Меню">
+					<i class="fas fa-bars"></i>
+				</button>
+				Главное меню
+			</li>
+
+			<li>
+				<button class="btn solid">
+					<b>Пункт меню</b>
+				</button>
+			</li>
+
+			<li>
+				<button class="btn solid" title="Авторизация">
+					<i class="fas fa-user-circle"></i>
+					<b>Авторизация</b>
+				</button>
+
+				<ul class="menu" data-level="2">
+					<li class="section-title">
+						<button class="btn" title="Авторизация">
+							<i class="fas fa-user-circle"></i>
+						</button>
+						Авторизация
+					</li>
+
+					<li>
+						<button class="btn solid">
+							<i class="fas fa-user-secret"></i>
+							<b>Something else</b>
+						</button>
+
+						<ul class="menu" data-level="3">
+							<li class="section-title">
+								<button class="btn" title="Something else">
+									<i class="fas fa-user-secret"></i>
+								</button>
+								Something else
+							</li>
+
+							<li>
+								<button class="btn solid">
+									<i class="fas fa-user-secret"></i>
+									<b>Settings list</b>
+								</button>
+
+								<div class="section">
+									<div class="section-title">
+
+									</div>
+
+									<div class="section-body">
+										<ul class="settings-list">
+											<li></li>
+										</ul>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</li>
+
+					<li>
+						<button class="btn solid">
+							<i class="fas fa-sign-in-alt"></i>
+							<b>Войти</b>
+						</button>
+
+						<div class="section">
+							<div class="section-title">
+
+							</div>
+
+							<div class="section-body">
+
+							</div>
+						</div>
+					</li>
+
+					<li>
+						<button class="btn solid">
+							<i class="fas fa-user-plus"></i>
+							<b>Регистрация</b>
+						</button>
+
+						<div class="section">
+							<div class="section-title">
+
+							</div>
+
+							<div class="section-body">
+
+							</div>
+						</div>
+					</li>
+				</ul>
+			</li>
+
+			<li>
+				<button class="btn solid">
+					<b>Пункт меню</b>
+				</button>
+			</li>
+		</ul>
+
+	</div>
+</nav>
 
 <main id="main">
 
