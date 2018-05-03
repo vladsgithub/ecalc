@@ -3436,6 +3436,9 @@ body[data-upload-status="2"] .status-line::before {
 body[data-upload-status="2"] .status-line + i {
   transform: rotate(45deg);
 }
+body.open-menu nav {
+  transform: translateX(0);
+}
 @media only screen and (max-width: 639px) {
   body {
     font-size: 1.2rem;
@@ -3509,20 +3512,22 @@ nav {
   background: #4c69bd;
   outline: 1px solid #fff;
   border-left: 2px solid #4c69bd;
+  transform: translateX(100%);
+  transition: transform 0.2s;
 }
-nav .head {
+nav .nav-head {
   flex-shrink: 0;
 }
-nav .body {
+nav .nav-body {
   flex-grow: 1;
   position: relative;
   overflow-y: auto;
   overflow-x: hidden;
 }
-nav .body > .menu {
+nav .nav-body > .section {
   top: 44px;
 }
-nav .menu {
+nav .section {
   z-index: 1;
   position: absolute;
   top: 0;
@@ -3534,22 +3539,25 @@ nav .menu {
   transform: translateX(100%);
   transition: transform 0.2s;
 }
-nav .menu.open {
+nav .section.open {
   transform: translateX(0);
 }
-nav .menu.open[data-level="1"] > .section-title {
+nav .section.open[data-level="1"] > .section-title {
   left: 0;
 }
-nav .menu.open[data-level="2"] > .section-title {
+nav .section.open[data-level="2"] > .section-title {
   left: 46px;
 }
-nav .menu.open[data-level="3"] > .section-title {
+nav .section.open[data-level="3"] > .section-title {
   left: 94px;
 }
-nav .menu.open > .section-title {
+nav .section.open[data-level="4"] > .section-title {
+  left: 140px;
+}
+nav .section.open > .section-title {
   outline: 2px solid #4c69bd;
 }
-nav .menu > li:not(.section-title) > .btn {
+nav .section > li:not(.section-title) > .btn {
   width: 100%;
   text-align: left;
 }

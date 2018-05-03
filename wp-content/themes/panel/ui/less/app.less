@@ -30,6 +30,9 @@ body {
 		&::before { background: @warning; }
 		+ i { transform: rotate(45deg); }
 	}
+	&.open-menu nav {
+		transform: translateX(0);
+	}
 
 	@media only screen and (max-width: (@tablet - 1)) {
 		font-size: 1.2rem;
@@ -107,45 +110,23 @@ nav {
 	background: @brand-strong;
 	outline: 1px solid @white;
 	border-left: 2px solid @brand-strong;
+	transform: translateX(100%);
+	transition: transform @delay;
 
-	.head {
+	.nav-head {
 		flex-shrink: 0;
 	}
-	.body {
+	.nav-body {
 		flex-grow: 1;
 		position: relative;
 		overflow-y: auto;
 		overflow-x: hidden;
 
-		> .menu {
+		> .section {
 			top: 44px;
 		}
 	}
-//	.menu {
-//		margin-top: 44px;
-//
-//		> li:not(.section-title) {
-//			> .btn {
-//				width: 100%;
-//				text-align: left;
-//			}
-//		}
-//		.menu {
-//			z-index: 1;
-//			position: absolute;
-////			top: 0;
-//			bottom: 0;
-//			width: 100%;
-//			transform: translateX(100%);
-//			transition: transform @delay;
-//
-//			&.open {
-//				transform: translateX(0);
-//			}
-//			.section-title { left: 44px; }
-//		}
-//	}
-	.menu {
+	.section {
 		z-index: 1;
 		position: absolute;
 		top: 0;
@@ -163,6 +144,7 @@ nav {
 			&[data-level="1"] > .section-title { left: 0; }
 			&[data-level="2"] > .section-title { left: 46px; }
 			&[data-level="3"] > .section-title { left: 94px; }
+			&[data-level="4"] > .section-title { left: 140px; }
 
 			> .section-title {
 				outline: 2px solid @brand-strong;

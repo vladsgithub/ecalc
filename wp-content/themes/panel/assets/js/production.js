@@ -33562,10 +33562,6 @@ var uploadData, loadData, layoutControl;
 
         // WORKING WITH LAYOUT ==============================
 
-		$scope.mainMenu = {
-
-		};
-
 //        layoutControl = {
 //            body: document.getElementById('body'),
 //            header: document.getElementById('header'),
@@ -33617,8 +33613,60 @@ var uploadData, loadData, layoutControl;
 //                });
 //            }
 //        };
+
+		$scope.layout = {
+			isOpenMenu: true
+		};
+
+		layoutControl = {
+			navBody: document.getElementById('navBody'),
+
+			init: function () {
+				this.navMenuInit();
+			},
+			navMenuInit: function() {
+				var self = this;
+				var dataNextButtons = self.navBody.querySelectorAll('[data-next]');
+				var dataPreviousButtons = self.navBody.querySelectorAll('[data-previous]');
+
+				dataNextButtons.forEach(function(button, i, arr) {
+					button.addEventListener('click', function() {
+						if (button.nextElementSibling) {
+							button.nextElementSibling.classList.add('open');
+							console.log(button.nextElementSibling.querySelectorAll('button')[0]);
+
+							setTimeout(function() {
+								console.log(button.nextElementSibling.querySelectorAll('button')[0]);
+								button.nextElementSibling.querySelectorAll('button')[0].focus();
+							}, 220);
+						}
+					});
+				});
+
+				dataPreviousButtons.forEach(function(button, i, arr) {
+					button.addEventListener('click', function() {
+						button.parentNode.parentNode.querySelectorAll('.open').forEach(function(section, i, arr) {
+							section.classList.remove('open');
+						});
+					});
+				});
+			}
+//			minimizingHeaderByScrolling: function() {
+//				var self = this;
 //
-//        layoutControl.init();
+//				$(window).on('scroll', function(e) {
+//					if ($(e.currentTarget).scrollTop() > 100) {
+//						self.$header.addClass('minimized');
+//					} else {
+//						if ($(e.currentTarget).scrollTop() < 10) {
+//							self.$header.removeClass('minimized');
+//						}
+//					}
+//				});
+//			}
+		};
+
+        layoutControl.init();
 
 
 

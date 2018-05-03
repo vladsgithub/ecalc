@@ -16,34 +16,17 @@
  * Font Awesome Free 5.0.6 by @fontawesome - http://fontawesome.com
  * License - http://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
-/*@font-face {*/
-/*font-family: 'Font Awesome 5 Free';*/
-/*font-style: normal;*/
-/*font-weight: 400;*/
-/*src: url("../../assets/fonts/fa-regular-400.eot");*/
-/*src: url("../../assets/fonts/fa-regular-400.eot?#iefix") format("embedded-opentype"), */
-/*url("../../assets/fonts/fa-regular-400.woff2") format("woff2"), */
-/*url("../../assets/fonts/fa-regular-400.woff") format("woff"), */
-/*url("../../assets/fonts/fa-regular-400.ttf") format("truetype"), */
-/*url("../../assets/fonts/fa-regular-400.svg#fontawesome") format("svg"); }*/
-/*.far {*/
-/*font-family: 'Font Awesome 5 Free';*/
-/*font-weight: 400; }*/
-/*!
- * Font Awesome Free 5.0.6 by @fontawesome - http://fontawesome.com
- * License - http://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
- */
 @font-face {
   font-family: 'Font Awesome 5 Free';
   font-style: normal;
-  font-weight: 900;
+  font-weight: normal;
   src: url("../../assets/fonts/fa-solid-900.eot");
   src: url("../../assets/fonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/fa-solid-900.woff2") format("woff2"), url("../../assets/fonts/fa-solid-900.woff") format("woff"), url("../../assets/fonts/fa-solid-900.ttf") format("truetype"), url("../../assets/fonts/fa-solid-900.svg#fontawesome") format("svg");
 }
 .fa,
 .fas {
   font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
+  font-weight: normal;
 }
 /*!
  * Font Awesome Free 5.0.6 by @fontawesome - http://fontawesome.com
@@ -2811,6 +2794,21 @@ table {
 .guide-list > li > * {
   padding: 10px;
 }
+.background {
+  background: #4c69bd;
+}
+.flex {
+  display: -ms-flexbox;
+  display: flex;
+}
+.flex.center-align {
+  -ms-flex-align: center;
+      align-items: center;
+}
+.flex .flex-grow {
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+}
 .tooltip {
   z-index: 1000;
   position: absolute;
@@ -2854,6 +2852,7 @@ table {
   background: #fff;
   border: 2px solid #4c69bd;
   border-radius: 4px;
+  white-space: nowrap;
   font-size: 0;
   color: #4c69bd;
   cursor: pointer;
@@ -2868,7 +2867,7 @@ table {
   right: 2px;
   bottom: 2px;
   left: 2px;
-  border: 2px dashed;
+  border: 1px dashed;
   border-radius: inherit;
 }
 .btn.solid {
@@ -2889,7 +2888,26 @@ table {
   font-size: 1.2rem;
   font-weight: bold;
 }
-label.text-input {
+.btn b.status-line {
+  position: relative;
+  bottom: 3px;
+  margin-right: 5px;
+}
+.btn b.status-line::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  height: 3px;
+  border-radius: 2px;
+}
+label {
+  vertical-align: top;
+  color: #000;
+}
+label.text-input,
+label.number-input {
   position: relative;
   display: inline-block;
   height: 44px;
@@ -2902,7 +2920,8 @@ label.text-input {
   font-size: 0;
   cursor: text;
 }
-label.text-input::before {
+label.text-input::before,
+label.number-input::before {
   content: "";
   z-index: 1;
   position: absolute;
@@ -2912,7 +2931,16 @@ label.text-input::before {
   height: 8px;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
 }
-label.text-input input {
+label.text-input:hover input,
+label.number-input:hover input {
+  transform: translateY(0);
+}
+label.text-input:hover input + b,
+label.number-input:hover input + b {
+  transform: translateY(0);
+}
+label.text-input input,
+label.number-input input {
   display: block;
   margin: 0;
   padding: 0 5px;
@@ -2922,20 +2950,136 @@ label.text-input input {
   border: none;
   outline: none;
   vertical-align: top;
+  text-align: inherit;
   font-family: inherit;
   font-size: 1rem;
+  -moz-appearance: textfield;
   transform: translateY(-40px);
   transition: transform 0.2s;
 }
-label.text-input input:hover,
-label.text-input input:focus {
+label.text-input input:focus,
+label.number-input input:focus {
   transform: translateY(0);
 }
-label.text-input input:hover + b,
-label.text-input input:focus + b {
+label.text-input input:focus + b,
+label.number-input input:focus + b {
   transform: translateY(0);
 }
-label.text-input b {
+label.text-input input::-ms-clear,
+label.number-input input::-ms-clear {
+  display: none;
+}
+label.text-input input::-webkit-outer-spin-button,
+label.number-input input::-webkit-outer-spin-button,
+label.text-input input::-webkit-inner-spin-button,
+label.number-input input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+label.text-input b,
+label.number-input b {
+  display: inline-block;
+  width: 100%;
+  padding: 3px 5px;
+  overflow: hidden;
+  box-sizing: border-box;
+  line-height: 1;
+  vertical-align: middle;
+  font-size: 1rem;
+  word-wrap: break-word;
+  transform: translateY(-40px);
+  transition: transform 0.2s;
+}
+label.number-input {
+  text-align: right;
+}
+label.number-input input,
+label.number-input b {
+  font-weight: bold;
+}
+label.number-input input:first-line,
+label.number-input b:first-line {
+  font-size: 1.3rem;
+}
+label.text-select {
+  position: relative;
+  display: inline-block;
+  height: 44px;
+  max-width: 100%;
+  padding-right: 26px;
+  line-height: 40px;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 2px solid #4c69bd;
+  background: #fff;
+  font-size: 0;
+  cursor: text;
+}
+label.text-select::before {
+  content: "";
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+}
+label.text-select::after {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  font-family: 'Font Awesome 5 Free';
+  font-weight: normal;
+  content: "\f0dd";
+  position: absolute;
+  top: 2px;
+  right: 8px;
+  line-height: 1;
+  color: #4c69bd;
+  font-size: 26px;
+}
+label.text-select.currency b {
+  min-width: 0;
+  white-space: nowrap;
+  font-size: 18px;
+}
+label.text-select select {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  opacity: 0;
+  font-family: inherit;
+}
+label.text-select select:focus + b::before {
+  content: "";
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 1px solid #4c69bd;
+}
+label.text-select option {
+  font-family: inherit;
+  font-size: 1rem;
+  color: #000;
+}
+label.text-select option[disabled] {
+  color: #888;
+}
+label.text-select b {
   display: inline-block;
   width: 100%;
   min-width: 100px;
@@ -2946,8 +3090,307 @@ label.text-input b {
   vertical-align: middle;
   font-size: 1rem;
   word-wrap: break-word;
-  transform: translateY(-40px);
+}
+label.checkbox {
+  display: inline-block;
+  position: relative;
+  padding: 0 4px 0 40px;
+  box-sizing: border-box;
+  min-height: 44px;
+  min-width: 44px;
+  line-height: 44px;
+  font-size: 0;
+  cursor: default;
+}
+label.checkbox.thin {
+  min-height: 30px;
+  line-height: 30px;
+}
+label.checkbox.thin i::before {
+  top: 2px;
+}
+label.checkbox input {
+  position: absolute;
+  opacity: 0;
+}
+label.checkbox input:checked + i::before {
+  content: "\f14a";
+}
+label.checkbox input:focus + i::after {
+  content: "";
+}
+label.checkbox i {
+  float: left;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  font-family: 'Font Awesome 5 Free';
+  font-weight: normal;
+  color: #4c69bd;
+  font-size: 26px;
+}
+label.checkbox i::before {
+  content: "\f0c8";
+  position: absolute;
+  top: 9px;
+  left: 11px;
+  line-height: 1;
+}
+label.checkbox i::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 1px dashed;
+  border-radius: 4px;
+}
+label.checkbox b {
+  display: inline-block;
+  width: 100%;
+  min-width: 100px;
+  padding: 8px 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  line-height: 1;
+  vertical-align: middle;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #4c69bd;
+  word-wrap: break-word;
+}
+label.toggle {
+  position: relative;
+  display: inline-block;
+  height: 44px;
+  width: 44px;
+  padding: 8px 6px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+label.toggle::before,
+label.toggle::after {
+  z-index: 1;
+  position: absolute;
+  top: 14px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  font-family: 'Font Awesome 5 Free';
+  font-weight: normal;
+  line-height: 15px;
+  color: #4c69bd;
+  font-size: 12px;
+  content: "\f00c";
+}
+label.toggle::after {
+  right: 7px;
+  color: #888;
+  content: "\f00d";
+}
+label.toggle.solid::before,
+label.toggle.solid::after {
+  color: #fff;
+}
+label.toggle.solid input:checked + i {
+  background: #4c69bd;
+  border-color: #fff;
+}
+label.toggle.solid input:checked + i::before {
+  background: #fff;
+}
+label.toggle.solid input:checked + i::after {
+  border-color: #4c69bd;
+}
+label.toggle.solid i {
+  border-color: #fff;
+  background: #888;
+}
+label.toggle.solid i::before {
+  background: #fff;
+}
+label.toggle.solid i::after {
+  border-color: #888;
+}
+label.toggle input {
+  z-index: -1;
+  position: absolute;
+  outline: none;
+  opacity: 0;
+}
+label.toggle input:checked + i {
+  border-color: #4c69bd;
+}
+label.toggle input:checked + i::before {
+  background: #4c69bd;
+  transform: translateX(16px);
+}
+label.toggle input:checked + i::after {
+  transform: translateX(16px);
+}
+label.toggle input:focus + i {
+  border-width: 3px;
+}
+label.toggle input:focus + i::before,
+label.toggle input:focus + i::after {
+  margin: 1px;
+}
+label.toggle i {
+  position: absolute;
+  left: 0;
+  height: 28px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #888;
+  border-radius: 6px;
+  background: #fff;
+  transition: border-color 0.2s;
+}
+label.toggle i::before {
+  content: "";
+  z-index: 2;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  width: 20px;
+  margin: 2px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background: #888;
+  transition: transform 0.2s, background 0.2s;
+}
+label.toggle i::after {
+  content: "";
+  z-index: 3;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  height: 10px;
+  width: 2px;
+  margin: 2px;
+  border: 4px double #fff;
+  border-top: none;
+  border-bottom: none;
   transition: transform 0.2s;
+}
+.mode-toggle {
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  min-height: 44px;
+}
+.mode-toggle input {
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  margin: 0 0 0 -22px;
+  outline: none;
+  opacity: 0;
+  cursor: pointer;
+}
+.mode-toggle input:checked + i::before {
+  transform: translateX(16px);
+}
+.mode-toggle input:checked ~ div:nth-of-type(1) {
+  color: lightgray;
+}
+.mode-toggle input:checked ~ div:nth-of-type(2) {
+  color: black;
+}
+.mode-toggle input:focus + i {
+  border-width: 3px;
+}
+.mode-toggle input:focus + i::before {
+  margin: 1px;
+}
+.mode-toggle input[disabled] + i {
+  border-color: lightgray;
+}
+.mode-toggle input[disabled] + i::before {
+  background: lightgray;
+}
+.mode-toggle i {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  height: 28px;
+  width: 44px;
+  margin-left: -22px;
+  box-sizing: border-box;
+  border: 2px solid black;
+  border-radius: 6px;
+  background: white;
+}
+.mode-toggle i::before {
+  content: "";
+  z-index: 2;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  width: 20px;
+  margin: 2px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background: black;
+  transition: transform 0.2s;
+}
+.mode-toggle div {
+  width: 50%;
+  box-sizing: border-box;
+  line-height: 44px;
+  text-align: center;
+  font-size: 0;
+}
+.mode-toggle div:nth-of-type(1) {
+  padding-right: 30px;
+  text-align: right;
+  color: black;
+}
+.mode-toggle div:nth-of-type(2) {
+  padding-left: 30px;
+  text-align: left;
+  color: lightgray;
+}
+.mode-toggle b {
+  display: inline-block;
+  line-height: 18px;
+  vertical-align: middle;
+  font-size: 16px;
+  font-weight: bold;
+}
+.text-field {
+  position: relative;
+  display: inline-block;
+  min-height: 44px;
+  max-width: 100%;
+  line-height: 44px;
+  box-sizing: border-box;
+  background: #fff;
+  vertical-align: top;
+  font-size: 0;
+  color: #000;
+}
+.text-field.solid {
+  background: #4c69bd;
+  color: #fff;
+}
+.text-field b {
+  display: inline-block;
+  width: 100%;
+  padding: 3px 5px;
+  overflow: hidden;
+  box-sizing: border-box;
+  line-height: 1.3;
+  vertical-align: middle;
+  font-size: 1rem;
+  word-wrap: break-word;
 }
 * {
   -webkit-tap-highlight-color: transparent;
@@ -2966,11 +3409,20 @@ body {
   box-sizing: border-box;
   font-size: 1rem;
 }
-body[data-upload-status="0"] .status-line {
+body[data-upload-status="0"] .status-line::before {
   background: #dddd00;
 }
-body[data-upload-status="2"] .status-line {
+body[data-upload-status="1"] .status-line::before {
+  background: #00c900;
+}
+body[data-upload-status="2"] .status-line::before {
   background: #dd0000;
+}
+body[data-upload-status="2"] .status-line + i {
+  transform: rotate(45deg);
+}
+body.open-menu nav {
+  transform: translateX(0);
 }
 @media only screen and (max-width: 639px) {
   body {
@@ -2984,37 +3436,139 @@ header {
   transform: translateX(0);
   width: 100%;
 }
-header iframe.ghost {
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
 header .head {
-  position: relative;
-  z-index: 1;
-  min-height: 50px;
-  padding-bottom: 6px;
+  height: 44px;
   background: #4c69bd;
   color: #fff;
 }
-header .status-line {
-  position: absolute;
+header .head h1,
+header .head h2 {
+  padding-right: 5px;
+  box-sizing: border-box;
+  line-height: 24px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+header .head h1 {
+  top: 0;
+  padding-left: 6px;
+  font-size: 1.6rem;
+}
+@media only screen and (min-width: 640px) {
+  header .head h1 {
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+  }
+}
+header .head h2 {
   bottom: 0;
-  left: 0;
+  margin-top: -5px;
+  padding-left: 12px;
+  text-align: center;
+}
+@media only screen and (min-width: 640px) {
+  header .head h2 {
+    margin-top: 9px;
+  }
+}
+header .head .title {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  overflow: hidden;
+}
+@media only screen and (min-width: 640px) {
+  header .head .title {
+    -ms-flex-direction: row;
+        flex-direction: row;
+  }
+}
+header .head .separator {
+  border-left: 1px solid #fff;
+}
+nav {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  position: fixed;
   right: 0;
-  height: 4px;
-  background: #00c900;
-  border: 1px solid #fff;
-  border-left: 0;
-  border-right: 0;
+  top: 0;
+  bottom: 0;
+  width: 320px;
+  overflow: hidden;
+  background: #4c69bd;
+  outline: 1px solid #fff;
+  border-left: 2px solid #4c69bd;
+  transform: translateX(100%);
+  transition: transform 0.2s;
+}
+nav .nav-head {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+nav .nav-body {
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+nav .nav-body > .section {
+  top: 44px;
+}
+nav .section {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  padding-right: 2px;
+  box-sizing: border-box;
+  background: #4c69bd;
+  transform: translateX(100%);
+  transition: transform 0.2s;
+}
+nav .section.open {
+  transform: translateX(0);
+}
+nav .section.open[data-level="1"] > .section-title {
+  left: 0;
+}
+nav .section.open[data-level="2"] > .section-title {
+  left: 46px;
+}
+nav .section.open[data-level="3"] > .section-title {
+  left: 94px;
+}
+nav .section.open[data-level="4"] > .section-title {
+  left: 140px;
+}
+nav .section.open > .section-title {
+  outline: 2px solid #4c69bd;
+}
+nav .section > li:not(.section-title) > .btn {
+  width: 100%;
+  text-align: left;
+}
+nav .section-title {
+  position: absolute;
+  right: 2px;
+  top: -44px;
+  height: 44px;
+  background: #d9e2ff;
+}
+nav .section-title > .btn {
+  background: transparent;
+  border-color: transparent;
 }
 main {
   min-height: 100%;
+  padding-top: 44px;
+  padding-right: 320px;
   box-sizing: border-box;
 }
