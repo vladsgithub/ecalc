@@ -2,55 +2,55 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44bc63fb-9e01-4d9b-a8dc-1a1fc190dee4" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\app\pages\expenses\controller\expensesController.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\app\routes.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\assets\js\production.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\_cordova-copy\www\assets\css\app.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\style.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\assets\js\production.min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\archive.php" afterPath="" />
       <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\author.php" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\_cordova-copy\www\img\logo.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\functions.php" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\_cordova-copy\www\assets\js\production.min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\app\pages\home\template\homeTemplate.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\tag.php" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\ui\font\glyphicons-halflings-regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\assets\css\app.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\screenshot.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\index.php" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\sidebar.php" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\_cordova-copy\www\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\app\common\header\template\headerTemplate.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\header_original.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\page-custom.php" afterPath="" />
       <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\Gruntfile.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\404_deleted.php" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\app\pages\expenses\template\expensesTemplate.html" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\footer.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\app\pages\home\template\homeTemplate.html" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\app\pages\expenses\controller\expensesController.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\assets\js\production.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\screenshot.jpg" afterPath="" />
       <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\header.php" afterPath="" />
       <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\ui\font\glyphicons-halflings-regular.svg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\footer_original.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\category.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\tag.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\style.css" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\app\app.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\sidebar.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\_cordova-copy\www\img\logo.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\app\pages\expenses\template\expensesTemplate.html" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\index.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\_cordova-copy\www\js\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\_cordova-copy\www\assets\css\app.css" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\functions_original.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\_cordova-copy\www\assets\js\production.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\functions.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\_cordova-copy\www\index.html" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\_cordova-copy\www\assets\js\production.min.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\ui\less\app.less" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\ui\font\glyphicons-halflings-regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\ui\font\glyphicons-halflings-regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\assets\js\production.min.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\single.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\archive.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\comments.php" afterPath="" />
       <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\page.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\searchform.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\ui\font\glyphicons-halflings-regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\app\common\header\template\headerTemplate.html" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\loop.php" afterPath="" />
       <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\ui\font\glyphicons-halflings-regular.woff" afterPath="" />
       <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\index_original.php" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\app\app.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\functions_original.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\app\routes.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\assets\css\app.css" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\package.json" afterPath="" />
       <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\search.php" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\ui\font\glyphicons-halflings-regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\comments.php" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\single.php" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\footer_original.php" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\_cordova-copy\www\js\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\ui\font\glyphicons-halflings-regular.woff2" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\footer.php" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\category.php" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\searchform.php" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\loop.php" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\_cordova-copy\www\assets\js\production.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\ui\less\app.less" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\page-custom.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\404_deleted.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.0.121\www\wp-content\themes\ecalc\header_original.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.htaccess" afterPath="$PROJECT_DIR$/.htaccess" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -85,16 +85,16 @@
       <file leaf-file-name="variables.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="6" selection-start="121" selection-end="127" vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="782">
+            <state line="8" column="12" selection-start="116" selection-end="116" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="799">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="common.less" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="common.less" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="16" selection-start="300" selection-end="300" vertical-scroll-proportion="-15.038462" vertical-offset="85" max-vertical-offset="9656">
+            <state line="577" column="28" selection-start="10227" selection-end="10227" vertical-scroll-proportion="0.5724551" vertical-offset="9331" max-vertical-offset="10217">
               <folding />
             </state>
           </provider>
@@ -103,16 +103,16 @@
       <file leaf-file-name="app.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="146" column="63" selection-start="2937" selection-end="2937" vertical-scroll-proportion="-4.7647057" vertical-offset="2239" max-vertical-offset="3196">
+            <state line="135" column="24" selection-start="2663" selection-end="2663" vertical-scroll-proportion="-8.372549" vertical-offset="1868" max-vertical-offset="3825">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="25" selection-start="2459" selection-end="2459" vertical-scroll-proportion="0.44208038" vertical-offset="799" max-vertical-offset="20791">
+            <state line="115" column="27" selection-start="3786" selection-end="3786" vertical-scroll-proportion="-6.8" vertical-offset="1785" max-vertical-offset="21080">
               <folding />
             </state>
           </provider>
@@ -121,7 +121,7 @@
       <file leaf-file-name="prototype.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/prototype.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="147" column="21" selection-start="3746" selection-end="3746" vertical-scroll-proportion="-35.35294" vertical-offset="696" max-vertical-offset="3128">
+            <state line="33" column="13" selection-start="712" selection-end="712" vertical-scroll-proportion="-11.0" vertical-offset="0" max-vertical-offset="3128">
               <folding />
             </state>
           </provider>
@@ -139,7 +139,7 @@
       <file leaf-file-name="page.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="363" column="112" selection-start="11795" selection-end="11886" vertical-scroll-proportion="-5.4313726" vertical-offset="5894" max-vertical-offset="13005">
+            <state line="363" column="112" selection-start="11795" selection-end="11886" vertical-scroll-proportion="0.0" vertical-offset="5894" max-vertical-offset="13005">
               <folding />
             </state>
           </provider>
@@ -148,8 +148,13 @@
       <file leaf-file-name="guide.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/guide.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="45" selection-start="712" selection-end="712" vertical-scroll-proportion="-20.26923" vertical-offset="34" max-vertical-offset="3196">
-              <folding />
+            <state line="143" column="48" selection-start="2832" selection-end="2832" vertical-scroll-proportion="-12.45098" vertical-offset="1796" max-vertical-offset="3400">
+              <folding>
+                <element signature="n#style#0;n#div#0;n#li#5;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#li#5;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#li#5;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#li#5;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -189,14 +194,14 @@
         <option value="$PROJECT_DIR$/../../localhost/www/Tools/phpmyadmin/setup/frames/config.inc.php" />
         <option value="$PROJECT_DIR$/send.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/index.php" />
-        <option value="$PROJECT_DIR$/guide.html" />
-        <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less" />
-        <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/header.php" />
-        <option value="$PROJECT_DIR$/wp-content/themes/panel/prototype.html" />
-        <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/functions.php" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" />
+        <option value="$PROJECT_DIR$/guide.html" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/prototype.html" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less" />
       </list>
     </option>
   </component>
@@ -429,8 +434,8 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../school/www" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -447,6 +452,14 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -455,14 +468,6 @@
       <option name="saveOutputToFile" value="false" />
       <option name="showConsoleOnStdErr" value="false" />
       <option name="showConsoleOnStdOut" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
       <method />
     </configuration>
     <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
@@ -488,13 +493,12 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21538462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2879121" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17290458" sideWeight="0.7120879" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -505,6 +509,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2879121" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -534,16 +539,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/send.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="122" selection-start="1533" selection-end="1533" vertical-scroll-proportion="-12.8" vertical-offset="428" max-vertical-offset="1411">
-          <folding />
-        </state>
+        <state line="44" column="122" selection-start="1533" selection-end="1533" vertical-scroll-proportion="-12.8" vertical-offset="428" max-vertical-offset="1411" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="2" selection-start="274" selection-end="274" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
-          <folding />
-        </state>
+        <state line="17" column="2" selection-start="274" selection-end="274" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/css/app-old.css">
@@ -553,30 +554,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/guide.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="45" selection-start="712" selection-end="712" vertical-scroll-proportion="-20.26923" vertical-offset="34" max-vertical-offset="3196">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="16" selection-start="300" selection-end="300" vertical-scroll-proportion="-15.038462" vertical-offset="85" max-vertical-offset="9656">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="6" selection-start="121" selection-end="127" vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="782">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="363" column="112" selection-start="11795" selection-end="11886" vertical-scroll-proportion="-5.4313726" vertical-offset="5894" max-vertical-offset="13005">
+        <state line="363" column="112" selection-start="11795" selection-end="11886" vertical-scroll-proportion="0.0" vertical-offset="5894" max-vertical-offset="13005">
           <folding />
         </state>
       </provider>
@@ -588,30 +568,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="146" column="63" selection-start="2937" selection-end="2937" vertical-scroll-proportion="-4.7647057" vertical-offset="2239" max-vertical-offset="3196">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/functions.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="119" column="114" selection-start="7258" selection-end="7258" vertical-scroll-proportion="0.0" vertical-offset="1648" max-vertical-offset="3621">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/prototype.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="147" column="21" selection-start="3746" selection-end="3746" vertical-scroll-proportion="-35.35294" vertical-offset="696" max-vertical-offset="3128">
           <folding />
         </state>
       </provider>
@@ -623,9 +587,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="12" selection-start="116" selection-end="116" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="799">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="25" selection-start="2459" selection-end="2459" vertical-scroll-proportion="0.44208038" vertical-offset="799" max-vertical-offset="20791">
+        <state line="115" column="27" selection-start="3786" selection-end="3786" vertical-scroll-proportion="-6.8" vertical-offset="1785" max-vertical-offset="21080">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guide.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="143" column="48" selection-start="2832" selection-end="2832" vertical-scroll-proportion="-12.45098" vertical-offset="1796" max-vertical-offset="3400">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#li#5;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#li#5;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#li#5;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#li#5;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="135" column="24" selection-start="2663" selection-end="2663" vertical-scroll-proportion="-8.372549" vertical-offset="1868" max-vertical-offset="3825">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/prototype.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="13" selection-start="712" selection-end="712" vertical-scroll-proportion="-11.0" vertical-offset="0" max-vertical-offset="3128">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="577" column="28" selection-start="10227" selection-end="10227" vertical-scroll-proportion="0.5724551" vertical-offset="9331" max-vertical-offset="10217">
           <folding />
         </state>
       </provider>

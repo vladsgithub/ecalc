@@ -2886,6 +2886,13 @@ table {
   border: 1px dashed;
   border-radius: inherit;
 }
+.btn[disabled] {
+  cursor: default;
+}
+.btn[disabled] i,
+.btn[disabled] b {
+  opacity: 0.5;
+}
 .btn.solid {
   background: #4c69bd;
   color: #fff;
@@ -2905,16 +2912,18 @@ table {
   font-weight: bold;
 }
 .btn b.status-line {
+  display: inline-block;
   position: relative;
   bottom: 3px;
   margin-right: 5px;
+  line-height: 1;
 }
 .btn b.status-line::before {
   content: "";
   position: absolute;
   left: -1px;
   right: -1px;
-  bottom: -1px;
+  bottom: -4px;
   height: 3px;
   border-radius: 2px;
 }
@@ -3310,7 +3319,8 @@ label.toggle i::after {
   opacity: 0;
   cursor: pointer;
 }
-.mode-toggle input:checked + i::before {
+.mode-toggle input:checked + i::before,
+.mode-toggle input:checked + i::after {
   transform: translateX(16px);
 }
 .mode-toggle input:checked ~ div:nth-of-type(1) {
@@ -3322,7 +3332,8 @@ label.toggle i::after {
 .mode-toggle input:focus + i {
   border-width: 3px;
 }
-.mode-toggle input:focus + i::before {
+.mode-toggle input:focus + i::before,
+.mode-toggle input:focus + i::after {
   margin: 1px;
 }
 .mode-toggle input[disabled] + i {
@@ -3354,6 +3365,20 @@ label.toggle i::after {
   box-sizing: border-box;
   border-radius: 4px;
   background: black;
+  transition: transform 0.2s;
+}
+.mode-toggle i::after {
+  content: "";
+  z-index: 2;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  height: 10px;
+  width: 2px;
+  margin: 2px;
+  border: 4px double #fff;
+  border-top: none;
+  border-bottom: none;
   transition: transform 0.2s;
 }
 .mode-toggle div {
@@ -3396,6 +3421,21 @@ label.toggle i::after {
   background: #4c69bd;
   color: #fff;
 }
+.text-field.title,
+.text-field.name {
+  background: none;
+}
+.text-field.title b,
+.text-field.name b {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.text-field.name b {
+  font-size: 1rem;
+}
 .text-field b {
   display: inline-block;
   width: 100%;
@@ -3406,6 +3446,14 @@ label.toggle i::after {
   vertical-align: middle;
   font-size: 1rem;
   word-wrap: break-word;
+}
+@keyframes hiddenWithDelay {
+  0% {
+    visibility: visible;
+  }
+  100% {
+    visibility: hidden;
+  }
 }
 * {
   -webkit-tap-highlight-color: transparent;
@@ -3436,8 +3484,16 @@ body[data-upload-status="2"] .status-line::before {
 body[data-upload-status="2"] .status-line + i {
   transform: rotate(45deg);
 }
+body:not(.open-menu) nav {
+  animation: hiddenWithDelay 0.2s 1 steps(1, end) forwards;
+}
 body.open-menu nav {
+  visibility: visible;
   transform: translateX(0);
+}
+body.open-menu nav .active > li,
+body.open-menu nav .open > .section-title {
+  visibility: visible;
 }
 @media only screen and (max-width: 639px) {
   body {
@@ -3445,6 +3501,7 @@ body.open-menu nav {
   }
 }
 header {
+  z-index: 100;
   position: fixed;
   top: 0;
   left: 0;
@@ -3489,7 +3546,6 @@ header .head h2 {
 header .head .title {
   display: flex;
   flex-direction: column;
-  align-self: flex-start;
   overflow: hidden;
 }
 @media only screen and (min-width: 640px) {
@@ -3501,22 +3557,27 @@ header .head .separator {
   border-left: 1px solid #fff;
 }
 nav {
+  z-index: 100;
+  visibility: hidden;
   display: flex;
   flex-direction: column;
   position: fixed;
-  right: 0;
+  left: 0;
   top: 0;
-  bottom: 0;
+  height: 100vh;
   width: 320px;
   overflow: hidden;
   background: #4c69bd;
   outline: 1px solid #fff;
   border-left: 2px solid #4c69bd;
-  transform: translateX(100%);
+  transform: translateX(-100%);
   transition: transform 0.2s;
 }
 nav .nav-head {
   flex-shrink: 0;
+}
+nav .nav-head .photo {
+  width: 44px;
 }
 nav .nav-body {
   flex-grow: 1;
@@ -3524,20 +3585,30 @@ nav .nav-body {
   overflow-y: auto;
   overflow-x: hidden;
 }
-nav .nav-body > .section {
-  top: 44px;
-}
 nav .section {
   z-index: 1;
   position: absolute;
   top: 0;
-  bottom: 0;
+  min-height: 100%;
   width: 100%;
+  padding-top: 44px;
   padding-right: 2px;
   box-sizing: border-box;
-  background: #4c69bd;
   transform: translateX(100%);
   transition: transform 0.2s;
+}
+nav .section::before {
+  content: "";
+  position: absolute;
+  top: 44px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #4c69bd;
+}
+nav .section:not(.open) > li:not(.section-title),
+nav .section:not(.active) > li:not(.section-title) {
+  animation: hiddenWithDelay 0.2s 1 steps(1, end) forwards;
 }
 nav .section.open {
   transform: translateX(0);
@@ -3555,7 +3626,11 @@ nav .section.open[data-level="4"] > .section-title {
   left: 140px;
 }
 nav .section.open > .section-title {
+  display: flex;
   outline: 2px solid #4c69bd;
+}
+nav .section > li {
+  visibility: hidden;
 }
 nav .section > li:not(.section-title) > .btn {
   width: 100%;
@@ -3564,17 +3639,17 @@ nav .section > li:not(.section-title) > .btn {
 nav .section-title {
   position: absolute;
   right: 2px;
-  top: -44px;
+  top: 0;
   height: 44px;
   background: #d9e2ff;
 }
 nav .section-title > .btn {
+  z-index: 2;
   background: transparent;
   border-color: transparent;
 }
 main {
   min-height: 100%;
   padding-top: 44px;
-  padding-right: 320px;
   box-sizing: border-box;
 }

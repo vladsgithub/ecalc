@@ -1,5 +1,11 @@
 var uploadData, loadData, layoutControl;
 
+function forEach(elements, callback) {
+	Array.prototype.forEach.call(elements, callback);
+};
+
+
+
 (function () {
     'use strict';
     angular.module('app', []);
@@ -78,23 +84,34 @@ var uploadData, loadData, layoutControl;
 				var dataNextButtons = self.navBody.querySelectorAll('[data-next]');
 				var dataPreviousButtons = self.navBody.querySelectorAll('[data-previous]');
 
-				dataNextButtons.forEach(function(button, i, arr) {
+				var activateMenu = function(menu) {
+					self.navBody.querySelectorAll('.active')[0].classList.remove('active');
+					menu.classList.add('active');
+				}
+
+				forEach(dataNextButtons, function(button, i, arr) {
 					button.addEventListener('click', function() {
-						if (button.nextElementSibling) {
-							button.nextElementSibling.classList.add('open');
-							console.log(button.nextElementSibling.querySelectorAll('button')[0]);
+						var section = button.nextElementSibling;
+
+						if (section) {
+							section.classList.add('open');
+							activateMenu(section);
 
 							setTimeout(function() {
-								console.log(button.nextElementSibling.querySelectorAll('button')[0]);
-								button.nextElementSibling.querySelectorAll('button')[0].focus();
+								var firstButton = section.querySelectorAll('button')[0];
+
+								if (firstButton) firstButton.focus();
 							}, 220);
 						}
 					});
 				});
 
-				dataPreviousButtons.forEach(function(button, i, arr) {
+				forEach(dataPreviousButtons, function(button, i, arr) {
 					button.addEventListener('click', function() {
-						button.parentNode.parentNode.querySelectorAll('.open').forEach(function(section, i, arr) {
+						var activeSection = button.parentNode.parentNode;
+
+						activateMenu(activeSection);
+						forEach(activeSection.querySelectorAll('.open'), function(section, i, arr) {
 							section.classList.remove('open');
 						});
 					});

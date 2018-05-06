@@ -1,31 +1,26 @@
-<!--<header id="header">-->
-
-	<!--<div class="head">-->
-		<!--Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.-->
-
-		<!--<div class="status-line"></div>-->
-	<!--</div>-->
-
-	<!--<iframe src="about:blank" id="headerIframe" class="ghost">It needs to control a height of the header</iframe>-->
-<!--</header>-->
-
 <header>
 
-	<ul class="head flex center-align">
-		<li></li>
-		<li class="title flex-grow">
+	<ul class="head flex">
+		<li>
+			<button class="btn solid" title="Меню" ng-click="layout.isOpenMenu = true">
+				<i class="fas fa-bars"></i>
+				<b>Меню</b>
+			</button>
+		</li>
+		<li class="title flex-grow separator">
 			<h1>Cost panel</h1>
 			<h2>Название расчета</h2>
 		</li>
 		<li class="separator">
-			<button class="btn solid" title="Сохранить на сервере под текущим аккаунтом">
+			<button class="btn solid" disabled title="Все изменения сохранены">
 				<b class="status-line">ВР</b>
 				<i class="fas fa-save"></i>
 			</button>
 		</li>
 		<li class="separator">
-			<button class="btn solid" title="Меню" ng-click="layout.isOpenMenu = true">
-				<i class="fas fa-bars"></i>
+			<button class="btn solid" title="Все расчеты">
+				<i class="fas fa-ellipsis-v"></i>
+				<b>Все расчеты</b>
 			</button>
 		</li>
 	</ul>
@@ -34,11 +29,13 @@
 
 <nav>
 	<ul class="nav-head flex">
-		<li>
-			Photo
+		<li class="photo">
+
 		</li>
 		<li class="flex-grow">
-			Владислав Стасевич
+			<div class="text-field name solid">
+				<b>Владислав Стасевич</b>
+			</div>
 		</li>
 		<li>
 			<button class="btn solid" title="Меню" ng-click="layout.isOpenMenu = false">
@@ -49,12 +46,12 @@
 
 	<div id="navBody" class="nav-body">
 
-		<ul class="section open" data-level="1">
+		<ul class="section open active" data-level="1">
 			<li class="section-title">
 				<button class="btn" data-previous title="Меню">
 					<i class="fas fa-bars"></i>
 				</button>
-				Главное меню
+				<div class="text-field title"><b>Главное меню</b></div>
 			</li>
 
 			<li>
@@ -74,7 +71,7 @@
 						<button class="btn" data-previous title="Авторизация">
 							<i class="fas fa-user-circle"></i>
 						</button>
-						Авторизация
+						<div class="text-field title"><b>Авторизация</b></div>
 					</li>
 
 					<li>
@@ -88,7 +85,7 @@
 								<button class="btn" data-previous title="Something else">
 									<i class="fas fa-user-secret"></i>
 								</button>
-								Something else
+								<div class="text-field title"><b>Something else</b></div>
 							</li>
 
 							<li>
@@ -166,7 +163,10 @@
 	To configure Apache to send the X-Frame-Options header for all pages, add this to your site's configuration:<br/>
 	Header always set X-Frame-Options DENY<br/><br/>
 
-
+	<button class="btn solid" title="Все расчеты">
+		<i class="fas fa-ellipsis-v"></i>
+		<b>Все расчеты</b>
+	</button>
 	What is Lorem Ipsum?
 	Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 	Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
