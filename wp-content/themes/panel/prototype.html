@@ -155,22 +155,47 @@
 	</div>
 </nav>
 
-<main>
+<main ng-click="layout.isOpenMenu = false">
 
-	We have to use iframe in the header!
-	<br/>
-	Configuring Apache<br/>
-	To configure Apache to send the X-Frame-Options header for all pages, add this to your site's configuration:<br/>
-	Header always set X-Frame-Options DENY<br/><br/>
+	<div class="three-window-lt">
+		<div class="header-lt">
+			header
+		</div>
 
-	<button class="btn solid" title="Все расчеты">
-		<i class="fas fa-ellipsis-v"></i>
-		<b>Все расчеты</b>
-	</button>
-	What is Lorem Ipsum?
-	Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-	Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-	Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+		<ul>
+			<li class="left-lt" ng-class="(layout.activeWindow == 1) ? 'active' : ''" ng-click="layout.activeWindow = 1">
+				<div class="title-lt">
+					1.title
+				</div>
+				<div class="window-lt">
+					<br/><br/><br/><input type="text"/>
+					<button>button</button>
+				</div>
+			</li>
+
+			<li class="center-lt" ng-class="(layout.activeWindow == 2) ? 'active' : ''" ng-click="layout.activeWindow = 2">
+				<div class="title-lt">
+					2.title
+				</div>
+				<div class="window-lt">
+					<br/><br/><br/><input type="text"/>
+					<button>button</button>
+				</div>
+			</li>
+
+			<li class="right-lt" ng-class="(layout.activeWindow == 3) ? 'active' : ''" ng-click="layout.activeWindow = 3">
+				<div class="title-lt">
+					3.title
+				</div>
+				<div class="window-lt">
+					<br/><br/><br/><input type="text"/>
+					<button>button</button>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+</main>
 
 </main>
 

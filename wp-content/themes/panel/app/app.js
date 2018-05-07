@@ -70,7 +70,8 @@ function forEach(elements, callback) {
 //        };
 
 		$scope.layout = {
-			isOpenMenu: true
+			isOpenMenu: true,
+			activeWindow: 1
 		};
 
 		layoutControl = {
@@ -78,6 +79,7 @@ function forEach(elements, callback) {
 
 			init: function () {
 				this.navMenuInit();
+				this.windowsInit();
 			},
 			navMenuInit: function() {
 				var self = this;
@@ -116,6 +118,9 @@ function forEach(elements, callback) {
 						});
 					});
 				});
+			},
+			windowsInit: function() {
+
 			}
 //			minimizingHeaderByScrolling: function() {
 //				var self = this;

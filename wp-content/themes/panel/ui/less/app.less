@@ -54,7 +54,7 @@ body {
 		}
 	}
 
-	@media only screen and (max-width: (@tablet - 1)) {
+	@media only screen and (max-width: ((@tablet - 1))) {
 		font-size: 1.2rem;
 	}
 }
@@ -124,7 +124,7 @@ nav {
 	width: 320px;
 	overflow: hidden;
 	background: @brand-strong;
-	outline: 1px solid @white;
+	outline: 2px solid @brand-light;
 	border-left: 2px solid @brand-strong;
 	transform: translateX(-100%);
 	transition: transform @delay;
@@ -208,13 +208,131 @@ nav {
 		}
 	}
 }
-main {
-	min-height: 100%;
-	padding-top: 44px;
-//	padding-bottom: 50px; // for footer if it is with fixed height
-	box-sizing: border-box;
+
+.three-window-lt {
+	@windowMinWidth: 500px;
+	@winIndent: 20px;
+	@winBorder: 4px;
+	@winHeader: 44px;
+
+	position: absolute; top: 44px; right: 0; bottom: 0; left: 0;
+	background: @brand-light;
+
+	@media only screen and (max-width: (@tablet - 1)) {
+		display: flex;
+		flex-direction: column;
+		position: static;
+		min-height: 100vh;
+		padding-top: 44px;
+		box-sizing: border-box;
+	}
+
+	> .header-lt {
+		display: none;
+	}
+	> ul {
+		position: absolute; top: 0; right: @winIndent; bottom: 0; left: 20px;
+
+		@media only screen and (max-width: (@tablet - 1)) {
+			position: static;
+			flex-grow: 1;
+			padding: 0 @winIndent 0;
+		}
+		@media only screen and (min-width: (@windowMinWidth * 3)) {
+			left: 0;
+		}
+
+		> li {
+			z-index: 1;
+			position: absolute; top: 0;
+			height: 100%;
+			width: 33.33%;
+			min-width: @windowMinWidth;
+			padding: (@winIndent + @winHeader - @winBorder) 0 @winIndent 0;
+			box-sizing: border-box;
+			transition: transform .2s;
+
+			@media only screen and (max-width: (@tablet - 1)) {
+				display: none;
+				position: relative;
+				width: auto;
+				min-height: 100%;
+				min-width: 0;
+			}
+			@media only screen and (min-width: (@windowMinWidth * 3)) {
+				padding-left: @winIndent;
+			}
+
+			&::before {
+				content: "";
+				position: absolute; top: (@winIndent + @winHeader); right: -@winBorder; bottom: (@winIndent - @winBorder); left: -@winBorder;
+				border: @winBorder solid @brand-light;
+				border-radius: 0 0 (@winBorder * 3) (@winBorder * 3);
+
+				@media only screen and (min-width: (@windowMinWidth * 3)) {
+					left: (@winIndent - @winBorder);
+				}
+			}
+
+			&.left-lt {
+				left: 0;
+			}
+			&.center-lt {
+				position: relative;
+				margin: auto;
+			}
+			&.right-lt {
+				right: 0;
+			}
+			&.active {
+				z-index: 3;
+				display: block;
+
+				+ li { z-index: 2; }
+				.title-lt {
+					transform: translateY(0);
+				}
+			}
+			&:not(.active) {
+				&:hover {
+					.title-lt {
+						@media only screen and (max-width: (@windowMinWidth * 3 - 1)) {
+							transform: translateY(@winIndent);
+						}
+					}
+				}
+			}
+		}
+	}
+	.title-lt {
+		z-index: 1;
+		position: absolute; left: -@winBorder; right: -@winBorder; top: (@winIndent - @winBorder);
+		height: @winHeader;
+		border: @winBorder solid @brand-light;
+		border-bottom: 0;
+		border-radius: (@winBorder * 2) (@winBorder * 2) 0 0;
+		background: @brand-strong;
+		transform: translateY(@winHeader - @winBorder * 2);
+		transition: transform .2s;
+
+		@media only screen and (min-width: (@windowMinWidth * 3)) {
+			left: (@winIndent - @winBorder);
+			transform: translateY(0);
+		}
+	}
+	.window-lt {
+		position: relative;
+		height: 100%;
+		min-height: 300px;
+		box-sizing: border-box;
+		border: @winBorder solid @brand-strong;
+		border-radius: 0 0 (@winBorder * 2) (@winBorder * 2);
+		background: white;
+		overflow-y: auto;
+	}
 }
+
 footer {
-//	height: 50px;
-//	margin-top: -50px;
+	//	height: 50px;
+	//	margin-top: -50px;
 }

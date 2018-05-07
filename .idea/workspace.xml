@@ -85,25 +85,25 @@
       <file leaf-file-name="variables.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="12" selection-start="116" selection-end="116" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="799">
+            <state line="25" column="16" selection-start="309" selection-end="309" vertical-scroll-proportion="-16.346153" vertical-offset="0" max-vertical-offset="799">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="common.less" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="common.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="577" column="28" selection-start="10227" selection-end="10227" vertical-scroll-proportion="0.5724551" vertical-offset="9331" max-vertical-offset="10217">
+            <state line="577" column="28" selection-start="10227" selection-end="10227" vertical-scroll-proportion="-192.33333" vertical-offset="0" max-vertical-offset="10217">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.less" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.less" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="135" column="24" selection-start="2663" selection-end="2663" vertical-scroll-proportion="-8.372549" vertical-offset="1868" max-vertical-offset="3825">
+            <state line="259" column="29" selection-start="5057" selection-end="5057" vertical-scroll-proportion="0.78904426" vertical-offset="3726" max-vertical-offset="5831">
               <folding />
             </state>
           </provider>
@@ -112,7 +112,7 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="115" column="27" selection-start="3786" selection-end="3786" vertical-scroll-proportion="-6.8" vertical-offset="1785" max-vertical-offset="21080">
+            <state line="71" column="21" selection-start="2499" selection-end="2505" vertical-scroll-proportion="-5.44" vertical-offset="1071" max-vertical-offset="21165">
               <folding />
             </state>
           </provider>
@@ -121,26 +121,10 @@
       <file leaf-file-name="prototype.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/prototype.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="13" selection-start="712" selection-end="712" vertical-scroll-proportion="-11.0" vertical-offset="0" max-vertical-offset="3128">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/header.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="117" selection-start="1881" selection-end="1881" vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="1751">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="page.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/page.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="363" column="112" selection-start="11795" selection-end="11886" vertical-scroll-proportion="0.0" vertical-offset="5894" max-vertical-offset="13005">
-              <folding />
+            <state line="165" column="30" selection-start="3522" selection-end="3522" vertical-scroll-proportion="-10.038462" vertical-offset="708" max-vertical-offset="1717">
+              <folding>
+                <element signature="tag#div#0;tag#nav#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -148,13 +132,22 @@
       <file leaf-file-name="guide.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/guide.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="143" column="48" selection-start="2832" selection-end="2832" vertical-scroll-proportion="-12.45098" vertical-offset="1796" max-vertical-offset="3400">
+            <state line="143" column="47" selection-start="2831" selection-end="2831" vertical-scroll-proportion="-12.45098" vertical-offset="1796" max-vertical-offset="3400">
               <folding>
                 <element signature="n#style#0;n#div#0;n#li#5;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#li#5;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#li#5;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#3;n#li#5;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/page.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="347" column="97" selection-start="11258" selection-end="11341" vertical-scroll-proportion="-5.45098" vertical-offset="5621" max-vertical-offset="13005">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -186,7 +179,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/wp-content/themes/ecalc/app/pages/expenses/template/expensesTemplate.html" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/Gruntfile.js" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/css/fonts.css" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/css/app-old.css" />
@@ -197,11 +189,12 @@
         <option value="$PROJECT_DIR$/wp-content/themes/panel/header.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/functions.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less" />
-        <option value="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" />
-        <option value="$PROJECT_DIR$/guide.html" />
-        <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" />
-        <option value="$PROJECT_DIR$/wp-content/themes/panel/prototype.html" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/css/reset.css" />
+        <option value="$PROJECT_DIR$/guide.html" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/prototype.html" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" />
       </list>
     </option>
   </component>
@@ -364,6 +357,10 @@
               <option name="myItemId" value="ui" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -493,7 +490,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -527,21 +524,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/single.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="871" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-load.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.8694158" vertical-offset="759" max-vertical-offset="1683" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/send.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="122" selection-start="1533" selection-end="1533" vertical-scroll-proportion="-12.8" vertical-offset="428" max-vertical-offset="1411" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="2" selection-start="274" selection-end="274" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527" />
@@ -550,13 +532,6 @@
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/css/app-old.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="14" selection-start="14" selection-end="14" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6035">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="363" column="112" selection-start="11795" selection-end="11886" vertical-scroll-proportion="0.0" vertical-offset="5894" max-vertical-offset="13005">
           <folding />
         </state>
       </provider>
@@ -573,9 +548,23 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/functions.php">
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="119" column="114" selection-start="7258" selection-end="7258" vertical-scroll-proportion="0.0" vertical-offset="1648" max-vertical-offset="3621">
+        <state line="2752" column="6" selection-start="42877" selection-end="42883" vertical-scroll-proportion="0.33254716" vertical-offset="46502" max-vertical-offset="62237">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/css/reset.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="21" selection-start="783" selection-end="783" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/page.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="886">
           <folding />
         </state>
       </provider>
@@ -587,23 +576,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="12" selection-start="116" selection-end="116" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="799">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="27" selection-start="3786" selection-end="3786" vertical-scroll-proportion="-6.8" vertical-offset="1785" max-vertical-offset="21080">
+        <state line="71" column="21" selection-start="2499" selection-end="2505" vertical-scroll-proportion="-5.44" vertical-offset="1071" max-vertical-offset="21165">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/guide.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="143" column="48" selection-start="2832" selection-end="2832" vertical-scroll-proportion="-12.45098" vertical-offset="1796" max-vertical-offset="3400">
+        <state line="143" column="47" selection-start="2831" selection-end="2831" vertical-scroll-proportion="-12.45098" vertical-offset="1796" max-vertical-offset="3400">
           <folding>
             <element signature="n#style#0;n#div#0;n#li#5;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#li#5;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -613,23 +595,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="135" column="24" selection-start="2663" selection-end="2663" vertical-scroll-proportion="-8.372549" vertical-offset="1868" max-vertical-offset="3825">
+        <state line="347" column="97" selection-start="11258" selection-end="11341" vertical-scroll-proportion="-5.45098" vertical-offset="5621" max-vertical-offset="13005">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="119" column="114" selection-start="7258" selection-end="7258" vertical-scroll-proportion="0.0" vertical-offset="1648" max-vertical-offset="3621">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/prototype.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="13" selection-start="712" selection-end="712" vertical-scroll-proportion="-11.0" vertical-offset="0" max-vertical-offset="3128">
-          <folding />
+        <state line="165" column="30" selection-start="3522" selection-end="3522" vertical-scroll-proportion="-10.038462" vertical-offset="708" max-vertical-offset="1717">
+          <folding>
+            <element signature="tag#div#0;tag#nav#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="577" column="28" selection-start="10227" selection-end="10227" vertical-scroll-proportion="0.5724551" vertical-offset="9331" max-vertical-offset="10217">
+        <state line="577" column="28" selection-start="10227" selection-end="10227" vertical-scroll-proportion="-192.33333" vertical-offset="0" max-vertical-offset="10217">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="16" selection-start="309" selection-end="309" vertical-scroll-proportion="-16.346153" vertical-offset="0" max-vertical-offset="799">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="259" column="29" selection-start="5057" selection-end="5057" vertical-scroll-proportion="0.78904426" vertical-offset="3726" max-vertical-offset="5831">
           <folding />
         </state>
       </provider>
