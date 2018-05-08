@@ -2817,6 +2817,11 @@ table {
 .background {
   background: #4c69bd;
 }
+@media only screen and (max-width: 639px) {
+  .no-mobile {
+    display: none !important;
+  }
+}
 .flex {
   display: flex;
 }
@@ -3413,7 +3418,6 @@ label.toggle i::after {
   max-width: 100%;
   line-height: 44px;
   box-sizing: border-box;
-  background: #fff;
   vertical-align: top;
   font-size: 0;
   color: #000;
@@ -3421,10 +3425,6 @@ label.toggle i::after {
 .text-field.solid {
   background: #4c69bd;
   color: #fff;
-}
-.text-field.title,
-.text-field.name {
-  background: none;
 }
 .text-field.title b,
 .text-field.name b {
@@ -3473,6 +3473,11 @@ body {
   box-sizing: border-box;
   font-size: 1rem;
 }
+@media only screen and (max-width: 639px) {
+  body {
+    font-size: 1.2rem;
+  }
+}
 body[data-upload-status="0"] .status-line::before {
   background: #dddd00;
 }
@@ -3496,10 +3501,12 @@ body.open-menu nav .active > li,
 body.open-menu nav .open > .section-title {
   visibility: visible;
 }
-@media only screen and (max-width: 639px) {
-  body {
-    font-size: 1.2rem;
-  }
+body:not(.open-aside) aside {
+  animation: hiddenWithDelay 0.2s 1 steps(1, end) forwards;
+}
+body.open-aside aside {
+  visibility: visible;
+  transform: translateX(0);
 }
 header {
   z-index: 100;
@@ -3508,6 +3515,7 @@ header {
   left: 0;
   transform: translateX(0);
   width: 100%;
+  outline: 2px solid #d9e2ff;
 }
 header .head {
   height: 44px;
@@ -3555,7 +3563,7 @@ header .head .title {
   }
 }
 header .head .separator {
-  border-left: 1px solid #fff;
+  border-left: 2px solid #d9e2ff;
 }
 nav {
   z-index: 100;
@@ -3571,7 +3579,7 @@ nav {
   background: #4c69bd;
   outline: 2px solid #d9e2ff;
   border-left: 2px solid #4c69bd;
-  transform: translateX(-100%);
+  transform: translateX(-101%);
   transition: transform 0.2s;
 }
 nav .nav-head {
@@ -3649,6 +3657,35 @@ nav .section-title > .btn {
   background: transparent;
   border-color: transparent;
 }
+aside {
+  z-index: 99;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 320px;
+  padding-top: 44px;
+  overflow: hidden;
+  background: #4c69bd;
+  outline: 2px solid #d9e2ff;
+  border-left: 2px solid #4c69bd;
+  transform: translateX(101%);
+  transition: transform 0.2s;
+}
+aside .aside-head {
+  flex-shrink: 0;
+  background: #d9e2ff;
+  border-top: 4px solid #4c69bd;
+}
+aside .aside-body {
+  flex-grow: 1;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 .three-window-lt {
   position: absolute;
   top: 44px;
@@ -3705,7 +3742,6 @@ nav .section-title > .btn {
     display: none;
     position: relative;
     width: auto;
-    min-height: 100%;
     min-width: 0;
   }
 }

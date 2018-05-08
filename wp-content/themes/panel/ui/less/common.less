@@ -19,6 +19,13 @@
 
 
 
+
+.no-mobile {
+	@media only screen and (max-width: (@tablet - 1)) {
+		display: none !important;
+	}
+}
+
 .flex {
 	display: flex;
 
@@ -557,7 +564,6 @@ label {
 	min-height: 44px; max-width: 100%;
 	line-height: 44px;
 	box-sizing: border-box;
-	background: @white;
 	vertical-align: top;
 	font-size: 0;
 	color: @black;
@@ -568,8 +574,6 @@ label {
 	}
 	&.title,
 	&.name {
-		background: none;
-
 		b {
 			overflow: hidden;
 			white-space: nowrap;

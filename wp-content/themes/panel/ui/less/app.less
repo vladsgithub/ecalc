@@ -7,10 +7,7 @@
 //@import (less) "../css/app.css";
 
 
-//@keyframes noneWithDelay {
-//	0% { display: block; outline: 2px solid red; }
-//	100% { display: none; opacity: 0.2; outline: 2px solid green; }
-//}
+
 @keyframes hiddenWithDelay {
 	0% { visibility: visible; }
 	100% { visibility: hidden; }
@@ -34,6 +31,10 @@ body {
 	box-sizing: border-box;
 	font-size: 1rem;
 
+	@media only screen and (max-width: ((@tablet - 1))) {
+		font-size: 1.2rem;
+	}
+
 	&[data-upload-status="0"] .status-line::before { background: @pending; }
 	&[data-upload-status="1"] .status-line::before { background: @success; }
 	&[data-upload-status="2"] .status-line {
@@ -54,8 +55,12 @@ body {
 		}
 	}
 
-	@media only screen and (max-width: ((@tablet - 1))) {
-		font-size: 1.2rem;
+	&:not(.open-aside) aside {
+		animation: hiddenWithDelay @delay 1 steps(1,end) forwards;
+	}
+	&.open-aside aside {
+		visibility: visible;
+		transform: translateX(0);
 	}
 }
 
@@ -64,6 +69,7 @@ header {
 	position: fixed; top: 0; left: 0;
 	transform: translateX(0);
 	width: 100%;
+	outline: 2px solid @brand-light;
 
 	.head {
 		height: 44px;
@@ -108,7 +114,7 @@ header {
 			}
 		}
 		.separator {
-			border-left: 1px solid @white;
+			border-left: 2px solid @brand-light;
 		}
 	}
 }
@@ -126,7 +132,7 @@ nav {
 	background: @brand-strong;
 	outline: 2px solid @brand-light;
 	border-left: 2px solid @brand-strong;
-	transform: translateX(-100%);
+	transform: translateX(-101%);
 	transition: transform @delay;
 
 	.nav-head {
@@ -209,6 +215,37 @@ nav {
 	}
 }
 
+aside {
+	z-index: @z-aside;
+	visibility: hidden;
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	right: 0;
+	top: 0;
+	height: 100vh;
+	width: 320px;
+	padding-top: 44px;
+	overflow: hidden;
+	background: @brand-strong;
+	outline: 2px solid @brand-light;
+	border-left: 2px solid @brand-strong;
+	transform: translateX(101%);
+	transition: transform @delay;
+
+	.aside-head {
+		flex-shrink: 0;
+		background: @brand-light;
+		border-top: 4px solid @brand-strong;
+	}
+	.aside-body {
+		flex-grow: 1;
+		position: relative;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+}
+
 .three-window-lt {
 	@windowMinWidth: 500px;
 	@winIndent: 20px;
@@ -256,7 +293,6 @@ nav {
 				display: none;
 				position: relative;
 				width: auto;
-				min-height: 100%;
 				min-width: 0;
 			}
 			@media only screen and (min-width: (@windowMinWidth * 3)) {

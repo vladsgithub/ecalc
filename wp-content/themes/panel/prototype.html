@@ -4,7 +4,7 @@
 		<li>
 			<button class="btn solid" title="Меню" ng-click="layout.isOpenMenu = true">
 				<i class="fas fa-bars"></i>
-				<b>Меню</b>
+				<b class="no-mobile">Меню</b>
 			</button>
 		</li>
 		<li class="title flex-grow separator">
@@ -13,14 +13,14 @@
 		</li>
 		<li class="separator">
 			<button class="btn solid" disabled title="Все изменения сохранены">
-				<b class="status-line">ВР</b>
+				<b class="status-line">ВС</b>
 				<i class="fas fa-save"></i>
 			</button>
 		</li>
 		<li class="separator">
-			<button class="btn solid" title="Все расчеты">
+			<button class="btn solid" title="Все расчеты" ng-click="layout.isOpenAside = (layout.isOpenAside) ? false : true">
 				<i class="fas fa-ellipsis-v"></i>
-				<b>Все расчеты</b>
+				<b class="no-mobile">Расчеты</b>
 			</button>
 		</li>
 	</ul>
@@ -155,7 +155,28 @@
 	</div>
 </nav>
 
-<main ng-click="layout.isOpenMenu = false">
+<aside>
+	<ul class="aside-head flex">
+		<li>
+			<label class="toggle">
+				<input type="checkbox">
+				<i></i>
+			</label>
+		</li>
+
+		<li class="flex-grow">
+			<div class="text-field">
+				<b>Расчет напрямую</b>
+			</div>
+		</li>
+	</ul>
+
+	<div class="aside-body">
+
+	</div>
+</aside>
+
+<main ng-click="layout.isOpenMenu = false; layout.isOpenAside = false;">
 
 	<div class="three-window-lt">
 		<div class="header-lt">
