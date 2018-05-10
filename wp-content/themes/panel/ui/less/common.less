@@ -19,7 +19,6 @@
 
 
 
-
 .no-mobile {
 	@media only screen and (max-width: (@tablet - 1)) {
 		display: none !important;
@@ -38,6 +37,10 @@
 	}
 }
 
+.s-p1 { .side-padding(@padding); }
+.s-p2 { .side-padding(@padding * 2); }
+.s-p3 { .side-padding(@padding * 3); }
+.s-p4 { .side-padding(@padding * 4); }
 
 
 .tooltip {
@@ -98,12 +101,25 @@
 		vertical-align: middle;
 		font-size: 22px;
 
-		+ b { margin-left: 10px; }
+		+ b {
+			margin-left: 10px;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
 	}
 	b {
+		display: inline-block;
+		padding: 5px 0;
+		max-width: 100%;
+		line-height: 1.2;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
 		vertical-align: middle;
 		text-transform: uppercase;
-		font-family: RobotoSlab; font-size: 1.2rem; font-weight: bold;
+		word-wrap: break-word;
+		font-family: RobotoSlab; font-size: 1.2rem;
 
 		&.status-line {
 			display: inline-block;
@@ -268,7 +284,7 @@ label {
 		option {
 			font-family: inherit; font-size: 1rem; color: @black;
 
-			&[disabled] { color: @gray; }
+			&[disabled] { color: @strong-gray; }
 		}
 		b {
 			display: inline-block;
@@ -361,7 +377,7 @@ label {
 		}
 		&::after {
 			right: 7px;
-			color: @gray;
+			color: @strong-gray;
 			content: "\f00d";
 		}
 
@@ -385,13 +401,13 @@ label {
 
 			i {
 				border-color: @white;
-				background: @gray;
+				background: @strong-gray;
 
 				&::before {
 					background: @white;
 				}
 				&::after {
-					border-color: @gray;
+					border-color: @strong-gray;
 				}
 			}
 		}
@@ -427,7 +443,7 @@ label {
 			position: absolute; left: 0;
 			height: 28px; width: 100%;
 			box-sizing: border-box;
-			border: 2px solid @gray;
+			border: 2px solid @strong-gray;
 			border-radius: 6px;
 			background: @white;
 			transition: border-color @delay;
@@ -440,7 +456,7 @@ label {
 				margin: 2px;
 				box-sizing: border-box;
 				border-radius: 4px;
-				background: @gray;
+				background: @strong-gray;
 				transition: transform @delay, background @delay;
 			}
 			&::after {
@@ -572,6 +588,9 @@ label {
 		background: @brand-strong;
 		color: @white;
 	}
+	&.bold {
+		font-weight: bold;
+	}
 	&.title,
 	&.name {
 		b {
@@ -589,7 +608,7 @@ label {
 	b {
 		display: inline-block;
 		width: 100%;
-		padding: 3px 5px;
+		padding: 3px 0;
 		overflow: hidden;
 		box-sizing: border-box;
 		line-height: 1.3;

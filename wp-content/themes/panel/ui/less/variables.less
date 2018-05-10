@@ -13,11 +13,15 @@
 
 @delay: 0.2s;
 
+//====== Padding
+
+@padding: 5px;
+
 //====== Color palette
 
 @white: #fff;
 @black: #000;
-@strong-gray: #666;
+@strong-gray: #696969; // this color is grey version of the @brand-strong color
 @gray: #888;
 
 @success: #00c900;
@@ -27,7 +31,7 @@
 @focus: #00bfff;
 
 @brand-strong: #4c69bd;
-@brand-light: #d9e2ff;
+@brand-light: #e2e8ff;
 
 
 //====== Mixins
@@ -40,4 +44,9 @@
 	text-rendering: auto;
 	font-family: 'Font Awesome 5 Free';
 	font-weight: normal;
+}
+
+.side-padding(@value) {
+	padding-left: @value !important;
+	padding-right: @value !important;
 }

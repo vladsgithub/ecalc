@@ -155,23 +155,134 @@
 	</div>
 </nav>
 
-<aside>
+<aside ng-class="{'edit-mode': layout.isEditAccountsMode}">
 	<ul class="aside-head flex">
-		<li>
+		<li class="s-p1">
 			<label class="toggle">
-				<input type="checkbox">
+				<input type="checkbox" ng-model="layout.isEditAccountsMode">
 				<i></i>
 			</label>
 		</li>
 
-		<li class="flex-grow">
-			<div class="text-field">
-				<b>Расчет напрямую</b>
+		<li class="flex-grow s-p1">
+			<div class="text-field bold">
+				<b>Режим редактирования</b>
 			</div>
 		</li>
 	</ul>
 
 	<div class="aside-body">
+
+		<ul>
+			<li class="account flex active1">
+				<div class="flex-grow">
+					<button class="btn solid view-mode">
+						<b>Название расчета</b>
+					</button>
+
+					<label class="text-input edit-mode">
+						<input type="text" value="Tекст ДублированныйтекстДублированный текст">
+						<b>Tекст ДублированныйтекстДублированный текст</b>
+					</label>
+				</div>
+
+				<div>
+					<button class="btn solid edit-mode">
+						<i class="fas fa-trash-alt"></i>
+					</button>
+				</div>
+			</li>
+
+			<li class="account flex">
+				<div class="flex-grow">
+					<button class="btn solid view-mode">
+						<b>Название расчета</b>
+					</button>
+
+					<label class="text-input edit-mode">
+						<input type="text" value="Tекст ДублированныйтекстДублированный текст">
+						<b>Tекст ДублированныйтекстДублированный текст</b>
+					</label>
+				</div>
+				<div>
+					<button class="btn solid edit-mode">
+						<i class="fas fa-trash-alt"></i>
+					</button>
+				</div>
+			</li>
+
+			<li class="account flex active">
+				<div class="flex-grow">
+					<button class="btn solid view-mode">
+						<b>Название расчета</b>
+					</button>
+
+					<label class="text-input edit-mode">
+						<input type="text" value="Tекст ДублированныйтекстДублированный текст">
+						<b>Tекст ДублированныйтекстДублированный текст</b>
+					</label>
+				</div>
+				<div>
+					<button class="btn solid edit-mode">
+						<i class="fas fa-trash-alt"></i>
+					</button>
+				</div>
+			</li>
+
+			<li class="account flex">
+				<div class="flex-grow">
+					<button class="btn solid view-mode">
+						<b>Название расчета</b>
+					</button>
+
+					<label class="text-input edit-mode">
+						<input type="text" value="Tекст ДублированныйтекстДублированный текст">
+						<b>Tекст ДублированныйтекстДублированный текст</b>
+					</label>
+				</div>
+				<div>
+					<button class="btn solid edit-mode">
+						<i class="fas fa-trash-alt"></i>
+					</button>
+				</div>
+			</li>
+
+			<li class="account flex">
+				<div class="flex-grow">
+					<button class="btn solid view-mode">
+						<b>Название расчета</b>
+					</button>
+
+					<label class="text-input edit-mode">
+						<input type="text" value="Tекст ДублированныйтекстДублированный текст">
+						<b>Tекст ДублированныйтекстДублированный текст</b>
+					</label>
+				</div>
+				<div>
+					<button class="btn solid edit-mode">
+						<i class="fas fa-trash-alt"></i>
+					</button>
+				</div>
+			</li>
+
+			<li class="account flex">
+				<div class="flex-grow">
+					<button class="btn solid view-mode">
+						<b>Название расчета</b>
+					</button>
+
+					<label class="text-input edit-mode">
+						<input type="text" value="Tекст ДублированныйтекстДублированный текст">
+						<b>Tекст ДублированныйтекстДублированный текст</b>
+					</label>
+				</div>
+				<div>
+					<button class="btn solid edit-mode">
+						<i class="fas fa-trash-alt"></i>
+					</button>
+				</div>
+			</li>
+		</ul>
 
 	</div>
 </aside>

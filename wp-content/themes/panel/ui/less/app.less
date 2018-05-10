@@ -226,12 +226,30 @@ aside {
 	height: 100vh;
 	width: 320px;
 	padding-top: 44px;
+	box-sizing: border-box;
 	overflow: hidden;
 	background: @brand-strong;
 	outline: 2px solid @brand-light;
 	border-left: 2px solid @brand-strong;
+	border-right: 2px solid @brand-strong;
 	transform: translateX(101%);
 	transition: transform @delay;
+
+	@media only screen and (min-width: @tablet) {
+		width: 400px;
+	}
+
+	&.edit-mode {
+		.active {
+			background: @white;
+		}
+		.view-mode {
+			display: none;
+		}
+	}
+	&:not(.edit-mode) .edit-mode {
+		display: none;
+	}
 
 	.aside-head {
 		flex-shrink: 0;
@@ -243,6 +261,57 @@ aside {
 		position: relative;
 		overflow-y: auto;
 		overflow-x: hidden;
+		padding-bottom: 7px;
+		border-top: 7px solid @brand-strong;
+
+		> ul {
+			position: relative;
+
+			&::before {
+				content: "";
+				z-index: 1;
+				position: absolute;
+				left: 0;
+				top: 0;
+				bottom: 0;
+				border-left: 7px solid @brand-strong;
+			}
+		}
+	}
+	.account {
+		position: relative;
+		margin: 0 5px;
+
+		&::before,
+		&::after {
+			content: "";
+			z-index: 1;
+			position: absolute;
+			left: 0;
+			right: 0;
+			border-top: 2px solid @brand-strong;
+		}
+		&::before { top: 0; }
+		&::after { bottom: 0; }
+
+		&.active {
+
+			.btn {
+				background: @white;
+				color: @brand-strong;
+			}
+			.edit-mode {
+				border-color: transparent;
+			}
+		}
+
+		> div:first-child {
+			overflow: hidden;
+		}
+		.btn,
+		.text-input {
+			width: 100%;
+		}
 	}
 }
 

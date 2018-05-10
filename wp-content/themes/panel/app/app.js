@@ -72,6 +72,7 @@ function forEach(elements, callback) {
 		$scope.layout = {
 			isOpenMenu: true,
 			isOpenAside: true,
+			isEditAccountsMode: false,
 			activeWindow: 1
 		};
 
