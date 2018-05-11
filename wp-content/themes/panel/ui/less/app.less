@@ -31,7 +31,7 @@ body {
 	box-sizing: border-box;
 	font-size: 1rem;
 
-	@media only screen and (max-width: ((@tablet - 1))) {
+	@media only screen and (max-width: ((@mobile - 1))) {
 		font-size: 1.2rem;
 	}
 
@@ -90,7 +90,7 @@ header {
 			padding-left: 6px;
 			font-size: 1.6rem;
 
-			@media only screen and (min-width: @tablet) {
+			@media only screen and (min-width: @mobile) {
 				flex-shrink: 0;
 			}
 		}
@@ -100,7 +100,7 @@ header {
 			padding-left: 12px;
 			text-align: center;
 
-			@media only screen and (min-width: @tablet) {
+			@media only screen and (min-width: @mobile) {
 				margin-top: 9px;
 			}
 		}
@@ -109,7 +109,7 @@ header {
 			flex-direction: column;
 			overflow: hidden;
 
-			@media only screen and (min-width: @tablet) {
+			@media only screen and (min-width: @mobile) {
 				flex-direction: row;
 			}
 		}
@@ -235,7 +235,7 @@ aside {
 	transform: translateX(101%);
 	transition: transform @delay;
 
-	@media only screen and (min-width: @tablet) {
+	@media only screen and (min-width: @mobile) {
 		width: 400px;
 	}
 
@@ -267,15 +267,17 @@ aside {
 		> ul {
 			position: relative;
 
-			&::before {
+			&::before,
+			&::after {
 				content: "";
 				z-index: 1;
 				position: absolute;
-				left: 0;
 				top: 0;
 				bottom: 0;
 				border-left: 7px solid @brand-strong;
 			}
+			&::before { left: 0; }
+			&::after { right: 0; }
 		}
 	}
 	.account {
@@ -305,7 +307,7 @@ aside {
 			}
 		}
 
-		> div:first-child {
+		> .flex-grow {
 			overflow: hidden;
 		}
 		.btn,
@@ -322,9 +324,10 @@ aside {
 	@winHeader: 44px;
 
 	position: absolute; top: 44px; right: 0; bottom: 0; left: 0;
+	min-height: 380px;
 	background: @brand-light;
 
-	@media only screen and (max-width: (@tablet - 1)) {
+	@media only screen and (max-width: (@mobile - 1)) {
 		display: flex;
 		flex-direction: column;
 		position: static;
@@ -333,19 +336,90 @@ aside {
 		box-sizing: border-box;
 	}
 
-	> .header-lt {
-		display: none;
+	&[data-active-window="1"] .header-lt li:nth-child(1),
+	&[data-active-window="2"] .header-lt li:nth-child(2),
+	&[data-active-window="3"] .header-lt li:nth-child(3) {
+		.btn {
+			background: @white;
+			color: @brand-strong;
+		}
 	}
-	> ul {
+	&[data-active-window="1"] .windows-lt > .left-lt,
+	&[data-active-window="2"] .windows-lt > .center-lt,
+	&[data-active-window="3"] .windows-lt > .right-lt {
+		z-index: 3;
+		display: block;
+
+		+ li { z-index: 2; }
+		.title-lt {
+			transform: translateY(0);
+		}
+	}
+
+	> .header-lt {
+		z-index: @z-mobile-head;
+		position: sticky;
+		top: 44px;
+		margin-bottom: -8px;
+		padding-bottom: 8px;
+		overflow: hidden;
+
+		@media only screen and (min-width: @mobile) {
+			display: none;
+		}
+
+		&::before {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: @winBorder;
+			border-top: @winBorder solid @brand-light;
+
+			@media only screen and (max-width: (@middle-mobile - 1)) {
+				content: "";
+			}
+		}
+		&::after {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: -@winBorder;
+			height: (@winBorder * 2);
+			border-top: @winBorder solid @brand-strong;
+			border-radius: (@winBorder * 2);
+
+			@media only screen and (max-width: (@middle-mobile - 1)) {
+				content: "";
+			}
+		}
+
+		ul {
+			margin: 0 -4px;
+			padding: 2px 0;
+			background: @brand-light;
+		}
+		li {
+			width: 33.33%;
+			padding: 0 1px;
+			box-sizing: border-box;
+		}
+		.btn {
+			width: 100%;
+		}
+	}
+	.windows-lt {
 		position: absolute; top: 0; right: @winIndent; bottom: 0; left: 20px;
 
-		@media only screen and (max-width: (@tablet - 1)) {
+		@media only screen and (min-width: (@windowMinWidth * 3)) {
+			left: 0;
+		}
+		@media only screen and (max-width: (@mobile - 1)) {
 			position: static;
 			flex-grow: 1;
 			padding: 0 @winIndent 0;
 		}
-		@media only screen and (min-width: (@windowMinWidth * 3)) {
-			left: 0;
+		@media only screen and (max-width: (@middle-mobile - 1)) {
+			padding: 0;
 		}
 
 		> li {
@@ -358,53 +432,59 @@ aside {
 			box-sizing: border-box;
 			transition: transform .2s;
 
-			@media only screen and (max-width: (@tablet - 1)) {
+			@media only screen and (min-width: (@windowMinWidth * 3)) {
+				padding-left: @winIndent;
+			}
+			@media only screen and (max-width: (@mobile - 1)) {
 				display: none;
 				position: relative;
 				width: auto;
 				min-width: 0;
 			}
-			@media only screen and (min-width: (@windowMinWidth * 3)) {
-				padding-left: @winIndent;
+			@media only screen and (max-width: (@middle-mobile - 1)) {
+				padding: 0;
 			}
 
 			&::before {
-				content: "";
 				position: absolute; top: (@winIndent + @winHeader); right: -@winBorder; bottom: (@winIndent - @winBorder); left: -@winBorder;
 				border: @winBorder solid @brand-light;
 				border-radius: 0 0 (@winBorder * 3) (@winBorder * 3);
 
+				@media only screen and (min-width: @middle-mobile) {
+					content: "";
+				}
 				@media only screen and (min-width: (@windowMinWidth * 3)) {
 					left: (@winIndent - @winBorder);
+				}
+			}
+			&:hover {
+				.title-lt {
+					@media only screen and (max-width: (@windowMinWidth * 3 - 1)) {
+						transform: translateY(@winIndent);
+					}
 				}
 			}
 
 			&.left-lt {
 				left: 0;
+
+				> .window-lt {
+					background: @low-green;
+				}
 			}
 			&.center-lt {
 				position: relative;
 				margin: auto;
+
+				> .window-lt {
+					background: @low-yellow;
+				}
 			}
 			&.right-lt {
 				right: 0;
-			}
-			&.active {
-				z-index: 3;
-				display: block;
 
-				+ li { z-index: 2; }
-				.title-lt {
-					transform: translateY(0);
-				}
-			}
-			&:not(.active) {
-				&:hover {
-					.title-lt {
-						@media only screen and (max-width: (@windowMinWidth * 3 - 1)) {
-							transform: translateY(@winIndent);
-						}
-					}
+				> .window-lt {
+					background: @low-red;
 				}
 			}
 		}
@@ -413,13 +493,23 @@ aside {
 		z-index: 1;
 		position: absolute; left: -@winBorder; right: -@winBorder; top: (@winIndent - @winBorder);
 		height: @winHeader;
+		line-height: 42px;
 		border: @winBorder solid @brand-light;
 		border-bottom: 0;
 		border-radius: (@winBorder * 2) (@winBorder * 2) 0 0;
 		background: @brand-strong;
+		text-transform: uppercase;
+		font-size: 1.3rem;
+		font-weight: bold;
+		color: @white;
 		transform: translateY(@winHeader - @winBorder * 2);
-		transition: transform .2s;
 
+		@media only screen and (max-width: (@middle-mobile - 1)) {
+			display: none;
+		}
+		@media only screen and (min-width: @mobile) {
+			transition: transform .2s;
+		}
 		@media only screen and (min-width: (@windowMinWidth * 3)) {
 			left: (@winIndent - @winBorder);
 			transform: translateY(0);
@@ -428,12 +518,16 @@ aside {
 	.window-lt {
 		position: relative;
 		height: 100%;
-		min-height: 300px;
+		min-height: 1300px;
 		box-sizing: border-box;
 		border: @winBorder solid @brand-strong;
 		border-radius: 0 0 (@winBorder * 2) (@winBorder * 2);
 		background: white;
 		overflow-y: auto;
+
+		@media only screen and (max-width: (@middle-mobile - 1)) {
+			border-radius: (@winBorder * 2);
+		}
 	}
 }
 

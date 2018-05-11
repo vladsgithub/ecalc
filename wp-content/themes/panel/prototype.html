@@ -18,7 +18,7 @@
 			</button>
 		</li>
 		<li class="separator">
-			<button class="btn solid" title="Все расчеты" ng-click="layout.isOpenAside = (layout.isOpenAside) ? false : true">
+			<button class="btn solid" title="Все расчеты" ng-click="layout.openAside()">
 				<i class="fas fa-ellipsis-v"></i>
 				<b class="no-mobile">Расчеты</b>
 			</button>
@@ -174,44 +174,13 @@
 	<div class="aside-body">
 
 		<ul>
-			<li class="account flex active1">
-				<div class="flex-grow">
-					<button class="btn solid view-mode">
-						<b>Название расчета</b>
-					</button>
-
-					<label class="text-input edit-mode">
-						<input type="text" value="Tекст ДублированныйтекстДублированный текст">
-						<b>Tекст ДублированныйтекстДублированный текст</b>
-					</label>
-				</div>
-
-				<div>
-					<button class="btn solid edit-mode">
-						<i class="fas fa-trash-alt"></i>
-					</button>
-				</div>
-			</li>
-
-			<li class="account flex">
-				<div class="flex-grow">
-					<button class="btn solid view-mode">
-						<b>Название расчета</b>
-					</button>
-
-					<label class="text-input edit-mode">
-						<input type="text" value="Tекст ДублированныйтекстДублированный текст">
-						<b>Tекст ДублированныйтекстДублированный текст</b>
-					</label>
-				</div>
-				<div>
-					<button class="btn solid edit-mode">
-						<i class="fas fa-trash-alt"></i>
-					</button>
-				</div>
-			</li>
-
 			<li class="account flex active">
+				<div>
+					<button class="btn solid edit-mode">
+						<i class="fas fa-trash-alt"></i>
+					</button>
+				</div>
+
 				<div class="flex-grow">
 					<button class="btn solid view-mode">
 						<b>Название расчета</b>
@@ -221,15 +190,16 @@
 						<input type="text" value="Tекст ДублированныйтекстДублированный текст">
 						<b>Tекст ДублированныйтекстДублированный текст</b>
 					</label>
-				</div>
-				<div>
-					<button class="btn solid edit-mode">
-						<i class="fas fa-trash-alt"></i>
-					</button>
 				</div>
 			</li>
 
 			<li class="account flex">
+				<div>
+					<button class="btn solid edit-mode">
+						<i class="fas fa-trash-alt"></i>
+					</button>
+				</div>
+
 				<div class="flex-grow">
 					<button class="btn solid view-mode">
 						<b>Название расчета</b>
@@ -239,15 +209,16 @@
 						<input type="text" value="Tекст ДублированныйтекстДублированный текст">
 						<b>Tекст ДублированныйтекстДублированный текст</b>
 					</label>
-				</div>
-				<div>
-					<button class="btn solid edit-mode">
-						<i class="fas fa-trash-alt"></i>
-					</button>
 				</div>
 			</li>
 
 			<li class="account flex">
+				<div>
+					<button class="btn solid edit-mode">
+						<i class="fas fa-trash-alt"></i>
+					</button>
+				</div>
+
 				<div class="flex-grow">
 					<button class="btn solid view-mode">
 						<b>Название расчета</b>
@@ -257,29 +228,21 @@
 						<input type="text" value="Tекст ДублированныйтекстДублированный текст">
 						<b>Tекст ДублированныйтекстДублированный текст</b>
 					</label>
-				</div>
-				<div>
-					<button class="btn solid edit-mode">
-						<i class="fas fa-trash-alt"></i>
-					</button>
 				</div>
 			</li>
 
-			<li class="account flex">
-				<div class="flex-grow">
-					<button class="btn solid view-mode">
-						<b>Название расчета</b>
-					</button>
 
-					<label class="text-input edit-mode">
-						<input type="text" value="Tекст ДублированныйтекстДублированный текст">
-						<b>Tекст ДублированныйтекстДублированный текст</b>
-					</label>
-				</div>
+			<li class="account edit-mode flex">
 				<div>
-					<button class="btn solid edit-mode">
-						<i class="fas fa-trash-alt"></i>
+					<button class="btn solid">
+						<i class="fas fa-plus-square"></i>
 					</button>
+				</div>
+
+				<div class="flex-grow s-p1">
+					<div class="text-field solid">
+						<b>Создать новый расчет</b>
+					</div>
 				</div>
 			</li>
 		</ul>
@@ -289,16 +252,42 @@
 
 <main ng-click="layout.isOpenMenu = false; layout.isOpenAside = false;">
 
-	<div class="three-window-lt">
+	<div class="three-window-lt" data-active-window="{{layout.activeWindow}}">
 		<div class="header-lt">
-			header
+			<ul class="flex">
+				<li>
+					<button class="btn solid" ng-click="layout.activeWindow = 1">
+						<b>1.</b>
+						<i class="fas fa-list only-middle-mobile"></i>
+						<b class="small no-middle-mobile">Список</b>
+					</button>
+				</li>
+
+				<li>
+					<button class="btn solid" ng-click="layout.activeWindow = 2">
+						<b>2.</b>
+						<i class="fas fa-calculator only-middle-mobile"></i>
+						<b class="small no-middle-mobile">Вычисление</b>
+					</button>
+				</li>
+
+				<li>
+					<button class="btn solid" ng-click="layout.activeWindow = 3">
+						<b>3.</b>
+						<i class="fas fa-exchange-alt only-middle-mobile"></i>
+						<b class="small no-middle-mobile">Возврат</b>
+					</button>
+				</li>
+			</ul>
 		</div>
 
-		<ul>
+		<ul class="windows-lt">
 			<li class="left-lt" ng-class="(layout.activeWindow == 1) ? 'active' : ''" ng-click="layout.activeWindow = 1">
-				<div class="title-lt">
-					1.title
+				<div class="title-lt flex">
+					<div class="flex-grow s-p3">1. Список</div>
+					<div class="s-p3">1</div>
 				</div>
+
 				<div class="window-lt">
 					<br/><br/><br/><input type="text"/>
 					<button>button</button>
@@ -306,9 +295,11 @@
 			</li>
 
 			<li class="center-lt" ng-class="(layout.activeWindow == 2) ? 'active' : ''" ng-click="layout.activeWindow = 2">
-				<div class="title-lt">
-					2.title
+				<div class="title-lt flex">
+					<div class="flex-grow s-p3">2. Вычисление</div>
+					<div class="s-p3">2</div>
 				</div>
+
 				<div class="window-lt">
 					<br/><br/><br/><input type="text"/>
 					<button>button</button>
@@ -316,9 +307,11 @@
 			</li>
 
 			<li class="right-lt" ng-class="(layout.activeWindow == 3) ? 'active' : ''" ng-click="layout.activeWindow = 3">
-				<div class="title-lt">
-					3.title
+				<div class="title-lt flex">
+					<div class="flex-grow s-p3">3. Возврат</div>
+					<div class="s-p3">3</div>
 				</div>
+
 				<div class="window-lt">
 					<br/><br/><br/><input type="text"/>
 					<button>button</button>

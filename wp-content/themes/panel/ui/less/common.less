@@ -20,7 +20,17 @@
 
 
 .no-mobile {
-	@media only screen and (max-width: (@tablet - 1)) {
+	@media only screen and (max-width: (@mobile - 1)) {
+		display: none !important;
+	}
+}
+.no-middle-mobile {
+	 @media only screen and (max-width: (@middle-mobile - 1)) {
+		 display: none !important;
+	 }
+ }
+.only-middle-mobile {
+	@media only screen and (min-width: @middle-mobile) {
 		display: none !important;
 	}
 }
@@ -119,8 +129,12 @@
 		vertical-align: middle;
 		text-transform: uppercase;
 		word-wrap: break-word;
-		font-family: RobotoSlab; font-size: 1.2rem;
+		font-family: RobotoSlab;
+		font-size: 1.2rem;
 
+		&.small {
+			font-size: 0.9rem;
+		}
 		&.status-line {
 			display: inline-block;
 			position: relative;
@@ -137,6 +151,11 @@
 				height: 3px;
 				border-radius: 2px;
 			}
+		}
+
+		+ i,
+		+ b {
+			margin-left: 5px;
 		}
 	}
 }
