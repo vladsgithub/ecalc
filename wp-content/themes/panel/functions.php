@@ -94,7 +94,7 @@ if (!function_exists('pagination')) { // если ф-я уже есть в до�
 add_action( 'wp_enqueue_scripts', 'add_scripts_to_head' );
 if (!function_exists('add_scripts_to_head')) {
     function add_scripts_to_head() {
-        wp_enqueue_script('production', get_template_directory_uri().'/assets/js/production.js','','',false);
+        wp_enqueue_script('production', get_template_directory_uri().'/assets/js/production.js?ver=1','','',false);
 //        wp_enqueue_script('production', get_template_directory_uri().'/assets/js/production.min.js','','',false);
     }
 }
@@ -116,7 +116,7 @@ if (!function_exists('add_styles')) { // если ф-я уже есть в до�
 	function add_styles() { // добавление стилей
 	    if(is_admin()) return false; // если мы в админке - ничего не делаем
 //	    wp_enqueue_style( 'bs', get_template_directory_uri().'/ui/css/app-old.css' );
-		wp_enqueue_style( 'style', get_template_directory_uri().'/assets/css/app.css' ); // основные стили шаблона
+		wp_enqueue_style( 'style', get_template_directory_uri().'/assets/css/app.css?ver=1' ); // основные стили шаблона
 //		wp_enqueue_style( 'style', get_template_directory_uri().'/assets/css/app.pref.css' ); // основные стили шаблона
 	}
 }

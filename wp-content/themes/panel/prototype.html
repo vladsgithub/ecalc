@@ -14,7 +14,7 @@
 		<li class="separator">
 			<button class="btn solid" disabled title="Все изменения сохранены">
 				<b class="status-line">ВС</b>
-				<i class="fas fa-save"></i>
+				<i class="fas fa-save no-mobile"></i>
 			</button>
 		</li>
 		<li class="separator">
@@ -157,14 +157,14 @@
 
 <aside ng-class="{'edit-mode': layout.isEditAccountsMode}">
 	<ul class="aside-head flex">
-		<li class="s-p1">
+		<li class="s-p2">
 			<label class="toggle">
 				<input type="checkbox" ng-model="layout.isEditAccountsMode">
 				<i></i>
 			</label>
 		</li>
 
-		<li class="flex-grow s-p1">
+		<li class="flex-grow">
 			<div class="text-field bold">
 				<b>Режим редактирования</b>
 			</div>
@@ -234,8 +234,8 @@
 
 			<li class="account edit-mode flex">
 				<div>
-					<button class="btn solid">
-						<i class="fas fa-plus-square"></i>
+					<button class="btn">
+						<i class="fas fa-plus"></i>
 					</button>
 				</div>
 
@@ -289,8 +289,160 @@
 				</div>
 
 				<div class="window-lt">
-					<br/><br/><br/><input type="text"/>
-					<button>button</button>
+
+					<div class="section-head">
+						<ul class="flex">
+							<li class="flex-shrink">
+								<div class="text-field title">
+									<b>Шаг 1:</b>
+								</div>
+							</li>
+
+							<li class="flex-grow s-p2">
+								<div class="text-field border-bottom">
+									<b>Список участников и расходов</b>
+								</div>
+							</li>
+
+							<li class="flex-shrink s-p1">
+								<button class="btn solid">
+									<i class="fas fa-user-edit"></i>
+								</button>
+							</li>
+
+							<li class="flex-shrink">
+								<button class="btn solid">
+									<i class="fas fa-angle-double-down"></i>
+								</button>
+							</li>
+						</ul>
+
+						<ul class="flex">
+							<li class="flex-shrink">
+								<div class="text-field title">
+									<b>Всего расходов:</b>
+								</div>
+							</li>
+
+							<li class="flex-grow s-p1">
+								<div class="number-field bold">
+									<b>12 450 340,34</b>
+								</div>
+							</li>
+
+							<li class="s-p1">
+								<div class="text-field title currency">
+									<b>byn</b>
+								</div>
+							</li>
+						</ul>
+					</div>
+
+					<div class="section-body">
+
+						<ul class="participants">
+							<li>
+								<div class="participant-head">
+									<ul class="flex s-p0">
+										<li class="flex-shrink s-p0">
+											<button class="btn solid border">
+												<i class="fas fa-trash-alt"></i>
+											</button>
+										</li>
+
+										<li class="flex-grow s-p0">
+											<label class="text-input">
+												<input type="text" value="Tекст ДублированныйтекстДублированный текст">
+												<b>Tекст ДублированныйтекстДублированный текст</b>
+											</label>
+										</li>
+
+										<li class="flex-shrink s-p0">
+											<div class="number-field solid">
+												<b>12 450 340,34 <s>BYN</s></b>
+											</div>
+										</li>
+
+										<li class="flex-shrink s-p0">
+											<button class="btn solid border">
+												<i class="fas fa-chevron-down"></i>
+											</button>
+										</li>
+									</ul>
+								</div>
+
+								<div class="participant-body">
+
+									<ul class="expenses">
+										<li class="flex s-p0">
+											<div class="expense-number s-p0">
+												<div class="text-field title">
+													<b>1.1</b>
+												</div>
+
+												<button class="btn solid">
+													<i class="fas fa-trash-alt"></i>
+												</button>
+											</div>
+
+											<div class="expense flex-grow">
+												<ul class="flex">
+													<li class="expense-name flex-grow s-p0">
+														<label class="text-input">
+															<input type="text" value="Tекст ДублированныйтекстДублированный текст">
+															<b>Tекст ДублированныйтекстДублированный текст</b>
+														</label>
+													</li>
+
+													<li class="flex-shrink s-p0">
+														<label class="text-select icons">
+															<select>
+																<option disabled>&#xf207 - Машина</option>
+																<option selected>&#xf207 - Другие незначительные расходы</option>
+																<option>&#xf4ff - Питание</option>
+															</select>
+															<b>
+																<i class="fas fa-bus"></i>
+															</b>
+														</label>
+													</li>
+												</ul>
+
+												<ul class="flex">
+													<li class="s-p0">
+														<div class="text-field">
+															<b>31.01.2018, 6:50:30</b>
+														</div>
+													</li>
+
+													<li class="flex-grow s-p0">
+														<label class="number-input">
+															<input type="number" value="12450340.34">
+															<b>12 450 340,34</b>
+														</label>
+													</li>
+
+													<li class="flex-shrink s-p0">
+														<label class="text-select currency">
+															<select>
+																<option disabled="">EUR - евро</option>
+																<option selected="">BYN - белорусский рубль</option>
+																<option>USD - доллар</option>
+															</select>
+															<b>BYN</b>
+														</label>
+													</li>
+												</ul>
+											</div>
+										</li>
+									</ul>
+
+								</div>
+							</li>
+						</ul>
+
+					</div>
+
 				</div>
 			</li>
 

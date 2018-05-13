@@ -35,6 +35,10 @@
 	}
 }
 
+.uppercase {
+	text-transform: uppercase !important;
+}
+
 .flex {
 	display: flex;
 
@@ -45,8 +49,12 @@
 	.flex-grow {
 		flex-grow: 1;
 	}
+	.flex-shrink {
+		flex-shrink: 0;
+	}
 }
 
+.s-p0 { .side-padding(@padding / 2); }
 .s-p1 { .side-padding(@padding); }
 .s-p2 { .side-padding(@padding * 2); }
 .s-p3 { .side-padding(@padding * 3); }
@@ -105,9 +113,14 @@
 	&.solid {
 		background: @brand-strong;
 		color: @white;
+
+		&.border {
+			border-color: @white;
+		}
 	}
 
 	i {
+		max-width: 20px;
 		vertical-align: middle;
 		font-size: 22px;
 
@@ -139,7 +152,6 @@
 			display: inline-block;
 			position: relative;
 			bottom: 3px;
-			margin-right: 5px;
 			line-height: 1;
 
 			&::before {
@@ -216,6 +228,26 @@ label {
 				-webkit-appearance: none;
 				margin: 0;
 			}
+
+			&[disabled] {
+				+ b {
+					z-index: 2;
+					position: relative;
+					overflow: visible;
+					transform: translateY(-40px);
+
+					&::before {
+						content: "";
+						z-index: -1;
+						position: absolute;
+						top: -40px;
+						right: 0;
+						bottom: -40px;
+						left: 0;
+						background: @disabled-gray;
+					}
+				}
+			}
 		}
 		b {
 			display: inline-block;
@@ -274,9 +306,23 @@ label {
 			font-size: 26px;
 		}
 
+		&.icons {
+			select {
+				font-family: 'Font Awesome 5 Free', 'RobotoSlab';
+			}
+			b {
+				min-width: 0;
+				padding-left: 8px;
+			}
+			i {
+				font-size: 1.7rem;
+			}
+		}
+
 		&.currency {
 			b {
 				min-width: 0;
+				padding-left: 8px;
 				white-space: nowrap;
 				font-size: 18px;
 			}
@@ -297,6 +343,26 @@ label {
 					z-index: 1;
 					position: absolute; top: 0; right: 0; bottom: 0; left: 0;
 					border: 1px solid @brand-strong;
+				}
+			}
+
+			&[disabled] {
+				+ b {
+					z-index: 2;
+					position: relative;
+					overflow: visible;
+					margin-right: -22px;
+
+					&::before {
+						content: "";
+						z-index: -1;
+						position: absolute;
+						top: -40px;
+						right: -26px;
+						bottom: -40px;
+						left: 0;
+						background: @disabled-gray;
+					}
 				}
 			}
 		}
@@ -614,9 +680,10 @@ label {
 	&.name {
 		b {
 			overflow: hidden;
+			line-height: 1;
 			white-space: nowrap;
 			text-overflow: ellipsis;
-			font-size: 1.3rem;
+			font-size: 1.2rem;
 			font-weight: bold;
 		}
 	}
@@ -634,5 +701,55 @@ label {
 		vertical-align: middle;
 		font-size: 1rem;
 		word-wrap: break-word;
+	}
+}
+
+.number-field {
+	position: relative;
+	display: block;
+	height: 44px;
+	max-width: 100%;
+	line-height: 40px;
+	overflow: hidden;
+	font-size: 0;
+	text-align: right;
+
+	&.solid {
+		background: @brand-strong;
+		color: @white;
+	}
+	&.bold {
+		font-weight: bold;
+	}
+
+	b {
+		display: inline-block;
+		width: 100%;
+		padding: 6px 0 2px;
+		overflow: hidden;
+		box-sizing: border-box;
+		line-height: 0.94;
+		vertical-align: middle;
+		font-size: 1.1rem;
+		word-wrap: break-word;
+
+		&:first-line {
+			font-size: 1.4rem;
+		}
+	}
+
+	s {
+		vertical-align: middle;
+		font-size: 0.9rem;
+		text-decoration: underline;
+	}
+}
+
+.currency {
+	text-transform: uppercase;
+	text-decoration: underline;
+
+	b {
+		text-decoration: underline;
 	}
 }
