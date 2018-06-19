@@ -461,6 +461,21 @@ aside {
 					left: (@winIndent - @winBorder);
 				}
 			}
+			&::after {
+				z-index: -1;
+				position: absolute; top: (@winIndent * 2 + @winHeader); right: (-@winBorder - @winBorder / 2); bottom: (@winIndent + @winBorder); left: (-@winBorder - @winBorder / 2);
+				border: (@winBorder / 2) solid @brand-strong; border-top: 0; border-bottom: 0;
+
+				@media only screen and (min-width: @mobile) and (max-width: (@windowMinWidth * 3 - 1)) {
+					content: "";
+				}
+			}
+			&:first-child::after {
+				border-left: 0;
+			}
+			&:last-child::after {
+				border-right: 0;
+			}
 			&:hover {
 				.title-lt {
 					@media only screen and (max-width: (@windowMinWidth * 3 - 1)) {
@@ -567,8 +582,10 @@ aside {
 
 	.expense-number {
 		.text-field {
+			display: block;
 			min-width: 44px;
 			box-sizing: border-box;
+			text-align: right;
 		}
 	}
 }

@@ -4600,6 +4600,28 @@ aside .account .text-input {
     left: 16px;
   }
 }
+.three-window-lt .windows-lt > li::after {
+  z-index: -1;
+  position: absolute;
+  top: 84px;
+  right: -6px;
+  bottom: 24px;
+  left: -6px;
+  border: 2px solid #4c69bd;
+  border-top: 0;
+  border-bottom: 0;
+}
+@media only screen and (min-width: 640px) and (max-width: 1499px) {
+  .three-window-lt .windows-lt > li::after {
+    content: "";
+  }
+}
+.three-window-lt .windows-lt > li:first-child::after {
+  border-left: 0;
+}
+.three-window-lt .windows-lt > li:last-child::after {
+  border-right: 0;
+}
 @media only screen and (max-width: 1499px) {
   .three-window-lt .windows-lt > li:hover .title-lt {
     transform: translateY(20px);
@@ -4693,8 +4715,10 @@ aside .account .text-input {
   padding: 4px 0;
 }
 .expenses .expense-number .text-field {
+  display: block;
   min-width: 44px;
   box-sizing: border-box;
+  text-align: right;
 }
 .expense {
   overflow: hidden;
