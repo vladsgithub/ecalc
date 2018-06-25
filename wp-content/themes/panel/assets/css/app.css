@@ -3360,6 +3360,12 @@ table {
     display: none !important;
   }
 }
+.block {
+  display: block !important;
+}
+.hidden {
+  display: none !important;
+}
 .uppercase {
   text-transform: uppercase !important;
 }
@@ -3521,6 +3527,9 @@ label {
   vertical-align: top;
   color: #000;
 }
+label.bold {
+  font-weight: bold;
+}
 label.text-input,
 label.number-input {
   position: relative;
@@ -3568,6 +3577,7 @@ label.number-input input {
   text-align: inherit;
   font-family: inherit;
   font-size: 1rem;
+  font-weight: inherit;
   -moz-appearance: textfield;
   transform: translateY(-40px);
   transition: transform 0.2s;
@@ -3771,6 +3781,7 @@ label.checkbox.thin i::before {
 }
 label.checkbox input {
   position: absolute;
+  left: 0;
   opacity: 0;
 }
 label.checkbox input:checked + i::before {
@@ -4714,11 +4725,14 @@ aside .account .text-input {
 .participant-body {
   padding: 4px 0;
 }
-.expenses .expense-number .text-field {
+.expenses-group .text-field {
   display: block;
   min-width: 44px;
   box-sizing: border-box;
   text-align: right;
+}
+.group-section {
+  overflow: hidden;
 }
 .expense {
   overflow: hidden;
