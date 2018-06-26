@@ -4723,7 +4723,12 @@ aside .account .text-input {
   width: 100%;
 }
 .participant-body {
-  padding: 4px 0;
+  padding: 8px 0;
+}
+.expenses-group > li + li {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 2px dashed #4c69bd;
 }
 .expenses-group .text-field {
   display: block;
@@ -4731,11 +4736,18 @@ aside .account .text-input {
   box-sizing: border-box;
   text-align: right;
 }
-.group-section {
-  overflow: hidden;
+.expenses {
+  padding-top: 16px;
+  padding-left: 16px;
 }
 .expense {
   overflow: hidden;
+}
+.expense + .expense {
+  padding-top: 16px;
+}
+.expense .expense-data + .expense-data {
+  margin-top: 4px;
 }
 .expense .expense-name {
   overflow: hidden;

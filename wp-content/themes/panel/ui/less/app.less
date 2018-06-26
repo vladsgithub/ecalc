@@ -575,11 +575,16 @@ aside {
 }
 
 .participant-body {
-	padding: @padding 0;
+	padding: (@padding * 2) 0;
 }
 
 
 .expenses-group {
+	> li + li {
+		margin-top: (@padding * 4);
+		padding-top: (@padding * 4);
+		border-top: 2px dashed @brand-strong;
+	}
 	.text-field {
 		display: block;
 		min-width: 44px;
@@ -588,13 +593,20 @@ aside {
 	}
 }
 
-.group-section {
-	overflow: hidden;
+.expenses {
+	padding-top: (@padding * 4);
+	padding-left: (@padding * 4);
 }
 
 .expense {
 	overflow: hidden;
 
+	+ .expense {
+		padding-top: (@padding * 4);
+	}
+	.expense-data + .expense-data {
+		margin-top: @padding;
+	}
 	.expense-name {
 		overflow: hidden;
 	}
