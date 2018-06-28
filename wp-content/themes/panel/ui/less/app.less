@@ -575,7 +575,7 @@ aside {
 }
 
 .participant-body {
-	padding: (@padding * 2) 0;
+	padding: (@padding * 4) 0;
 }
 
 
@@ -586,10 +586,11 @@ aside {
 		border-top: 2px dashed @brand-strong;
 	}
 	.text-field {
-		display: block;
-		min-width: 44px;
-		box-sizing: border-box;
+		padding-left: @padding; padding-right: @padding;
 		text-align: right;
+	}
+	.text-input {
+		width: 100%;
 	}
 }
 
@@ -604,8 +605,18 @@ aside {
 	+ .expense {
 		padding-top: (@padding * 4);
 	}
-	.expense-data + .expense-data {
-		margin-top: @padding;
+	.expense-data {
+		+ .expense-data {
+			margin-top: @padding;
+		}
+		.created-date {
+			flex-shrink: 0;
+
+			@media only screen and (max-width: ((@mobile - 1))) {
+				flex-basis: 1%;
+				flex-shrink: 1;
+			}
+		}
 	}
 	.expense-name {
 		overflow: hidden;
