@@ -96,12 +96,23 @@
 	overflow: visible;
 	box-sizing: border-box;
 	background: @white;
-	border: 2px solid @brand-strong; border-radius: 4px;
+	border: 2px solid @brand-strong;
+	border-radius: 4px;
 	white-space: nowrap;
 	font-size: 0;
 	color: @brand-strong;
 	cursor: pointer;
 
+	&:not(.no-shadow) {
+		border-right-color: @black;
+		border-bottom-color: @black;
+
+		&:active {
+			border: 2px solid @brand-strong;
+			border-top-color: @black;
+			border-left-color: @black;
+		}
+	}
 	&:focus {
 		outline: none;
 
@@ -122,6 +133,17 @@
 
 		&.border {
 			border-color: @white;
+
+			&:not(.no-shadow) {
+				border-right-color: @gray;
+				border-bottom-color: @gray;
+
+				&:active {
+					border-color: @white;
+					border-top-color: @gray;
+					border-left-color: @gray;
+				}
+			}
 		}
 	}
 
@@ -212,6 +234,25 @@ label {
 			+ b { transform: translateY(0); }
 		}
 
+		&[disabled] {
+			height: auto;
+			min-height: 44px;
+			line-height: 42px;
+			border-width: 1px;
+			background: transparent;
+
+			&::before {
+				display: none;
+			}
+
+			input {
+				display: none;
+			}
+			b {
+				transform: none;
+			}
+		}
+
 		input {
 			display: block;
 			margin: 0; padding: 0 5px;
@@ -277,20 +318,22 @@ label {
 	&.number-input {
 		text-align: right;
 
-		input,
 		b {
-			font-weight: bold;
+			font-size: 1rem; font-weight: bold;
 
 			&:first-line {
 				font-size: 1.3rem;
 			}
+		}
+		input {
+			font-size: 1.3rem; font-weight: bold;
 		}
 	}
 
 	&.text-select {
 		position: relative;
 		display: inline-block;
-		height: 44px; max-width: 100%;
+		height: 44px; max-width: 100%; min-width: 44px;
 		padding-right: 26px;
 		line-height: 40px;
 		overflow: hidden;
@@ -315,6 +358,27 @@ label {
 			color: @brand-strong;
 			font-size: 26px;
 		}
+		&[disabled] {
+			padding-right: 0;
+			border-width: 1px;
+			background: transparent;
+
+			&::before,
+			&::after {
+				display: none;
+			}
+
+			select {
+				visibility: hidden;
+			}
+
+			&.icons,
+			&.currency {
+				b {
+					padding-left: 5px;
+				}
+			}
+		}
 
 		&.icons {
 			select {
@@ -323,16 +387,17 @@ label {
 			b {
 				min-width: 0;
 				padding-left: 8px;
+				text-align: center;
 			}
 			i {
 				font-size: 1.7rem;
 			}
 		}
-
 		&.currency {
 			b {
 				min-width: 0;
 				padding-left: 8px;
+				text-align: center;
 				white-space: nowrap;
 				font-size: 18px;
 			}

@@ -3449,6 +3449,15 @@ table {
   color: #4c69bd;
   cursor: pointer;
 }
+.btn:not(.no-shadow) {
+  border-right-color: #000;
+  border-bottom-color: #000;
+}
+.btn:not(.no-shadow):active {
+  border: 2px solid #4c69bd;
+  border-top-color: #000;
+  border-left-color: #000;
+}
 .btn:focus {
   outline: none;
 }
@@ -3475,6 +3484,15 @@ table {
 }
 .btn.solid.border {
   border-color: #fff;
+}
+.btn.solid.border:not(.no-shadow) {
+  border-right-color: #888;
+  border-bottom-color: #888;
+}
+.btn.solid.border:not(.no-shadow):active {
+  border-color: #fff;
+  border-top-color: #888;
+  border-left-color: #888;
 }
 .btn i {
   max-width: 20px;
@@ -3563,6 +3581,26 @@ label.text-input:hover input + b,
 label.number-input:hover input + b {
   transform: translateY(0);
 }
+label.text-input[disabled],
+label.number-input[disabled] {
+  height: auto;
+  min-height: 44px;
+  line-height: 42px;
+  border-width: 1px;
+  background: transparent;
+}
+label.text-input[disabled]::before,
+label.number-input[disabled]::before {
+  display: none;
+}
+label.text-input[disabled] input,
+label.number-input[disabled] input {
+  display: none;
+}
+label.text-input[disabled] b,
+label.number-input[disabled] b {
+  transform: none;
+}
 label.text-input input,
 label.number-input input {
   display: block;
@@ -3636,19 +3674,23 @@ label.number-input b {
 label.number-input {
   text-align: right;
 }
-label.number-input input,
 label.number-input b {
+  font-size: 1rem;
   font-weight: bold;
 }
-label.number-input input:first-line,
 label.number-input b:first-line {
   font-size: 1.3rem;
+}
+label.number-input input {
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 label.text-select {
   position: relative;
   display: inline-block;
   height: 44px;
   max-width: 100%;
+  min-width: 44px;
   padding-right: 26px;
   line-height: 40px;
   overflow: hidden;
@@ -3684,12 +3726,29 @@ label.text-select::after {
   color: #4c69bd;
   font-size: 26px;
 }
+label.text-select[disabled] {
+  padding-right: 0;
+  border-width: 1px;
+  background: transparent;
+}
+label.text-select[disabled]::before,
+label.text-select[disabled]::after {
+  display: none;
+}
+label.text-select[disabled] select {
+  visibility: hidden;
+}
+label.text-select[disabled].icons b,
+label.text-select[disabled].currency b {
+  padding-left: 5px;
+}
 label.text-select.icons select {
   font-family: 'Font Awesome 5 Free', 'RobotoSlab';
 }
 label.text-select.icons b {
   min-width: 0;
   padding-left: 8px;
+  text-align: center;
 }
 label.text-select.icons i {
   font-size: 1.7rem;
@@ -3697,6 +3756,7 @@ label.text-select.icons i {
 label.text-select.currency b {
   min-width: 0;
   padding-left: 8px;
+  text-align: center;
   white-space: nowrap;
   font-size: 18px;
 }
@@ -4321,10 +4381,10 @@ nav .section.open[data-level="2"] > .section-title {
   left: 46px;
 }
 nav .section.open[data-level="3"] > .section-title {
-  left: 94px;
+  left: 92px;
 }
 nav .section.open[data-level="4"] > .section-title {
-  left: 140px;
+  left: 138px;
 }
 nav .section.open > .section-title {
   display: flex;
@@ -4740,13 +4800,23 @@ aside .account .text-input {
 }
 .expenses {
   padding-top: 16px;
-  padding-left: 16px;
 }
 .expense {
-  overflow: hidden;
+  position: relative;
+  padding-left: 16px;
+}
+.expense::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: -2px;
+  width: 16px;
+  height: 8px;
+  border-radius: 0 4px 4px 0;
+  background: #4c69bd;
 }
 .expense + .expense {
-  padding-top: 16px;
+  margin-top: 16px;
 }
 .expense .expense-data + .expense-data {
   margin-top: 4px;

@@ -38,7 +38,7 @@
 			</div>
 		</li>
 		<li>
-			<button class="btn solid" title="Меню" ng-click="layout.isOpenMenu = false">
+			<button class="btn solid no-shadow" title="Меню" ng-click="layout.isOpenMenu = false">
 				<i class="fas fa-window-close"></i>
 			</button>
 		</li>
@@ -48,48 +48,48 @@
 
 		<ul class="section open active" data-level="1">
 			<li class="section-title">
-				<button class="btn" data-previous title="Меню">
+				<button class="btn no-shadow" data-previous title="Меню">
 					<i class="fas fa-bars"></i>
 				</button>
 				<div class="text-field title"><b>Главное меню</b></div>
 			</li>
 
 			<li>
-				<button class="btn solid" data-next>
+				<button class="btn solid no-shadow" data-next>
 					<b>Пункт меню</b>
 				</button>
 			</li>
 
 			<li>
-				<button class="btn solid" data-next title="Авторизация">
+				<button class="btn solid no-shadow" data-next title="Авторизация">
 					<i class="fas fa-user-circle"></i>
 					<b>Авторизация</b>
 				</button>
 
 				<ul class="section" data-level="2">
 					<li class="section-title">
-						<button class="btn" data-previous title="Авторизация">
+						<button class="btn no-shadow" data-previous title="Авторизация">
 							<i class="fas fa-user-circle"></i>
 						</button>
 						<div class="text-field title"><b>Авторизация</b></div>
 					</li>
 
 					<li>
-						<button class="btn solid" data-next>
+						<button class="btn solid no-shadow" data-next>
 							<i class="fas fa-user-secret"></i>
 							<b>Something else</b>
 						</button>
 
 						<ul class="section" data-level="3">
 							<li class="section-title">
-								<button class="btn" data-previous title="Something else">
+								<button class="btn no-shadow" data-previous title="Something else">
 									<i class="fas fa-user-secret"></i>
 								</button>
 								<div class="text-field title"><b>Something else</b></div>
 							</li>
 
 							<li>
-								<button class="btn solid" data-next>
+								<button class="btn solid no-shadow" data-next>
 									<i class="fas fa-user-secret"></i>
 									<b>Settings list</b>
 								</button>
@@ -110,7 +110,7 @@
 					</li>
 
 					<li>
-						<button class="btn solid" data-next>
+						<button class="btn solid no-shadow" data-next>
 							<i class="fas fa-sign-in-alt"></i>
 							<b>Войти</b>
 						</button>
@@ -127,7 +127,7 @@
 					</li>
 
 					<li>
-						<button class="btn solid" data-next>
+						<button class="btn solid no-shadow" data-next>
 							<i class="fas fa-user-plus"></i>
 							<b>Регистрация</b>
 						</button>
@@ -146,7 +146,7 @@
 			</li>
 
 			<li>
-				<button class="btn solid" data-next>
+				<button class="btn solid no-shadow" data-next>
 					<b>Пункт меню</b>
 				</button>
 			</li>
@@ -176,7 +176,7 @@
 		<ul>
 			<li class="account flex active">
 				<div>
-					<button class="btn solid edit-mode">
+					<button class="btn solid edit-mode no-shadow">
 						<i class="fas fa-trash-alt"></i>
 					</button>
 				</div>
@@ -195,7 +195,7 @@
 
 			<li class="account flex">
 				<div>
-					<button class="btn solid edit-mode">
+					<button class="btn solid edit-mode no-shadow">
 						<i class="fas fa-trash-alt"></i>
 					</button>
 				</div>
@@ -214,7 +214,7 @@
 
 			<li class="account flex">
 				<div>
-					<button class="btn solid edit-mode">
+					<button class="btn solid edit-mode no-shadow">
 						<i class="fas fa-trash-alt"></i>
 					</button>
 				</div>
@@ -234,7 +234,7 @@
 
 			<li class="account edit-mode flex">
 				<div>
-					<button class="btn">
+					<button class="btn no-shadow">
 						<i class="fas fa-plus"></i>
 					</button>
 				</div>
@@ -391,7 +391,7 @@
 												</li>
 
 												<li class="flex-grow s-p0">
-													<label class="text-input bold block">
+													<label class="text-input bold block" disabled>
 														<input type="text" value="Название группы расчетов">
 														<b>Название группы расчетов</b>
 													</label>
@@ -419,14 +419,14 @@
 														</li>
 
 														<li class="expense-name flex-grow s-p0">
-															<label class="text-input">
+															<label class="text-input" disabled>
 																<input type="text" value="Tекст ДублированныйтекстДублированный текст">
 																<b>Tекст ДублированныйтекстДублированный текст</b>
 															</label>
 														</li>
 
 														<li class="flex-shrink s-p0">
-															<label class="text-select icons">
+															<label class="text-select icons" disabled>
 																<select>
 																	<option disabled>&#xf207 - Машина</option>
 																	<option selected>&#xf207 - Другие незначительные расходы</option>
@@ -447,7 +447,7 @@
 														</li>
 
 														<li class="flex-shrink s-p0">
-															<label class="text-select currency">
+															<label class="text-select currency" disabled>
 																<select>
 																	<option disabled="">EUR - евро</option>
 																	<option selected="">BYN - белорусский рубль</option>
@@ -458,7 +458,7 @@
 														</li>
 
 														<li class="flex-grow s-p0">
-															<label class="number-input">
+															<label class="number-input" disabled>
 																<input type="number" value="12450340.34">
 																<b>12 450 340,34</b>
 															</label>
@@ -489,14 +489,14 @@
 														</li>
 
 														<li class="expense-name flex-grow s-p0">
-															<label class="text-input">
+															<label class="text-input" disabled>
 																<input type="text" value="Tекст ДублированныйтекстДублированный текст">
 																<b>Tекст ДублированныйтекстДублированный текст</b>
 															</label>
 														</li>
 
 														<li class="flex-shrink s-p0">
-															<label class="text-select icons">
+															<label class="text-select icons" disabled>
 																<select>
 																	<option disabled>&#xf207 - Машина</option>
 																	<option selected>&#xf207 - Другие незначительные расходы</option>
@@ -517,7 +517,7 @@
 														</li>
 
 														<li class="flex-shrink s-p0">
-															<label class="text-select currency">
+															<label class="text-select currency" disabled>
 																<select>
 																	<option disabled="">EUR - евро</option>
 																	<option selected="">BYN - белорусский рубль</option>
@@ -528,7 +528,7 @@
 														</li>
 
 														<li class="flex-grow s-p0">
-															<label class="number-input">
+															<label class="number-input" disabled>
 																<input type="number" value="12450340.34">
 																<b>12 450 340,34</b>
 															</label>
