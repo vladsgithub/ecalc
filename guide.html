@@ -30,6 +30,13 @@
 		</div>
 
 		<div>
+			<button class="btn solid border">
+				<i class="fas fa-bars"></i>
+				<b>меню</b>
+			</button>
+		</div>
+
+		<div>
 			<button class="btn solid">
 				<b class="status-line">вр</b>
 				<i class="fas fa-save"></i>
@@ -54,12 +61,26 @@
 			</label>
 		</div>
 
+		<div style="width: 200px;">
+			<label class="text-input head">
+				<input type="text" value="Tекст ДублированныйтекстДублированный текст" />
+				<b>Tекст ДублированныйтекстДублированный текст</b>
+			</label>
+		</div>
+
         <div style="width: 200px;">
             <label class="text-input" disabled>
                 <input type="text" value="Tекст ДублированныйтекстДублированный текст" />
                 <b>Tекст ДублированныйтекстДублированный текст</b>
             </label>
         </div>
+
+		<div style="width: 200px;">
+			<label class="text-input">
+				<input type="text" disabled value="Tекст ДублированныйтекстДублированный текст" />
+				<b>Tекст ДублированныйтекстДублированный текст</b>
+			</label>
+		</div>
 	</li>
 
 	<li>
@@ -85,6 +106,13 @@
                 <b>12 450 340,34</b>
             </label>
         </div>
+
+		<div>
+			<label class="number-input">
+				<input type="number" disabled value="12450340.34" />
+				<b>12 450 340,34</b>
+			</label>
+		</div>
 	</li>
 
 	<li>
@@ -117,6 +145,28 @@
 		<div>
 			<label class="text-select currency">
 				<select>
+					<option disabled>EUR - евро</option>
+					<option selected>BYN - белорусский рубль</option>
+					<option>USD - доллар</option>
+				</select>
+				<b>BYN</b>
+			</label>
+		</div>
+
+		<div>
+			<label class="text-select currency" disabled>
+				<select>
+					<option disabled>EUR - евро</option>
+					<option selected>BYN - белорусский рубль</option>
+					<option>USD - доллар</option>
+				</select>
+				<b>BYN</b>
+			</label>
+		</div>
+
+		<div>
+			<label class="text-select currency">
+				<select disabled>
 					<option disabled>EUR - евро</option>
 					<option selected>BYN - белорусский рубль</option>
 					<option>USD - доллар</option>

@@ -578,40 +578,12 @@ aside {
 	padding: (@padding * 4) 0;
 }
 
-
-.expenses-group {
-	> li + li {
-		margin-top: (@padding * 4);
-		padding-top: (@padding * 4);
-		border-top: 2px dashed @brand-strong;
-	}
-	.text-field {
-		padding-left: @padding; padding-right: @padding;
-		text-align: right;
-	}
-	.text-input {
-		width: 100%;
-	}
-}
-
 .expenses {
-	padding-top: (@padding * 4);
+
 }
 
 .expense {
 	position: relative;
-	padding-left: (@padding * 4);
-
-	&::before {
-		content: "";
-		position: absolute;
-		top: 18px;
-		left: -2px;
-		width: 16px;
-		height: 8px;
-		border-radius: 0 4px 4px 0;
-		background: @brand-strong;
-	}
 
 	+ .expense {
 		margin-top: (@padding * 4);

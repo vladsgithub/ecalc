@@ -345,7 +345,10 @@
 								<div class="participant-head">
 									<ul class="flex s-p0">
 										<li class="flex-shrink s-p0">
-											<button class="btn solid border">
+											<div class="text-field solid title">
+												<b>1.</b>
+											</div>
+											<button class="btn solid border hidden">
 												<i class="fas fa-trash-alt"></i>
 												<b>1.</b>
 											</button>
@@ -353,8 +356,8 @@
 
 										<li class="flex-grow s-p0">
 											<label class="text-input">
-												<input type="text" value="Tекст ДублированныйтекстДублированный текст">
-												<b>Tекст ДублированныйтекстДублированный текст</b>
+												<input type="text" value="Имя участника">
+												<b>Имя участника</b>
 											</label>
 										</li>
 
@@ -374,354 +377,146 @@
 
 								<div class="participant-body">
 
-									<ul class="expenses-group">
+									<ul class="expenses">
+										<li class="expense s-p0">
 
-										<li class="s-p0">
-
-											<ul class="group-header flex">
-												<li class="s-p0">
+											<ul class="expense-data flex">
+												<li class="flex-shrink s-p0">
 													<div class="text-field title">
 														<b>1.1</b>
 													</div>
-
 													<button class="btn solid hidden" title="Меню">
 														<i class="fas fa-trash-alt"></i>
 														<b>1.1</b>
 													</button>
 												</li>
 
-												<li class="flex-grow s-p0">
-													<label class="text-input bold block" disabled>
-														<input type="text" value="Название группы расчетов">
-														<b>Название группы расчетов</b>
+												<li class="expense-name flex-grow s-p0">
+													<label class="text-input block" disabled>
+														<input type="text" value="Название расхода ДлинноеНазваниеРасхода расхода">
+														<b>Название расхода ДлинноеНазваниеРасхода расхода</b>
 													</label>
 												</li>
 
-												<li class="s-p0">
-													<button class="btn solid">
-														<i class="fas fa-chevron-down"></i>
-													</button>
+												<li class="flex-shrink s-p0">
+													<label class="text-select icons" disabled>
+														<select>
+															<option disabled>&#xf207 - Машина</option>
+															<option selected>&#xf207 - Другие незначительные расходы</option>
+															<option>&#xf4ff - Питание</option>
+														</select>
+														<b>
+															<i class="fas fa-bus"></i>
+														</b>
+													</label>
 												</li>
 											</ul>
 
-											<ul class="expenses">
-												<li class="expense">
-
-													<ul class="expense-data flex">
-														<li class="flex-shrink s-p0">
-															<div class="text-field title">
-																<b>1.1.1</b>
-															</div>
-															<button class="btn solid hidden" title="Меню">
-																<i class="fas fa-trash-alt"></i>
-																<b>1.1.1</b>
-															</button>
-														</li>
-
-														<li class="expense-name flex-grow s-p0">
-															<label class="text-input" disabled>
-																<input type="text" value="Tекст ДублированныйтекстДублированный текст">
-																<b>Tекст ДублированныйтекстДублированный текст</b>
-															</label>
-														</li>
-
-														<li class="flex-shrink s-p0">
-															<label class="text-select icons" disabled>
-																<select>
-																	<option disabled>&#xf207 - Машина</option>
-																	<option selected>&#xf207 - Другие незначительные расходы</option>
-																	<option>&#xf4ff - Питание</option>
-																</select>
-																<b>
-																	<i class="fas fa-bus"></i>
-																</b>
-															</label>
-														</li>
-													</ul>
-
-													<ul class="expense-data flex">
-														<li class="created-date s-p0">
-															<div class="text-field">
-																<b>31.01.2018, 6:50:30</b>
-															</div>
-														</li>
-
-														<li class="flex-shrink s-p0">
-															<label class="text-select currency" disabled>
-																<select>
-																	<option disabled="">EUR - евро</option>
-																	<option selected="">BYN - белорусский рубль</option>
-																	<option>USD - доллар</option>
-																</select>
-																<b>BYN</b>
-															</label>
-														</li>
-
-														<li class="flex-grow s-p0">
-															<label class="number-input" disabled>
-																<input type="number" value="12450340.34">
-																<b>12 450 340,34</b>
-															</label>
-														</li>
-
-														<li class="flex-shrink s-p0">
-															<label class="checkbox">
-																<input type="checkbox">
-																<i></i>
-															</label>
-														</li>
-
-													</ul>
-
-												</li>
-
-												<li class="expense">
-
-													<ul class="expense-data flex">
-														<li class="flex-shrink s-p0">
-															<div class="text-field title">
-																<b>1.1.1</b>
-															</div>
-															<button class="btn solid hidden" title="Меню">
-																<i class="fas fa-trash-alt"></i>
-																<b>1.1.1</b>
-															</button>
-														</li>
-
-														<li class="expense-name flex-grow s-p0">
-															<label class="text-input" disabled>
-																<input type="text" value="Tекст ДублированныйтекстДублированный текст">
-																<b>Tекст ДублированныйтекстДублированный текст</b>
-															</label>
-														</li>
-
-														<li class="flex-shrink s-p0">
-															<label class="text-select icons" disabled>
-																<select>
-																	<option disabled>&#xf207 - Машина</option>
-																	<option selected>&#xf207 - Другие незначительные расходы</option>
-																	<option>&#xf4ff - Питание</option>
-																</select>
-																<b>
-																	<i class="fas fa-bus"></i>
-																</b>
-															</label>
-														</li>
-													</ul>
-
-													<ul class="expense-data flex">
-														<li class="created-date s-p0">
-															<div class="text-field">
-																<b>31.01.2018, 6:50:30</b>
-															</div>
-														</li>
-
-														<li class="flex-shrink s-p0">
-															<label class="text-select currency" disabled>
-																<select>
-																	<option disabled="">EUR - евро</option>
-																	<option selected="">BYN - белорусский рубль</option>
-																	<option>USD - доллар</option>
-																</select>
-																<b>BYN</b>
-															</label>
-														</li>
-
-														<li class="flex-grow s-p0">
-															<label class="number-input" disabled>
-																<input type="number" value="12450340.34">
-																<b>12 450 340,34</b>
-															</label>
-														</li>
-
-														<li class="flex-shrink s-p0">
-															<label class="checkbox">
-																<input type="checkbox">
-																<i></i>
-															</label>
-														</li>
-
-													</ul>
-
-												</li>
-											</ul>
-
-
-										</li>
-
-										<li class="s-p0">
-
-											<ul class="group-header flex">
-												<li class="s-p0">
-													<div class="text-field title hidden">
-														<b>1.1</b>
+											<ul class="expense-data flex">
+												<li class="created-date s-p0">
+													<div class="text-field">
+														<b>31.01.2018, 6:50:30</b>
 													</div>
-
-													<button class="btn solid" title="Меню">
-														<i class="fas fa-trash-alt"></i>
-														<b>1.1</b>
-													</button>
 												</li>
 
-												<li class="flex-grow s-p0">
-													<label class="text-input bold block">
-														<input type="text" value="Название группы расчетов">
-														<b>Название группы расчетов</b>
+												<li class="flex-shrink s-p0">
+													<label class="text-select currency" disabled>
+														<select>
+															<option disabled="">EUR - евро</option>
+															<option selected="">BYN - белорусский рубль</option>
+															<option>USD - доллар</option>
+														</select>
+														<b>BYN</b>
 													</label>
 												</li>
 
-												<li class="s-p0">
-													<button class="btn solid">
-														<i class="fas fa-chevron-down"></i>
-													</button>
+												<li class="flex-grow s-p0">
+													<label class="number-input" disabled>
+														<input type="number" value="12450340.34">
+														<b>12 450 340,34</b>
+													</label>
 												</li>
+
+												<li class="flex-shrink s-p0">
+													<label class="checkbox">
+														<input type="checkbox" checked>
+														<i></i>
+													</label>
+												</li>
+
 											</ul>
-
-											<ul class="expenses">
-												<li class="expense">
-
-													<ul class="expense-data flex">
-														<li class="flex-shrink s-p0">
-															<div class="text-field title hidden">
-																<b>1.1.1</b>
-															</div>
-															<button class="btn solid" title="Меню">
-																<i class="fas fa-trash-alt"></i>
-																<b>1.1.1</b>
-															</button>
-														</li>
-
-														<li class="expense-name flex-grow s-p0">
-															<label class="text-input">
-																<input type="text" value="Tекст ДублированныйтекстДублированный текст">
-																<b>Tекст ДублированныйтекстДублированный текст</b>
-															</label>
-														</li>
-
-														<li class="flex-shrink s-p0">
-															<label class="text-select icons">
-																<select>
-																	<option disabled>&#xf207 - Машина</option>
-																	<option selected>&#xf207 - Другие незначительные расходы</option>
-																	<option>&#xf4ff - Питание</option>
-																</select>
-																<b>
-																	<i class="fas fa-bus"></i>
-																</b>
-															</label>
-														</li>
-													</ul>
-
-													<ul class="expense-data flex">
-														<li class="created-date s-p0">
-															<div class="text-field">
-																<b>31.01.2018, 6:50:30</b>
-															</div>
-														</li>
-
-														<li class="flex-shrink s-p0">
-															<label class="text-select currency">
-																<select>
-																	<option disabled="">EUR - евро</option>
-																	<option selected="">BYN - белорусский рубль</option>
-																	<option>USD - доллар</option>
-																</select>
-																<b>BYN</b>
-															</label>
-														</li>
-
-														<li class="flex-grow s-p0">
-															<label class="number-input">
-																<input type="number" value="12450340.34">
-																<b>12 450 340,34</b>
-															</label>
-														</li>
-
-														<li class="flex-shrink s-p0">
-															<label class="checkbox">
-																<input type="checkbox">
-																<i></i>
-															</label>
-														</li>
-
-													</ul>
-
-												</li>
-
-												<li class="expense">
-
-													<ul class="expense-data flex">
-														<li class="flex-shrink s-p0">
-															<div class="text-field title hidden">
-																<b>1.1.1</b>
-															</div>
-															<button class="btn solid" title="Меню">
-																<i class="fas fa-trash-alt"></i>
-																<b>1.1.1</b>
-															</button>
-														</li>
-
-														<li class="expense-name flex-grow s-p0">
-															<label class="text-input">
-																<input type="text" value="Tекст ДублированныйтекстДублированный текст">
-																<b>Tекст ДублированныйтекстДублированный текст</b>
-															</label>
-														</li>
-
-														<li class="flex-shrink s-p0">
-															<label class="text-select icons">
-																<select>
-																	<option disabled>&#xf207 - Машина</option>
-																	<option selected>&#xf207 - Другие незначительные расходы</option>
-																	<option>&#xf4ff - Питание</option>
-																</select>
-																<b>
-																	<i class="fas fa-bus"></i>
-																</b>
-															</label>
-														</li>
-													</ul>
-
-													<ul class="expense-data flex">
-														<li class="created-date s-p0">
-															<div class="text-field">
-																<b>31.01.2018, 6:50:30</b>
-															</div>
-														</li>
-
-														<li class="flex-shrink s-p0">
-															<label class="text-select currency">
-																<select>
-																	<option disabled="">EUR - евро</option>
-																	<option selected="">BYN - белорусский рубль</option>
-																	<option>USD - доллар</option>
-																</select>
-																<b>BYN</b>
-															</label>
-														</li>
-
-														<li class="flex-grow s-p0">
-															<label class="number-input">
-																<input type="number" value="12450340.34">
-																<b>12 450 340,34</b>
-															</label>
-														</li>
-
-														<li class="flex-shrink s-p0">
-															<label class="checkbox">
-																<input type="checkbox">
-																<i></i>
-															</label>
-														</li>
-
-													</ul>
-
-												</li>
-											</ul>
-
 
 										</li>
 
+										<li class="expense s-p0">
+
+											<ul class="expense-data flex">
+												<li class="flex-shrink s-p0">
+													<div class="text-field title">
+														<b>1.2</b>
+													</div>
+													<button class="btn solid hidden" title="Меню">
+														<i class="fas fa-trash-alt"></i>
+														<b>1.2</b>
+													</button>
+												</li>
+
+												<li class="expense-name flex-grow s-p0">
+													<label class="text-input block">
+														<input type="text" value="Название расхода ДлинноеНазваниеРасхода расхода">
+														<b>Название расхода ДлинноеНазваниеРасхода расхода</b>
+													</label>
+												</li>
+
+												<li class="flex-shrink s-p0">
+													<label class="text-select icons">
+														<select>
+															<option disabled>&#xf207 - Машина</option>
+															<option selected>&#xf207 - Другие незначительные расходы</option>
+															<option>&#xf4ff - Питание</option>
+														</select>
+														<b>
+															<i class="fas fa-bus"></i>
+														</b>
+													</label>
+												</li>
+											</ul>
+
+											<ul class="expense-data flex">
+												<li class="created-date s-p0">
+													<div class="text-field">
+														<b>31.01.2018, 6:50:30</b>
+													</div>
+												</li>
+
+												<li class="flex-shrink s-p0">
+													<label class="text-select currency">
+														<select>
+															<option disabled="">EUR - евро</option>
+															<option selected="">BYN - белорусский рубль</option>
+															<option>USD - доллар</option>
+														</select>
+														<b>BYN</b>
+													</label>
+												</li>
+
+												<li class="flex-grow s-p0">
+													<label class="number-input">
+														<input type="number" value="12450340.34">
+														<b>12 450 340,34</b>
+													</label>
+												</li>
+
+												<li class="flex-shrink s-p0">
+													<label class="checkbox">
+														<input type="checkbox">
+														<i></i>
+													</label>
+												</li>
+
+											</ul>
+
+										</li>
 									</ul>
 
 								</div>

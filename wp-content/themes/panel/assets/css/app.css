@@ -3548,6 +3548,10 @@ label {
 label.bold {
   font-weight: bold;
 }
+label.head {
+  text-transform: uppercase;
+  font-weight: bold;
+}
 label.text-input,
 label.number-input {
   position: relative;
@@ -3613,6 +3617,7 @@ label.number-input input {
   outline: none;
   vertical-align: top;
   text-align: inherit;
+  text-transform: inherit;
   font-family: inherit;
   font-size: 1rem;
   font-weight: inherit;
@@ -4785,35 +4790,8 @@ aside .account .text-input {
 .participant-body {
   padding: 16px 0;
 }
-.expenses-group > li + li {
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 2px dashed #4c69bd;
-}
-.expenses-group .text-field {
-  padding-left: 4px;
-  padding-right: 4px;
-  text-align: right;
-}
-.expenses-group .text-input {
-  width: 100%;
-}
-.expenses {
-  padding-top: 16px;
-}
 .expense {
   position: relative;
-  padding-left: 16px;
-}
-.expense::before {
-  content: "";
-  position: absolute;
-  top: 18px;
-  left: -2px;
-  width: 16px;
-  height: 8px;
-  border-radius: 0 4px 4px 0;
-  background: #4c69bd;
 }
 .expense + .expense {
   margin-top: 16px;
