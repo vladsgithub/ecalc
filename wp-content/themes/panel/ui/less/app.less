@@ -578,34 +578,48 @@ aside {
 	padding: (@padding * 4) 0;
 }
 
-.expenses {
+//.expenses {
+//
+//}
+//
+//.expense {
+//	position: relative;
+//
+//	+ .expense {
+//		margin-top: (@padding * 4);
+//	}
+//	.expense-data {
+//		+ .expense-data {
+//			margin-top: @padding;
+//		}
+//		.created-date {
+//			flex-shrink: 0;
+//
+//			@media only screen and (max-width: ((@mobile - 1))) {
+//				flex-basis: 1%;
+//				flex-shrink: 1;
+//			}
+//		}
+//	}
+//	.expense-name {
+//		overflow: hidden;
+//	}
+//	.number-input {
+//		width: 100%;
+//	}
+//}
 
-}
-
-.expense {
+.expense-data {
 	position: relative;
+	overflow: hidden;
 
-	+ .expense {
-		margin-top: (@padding * 4);
+	> .checkbox {
+		position: absolute;
+		right: 0;
+		top: 0;
 	}
-	.expense-data {
-		+ .expense-data {
-			margin-top: @padding;
-		}
-		.created-date {
-			flex-shrink: 0;
-
-			@media only screen and (max-width: ((@mobile - 1))) {
-				flex-basis: 1%;
-				flex-shrink: 1;
-			}
-		}
-	}
-	.expense-name {
-		overflow: hidden;
-	}
-	.number-input {
-		width: 100%;
+	> .fields-area {
+		padding-right: 44px;
 	}
 }
 

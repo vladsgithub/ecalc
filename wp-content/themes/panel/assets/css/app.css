@@ -3381,6 +3381,9 @@ table {
 .flex .flex-shrink {
   flex-shrink: 0;
 }
+.flex .flex-hidden {
+  overflow: hidden;
+}
 .s-p0 {
   padding-left: 2px !important;
   padding-right: 2px !important;
@@ -3841,6 +3844,9 @@ label.checkbox.thin {
   min-height: 30px;
   line-height: 30px;
 }
+label.checkbox.thin i {
+  margin-top: 4px;
+}
 label.checkbox.thin i::before {
   top: 2px;
 }
@@ -3849,14 +3855,19 @@ label.checkbox input {
   left: 0;
   opacity: 0;
 }
-label.checkbox input:checked + i::before {
-  content: "\f14a";
+label.checkbox input:checked + i {
+  background-color: transparent;
 }
 label.checkbox input:focus + i::after {
   content: "";
 }
 label.checkbox i {
   float: left;
+  margin-top: 11px;
+  margin-left: -28px;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(76, 105, 189, 0.9);
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-style: normal;
@@ -3868,7 +3879,7 @@ label.checkbox i {
   font-size: 26px;
 }
 label.checkbox i::before {
-  content: "\f0c8";
+  content: "\f14a";
   position: absolute;
   top: 9px;
   left: 11px;
@@ -4174,7 +4185,7 @@ label.toggle i::after {
 .number-field.bold {
   font-weight: bold;
 }
-.number-field b {
+.number-field > b {
   display: inline-block;
   width: 100%;
   padding: 6px 0 2px;
@@ -4185,13 +4196,27 @@ label.toggle i::after {
   font-size: 1.1rem;
   word-wrap: break-word;
 }
-.number-field b:first-line {
+.number-field > b:first-line {
   font-size: 1.4rem;
 }
-.number-field s {
+.number-field > b > s {
   vertical-align: middle;
   font-size: 0.9rem;
   text-decoration: underline;
+}
+.date-field {
+  display: inline-block;
+  height: 44px;
+  width: 44px;
+  line-height: 1;
+  text-align: center;
+  font-size: 1rem;
+}
+.date-field > b:first-child {
+  font-size: 0.8rem;
+}
+.date-field > b:last-child {
+  font-weight: bold;
 }
 .currency {
   text-transform: uppercase;
@@ -4199,6 +4224,24 @@ label.toggle i::after {
 }
 .currency b {
   text-decoration: underline;
+}
+.multiple-field {
+  display: flex;
+  align-items: stretch;
+}
+.multiple-field > label[disabled] {
+  height: auto;
+}
+.multiple-field > label + label {
+  display: block;
+  margin-left: -2px;
+}
+.multiple-field > label + label[disabled] {
+  margin-left: -1px;
+}
+.multiple-field > .text-select.icons,
+.multiple-field > .text-select.currency {
+  flex-shrink: 0;
 }
 @keyframes hiddenWithDelay {
   0% {
@@ -4790,27 +4833,15 @@ aside .account .text-input {
 .participant-body {
   padding: 16px 0;
 }
-.expense {
+.expense-data {
   position: relative;
-}
-.expense + .expense {
-  margin-top: 16px;
-}
-.expense .expense-data + .expense-data {
-  margin-top: 4px;
-}
-.expense .expense-data .created-date {
-  flex-shrink: 0;
-}
-@media only screen and (max-width: 639px) {
-  .expense .expense-data .created-date {
-    flex-basis: 1%;
-    flex-shrink: 1;
-  }
-}
-.expense .expense-name {
   overflow: hidden;
 }
-.expense .number-input {
-  width: 100%;
+.expense-data > .checkbox {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.expense-data > .fields-area {
+  padding-right: 44px;
 }

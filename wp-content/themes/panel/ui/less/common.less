@@ -58,6 +58,9 @@
 	.flex-shrink {
 		flex-shrink: 0;
 	}
+	.flex-hidden {
+		overflow: hidden;
+	}
 }
 
 .s-p0 { .side-padding(@padding / 2); }
@@ -478,7 +481,11 @@ label {
 			min-height: 30px;
 			line-height: 30px;
 
-			i::before { top: 2px; }
+			i {
+				margin-top: 4px;
+
+				&::before { top: 2px; }
+			}
 		}
 
 		input {
@@ -486,8 +493,8 @@ label {
 			left: 0;
 			opacity: 0;
 
-			&:checked + i::before {
-				content: "\f14a";
+			&:checked + i {
+				background-color: transparent;
 			}
 			&:focus + i::after {
 				content: "";
@@ -495,12 +502,17 @@ label {
 		}
 		i {
 			float: left;
+			margin-top: 11px;
+			margin-left: -28px;
+			width: 20px;
+			height: 20px;
+			background-color: fade(@brand-strong, 90);
 			.icon-font();
 			color: @brand-strong;
 			font-size: 26px;
 
 			&::before {
-				content: "\f0c8";
+				content: "\f14a";
 				position: absolute; top: 9px; left: 11px;
 				line-height: 1;
 			}
@@ -803,7 +815,7 @@ label {
 		font-weight: bold;
 	}
 
-	b {
+	> b {
 		display: inline-block;
 		width: 100%;
 		padding: 6px 0 2px;
@@ -817,12 +829,32 @@ label {
 		&:first-line {
 			font-size: 1.4rem;
 		}
+
+		> s {
+			vertical-align: middle;
+			font-size: 0.9rem;
+			text-decoration: underline;
+		}
 	}
 
-	s {
-		vertical-align: middle;
-		font-size: 0.9rem;
-		text-decoration: underline;
+
+}
+
+.date-field {
+	display: inline-block;
+	height: 44px;
+	width: 44px;
+	line-height: 1;
+	text-align: center;
+	font-size: 1rem;
+
+	> b {
+		&:first-child {
+			font-size: 0.8rem;
+		}
+		&:last-child {
+			font-weight: bold;
+		}
 	}
 }
 
@@ -832,5 +864,31 @@ label {
 
 	b {
 		text-decoration: underline;
+	}
+}
+
+.multiple-field {
+	display: flex;
+	align-items: stretch;
+
+	> label {
+		&[disabled] {
+			height: auto;
+		}
+
+		+ label {
+			display: block;
+			margin-left: -2px;
+
+			&[disabled] {
+				margin-left: -1px;
+			}
+		}
+	}
+	> .text-select {
+		&.icons,
+		&.currency {
+			flex-shrink: 0;
+		}
 	}
 }
