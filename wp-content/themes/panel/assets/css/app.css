@@ -3843,12 +3843,15 @@ label.checkbox {
 label.checkbox.thin {
   min-height: 30px;
   line-height: 30px;
+  padding-left: 30px;
 }
 label.checkbox.thin i {
   margin-top: 4px;
+  margin-left: -24px;
 }
 label.checkbox.thin i::before {
   top: 2px;
+  left: 4px;
 }
 label.checkbox input {
   position: absolute;
@@ -3897,7 +3900,6 @@ label.checkbox i::after {
 label.checkbox b {
   display: inline-block;
   width: 100%;
-  min-width: 100px;
   padding: 8px 0;
   overflow: hidden;
   box-sizing: border-box;
@@ -4156,6 +4158,25 @@ label.toggle i::after {
 }
 .text-field.name b {
   font-size: 1rem;
+}
+.text-field.decoration {
+  display: block;
+  padding: 0 16px;
+  min-height: 0;
+  line-height: 22px;
+  overflow: hidden;
+}
+.text-field.decoration b {
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom: 1px solid #4c69bd;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #4c69bd;
 }
 .text-field b {
   display: inline-block;
@@ -4833,15 +4854,22 @@ aside .account .text-input {
 .participant-body {
   padding: 16px 0;
 }
-.expense-data {
+.expense {
   position: relative;
-  overflow: hidden;
+  padding-right: 44px;
 }
-.expense-data > .checkbox {
+.expense .expense-number {
+  min-width: 24px;
+}
+.expense .expense-data {
+  margin-right: -44px;
+  padding: 4px 0 0 28px;
+}
+.expense .expense-participants {
+  padding: 4px 0 4px 46px;
+}
+.expense .paid-out {
   position: absolute;
   right: 0;
   top: 0;
-}
-.expense-data > .fields-area {
-  padding-right: 44px;
 }

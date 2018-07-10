@@ -609,17 +609,24 @@ aside {
 //	}
 //}
 
-.expense-data {
+.expense {
 	position: relative;
-	overflow: hidden;
+	padding-right: 44px;
 
-	> .checkbox {
+	.expense-number {
+		min-width: 24px;
+	}
+	.expense-data {
+		margin-right: -44px;
+		padding: 4px 0 0 28px;
+	}
+	.expense-participants {
+		padding: 4px 0 4px 46px;
+	}
+	.paid-out {
 		position: absolute;
 		right: 0;
 		top: 0;
-	}
-	> .fields-area {
-		padding-right: 44px;
 	}
 }
 
