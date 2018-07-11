@@ -4,7 +4,9 @@
     <list default="true" id="44bc63fb-9e01-4d9b-a8dc-1a1fc190dee4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guide.html" beforeDir="false" afterPath="$PROJECT_DIR$/guide.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/prototype.html" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/prototype.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less" afterDir="false" />
@@ -30,8 +32,8 @@
       <file leaf-file-name="variables.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+            <state relative-caret-position="778">
+              <caret line="59" column="1" selection-start-line="59" selection-start-column="1" selection-end-line="59" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -39,8 +41,8 @@
       <file leaf-file-name="common.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="683">
-              <caret line="804" column="31" selection-start-line="804" selection-start-column="31" selection-end-line="804" selection-end-column="31" />
+            <state relative-caret-position="731">
+              <caret line="55" column="20" selection-start-line="55" selection-start-column="20" selection-end-line="55" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -48,29 +50,28 @@
       <file leaf-file-name="app.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="666">
-              <caret line="622" column="27" lean-forward="true" selection-start-line="622" selection-start-column="27" selection-end-line="622" selection-end-column="27" />
+            <state relative-caret-position="387">
+              <caret line="654" column="30" selection-start-line="654" selection-start-column="30" selection-end-line="654" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+            <state relative-caret-position="700">
+              <caret line="81" column="29" lean-forward="true" selection-start-line="81" selection-start-column="29" selection-end-line="81" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="prototype.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="prototype.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/prototype.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="453" column="76" selection-start-line="453" selection-start-column="76" selection-end-line="453" selection-end-column="76" />
+            <state relative-caret-position="418">
+              <caret line="418" column="131" lean-forward="true" selection-start-line="418" selection-start-column="131" selection-end-line="418" selection-end-column="131" />
               <folding>
-                <element signature="n#div#0;n#div#0;n#li#1;n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
-                <element signature="n#ul#0;n#div#1;n#div#0;n#li#1;n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+                <element signature="n#ul#2;n#div#1;n#div#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
                 <element signature="n#ul#1;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
                 <element signature="n#li#1;n#ul#1;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
               </folding>
@@ -81,8 +82,8 @@
       <file leaf-file-name="guide.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/guide.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="265" column="34" selection-start-line="265" selection-start-column="24" selection-end-line="265" selection-end-column="34" />
+            <state relative-caret-position="556">
+              <caret line="263" column="23" selection-start-line="263" selection-start-column="23" selection-end-line="263" selection-end-column="23" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#li#2;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#li#3;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -105,12 +106,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.text-fiel</find>
-      <find>31.01.2018, 6:50:30</find>
-      <find>@medi</find>
-      <find>number-input</find>
-      <find>1.</find>
-      <find>class=&quot;expense-name flex-grow s-p0&quot;</find>
       <find>.expense</find>
       <find>.btn</find>
       <find>&lt;button</find>
@@ -135,6 +130,12 @@
       <find>thin</find>
       <find>Text field</find>
       <find>text-field</find>
+      <find>chekbo</find>
+      <find>checkb</find>
+      <find>checkbox</find>
+      <find>(el</find>
+      <find>detailsDisplaySwitch</find>
+      <find>ng-cli</find>
     </findStrings>
     <replaceStrings>
       <replace>Название группы расходов</replace>
@@ -158,10 +159,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" />
         <option value="$PROJECT_DIR$/guide.html" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/prototype.html" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" />
       </list>
     </option>
   </component>
@@ -176,7 +179,7 @@
       <path value="$PROJECT_DIR$/wp-content/themes/panel/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1932" />
@@ -286,15 +289,16 @@
       <workItem from="1530938715644" duration="4340000" />
       <workItem from="1531032732457" duration="6918000" />
       <workItem from="1531110043547" duration="6072000" />
-      <workItem from="1531196477729" duration="6788000" />
+      <workItem from="1531196477729" duration="6931000" />
+      <workItem from="1531283860536" duration="7210000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52318000" />
+    <option name="totallyTimeSpent" value="59671000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7127193" visible="true" weight="0.17386723" />
@@ -324,13 +328,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3876">
-          <caret line="228" column="35" selection-start-line="228" selection-start-column="35" selection-end-line="228" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10455">
@@ -357,8 +354,7 @@
         <state relative-caret-position="7820">
           <caret line="460" column="96" selection-start-line="460" selection-start-column="96" selection-end-line="460" selection-end-column="96" />
           <folding>
-            <element signature="n#div#0;n#div#0;n#li#1;n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#ul#0;n#div#1;n#div#0;n#li#1;n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#ul#2;n#div#1;n#div#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#ul#1;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#1;n#ul#1;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
           </folding>
@@ -405,8 +401,7 @@
         <state relative-caret-position="12359">
           <caret line="727" column="33" selection-start-line="727" selection-start-column="33" selection-end-line="727" selection-end-column="33" />
           <folding>
-            <element signature="n#div#0;n#div#0;n#li#1;n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#ul#0;n#div#1;n#div#0;n#li#1;n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#ul#2;n#div#1;n#div#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#ul#1;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#1;n#ul#1;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
           </folding>
@@ -453,8 +448,7 @@
         <state relative-caret-position="5933">
           <caret line="349" column="53" selection-start-line="349" selection-start-column="53" selection-end-line="349" selection-end-column="53" />
           <folding>
-            <element signature="n#div#0;n#div#0;n#li#1;n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#ul#0;n#div#1;n#div#0;n#li#1;n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#ul#2;n#div#1;n#div#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#ul#1;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#1;n#ul#1;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
           </folding>
@@ -487,8 +481,7 @@
         <state relative-caret-position="6987">
           <caret line="459" column="88" selection-start-line="459" selection-start-column="88" selection-end-line="459" selection-end-column="88" />
           <folding>
-            <element signature="n#div#0;n#div#0;n#li#1;n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#ul#0;n#div#1;n#div#0;n#li#1;n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#ul#2;n#div#1;n#div#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#ul#1;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#1;n#ul#1;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
           </folding>
@@ -535,8 +528,7 @@
         <state relative-caret-position="6460">
           <caret line="380" column="54" selection-start-line="380" selection-start-column="54" selection-end-line="380" selection-end-column="54" />
           <folding>
-            <element signature="n#div#0;n#div#0;n#li#1;n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#ul#0;n#div#1;n#div#0;n#li#1;n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#ul#2;n#div#1;n#div#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#ul#1;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#1;n#ul#1;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
           </folding>
@@ -636,13 +628,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/functions.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -664,24 +649,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="622" column="27" lean-forward="true" selection-start-line="622" selection-start-column="27" selection-end-line="622" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/guide.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="265" column="34" selection-start-line="265" selection-start-column="24" selection-end-line="265" selection-end-column="34" />
+        <state relative-caret-position="556">
+          <caret line="263" column="23" selection-start-line="263" selection-start-column="23" selection-end-line="263" selection-end-column="23" />
           <folding>
             <element signature="n#style#0;n#div#1;n#li#2;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#li#3;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -699,23 +670,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less">
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="683">
-          <caret line="804" column="31" selection-start-line="804" selection-start-column="31" selection-end-line="804" selection-end-column="31" />
+        <state relative-caret-position="778">
+          <caret line="59" column="1" selection-start-line="59" selection-start-column="1" selection-end-line="59" selection-end-column="1" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="55" column="20" selection-start-line="55" selection-start-column="20" selection-end-line="55" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="654" column="30" selection-start-line="654" selection-start-column="30" selection-end-line="654" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/prototype.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="453" column="76" selection-start-line="453" selection-start-column="76" selection-end-line="453" selection-end-column="76" />
+        <state relative-caret-position="418">
+          <caret line="418" column="131" lean-forward="true" selection-start-line="418" selection-start-column="131" selection-end-line="418" selection-end-column="131" />
           <folding>
-            <element signature="n#div#0;n#div#0;n#li#1;n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#ul#0;n#div#1;n#div#0;n#li#1;n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#ul#2;n#div#1;n#div#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#ul#1;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#1;n#ul#1;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="81" column="29" lean-forward="true" selection-start-line="81" selection-start-column="29" selection-end-line="81" selection-end-column="29" />
         </state>
       </provider>
     </entry>

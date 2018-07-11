@@ -619,9 +619,56 @@ aside {
 	.expense-data {
 		margin-right: -44px;
 		padding: 4px 0 0 28px;
+
+		&.completed {
+			.details-btn {
+				i::after {
+					content: "\f00c";
+					position: absolute;
+					top: 14px;
+					left: 14px;
+					color: @brand-strong;
+					font-size: 14px;
+				}
+			}
+		}
 	}
 	.expense-participants {
-		padding: 4px 0 4px 46px;
+		position: relative;
+		padding: 8px 0 8px 46px;
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 23px;
+			bottom: 0;
+			border-left: 2px dashed @brand-strong;
+		}
+
+		.text-field.decoration {
+			margin-bottom: 4px;
+		}
+	}
+	.expense-details {
+		float: right;
+		margin: 0 -2px 0 -8px;
+		padding: 8px 0 8px 6px;
+		min-width: 296px;
+		border: 2px dashed @brand-strong;
+		border-right: 0;
+		border-radius: 8px 0 0 8px;
+
+		.details-item {
+			margin-right: 6px;
+
+			+ .details-item {
+				margin-top: 4px;
+			}
+			> li {
+				min-width: 60px;
+			}
+		}
 	}
 	.paid-out {
 		position: absolute;

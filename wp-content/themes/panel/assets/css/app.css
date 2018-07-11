@@ -3369,6 +3369,15 @@ table {
 .uppercase {
   text-transform: uppercase !important;
 }
+.clearfix::before,
+.clearfix::after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.clearfix::after {
+  clear: both;
+}
 .flex {
   display: flex;
 }
@@ -3840,6 +3849,9 @@ label.checkbox {
   font-size: 0;
   cursor: default;
 }
+label.checkbox.decoration b {
+  text-decoration: line-through;
+}
 label.checkbox.thin {
   min-height: 30px;
   line-height: 30px;
@@ -3861,6 +3873,9 @@ label.checkbox input {
 label.checkbox input:checked + i {
   background-color: transparent;
 }
+label.checkbox input:checked ~ b {
+  text-decoration: none;
+}
 label.checkbox input:focus + i::after {
   content: "";
 }
@@ -3870,7 +3885,7 @@ label.checkbox i {
   margin-left: -28px;
   width: 20px;
   height: 20px;
-  background-color: rgba(76, 105, 189, 0.9);
+  background-color: rgba(76, 105, 189, 0.95);
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-style: normal;
@@ -4865,8 +4880,46 @@ aside .account .text-input {
   margin-right: -44px;
   padding: 4px 0 0 28px;
 }
+.expense .expense-data.completed .details-btn i::after {
+  content: "\f00c";
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  color: #4c69bd;
+  font-size: 14px;
+}
 .expense .expense-participants {
-  padding: 4px 0 4px 46px;
+  position: relative;
+  padding: 8px 0 8px 46px;
+}
+.expense .expense-participants::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 23px;
+  bottom: 0;
+  border-left: 2px dashed #4c69bd;
+}
+.expense .expense-participants .text-field.decoration {
+  margin-bottom: 4px;
+}
+.expense .expense-details {
+  float: right;
+  margin: 0 -2px 0 -8px;
+  padding: 8px 0 8px 6px;
+  min-width: 296px;
+  border: 2px dashed #4c69bd;
+  border-right: 0;
+  border-radius: 8px 0 0 8px;
+}
+.expense .expense-details .details-item {
+  margin-right: 6px;
+}
+.expense .expense-details .details-item + .details-item {
+  margin-top: 4px;
+}
+.expense .expense-details .details-item > li {
+  min-width: 60px;
 }
 .expense .paid-out {
   position: absolute;

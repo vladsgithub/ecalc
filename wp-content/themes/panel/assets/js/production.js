@@ -33638,7 +33638,6 @@ function forEach(elements, callback) {
 
 
 
-
 		// WORKING WITH DATA TO UPLOAD/DOWNLOAD ==============================
 
         var updateUploadStatus = function(status) {

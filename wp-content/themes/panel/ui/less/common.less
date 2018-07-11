@@ -45,6 +45,18 @@
 	text-transform: uppercase !important;
 }
 
+.clearfix {
+	&::before,
+	&::after {
+		display: table;
+		line-height: 0;
+		content: "";
+	}
+	&::after {
+		clear: both;
+	}
+}
+
 .flex {
 	display: flex;
 
@@ -477,6 +489,11 @@ label {
 		font-size: 0;
 		cursor: default;
 
+		&.decoration {
+			b {
+				text-decoration: line-through;
+			}
+		}
 		&.thin {
 			min-height: 30px;
 			line-height: 30px;
@@ -498,8 +515,9 @@ label {
 			left: 0;
 			opacity: 0;
 
-			&:checked + i {
-				background-color: transparent;
+			&:checked {
+				+ i { background-color: transparent; }
+				~ b { text-decoration: none; }
 			}
 			&:focus + i::after {
 				content: "";
@@ -511,7 +529,7 @@ label {
 			margin-left: -28px;
 			width: 20px;
 			height: 20px;
-			background-color: fade(@brand-strong, 90);
+			background-color: fade(@brand-strong, 95);
 			.icon-font();
 			color: @brand-strong;
 			font-size: 26px;

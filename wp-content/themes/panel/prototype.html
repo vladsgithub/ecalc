@@ -412,11 +412,11 @@
 												</li>
 											</ul>
 
-											<div class="expense-data">
+											<div class="expense-data clearfix completed open-details">
 
 												<ul class="flex">
 													<li class="flex-shrink s-p0">
-														<button class="btn solid">
+														<button class="btn solid details-btn" onclick="console.log('this=', this)">
 															<i class="fas fa-folder"></i>
 															<b class="small no-middle-mobile">Детали</b>
 														</button>
@@ -433,9 +433,9 @@
 																<b>BYN</b>
 															</label>
 
-															<label class="text-input">
-																<input type="text" value="Tекст ДублированныйтекстДублированный текст">
-																<b>Tекст ДублированныйтекстДублированный текст</b>
+															<label class="number-input">
+																<input type="number" value="12450340.34">
+																<b>12<wbr>450<wbr>340,34</b>
 															</label>
 														</div>
 													</li>
@@ -450,106 +450,116 @@
 												</ul>
 
 												<div class="expense-participants">
-													<div class="text-field decoration s-p0">
-														<b>Участники расхода</b>
+
+													<div class="participants-view">
+														<div class="text-field decoration s-p0">
+															<b>Участники расхода</b>
+														</div>
+
+														<label class="checkbox decoration thin">
+															<input type="checkbox">
+															<i></i>
+															<b>Участник 1</b>
+														</label>
+
+														<label class="checkbox decoration thin">
+															<input type="checkbox">
+															<i></i>
+															<b>Участник 2</b>
+														</label>
+
+														<label class="checkbox decoration thin">
+															<input type="checkbox">
+															<i></i>
+															<b>Участник 3</b>
+														</label>
 													</div>
 
-													<label class="checkbox thin">
-														<input type="checkbox">
-														<i></i>
-														<b>Участник 1</b>
-													</label>
-
-													<label class="checkbox thin">
-														<input type="checkbox">
-														<i></i>
-														<b>Участник 2</b>
-													</label>
-
-													<label class="checkbox thin">
-														<input type="checkbox">
-														<i></i>
-														<b>Участник 3</b>
-													</label>
 												</div>
 
 												<div class="expense-details">
 
-													<ul class="flex">
-														<li>
-															<label class="checkbox">
-																<input type="checkbox">
-																<i></i>
-																<b>1.1.1</b>
-															</label>
-														</li>
+													<div class="text-field">
+														<b>Детали этого расхода</b>
+													</div>
 
-														<li class="flex-grow">
-															<div class="multiple-field">
-																<label class="text-input">
-																	<input type="text" value="Молоко 20%">
-																	<b>Молоко 20%</b>
+													<div class="details-view">
+														<ul class="flex details-item">
+															<li>
+																<label class="checkbox">
+																	<input type="checkbox">
+																	<i></i>
+																	<b>1</b>
 																</label>
+															</li>
 
-																<label class="text-input">
-																	<input type="text" value="2л">
-																	<b>2л</b>
+															<li class="flex-grow s-p0">
+																<div class="multiple-field">
+																	<label class="text-input">
+																		<input type="text" value="Молоко 20%">
+																		<b>Молоко 20%</b>
+																	</label>
+
+																	<label class="text-input">
+																		<input type="text" value="2л">
+																		<b>2л</b>
+																	</label>
+																</div>
+															</li>
+
+															<li class="s-p0">
+																<label class="number-input">
+																	<input type="number" value="12450340.34">
+																	<b>12<wbr>450<wbr>340,34</b>
 																</label>
-															</div>
-														</li>
+															</li>
+														</ul>
 
-														<li>
-															<label class="number-input">
-																<input type="number" value="12450340.34">
-																<b>12<wbr>450<wbr>340,34</b>
-															</label>
-														</li>
-													</ul>
-
-													<ul class="flex">
-														<li>
-															<label class="checkbox">
-																<input type="checkbox">
-																<i></i>
-																<b>1.1.1</b>
-															</label>
-														</li>
-
-														<li class="flex-grow">
-															<div class="multiple-field">
-																<label class="text-input">
-																	<input type="text" value="Молоко 20%">
-																	<b>Молоко 20%</b>
+														<ul class="flex details-item">
+															<li>
+																<label class="checkbox">
+																	<input type="checkbox">
+																	<i></i>
+																	<b>2</b>
 																</label>
+															</li>
 
-																<label class="text-input">
-																	<input type="text" value="2л">
-																	<b>2л</b>
+															<li class="flex-grow s-p0">
+																<div class="multiple-field">
+																	<label class="text-input">
+																		<input type="text" value="Молоко 20%">
+																		<b>Молоко 20%</b>
+																	</label>
+
+																	<label class="text-input">
+																		<input type="text" value="2л">
+																		<b>2л</b>
+																	</label>
+																</div>
+															</li>
+
+															<li class="s-p0">
+																<label class="number-input">
+																	<input type="number" value="12450340.34">
+																	<b>12<wbr>450<wbr>340,34</b>
 																</label>
-															</div>
-														</li>
+															</li>
+														</ul>
 
-														<li>
-															<label class="number-input">
-																<input type="number" value="12450340.34">
-																<b>12<wbr>450<wbr>340,34</b>
-															</label>
-														</li>
-													</ul>
-
-													<ul class="flex">
-														<li>
+														<ul class="flex details-item">
+														<li class="s-p0">
 															<button class="btn solid">
 																<i class="fas fa-plus"></i>
 															</button>
 														</li>
 
-														<li class="flex-grow">
+														<li class="flex-grow s-p0">
 															<div class="text-field">
 																<b>Добавить новый пункт деталей</b>
 															</div>
 														</li>
 													</ul>
+													</div>
 
 												</div>
 
