@@ -4162,8 +4162,8 @@ label.toggle i::after {
 .text-field.bold {
   font-weight: bold;
 }
-.text-field.title b,
-.text-field.name b {
+.text-field.title > b,
+.text-field.name > b {
   overflow: hidden;
   line-height: 1;
   white-space: nowrap;
@@ -4171,29 +4171,30 @@ label.toggle i::after {
   font-size: 1.2rem;
   font-weight: bold;
 }
-.text-field.name b {
+.text-field.name > b {
   font-size: 1rem;
 }
-.text-field.decoration {
+.text-field.subtitle {
   display: block;
   padding: 0 16px;
   min-height: 0;
   line-height: 22px;
   overflow: hidden;
 }
-.text-field.decoration b {
+.text-field.subtitle > b {
   padding-left: 5px;
   padding-right: 5px;
-  border-bottom: 1px solid #4c69bd;
   white-space: nowrap;
   text-overflow: ellipsis;
   text-transform: uppercase;
   text-align: center;
   font-size: 0.9rem;
   font-weight: bold;
-  color: #4c69bd;
 }
-.text-field b {
+.text-field.underline > b {
+  border-bottom: 1px solid #4c69bd;
+}
+.text-field > b {
   display: inline-block;
   width: 100%;
   padding: 3px 0;
@@ -4888,6 +4889,12 @@ aside .account .text-input {
   color: #4c69bd;
   font-size: 14px;
 }
+.expense .expense-data.open-details .details-view {
+  display: block;
+}
+.expense .expense-data.open-details .details-title {
+  display: none;
+}
 .expense .expense-participants {
   position: relative;
   padding: 8px 0 8px 46px;
@@ -4900,17 +4907,21 @@ aside .account .text-input {
   bottom: 0;
   border-left: 2px dashed #4c69bd;
 }
-.expense .expense-participants .text-field.decoration {
+.expense .expense-participants .text-field.subtitle {
   margin-bottom: 4px;
 }
 .expense .expense-details {
   float: right;
   margin: 0 -2px 0 -8px;
   padding: 8px 0 8px 6px;
+  width: 100%;
   min-width: 296px;
   border: 2px dashed #4c69bd;
   border-right: 0;
   border-radius: 8px 0 0 8px;
+}
+.expense .expense-details .details-view {
+  display: none;
 }
 .expense .expense-details .details-item {
   margin-right: 6px;
