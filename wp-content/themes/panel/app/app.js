@@ -78,8 +78,7 @@ function forEach(elements, callback) {
 				});
 			},
             toggleDetailsView1: function(elm) {
-                console.log(elm.parentNode.parentNode.parentNode);
-                elm.parentNode.parentNode.parentNode.classList.toggle('open-details')
+                elm.parentNode.parentNode.parentNode.parentNode.classList.toggle('open-details')
             }
 		};
 

@@ -27,6 +27,7 @@ html {
 	font: normal 14px/16px RobotoSlab;
 }
 body {
+	min-width: 320px;
 	overflow: auto; -webkit-overflow-scrolling: touch;
 	box-sizing: border-box;
 	background: @brand-light;
@@ -123,6 +124,7 @@ header {
 		}
 	}
 }
+
 nav {
 	z-index: @z-nav;
 	visibility: hidden;
@@ -575,50 +577,27 @@ aside {
 }
 
 .participant-body {
-	padding: (@padding * 4) 0;
+	padding-bottom: (@padding * 4);
 }
-
-//.expenses {
-//
-//}
-//
-//.expense {
-//	position: relative;
-//
-//	+ .expense {
-//		margin-top: (@padding * 4);
-//	}
-//	.expense-data {
-//		+ .expense-data {
-//			margin-top: @padding;
-//		}
-//		.created-date {
-//			flex-shrink: 0;
-//
-//			@media only screen and (max-width: ((@mobile - 1))) {
-//				flex-basis: 1%;
-//				flex-shrink: 1;
-//			}
-//		}
-//	}
-//	.expense-name {
-//		overflow: hidden;
-//	}
-//	.number-input {
-//		width: 100%;
-//	}
-//}
 
 .expense {
 	position: relative;
+	padding-top: (@padding * 4);
 	padding-right: 44px;
 
+	+ .expense {
+		margin-top: (@padding * 4);
+		border-top: 2px dashed @brand-strong;
+	}
 	.expense-number {
 		min-width: 24px;
 	}
 	.expense-data {
-		margin-right: -44px;
 		padding: 4px 0 0 28px;
+
+		@media only screen and (max-width: (@mobile - 1)) {
+			margin-right: -44px;
+		}
 
 		&.completed {
 			.details-btn {
@@ -633,21 +612,29 @@ aside {
 			}
 		}
 		&.open-details {
-			.details-view { display: block; }
+			.details-view,
+			.new-point-btn{ display: block; }
 			.details-title { display: none; }
+			.details-control {
+				margin-top: 0;
+				margin-bottom: 0;
+			}
+			.details-btn::before {
+				transform: translateY(0) scaleY(1);
+			}
+		}
+	}
+	.expense-values {
+		@media only screen and (max-width: (@mobile - 1)) {
+			padding-right: 44px;
 		}
 	}
 	.expense-participants {
 		position: relative;
-		padding: 8px 0 8px 46px;
+		padding: 8px 0 8px 8px;
 
-		&::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 23px;
-			bottom: 0;
-			border-left: 2px dashed @brand-strong;
+		@media only screen and (min-width: @middle-mobile) {
+			padding-bottom: 16px;
 		}
 
 		.text-field.subtitle {
@@ -656,31 +643,66 @@ aside {
 	}
 	.expense-details {
 		float: right;
-		margin: 0 -2px 0 -8px;
-		padding: 8px 0 8px 6px;
+		margin: 0 -8px;
+		padding: 8px 6px;
 		width: 100%; min-width: 296px;
-		border: 2px dashed @brand-strong;
-		border-right: 0;
-		border-radius: 8px 0 0 8px;
+		border: 1px solid @brand-strong;
+		border-radius: 8px;
+		background: @white;
+
+		@media only screen and (max-width: (@mobile - 1)) {
+			margin-right: 0;
+			padding-right: 0;
+			border-right: 0;
+			border-radius: 8px 0 0 8px;
+		}
 
 		.details-view {
 			display: none;
+			margin-bottom: 4px;
 		}
 		.details-item {
-			margin-right: 6px;
-
 			+ .details-item {
 				margin-top: 4px;
 			}
-			> li {
+			> li:first-child {
 				min-width: 60px;
 			}
+		}
+		.details-control {
+			margin-top: -14px;
+			margin-bottom: -14px;
+		}
+		.details-btn {
+			position: relative;
+			overflow: hidden;
+
+			&::before {
+				position: absolute;
+				top: -1px; left: 16px;
+				color: @white;
+				font-size: 1rem;
+				line-height: 1;
+				.icon-font();
+				transform: translateY(28px) scaleY(-1);
+				transition: transform @delay;
+			}
+			&::before {
+				content: "\f0d8";
+			}
+		}
+		.details-title {
+			width: 100%;
+			text-align: center;
+		}
+		.new-point-btn {
+			display: none;
 		}
 	}
 	.paid-out {
 		position: absolute;
 		right: 0;
-		top: 0;
+		top: (@padding * 4);
 	}
 }
 

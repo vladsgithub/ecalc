@@ -3369,6 +3369,9 @@ table {
 .uppercase {
   text-transform: uppercase !important;
 }
+.center {
+  text-align: center !important;
+}
 .clearfix::before,
 .clearfix::after {
   display: table;
@@ -3863,7 +3866,7 @@ label.checkbox.thin i {
 }
 label.checkbox.thin i::before {
   top: 2px;
-  left: 4px;
+  left: 3px;
 }
 label.checkbox input {
   position: absolute;
@@ -4300,6 +4303,7 @@ html {
   font: normal 14px/16px RobotoSlab;
 }
 body {
+  min-width: 320px;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   box-sizing: border-box;
@@ -4868,18 +4872,27 @@ aside .account .text-input {
   width: 100%;
 }
 .participant-body {
-  padding: 16px 0;
+  padding-bottom: 16px;
 }
 .expense {
   position: relative;
+  padding-top: 16px;
   padding-right: 44px;
+}
+.expense + .expense {
+  margin-top: 16px;
+  border-top: 2px dashed #4c69bd;
 }
 .expense .expense-number {
   min-width: 24px;
 }
 .expense .expense-data {
-  margin-right: -44px;
   padding: 4px 0 0 28px;
+}
+@media only screen and (max-width: 639px) {
+  .expense .expense-data {
+    margin-right: -44px;
+  }
 }
 .expense .expense-data.completed .details-btn i::after {
   content: "\f00c";
@@ -4889,51 +4902,102 @@ aside .account .text-input {
   color: #4c69bd;
   font-size: 14px;
 }
-.expense .expense-data.open-details .details-view {
+.expense .expense-data.open-details .details-view,
+.expense .expense-data.open-details .new-point-btn {
   display: block;
 }
 .expense .expense-data.open-details .details-title {
   display: none;
 }
+.expense .expense-data.open-details .details-control {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.expense .expense-data.open-details .details-btn::before {
+  transform: translateY(0) scaleY(1);
+}
+@media only screen and (max-width: 639px) {
+  .expense .expense-values {
+    padding-right: 44px;
+  }
+}
 .expense .expense-participants {
   position: relative;
-  padding: 8px 0 8px 46px;
+  padding: 8px 0 8px 8px;
 }
-.expense .expense-participants::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 23px;
-  bottom: 0;
-  border-left: 2px dashed #4c69bd;
+@media only screen and (min-width: 480px) {
+  .expense .expense-participants {
+    padding-bottom: 16px;
+  }
 }
 .expense .expense-participants .text-field.subtitle {
   margin-bottom: 4px;
 }
 .expense .expense-details {
   float: right;
-  margin: 0 -2px 0 -8px;
-  padding: 8px 0 8px 6px;
+  margin: 0 -8px;
+  padding: 8px 6px;
   width: 100%;
   min-width: 296px;
-  border: 2px dashed #4c69bd;
-  border-right: 0;
-  border-radius: 8px 0 0 8px;
+  border: 1px solid #4c69bd;
+  border-radius: 8px;
+  background: #fff;
+}
+@media only screen and (max-width: 639px) {
+  .expense .expense-details {
+    margin-right: 0;
+    padding-right: 0;
+    border-right: 0;
+    border-radius: 8px 0 0 8px;
+  }
 }
 .expense .expense-details .details-view {
   display: none;
-}
-.expense .expense-details .details-item {
-  margin-right: 6px;
+  margin-bottom: 4px;
 }
 .expense .expense-details .details-item + .details-item {
   margin-top: 4px;
 }
-.expense .expense-details .details-item > li {
+.expense .expense-details .details-item > li:first-child {
   min-width: 60px;
+}
+.expense .expense-details .details-control {
+  margin-top: -14px;
+  margin-bottom: -14px;
+}
+.expense .expense-details .details-btn {
+  position: relative;
+  overflow: hidden;
+}
+.expense .expense-details .details-btn::before {
+  position: absolute;
+  top: -1px;
+  left: 16px;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  font-family: 'Font Awesome 5 Free';
+  font-weight: normal;
+  transform: translateY(28px) scaleY(-1);
+  transition: transform 0.2s;
+}
+.expense .expense-details .details-btn::before {
+  content: "\f0d8";
+}
+.expense .expense-details .details-title {
+  width: 100%;
+  text-align: center;
+}
+.expense .expense-details .new-point-btn {
+  display: none;
 }
 .expense .paid-out {
   position: absolute;
   right: 0;
-  top: 0;
+  top: 16px;
 }

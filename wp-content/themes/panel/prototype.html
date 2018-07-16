@@ -378,6 +378,7 @@
 								<div class="participant-body">
 
 									<ul class="expenses s-p0">
+
 										<li class="expense">
 
 											<ul class="flex expense-title">
@@ -393,7 +394,7 @@
 
 												<li class="flex-hidden flex-grow s-p0">
 													<div class="multiple-field">
-														<label class="text-input">
+														<label class="text-input flex-grow">
 															<input type="text" value="Tекст ДублированныйтекстДублированный текст">
 															<b>Tекст ДублированныйтекстДублированный текст</b>
 														</label>
@@ -412,14 +413,15 @@
 												</li>
 											</ul>
 
-											<div class="expense-data clearfix completed open-details">
+											<div data-state class="expense-data clearfix completed open-details">
 
-												<ul class="flex">
+												<ul class="flex expense-values">
 													<li class="flex-shrink s-p0">
-														<button class="btn solid details-btn" onclick="layoutControl.toggleDetailsView1(this)">
-															<i class="fas fa-folder"></i>
-															<b class="small no-middle-mobile">Детали</b>
-														</button>
+														<div class="date-field">
+															<b>2018</b>
+															<b>07-30</b>
+															<b>22:40</b>
+														</div>
 													</li>
 
 													<li class="flex-grow flex-hidden s-p0">
@@ -433,18 +435,10 @@
 																<b>BYN</b>
 															</label>
 
-															<label class="number-input">
+															<label class="number-input flex-grow">
 																<input type="number" value="12450340.34">
 																<b>12<wbr>450<wbr>340,34</b>
 															</label>
-														</div>
-													</li>
-
-													<li>
-														<div class="date-field">
-															<b>2018</b>
-															<b>07-30</b>
-															<b>22:40</b>
 														</div>
 													</li>
 												</ul>
@@ -452,7 +446,7 @@
 												<div class="expense-participants">
 
 													<div class="participants-view">
-														<div class="text-field subtitle underline s-p0">
+														<div class="text-field subtitle underline s-p1">
 															<b>Участники расхода</b>
 														</div>
 
@@ -478,10 +472,6 @@
 												</div>
 
 												<div class="expense-details">
-
-													<div class="text-field subtitle details-title">
-														<b>Детали этого расхода</b>
-													</div>
 
 													<div class="details-view">
 														<ul class="flex details-item">
@@ -546,20 +536,27 @@
 															</li>
 														</ul>
 
-														<ul class="flex details-item">
-														<li class="s-p0">
-															<button class="btn solid">
-																<i class="fas fa-plus"></i>
-															</button>
-														</li>
+													</div>
 
+													<ul class="flex details-item details-control">
 														<li class="flex-grow s-p0">
-															<div class="text-field">
-																<b>Добавить новый пункт деталей</b>
+															<button class="btn solid new-point-btn">
+																<i class="fas fa-plus"></i>
+																<b class="small">Пункт в расходах</b>
+															</button>
+
+															<div class="text-field name details-title">
+																<b>Детали этого расхода</b>
 															</div>
 														</li>
+
+														<li class="s-p0">
+															<button class="btn solid details-btn" onclick="layoutControl.toggleDetailsView1(this)">
+																<i class="fas fa-folder"></i>
+																<b class="small no-middle-mobile">Детали</b>
+															</button>
+														</li>
 													</ul>
-													</div>
 
 												</div>
 
@@ -570,168 +567,197 @@
 												<i></i>
 											</label>
 
+										</li>
 
+										<li class="expense">
 
-
-
-
-
-
-
-
-
-
-
-											<ul class="hidden flex">
-												<li class="flex-shrink">
-													<div class="text-field title hidden">
-														<b>1.1</b>
-													</div>
-													<button class="btn solid" title="Меню">
-														<i class="fas fa-trash-alt"></i>
-														<b>1.1</b>
-													</button>
-												</li>
-
-												<li class="expense-data">
-
-													<div class="fields-area">
-
-														<div class="multiple-field">
-															<label class="text-input">
-																<input type="text" value="Tекст ДублированныйтекстДублированный текст">
-																<b>Tекст ДублированныйтекстДублированный текст</b>
-															</label>
-
-															<label class="text-select icons">
-																<select>
-																	<option disabled=""> - Машина</option>
-																	<option selected=""> - Другие незначительные расходы</option>
-																	<option> - Питание</option>
-																</select>
-																<b>
-																	<i class="fas fa-bus"></i>
-																</b>
-															</label>
-														</div>
-
-														<div class="float-area">
-
-															<ul class="flex">
-																<li class="flex-shrink">
-																	<button class="btn solid">
-																		<i class="fas fa-folder"></i>
-																		<b class="small no-middle-mobile">Детали</b>
-																	</button>
-																</li>
-
-																<li class="flex-grow flex-hidden">
-																	<div class="multiple-field">
-																		<label class="text-select currency">
-																			<select>
-																				<option disabled="">EUR - евро</option>
-																				<option selected="">BYN - белорусский рубль</option>
-																				<option>USD - доллар</option>
-																			</select>
-																			<b>BYN</b>
-																		</label>
-
-																		<label class="text-input">
-																			<input type="text" value="Tекст ДублированныйтекстДублированный текст">
-																			<b>Tекст ДублированныйтекстДублированный текст</b>
-																		</label>
-																	</div>
-																</li>
-
-																<li>
-																	<div class="date-field">
-																		<b>2018</b>
-																		<b>07-30</b>
-																		<b>22:40</b>
-																	</div>
-																</li>
-															</ul>
-
-														</div>
-
-													</div>
-
-													<label class="checkbox">
-														<input type="checkbox" checked>
-														<i></i>
-													</label>
-
-												</li>
-											</ul>
-
-											<ul class="hidden expense-data flex">
-												<li class="flex-shrink s-p0">
-													<div class="text-field title">
-														<b>1.1</b>
+											<ul class="flex expense-title">
+												<li class="flex-shrink expense-number s-p0">
+													<div class="text-field title hidden1">
+														<b>1.2</b>
 													</div>
 													<button class="btn solid hidden" title="Меню">
 														<i class="fas fa-trash-alt"></i>
-														<b>1.1</b>
+														<b>1.2</b>
 													</button>
 												</li>
 
-												<li class="expense-name flex-grow s-p0">
-													<label class="text-input block" disabled>
-														<input type="text" value="Название расхода ДлинноеНазваниеРасхода расхода">
-														<b>Название расхода ДлинноеНазваниеРасхода расхода</b>
-													</label>
-												</li>
+												<li class="flex-hidden flex-grow s-p0">
+													<div class="multiple-field">
+														<label class="text-input flex-grow">
+															<input type="text" value="Tекст ДублированныйтекстДублированный текст">
+															<b>Tекст ДублированныйтекстДублированный текст</b>
+														</label>
 
-												<li class="flex-shrink s-p0">
-													<label class="text-select icons" disabled>
-														<select>
-															<option disabled>&#xf207 - Машина</option>
-															<option selected>&#xf207 - Другие незначительные расходы</option>
-															<option>&#xf4ff - Питание</option>
-														</select>
-														<b>
-															<i class="fas fa-bus"></i>
-														</b>
-													</label>
-												</li>
-											</ul>
-
-											<ul class="hidden expense-data flex">
-												<li class="created-date s-p0">
-													<div class="text-field">
-														<b>31.01.2018, 6:50:30</b>
+														<label class="text-select icons">
+															<select>
+																<option disabled=""> - Машина</option>
+																<option selected=""> - Другие незначительные расходы</option>
+																<option> - Питание</option>
+															</select>
+															<b>
+																<i class="fas fa-bus"></i>
+															</b>
+														</label>
 													</div>
 												</li>
-
-												<li class="flex-shrink s-p0">
-													<label class="text-select currency" disabled>
-														<select>
-															<option disabled="">EUR - евро</option>
-															<option selected="">BYN - белорусский рубль</option>
-															<option>USD - доллар</option>
-														</select>
-														<b>BYN</b>
-													</label>
-												</li>
-
-												<li class="flex-grow s-p0">
-													<label class="number-input" disabled>
-														<input type="number" value="12450340.34">
-														<b>12 450 340,34</b>
-													</label>
-												</li>
-
-												<li class="flex-shrink s-p0">
-													<label class="checkbox">
-														<input type="checkbox" checked>
-														<i></i>
-													</label>
-												</li>
-
 											</ul>
 
-										</li>
+											<div data-state class="expense-data clearfix">
 
+												<ul class="flex expense-values">
+													<li class="flex-shrink s-p0">
+														<div class="date-field">
+															<b>2018</b>
+															<b>07-30</b>
+															<b>22:40</b>
+														</div>
+													</li>
+
+													<li class="flex-grow flex-hidden s-p0">
+														<div class="multiple-field">
+															<label class="text-select currency">
+																<select>
+																	<option disabled="">EUR - евро</option>
+																	<option selected="">BYN - белорусский рубль</option>
+																	<option>USD - доллар</option>
+																</select>
+																<b>BYN</b>
+															</label>
+
+															<label class="number-input flex-grow">
+																<input type="number" value="12450340.34">
+																<b>12<wbr>450<wbr>340,34</b>
+															</label>
+														</div>
+													</li>
+												</ul>
+
+												<div class="expense-participants">
+
+													<div class="participants-view">
+														<div class="text-field subtitle underline s-p1">
+															<b>Участники расхода</b>
+														</div>
+
+														<label class="checkbox decoration thin">
+															<input type="checkbox">
+															<i></i>
+															<b>Участник 1</b>
+														</label>
+
+														<label class="checkbox decoration thin">
+															<input type="checkbox">
+															<i></i>
+															<b>Участник 2</b>
+														</label>
+
+														<label class="checkbox decoration thin">
+															<input type="checkbox">
+															<i></i>
+															<b>Участник 3</b>
+														</label>
+													</div>
+
+												</div>
+
+												<div class="expense-details">
+
+													<div class="details-view">
+														<ul class="flex details-item">
+															<li>
+																<label class="checkbox">
+																	<input type="checkbox">
+																	<i></i>
+																	<b>1</b>
+																</label>
+															</li>
+
+															<li class="flex-grow s-p0">
+																<div class="multiple-field">
+																	<label class="text-input">
+																		<input type="text" value="Молоко 20%">
+																		<b>Молоко 20%</b>
+																	</label>
+
+																	<label class="text-input">
+																		<input type="text" value="2л">
+																		<b>2л</b>
+																	</label>
+																</div>
+															</li>
+
+															<li class="s-p0">
+																<label class="number-input">
+																	<input type="number" value="12450340.34">
+																	<b>12<wbr>450<wbr>340,34</b>
+																</label>
+															</li>
+														</ul>
+
+														<ul class="flex details-item">
+															<li>
+																<label class="checkbox">
+																	<input type="checkbox">
+																	<i></i>
+																	<b>2</b>
+																</label>
+															</li>
+
+															<li class="flex-grow s-p0">
+																<div class="multiple-field">
+																	<label class="text-input">
+																		<input type="text" value="Молоко 20%">
+																		<b>Молоко 20%</b>
+																	</label>
+
+																	<label class="text-input">
+																		<input type="text" value="2л">
+																		<b>2л</b>
+																	</label>
+																</div>
+															</li>
+
+															<li class="s-p0">
+																<label class="number-input">
+																	<input type="number" value="12450340.34">
+																	<b>12<wbr>450<wbr>340,34</b>
+																</label>
+															</li>
+														</ul>
+
+													</div>
+
+													<ul class="flex details-item details-control">
+														<li class="flex-grow s-p0">
+															<button class="btn solid new-point-btn">
+																<i class="fas fa-plus"></i>
+																<b class="small">Пункт в расходах</b>
+															</button>
+
+															<div class="text-field name details-title">
+																<b>Детали этого расхода</b>
+															</div>
+														</li>
+
+														<li class="s-p0">
+															<button class="btn solid details-btn" onclick="layoutControl.toggleDetailsView1(this)">
+																<i class="fas fa-folder"></i>
+																<b class="small no-middle-mobile">Детали</b>
+															</button>
+														</li>
+													</ul>
+
+												</div>
+
+											</div>
+
+											<label class="checkbox paid-out">
+												<input type="checkbox">
+												<i></i>
+											</label>
+
+										</li>
 
 									</ul>
 
