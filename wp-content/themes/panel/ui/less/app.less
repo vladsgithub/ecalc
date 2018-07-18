@@ -583,7 +583,7 @@ aside {
 .expense {
 	position: relative;
 	padding-top: (@padding * 4);
-	padding-right: 44px;
+	padding-right: 48px;
 
 	+ .expense {
 		margin-top: (@padding * 4);
@@ -596,7 +596,7 @@ aside {
 		padding: 4px 0 0 28px;
 
 		@media only screen and (max-width: (@mobile - 1)) {
-			margin-right: -44px;
+			margin-right: -46px;
 		}
 
 		&.completed {
@@ -626,12 +626,12 @@ aside {
 	}
 	.expense-values {
 		@media only screen and (max-width: (@mobile - 1)) {
-			padding-right: 44px;
+			padding-right: 46px;
 		}
 	}
 	.expense-participants {
 		position: relative;
-		padding: 8px 0 8px 8px;
+		padding: 8px 0 8px 12px;
 
 		@media only screen and (min-width: @middle-mobile) {
 			padding-bottom: 16px;
@@ -651,8 +651,8 @@ aside {
 		background: @white;
 
 		@media only screen and (max-width: (@mobile - 1)) {
-			margin-right: 0;
-			padding-right: 0;
+			margin-right: -4px;
+			padding-right: 2px;
 			border-right: 0;
 			border-radius: 8px 0 0 8px;
 		}
@@ -666,7 +666,10 @@ aside {
 				margin-top: 4px;
 			}
 			> li:first-child {
-				min-width: 60px;
+				min-width: 56px;
+			}
+			> .cost {
+				max-width: 25%;
 			}
 		}
 		.details-control {
@@ -701,7 +704,7 @@ aside {
 	}
 	.paid-out {
 		position: absolute;
-		right: 0;
+		right: 2px;
 		top: (@padding * 4);
 	}
 }

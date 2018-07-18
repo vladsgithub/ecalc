@@ -3464,6 +3464,14 @@ table {
   color: #4c69bd;
   cursor: pointer;
 }
+.btn.success {
+  border-color: #00a200;
+  color: #00a200;
+}
+.btn.warning {
+  border-color: #ce1d1d;
+  color: #ce1d1d;
+}
 .btn:not(.no-shadow) {
   border-right-color: #000;
   border-bottom-color: #000;
@@ -3472,6 +3480,14 @@ table {
   border: 2px solid #4c69bd;
   border-top-color: #000;
   border-left-color: #000;
+}
+.btn:not(.no-shadow):active.success {
+  border-right-color: #00a200;
+  border-bottom-color: #00a200;
+}
+.btn:not(.no-shadow):active.warning {
+  border-right-color: #ce1d1d;
+  border-bottom-color: #ce1d1d;
 }
 .btn:focus {
   outline: none;
@@ -3495,6 +3511,14 @@ table {
 }
 .btn.solid {
   background: #4c69bd;
+  color: #fff;
+}
+.btn.solid.success {
+  background: #00a200;
+  color: #fff;
+}
+.btn.solid.warning {
+  background: #ce1d1d;
   color: #fff;
 }
 .btn.solid.border {
@@ -3592,13 +3616,13 @@ label.number-input::before {
   height: 8px;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
 }
-label.text-input:hover input,
-label.number-input:hover input {
+label.text-input:not([disabled]):hover input:not([disabled]),
+label.number-input:not([disabled]):hover input:not([disabled]) {
   transform: translateY(0);
 }
-label.text-input:hover input + b,
-label.number-input:hover input + b {
-  transform: translateY(0);
+label.text-input:not([disabled]):hover input:not([disabled]) + b,
+label.number-input:not([disabled]):hover input:not([disabled]) + b {
+  transform: translateY(40px);
 }
 label.text-input[disabled],
 label.number-input[disabled] {
@@ -3616,13 +3640,9 @@ label.text-input[disabled] input,
 label.number-input[disabled] input {
   display: none;
 }
-label.text-input[disabled] b,
-label.number-input[disabled] b {
-  transform: none;
-}
 label.text-input input,
 label.number-input input {
-  display: block;
+  position: absolute;
   margin: 0;
   padding: 0 5px;
   height: 100%;
@@ -3646,7 +3666,7 @@ label.number-input input:focus {
 }
 label.text-input input:focus + b,
 label.number-input input:focus + b {
-  transform: translateY(0);
+  transform: translateY(40px);
 }
 label.text-input input::-ms-clear,
 label.number-input input::-ms-clear {
@@ -3664,7 +3684,7 @@ label.number-input input[disabled] + b {
   z-index: 2;
   position: relative;
   overflow: visible;
-  transform: translateY(-40px);
+  transform: translateY(0);
 }
 label.text-input input[disabled] + b::before,
 label.number-input input[disabled] + b::before {
@@ -3686,22 +3706,18 @@ label.number-input b {
   box-sizing: border-box;
   line-height: 1;
   vertical-align: middle;
+  text-align: inherit;
   font-size: 1rem;
   word-wrap: break-word;
-  transform: translateY(-40px);
+  transform: translateY(0);
   transition: transform 0.2s;
 }
 label.number-input {
   text-align: right;
 }
+label.number-input input,
 label.number-input b {
-  font-size: 1rem;
-  font-weight: bold;
-}
-label.number-input b:first-line {
-  font-size: 1.3rem;
-}
-label.number-input input {
+  line-height: 15px;
   font-size: 1.3rem;
   font-weight: bold;
 }
@@ -4269,6 +4285,9 @@ label.toggle i::after {
   display: flex;
   align-items: stretch;
 }
+.multiple-field > label {
+  flex-grow: 1;
+}
 .multiple-field > label[disabled] {
   height: auto;
 }
@@ -4279,8 +4298,15 @@ label.toggle i::after {
 .multiple-field > label + label[disabled] {
   margin-left: -1px;
 }
+.multiple-field > .min-field {
+  flex-grow: 0;
+  flex-shrink: 0;
+  max-width: 25%;
+  min-width: 44px;
+}
 .multiple-field > .text-select.icons,
 .multiple-field > .text-select.currency {
+  flex-grow: 0;
   flex-shrink: 0;
 }
 @keyframes hiddenWithDelay {
@@ -4877,7 +4903,7 @@ aside .account .text-input {
 .expense {
   position: relative;
   padding-top: 16px;
-  padding-right: 44px;
+  padding-right: 48px;
 }
 .expense + .expense {
   margin-top: 16px;
@@ -4891,7 +4917,7 @@ aside .account .text-input {
 }
 @media only screen and (max-width: 639px) {
   .expense .expense-data {
-    margin-right: -44px;
+    margin-right: -46px;
   }
 }
 .expense .expense-data.completed .details-btn i::after {
@@ -4918,12 +4944,12 @@ aside .account .text-input {
 }
 @media only screen and (max-width: 639px) {
   .expense .expense-values {
-    padding-right: 44px;
+    padding-right: 46px;
   }
 }
 .expense .expense-participants {
   position: relative;
-  padding: 8px 0 8px 8px;
+  padding: 8px 0 8px 12px;
 }
 @media only screen and (min-width: 480px) {
   .expense .expense-participants {
@@ -4945,8 +4971,8 @@ aside .account .text-input {
 }
 @media only screen and (max-width: 639px) {
   .expense .expense-details {
-    margin-right: 0;
-    padding-right: 0;
+    margin-right: -4px;
+    padding-right: 2px;
     border-right: 0;
     border-radius: 8px 0 0 8px;
   }
@@ -4959,7 +4985,10 @@ aside .account .text-input {
   margin-top: 4px;
 }
 .expense .expense-details .details-item > li:first-child {
-  min-width: 60px;
+  min-width: 56px;
+}
+.expense .expense-details .details-item > .cost {
+  max-width: 25%;
 }
 .expense .expense-details .details-control {
   margin-top: -14px;
@@ -4998,6 +5027,6 @@ aside .account .text-input {
 }
 .expense .paid-out {
   position: absolute;
-  right: 0;
+  right: 2px;
   top: 16px;
 }

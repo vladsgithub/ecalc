@@ -42,34 +42,6 @@
 				<i class="fas fa-save"></i>
 			</button>
 		</div>
-
-		<div>
-			<button class="btn success">
-				<i class="fas fa-plus"></i>
-				<b>Add</b>
-			</button>
-		</div>
-
-		<div>
-			<button class="btn solid success">
-				<i class="fas fa-plus"></i>
-				<b>Add</b>
-			</button>
-		</div>
-
-		<div>
-			<button class="btn warning">
-				<i class="fas fa-trash-alt"></i>
-				<b>Remove</b>
-			</button>
-		</div>
-
-		<div>
-			<button class="btn solid warning">
-				<i class="fas fa-trash-alt"></i>
-				<b>Remove</b>
-			</button>
-		</div>
 	</li>
 
 	<li>
@@ -96,12 +68,12 @@
 			</label>
 		</div>
 
-		<div style="width: 200px;">
-			<label class="text-input" disabled>
-				<input type="text" value="Tекст ДублированныйтекстДублированный текст" />
-				<b>Tекст ДублированныйтекстДублированный текст</b>
-			</label>
-		</div>
+        <div style="width: 200px;">
+            <label class="text-input" disabled>
+                <input type="text" value="Tекст ДублированныйтекстДублированный текст" />
+                <b>Tекст ДублированныйтекстДублированный текст</b>
+            </label>
+        </div>
 
 		<div style="width: 200px;">
 			<label class="text-input">
@@ -128,16 +100,16 @@
 			</label>
 		</div>
 
-		<div>
-			<label class="number-input" disabled>
-				<input type="number" value="12450340.34" />
-				<b>12<wbr/>450<wbr/>340,34</b>
-			</label>
-		</div>
+        <div>
+            <label class="number-input" disabled>
+                <input type="number" value="12450340.34" />
+                <b>12<wbr/>450<wbr/>340,34</b>
+            </label>
+        </div>
 
 		<div>
 			<label class="number-input">
-				<input type="number" value="12450340.34" />
+				<input type="number" disabled value="12450340.34" />
 				<b>12<wbr/>450<wbr/>340,34</b>
 			</label>
 		</div>
@@ -207,7 +179,25 @@
 	<li>
 		<h1>Multiple field</h1>
 
-		<div style="width: 200px">
+		<div style="width: 300px;">
+			<div class="multiple-field">
+				<div>
+					<label class="text-input">
+						<input type="text" value="Tекст ДублированныйтекстДублированный текст" />
+						<b>Tекст ДублированныйтекстДублированный текст</b>
+					</label>
+				</div>
+
+				<div>
+					<label class="number-input">
+						<input type="number" value="12.34" />
+						<b>12,34</b>
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<div style="width: 300px;">
 			<div class="multiple-field">
 				<label class="text-input">
 					<input type="text" value="Tекст ДублированныйтекстДублированный текст" />
@@ -215,31 +205,13 @@
 				</label>
 
 
-				<label class="number-input min-field">
-					<input type="number" value="12.34" />
-					<b>12,<wbr/>34</b>
-				</label>
+					<label class="number-input">
+						<input type="number" value="12.34" />
+						<b>12,34</b>
+					</label>
 
 			</div>
 		</div>
-
-
-		<div style="width: 200px">
-			<div class="multiple-field">
-				<label class="text-input" disabled>
-					<input type="text" value="Tекст ДублированныйтекстДублированный текст" />
-					<b>Tекст ДублированныйтекстДублированный текст</b>
-				</label>
-
-
-				<label class="number-input min-field" disabled>
-					<input type="number" value="12.34" />
-					<b>12,<wbr/>34</b>
-				</label>
-
-			</div>
-		</div>
-
 
 		<div style="width: 300px;">
 			<div class="multiple-field">

@@ -383,7 +383,7 @@
 
 											<ul class="flex expense-title">
 												<li class="flex-shrink expense-number s-p0">
-													<div class="text-field title hidden1">
+													<div class="text-field title">
 														<b>1.1</b>
 													</div>
 													<button class="btn solid hidden" title="Меню">
@@ -475,30 +475,30 @@
 
 													<div class="details-view">
 														<ul class="flex details-item">
-															<li>
+															<li class="s-p0">
 																<label class="checkbox">
-																	<input type="checkbox">
+																	<input type="checkbox" checked>
 																	<i></i>
-																	<b>1</b>
+																	<b>1.</b>
 																</label>
 															</li>
 
 															<li class="flex-grow s-p0">
 																<div class="multiple-field">
-																	<label class="text-input">
+																	<label class="text-input" disabled>
 																		<input type="text" value="Молоко 20%">
 																		<b>Молоко 20%</b>
 																	</label>
 
-																	<label class="text-input">
+																	<label class="text-input center min-field" disabled>
 																		<input type="text" value="2л">
 																		<b>2л</b>
 																	</label>
 																</div>
 															</li>
 
-															<li class="s-p0">
-																<label class="number-input">
+															<li class="cost s-p0">
+																<label class="number-input" disabled>
 																	<input type="number" value="12450340.34">
 																	<b>12<wbr>450<wbr>340,34</b>
 																</label>
@@ -506,30 +506,30 @@
 														</ul>
 
 														<ul class="flex details-item">
-															<li>
+															<li class="s-p0">
 																<label class="checkbox">
-																	<input type="checkbox">
+																	<input type="checkbox" checked>
 																	<i></i>
-																	<b>2</b>
+																	<b>2.</b>
 																</label>
 															</li>
 
 															<li class="flex-grow s-p0">
 																<div class="multiple-field">
-																	<label class="text-input">
+																	<label class="text-input" disabled>
 																		<input type="text" value="Молоко 20%">
 																		<b>Молоко 20%</b>
 																	</label>
 
-																	<label class="text-input">
-																		<input type="text" value="2л">
-																		<b>2л</b>
+																	<label class="text-input center min-field" disabled>
+																		<input type="text" value="9 шт">
+																		<b>9 шт</b>
 																	</label>
 																</div>
 															</li>
 
-															<li class="s-p0">
-																<label class="number-input">
+															<li class="cost s-p0">
+																<label class="number-input" disabled>
 																	<input type="number" value="12450340.34">
 																	<b>12<wbr>450<wbr>340,34</b>
 																</label>
@@ -540,7 +540,7 @@
 
 													<ul class="flex details-item details-control">
 														<li class="flex-grow s-p0">
-															<button class="btn solid new-point-btn">
+															<button class="btn solid success new-point-btn">
 																<i class="fas fa-plus"></i>
 																<b class="small">Пункт в расходах</b>
 															</button>
@@ -573,10 +573,10 @@
 
 											<ul class="flex expense-title">
 												<li class="flex-shrink expense-number s-p0">
-													<div class="text-field title hidden1">
+													<div class="text-field title hidden">
 														<b>1.2</b>
 													</div>
-													<button class="btn solid hidden" title="Меню">
+													<button class="btn solid warning" title="Меню">
 														<i class="fas fa-trash-alt"></i>
 														<b>1.2</b>
 													</button>
@@ -603,7 +603,7 @@
 												</li>
 											</ul>
 
-											<div data-state class="expense-data clearfix">
+											<div data-state class="expense-data clearfix completed open-details">
 
 												<ul class="flex expense-values">
 													<li class="flex-shrink s-p0">
@@ -665,11 +665,16 @@
 
 													<div class="details-view">
 														<ul class="flex details-item">
-															<li>
-																<label class="checkbox">
+															<li class="s-p0">
+																<button class="btn solid warning" title="Меню">
+																	<i class="fas fa-trash-alt"></i>
+																	<b>1.</b>
+																</button>
+
+																<label class="checkbox hidden">
 																	<input type="checkbox">
 																	<i></i>
-																	<b>1</b>
+																	<b>1.</b>
 																</label>
 															</li>
 
@@ -680,14 +685,14 @@
 																		<b>Молоко 20%</b>
 																	</label>
 
-																	<label class="text-input">
+																	<label class="text-input center min-field">
 																		<input type="text" value="2л">
 																		<b>2л</b>
 																	</label>
 																</div>
 															</li>
 
-															<li class="s-p0">
+															<li class="cost s-p0">
 																<label class="number-input">
 																	<input type="number" value="12450340.34">
 																	<b>12<wbr>450<wbr>340,34</b>
@@ -696,11 +701,16 @@
 														</ul>
 
 														<ul class="flex details-item">
-															<li>
-																<label class="checkbox">
+															<li class="s-p0">
+																<button class="btn solid warning" title="Меню">
+																	<i class="fas fa-trash-alt"></i>
+																	<b>2.</b>
+																</button>
+
+																<label class="checkbox hidden">
 																	<input type="checkbox">
 																	<i></i>
-																	<b>2</b>
+																	<b>2.</b>
 																</label>
 															</li>
 
@@ -711,14 +721,14 @@
 																		<b>Молоко 20%</b>
 																	</label>
 
-																	<label class="text-input">
-																		<input type="text" value="2л">
-																		<b>2л</b>
+																	<label class="text-input center min-field">
+																		<input type="text" value="9 шт">
+																		<b>9 шт</b>
 																	</label>
 																</div>
 															</li>
 
-															<li class="s-p0">
+															<li class="cost s-p0">
 																<label class="number-input">
 																	<input type="number" value="12450340.34">
 																	<b>12<wbr>450<wbr>340,34</b>
@@ -730,7 +740,7 @@
 
 													<ul class="flex details-item details-control">
 														<li class="flex-grow s-p0">
-															<button class="btn solid new-point-btn">
+															<button class="btn solid success new-point-btn">
 																<i class="fas fa-plus"></i>
 																<b class="small">Пункт в расходах</b>
 															</button>
