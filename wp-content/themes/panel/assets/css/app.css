@@ -3465,8 +3465,8 @@ table {
   cursor: pointer;
 }
 .btn.success {
-  border-color: #00a200;
-  color: #00a200;
+  border-color: #008600;
+  color: #008600;
 }
 .btn.warning {
   border-color: #ce1d1d;
@@ -3482,8 +3482,8 @@ table {
   border-left-color: #000;
 }
 .btn:not(.no-shadow):active.success {
-  border-right-color: #00a200;
-  border-bottom-color: #00a200;
+  border-right-color: #008600;
+  border-bottom-color: #008600;
 }
 .btn:not(.no-shadow):active.warning {
   border-right-color: #ce1d1d;
@@ -3514,7 +3514,7 @@ table {
   color: #fff;
 }
 .btn.solid.success {
-  background: #00a200;
+  background: #008600;
   color: #fff;
 }
 .btn.solid.warning {
@@ -4929,7 +4929,7 @@ aside .account .text-input {
   font-size: 14px;
 }
 .expense .expense-data.open-details .details-view,
-.expense .expense-data.open-details .new-point-btn {
+.expense .expense-data.open-details .details-buttons {
   display: block;
 }
 .expense .expense-data.open-details .details-title {
@@ -4981,6 +4981,12 @@ aside .account .text-input {
   display: none;
   margin-bottom: 4px;
 }
+.expense .expense-details .details-item.checked label {
+  border-color: transparent;
+}
+.expense .expense-details .details-item.checked label:not(.number-input) b {
+  text-decoration: line-through;
+}
 .expense .expense-details .details-item + .details-item {
   margin-top: 4px;
 }
@@ -5022,7 +5028,7 @@ aside .account .text-input {
   width: 100%;
   text-align: center;
 }
-.expense .expense-details .new-point-btn {
+.expense .expense-details .details-buttons {
   display: none;
 }
 .expense .paid-out {

@@ -613,7 +613,7 @@ aside {
 		}
 		&.open-details {
 			.details-view,
-			.new-point-btn{ display: block; }
+			.details-buttons{ display: block; }
 			.details-title { display: none; }
 			.details-control {
 				margin-top: 0;
@@ -662,6 +662,16 @@ aside {
 			margin-bottom: 4px;
 		}
 		.details-item {
+			&.checked {
+				label {
+					border-color: transparent;
+
+					&:not(.number-input) b {
+						text-decoration: line-through;
+					}
+				}
+			}
+
 			+ .details-item {
 				margin-top: 4px;
 			}
@@ -698,7 +708,7 @@ aside {
 			width: 100%;
 			text-align: center;
 		}
-		.new-point-btn {
+		.details-buttons {
 			display: none;
 		}
 	}
