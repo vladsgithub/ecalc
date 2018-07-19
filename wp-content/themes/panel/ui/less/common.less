@@ -63,17 +63,23 @@
 .flex {
 	display: flex;
 
+	&.flex-wrap {
+		flex-wrap: wrap;
+	}
+	&.space-between {
+		justify-content: space-between;
+	}
 	&.center-align {
 		align-items: center;
 	}
 
-	.flex-grow {
+	> .flex-grow {
 		flex-grow: 1;
 	}
-	.flex-shrink {
+	> .flex-shrink {
 		flex-shrink: 0;
 	}
-	.flex-hidden {
+	> .flex-hidden {
 		overflow: hidden;
 	}
 }
@@ -187,6 +193,9 @@
 				}
 			}
 		}
+	}
+	&.toggle {
+		border-radius: 22px;
 	}
 
 	i {
@@ -826,6 +835,10 @@ label {
 	}
 	&.name > b {
 		font-size: 1rem;
+	}
+	&.thin {
+		min-height: 30px;
+		line-height: 30px;
 	}
 	&.subtitle {
 		display: block;

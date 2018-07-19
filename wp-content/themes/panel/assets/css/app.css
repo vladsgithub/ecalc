@@ -3384,16 +3384,22 @@ table {
 .flex {
   display: flex;
 }
+.flex.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex.space-between {
+  justify-content: space-between;
+}
 .flex.center-align {
   align-items: center;
 }
-.flex .flex-grow {
+.flex > .flex-grow {
   flex-grow: 1;
 }
-.flex .flex-shrink {
+.flex > .flex-shrink {
   flex-shrink: 0;
 }
-.flex .flex-hidden {
+.flex > .flex-hidden {
   overflow: hidden;
 }
 .s-p0 {
@@ -3532,6 +3538,9 @@ table {
   border-color: #fff;
   border-top-color: #888;
   border-left-color: #888;
+}
+.btn.toggle {
+  border-radius: 22px;
 }
 .btn i {
   max-width: 20px;
@@ -4193,6 +4202,10 @@ label.toggle i::after {
 .text-field.name > b {
   font-size: 1rem;
 }
+.text-field.thin {
+  min-height: 30px;
+  line-height: 30px;
+}
 .text-field.subtitle {
   display: block;
   padding: 0 16px;
@@ -4644,8 +4657,17 @@ aside .account .text-input {
 .three-window-lt[data-active-window="1"] .header-lt li:nth-child(1) .btn,
 .three-window-lt[data-active-window="2"] .header-lt li:nth-child(2) .btn,
 .three-window-lt[data-active-window="3"] .header-lt li:nth-child(3) .btn {
-  background: #fff;
-  color: #4c69bd;
+  background: #4c69bd;
+  color: #fff;
+}
+@media only screen and (max-width: 479px) {
+  .three-window-lt[data-active-window="1"] .header-lt li:nth-child(1) .btn,
+  .three-window-lt[data-active-window="2"] .header-lt li:nth-child(2) .btn,
+  .three-window-lt[data-active-window="3"] .header-lt li:nth-child(3) .btn {
+    margin-bottom: -6px;
+    padding-bottom: 6px;
+    border-radius: 4px 4px 0 0;
+  }
 }
 .three-window-lt[data-active-window="1"] .windows-lt > .left-lt,
 .three-window-lt[data-active-window="2"] .windows-lt > .center-lt,
@@ -4710,6 +4732,15 @@ aside .account .text-input {
   width: 33.33%;
   padding: 0 1px;
   box-sizing: border-box;
+}
+.three-window-lt > .header-lt li:nth-child(1) .btn {
+  background: #f0fff0;
+}
+.three-window-lt > .header-lt li:nth-child(2) .btn {
+  background: #ffffe2;
+}
+.three-window-lt > .header-lt li:nth-child(3) .btn {
+  background: #fff3f3;
 }
 .three-window-lt > .header-lt .btn {
   width: 100%;
@@ -4947,21 +4978,9 @@ aside .account .text-input {
     padding-right: 46px;
   }
 }
-.expense .expense-participants {
-  position: relative;
-  padding: 8px 0 8px 12px;
-}
-@media only screen and (min-width: 480px) {
-  .expense .expense-participants {
-    padding-bottom: 16px;
-  }
-}
-.expense .expense-participants .text-field.subtitle {
-  margin-bottom: 4px;
-}
 .expense .expense-details {
   float: right;
-  margin: 0 -8px;
+  margin: 16px -8px 0;
   padding: 8px 6px;
   width: 100%;
   min-width: 296px;
@@ -4980,6 +4999,15 @@ aside .account .text-input {
 .expense .expense-details .details-view {
   display: none;
   margin-bottom: 4px;
+}
+.expense .expense-details .participants {
+  padding-left: 10px;
+}
+.expense .expense-details .participants .text-field.subtitle {
+  margin-bottom: 4px;
+}
+.expense .expense-details .details {
+  margin-top: 8px;
 }
 .expense .expense-details .details-item.checked label {
   border-color: transparent;

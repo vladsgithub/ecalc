@@ -347,8 +347,14 @@ aside {
 	&[data-active-window="2"] .header-lt li:nth-child(2),
 	&[data-active-window="3"] .header-lt li:nth-child(3) {
 		.btn {
-			background: @white;
-			color: @brand-strong;
+			background: @brand-strong;
+			color: @white;
+
+			@media only screen and (max-width: (@middle-mobile - 1)) {
+				margin-bottom: -6px;
+				padding-bottom: 6px;
+				border-radius: 4px 4px 0 0;
+			}
 		}
 	}
 	&[data-active-window="1"] .windows-lt > .left-lt,
@@ -408,6 +414,16 @@ aside {
 			width: 33.33%;
 			padding: 0 1px;
 			box-sizing: border-box;
+
+			&:nth-child(1) {
+				.btn { background: @low-green; }
+			}
+			&:nth-child(2) {
+				.btn { background: @low-yellow; }
+			}
+			&:nth-child(3) {
+				.btn { background: @low-red; }
+			}
 		}
 		.btn {
 			width: 100%;
@@ -629,21 +645,9 @@ aside {
 			padding-right: 46px;
 		}
 	}
-	.expense-participants {
-		position: relative;
-		padding: 8px 0 8px 12px;
-
-		@media only screen and (min-width: @middle-mobile) {
-			padding-bottom: 16px;
-		}
-
-		.text-field.subtitle {
-			margin-bottom: 4px;
-		}
-	}
 	.expense-details {
 		float: right;
-		margin: 0 -8px;
+		margin: 16px -8px 0;
 		padding: 8px 6px;
 		width: 100%; min-width: 296px;
 		border: 1px solid @brand-strong;
@@ -660,6 +664,16 @@ aside {
 		.details-view {
 			display: none;
 			margin-bottom: 4px;
+		}
+		.participants {
+			padding-left: 10px;
+
+			.text-field.subtitle {
+				margin-bottom: 4px;
+			}
+		}
+		.details {
+			margin-top: 8px;
 		}
 		.details-item {
 			&.checked {
