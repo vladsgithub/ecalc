@@ -3482,15 +3482,18 @@ table {
   border-right-color: #000;
   border-bottom-color: #000;
 }
+.btn:not(.no-shadow).pressed,
 .btn:not(.no-shadow):active {
   border: 2px solid #4c69bd;
   border-top-color: #000;
   border-left-color: #000;
 }
+.btn:not(.no-shadow).pressed.success,
 .btn:not(.no-shadow):active.success {
   border-right-color: #008600;
   border-bottom-color: #008600;
 }
+.btn:not(.no-shadow).pressed.warning,
 .btn:not(.no-shadow):active.warning {
   border-right-color: #ce1d1d;
   border-bottom-color: #ce1d1d;
@@ -3540,7 +3543,26 @@ table {
   border-left-color: #888;
 }
 .btn.toggle {
+  height: 44px;
   border-radius: 22px;
+}
+.btn.toggle::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  border: 20px solid rgba(0, 0, 0, 0.2);
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 20px;
+}
+.btn.toggle.pressed::before {
+  content: "";
+}
+.btn.toggle.pressed i {
+  transform: scale(0.8);
 }
 .btn i {
   max-width: 20px;
@@ -5008,6 +5030,7 @@ aside .account .text-input {
 }
 .expense .expense-details .details {
   margin-top: 8px;
+  border-top: 1px solid #000;
 }
 .expense .expense-details .details-item.checked label {
   border-color: transparent;

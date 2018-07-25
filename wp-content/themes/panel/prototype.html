@@ -94,17 +94,15 @@
 									<b>Settings list</b>
 								</button>
 
-								<div class="section" data-level="4">
-									<div class="section-title">
+								<ul class="section" data-level="4">
+									<li class="section-title">
 
-									</div>
+									</li>
 
-									<div class="section-body">
-										<ul class="settings-list">
-											<li></li>
-										</ul>
-									</div>
-								</div>
+									<li class="section-body">
+
+									</li>
+								</ul>
 							</li>
 						</ul>
 					</li>
@@ -115,15 +113,15 @@
 							<b>Войти</b>
 						</button>
 
-						<div class="section" data-level="3">
-							<div class="section-title">
+						<ul class="section" data-level="3">
+							<li class="section-title">
 
-							</div>
+							</li>
 
-							<div class="section-body">
+							<li class="section-body">
 
-							</div>
-						</div>
+							</li>
+						</ul>
 					</li>
 
 					<li>
@@ -132,23 +130,50 @@
 							<b>Регистрация</b>
 						</button>
 
-						<div class="section" data-level="3">
-							<div class="section-title">
+						<ul class="section" data-level="3">
+							<li class="section-title">
 
-							</div>
+							</li>
 
-							<div class="section-body">
+							<li class="section-body">
 
-							</div>
-						</div>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</li>
 
 			<li>
 				<button class="btn solid no-shadow" data-next>
-					<b>Пункт меню</b>
+                    <i class="fas fa-database"></i>
+					<b>Работа с данными</b>
 				</button>
+
+                <ul class="section" data-level="2">
+                    <li class="section-title">
+                        <button class="btn no-shadow" data-previous="" title="Работа с данными">
+                            <i class="fas fa-database"></i>
+                        </button>
+                        <div class="text-field title"><b>Работа с данными</b></div>
+                    </li>
+
+                    <li class="section-body">
+
+                        <ul class="settings-list">
+                            <li class="flex">
+                                <label class="toggle solid">
+                                    <input type="checkbox">
+                                    <i></i>
+                                </label>
+
+                                <div class="text-field solid">
+                                    <b>Режим удаления данных</b>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </li>
+                </ul>
 			</li>
 		</ul>
 
@@ -304,12 +329,6 @@
 								</div>
 							</li>
 
-							<li class="flex-shrink s-p1">
-								<button class="btn solid toggle">
-									<i class="fas fa-user-edit"></i>
-								</button>
-							</li>
-
 							<li class="flex-shrink">
 								<button class="btn solid">
 									<i class="fas fa-angle-double-down"></i>
@@ -348,7 +367,7 @@
 											<div class="text-field solid title">
 												<b>1.</b>
 											</div>
-											<button class="btn solid border hidden">
+											<button class="btn solid border warning hidden">
 												<i class="fas fa-trash-alt"></i>
 												<b>1.</b>
 											</button>
@@ -386,7 +405,7 @@
 													<div class="text-field title">
 														<b>1.1</b>
 													</div>
-													<button class="btn solid hidden" title="Меню">
+													<button class="btn solid warning hidden" title="Меню">
 														<i class="fas fa-trash-alt"></i>
 														<b>1.1</b>
 													</button>
@@ -492,6 +511,11 @@
 																		<i></i>
 																		<b>1.</b>
 																	</label>
+
+                                                                    <button class="btn solid warning hidden" title="Меню">
+                                                                        <i class="fas fa-trash-alt"></i>
+                                                                        <b>1.1</b>
+                                                                    </button>
 																</li>
 
 																<li class="flex-grow s-p0">
@@ -523,6 +547,11 @@
 																		<i></i>
 																		<b>2.</b>
 																	</label>
+
+                                                                    <button class="btn solid warning hidden" title="Меню">
+                                                                        <i class="fas fa-trash-alt"></i>
+                                                                        <b>1.1</b>
+                                                                    </button>
 																</li>
 
 																<li class="flex-grow s-p0">
@@ -552,17 +581,10 @@
 													</div>
 
 													<ul class="flex details-item details-control">
-														<li class="details-buttons s-p0">
+														<li class="details-buttons flex-grow s-p0">
 															<button class="btn solid success new-point-btn">
 																<i class="fas fa-plus"></i>
 																<b class="small">Пункт</b>
-															</button>
-														</li>
-
-														<li class="details-buttons flex-grow s-p0">
-															<button class="btn solid toggle">
-																<i class="fas fa-pen-square"></i>
-																<b class="small no-middle-mobile">Редактировать</b>
 															</button>
 														</li>
 
@@ -591,219 +613,259 @@
 
 										</li>
 
-										<li class="expense">
+                                        <li class="expense">
 
-											<ul class="flex expense-title">
-												<li class="flex-shrink expense-number s-p0">
-													<div class="text-field title hidden">
-														<b>1.2</b>
-													</div>
-													<button class="btn solid warning" title="Меню">
-														<i class="fas fa-trash-alt"></i>
-														<b>1.2</b>
-													</button>
-												</li>
+                                            <ul class="flex expense-title">
+                                                <li class="flex-shrink expense-number s-p0">
+                                                    <div class="text-field title hidden">
+                                                        <b>1.1</b>
+                                                    </div>
+                                                    <button class="btn solid warning" title="Меню">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                        <b>1.1</b>
+                                                    </button>
+                                                </li>
 
-												<li class="flex-hidden flex-grow s-p0">
-													<div class="multiple-field">
-														<label class="text-input flex-grow">
-															<input type="text" value="Tекст ДублированныйтекстДублированный текст">
-															<b>Tекст ДублированныйтекстДублированный текст</b>
-														</label>
+                                                <li class="flex-hidden flex-grow s-p0">
+                                                    <div class="multiple-field">
+                                                        <label class="text-input flex-grow">
+                                                            <input type="text" value="Tекст ДублированныйтекстДублированный текст">
+                                                            <b>Tекст ДублированныйтекстДублированный текст</b>
+                                                        </label>
 
-														<label class="text-select icons">
-															<select>
-																<option disabled=""> - Машина</option>
-																<option selected=""> - Другие незначительные расходы</option>
-																<option> - Питание</option>
-															</select>
-															<b>
-																<i class="fas fa-bus"></i>
-															</b>
-														</label>
-													</div>
-												</li>
-											</ul>
+                                                        <label class="text-select icons">
+                                                            <select>
+                                                                <option disabled=""> - Машина</option>
+                                                                <option selected=""> - Другие незначительные расходы</option>
+                                                                <option> - Питание</option>
+                                                            </select>
+                                                            <b>
+                                                                <i class="fas fa-bus"></i>
+                                                            </b>
+                                                        </label>
+                                                    </div>
+                                                </li>
+                                            </ul>
 
-											<div data-state class="expense-data clearfix completed open-details">
+                                            <div data-state class="expense-data clearfix">
 
-												<ul class="flex expense-values">
-													<li class="flex-shrink s-p0">
-														<div class="date-field">
-															<b>2018</b>
-															<b>07-30</b>
-															<b>22:40</b>
-														</div>
-													</li>
+                                                <ul class="flex expense-values">
+                                                    <li class="flex-shrink s-p0">
+                                                        <div class="date-field">
+                                                            <b>2018</b>
+                                                            <b>07-30</b>
+                                                            <b>22:40</b>
+                                                        </div>
+                                                    </li>
 
-													<li class="flex-grow flex-hidden s-p0">
-														<div class="multiple-field">
-															<label class="text-select currency">
-																<select>
-																	<option disabled="">EUR - евро</option>
-																	<option selected="">BYN - белорусский рубль</option>
-																	<option>USD - доллар</option>
-																</select>
-																<b>BYN</b>
-															</label>
+                                                    <li class="flex-grow flex-hidden s-p0">
+                                                        <div class="multiple-field">
+                                                            <label class="text-select currency">
+                                                                <select>
+                                                                    <option disabled="">EUR - евро</option>
+                                                                    <option selected="">BYN - белорусский рубль</option>
+                                                                    <option>USD - доллар</option>
+                                                                </select>
+                                                                <b>BYN</b>
+                                                            </label>
 
-															<label class="number-input flex-grow">
-																<input type="number" value="12450340.34">
-																<b>12<wbr>450<wbr>340,34</b>
-															</label>
-														</div>
-													</li>
-												</ul>
+                                                            <label class="number-input flex-grow">
+                                                                <input type="number" value="12450340.34">
+                                                                <b>12<wbr>450<wbr>340,34</b>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
 
-												<div class="expense-participants">
+                                                <div class="expense-details">
 
-													<div class="participants-view">
-														<div class="text-field subtitle underline s-p1">
-															<b>Участники расхода</b>
-														</div>
+                                                    <div class="details-view">
 
-														<label class="checkbox decoration thin">
-															<input type="checkbox">
-															<i></i>
-															<b>Участник 1</b>
-														</label>
+                                                        <ul class="participants flex flex-wrap space-between">
+                                                            <li>
+                                                                <div class="text-field name thin">
+                                                                    <b>Участники:</b>
+                                                                </div>
+                                                            </li>
 
-														<label class="checkbox decoration thin">
-															<input type="checkbox">
-															<i></i>
-															<b>Участник 2</b>
-														</label>
+                                                            <li>
+                                                                <label class="checkbox decoration thin">
+                                                                    <input type="checkbox">
+                                                                    <i></i>
+                                                                    <b>Участник 1</b>
+                                                                </label>
+                                                            </li>
 
-														<label class="checkbox decoration thin">
-															<input type="checkbox">
-															<i></i>
-															<b>Участник 3</b>
-														</label>
-													</div>
+                                                            <li>
+                                                                <label class="checkbox decoration thin">
+                                                                    <input type="checkbox">
+                                                                    <i></i>
+                                                                    <b>Участник 222</b>
+                                                                </label>
+                                                            </li>
 
-												</div>
+                                                            <li>
+                                                                <label class="checkbox decoration thin">
+                                                                    <input type="checkbox">
+                                                                    <i></i>
+                                                                    <b>Участник 3333</b>
+                                                                </label>
+                                                            </li>
+                                                        </ul>
 
-												<div class="expense-details">
+                                                        <div class="details">
 
-													<div class="details-view">
-														<ul class="flex details-item">
-															<li class="s-p0">
-																<button class="btn solid warning" title="Меню">
-																	<i class="fas fa-trash-alt"></i>
-																	<b>1.</b>
-																</button>
+                                                            <div class="text-field name thin block s-p2">
+                                                                <b class="s-p0">Подробности:</b>
+                                                            </div>
 
-																<label class="checkbox hidden">
-																	<input type="checkbox">
-																	<i></i>
-																	<b>1.</b>
-																</label>
-															</li>
+                                                            <ul class="flex details-item checked">
+                                                                <li class="s-p0">
+                                                                    <label class="checkbox hidden">
+                                                                        <input type="checkbox" checked>
+                                                                        <i></i>
+                                                                        <b>1.</b>
+                                                                    </label>
 
-															<li class="flex-grow s-p0">
-																<div class="multiple-field">
-																	<label class="text-input">
-																		<input type="text" value="Молоко 20%">
-																		<b>Молоко 20%</b>
-																	</label>
+                                                                    <button class="btn solid warning" title="Меню">
+                                                                        <i class="fas fa-trash-alt"></i>
+                                                                        <b>1.</b>
+                                                                    </button>
+                                                                </li>
 
-																	<label class="text-input center min-field">
-																		<input type="text" value="2л">
-																		<b>2л</b>
-																	</label>
-																</div>
-															</li>
+                                                                <li class="flex-grow s-p0">
+                                                                    <div class="multiple-field">
+                                                                        <label class="text-input" disabled>
+                                                                            <input type="text" value="Молоко 20%">
+                                                                            <b>Молоко 20%</b>
+                                                                        </label>
 
-															<li class="cost s-p0">
-																<label class="number-input">
-																	<input type="number" value="12450340.34">
-																	<b>12<wbr>450<wbr>340,34</b>
-																</label>
-															</li>
-														</ul>
+                                                                        <label class="text-input center min-field" disabled>
+                                                                            <input type="text" value="2л">
+                                                                            <b>2л</b>
+                                                                        </label>
+                                                                    </div>
+                                                                </li>
 
-														<ul class="flex details-item">
-															<li class="s-p0">
-																<button class="btn solid warning" title="Меню">
-																	<i class="fas fa-trash-alt"></i>
-																	<b>2.</b>
-																</button>
+                                                                <li class="cost s-p0">
+                                                                    <label class="number-input" disabled>
+                                                                        <input type="number" value="12450340.34">
+                                                                        <b>12<wbr>450<wbr>340,34</b>
+                                                                    </label>
+                                                                </li>
+                                                            </ul>
 
-																<label class="checkbox hidden">
-																	<input type="checkbox">
-																	<i></i>
-																	<b>2.</b>
-																</label>
-															</li>
+                                                            <ul class="flex details-item">
+                                                                <li class="s-p0">
+                                                                    <label class="checkbox hidden">
+                                                                        <input type="checkbox">
+                                                                        <i></i>
+                                                                        <b>2.</b>
+                                                                    </label>
 
-															<li class="flex-grow s-p0">
-																<div class="multiple-field">
-																	<label class="text-input">
-																		<input type="text" value="Молоко 20%">
-																		<b>Молоко 20%</b>
-																	</label>
+                                                                    <button class="btn solid warning" title="Меню">
+                                                                        <i class="fas fa-trash-alt"></i>
+                                                                        <b>2.</b>
+                                                                    </button>
+                                                                </li>
 
-																	<label class="text-input center min-field">
-																		<input type="text" value="9 шт">
-																		<b>9 шт</b>
-																	</label>
-																</div>
-															</li>
+                                                                <li class="flex-grow s-p0">
+                                                                    <div class="multiple-field">
+                                                                        <label class="text-input" disabled>
+                                                                            <input type="text" value="Молоко 20%">
+                                                                            <b>Молоко 20%</b>
+                                                                        </label>
 
-															<li class="cost s-p0">
-																<label class="number-input">
-																	<input type="number" value="12450340.34">
-																	<b>12<wbr>450<wbr>340,34</b>
-																</label>
-															</li>
-														</ul>
+                                                                        <label class="text-input center min-field" disabled>
+                                                                            <input type="text" value="9 шт">
+                                                                            <b>9 шт</b>
+                                                                        </label>
+                                                                    </div>
+                                                                </li>
 
-													</div>
+                                                                <li class="cost s-p0">
+                                                                    <label class="number-input" disabled>
+                                                                        <input type="number" value="12450340.34">
+                                                                        <b>12<wbr>450<wbr>340,34</b>
+                                                                    </label>
+                                                                </li>
+                                                            </ul>
 
-													<ul class="flex details-item details-control">
-														<li class="details-buttons s-p0">
-															<button class="btn solid success new-point-btn">
-																<i class="fas fa-plus"></i>
-																<b class="small">Пункт</b>
-															</button>
-														</li>
+                                                        </div>
 
-														<li class="details-buttons flex-grow s-p0">
-															<button class="btn toggle">
-																<i class="fas fa-pen-square"></i>
-																<b class="small no-middle-mobile">Редактировать</b>
-															</button>
-														</li>
+                                                    </div>
 
-														<li class="details-title">
-															<div class="text-field name">
-																<b>Детали этого расхода</b>
-															</div>
-														</li>
+                                                    <ul class="flex details-item details-control">
+                                                        <li class="details-buttons flex-grow s-p0">
+                                                            <button class="btn solid success new-point-btn">
+                                                                <i class="fas fa-plus"></i>
+                                                                <b class="small">Пункт</b>
+                                                            </button>
+                                                        </li>
 
-														<li class="s-p0">
-															<button class="btn solid details-btn" onclick="layoutControl.toggleDetailsView1(this)">
-																<i class="fas fa-folder"></i>
-																<b class="small no-middle-mobile">Детали</b>
-															</button>
-														</li>
-													</ul>
+                                                        <li class="details-title">
+                                                            <div class="text-field name">
+                                                                <b>Детали этого расхода</b>
+                                                            </div>
+                                                        </li>
 
-												</div>
+                                                        <li class="s-p0">
+                                                            <button class="btn solid details-btn" onclick="layoutControl.toggleDetailsView1(this)">
+                                                                <i class="fas fa-folder"></i>
+                                                                <b class="small no-middle-mobile">Детали</b>
+                                                            </button>
+                                                        </li>
+                                                    </ul>
 
-											</div>
+                                                </div>
 
-											<label class="checkbox paid-out">
-												<input type="checkbox">
-												<i></i>
-											</label>
+                                            </div>
 
-										</li>
+                                            <label class="checkbox paid-out">
+                                                <input type="checkbox">
+                                                <i></i>
+                                            </label>
+
+                                        </li>
+
+                                        <li class="expense">
+                                            <ul class="flex expense-title">
+                                                <li class="flex-shrink expense-number s-p0">
+                                                    <button class="btn solid success" title="Меню">
+                                                        <i class="fas fa-plus"></i>
+                                                    </button>
+                                                </li>
+
+                                                <li class="s-p2">
+                                                    <div class="text-field name">
+                                                        <b>Добавить новый расход</b>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
 
 									</ul>
 
 								</div>
 							</li>
+
+                            <li>
+                                <div class="participant-head">
+                                    <ul class="flex s-p0">
+                                        <li class="flex-shrink s-p0">
+                                            <button class="btn solid border success">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </li>
+
+                                        <li class="flex-grow s-p2">
+                                            <div class="text-field solid name">
+                                                <b>Добавить нового участника</b>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
 						</ul>
 
 					</div>

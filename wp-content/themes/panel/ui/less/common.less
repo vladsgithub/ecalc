@@ -138,6 +138,7 @@
 		border-right-color: @black;
 		border-bottom-color: @black;
 
+		&.pressed,
 		&:active {
 			border: 2px solid @brand-strong;
 			border-top-color: @black;
@@ -195,7 +196,23 @@
 		}
 	}
 	&.toggle {
+		height: 44px;
 		border-radius: 22px;
+
+		&::before {
+			position: absolute;
+			top: 0; bottom: 0; left: 0; right: 0;
+			box-sizing: border-box;
+			border: 20px solid rgba(0,0,0,0.2);
+			border-right-color: transparent;
+			border-bottom-color: transparent;
+			border-radius: 20px;
+		}
+		&.pressed {
+			&::before { content: ""; }
+
+			i { transform: scale(0.8); }
+		}
 	}
 
 	i {
