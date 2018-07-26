@@ -21,7 +21,7 @@ function forEach(elements, callback) {
 			isOpenMenu: false,
 			isOpenAside: false,
 			isEditAccountsMode: false,
-			activeWindow: 1,
+			activeWindow: 2,
 
 			openAside: function() {
 				this.isOpenAside = !this.isOpenAside;
