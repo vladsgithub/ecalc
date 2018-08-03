@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="44bc63fb-9e01-4d9b-a8dc-1a1fc190dee4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide.html" beforeDir="false" afterPath="$PROJECT_DIR$/guide.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/prototype.html" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/prototype.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less" afterDir="false" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,8 +45,11 @@
       <file leaf-file-name="app.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="710">
-              <caret line="736" lean-forward="true" selection-start-line="736" selection-end-line="736" />
+            <state relative-caret-position="683">
+              <caret line="736" column="7" selection-start-line="736" selection-start-column="7" selection-end-line="736" selection-end-column="7" />
+              <folding>
+                <element signature="e#11684#14045#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -66,13 +66,11 @@
       <file leaf-file-name="prototype.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/prototype.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="819">
-              <caret line="1040" column="33" selection-start-line="1040" selection-start-column="33" selection-end-line="1040" selection-end-column="33" />
+            <state relative-caret-position="598">
+              <caret line="997" column="70" selection-start-line="997" selection-start-column="70" selection-end-line="997" selection-end-column="70" />
               <folding>
                 <element signature="n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
                 <element signature="n#div#0;n#div#0;n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
-                <element signature="n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-                <element signature="n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
               </folding>
             </state>
           </provider>
@@ -103,7 +101,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>1.1</find>
       <find>layout.activeWindow = 1</find>
       <find>expense-participants</find>
       <find>active-window=&quot;1</find>
@@ -133,6 +130,7 @@
       <find>text-r</find>
       <find>Number field</find>
       <find>number-field</find>
+      <find>expenses</find>
     </findStrings>
     <replaceStrings>
       <replace>Название группы расходов</replace>
@@ -161,8 +159,8 @@
         <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" />
         <option value="$PROJECT_DIR$/guide.html" />
-        <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/prototype.html" />
       </list>
     </option>
@@ -305,12 +303,12 @@
       <workItem from="1532493169086" duration="8703000" />
       <workItem from="1533014854198" duration="1887000" />
       <workItem from="1533274794933" duration="1052000" />
-      <workItem from="1533276440135" duration="3559000" />
+      <workItem from="1533276440135" duration="4720000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106147000" />
+    <option name="totallyTimeSpent" value="107308000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -364,8 +362,6 @@
           <folding>
             <element signature="n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#div#0;n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
           </folding>
         </state>
       </provider>
@@ -412,8 +408,6 @@
           <folding>
             <element signature="n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#div#0;n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
           </folding>
         </state>
       </provider>
@@ -460,8 +454,6 @@
           <folding>
             <element signature="n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#div#0;n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
           </folding>
         </state>
       </provider>
@@ -494,8 +486,6 @@
           <folding>
             <element signature="n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#div#0;n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
           </folding>
         </state>
       </provider>
@@ -542,8 +532,6 @@
           <folding>
             <element signature="n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#div#0;n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
           </folding>
         </state>
       </provider>
@@ -699,13 +687,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="710">
-          <caret line="736" lean-forward="true" selection-start-line="736" selection-end-line="736" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="445">
@@ -713,15 +694,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="683">
+          <caret line="736" column="7" selection-start-line="736" selection-start-column="7" selection-end-line="736" selection-end-column="7" />
+          <folding>
+            <element signature="e#11684#14045#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/prototype.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="819">
-          <caret line="1040" column="33" selection-start-line="1040" selection-start-column="33" selection-end-line="1040" selection-end-column="33" />
+        <state relative-caret-position="598">
+          <caret line="997" column="70" selection-start-line="997" selection-start-column="70" selection-end-line="997" selection-end-column="70" />
           <folding>
             <element signature="n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#div#0;n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
           </folding>
         </state>
       </provider>
