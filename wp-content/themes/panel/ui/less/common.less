@@ -44,8 +44,14 @@
 .uppercase {
 	text-transform: uppercase !important;
 }
-.center {
+.text-center {
 	text-align: center !important;
+}
+.text-right {
+	text-align: right !important;
+}
+.text-left {
+	text-align: left !important;
 }
 
 .clearfix {
@@ -916,7 +922,7 @@ label {
 .number-field {
 	position: relative;
 	display: block;
-	height: 44px;
+	min-height: 44px;
 	max-width: 100%;
 	line-height: 40px;
 	overflow: hidden;
@@ -929,6 +935,24 @@ label {
 	}
 	&.bold {
 		font-weight: bold;
+	}
+	&.marker {
+		line-height: 1;
+
+		> b {
+			padding-top: 18px;
+
+			> s {
+				position: absolute;
+				top: 4px;
+				left: 0;
+				height: 12px;
+				width: 100%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+		}
 	}
 
 	> b {
@@ -952,8 +976,6 @@ label {
 			text-decoration: underline;
 		}
 	}
-
-
 }
 
 .date-field {

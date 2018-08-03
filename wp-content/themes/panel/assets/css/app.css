@@ -3369,8 +3369,14 @@ table {
 .uppercase {
   text-transform: uppercase !important;
 }
-.center {
+.text-center {
   text-align: center !important;
+}
+.text-right {
+  text-align: right !important;
+}
+.text-left {
+  text-align: left !important;
 }
 .clearfix::before,
 .clearfix::after {
@@ -4279,7 +4285,7 @@ label.toggle i::after {
 .number-field {
   position: relative;
   display: block;
-  height: 44px;
+  min-height: 44px;
   max-width: 100%;
   line-height: 40px;
   overflow: hidden;
@@ -4292,6 +4298,22 @@ label.toggle i::after {
 }
 .number-field.bold {
   font-weight: bold;
+}
+.number-field.marker {
+  line-height: 1;
+}
+.number-field.marker > b {
+  padding-top: 18px;
+}
+.number-field.marker > b > s {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  height: 12px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .number-field > b {
   display: inline-block;
