@@ -580,6 +580,18 @@ aside {
 
 }
 
+.participant {
+
+	&.open-body {
+		.collapse-btn > i {
+			transform: scaleY(-1);
+		}
+		.participant-body > ul {
+			display: block;
+		}
+	}
+}
+
 .participant-head {
 	padding: @padding 0;
 	background: @brand-strong;
@@ -590,10 +602,17 @@ aside {
 	.text-input {
 		width: 100%;
 	}
+	.collapse-btn i {
+		transition: transform @delay;
+	}
 }
 
 .participant-body {
 	padding-bottom: (@padding * 4);
+
+	> ul {
+		display: none;
+	}
 }
 
 .expense {
@@ -650,9 +669,8 @@ aside {
 		margin: 16px -8px 0;
 		padding: 8px 6px;
 		width: 100%; min-width: 296px;
-		border: 1px solid @brand-strong;
+		border: 2px solid @brand-strong;
 		border-radius: 8px;
-		background: @white;
 
 		@media only screen and (max-width: (@mobile - 1)) {
 			margin-right: -4px;
@@ -665,7 +683,7 @@ aside {
 			display: none;
 			margin-bottom: 4px;
 		}
-		.participants {
+		.members {
 			padding-left: 10px;
 
 			.text-field.subtitle {
@@ -734,7 +752,11 @@ aside {
 	}
 }
 
-.cost {
+.shares {
+	padding-top: 4px;
+}
+.share {
+
 }
 
 footer {

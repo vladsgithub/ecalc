@@ -4271,6 +4271,10 @@ label.toggle i::after {
 .text-field.underline > b {
   border-bottom: 1px solid #4c69bd;
 }
+.text-field.line-through > b {
+  text-decoration: line-through;
+  color: #696969;
+}
 .text-field > b {
   display: inline-block;
   width: 100%;
@@ -4281,6 +4285,12 @@ label.toggle i::after {
   vertical-align: middle;
   font-size: 1rem;
   word-wrap: break-word;
+}
+.text-field > b > em {
+  display: inline-block;
+  text-decoration: inherit;
+  color: inherit;
+  font-weight: bold;
 }
 .number-field {
   position: relative;
@@ -4979,6 +4989,12 @@ aside .account .text-input {
 .section-head .border-bottom {
   border-bottom: 1px solid #000;
 }
+.participant.open-body .collapse-btn > i {
+  transform: scaleY(-1);
+}
+.participant.open-body .participant-body > ul {
+  display: block;
+}
 .participant-head {
   padding: 4px 0;
   background: #4c69bd;
@@ -4989,8 +5005,14 @@ aside .account .text-input {
 .participant-head .text-input {
   width: 100%;
 }
+.participant-head .collapse-btn i {
+  transition: transform 0.2s;
+}
 .participant-body {
   padding-bottom: 16px;
+}
+.participant-body > ul {
+  display: none;
 }
 .expense {
   position: relative;
@@ -5045,9 +5067,8 @@ aside .account .text-input {
   padding: 8px 6px;
   width: 100%;
   min-width: 296px;
-  border: 1px solid #4c69bd;
+  border: 2px solid #4c69bd;
   border-radius: 8px;
-  background: #fff;
 }
 @media only screen and (max-width: 639px) {
   .expense .expense-details {
@@ -5061,10 +5082,10 @@ aside .account .text-input {
   display: none;
   margin-bottom: 4px;
 }
-.expense .expense-details .participants {
+.expense .expense-details .members {
   padding-left: 10px;
 }
-.expense .expense-details .participants .text-field.subtitle {
+.expense .expense-details .members .text-field.subtitle {
   margin-bottom: 4px;
 }
 .expense .expense-details .details {
@@ -5125,4 +5146,7 @@ aside .account .text-input {
   position: absolute;
   right: 2px;
   top: 16px;
+}
+.shares {
+  padding-top: 4px;
 }

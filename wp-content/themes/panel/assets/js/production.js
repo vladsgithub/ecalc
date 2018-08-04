@@ -33628,8 +33628,18 @@ function forEach(elements, callback) {
 					});
 				});
 			},
+            collapseAllBodiesView: function(elm) {
+                var bodyArr = elm.parentNode.parentNode.parentNode.parentNode.querySelectorAll('.open-body');   //.classList.remove('open-body');
+
+                forEach(bodyArr, function(body, i, arr) {
+                    body.classList.remove('open-body');
+                });
+            },
+            toggleBodyView: function(elm) {
+                elm.parentNode.parentNode.parentNode.parentNode.classList.toggle('open-body');
+            },
             toggleDetailsView1: function(elm) {
-                elm.parentNode.parentNode.parentNode.parentNode.classList.toggle('open-details')
+                elm.parentNode.parentNode.parentNode.parentNode.classList.toggle('open-details');
             }
 		};
 

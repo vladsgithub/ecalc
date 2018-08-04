@@ -905,6 +905,12 @@ label {
 	&.underline > b {
 		border-bottom: 1px solid @brand-strong;
 	}
+	&.line-through {
+		> b {
+			text-decoration: line-through;
+			color: @strong-gray;
+		}
+	}
 
 	> b {
 		display: inline-block;
@@ -916,6 +922,13 @@ label {
 		vertical-align: middle;
 		font-size: 1rem;
 		word-wrap: break-word;
+
+		> em {
+			display: inline-block;
+			text-decoration: inherit;
+			color: inherit;
+			font-weight: bold;
+		}
 	}
 }
 

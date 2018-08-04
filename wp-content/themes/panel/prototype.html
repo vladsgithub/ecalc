@@ -330,8 +330,8 @@
 							</li>
 
 							<li class="flex-shrink">
-								<button class="btn solid">
-									<i class="fas fa-angle-double-down"></i>
+								<button class="btn solid" onclick="layoutControl.collapseAllBodiesView(this)">
+									<i class="fas fa-angle-double-up"></i>
 								</button>
 							</li>
 						</ul>
@@ -360,7 +360,7 @@
 					<div class="section-body">
 
 						<ul class="participants">
-							<li>
+							<li class="participant">
 								<div class="participant-head">
 									<ul class="flex s-p0">
 										<li class="flex-shrink s-p0">
@@ -387,7 +387,7 @@
 										</li>
 
 										<li class="flex-shrink s-p0">
-											<button class="btn solid border">
+											<button class="btn solid border collapse-btn" onclick="layoutControl.toggleBodyView(this)">
 												<i class="fas fa-chevron-down"></i>
 											</button>
 										</li>
@@ -466,7 +466,7 @@
 
 													<div class="details-view">
 
-														<ul class="participants flex flex-wrap space-between">
+														<ul class="members flex flex-wrap space-between">
 															<li>
 																<div class="text-field name thin">
 																	<b>Участники:</b>
@@ -681,7 +681,7 @@
 
                                                     <div class="details-view">
 
-                                                        <ul class="participants flex flex-wrap space-between">
+                                                        <ul class="members flex flex-wrap space-between">
                                                             <li>
                                                                 <div class="text-field name thin">
                                                                     <b>Участники:</b>
@@ -896,8 +896,8 @@
                             </li>
 
                             <li class="flex-shrink">
-                                <button class="btn solid">
-                                    <i class="fas fa-angle-double-down"></i>
+                                <button class="btn solid" onclick="layoutControl.collapseAllBodiesView(this)">
+                                    <i class="fas fa-angle-double-up"></i>
                                 </button>
                             </li>
                         </ul>
@@ -926,7 +926,7 @@
                     <div class="section-body">
                         <ul class="participants">
 
-                        	<li>
+                        	<li class="participant">
 								<div class="participant-head">
 									<ul class="flex s-p0">
 										<li class="flex-shrink s-p0">
@@ -955,7 +955,7 @@
 										</li>
 
 										<li class="flex-shrink s-p0">
-											<button class="btn solid border">
+											<button class="btn solid border collapse-btn" onclick="layoutControl.toggleBodyView(this)">
 												<i class="fas fa-chevron-down"></i>
 											</button>
 										</li>
@@ -978,8 +978,36 @@
 
 								<div class="participant-body">
 
-									<ul class="costs">
-										<li class="cost">
+									<ul class="shares">
+										<li class="share">
+
+											<ul class="flex s-p0">
+												<li class="s-p0">
+													<label class="checkbox">
+														<input type="checkbox" checked>
+														<i></i>
+													</label>
+												</li>
+
+												<li class="flex-grow s-p0">
+													<div class="text-field">
+														<b>
+															Название расхода
+															<em>[от: Участник 1]</em>
+														</b>
+													</div>
+												</li>
+
+												<li class="flex-grow s-p0">
+													<div class="number-field">
+														<b>12<wbr>450<wbr>340,34</b>
+													</div>
+												</li>
+											</ul>
+
+										</li>
+
+										<li class="share">
 
 											<ul class="flex s-p0">
 												<li class="s-p0">
@@ -990,12 +1018,43 @@
 												</li>
 
 												<li class="flex-grow s-p0">
-													<div class="text-field">
-														<b>Название расхода<br/>[от: Участник 1]</b>
+													<div class="text-field line-through">
+														<b>
+															Название расхода
+															<em>[от: Участник 1]</em>
+														</b>
 													</div>
 												</li>
 
+												<li class="flex-grow s-p0">
+													<div class="number-field">
+														<b>12<wbr>450<wbr>340,34</b>
+													</div>
+												</li>
+											</ul>
+
+										</li>
+
+										<li class="share">
+
+											<ul class="flex s-p0">
 												<li class="s-p0">
+													<label class="checkbox">
+														<input type="checkbox">
+														<i></i>
+													</label>
+												</li>
+
+												<li class="flex-grow s-p0">
+													<div class="text-field line-through">
+														<b>
+															Название расхода
+															<em>[от: Участник 1]</em>
+														</b>
+													</div>
+												</li>
+
+												<li class="flex-grow s-p0">
 													<div class="number-field">
 														<b>12<wbr>450<wbr>340,34</b>
 													</div>
@@ -1007,6 +1066,147 @@
 
 								</div>
                         	</li>
+
+							<li class="participant">
+								<div class="participant-head">
+									<ul class="flex s-p0">
+										<li class="flex-shrink s-p0">
+											<div class="text-field solid title">
+												<b>1.</b>
+											</div>
+										</li>
+
+										<li class="flex-grow s-p0">
+											<div class="text-field name solid">
+												<b>Имя участника</b>
+											</div>
+										</li>
+
+										<li class="flex-shrink s-p0">
+											<div class="number-input complex-input">
+												<div class="text-field">
+													<b>Коэфф.<br/>участия</b>
+												</div>
+
+												<label class="text-center">
+													<input type="number" value="2" />
+													<b>2</b>
+												</label>
+											</div>
+										</li>
+
+										<li class="flex-shrink s-p0">
+											<button class="btn solid border collapse-btn" onclick="layoutControl.toggleBodyView(this)">
+												<i class="fas fa-chevron-down"></i>
+											</button>
+										</li>
+									</ul>
+
+									<ul class="flex s-p1">
+										<li class="flex-grow">
+											<div class="number-field solid marker text-left">
+												<b>12<wbr>450<wbr>340,34 <s>Баланс (BYN):</s></b>
+											</div>
+										</li>
+
+										<li class="flex-grow">
+											<div class="number-field solid marker">
+												<b>12<wbr>450<wbr>340,34 <s>Доля (BYN):</s></b>
+											</div>
+										</li>
+									</ul>
+								</div>
+
+								<div class="participant-body">
+
+									<ul class="shares">
+										<li class="share">
+
+											<ul class="flex s-p0">
+												<li class="s-p0">
+													<label class="checkbox">
+														<input type="checkbox" checked>
+														<i></i>
+													</label>
+												</li>
+
+												<li class="flex-grow s-p0">
+													<div class="text-field">
+														<b>
+															Название расхода
+															<em>[от: Участник 1]</em>
+														</b>
+													</div>
+												</li>
+
+												<li class="flex-grow s-p0">
+													<div class="number-field">
+														<b>12<wbr>450<wbr>340,34</b>
+													</div>
+												</li>
+											</ul>
+
+										</li>
+
+										<li class="share">
+
+											<ul class="flex s-p0">
+												<li class="s-p0">
+													<label class="checkbox">
+														<input type="checkbox">
+														<i></i>
+													</label>
+												</li>
+
+												<li class="flex-grow s-p0">
+													<div class="text-field line-through">
+														<b>
+															Название расхода
+															<em>[от: Участник 1]</em>
+														</b>
+													</div>
+												</li>
+
+												<li class="flex-grow s-p0">
+													<div class="number-field">
+														<b>12<wbr>450<wbr>340,34</b>
+													</div>
+												</li>
+											</ul>
+
+										</li>
+
+										<li class="share">
+
+											<ul class="flex s-p0">
+												<li class="s-p0">
+													<label class="checkbox">
+														<input type="checkbox">
+														<i></i>
+													</label>
+												</li>
+
+												<li class="flex-grow s-p0">
+													<div class="text-field line-through">
+														<b>
+															Название расхода
+															<em>[от: Участник 1]</em>
+														</b>
+													</div>
+												</li>
+
+												<li class="flex-grow s-p0">
+													<div class="number-field">
+														<b>12<wbr>450<wbr>340,34</b>
+													</div>
+												</li>
+											</ul>
+
+										</li>
+									</ul>
+
+								</div>
+							</li>
 
                     	</ul>
                     </div>
