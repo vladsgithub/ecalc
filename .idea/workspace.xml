@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44bc63fb-9e01-4d9b-a8dc-1a1fc190dee4" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guide.html" beforeDir="false" afterPath="$PROJECT_DIR$/guide.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css" afterDir="false" />
@@ -31,8 +32,8 @@
       <file leaf-file-name="variables.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="12" selection-start-line="25" selection-end-line="25" selection-end-column="12" />
+            <state relative-caret-position="612">
+              <caret line="36" column="23" lean-forward="true" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -40,8 +41,8 @@
       <file leaf-file-name="common.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="910" column="32" selection-start-line="910" selection-start-column="32" selection-end-line="910" selection-end-column="32" />
+            <state relative-caret-position="275">
+              <caret line="1060" column="29" selection-start-line="1060" selection-start-column="29" selection-end-line="1060" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -49,10 +50,20 @@
       <file leaf-file-name="app.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="586" column="34" selection-start-line="586" selection-start-column="34" selection-end-line="586" selection-end-column="34" />
+            <state relative-caret-position="601">
+              <caret line="233" column="21" selection-start-line="233" selection-start-column="21" selection-end-line="233" selection-end-column="21" />
               <folding>
-                <element signature="e#11684#14045#0" />
+                <element signature="e#1484#2467#0" />
+                <element signature="e#2978#3947#0" />
+                <element signature="e#4157#5781#0" />
+                <element signature="e#5800#11357#0" />
+                <element signature="e#11493#11617#0" />
+                <element signature="e#14295#14300#0" />
+                <element signature="e#12107#12132#0" />
+                <element signature="e#12149#12741#0" />
+                <element signature="e#12760#12850#0" />
+                <element signature="e#12870#14296#0" />
+                <element signature="e#14309#14314#0" />
               </folding>
             </state>
           </provider>
@@ -61,8 +72,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="82" column="57" lean-forward="true" selection-start-line="82" selection-start-column="57" selection-end-line="82" selection-end-column="57" />
+            <state relative-caret-position="301">
+              <caret line="26" column="53" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -70,19 +81,30 @@
       <file leaf-file-name="prototype.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/prototype.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="897" column="52" selection-start-line="897" selection-start-column="52" selection-end-line="897" selection-end-column="52" />
+            <state relative-caret-position="190">
+              <caret line="165" column="62" lean-forward="true" selection-start-line="165" selection-start-column="62" selection-end-line="165" selection-end-column="62" />
               <folding>
+                <element signature="n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+                <element signature="n#div#0;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+                <element signature="n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+                <element signature="n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
                 <element signature="n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
                 <element signature="n#div#0;n#div#0;n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+                <element signature="n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
+                <element signature="n#div#0;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
                 <element signature="n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
                 <element signature="n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
                 <element signature="n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
                 <element signature="n#li#2;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
                 <element signature="n#div#0;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-                <element signature="n#li#0;n#ul#0;n#div#1;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-                <element signature="n#li#1;n#ul#0;n#div#1;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-                <element signature="n#li#2;n#ul#0;n#div#1;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
+                <element signature="n#ul#0;n#div#0;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+                <element signature="n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+                <element signature="n#li#0;n#ul#0;n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+                <element signature="n#div#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+                <element signature="n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+                <element signature="n#li#0;n#ul#1;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+                <element signature="n#li#0;n#ul#0;n#div#0;n#div#1;n#li#0;n#ul#1;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+                <element signature="n#li#1;n#ul#0;n#div#0;n#div#1;n#li#0;n#ul#1;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
               </folding>
             </state>
           </provider>
@@ -91,8 +113,8 @@
       <file leaf-file-name="guide.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/guide.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="341" column="47" selection-start-line="341" selection-start-column="47" selection-end-line="341" selection-end-column="47" />
+            <state relative-caret-position="469">
+              <caret line="228" column="30" selection-start-line="228" selection-start-column="30" selection-end-line="228" selection-end-column="30" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#li#2;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#li#3;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -113,25 +135,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>пункт меню</find>
-      <find>section-body</find>
-      <find>details-buttons flex-grow s-p0</find>
-      <find>settings-list</find>
-      <find>s</find>
-      <find>decoration</find>
-      <find>label</find>
-      <find>input: number</find>
-      <find>&lt;s&gt;</find>
-      <find>.center</find>
-      <find>center</find>
-      <find>text-r</find>
-      <find>number-field</find>
-      <find>expenses</find>
-      <find>.expense-details</find>
-      <find>participant-head</find>
-      <find>onclick=&quot;layoutControl.toggleBodyView(this)&quot;</find>
-      <find>participant-body</find>
-      <find>participant</find>
       <find>participant</find>
       <find>participants</find>
       <find>open-body</find>
@@ -141,8 +144,27 @@
       <find>fas fa-angle-double-down</find>
       <find>data-state</find>
       <find>foreach</find>
-      <find>collapseAllBodiesView</find>
       <find>fas fa-angle-double-up</find>
+      <find>collapseAllBodiesView</find>
+      <find>,34</find>
+      <find>toggle</find>
+      <find>window-lt</find>
+      <find>right-lt</find>
+      <find>lightgray</find>
+      <find>[</find>
+      <find>thin</find>
+      <find>number-field</find>
+      <find>эффициент</find>
+      <find>share</find>
+      <find>step2</find>
+      <find>participant-body</find>
+      <find>&quot;participant-body&quot;</find>
+      <find>text-select</find>
+      <find>line-through</find>
+      <find>settings-list</find>
+      <find>set</find>
+      <find>nav</find>
+      <find>openAside</find>
     </findStrings>
     <replaceStrings>
       <replace>Название группы расходов</replace>
@@ -169,10 +191,10 @@
       <list>
         <option value="$PROJECT_DIR$/../_temp/changes-01.txt" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less" />
-        <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" />
         <option value="$PROJECT_DIR$/guide.html" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/prototype.html" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" />
       </list>
     </option>
@@ -315,12 +337,12 @@
       <workItem from="1532493169086" duration="8703000" />
       <workItem from="1533014854198" duration="1887000" />
       <workItem from="1533274794933" duration="1052000" />
-      <workItem from="1533276440135" duration="10905000" />
+      <workItem from="1533276440135" duration="30172000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113493000" />
+    <option name="totallyTimeSpent" value="132760000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -372,16 +394,27 @@
         <state relative-caret-position="7820">
           <caret line="460" column="96" selection-start-line="460" selection-start-column="96" selection-end-line="460" selection-end-column="96" />
           <folding>
+            <element signature="n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#div#0;n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#2;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#0;n#ul#0;n#div#1;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#1;n#ul#0;n#div#1;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#2;n#ul#0;n#div#1;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#ul#0;n#div#0;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#0;n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#1;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#0;n#div#0;n#div#1;n#li#0;n#ul#1;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#1;n#ul#0;n#div#0;n#div#1;n#li#0;n#ul#1;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
           </folding>
         </state>
       </provider>
@@ -426,16 +459,27 @@
         <state relative-caret-position="12359">
           <caret line="727" column="33" selection-start-line="727" selection-start-column="33" selection-end-line="727" selection-end-column="33" />
           <folding>
+            <element signature="n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#div#0;n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#2;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#0;n#ul#0;n#div#1;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#1;n#ul#0;n#div#1;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#2;n#ul#0;n#div#1;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#ul#0;n#div#0;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#0;n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#1;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#0;n#div#0;n#div#1;n#li#0;n#ul#1;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#1;n#ul#0;n#div#0;n#div#1;n#li#0;n#ul#1;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
           </folding>
         </state>
       </provider>
@@ -480,16 +524,27 @@
         <state relative-caret-position="5933">
           <caret line="349" column="53" selection-start-line="349" selection-start-column="53" selection-end-line="349" selection-end-column="53" />
           <folding>
+            <element signature="n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#div#0;n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#2;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#0;n#ul#0;n#div#1;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#1;n#ul#0;n#div#1;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#2;n#ul#0;n#div#1;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#ul#0;n#div#0;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#0;n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#1;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#0;n#div#0;n#div#1;n#li#0;n#ul#1;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#1;n#ul#0;n#div#0;n#div#1;n#li#0;n#ul#1;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
           </folding>
         </state>
       </provider>
@@ -520,16 +575,27 @@
         <state relative-caret-position="6987">
           <caret line="459" column="88" selection-start-line="459" selection-start-column="88" selection-end-line="459" selection-end-column="88" />
           <folding>
+            <element signature="n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#div#0;n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#2;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#0;n#ul#0;n#div#1;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#1;n#ul#0;n#div#1;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#2;n#ul#0;n#div#1;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#ul#0;n#div#0;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#0;n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#1;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#0;n#div#0;n#div#1;n#li#0;n#ul#1;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#1;n#ul#0;n#div#0;n#div#1;n#li#0;n#ul#1;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
           </folding>
         </state>
       </provider>
@@ -574,16 +640,27 @@
         <state relative-caret-position="6460">
           <caret line="380" column="54" selection-start-line="380" selection-start-column="54" selection-end-line="380" selection-end-column="54" />
           <folding>
+            <element signature="n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#div#0;n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#2;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#0;n#ul#0;n#div#1;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#1;n#ul#0;n#div#1;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#2;n#ul#0;n#div#1;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#ul#0;n#div#0;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#0;n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#1;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#0;n#div#0;n#div#1;n#li#0;n#ul#1;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#1;n#ul#0;n#div#0;n#div#1;n#li#0;n#ul#1;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
           </folding>
         </state>
       </provider>
@@ -706,20 +783,10 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/../_temp/changes-01.txt" />
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="586" column="34" selection-start-line="586" selection-start-column="34" selection-end-line="586" selection-end-column="34" />
-          <folding>
-            <element signature="e#11684#14045#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/guide.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="341" column="47" selection-start-line="341" selection-start-column="47" selection-end-line="341" selection-end-column="47" />
+        <state relative-caret-position="469">
+          <caret line="228" column="30" selection-start-line="228" selection-start-column="30" selection-end-line="228" selection-end-column="30" />
           <folding>
             <element signature="n#style#0;n#div#1;n#li#2;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#li#3;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -737,41 +804,72 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="12" selection-start-line="25" selection-end-line="25" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="910" column="32" selection-start-line="910" selection-start-column="32" selection-end-line="910" selection-end-column="32" />
+        <state relative-caret-position="612">
+          <caret line="36" column="23" lean-forward="true" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/prototype.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="897" column="52" selection-start-line="897" selection-start-column="52" selection-end-line="897" selection-end-column="52" />
+        <state relative-caret-position="190">
+          <caret line="165" column="62" lean-forward="true" selection-start-line="165" selection-start-column="62" selection-end-line="165" selection-end-column="62" />
           <folding>
+            <element signature="n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#ul#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#div#0;n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#li#2;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
             <element signature="n#div#0;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#0;n#ul#0;n#div#1;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#1;n#ul#0;n#div#1;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
-            <element signature="n#li#2;n#ul#0;n#div#1;n#li#1;n#ul#0;n#div#1;n#div#1;n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#ul#0;n#div#0;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#0;n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#1;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#1;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#0;n#ul#0;n#div#0;n#div#1;n#li#0;n#ul#1;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#1;n#ul#0;n#div#0;n#div#1;n#li#0;n#ul#1;n#div#1;n#div#1;n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="1060" column="29" selection-start-line="1060" selection-start-column="29" selection-end-line="1060" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="601">
+          <caret line="233" column="21" selection-start-line="233" selection-start-column="21" selection-end-line="233" selection-end-column="21" />
+          <folding>
+            <element signature="e#1484#2467#0" />
+            <element signature="e#2978#3947#0" />
+            <element signature="e#4157#5781#0" />
+            <element signature="e#5800#11357#0" />
+            <element signature="e#11493#11617#0" />
+            <element signature="e#14295#14300#0" />
+            <element signature="e#12107#12132#0" />
+            <element signature="e#12149#12741#0" />
+            <element signature="e#12760#12850#0" />
+            <element signature="e#12870#14296#0" />
+            <element signature="e#14309#14314#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="82" column="57" lean-forward="true" selection-start-line="82" selection-start-column="57" selection-end-line="82" selection-end-column="57" />
+        <state relative-caret-position="301">
+          <caret line="26" column="53" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
         </state>
       </provider>
     </entry>

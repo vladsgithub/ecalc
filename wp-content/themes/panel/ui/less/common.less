@@ -81,6 +81,10 @@
 
 	> .flex-grow {
 		flex-grow: 1;
+
+		> label {
+			width: 100%;
+		}
 	}
 	> .flex-shrink {
 		flex-shrink: 0;
@@ -519,26 +523,6 @@ label {
 	}
 }
 
-.complex-input {
-	display: flex;
-
-	> .text-field:first-child {
-		padding-left: 5px;
-		min-height: 40px;
-		line-height: 40px;
-		color: @brand-strong;
-
-		> b {
-			line-height: 1;
-			font-size: 0.9rem;
-		}
-	}
-
-	> label {
-		position: relative;
-	}
-}
-
 .text-select {
 	position: relative;
 	display: inline-block;
@@ -657,7 +641,8 @@ label {
 	}
 	b {
 		display: inline-block;
-		width: 100%; min-width: 100px;
+		width: 100%;
+		//min-width: 100px;
 		padding: 3px 5px;
 		overflow: hidden;
 		box-sizing: border-box;
@@ -665,6 +650,44 @@ label {
 		vertical-align: middle;
 		font-size: 1rem;
 		word-wrap: break-word;
+	}
+}
+
+.complex-input {
+	display: flex;
+
+	&.text-select {
+		padding-right: 0;
+
+		> label {
+			padding-right: 26px;
+
+			&.currency > b {
+				min-width: 0;
+				padding-left: 8px;
+				text-align: center;
+				white-space: nowrap;
+				font-size: 18px;
+			}
+		}
+	}
+
+	> .text-field:first-child {
+		padding-left: 5px;
+		min-height: 40px;
+		line-height: 40px;
+		color: @brand-strong;
+
+		> b {
+			min-width: 0;
+			line-height: 1;
+			font-size: 0.9rem;
+			font-weight: bold;
+		}
+	}
+
+	> label {
+		position: relative;
 	}
 }
 
@@ -768,10 +791,18 @@ label {
 			}
 			~ div {
 				&:nth-of-type(1) {
-					color: lightgray;
+					color: @black;
+
+					> b {
+						background: transparent;
+					}
 				}
 				&:nth-of-type(2) {
-					color: black;
+					color: @white;
+
+					> b {
+						background: @brand-strong;
+					}
 				}
 			}
 		}
@@ -785,10 +816,10 @@ label {
 		}
 		&[disabled] {
 			+ i {
-				border-color: lightgray;
+				border-color: @gray;
 
 				&::before {
-					background: lightgray;
+					background: @gray;
 				}
 			}
 		}
@@ -798,19 +829,19 @@ label {
 		height: 28px; width: 44px;
 		margin-left: -22px;
 		box-sizing: border-box;
-		border: 2px solid black;
+		border: 2px solid @brand-strong;
 		border-radius: 6px;
-		background: white;
+		background: @white;
 
 		&::before {
 			content: "";
 			z-index: 2;
-			position: absolute; top: 0px; bottom: 0px;
+			position: absolute; top: 0; bottom: 0;
 			width: 20px;
 			margin: 2px;
 			box-sizing: border-box;
 			border-radius: 4px;
-			background: black;
+			background: @brand-strong;
 			transition: transform 0.2s;
 		}
 		&::after {
@@ -833,19 +864,26 @@ label {
 		&:nth-of-type(1) {
 			padding-right: 30px;
 			text-align: right;
-			color: black;
+			color: @white;
+
+			> b {
+				background: @brand-strong;
+			}
 		}
 		&:nth-of-type(2) {
 			padding-left: 30px;
 			text-align: left;
-			color: lightgray;
+			color: @black;
 		}
 	}
 	b {
 		display: inline-block;
-		line-height: 18px;
+		padding: 4px;
+		border: 2px solid @brand-strong;
+		border-radius: 4px;
+		line-height: 12px;
 		vertical-align: middle;
-		font-size: 16px; font-weight: bold;
+		font-size: 14px;
 	}
 }
 
@@ -908,7 +946,6 @@ label {
 	&.line-through {
 		> b {
 			text-decoration: line-through;
-			color: @strong-gray;
 		}
 	}
 
@@ -948,6 +985,14 @@ label {
 	}
 	&.bold {
 		font-weight: bold;
+	}
+	&.thin {
+		min-height: 30px;
+		line-height: 30px;
+
+		> b {
+			padding: 0;
+		}
 	}
 	&.marker {
 		line-height: 1;
@@ -989,6 +1034,9 @@ label {
 			text-decoration: underline;
 		}
 	}
+	//.iblock {
+	//	display: inline-block;
+	//}
 }
 
 .date-field {

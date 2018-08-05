@@ -33572,8 +33572,12 @@ function forEach(elements, callback) {
 			isOpenMenu: false,
 			isOpenAside: false,
 			isEditAccountsMode: false,
-			activeWindow: 2,
+			activeWindow: 3,
 
+            openMenu: function() {
+                this.isOpenMenu = true;
+                this.isOpenAside = false;
+            },
 			openAside: function() {
 				this.isOpenAside = !this.isOpenAside;
 

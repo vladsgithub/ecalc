@@ -220,6 +220,26 @@ nav {
 			border-color: transparent;
 		}
 	}
+	.section-body {
+		position: absolute;
+		top: 44px;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		border: 2px solid @brand-strong;
+		border-top-width: 4px;
+		border-left: 0;
+	}
+	.settings-list {
+		height: 100%;
+		box-sizing: border-box;
+		background: @brand-light;
+
+		> li {
+			border-bottom: 1px solid @brand-strong;
+			transform: scale(1);
+		}
+	}
 }
 
 aside {
@@ -586,7 +606,7 @@ aside {
 		.collapse-btn > i {
 			transform: scaleY(-1);
 		}
-		.participant-body > ul {
+		.participant-body > .body-view {
 			display: block;
 		}
 	}
@@ -610,19 +630,21 @@ aside {
 .participant-body {
 	padding-bottom: (@padding * 4);
 
-	> ul {
+	> .body-view {
 		display: none;
 	}
 }
 
-.expense {
-	position: relative;
-	padding-top: (@padding * 4);
-	padding-right: 48px;
+.step-1 {
+	.expense {
+		position: relative;
+		padding-top: (@padding * 4);
+		padding-right: 48px;
 
-	+ .expense {
-		margin-top: (@padding * 4);
-		border-top: 2px dashed @brand-strong;
+		+ .expense {
+			margin-top: (@padding * 4);
+			border-top: 2px dashed @brand-strong;
+		}
 	}
 	.expense-number {
 		min-width: 24px;
@@ -752,11 +774,32 @@ aside {
 	}
 }
 
-.shares {
-	padding-top: 4px;
-}
-.share {
+.step-2 {
+	.shares {
+		padding-top: 4px;
 
+		.share-price {
+			min-width: 70px;
+		}
+	}
+}
+
+.step-3 {
+	.mode-toggle {
+		margin: 8px 0 0;
+	}
+	.payments {
+		&.to-bank {
+			padding-top: 8px;
+		}
+
+		> li + li {
+			margin-top: 8px;
+		}
+	}
+	.selected-participant {
+		min-width: 30%;
+	}
 }
 
 footer {
