@@ -51,6 +51,7 @@ ol, ul {
 #angularObject { word-break: break-word; }
 .testing {
 	display: none;
+	z-index: 9999;
 	position: fixed;
 	top: 0;
 	right: 0;
@@ -117,6 +118,7 @@ header {
 }
 .toggle-box {
 	display: none;
+	z-index: 99;
 	max-height: 90vh;
 	overflow: auto;
 	position: absolute;

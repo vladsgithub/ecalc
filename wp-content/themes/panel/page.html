@@ -1,7 +1,8 @@
+<div data-hidden-aria>
 <input type="checkbox" class="big-checkbox float-left" data-object-toggle style="margin: 15px;" />
 
 <div class="wrap">
-<header class="clearfix" ng-if="!expCalc.settings.isPrintView">
+<div head class="clearfix" ng-if="!expCalc.settings.isPrintView">
 	<span ng-repeat="account in expCalc.accounts track by $index">
 		<button class="btn btn-primary"
 				ng-class="{'active': expCalc.settings.currentAccount==$index}"
@@ -100,14 +101,14 @@
 
 		</div>
 	</div>
-</header>
+</div>
 
 <main>
 <ul class="accounts">
 <li ng-repeat="account in expCalc.accounts track by $index"
 	ng-if="expCalc.settings.currentAccount == $index">
 
-<header class="clearfix">
+<div head class="clearfix">
 	<h5>
 		<label>
 			<div>Название расчёта:</div>
@@ -130,7 +131,7 @@
 			</select>
 		</label>
 	</h5>
-</header>
+</div>
 
 <ul class="layout" ng-if="!expCalc.settings.isPrintView">
 <li class="step1">
@@ -758,3 +759,4 @@
 </div>
 
 <div id="testing" class="testing"></div>
+</div>

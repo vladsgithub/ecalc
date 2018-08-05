@@ -7,6 +7,31 @@
 //@import (less) "../css/app.css";
 
 
+// BEGIN: FOR WORKING ON THE PROTOTYPE
+#dataHiddenAria {
+	position: absolute;
+	border: 5px solid black;
+	z-index: 9999;
+	width: 20px;
+	height: 20px;
+
+	&:checked ~ [data-hidden-aria] {
+		display: block;
+	}
+}
+
+[data-hidden-aria] {
+	display: none;
+	margin-top: 50px;
+
+	.btn {
+		font-size: 1rem;
+	}
+}
+// END: FOR WORKING ON THE PROTOTYPE
+
+
+
 
 @keyframes hiddenWithDelay {
 	0% { visibility: visible; }
@@ -51,10 +76,10 @@ body {
 		visibility: visible;
 		transform: translateX(0);
 
-		.active > li,
-		.open > .section-title {
-			visibility: visible;
-		}
+		//.active > li,
+		//.open > .section-title {
+		//	visibility: visible;
+		//}
 	}
 
 	&:not(.open-aside) aside {
@@ -196,6 +221,10 @@ nav {
 				outline: 2px solid @brand-strong;
 			}
 		}
+		&.active,
+		&.open {
+			> li { visibility: visible; }
+		}
 		> li {
 			visibility: hidden;
 
@@ -229,6 +258,9 @@ nav {
 		border: 2px solid @brand-strong;
 		border-top-width: 4px;
 		border-left: 0;
+	}
+	.section-page {
+		padding: 8px;
 	}
 	.settings-list {
 		height: 100%;

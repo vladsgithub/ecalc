@@ -4427,6 +4427,23 @@ label.toggle i::after {
   flex-grow: 0;
   flex-shrink: 0;
 }
+#dataHiddenAria {
+  position: absolute;
+  border: 5px solid black;
+  z-index: 9999;
+  width: 20px;
+  height: 20px;
+}
+#dataHiddenAria:checked ~ [data-hidden-aria] {
+  display: block;
+}
+[data-hidden-aria] {
+  display: none;
+  margin-top: 50px;
+}
+[data-hidden-aria] .btn {
+  font-size: 1rem;
+}
 @keyframes hiddenWithDelay {
   0% {
     visibility: visible;
@@ -4477,10 +4494,6 @@ body:not(.open-menu) nav {
 body.open-menu nav {
   visibility: visible;
   transform: translateX(0);
-}
-body.open-menu nav .active > li,
-body.open-menu nav .open > .section-title {
-  visibility: visible;
 }
 body:not(.open-aside) aside {
   animation: hiddenWithDelay 0.2s 1 steps(1, end) forwards;
@@ -4623,6 +4636,10 @@ nav .section.open > .section-title {
   display: flex;
   outline: 2px solid #4c69bd;
 }
+nav .section.active > li,
+nav .section.open > li {
+  visibility: visible;
+}
 nav .section > li {
   visibility: hidden;
 }
@@ -4651,6 +4668,9 @@ nav .section-body {
   border: 2px solid #4c69bd;
   border-top-width: 4px;
   border-left: 0;
+}
+nav .section-page {
+  padding: 8px;
 }
 nav .settings-list {
   height: 100%;
