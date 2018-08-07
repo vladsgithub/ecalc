@@ -260,9 +260,12 @@ nav {
 		border-left: 0;
 	}
 	.section-page {
+		height: 100%;
 		padding: 8px;
+		box-sizing: border-box;
+		background: @brand-light;
 	}
-	.settings-list {
+	.mode-list {
 		height: 100%;
 		box-sizing: border-box;
 		background: @brand-light;
@@ -270,6 +273,29 @@ nav {
 		> li {
 			border-bottom: 1px solid @brand-strong;
 			transform: scale(1);
+		}
+	}
+	.settings-list {
+		overflow: auto;
+		height: 100%;
+		box-sizing: border-box;
+		background: @brand-light;
+
+		> li {
+			padding-top: 8px;
+		}
+	}
+	.currencies-list {
+		> li + li {
+			margin-top: -2px;
+		}
+	}
+	.currency-line {
+		> li:first-child {
+			max-width: 40%;
+		}
+		.complex-input > .text-field {
+			max-width: 50%;
 		}
 	}
 }

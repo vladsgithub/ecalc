@@ -255,10 +255,10 @@
 
                 <ul class="section" data-level="2">
                     <li class="section-title">
-                        <button class="btn no-shadow" data-previous title="Авторизация">
-                            <i class="fas fa-user-circle"></i>
+                        <button class="btn no-shadow" data-previous title="Данные">
+                            <i class="fas fa-database"></i>
                         </button>
-                        <div class="text-field title"><b>Авторизация</b></div>
+                        <div class="text-field title"><b>Данные</b></div>
                     </li>
 
                     <li>
@@ -276,26 +276,128 @@
                             </li>
 
                             <li class="section-body">
-                                <div class="section-page">
 
-                                    <ul>
-                                        <li class="nowrap padding5-0" ng-repeat="expensesType in expCalc.settings.expensesTypes track by $index">
-                                            <button class="btn btn-danger" ng-click="removeExpensesType($index)">
-                                                <i class="fa fa-minus"></i>
-                                            </button>
-                                            {{$index + 1}}
-                                            <input type="text" class="form-control inline-block" ng-model="expensesType.name" onchange="uploadData()"/>
-                                        </li>
+                                <ul class="settings-list">
+                                    <li ng-repeat="expensesType in expCalc.settings.expensesTypes track by $index">
+                                        <ul class="flex s-p1">
+                                            <li class="s-p1">
+                                                <button class="btn solid warning" title="Удалить этот тип" ng-click="removeExpensesType($index)">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </li>
 
-                                        <li class="nowrap padding5-0">
-                                            <button class="btn btn-primary" ng-click="addNewExpensesType()">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                            Новый тип расходов
-                                        </li>
-                                    </ul>
+                                            <li class="s-p1">
+                                                <div class="text-field title text-center">
+                                                    <b>{{$index + 1}}.</b>
+                                                </div>
+                                            </li>
 
-                                </div>
+                                            <li class="flex-grow s-p1">
+                                                <label class="text-input">
+                                                    <input type="text" ng-model="expensesType.name" onchange="uploadData()">
+                                                    <b>{{expensesType.name}}</b>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <ul class="flex s-p1">
+                                            <li class="s-p1">
+                                                <button class="btn solid success" title="Добавить новый тип" ng-click="addNewExpensesType()">
+                                                    <i class="fas fa-plus"></i>
+                                                </button>
+                                            </li>
+
+                                            <li class="flex-grow s-p1">
+                                                <div class="text-field name">
+                                                    <b>Новый тип расходов</b>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <button class="btn solid no-shadow" data-next>
+                            <i class="fas fa-dollar-sign"></i>
+                            <b>Валюта</b>
+                        </button>
+
+                        <ul class="section" data-level="3">
+                            <li class="section-title">
+                                <button class="btn no-shadow" data-previous title="Валюта">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </button>
+                                <div class="text-field title"><b>Валюта</b></div>
+                            </li>
+
+                            <li class="section-body">
+
+                                <ul class="settings-list" ng-init="currencies = expCalc.settings.currencies">
+                                    <li ng-repeat="name in expCalc.settings.currencies.names track by $index" ng-init="nameIndex = $index">
+
+                                        <ul class="flex s-p1">
+                                            <li class="s-p1">
+                                                <button class="btn solid warning" title="Удалить эту валюту" ng-click="removeCurrency(nameIndex)">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </li>
+
+                                            <li class="flex-grow flex-hidden s-p1">
+                                                <ul class="currencies-list">
+                                                    <li>
+                                                        <div class="text-input complex-input">
+                                                            <div class="text-field">
+                                                                <b>Название:</b>
+                                                            </div>
+
+                                                            <label class="head">
+                                                                <input type="text" ng-model="expCalc.settings.currencies.names[nameIndex]" onchange="uploadData()">
+                                                                <b>{{expCalc.settings.currencies.names[nameIndex]}}</b>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+
+                                                    <li ng-repeat="array in currencies.rates[nameIndex] track by $index" ng-if="expCalc.settings.currencies.names[nameIndex] != currencies.names[$index]">
+                                                        <ul class="flex currency-line">
+                                                            <li class="flex-shrink flex-hidden">
+                                                                <div class="text-field name uppercase">
+                                                                    <b>1 {{currencies.names[$index]}}</b>
+                                                                </div>
+                                                            </li>
+
+                                                            <li class="flex-shrink s-p1">
+                                                                <div class="text-field title">
+                                                                    <b>=</b>
+                                                                </div>
+                                                            </li>
+
+                                                            <li class="flex-grow flex-hidden">
+                                                                <div class="text-input complex-input">
+                                                                    <div class="text-field uppercase">
+                                                                        <b>{{expCalc.settings.currencies.names[nameIndex].substring(0, 3)}}</b>
+                                                                    </div>
+
+                                                                    <label class="head">
+                                                                        <input type="number" ng-model="currencies.rates[nameIndex][$index]" onchange="uploadData()">
+                                                                        <b>{{currencies.rates[nameIndex][$index]}}</b>
+                                                                    </label>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            <li>
+                                        </ul>
+
+                                    </li>
+                                </ul>
+
                             </li>
                         </ul>
                     </li>
@@ -318,7 +420,7 @@
 
                     <li class="section-body">
 
-                        <ul class="settings-list">
+                        <ul class="mode-list">
                             <li>
                                 <ul class="flex s-p1">
                                     <li class="s-p1">

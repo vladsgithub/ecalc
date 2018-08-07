@@ -3937,6 +3937,12 @@ label.toggle i::after {
 }
 .text-select.icons select {
   font-family: 'Font Awesome 5 Free', 'RobotoSlab';
+  font-family: Arial, Monaco, monospace;
+}
+.text-select.icons option::after {
+  content: "123";
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
 }
 .text-select.icons b {
   min-width: 0;
@@ -4033,6 +4039,7 @@ label.toggle i::after {
   padding-left: 5px;
   min-height: 40px;
   line-height: 40px;
+  text-align: right;
   color: #4c69bd;
 }
 .complex-input > .text-field:first-child > b {
@@ -4043,6 +4050,8 @@ label.toggle i::after {
 }
 .complex-input > label {
   position: relative;
+  flex-grow: 1;
+  overflow: hidden;
 }
 .checkbox {
   display: inline-block;
@@ -4670,16 +4679,37 @@ nav .section-body {
   border-left: 0;
 }
 nav .section-page {
+  height: 100%;
   padding: 8px;
+  box-sizing: border-box;
+  background: #e2e8ff;
+}
+nav .mode-list {
+  height: 100%;
+  box-sizing: border-box;
+  background: #e2e8ff;
+}
+nav .mode-list > li {
+  border-bottom: 1px solid #4c69bd;
+  transform: scale(1);
 }
 nav .settings-list {
+  overflow: auto;
   height: 100%;
   box-sizing: border-box;
   background: #e2e8ff;
 }
 nav .settings-list > li {
-  border-bottom: 1px solid #4c69bd;
-  transform: scale(1);
+  padding-top: 8px;
+}
+nav .currencies-list > li + li {
+  margin-top: -2px;
+}
+nav .currency-line > li:first-child {
+  max-width: 40%;
+}
+nav .currency-line .complex-input > .text-field {
+  max-width: 50%;
 }
 aside {
   z-index: 99;
