@@ -3378,6 +3378,14 @@ table {
 .text-left {
   text-align: left !important;
 }
+a {
+  color: #e2e8ff;
+}
+a:hover,
+a:active,
+a:focus {
+  color: #fff;
+}
 .clearfix::before,
 .clearfix::after {
   display: table;
@@ -4568,6 +4576,11 @@ header .head .title {
   header .head .title {
     flex-direction: row;
   }
+}
+header .head .title .link-section {
+  flex-grow: 1;
+  text-align: right;
+  font-size: 0.9rem;
 }
 header .head .separator {
   border-left: 2px solid #e2e8ff;

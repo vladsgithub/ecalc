@@ -82,6 +82,7 @@
 		<li class="title flex-grow separator">
 			<h1>Cost panel</h1>
 			<h2>Название расчета</h2>
+			<div class="link-section s-p2">Курсы валют:<br/><a href="https://ru.exchange-rates.org/" rel="nofollow">ru.exchange-rates.org</a></div>
 		</li>
 		<li class="separator">
 			<button class="btn solid" disabled title="Все изменения сохранены">
@@ -339,6 +340,37 @@
                             <li class="section-body">
 
                                 <ul class="settings-list" ng-init="currencies = expCalc.settings.currencies">
+                                    <li>
+
+                                        <ul class="flex s-p1">
+                                            <li class="flex-grow s-p1">
+                                                <div class="text-field bold text-right">
+                                                    <b>Обновить курсы валют</b>
+                                                </div>
+                                            </li>
+
+                                            <li class="flex-shrink">
+                                                <div class="number-input complex-input">
+                                                    <div class="text-field">
+                                                        <b>Процент<br>надбавки</b>
+                                                    </div>
+
+                                                    <label class="text-center">
+                                                        <input type="number" value="2" step="0.1" ng-model="expCalc.settings.currencies.commonSurcharge">
+                                                        <b>{{expCalc.settings.currencies.commonSurcharge}}</b>
+                                                    </label>
+                                                </div>
+                                            </li>
+
+                                            <li class="flex-shrink s-p1">
+                                                <button class="btn solid" ng-click="updateCurrencies()">
+                                                    <i class="fas fa-sync"></i>
+                                                </button>
+                                            </li>
+                                        </ul>
+
+                                    </li>
+
                                     <li ng-repeat="name in expCalc.settings.currencies.names track by $index" ng-init="nameIndex = $index">
 
                                         <ul class="flex s-p1">
@@ -395,6 +427,27 @@
                                             <li>
                                         </ul>
 
+                                    </li>
+
+                                    <li class="s-p1">
+                                        <ul class="flex">
+                                            <li class="flex-shrink s-p1">
+                                                <button class="btn solid success" ng-click="addNewCurrency()">
+                                                    <i class="fas fa-plus"></i>
+                                                </button>
+                                            <li>
+
+                                            <li class="flex-grow s-p1">
+                                                <div class="text-field name">
+                                                    <b>Добавить новую валюту</b>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="s-p2">
+                                        <script type="text/javascript" src="https://ru.exchange-rates.org/GetCustomContent.aspx?sid=RT000JU97&amp;type=RatesTable&amp;stk=-0L8O3U15SJ" charset="utf-8">
+                                        </script>
                                     </li>
                                 </ul>
 
