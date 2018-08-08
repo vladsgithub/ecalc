@@ -3379,12 +3379,20 @@ table {
   text-align: left !important;
 }
 a {
+  color: #4c69bd;
+}
+a.solid {
   color: #e2e8ff;
+}
+a.solid:hover,
+a.solid:active,
+a.solid:focus {
+  color: #fff;
 }
 a:hover,
 a:active,
 a:focus {
-  color: #fff;
+  color: #000;
 }
 .clearfix::before,
 .clearfix::after {
@@ -4577,11 +4585,6 @@ header .head .title {
     flex-direction: row;
   }
 }
-header .head .title .link-section {
-  flex-grow: 1;
-  text-align: right;
-  font-size: 0.9rem;
-}
 header .head .separator {
   border-left: 2px solid #e2e8ff;
 }
@@ -5280,4 +5283,8 @@ aside .account .text-input {
 }
 .step-3 .selected-participant {
   min-width: 30%;
+}
+footer {
+  height: 16px;
+  margin-top: -16px;
 }

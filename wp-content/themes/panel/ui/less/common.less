@@ -55,12 +55,22 @@
 }
 
 a {
-	color: @brand-light;
+	color: @brand-strong;
 
+	&.solid {
+		color: @brand-light;
+
+		&:hover,
+		&:active,
+		&:focus {
+			color: @white;
+		}
+	}
+	
 	&:hover,
 	&:active,
 	&:focus {
-		color: @white;
+		color: @black;
 	}
 }
 

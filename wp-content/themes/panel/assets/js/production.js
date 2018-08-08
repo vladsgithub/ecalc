@@ -34716,13 +34716,13 @@ console.log('Именно здесь поставить setTimeout на отпр
 			commonSurcharge: 0.4
 		};
 		expensesTypes = [
-			{name: 'Общие расходы', icon: ''},
-			{name: 'Продукты питания', icon: ''},
-			{name: 'Жильё', icon: ''},
-			{name: 'Машина', icon: ''},
-			{name: 'Развлечение', icon: ''},
-			{name: 'Другое', icon: ''}
-		];
+			{name: 'Общие расходы', icon: 'donate'},
+			{name: 'Продукты питания', icon: 'shopping-cart'},
+			{name: 'Жильё', icon: 'home'},
+			{name: 'Машина', icon: 'car'},
+			{name: 'Развлечение', icon: 'umbrella-beach'},
+			{name: 'Другое', icon: 'credit-card'}
+		]; 
 
 		expensesCalc = {
 			meta: {

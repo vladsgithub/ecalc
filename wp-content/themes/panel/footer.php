@@ -5,8 +5,8 @@
  * @subpackage ecalc-template
  */
 ?>
-	<footer>
-
+	<footer style="position: fixed; bottom: 0;">
+        <p>Курсы валют: <a href="https://ru.exchange-rates.org/" target="_blank" rel="nofollow">ru.exchange-rates.org</a></p>
 	</footer>
 
 <?php wp_footer(); // необходимо для работы плагинов и функционала  ?>

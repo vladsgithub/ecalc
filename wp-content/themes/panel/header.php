@@ -82,7 +82,6 @@
 		<li class="title flex-grow separator">
 			<h1>Cost panel</h1>
 			<h2>Название расчета</h2>
-			<div class="link-section s-p2">Курсы валют:<br/><a href="https://ru.exchange-rates.org/" rel="nofollow">ru.exchange-rates.org</a></div>
 		</li>
 		<li class="separator">
 			<button class="btn solid" disabled title="Все изменения сохранены">
@@ -300,6 +299,13 @@
                                                 </label>
                                             </li>
                                         </ul>
+                                        {{expensesType.name}} = {{expensesType.icon}}
+
+                                        <div class="text-field title">
+                                            <b>
+                                                <i class="fas fa-{{expensesType.icon}}"></i>
+                                            </b>
+                                        </div>
                                     </li>
 
                                     <li>
