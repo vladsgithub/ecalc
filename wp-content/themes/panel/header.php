@@ -293,19 +293,27 @@
                                             </li>
 
                                             <li class="flex-grow s-p1">
-                                                <label class="text-input">
-                                                    <input type="text" ng-model="expensesType.name" onchange="uploadData()">
-                                                    <b>{{expensesType.name}}</b>
-                                                </label>
+                                                <div class="multiple-field">
+                                                    <label class="text-input flex-grow">
+                                                        <input type="text" ng-model="expensesType.name" onchange="uploadData()">
+                                                        <b>{{expensesType.name}}</b>
+                                                    </label>
+
+                                                    <label class="text-input flex-grow">
+                                                        <input type="text" ng-model="expensesType.icon" onchange="uploadData()">
+                                                        <b>{{expensesType.icon}}</b>
+                                                    </label>
+                                                </div>
+                                            </li>
+
+                                            <li class="flex-shrink s-p1">
+                                                <div class="text-field icon">
+                                                    <b>
+                                                        <i class="fas fa-{{expensesType.icon}}"></i>
+                                                    </b>
+                                                </div>
                                             </li>
                                         </ul>
-                                        {{expensesType.name}} = {{expensesType.icon}}
-
-                                        <div class="text-field title">
-                                            <b>
-                                                <i class="fas fa-{{expensesType.icon}}"></i>
-                                            </b>
-                                        </div>
                                     </li>
 
                                     <li>
@@ -362,7 +370,7 @@
                                                     </div>
 
                                                     <label class="text-center">
-                                                        <input type="number" value="2" step="0.1" ng-model="expCalc.settings.currencies.commonSurcharge">
+                                                        <input type="number" step="0.1" ng-model="expCalc.settings.currencies.commonSurcharge">
                                                         <b>{{expCalc.settings.currencies.commonSurcharge}}</b>
                                                     </label>
                                                 </div>
@@ -451,7 +459,7 @@
                                         </ul>
                                     </li>
 
-                                    <li class="s-p2">
+                                    <li id="currenciesTable" class="currency-table s-p2">
                                         <script type="text/javascript" src="https://ru.exchange-rates.org/GetCustomContent.aspx?sid=RT000JU97&amp;type=RatesTable&amp;stk=-0L8O3U15SJ" charset="utf-8">
                                         </script>
                                     </li>

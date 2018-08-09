@@ -1166,11 +1166,11 @@ console.log('Именно здесь поставить setTimeout на отпр
 		};
 		expensesTypes = [
 			{name: 'Общие расходы', icon: 'donate'},
-			{name: 'Продукты питания', icon: 'shopping-cart'},
+			{name: 'Продукты питания', icon: 'utensils'},
 			{name: 'Жильё', icon: 'home'},
 			{name: 'Машина', icon: 'car'},
-			{name: 'Развлечение', icon: 'umbrella-beach'},
-			{name: 'Другое', icon: 'credit-card'}
+			{name: 'Развлечение', icon: 'theater-masks'},
+			{name: 'Другое', icon: 'shopping-cart'}
 		];
 
 		expensesCalc = {
