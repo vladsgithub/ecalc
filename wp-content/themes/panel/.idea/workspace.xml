@@ -14,39 +14,69 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="header.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="header.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/header.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
-              <caret line="313" column="54" lean-forward="true" selection-start-line="309" selection-start-column="48" selection-end-line="313" selection-end-column="54" />
+            <state relative-caret-position="306">
+              <caret line="66" column="115" selection-start-line="66" selection-start-column="115" selection-end-line="66" selection-end-column="115" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="page.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="page.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/page.html">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="605">
+              <caret line="240" column="74" selection-start-line="240" selection-start-column="74" selection-end-line="240" selection-end-column="74" />
+              <folding>
+                <element signature="n#aside#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#main#0;n#!!top" />
+                <element signature="n#div#0;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+                <element signature="n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+                <element signature="n#div#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+                <element signature="n#label#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+                <element signature="n#li#1;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+                <element signature="n#li#1;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+                <element signature="n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
+                <element signature="n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#div#0;n#li#0;n#ul#0;n#main#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#h5#1;n#li#0;n#ul#0;n#li#0;n#ul#0;n#main#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#main#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#main#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#div#2;n#div#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#main#0;n#div#0;n#div#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="app.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ui/less/app.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="301" column="26" selection-start-line="301" selection-start-column="26" selection-end-line="301" selection-end-column="26" />
+            <state relative-caret-position="340">
+              <caret line="20" column="22" lean-forward="true" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="common.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ui/less/common.less">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="54" column="1" selection-start-line="54" selection-start-column="1" selection-end-line="54" selection-end-column="1" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="997" column="64" selection-start-line="997" selection-start-column="49" selection-end-line="997" selection-end-column="64" />
+            <state relative-caret-position="408">
+              <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -55,7 +85,22 @@
         <entry file="file://$PROJECT_DIR$/ui/css/fontawesome.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="prototype.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/prototype.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="283" selection-start-line="283" selection-end-line="1647" selection-end-column="7" />
+              <folding>
+                <element signature="n#header#0;n#!!top" />
+                <element signature="n#aside#0;n#!!top" />
+                <element signature="n#aside#0;n#!!top" />
+                <element signature="n#main#0;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -68,15 +113,32 @@
       <find>theater-masks</find>
       <find>fas</find>
       <find>expensesTypes</find>
+      <find>step</find>
+      <find>text-field</find>
+      <find>валюта</find>
+      <find>type=&quot;file</find>
       <find>updateCurrencies</find>
+      <find>export</find>
+      <find>sub</find>
+      <find>Основная валюта в расчетах</find>
+      <find>Сегодня</find>
+      <find>Всего расходов:</find>
+      <find>основная</find>
+      <find>view-mode</find>
+      <find>.text-select</find>
+      <find>aside</find>
+      <find>Добавить новый расход</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ui/less/app.less" />
+        <option value="$PROJECT_DIR$/prototype.html" />
         <option value="$PROJECT_DIR$/app/app.js" />
         <option value="$PROJECT_DIR$/header.php" />
+        <option value="$PROJECT_DIR$/ui/less/common.less" />
+        <option value="$PROJECT_DIR$/ui/less/app.less" />
+        <option value="$PROJECT_DIR$/page.html" />
       </list>
     </option>
   </component>
@@ -185,18 +247,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1533727494645</updated>
-      <workItem from="1533727497406" duration="4205000" />
+      <workItem from="1533727497406" duration="15802000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4205000" />
+    <option name="totallyTimeSpent" value="15802000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18229716" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info id="Grunt " side_tool="true" />
@@ -225,38 +287,96 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/page.html</url>
+          <line>168</line>
+          <properties lambdaOrdinal="-1" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/page.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/less/common.less">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/less/app.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="301" column="26" selection-start-line="301" selection-start-column="26" selection-end-line="301" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ui/css/fontawesome.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/app.js">
+    <entry file="file://$PROJECT_DIR$/prototype.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="997" column="64" selection-start-line="997" selection-start-column="49" selection-end-line="997" selection-end-column="64" />
+        <state relative-caret-position="102">
+          <caret line="283" selection-start-line="283" selection-end-line="1647" selection-end-column="7" />
+          <folding>
+            <element signature="n#header#0;n#!!top" />
+            <element signature="n#aside#0;n#!!top" />
+            <element signature="n#aside#0;n#!!top" />
+            <element signature="n#main#0;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="313" column="54" lean-forward="true" selection-start-line="309" selection-start-column="48" selection-end-line="313" selection-end-column="54" />
+        <state relative-caret-position="306">
+          <caret line="66" column="115" selection-start-line="66" selection-start-column="115" selection-end-line="66" selection-end-column="115" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page-functionality-template.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/less/common.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="54" column="1" selection-start-line="54" selection-start-column="1" selection-end-line="54" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/less/app.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="22" lean-forward="true" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="605">
+          <caret line="240" column="74" selection-start-line="240" selection-start-column="74" selection-end-line="240" selection-end-column="74" />
+          <folding>
+            <element signature="n#aside#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#label#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#1;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#1;n#ul#0;n#div#1;n#div#1;n#li#0;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#1;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#li#2;n#ul#0;n#div#0;n#main#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#div#0;n#li#0;n#ul#0;n#main#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#h5#1;n#li#0;n#ul#0;n#li#0;n#ul#0;n#main#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#main#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#main#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#main#0;n#div#0;n#div#0;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>

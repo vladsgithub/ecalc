@@ -18,6 +18,9 @@
 	&:checked ~ [data-hidden-aria] {
 		display: block;
 	}
+	&:checked ~ main {
+		display: none;
+	}
 }
 
 [data-hidden-aria] {
@@ -69,10 +72,10 @@ body {
 		+ i { transform: rotate(45deg); }
 	}
 
-	&:not(.open-menu) nav {
+	&:not(.open-menu) aside.menu {
 		animation: hiddenWithDelay @delay 1 steps(1,end) forwards;
 	}
-	&.open-menu nav {
+	&.open-menu aside.menu {
 		visibility: visible;
 		transform: translateX(0);
 
@@ -82,13 +85,16 @@ body {
 		//}
 	}
 
-	&:not(.open-aside) aside {
+	&:not(.open-aside) aside.accounts {
 		animation: hiddenWithDelay @delay 1 steps(1,end) forwards;
 	}
-	&.open-aside aside {
+	&.open-aside aside.accounts {
 		visibility: visible;
 		transform: translateX(0);
 	}
+
+	&:not(.remove-mode) .remove-mode-true { display: none; }
+	&.remove-mode .remove-mode-false { display: none; }
 }
 
 header {
@@ -150,7 +156,7 @@ header {
 	}
 }
 
-nav {
+aside.menu {
 	z-index: @z-nav;
 	visibility: hidden;
 	display: flex;
@@ -303,7 +309,7 @@ nav {
 	}
 }
 
-aside {
+aside.accounts {
 	z-index: @z-aside;
 	visibility: hidden;
 	display: flex;

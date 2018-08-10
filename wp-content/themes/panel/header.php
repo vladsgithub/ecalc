@@ -64,7 +64,7 @@
 </head>
 
 <body id="body" ng-app="app" ng-controller="calculatorCtrl" ng-cloak="true"
-	ng-class="{'open-menu': layout.isOpenMenu, 'open-aside': layout.isOpenAside}" data-upload-status="1">
+	ng-class="{'open-menu': layout.isOpenMenu, 'open-aside': layout.isOpenAside, 'remove-mode': layout.isRemoveMode}" data-upload-status="1">
 
 
 
@@ -99,7 +99,7 @@
 
 </header>
 
-<nav>
+<aside class="menu">
     <ul class="nav-head flex">
         <li class="photo">
 
@@ -109,6 +109,13 @@
                 <b>
                     <?
                         echo $current_user->user_firstname.' '.$current_user->user_lastname;
+
+                    //			echo 'Username: ' . $current_user->user_login . '<br />';
+                    //			echo 'email: ' . $current_user->user_email . '<br />';
+                    //			echo 'first name: ' . $current_user->user_firstname . '<br />';
+                    //			echo 'last name: ' . $current_user->user_lastname . '<br />';
+                    //			echo 'Отображаемое имя: ' . $current_user->display_name . '<br />';
+                    //			echo 'ID: ' . $current_user->ID . '<br />';
                     ?>
                 </b>
             </div>
@@ -468,38 +475,120 @@
                             </li>
                         </ul>
                     </li>
+
+                    <li>
+                        <button class="btn solid no-shadow" data-next>
+                            <i class="fas fa-copy"></i>
+                            <b>Экспорт / Импорт</b>
+                        </button>
+
+                        <ul class="section" data-level="3">
+                            <li class="section-title">
+                                <button class="btn no-shadow" data-previous title="Экспорт / Импорт">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                                <div class="text-field title"><b>Экспорт / Импорт</b></div>
+                            </li>
+
+                            <li class="section-body">
+
+                                <ul class="settings-list">
+                                    <li>
+                                        <ul class="flex s-p1">
+                                            <li class="flex-shrink s-p1">
+                                                <button class="btn solid" ng-click="downloadData()">
+                                                    <i class="fas fa-file-export"></i>
+                                                </button>
+                                            </li>
+
+                                            <li class="flex-grow s-p1">
+                                                <div class="text-field title">
+                                                    <b>Экспорт данных</b>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="s-p2">
+                                        <div class="text-field title block">
+                                            <b>Импорт данных</b>
+                                        </div>
+
+                                        <input type="file" onchange="loadData(event)" />
+                                    </li>
+                                </ul>
+
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
 
             <li>
                 <button class="btn solid no-shadow" data-next>
-                    <i class="fas fa-database"></i>
-                    <b>Работа с данными</b>
+                    <i class="fas fa-cog"></i>
+                    <b>Настройки и режимы</b>
                 </button>
 
                 <ul class="section" data-level="2">
                     <li class="section-title">
-                        <button class="btn no-shadow" data-previous="" title="Работа с данными">
-                            <i class="fas fa-database"></i>
+                        <button class="btn no-shadow" data-previous="" title="Настройки и режимы">
+                            <i class="fas fa-cog"></i>
                         </button>
-                        <div class="text-field title"><b>Работа с данными</b></div>
+                        <div class="text-field title"><b>Настройки и режимы</b></div>
                     </li>
 
                     <li class="section-body">
 
-                        <ul class="mode-list">
+                        <ul class="settings-list">
+                            <li>
+                                <ul class="flex s-p1">
+                                    <li class="s-p1">
+                                        <label class="text-select currency">
+                                            <select ng-model="expCalc.accounts[expCalc.settings.currentAccount].settings.accountCurrency"
+                                                    ng-options="key as value for (key, value) in expCalc.settings.currencies.names" onchange="uploadData()">
+                                            </select>
+                                            <b>{{expCalc.settings.currencies.names[expCalc.accounts[expCalc.settings.currentAccount].settings.accountCurrency].substring(0, 3)}}</b>
+                                        </label>
+                                    </li>
+
+                                    <li class="flex-grow s-p1">
+                                        <div class="text-field">
+                                            <b>Основная валюта в текущем расчете</b>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
                             <li>
                                 <ul class="flex s-p1">
                                     <li class="s-p1">
                                         <label class="toggle">
-                                            <input type="checkbox">
+                                            <input type="checkbox" ng-model="layout.isRemoveMode">
                                             <i></i>
                                         </label>
                                     </li>
 
                                     <li class="flex-grow s-p1">
-                                        <div class="text-field line-through">
+                                        <div class="text-field">
                                             <b>Режим удаления данных</b>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <ul class="flex s-p1">
+                                    <li class="s-p1">
+                                        <label class="toggle">
+                                            <input type="checkbox" ng-model="expCalc.settings.isPrintView">
+                                            <i></i>
+                                        </label>
+                                    </li>
+
+                                    <li class="flex-grow s-p1">
+                                        <div class="text-field">
+                                            <b>Режим отображения для вывода на печать</b>
                                         </div>
                                     </li>
                                 </ul>
@@ -512,107 +601,7 @@
         </ul>
 
     </div>
-</nav>
-
-<aside ng-class="{'edit-mode': layout.isEditAccountsMode}">
-    <ul class="aside-head flex">
-        <li class="s-p2">
-            <label class="toggle">
-                <input type="checkbox" ng-model="layout.isEditAccountsMode">
-                <i></i>
-            </label>
-        </li>
-
-        <li class="flex-grow">
-            <div class="text-field bold">
-                <b>Режим редактирования</b>
-            </div>
-        </li>
-    </ul>
-
-    <div class="aside-body">
-
-        <ul>
-            <li class="account flex active">
-                <div>
-                    <button class="btn solid edit-mode no-shadow">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-                </div>
-
-                <div class="flex-grow">
-                    <button class="btn solid view-mode">
-                        <b>Название расчета</b>
-                    </button>
-
-                    <label class="text-input edit-mode">
-                        <input type="text" value="Tекст ДублированныйтекстДублированный текст">
-                        <b>Tекст ДублированныйтекстДублированный текст</b>
-                    </label>
-                </div>
-            </li>
-
-            <li class="account flex">
-                <div>
-                    <button class="btn solid edit-mode no-shadow">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-                </div>
-
-                <div class="flex-grow">
-                    <button class="btn solid view-mode">
-                        <b>Название расчета</b>
-                    </button>
-
-                    <label class="text-input edit-mode">
-                        <input type="text" value="Tекст ДублированныйтекстДублированный текст">
-                        <b>Tекст ДублированныйтекстДублированный текст</b>
-                    </label>
-                </div>
-            </li>
-
-            <li class="account flex">
-                <div>
-                    <button class="btn solid edit-mode no-shadow">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-                </div>
-
-                <div class="flex-grow">
-                    <button class="btn solid view-mode">
-                        <b>Название расчета</b>
-                    </button>
-
-                    <label class="text-input edit-mode">
-                        <input type="text" value="Tекст ДублированныйтекстДублированный текст">
-                        <b>Tекст ДублированныйтекстДублированный текст</b>
-                    </label>
-                </div>
-            </li>
-
-
-            <li class="account edit-mode flex">
-                <div>
-                    <button class="btn no-shadow">
-                        <i class="fas fa-plus"></i>
-                    </button>
-                </div>
-
-                <div class="flex-grow s-p1">
-                    <div class="text-field solid">
-                        <b>Создать новый расчет</b>
-                    </div>
-                </div>
-            </li>
-        </ul>
-
-    </div>
 </aside>
-
-
-
-
-
 
 
 

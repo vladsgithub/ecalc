@@ -4419,15 +4419,6 @@ label.toggle i::after {
 .text-select[disabled].currency b {
   padding-left: 5px;
 }
-.text-select.icons select {
-  font-family: 'Font Awesome 5 Free', 'RobotoSlab';
-  font-family: Arial, Monaco, monospace;
-}
-.text-select.icons option::after {
-  content: "123";
-  font-family: "Courier New", Courier, monospace;
-  font-size: 12px;
-}
 .text-select.icons b {
   min-width: 0;
   padding-left: 8px;
@@ -4442,6 +4433,9 @@ label.toggle i::after {
   text-align: center;
   white-space: nowrap;
   font-size: 18px;
+}
+.text-select.currency option {
+  text-transform: uppercase;
 }
 .text-select select {
   z-index: 2;
@@ -4935,6 +4929,9 @@ label.toggle i::after {
 #dataHiddenAria:checked ~ [data-hidden-aria] {
   display: block;
 }
+#dataHiddenAria:checked ~ main {
+  display: none;
+}
 [data-hidden-aria] {
   display: none;
   margin-top: 50px;
@@ -4986,19 +4983,25 @@ body[data-upload-status="2"] .status-line::before {
 body[data-upload-status="2"] .status-line + i {
   transform: rotate(45deg);
 }
-body:not(.open-menu) nav {
+body:not(.open-menu) aside.menu {
   animation: hiddenWithDelay 0.2s 1 steps(1, end) forwards;
 }
-body.open-menu nav {
+body.open-menu aside.menu {
   visibility: visible;
   transform: translateX(0);
 }
-body:not(.open-aside) aside {
+body:not(.open-aside) aside.accounts {
   animation: hiddenWithDelay 0.2s 1 steps(1, end) forwards;
 }
-body.open-aside aside {
+body.open-aside aside.accounts {
   visibility: visible;
   transform: translateX(0);
+}
+body:not(.remove-mode) .remove-mode-true {
+  display: none;
+}
+body.remove-mode .remove-mode-false {
+  display: none;
 }
 header {
   z-index: 100;
@@ -5061,7 +5064,7 @@ header .head .title {
 header .head .separator {
   border-left: 2px solid #e2e8ff;
 }
-nav {
+aside.menu {
   z-index: 100;
   visibility: hidden;
   display: flex;
@@ -5078,19 +5081,19 @@ nav {
   transform: translateX(-101%);
   transition: transform 0.2s;
 }
-nav .nav-head {
+aside.menu .nav-head {
   flex-shrink: 0;
 }
-nav .nav-head .photo {
+aside.menu .nav-head .photo {
   width: 44px;
 }
-nav .nav-body {
+aside.menu .nav-body {
   flex-grow: 1;
   position: relative;
   overflow-y: auto;
   overflow-x: hidden;
 }
-nav .section {
+aside.menu .section {
   z-index: 1;
   position: absolute;
   top: 0;
@@ -5102,7 +5105,7 @@ nav .section {
   transform: translateX(100%);
   transition: transform 0.2s;
 }
-nav .section::before {
+aside.menu .section::before {
   content: "";
   position: absolute;
   top: 44px;
@@ -5111,53 +5114,53 @@ nav .section::before {
   left: 0;
   background: #4c69bd;
 }
-nav .section:not(.open) > li:not(.section-title),
-nav .section:not(.active) > li:not(.section-title) {
+aside.menu .section:not(.open) > li:not(.section-title),
+aside.menu .section:not(.active) > li:not(.section-title) {
   animation: hiddenWithDelay 0.2s 1 steps(1, end) forwards;
 }
-nav .section.open {
+aside.menu .section.open {
   transform: translateX(0);
 }
-nav .section.open[data-level="1"] > .section-title {
+aside.menu .section.open[data-level="1"] > .section-title {
   left: 0;
 }
-nav .section.open[data-level="2"] > .section-title {
+aside.menu .section.open[data-level="2"] > .section-title {
   left: 46px;
 }
-nav .section.open[data-level="3"] > .section-title {
+aside.menu .section.open[data-level="3"] > .section-title {
   left: 92px;
 }
-nav .section.open[data-level="4"] > .section-title {
+aside.menu .section.open[data-level="4"] > .section-title {
   left: 138px;
 }
-nav .section.open > .section-title {
+aside.menu .section.open > .section-title {
   display: flex;
   outline: 2px solid #4c69bd;
 }
-nav .section.active > li,
-nav .section.open > li {
+aside.menu .section.active > li,
+aside.menu .section.open > li {
   visibility: visible;
 }
-nav .section > li {
+aside.menu .section > li {
   visibility: hidden;
 }
-nav .section > li:not(.section-title) > .btn {
+aside.menu .section > li:not(.section-title) > .btn {
   width: 100%;
   text-align: left;
 }
-nav .section-title {
+aside.menu .section-title {
   position: absolute;
   right: 2px;
   top: 0;
   height: 44px;
   background: #e2e8ff;
 }
-nav .section-title > .btn {
+aside.menu .section-title > .btn {
   z-index: 2;
   background: transparent;
   border-color: transparent;
 }
-nav .section-body {
+aside.menu .section-body {
   position: absolute;
   top: 44px;
   bottom: 0;
@@ -5167,43 +5170,43 @@ nav .section-body {
   border-top-width: 4px;
   border-left: 0;
 }
-nav .section-page {
+aside.menu .section-page {
   height: 100%;
   padding: 8px;
   box-sizing: border-box;
   background: #e2e8ff;
 }
-nav .mode-list {
+aside.menu .mode-list {
   height: 100%;
   box-sizing: border-box;
   background: #e2e8ff;
 }
-nav .mode-list > li {
+aside.menu .mode-list > li {
   border-bottom: 1px solid #4c69bd;
   transform: scale(1);
 }
-nav .settings-list {
+aside.menu .settings-list {
   overflow: auto;
   height: 100%;
   box-sizing: border-box;
   background: #e2e8ff;
 }
-nav .settings-list > li {
+aside.menu .settings-list > li {
   padding-top: 8px;
 }
-nav .currencies-list > li + li {
+aside.menu .currencies-list > li + li {
   margin-top: -2px;
 }
-nav .currency-line > li:first-child {
+aside.menu .currency-line > li:first-child {
   max-width: 40%;
 }
-nav .currency-line .complex-input > .text-field {
+aside.menu .currency-line .complex-input > .text-field {
   max-width: 50%;
 }
-nav .currency-table {
+aside.menu .currency-table {
   font-size: 0.9rem;
 }
-aside {
+aside.accounts {
   z-index: 99;
   visibility: hidden;
   display: flex;
@@ -5224,25 +5227,25 @@ aside {
   transition: transform 0.2s;
 }
 @media only screen and (min-width: 640px) {
-  aside {
+  aside.accounts {
     width: 400px;
   }
 }
-aside.edit-mode .active {
+aside.accounts.edit-mode .active {
   background: #fff;
 }
-aside.edit-mode .view-mode {
+aside.accounts.edit-mode .view-mode {
   display: none;
 }
-aside:not(.edit-mode) .edit-mode {
+aside.accounts:not(.edit-mode) .edit-mode {
   display: none;
 }
-aside .aside-head {
+aside.accounts .aside-head {
   flex-shrink: 0;
   background: #e2e8ff;
   border-top: 4px solid #4c69bd;
 }
-aside .aside-body {
+aside.accounts .aside-body {
   flex-grow: 1;
   position: relative;
   overflow-y: auto;
@@ -5250,11 +5253,11 @@ aside .aside-body {
   padding-bottom: 7px;
   border-top: 7px solid #4c69bd;
 }
-aside .aside-body > ul {
+aside.accounts .aside-body > ul {
   position: relative;
 }
-aside .aside-body > ul::before,
-aside .aside-body > ul::after {
+aside.accounts .aside-body > ul::before,
+aside.accounts .aside-body > ul::after {
   content: "";
   z-index: 1;
   position: absolute;
@@ -5262,18 +5265,18 @@ aside .aside-body > ul::after {
   bottom: 0;
   border-left: 7px solid #4c69bd;
 }
-aside .aside-body > ul::before {
+aside.accounts .aside-body > ul::before {
   left: 0;
 }
-aside .aside-body > ul::after {
+aside.accounts .aside-body > ul::after {
   right: 0;
 }
-aside .account {
+aside.accounts .account {
   position: relative;
   margin: 0 5px;
 }
-aside .account::before,
-aside .account::after {
+aside.accounts .account::before,
+aside.accounts .account::after {
   content: "";
   z-index: 1;
   position: absolute;
@@ -5281,24 +5284,24 @@ aside .account::after {
   right: 0;
   border-top: 2px solid #4c69bd;
 }
-aside .account::before {
+aside.accounts .account::before {
   top: 0;
 }
-aside .account::after {
+aside.accounts .account::after {
   bottom: 0;
 }
-aside .account.active .btn {
+aside.accounts .account.active .btn {
   background: #fff;
   color: #4c69bd;
 }
-aside .account.active .edit-mode {
+aside.accounts .account.active .edit-mode {
   border-color: transparent;
 }
-aside .account > .flex-grow {
+aside.accounts .account > .flex-grow {
   overflow: hidden;
 }
-aside .account .btn,
-aside .account .text-input {
+aside.accounts .account .btn,
+aside.accounts .account .text-input {
   width: 100%;
 }
 .three-window-lt {
