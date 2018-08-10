@@ -208,22 +208,6 @@
 													</button>
 												</li>
 
-
-												<!--<div class="flex-grow1">-->
-													<!--<input class="form-control" type="text" ng-model="expense.title" placeholder="Новый расход"-->
-														   <!--ng-disabled="expense.isPaid">-->
-												<!--</div>-->
-												<!--<div>-->
-													<!--<select class="form-control" ng-model="expense.type" ng-disabled="expense.isPaid">-->
-														<!--<option ng-repeat="expensesType in expCalc.settings.expensesTypes track by $index"-->
-																<!--value="{{$index}}" ng-selected="expense.type == $index">-->
-															<!--{{expensesType.name}}-->
-														<!--</option>-->
-													<!--</select>-->
-												<!--</div>-->
-
-
-
 												<li class="flex-hidden flex-grow s-p0">
 													<div class="multiple-field">
 														<label class="text-input flex-grow" ng-disabled="expense.isPaid">
@@ -246,31 +230,29 @@
 												</li>
 											</ul>
 
-											<div data-state class="expense-data clearfix completed open-details">
+											<div data-state class="expense-data clearfix completed">
 
 												<ul class="flex expense-values">
 													<li class="flex-shrink s-p0">
 														<div class="date-field">
-															<b>2018</b>
-															<b>07-30</b>
-															<b>22:40</b>
+															<b>{{formatDate(expense.date, 1)}}</b>
+															<b>{{formatDate(expense.date, 2)}}</b>
+															<b>{{formatDate(expense.date, 3)}}</b>
 														</div>
 													</li>
 
 													<li class="flex-grow flex-hidden s-p0">
 														<div class="multiple-field">
-															<label class="text-select currency" disabled>
-																<select>
-																	<option disabled="">EUR - евро</option>
-																	<option selected="">BYN - белорусский рубль</option>
-																	<option>USD - доллар</option>
+															<label class="text-select currency" ng-disabled="expense.isPaid">
+																<select ng-model="expense.currency"
+																		ng-options="key as value for (key, value) in expCalc.settings.currencies.names">
 																</select>
-																<b>BYN</b>
+																<b>{{expCalc.settings.currencies.names[expense.currency].substring(0, 3)}}</b>
 															</label>
 
-															<label class="number-input flex-grow" disabled>
-																<input type="number" value="12450340.34">
-																<b>12<wbr>450<wbr>340,34</b>
+															<label class="number-input flex-grow" ng-disabled="expense.isPaid">
+																<input type="number" ng-model="expense.value">
+																<b>{{expense.value}}</b>
 															</label>
 														</div>
 													</li>
@@ -287,27 +269,13 @@
 																</div>
 															</li>
 
-															<li>
-																<label class="checkbox decoration thin">
-																	<input type="checkbox">
+															<li ng-repeat="participation in expense.partList track by $index">
+																<label class="checkbox decoration thin" ng-disabled="expense.isPaid">
+																	<input type="checkbox"
+																		   ng-model="expense.partList[$index]"
+																		   ng-change="checkPartList(expense.partList, $index)">
 																	<i></i>
-																	<b>Участник 1</b>
-																</label>
-															</li>
-
-															<li>
-																<label class="checkbox decoration thin">
-																	<input type="checkbox">
-																	<i></i>
-																	<b>Участник 222</b>
-																</label>
-															</li>
-
-															<li>
-																<label class="checkbox decoration thin">
-																	<input type="checkbox">
-																	<i></i>
-																	<b>Участник 3333</b>
+																	<b>{{account.participants[$index].meta.title}}</b>
 																</label>
 															</li>
 														</ul>
@@ -318,74 +286,42 @@
 																<b class="s-p0">Подробности:</b>
 															</div>
 
-															<ul class="flex details-item checked">
+															<ul class="flex details-item"
+																ng-class="{'checked': detail.isChecked}"
+																ng-repeat="detail in expense.details track by $index"
+																ng-init="detailIndex = $index">
 																<li class="s-p0">
-																	<label class="checkbox">
-																		<input type="checkbox" checked>
+																	<label class="checkbox remove-mode-false">
+																		<input type="checkbox" ng-model="detail.isChecked" onchange="uploadData()">
 																		<i></i>
-																		<b>1.</b>
+																		<b>{{expenseIndex + 1}}.{{detailIndex + 1}}</b>
 																	</label>
 
-																	<button class="btn solid warning hidden" title="Меню">
+																	<button class="btn solid warning remove-mode-true" title="Удалить этот пункт"
+																		ng-click="removeDetailsFromExpense(expense, detailIndex)">
 																		<i class="fas fa-trash-alt"></i>
-																		<b>1.1</b>
+																		<b>{{expenseIndex + 1}}.{{detailIndex + 1}}</b>
 																	</button>
 																</li>
 
 																<li class="flex-grow s-p0">
 																	<div class="multiple-field">
-																		<label class="text-input" disabled>
-																			<input type="text" value="Молоко 20%">
-																			<b>Молоко 20%</b>
+																		<label class="text-input" ng-disabled="detail.isChecked">
+																			<input type="text" ng-model="detail.title" onchange="uploadData()">
+																			<b>{{detail.title}}</b>
 																		</label>
 
-																		<label class="text-input text-center min-field" disabled>
-																			<input type="text" value="2л">
-																			<b>2л</b>
-																		</label>
-																	</div>
-																</li>
-
-																<li class="cost s-p0">
-																	<label class="number-input" disabled>
-																		<input type="number" value="12450340.34">
-																		<b>12<wbr>450<wbr>340,34</b>
-																	</label>
-																</li>
-															</ul>
-
-															<ul class="flex details-item">
-																<li class="s-p0">
-																	<label class="checkbox">
-																		<input type="checkbox">
-																		<i></i>
-																		<b>2.</b>
-																	</label>
-
-																	<button class="btn solid warning hidden" title="Меню">
-																		<i class="fas fa-trash-alt"></i>
-																		<b>1.1</b>
-																	</button>
-																</li>
-
-																<li class="flex-grow s-p0">
-																	<div class="multiple-field">
-																		<label class="text-input" disabled>
-																			<input type="text" value="Молоко 20%">
-																			<b>Молоко 20%</b>
-																		</label>
-
-																		<label class="text-input text-center min-field" disabled>
-																			<input type="text" value="9 шт">
-																			<b>9 шт</b>
+																		<label class="text-input text-center min-field" ng-disabled="detail.isChecked">
+																			<input type="text" ng-model="detail.qty" onchange="uploadData()">
+																			<b>{{detail.qty}}</b>
 																		</label>
 																	</div>
 																</li>
 
 																<li class="cost s-p0">
-																	<label class="number-input" disabled>
-																		<input type="number" value="12450340.34">
-																		<b>12<wbr>450<wbr>340,34</b>
+																	<label class="number-input" ng-disabled="detail.isChecked">
+																		<input type="number" ng-model="detail.value" onchange="uploadData()">
+																		<b>{{detail.value}}</b>
 																	</label>
 																</li>
 															</ul>
@@ -396,7 +332,7 @@
 
 													<ul class="flex details-item details-control">
 														<li class="details-buttons flex-grow s-p0">
-															<button class="btn solid success new-point-btn">
+															<button class="btn solid success new-point-btn" ng-click="addNewDetailsToExpense(expense)">
 																<i class="fas fa-plus"></i>
 																<b class="small">Пункт</b>
 															</button>
@@ -421,7 +357,7 @@
 											</div>
 
 											<label class="checkbox paid-out">
-												<input type="checkbox" checked>
+												<input type="checkbox" ng-model="expense.isPaid" onchange="uploadData()">
 												<i></i>
 											</label>
 

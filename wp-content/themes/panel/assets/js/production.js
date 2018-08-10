@@ -33900,6 +33900,12 @@ console.log('Именно здесь поставить setTimeout на отпр
 			uploadData();
         };
 
+        $scope.removeDetailsFromExpense = function (expense, detailIndex) {
+            expense.details.splice(detailIndex, 1);
+
+            uploadData();
+        };
+
         $scope.removeParticipantFromPartList = function (participantIndex) {
             var currentAccount = $scope.expCalc.accounts[$scope.expCalc.settings.currentAccount];
 
@@ -33958,6 +33964,7 @@ console.log('Именно здесь поставить setTimeout на отпр
                 date: '' + new Date(),
                 value: null,
                 currency: currentAccount.settings.accountCurrency,
+                details: [],
                 isPaid: false,
                 partList: []
             };
@@ -33967,6 +33974,15 @@ console.log('Именно здесь поставить setTimeout на отпр
             });
 
             participant.expenses.push(newExpense);
+        };
+
+        $scope.addNewDetailsToExpense = function (expense) {
+            expense.details.push({
+                isChecked: false,
+                title: '',
+                qty: '',
+                value: null
+            })
         };
 
         $scope.addParticipantToPartList = function () {
@@ -34336,11 +34352,22 @@ console.log('Именно здесь поставить setTimeout на отпр
             refund.currency = $scope.getRest(sponsor, debtor).currency;
         };
 
-        $scope.formatDate = function (value) {
+        $scope.formatDate = function (value, type) {
             if (value) {
                 value = new Date(value);
 
-                return value.toLocaleString();
+                switch(type) {
+                    case 1:
+                        return value.getFullYear();
+                    case 2:
+                        return (value.getMonth() + 1) + '-' + value.getDate();
+                    case 3:
+                        return value.getHours() + ':' + value.getMinutes();
+
+                    default:
+                        return value.toLocaleString();
+                }
+
             } else {
                 return '';
             }
