@@ -230,7 +230,7 @@
 												</li>
 											</ul>
 
-											<div data-state class="expense-data clearfix completed">
+											<div data-state class="expense-data clearfix" ng-class="{'completed': completedDetails(expense)}">
 
 												<ul class="flex expense-values">
 													<li class="flex-shrink s-p0">
@@ -283,7 +283,7 @@
 														<div class="details">
 
 															<div class="text-field name thin block s-p2">
-																<b class="s-p0">Подробности:</b>
+																<b class="s-p0">Подробности: (Назв./Кол./Цена)</b>
 															</div>
 
 															<ul class="flex details-item"
@@ -385,500 +385,6 @@
 								</div>
 							</li>
 
-
-
-
-							<!--prototype-->
-							<li class="participant">
-								<div class="participant-head">
-									<ul class="flex s-p0">
-										<li class="flex-shrink s-p0">
-											<div class="text-field solid title">
-												<b>1.</b>
-											</div>
-											<button class="btn solid border warning hidden">
-												<i class="fas fa-trash-alt"></i>
-												<b>1.</b>
-											</button>
-										</li>
-
-										<li class="flex-grow s-p0">
-											<label class="text-input">
-												<input type="text" value="Имя участника">
-												<b>Имя участника</b>
-											</label>
-										</li>
-
-										<li class="flex-shrink s-p0">
-											<div class="number-field solid">
-												<b>12 450 340,34 <s>BYN</s></b>
-											</div>
-										</li>
-
-										<li class="flex-shrink s-p0">
-											<button class="btn solid border collapse-btn" onclick="layoutControl.toggleBodyView(this)">
-												<i class="fas fa-chevron-down"></i>
-											</button>
-										</li>
-									</ul>
-								</div>
-
-								<div class="participant-body">
-
-									<ul class="body-view expenses s-p0">
-
-										<li class="expense">
-
-											<ul class="flex expense-title">
-												<li class="flex-shrink expense-number s-p0">
-													<div class="text-field title">
-														<b>1.1</b>
-													</div>
-													<button class="btn solid warning hidden" title="Меню">
-														<i class="fas fa-trash-alt"></i>
-														<b>1.1</b>
-													</button>
-												</li>
-
-												<li class="flex-hidden flex-grow s-p0">
-													<div class="multiple-field">
-														<label class="text-input flex-grow" disabled>
-															<input type="text" value="Tекст ДублированныйтекстДублированный текст">
-															<b>Tекст ДублированныйтекстДублированный текст</b>
-														</label>
-
-														<label class="text-select icons" disabled>
-															<select>
-																<option disabled=""> - Машина</option>
-																<option selected=""> - Другие незначительные расходы</option>
-																<option> - Питание</option>
-															</select>
-															<b>
-																<i class="fas fa-bus"></i>
-															</b>
-														</label>
-													</div>
-												</li>
-											</ul>
-
-											<div data-state class="expense-data clearfix completed open-details">
-
-												<ul class="flex expense-values">
-													<li class="flex-shrink s-p0">
-														<div class="date-field">
-															<b>2018</b>
-															<b>07-30</b>
-															<b>22:40</b>
-														</div>
-													</li>
-
-													<li class="flex-grow flex-hidden s-p0">
-														<div class="multiple-field">
-															<label class="text-select currency" disabled>
-																<select>
-																	<option disabled="">EUR - евро</option>
-																	<option selected="">BYN - белорусский рубль</option>
-																	<option>USD - доллар</option>
-																</select>
-																<b>BYN</b>
-															</label>
-
-															<label class="number-input flex-grow" disabled>
-																<input type="number" value="12450340.34">
-																<b>12<wbr>450<wbr>340,34</b>
-															</label>
-														</div>
-													</li>
-												</ul>
-
-												<div class="expense-details">
-
-													<div class="details-view">
-
-														<ul class="members flex flex-wrap space-between">
-															<li>
-																<div class="text-field name thin">
-																	<b>Участники:</b>
-																</div>
-															</li>
-
-															<li>
-																<label class="checkbox decoration thin">
-																	<input type="checkbox">
-																	<i></i>
-																	<b>Участник 1</b>
-																</label>
-															</li>
-
-															<li>
-																<label class="checkbox decoration thin">
-																	<input type="checkbox">
-																	<i></i>
-																	<b>Участник 222</b>
-																</label>
-															</li>
-
-															<li>
-																<label class="checkbox decoration thin">
-																	<input type="checkbox">
-																	<i></i>
-																	<b>Участник 3333</b>
-																</label>
-															</li>
-														</ul>
-
-														<div class="details">
-
-															<div class="text-field name thin block s-p2">
-																<b class="s-p0">Подробности:</b>
-															</div>
-
-															<ul class="flex details-item checked">
-																<li class="s-p0">
-																	<label class="checkbox">
-																		<input type="checkbox" checked>
-																		<i></i>
-																		<b>1.</b>
-																	</label>
-
-																	<button class="btn solid warning hidden" title="Меню">
-																		<i class="fas fa-trash-alt"></i>
-																		<b>1.1</b>
-																	</button>
-																</li>
-
-																<li class="flex-grow s-p0">
-																	<div class="multiple-field">
-																		<label class="text-input" disabled>
-																			<input type="text" value="Молоко 20%">
-																			<b>Молоко 20%</b>
-																		</label>
-
-																		<label class="text-input text-center min-field" disabled>
-																			<input type="text" value="2л">
-																			<b>2л</b>
-																		</label>
-																	</div>
-																</li>
-
-																<li class="cost s-p0">
-																	<label class="number-input" disabled>
-																		<input type="number" value="12450340.34">
-																		<b>12<wbr>450<wbr>340,34</b>
-																	</label>
-																</li>
-															</ul>
-
-															<ul class="flex details-item">
-																<li class="s-p0">
-																	<label class="checkbox">
-																		<input type="checkbox">
-																		<i></i>
-																		<b>2.</b>
-																	</label>
-
-																	<button class="btn solid warning hidden" title="Меню">
-																		<i class="fas fa-trash-alt"></i>
-																		<b>1.1</b>
-																	</button>
-																</li>
-
-																<li class="flex-grow s-p0">
-																	<div class="multiple-field">
-																		<label class="text-input" disabled>
-																			<input type="text" value="Молоко 20%">
-																			<b>Молоко 20%</b>
-																		</label>
-
-																		<label class="text-input text-center min-field" disabled>
-																			<input type="text" value="9 шт">
-																			<b>9 шт</b>
-																		</label>
-																	</div>
-																</li>
-
-																<li class="cost s-p0">
-																	<label class="number-input" disabled>
-																		<input type="number" value="12450340.34">
-																		<b>12<wbr>450<wbr>340,34</b>
-																	</label>
-																</li>
-															</ul>
-
-														</div>
-
-													</div>
-
-													<ul class="flex details-item details-control">
-														<li class="details-buttons flex-grow s-p0">
-															<button class="btn solid success new-point-btn">
-																<i class="fas fa-plus"></i>
-																<b class="small">Пункт</b>
-															</button>
-														</li>
-
-														<li class="details-title">
-															<div class="text-field name">
-																<b>Детали этого расхода</b>
-															</div>
-														</li>
-
-														<li class="s-p0">
-															<button class="btn solid details-btn" onclick="layoutControl.toggleDetailsView1(this)">
-																<i class="fas fa-folder"></i>
-																<b class="small no-middle-mobile">Детали</b>
-															</button>
-														</li>
-													</ul>
-
-												</div>
-
-											</div>
-
-											<label class="checkbox paid-out">
-												<input type="checkbox" checked>
-												<i></i>
-											</label>
-
-										</li>
-
-										<li class="expense">
-
-											<ul class="flex expense-title">
-												<li class="flex-shrink expense-number s-p0">
-													<div class="text-field title hidden">
-														<b>1.1</b>
-													</div>
-													<button class="btn solid warning" title="Меню">
-														<i class="fas fa-trash-alt"></i>
-														<b>1.1</b>
-													</button>
-												</li>
-
-												<li class="flex-hidden flex-grow s-p0">
-													<div class="multiple-field">
-														<label class="text-input flex-grow">
-															<input type="text" value="Tекст ДублированныйтекстДублированный текст">
-															<b>Tекст ДублированныйтекстДублированный текст</b>
-														</label>
-
-														<label class="text-select icons">
-															<select>
-																<option disabled=""> - Машина</option>
-																<option selected=""> - Другие незначительные расходы</option>
-																<option> - Питание</option>
-															</select>
-															<b>
-																<i class="fas fa-bus"></i>
-															</b>
-														</label>
-													</div>
-												</li>
-											</ul>
-
-											<div data-state class="expense-data clearfix">
-
-												<ul class="flex expense-values">
-													<li class="flex-shrink s-p0">
-														<div class="date-field">
-															<b>2018</b>
-															<b>07-30</b>
-															<b>22:40</b>
-														</div>
-													</li>
-
-													<li class="flex-grow flex-hidden s-p0">
-														<div class="multiple-field">
-															<label class="text-select currency">
-																<select>
-																	<option disabled="">EUR - евро</option>
-																	<option selected="">BYN - белорусский рубль</option>
-																	<option>USD - доллар</option>
-																</select>
-																<b>BYN</b>
-															</label>
-
-															<label class="number-input flex-grow">
-																<input type="number" value="12450340.34">
-																<b>12<wbr>450<wbr>340,34</b>
-															</label>
-														</div>
-													</li>
-												</ul>
-
-												<div class="expense-details">
-
-													<div class="details-view">
-
-														<ul class="members flex flex-wrap space-between">
-															<li>
-																<div class="text-field name thin">
-																	<b>Участники:</b>
-																</div>
-															</li>
-
-															<li>
-																<label class="checkbox decoration thin">
-																	<input type="checkbox">
-																	<i></i>
-																	<b>Участник 1</b>
-																</label>
-															</li>
-
-															<li>
-																<label class="checkbox decoration thin">
-																	<input type="checkbox">
-																	<i></i>
-																	<b>Участник 222</b>
-																</label>
-															</li>
-
-															<li>
-																<label class="checkbox decoration thin">
-																	<input type="checkbox">
-																	<i></i>
-																	<b>Участник 3333</b>
-																</label>
-															</li>
-														</ul>
-
-														<div class="details">
-
-															<div class="text-field name thin block s-p2">
-																<b class="s-p0">Подробности:</b>
-															</div>
-
-															<ul class="flex details-item checked">
-																<li class="s-p0">
-																	<label class="checkbox hidden">
-																		<input type="checkbox" checked>
-																		<i></i>
-																		<b>1.</b>
-																	</label>
-
-																	<button class="btn solid warning" title="Меню">
-																		<i class="fas fa-trash-alt"></i>
-																		<b>1.</b>
-																	</button>
-																</li>
-
-																<li class="flex-grow s-p0">
-																	<div class="multiple-field">
-																		<label class="text-input" disabled>
-																			<input type="text" value="Молоко 20%">
-																			<b>Молоко 20%</b>
-																		</label>
-
-																		<label class="text-input text-center min-field" disabled>
-																			<input type="text" value="2л">
-																			<b>2л</b>
-																		</label>
-																	</div>
-																</li>
-
-																<li class="cost s-p0">
-																	<label class="number-input" disabled>
-																		<input type="number" value="12450340.34">
-																		<b>12<wbr>450<wbr>340,34</b>
-																	</label>
-																</li>
-															</ul>
-
-															<ul class="flex details-item">
-																<li class="s-p0">
-																	<label class="checkbox hidden">
-																		<input type="checkbox">
-																		<i></i>
-																		<b>2.</b>
-																	</label>
-
-																	<button class="btn solid warning" title="Меню">
-																		<i class="fas fa-trash-alt"></i>
-																		<b>2.</b>
-																	</button>
-																</li>
-
-																<li class="flex-grow s-p0">
-																	<div class="multiple-field">
-																		<label class="text-input" disabled>
-																			<input type="text" value="Молоко 20%">
-																			<b>Молоко 20%</b>
-																		</label>
-
-																		<label class="text-input text-center min-field" disabled>
-																			<input type="text" value="9 шт">
-																			<b>9 шт</b>
-																		</label>
-																	</div>
-																</li>
-
-																<li class="cost s-p0">
-																	<label class="number-input" disabled>
-																		<input type="number" value="12450340.34">
-																		<b>12<wbr>450<wbr>340,34</b>
-																	</label>
-																</li>
-															</ul>
-
-														</div>
-
-													</div>
-
-													<ul class="flex details-item details-control">
-														<li class="details-buttons flex-grow s-p0">
-															<button class="btn solid success new-point-btn">
-																<i class="fas fa-plus"></i>
-																<b class="small">Пункт</b>
-															</button>
-														</li>
-
-														<li class="details-title">
-															<div class="text-field name">
-																<b>Детали этого расхода</b>
-															</div>
-														</li>
-
-														<li class="s-p0">
-															<button class="btn solid details-btn" onclick="layoutControl.toggleDetailsView1(this)">
-																<i class="fas fa-folder"></i>
-																<b class="small no-middle-mobile">Детали</b>
-															</button>
-														</li>
-													</ul>
-
-												</div>
-
-											</div>
-
-											<label class="checkbox paid-out">
-												<input type="checkbox">
-												<i></i>
-											</label>
-
-										</li>
-
-										<li class="expense">
-											<ul class="flex expense-title">
-												<li class="flex-shrink expense-number s-p0">
-													<button class="btn solid success" title="Новый расход"
-															ng-click="addNewExpense(participant, participantIndex)">
-														<i class="fas fa-plus"></i>
-													</button>
-												</li>
-
-												<li class="s-p2">
-													<div class="text-field name">
-														<b>Добавить новый расход</b>
-													</div>
-												</li>
-											</ul>
-										</li>
-
-									</ul>
-
-								</div>
-							</li>
-
 							<li>
 								<div class="participant-head">
 									<ul class="flex s-p0">
@@ -941,13 +447,13 @@
 
 							<li class="flex-grow s-p1">
 								<div class="number-field bold">
-									<b>12 450 340,34</b>
+									<b>{{roundOff(getFullRefund())}}</b>
 								</div>
 							</li>
 
 							<li class="s-p1">
 								<div class="text-field title currency">
-									<b>byn</b>
+									<b>{{getAccountCurrency()}}</b>
 								</div>
 							</li>
 						</ul>
@@ -956,18 +462,20 @@
 					<div class="section-body">
 						<ul class="participants">
 
-							<li class="participant">
+							<li class="participant"
+								ng-repeat="extParticipant in account.participants track by $index"
+								ng-init="extParticipantIndex = $index">
 								<div class="participant-head">
 									<ul class="flex s-p0">
 										<li class="flex-shrink s-p0">
 											<div class="text-field solid title">
-												<b>1.</b>
+												<b>{{extParticipantIndex + 1}}.</b>
 											</div>
 										</li>
 
 										<li class="flex-grow s-p0">
 											<div class="text-field name solid">
-												<b>Имя участника</b>
+												<b>{{extParticipant.meta.title}}</b>
 											</div>
 										</li>
 
@@ -978,8 +486,8 @@
 												</div>
 
 												<label class="text-center">
-													<input type="number" value="2" />
-													<b>2</b>
+													<input type="number" ng-model="extParticipant.meta.participation" onchange="uploadData()" />
+													<b>{{extParticipant.meta.participation}}</b>
 												</label>
 											</div>
 										</li>
@@ -994,13 +502,19 @@
 									<ul class="flex s-p1">
 										<li class="flex-grow">
 											<div class="number-field solid marker text-left">
-												<b>12<wbr>450<wbr>340,34 <s>Баланс (BYN):</s></b>
+												<b>
+													{{roundOff(getBalance(extParticipant))}}
+													<s>Баланс ({{getAccountCurrency()}}):</s>
+												</b>
 											</div>
 										</li>
 
 										<li class="flex-grow">
 											<div class="number-field solid marker">
-												<b>12<wbr>450<wbr>340,34 <s>Доля (BYN):</s></b>
+												<b>
+													{{roundOff(getParticipantShare(extParticipantIndex))}}
+													<s>Доля ({{getAccountCurrency()}}):</s>
+												</b>
 											</div>
 										</li>
 									</ul>
@@ -1009,12 +523,15 @@
 								<div class="participant-body">
 
 									<ul class="body-view shares">
-										<li class="share">
 
-											<ul class="flex s-p0">
+										<li class="share" ng-repeat="intParticipant in account.participants track by $index">
+											<ul class="flex s-p0" ng-repeat="expense in intParticipant.expenses track by $index">
 												<li class="s-p0">
 													<label class="checkbox">
-														<input type="checkbox" checked>
+														<input type="checkbox"
+															   ng-model="expense.partList[extParticipantIndex]"
+															   ng-change="checkPartList(expense.partList, extParticipantIndex)"
+															   onchange="uploadData()">
 														<i></i>
 													</label>
 												</li>
@@ -1022,217 +539,20 @@
 												<li class="flex-grow flex-hidden s-p0">
 													<div class="text-field">
 														<b>
-															Название расхода
-															<em>[от: Участник 1]</em>
+															{{expense.title}}
+															<em>[от: {{intParticipant.meta.title}}]</em>
 														</b>
 													</div>
 												</li>
 
 												<li class="flex-grow s-p0 share-price">
 													<div class="number-field">
-														<b>12<wbr>450<wbr>340,34</b>
+														<b>{{roundOff(getExpenseShare(expense, extParticipantIndex))}}</b>
 													</div>
 												</li>
 											</ul>
-
 										</li>
 
-										<li class="share">
-
-											<ul class="flex s-p0">
-												<li class="s-p0">
-													<label class="checkbox">
-														<input type="checkbox">
-														<i></i>
-													</label>
-												</li>
-
-												<li class="flex-grow flex-hidden s-p0">
-													<div class="text-field line-through">
-														<b>
-															Название расхода
-															<em>[от: Участник 1]</em>
-														</b>
-													</div>
-												</li>
-
-												<li class="flex-grow s-p0 share-price">
-													<div class="number-field">
-														<b>0</b>
-													</div>
-												</li>
-											</ul>
-
-										</li>
-
-										<li class="share">
-
-											<ul class="flex s-p0">
-												<li class="s-p0">
-													<label class="checkbox">
-														<input type="checkbox">
-														<i></i>
-													</label>
-												</li>
-
-												<li class="flex-grow flex-hidden s-p0">
-													<div class="text-field line-through">
-														<b>
-															Название расхода
-															<em>[от: Участник 1]</em>
-														</b>
-													</div>
-												</li>
-
-												<li class="flex-grow s-p0 share-price">
-													<div class="number-field">
-														<b>0</b>
-													</div>
-												</li>
-											</ul>
-
-										</li>
-									</ul>
-
-								</div>
-							</li>
-
-							<li class="participant">
-								<div class="participant-head">
-									<ul class="flex s-p0">
-										<li class="flex-shrink s-p0">
-											<div class="text-field solid title">
-												<b>1.</b>
-											</div>
-										</li>
-
-										<li class="flex-grow s-p0">
-											<div class="text-field name solid">
-												<b>Имя участника</b>
-											</div>
-										</li>
-
-										<li class="flex-shrink s-p0">
-											<div class="number-input complex-input">
-												<div class="text-field">
-													<b>Коэфф.<br/>участия</b>
-												</div>
-
-												<label class="text-center">
-													<input type="number" value="2" />
-													<b>2</b>
-												</label>
-											</div>
-										</li>
-
-										<li class="flex-shrink s-p0">
-											<button class="btn solid border collapse-btn" onclick="layoutControl.toggleBodyView(this)">
-												<i class="fas fa-chevron-down"></i>
-											</button>
-										</li>
-									</ul>
-
-									<ul class="flex s-p1">
-										<li class="flex-grow">
-											<div class="number-field solid marker text-left">
-												<b>12<wbr>450<wbr>340,34 <s>Баланс (BYN):</s></b>
-											</div>
-										</li>
-
-										<li class="flex-grow">
-											<div class="number-field solid marker">
-												<b>12<wbr>450<wbr>340,34 <s>Доля (BYN):</s></b>
-											</div>
-										</li>
-									</ul>
-								</div>
-
-								<div class="participant-body">
-
-									<ul class="body-view shares">
-										<li class="share">
-
-											<ul class="flex s-p0">
-												<li class="s-p0">
-													<label class="checkbox">
-														<input type="checkbox" checked>
-														<i></i>
-													</label>
-												</li>
-
-												<li class="flex-grow flex-hidden s-p0">
-													<div class="text-field">
-														<b>
-															Название расхода
-															<em>[от: Участник 1]</em>
-														</b>
-													</div>
-												</li>
-
-												<li class="flex-grow s-p0 share-price">
-													<div class="number-field">
-														<b>12<wbr>450<wbr>340,34</b>
-													</div>
-												</li>
-											</ul>
-
-										</li>
-
-										<li class="share">
-
-											<ul class="flex s-p0">
-												<li class="s-p0">
-													<label class="checkbox">
-														<input type="checkbox">
-														<i></i>
-													</label>
-												</li>
-
-												<li class="flex-grow flex-hidden s-p0">
-													<div class="text-field line-through">
-														<b>
-															Название расхода
-															<em>[от: Участник 1]</em>
-														</b>
-													</div>
-												</li>
-
-												<li class="flex-grow s-p0 share-price">
-													<div class="number-field">
-														<b>0</b>
-													</div>
-												</li>
-											</ul>
-
-										</li>
-
-										<li class="share">
-
-											<ul class="flex s-p0">
-												<li class="s-p0">
-													<label class="checkbox">
-														<input type="checkbox">
-														<i></i>
-													</label>
-												</li>
-
-												<li class="flex-grow flex-hidden s-p0">
-													<div class="text-field line-through">
-														<b>
-															Название расхода
-															<em>[от: Участник 1]</em>
-														</b>
-													</div>
-												</li>
-
-												<li class="flex-grow s-p0 share-price">
-													<div class="number-field">
-														<b>0</b>
-													</div>
-												</li>
-											</ul>
-
-										</li>
 									</ul>
 
 								</div>
@@ -1274,7 +594,7 @@
 						</ul>
 
 						<div class="mode-toggle">
-							<input type="checkbox" checked>
+							<input type="checkbox" ng-model="account.settings.fixationDirectly">
 							<i></i>
 							<div>
 								<b>Через общий банк</b>
@@ -1285,7 +605,7 @@
 						</div>
 
 						<!-- Возвраты напрямую -->
-						<div>
+						<div ng-if="account.settings.fixationDirectly">
 							<ul class="flex flex-wrap">
 								<li class="flex-shrink">
 									<div class="text-field title thin">
@@ -1296,8 +616,7 @@
 								<li class="flex-grow s-p1">
 									<div class="number-field thin">
 										<b>
-											-12450340,34 /<wbr>
-											12450340,34 <s>BYN</s>
+											{{getReturnsBalance()}} <s>{{getAccountCurrency()}}</s>
 										</b>
 									</div>
 								</li>
@@ -1306,7 +625,7 @@
 
 
 						<!-- Через общий банк -->
-						<div class="hidden">
+						<div ng-if="!account.settings.fixationDirectly">
 							<ul class="flex flex-wrap">
 								<li class="flex-shrink">
 									<div class="text-field title thin">
@@ -1345,36 +664,55 @@
 					<div class="section-body">
 
 						<!-- Возвраты напрямую -->
-						<ul class="participants">
-							<li class="participant">
+						<ul class="participants" ng-if="account.settings.fixationDirectly">
+
+							<li class="participant"
+								ng-repeat="participant in account.participants track by $index"
+								ng-class="{'debtor': participant.meta.fullBalance < 0, 'sponsor': participant.meta.fullBalance > 0}"
+								ng-init="participantIndex = $index">
+
 								<div class="participant-head">
 									<ul class="flex s-p0">
 										<li class="flex flex-grow flex-wrap s-p0">
 											<div class="text-field solid title">
-												<b>1.</b>
+												<b>{{participantIndex + 1}}.</b>
 											</div>
 
 											<div class="flex-grow text-field name solid s-p1">
-												<b>Имя участника</b>
+												<b>{{participant.meta.title}}</b>
 											</div>
 
-											<div class="text-select complex-input">
+											<div class="text-select complex-input" ng-if="participant.meta.fullBalance >= 0">
 												<div class="text-field">
-													<b>Получит</b>
+													<b>получит</b>
 												</div>
 
 												<label class="currency">
-													<select>
-														<option disabled="">EUR - евро</option>
-														<option selected="">BYN - белорусский рубль</option>
-														<option>USD - доллар</option>
+													<select ng-model="participant.meta.preferredCurrency"
+															ng-options="key as value for (key, value) in expCalc.settings.currencies.names"
+															onchange="uploadData()">
 													</select>
-													<b>BYN</b>
+													<b>{{expCalc.settings.currencies.names[participant.meta.preferredCurrency].substring(0, 3)}}</b>
 												</label>
 											</div>
+											<div class="text-field name solid" ng-if="participant.meta.fullBalance < 0">
+												<b>вернет</b>
+											</div>
 
-											<div class="flex-grow number-field solid">
-												<b>12<wbr>450<wbr>340,34</b>
+											<div class="flex flex-grow">
+												<div class="flex-grow number-field solid text-left uppercase"
+													 ng-if="participant.meta.fullBalance >= 0 && participant.meta.preferredCurrency != account.settings.accountCurrency">
+													<b>
+														{{getParticipantFullBalance(participant, participantIndex, true)}}
+														<s>{{expCalc.settings.currencies.names[participant.meta.preferredCurrency].substring(0, 3)}}</s>
+													</b>
+												</div>
+												<div class="flex-grow number-field solid">
+													<b>
+														{{getParticipantFullBalance(participant, participantIndex, false)}}
+														<s>{{getAccountCurrency()}}</s>
+													</b>
+												</div>
 											</div>
 										</li>
 
@@ -1519,7 +857,7 @@
 
 
 						<!-- Через общий банк -->
-						<ul class="participants hidden">
+						<ul class="participants" ng-if="!account.settings.fixationDirectly">
 							<li class="participant">
 								<div class="participant-head">
 									<ul class="flex s-p0">
@@ -1667,6 +1005,207 @@
 				</div>
 			</li>
 		</ul>
+	</div>
+
+
+
+	<div class="print-view-lt"
+		 ng-if="expCalc.settings.currentAccount == $index"
+		 ng-repeat="account in expCalc.accounts track by $index">
+
+		<table class="currencies" ng-init="currencies = expCalc.settings.currencies">
+			<thead>
+			<tr>
+				<th> </th>
+				<th colspan="100">Курс, по которому покупается указанная валюта</th>
+			</tr>
+			<tr>
+				<th>Основная валюта</th>
+				<th ng-repeat="name in currencies.names track by $index">
+					{{currencies.names[$index]}}
+				</th>
+			</tr>
+			</thead>
+
+			<tbody>
+			<tr ng-repeat="name in expCalc.settings.currencies.names track by $index" ng-init="nameIndex = $index">
+				<td>
+					{{expCalc.settings.currencies.names[$index]}}
+				</td>
+				<td ng-repeat="array in currencies.rates[nameIndex] track by $index">
+					{{currencies.rates[nameIndex][$index]}}
+				</td>
+			</tr>
+			</tbody>
+		</table>
+
+		<table class="expenses-table">
+			<thead>
+			<tr>
+				<th colspan="4" class="border-right"></th>
+
+				<th ng-repeat="participant in account.participants track by $index">
+					{{participant.meta.title}}<br/>(Участие {{participant.meta.participation * 100}}%)
+				</th>
+			</tr>
+			</thead>
+
+			<tbody>
+			<tr>
+				<td class="font-weight-bold">Расходы</td>
+				<td class="font-weight-bold">Тип</td>
+				<td class="font-weight-bold">Дата</td>
+				<td class="font-weight-bold border-right">Сумма</td>
+				<td colspan="100" class="font-weight-bold">Доля участника в каждом расходе</td>
+			</tr>
+			</tbody>
+
+			<tbody ng-repeat="participant in account.participants track by $index"
+				   ng-init="extParticipantIndex = $index">
+			<tr>
+				<td colspan="3" class="font-weight-bold">{{participant.meta.title}}</td>
+				<td class="border-right">Все расходы:
+					<span class="nowrap font-weight-bold">{{roundOff(participant.meta.total)}} {{getAccountCurrency()}}</span>
+				</td>
+
+				<td ng-repeat="extParticipant in account.participants track by $index"> </td>
+			</tr>
+
+			<tr ng-repeat="expense in participant.expenses track by $index">
+				<td>
+					<span class="float-left">{{$index + 1}}.</span>
+					{{expense.title}}
+				</td>
+				<td><span class="small">{{expCalc.settings.expensesTypes[expense.type].name}}</span></td>
+				<td><span class="small">{{formatDate(expense.date)}}</span></td>
+				<td class="border-right"><span class="nowrap">{{expense.value}} {{expCalc.settings.currencies.names[expense.currency].toUpperCase()}}</span></td>
+
+				<td ng-repeat="extParticipant in account.participants track by $index"
+					ng-init="extParticipantIndex = $index">
+				<span class="nowrap">
+					{{roundOff(getExpenseShare(expense, extParticipantIndex))}}
+					<span ng-if="roundOff(getExpenseShare(expense, extParticipantIndex)) != 0">{{getAccountCurrency()}}</span>
+				</span>
+				</td>
+			</tr>
+
+			</tbody>
+
+			<tbody>
+			<tr>
+				<td colspan="3"></td>
+				<td class="font-weight-bold border-right">Всех расходов: <span class="nowrap">{{roundOff(getAccountTotal())}} {{getAccountCurrency()}}</span></td>
+
+				<td ng-repeat="participant in account.participants track by $index"
+					ng-init="participantIndex = $index">
+					Всего:
+					<span class="nowrap font-weight-bold">{{roundOff(getParticipantShare(participantIndex))}} {{getAccountCurrency()}}</span>
+				</td>
+			</tr>
+			</tbody>
+
+			<thead><tr><th colspan="100"><hr/></th><tr></thead>
+
+			<tbody>
+			<tr>
+				<td colspan="4" class="font-weight-bold text-right border-right">Расходы по типам:</td>
+				<td colspan="100"></td>
+			</tr>
+			<tr ng-repeat="expensesType in expCalc.settings.expensesTypes track by $index"
+				ng-init="typeIndex = $index">
+				<td colspan="4" class="text-right border-right">{{expensesType.name}}</td>
+
+				<td ng-repeat="participant in account.participants track by $index">
+					<span class="nowrap">{{participant.meta.expensesByTypes[typeIndex]}} {{getAccountCurrency()}}</span>
+				</td>
+			</tr>
+			</tbody>
+
+			<thead><tr><th colspan="100"><hr/></th><tr></thead>
+
+			<tbody>
+			<tr>
+				<td colspan="4" class="font-weight-bold text-right border-right">
+					Взносы
+					<span ng-if="account.settings.fixationDirectly">от участника -> участнику</span>
+					<span ng-if="!account.settings.fixationDirectly">через общий банк</span>
+					:
+				</td>
+				<td colspan="100">
+				<span class="font-weight-bold" ng-if="!account.settings.fixationDirectly">
+					В общем банке: {{account.meta.bank}} {{getAccountCurrency()}}
+				</span>
+				</td>
+			</tr>
+			</tbody>
+
+			<tbody ng-repeat="participant in account.participants track by $index"
+				   ng-if="account.settings.fixationDirectly">
+			<tr ng-repeat="whom in participant.fixation.whom track by $index">
+				<td colspan="2"></td>
+				<td><span class="small">{{formatDate(whom.date)}}</span></td>
+				<td class="border-right">{{participant.meta.title}} -></td>
+
+				<td ng-repeat="participant in account.participants track by $index">
+				<span class="nowrap" ng-if="whom.number == $index">
+					{{whom.value}} {{expCalc.settings.currencies.names[whom.currency].toUpperCase()}}
+				</span>
+				</td>
+			</tr>
+			</tbody>
+
+			<tbody ng-repeat="participant in account.participants track by $index"
+				   ng-init="participantIndex = $index"
+				   ng-if="!account.settings.fixationDirectly">
+			<tr ng-repeat="byBank in participant.fixation.byBank track by $index">
+				<td colspan="2"></td>
+				<td><span class="small">{{formatDate(byBank.date)}}</span></td>
+				<td class="border-right">
+					<span ng-if="byBank.token > 0">Получил</span>
+					<span ng-if="byBank.token < 0">Вернул</span>
+				</td>
+
+				<td ng-repeat="participant in account.participants track by $index">
+				<span class="nowrap" ng-if="participantIndex == $index">
+					<span ng-if="byBank.token > 0">+</span>
+					<span ng-if="byBank.token < 0">-</span>
+					{{byBank.value}} {{getAccountCurrency()}}
+				</span>
+				</td>
+			</tr>
+			</tbody>
+
+			<tbody>
+			<tr>
+				<td colspan="4" class="border-right"></td>
+				<td colspan="100" class="font-weight-bold"><hr/>Окончательный расчет<hr/></td>
+			</tr>
+			<tr ng-if="account.settings.fixationDirectly">
+				<td colspan="4" class="border-right"></td>
+
+				<td class="font-weight-bold" ng-repeat="participant in account.participants track by $index">
+					<div ng-if="participant.meta.fullBalance > 0">Получить</div>
+					<div ng-if="participant.meta.fullBalance < 0">Вернуть</div>
+					<span class="nowrap" style="font-size: 1.5rem">
+					<span ng-if="participant.meta.fullBalance > 0">+</span>{{participant.meta.fullBalance}} {{getAccountCurrency()}}
+				</span>
+				</td>
+			</tr>
+			<tr ng-if="!account.settings.fixationDirectly">
+				<td colspan="4" class="border-right"></td>
+
+				<td class="font-weight-bold" ng-repeat="participant in account.participants track by $index">
+					<div ng-if="participant.meta.fullBalanceByBank > 0">Получить</div>
+					<div ng-if="participant.meta.fullBalanceByBank < 0">Вернуть</div>
+					<span class="nowrap" style="font-size: 1.5rem">
+					<span ng-if="participant.meta.fullBalanceByBank > 0">+</span>{{participant.meta.fullBalanceByBank}} {{getAccountCurrency()}}
+				</span>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+
+
 	</div>
 
 </main>

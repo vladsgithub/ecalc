@@ -64,7 +64,8 @@
 </head>
 
 <body id="body" ng-app="app" ng-controller="calculatorCtrl" ng-cloak="true"
-	ng-class="{'open-menu': layout.isOpenMenu, 'open-aside': layout.isOpenAside, 'remove-mode': layout.isRemoveMode}" data-upload-status="1">
+	ng-class="{'open-menu': layout.isOpenMenu, 'open-aside': layout.isOpenAside, 'remove-mode': layout.isRemoveMode, 'print-mode': layout.isPrintMode}"
+	data-upload-status="1">
 
 
 
@@ -581,7 +582,7 @@
                                 <ul class="flex s-p1">
                                     <li class="s-p1">
                                         <label class="toggle">
-                                            <input type="checkbox" ng-model="expCalc.settings.isPrintView">
+                                            <input type="checkbox" ng-model="layout.isPrintMode">
                                             <i></i>
                                         </label>
                                     </li>

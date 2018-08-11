@@ -22,7 +22,8 @@ function forEach(elements, callback) {
 			isOpenAside: false,
 			isEditAccountsMode: false,
             isRemoveMode: false,
-			activeWindow: 1,
+            isPrintMode: false,
+			activeWindow: 3,
 
             openMenu: function() {
                 this.isOpenMenu = true;
@@ -1079,6 +1080,16 @@ console.log('Именно здесь поставить setTimeout на отпр
             });
 
 			uploadData(true);
+        };
+
+        $scope.completedDetails = function (expense) {
+            var result = !!expense.details.length;
+
+            expense.details.forEach(function(detail, index, arr) {
+                result *= detail.isChecked;
+            });
+
+            return result;
         };
 
 

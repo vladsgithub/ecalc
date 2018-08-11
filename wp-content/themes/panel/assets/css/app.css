@@ -5007,6 +5007,15 @@ body:not(.remove-mode) .remove-mode-true {
 body.remove-mode .remove-mode-false {
   display: none;
 }
+body.print-mode {
+  background: #fff;
+}
+body.print-mode .three-window-lt {
+  display: none;
+}
+body.print-mode .print-view-lt {
+  display: block;
+}
 header {
   z-index: 100;
   position: fixed;
@@ -5752,6 +5761,12 @@ aside.accounts .account .text-input {
 .step-2 .shares {
   padding-top: 4px;
 }
+.step-2 .shares .share {
+  border-top: 1px solid #4c69bd;
+}
+.step-2 .shares .share:first-child {
+  border-top: none;
+}
 .step-2 .shares .share-price {
   min-width: 70px;
 }
@@ -5770,4 +5785,49 @@ aside.accounts .account .text-input {
 footer {
   height: 16px;
   margin-top: -16px;
+}
+@media print {
+  html {
+    font-size: 10px;
+  }
+}
+.print-view-lt {
+  display: none;
+  padding: 56px 20px 0;
+}
+.print-view-lt table {
+  margin-bottom: 20px;
+}
+.print-view-lt th,
+.print-view-lt td {
+  padding: 5px;
+  border: 1px solid lightgray;
+  text-align: center;
+}
+.print-view-lt .border-right {
+  border-right: 10px solid lightgray;
+}
+.print-view-lt th {
+  background: lightgray;
+}
+.print-view-lt tr:nth-child(even) td {
+  background: #ebebeb;
+}
+.print-view-lt .currencies tr:first-child th {
+  font-size: 1rem;
+}
+.print-view-lt .currencies tr:nth-child(2) th {
+  text-transform: uppercase;
+  font-weight: normal;
+}
+.print-view-lt .currencies tr:nth-child(2) th:first-child {
+  text-transform: none;
+  font-weight: bold;
+}
+.print-view-lt .currencies td:first-child {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.print-view-lt .expenses-table tr:last-child td {
+  border-bottom: 20px solid lightgray;
 }
