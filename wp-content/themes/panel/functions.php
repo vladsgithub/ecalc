@@ -115,7 +115,7 @@ add_action('wp_print_styles', 'add_styles'); // приклеем ф-ю на до
 if (!function_exists('add_styles')) { // если ф-я уже есть в дочерней теме - нам не надо её определять
 	function add_styles() { // добавление стилей
 	    if(is_admin()) return false; // если мы в админке - ничего не делаем
-	    wp_enqueue_style( 'bs', get_template_directory_uri().'/ui/css/app-old.css' );
+//	    wp_enqueue_style( 'bs', get_template_directory_uri().'/ui/css/app-old.css' );
 		wp_enqueue_style( 'style', get_template_directory_uri().'/assets/css/app.css?ver=1' ); // основные стили шаблона
 //		wp_enqueue_style( 'style', get_template_directory_uri().'/assets/css/app.pref.css' ); // основные стили шаблона
 	}

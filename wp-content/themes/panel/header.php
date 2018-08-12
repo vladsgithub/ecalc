@@ -82,7 +82,7 @@
 		</li>
 		<li class="title flex-grow separator">
 			<h1>Cost panel</h1>
-			<h2>Название расчета</h2>
+			<h2>{{expCalc.accounts[expCalc.settings.currentAccount].meta.title}}</h2>
 		</li>
 		<li class="separator">
 			<button class="btn solid" disabled title="Все изменения сохранены">
@@ -603,43 +603,3 @@
 
     </div>
 </aside>
-
-
-
-
-
-
-
-
-
-<input id="dataHiddenAria" type="checkbox" />
-<div head data-hidden-aria>
-
-		<?
-//			echo 'Username: ' . $current_user->user_login . '<br />';
-//			echo 'email: ' . $current_user->user_email . '<br />';
-//			echo 'first name: ' . $current_user->user_firstname . '<br />';
-//			echo 'last name: ' . $current_user->user_lastname . '<br />';
-//			echo 'Отображаемое имя: ' . $current_user->display_name . '<br />';
-//			echo 'ID: ' . $current_user->ID . '<br />';
-		?>
-
-		<?
-		// В админке в разделе 'страницы', обязательно необходимо вставить (активировать) шорткод на какой-нибудь странице [clean-login]
-        // пусть даже неиспользуемой на сайте (можно просто выделить целую страницу для авторизации - login),
-        // после этого в настройках Clean Login можно будет увидеть вверху, что указанный шорткод уже используется и тогда
-        // этот плагин будет нормально работать
-
-        echo do_shortcode('[clean-login]');
-//        echo do_shortcode('[clean-login-edit]');
-//        echo do_shortcode('[clean-login-register]');
-//        echo do_shortcode('[clean-login-restore]');
-		?>
-
-		<button class="btn btn-primary" ng-click="downloadData()">
-        		<i class="fa fa-save"></i>
-        </button>
-
-        <input type="file" onchange="loadData(event)" />
-
-</div>

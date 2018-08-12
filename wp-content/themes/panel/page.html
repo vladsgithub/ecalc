@@ -21,7 +21,7 @@
 				ng-class="{'active': expCalc.settings.currentAccount == $index}"
 				ng-repeat="account in expCalc.accounts track by $index">
 				<div>
-					<button class="btn solid edit-mode no-shadow" ng-click="removeCurrentAccount()">
+					<button class="btn solid edit-mode no-shadow" ng-click="removeCurrentAccount($index)">
 						<i class="fas fa-trash-alt"></i>
 					</button>
 				</div>
@@ -32,7 +32,7 @@
 					</button>
 
 					<label class="text-input edit-mode">
-						<input type="text" ng-model="account.meta.title">
+						<input type="text" ng-model="account.meta.title" onchange="uploadData()">
 						<b>{{account.meta.title}}</b>
 					</label>
 				</div>
@@ -632,12 +632,12 @@
 										<b>Баланс возвратов:</b>
 									</div>
 								</li>
-
+							</span>
 								<li class="flex-grow s-p1">
 									<div class="number-field thin">
 										<b>
-											-12450340,34 /<wbr>
-											12450340,34 <s>BYN</s>
+											{{getReturnsBalance('byBank')}}
+											<s>{{getAccountCurrency()}}</s>
 										</b>
 									</div>
 								</li>
@@ -653,7 +653,8 @@
 								<li class="flex-grow s-p1">
 									<div class="number-field thin">
 										<b>
-											12450340,34 <s>BYN</s>
+											{{getAccountBank()}}
+											<s>{{getAccountCurrency()}}</s>
 										</b>
 									</div>
 								</li>
@@ -682,7 +683,7 @@
 												<b>{{participant.meta.title}}</b>
 											</div>
 
-											<div class="text-select complex-input" ng-if="participant.meta.fullBalance >= 0">
+											<div class="text-select complex-input" ng-if="participant.meta.fullBalance > 0">
 												<div class="text-field">
 													<b>получит</b>
 												</div>
@@ -732,97 +733,64 @@
 										</div>
 
 										<ul class="payments">
-											<li>
+											<li ng-repeat="refund in participant.fixation.whom track by $index"
+												ng-init="refundIndex = $index">
 
 												<ul class="flex s-p0">
-													<li class="flex-shrink s-p0">
-														<div class="date-field">
-															<b>2018</b>
-															<b>07-30</b>
-															<b>22:40</b>
-														</div>
-													</li>
-
-													<li class="flex-grow flex-hidden s-p0 selected-participant">
-														<label class="text-select" disabled>
-															<select>
-																<option disabled="">Участник 1</option>
-																<option selected="">Участник 2</option>
-																<option>Участник 3</option>
-															</select>
-															<b>Участник 2</b>
-														</label>
-													</li>
-
-													<li class="s-p0">
-														<div class="multiple-field">
-															<label class="text-select currency" disabled>
-																<select>
-																	<option disabled="">EUR - евро</option>
-																	<option selected="">BYN - белорусский рубль</option>
-																	<option>USD - доллар</option>
-																</select>
-																<b>BYN</b>
-															</label>
-
-															<label class="number-input" disabled>
-																<input type="number" value="12450340.34">
-																<b>12<wbr>450<wbr>340,34</b>
-															</label>
-														</div>
-													</li>
-
-													<li class="flex-shrink s-p0">
-														<label class="checkbox">
-															<input type="checkbox" checked>
-															<i></i>
-														</label>
-													</li>
-												</ul>
-
-											</li>
-
-											<li>
-
-												<ul class="flex s-p0">
-													<li class="flex-shrink s-p0">
-														<button class="btn solid warning" title="Меню">
+													<li class="flex-shrink s-p0" ng-if="!refund.isFixed">
+														<button class="btn solid warning" title="Удалить этот взнос"
+																ng-click="removePayment(participant, refundIndex)">
 															<i class="fas fa-trash-alt"></i>
 														</button>
 													</li>
 
-													<li class="flex-grow flex-hidden s-p0">
-														<label class="text-select">
-															<select>
-																<option disabled="">Участник 1</option>
-																<option selected="">Участник 2</option>
-																<option>Участник 3</option>
+													<li class="flex-shrink s-p0" ng-if="refund.isFixed">
+														<div class="date-field">
+															<b>{{formatDate(refund.date, 1)}}</b>
+															<b>{{formatDate(refund.date, 2)}}</b>
+															<b>{{formatDate(refund.date, 3)}}</b>
+														</div>
+													</li>
+
+													<li class="flex-grow flex-hidden s-p0 selected-participant">
+														<label class="text-select" ng-disabled="refund.isFixed">
+															<select	ng-model="refund.number"
+																	ng-change="fillRefundFields(participant, refund)">
+																<option value="" hidden disabled selected>Выберите участника</option>
+
+																<option ng-repeat="sponsor in account.participants track by $index"
+																		value="{{$index}}" ng-if="participantIndex != $index">
+																	{{getParticipantOption(sponsor, participant)}}
+																</option>
 															</select>
-															<b>Участник 2</b>
+															<b>{{(refund.number) ? account.participants[refund.number].meta.title : 'Выберите участника' }}</b>
 														</label>
 													</li>
 
 													<li class="s-p0">
 														<div class="multiple-field">
-															<label class="text-select currency">
-																<select>
-																	<option disabled="">EUR - евро</option>
-																	<option selected="">BYN - белорусский рубль</option>
-																	<option>USD - доллар</option>
+															<label class="text-select currency" ng-disabled="refund.isFixed">
+																<select ng-model="refund.currency">
+																	<option value="" hidden disabled selected>---</option>
+																	<option ng-repeat="currency in expCalc.settings.currencies.names track by $index"
+																			value="{{$index}}">
+																		{{currency}}
+																	</option>
 																</select>
-																<b>BYN</b>
+																<b>{{(refund.currency != null) ? expCalc.settings.currencies.names[refund.currency].substring(0, 3) : '???'}}</b>
 															</label>
 
-															<label class="number-input">
-																<input type="number" value="12450340.34">
-																<b>12<wbr>450<wbr>340,34</b>
+															<label class="number-input" ng-disabled="refund.isFixed">
+																<input type="number" ng-model="refund.value">
+																<b>{{refund.value}}</b>
 															</label>
 														</div>
 													</li>
 
 													<li class="flex-shrink s-p0">
 														<label class="checkbox">
-															<input type="checkbox">
+															<input type="checkbox" ng-model="refund.isFixed"
+																   ng-change="checkRefundFields(refund)" />
 															<i></i>
 														</label>
 													</li>
@@ -830,11 +798,11 @@
 
 											</li>
 
-											<li>
-
+											<li ng-if="isAllRefundsFixed(participant)">
 												<ul class="flex s-p0">
 													<li class="flex-shrink s-p0">
-														<button class="btn solid success" title="Меню">
+														<button class="btn solid success" title="Сделать новый взнос"
+																ng-click="addNewPayment(participant)">
 															<i class="fas fa-plus"></i>
 														</button>
 													</li>
@@ -845,9 +813,9 @@
 														</div>
 													</li>
 												</ul>
-
 											</li>
 										</ul>
+
 									</div>
 
 								</div>
@@ -858,20 +826,31 @@
 
 						<!-- Через общий банк -->
 						<ul class="participants" ng-if="!account.settings.fixationDirectly">
-							<li class="participant">
+							<li class="participant"
+								ng-repeat="participant in account.participants track by $index"
+								ng-class="{'debtor': participant.meta.fullBalanceByBank < 0, 'sponsor': participant.meta.fullBalanceByBank > 0}"
+								ng-init="participantIndex = $index">
+
 								<div class="participant-head">
 									<ul class="flex s-p0">
 										<li class="flex flex-grow flex-wrap s-p0">
 											<div class="text-field solid title">
-												<b>1.</b>
+												<b>{{participantIndex + 1}}.</b>
 											</div>
 
 											<div class="flex-grow text-field name solid s-p1">
-												<b>Имя участника</b>
+												<b>{{participant.meta.title}}</b>
 											</div>
 
 											<div class="flex-grow number-field solid marker">
-												<b>12<wbr>450<wbr>340,34 <s>Вернет (BYN):</s></b>
+												<b>
+													{{getParticipantFullBalanceByBank(participant)}}
+													<s>
+														<span ng-if="participant.meta.fullBalanceByBank != 0">
+															{{participant.meta.fullBalanceByBank >= 0 ? 'Получит' : 'Вернет:'}}
+														</span> ({{getAccountCurrency()}}):
+													</s>
+												</b>
 											</div>
 										</li>
 
@@ -887,87 +866,51 @@
 
 									<div class="body-view">
 										<ul class="payments to-bank">
-											<li>
+
+											<li ng-repeat="byBankObject in participant.fixation.byBank track by $index"
+												ng-init="byBankObjectIndex = $index">
 
 												<ul class="flex s-p0">
-													<li class="flex-shrink s-p0">
-														<div class="date-field">
-															<b>2018</b>
-															<b>07-30</b>
-															<b>22:40</b>
-														</div>
-													</li>
-
-													<li class="flex-grow s-p0">
-														<div class="text-field name">
-															<b>Отдал</b>
-														</div>
-													</li>
-
-													<li class="flex-grow s-p0">
-														<div class="multiple-field">
-															<label class="text-select currency" disabled>
-																<select>
-																	<option disabled="">EUR - евро</option>
-																	<option selected="">BYN - белорусский рубль</option>
-																	<option>USD - доллар</option>
-																</select>
-																<b>BYN</b>
-															</label>
-
-															<label class="number-input" disabled>
-																<input type="number" value="12450340.34">
-																<b>12<wbr>450<wbr>340,34</b>
-															</label>
-														</div>
-													</li>
-
-													<li class="flex-shrink s-p0">
-														<label class="checkbox">
-															<input type="checkbox" checked>
-															<i></i>
-														</label>
-													</li>
-												</ul>
-
-											</li>
-
-											<li>
-
-												<ul class="flex s-p0">
-													<li class="flex-shrink s-p0">
-														<button class="btn solid warning" title="Меню">
+													<li class="flex-shrink s-p0" ng-if="!byBankObject.isFixed">
+														<button class="btn solid warning" title="Удалить это действие"
+																ng-click="removePaymentByBank(participant, byBankObjectIndex)">
 															<i class="fas fa-trash-alt"></i>
 														</button>
 													</li>
 
+													<li class="flex-shrink s-p0" ng-if="byBankObject.isFixed">
+														<div class="date-field">
+															<b>{{formatDate(byBankObject.date, 1)}}</b>
+															<b>{{formatDate(byBankObject.date, 2)}}</b>
+															<b>{{formatDate(byBankObject.date, 3)}}</b>
+														</div>
+													</li>
+
 													<li class="flex-grow s-p0">
 														<div class="text-field name">
-															<b>Получил</b>
+															<b ng-if="byBankObject.token < 0">Отдал</b>
+															<b ng-if="byBankObject.token > 0">Получил</b>
 														</div>
 													</li>
 
 													<li class="flex-grow s-p0">
 														<div class="multiple-field">
 															<label class="text-select currency" disabled>
-																<select>
-																	<option disabled="">EUR - евро</option>
-																	<option selected="">BYN - белорусский рубль</option>
-																	<option>USD - доллар</option>
-																</select>
-																<b>BYN</b>
+																<select></select>
+																<b>{{getAccountCurrency()}}</b>
 															</label>
 
-															<label class="number-input">
-																<input type="number" value="12450340.34">
-																<b>12<wbr>450<wbr>340,34</b>
+															<label class="number-input" ng-disabled="byBankObject.isFixed">
+																<input type="number" ng-model="byBankObject.value">
+																<b>{{byBankObject.value}}</b>
 															</label>
 														</div>
 													</li>
 
 													<li class="flex-shrink s-p0">
 														<label class="checkbox">
-															<input type="checkbox">
+															<input type="checkbox" ng-model="byBankObject.isFixed"
+																   ng-change="checkPaymentByBank(byBankObject)">
 															<i></i>
 														</label>
 													</li>
@@ -979,14 +922,16 @@
 
 												<ul class="flex s-p0">
 													<li class="flex-shrink s-p0">
-														<button class="btn solid success" title="Меню">
+														<button class="btn solid success" title="Получить деньги из банка"
+																ng-click="addNewPaymentByBank(participant, 1)">
 															<i class="fas fa-hand-holding-usd"></i>
 															<b class="small">Получить</b>
 														</button>
 													</li>
 
 													<li class="flex-shrink s-p0">
-														<button class="btn solid success" title="Меню">
+														<button class="btn solid success" title="Отдать деньги в банк"
+																ng-click="addNewPaymentByBank(participant, -1)">
 															<i class="fas fa-dollar-sign"></i>
 															<b class="small">Отдать</b>
 														</button>
@@ -1209,779 +1154,3 @@
 	</div>
 
 </main>
-
-
-
-
-
-
-
-
-
-
-
-
-<!--BEGIN: OLD LAYOUT-->
-
-<div data-hidden-aria>
-<input type="checkbox" class="big-checkbox float-left" data-object-toggle style="margin: 15px;" />
-
-<div class="wrap">
-<div head class="clearfix" ng-if="!expCalc.settings.isPrintView">
-	<span ng-repeat="account in expCalc.accounts track by $index">
-		<button class="btn btn-primary"
-				ng-class="{'active': expCalc.settings.currentAccount==$index}"
-				ng-click="expCalc.settings.currentAccount=$index">
-			{{account.meta.title}}
-		</button>
-	</span>
-	<button class="btn btn-primary" ng-click="createAccount()">
-		<i class="fa fa-plus"></i>
-	</button>
-
-	<div class="float-right" style="position: relative;">
-		<label class="btn btn-info" for="currenciesBox">Валюта</label>
-		<input id="currenciesBox" type="checkbox" style="visibility: hidden;" />
-		<div class="toggle-box currencies-box">
-
-			<table ng-init="currencies = expCalc.settings.currencies">
-				<thead>
-				<tr>
-					<th> </th>
-					<th>Основная валюта</th>
-					<th class="secondary-currencies currency-bg" ng-repeat="name in currencies.names track by $index">
-						1 {{currencies.names[$index]}} =
-						<!--<input type="text" class="form-control currency-bg" ng-model="currencies.names[$index]" />-->
-					</th>
-				</tr>
-				<tr>
-					<th> </th>
-					<th> </th>
-					<th class="currency-bg" colspan="100">Курс, по которому покупается указанная валюта</th>
-				</tr>
-				</thead>
-
-				<tbody>
-				<tr ng-repeat="name in expCalc.settings.currencies.names track by $index" ng-init="nameIndex = $index">
-					<td>
-						<button class="btn btn-danger" ng-click="removeCurrency(nameIndex)">
-							<i class="fa fa-minus"></i>
-						</button>
-					</td>
-					<td>
-						<input type="text" class="form-control"
-							   ng-model="expCalc.settings.currencies.names[$index]" onchange="uploadData()" />
-					</td>
-					<td ng-repeat="array in currencies.rates[nameIndex] track by $index">
-						<input type="number" class="form-control"
-							   ng-model="currencies.rates[nameIndex][$index]" onchange="uploadData()" />
-					</td>
-				</tr>
-				<tr>
-					<td> </td>
-					<td>
-						<button class="btn btn-primary" ng-click="addNewCurrency()">
-							<i class="fa fa-plus"></i>
-						</button>
-					</td>
-				</tr>
-				</tbody>
-			</table>
-
-
-			<div id="currenciesTable">
-				<div class="padding5-0 text-right" style="margin-top: -10px;">
-					<button class="btn btn-success" type="button" ng-click="updateCurrencies()">Обновить курсы валют</button>
-					Процент надбавки:
-					<input type="number" class="form-control inline-block" step="0.1" ng-model="expCalc.settings.currencies.commonSurcharge"/>
-				</div>
-				<script type="text/javascript" src="https://ru.exchange-rates.org/GetCustomContent.aspx?sid=RT000JU97&amp;type=RatesTable&amp;stk=-0L8O3U15SJ" charset="utf-8">
-				</script>
-				<div>Источник: <a href="https://ru.exchange-rates.org/" rel="nofollow">ru.exchange-rates.org</a></div>
-			</div>
-		</div>
-	</div>
-
-	<div class="float-right" style="position: relative;">
-		<label class="btn btn-info" for="expensesTypeBox">Типы расходов</label>
-		<input id="expensesTypeBox" type="checkbox" style="visibility: hidden;" />
-		<div class="toggle-box">
-
-			<ul>
-				<li class="nowrap padding5-0" ng-repeat="expensesType in expCalc.settings.expensesTypes track by $index">
-					<button class="btn btn-danger" ng-click="removeExpensesType($index)">
-						<i class="fa fa-minus"></i>
-					</button>
-					{{$index + 1}}
-					<input type="text" class="form-control inline-block" ng-model="expensesType.name" onchange="uploadData()"/>
-				</li>
-
-				<li class="nowrap padding5-0">
-					<button class="btn btn-primary" ng-click="addNewExpensesType()">
-						<i class="fa fa-plus"></i>
-					</button>
-					Новый тип расходов
-				</li>
-			</ul>
-
-		</div>
-	</div>
-</div>
-
-<main>
-<ul class="accounts">
-<li ng-repeat="account in expCalc.accounts track by $index"
-	ng-if="expCalc.settings.currentAccount == $index">
-
-<div head class="clearfix">
-	<h5>
-		<label>
-			<div>Название расчёта:</div>
-			<input class="form-control inline-block" data-account-index="$index"
-				   ng-model="account.meta.title" onchange="uploadData()">
-		</label>
-		<button class="btn btn-danger btn-sm" ng-click="removeCurrentAccount()">Удалить расчет</button>
-
-		<label style="margin-left: 30px;">
-			<input type="checkbox" ng-model="expCalc.settings.isPrintView"/>
-			На печать
-		</label>
-
-		<span style="margin-left: 30px;">Сегодня: {{today()}}</span>
-
-		<label class="float-right">
-			<div>Основная валюта в расчетах: </div>
-			<select class="form-control currency-select float-right" ng-model="account.settings.accountCurrency"
-					ng-options="key as value for (key, value) in expCalc.settings.currencies.names" onchange="uploadData()">
-			</select>
-		</label>
-	</h5>
-</div>
-
-<ul class="layout" ng-if="!expCalc.settings.isPrintView">
-<li class="step1">
-	<!--=========== STEP 1 ============-->
-	<h5 class="margin5-0">Шаг 1: Список участников и расходов</h5>
-	<h5 class="margin5-0 flex">
-		<span class="flex-grow1">Всего расходов:</span>
-						<span class="text-uppercase">
-							<b>
-								{{roundOff(getAccountTotal())}}
-								{{getAccountCurrency()}}
-							</b>
-						</span>
-	</h5>
-
-	<ul class="participants">
-		<li class="padding5-0" ng-repeat="participant in account.participants track by $index"
-			ng-init="participantIndex = $index">
-			<div class="flex padding5-0 bg">
-				<div>
-					<button class="btn btn-danger" ng-click="removeParticipant(participantIndex)">
-						<i class="fa fa-minus"></i>
-					</button>
-				</div>
-				<div class="flex-grow1">
-					<input class="form-control" type="text" ng-model="participant.meta.title"
-						   onchange="uploadData()" placeholder="Новый участник">
-				</div>
-				<div>
-					<h5 class="nowrap text-uppercase">
-						{{roundOff(getParticipantTotal(participant))}}
-						{{getAccountCurrency()}}
-					</h5>
-				</div>
-			</div>
-
-			<ul class="expenses">
-				<li class="padding5-0 bg" ng-repeat="expense in participant.expenses track by $index"
-					ng-init="expenseIndex = $index">
-					<div class="flex">
-						<div ng-if="!expense.isPaid">
-							<button class="btn btn-danger" ng-click="removeExpense(participantIndex, expenseIndex)">
-								<i class="fa fa-minus"></i>
-							</button>
-						</div>
-						<div class="flex-grow1">
-							<input class="form-control" type="text" ng-model="expense.title" placeholder="Новый расход"
-								   ng-disabled="expense.isPaid">
-						</div>
-						<div>
-							<select class="form-control" ng-model="expense.type" ng-disabled="expense.isPaid">
-								<option ng-repeat="expensesType in expCalc.settings.expensesTypes track by $index"
-										value="{{$index}}" ng-selected="expense.type == $index">
-									{{expensesType.name}}
-								</option>
-							</select>
-						</div>
-					</div>
-
-					<div class="flex padding5-0">
-						<div class="date">{{formatDate(expense.date)}}</div>
-						<div class="currency">
-							<select class="form-control currency-select" ng-model="expense.currency"
-									ng-options="key as value for (key, value) in expCalc.settings.currencies.names"
-									ng-disabled="expense.isPaid">
-							</select>
-						</div>
-						<div class="flex-grow1">
-							<input class="form-control" type="number" placeholder="сумма"
-								   ng-model="expense.value"
-								   ng-disabled="expense.isPaid">
-						</div>
-						<div>
-							<input type="checkbox" class="big-checkbox" ng-model="expense.isPaid" onchange="uploadData()" />
-						</div>
-					</div>
-
-					<ul>
-						<li class="padding5-0" ng-repeat="participation in expense.partList track by $index">
-							<input type="checkbox" class="big-checkbox"
-								   ng-model="expense.partList[$index]"
-								   ng-change="checkPartList(expense.partList, $index)"
-								   ng-disabled="expense.isPaid" />
-							{{account.participants[$index].meta.title}}
-						</li>
-					</ul>
-				</li>
-
-				<li class="padding5-0 bg">
-					<button class="btn btn-primary" ng-click="addNewExpense(participant, participantIndex)">
-						<i class="fa fa-plus"></i>
-					</button>
-					Добавить новый расход
-				</li>
-			</ul>
-		</li>
-
-		<li class="padding5-0">
-			<button class="btn btn-primary" ng-click="createParticipant()">
-				<i class="fa fa-plus"></i>
-			</button>
-			Добавить нового участника
-		</li>
-	</ul>
-
-</li>
-
-<li class="step2">
-	<!--=========== STEP 2 ============-->
-	<h5 class="margin5-0">Шаг 2: Расчет на каждого участника</h5>
-	<h5 class="margin5-0 flex">
-		<span class="flex-grow1">Весь возврат:</span>
-						<span class="text-uppercase">
-							<b>
-								{{roundOff(getFullRefund())}}
-								{{getAccountCurrency()}}
-							</b>
-						</span>
-	</h5>
-	<h5 class="margin5-0 warning clearfix">
-		<span>Сумма расходов:</span>
-						<span class="float-right text-uppercase">
-							<b>
-								{{roundOff(getAccountTotal())}}
-								{{getAccountCurrency()}}
-							</b>
-						</span>
-	</h5>
-	<h5 class="margin5-0 warning clearfix">
-		<span>Сумма долей:</span>
-						<span class="float-right text-uppercase">
-							<b>
-								{{roundOff(getShareTotal())}}
-								{{getAccountCurrency()}}
-							</b>
-						</span>
-	</h5>
-	<h5 class="margin5-0 warning clearfix">
-		<span>Погрешность расчетов:</span>
-						<span class="float-right">
-							<b>{{roundOff(getAccountTotal() - getShareTotal())}}</b>
-						</span>
-	</h5>
-
-	<ul class="participants">
-		<li class="padding5-0" ng-repeat="extParticipant in account.participants track by $index"
-			ng-init="extParticipantIndex = $index">
-			<div class="flex padding5-0 bg">
-				<div class="flex-grow1">
-					<h5 class="nowrap">{{extParticipant.meta.title}}</h5>
-				</div>
-				<div class="participation">
-					<input class="form-control" type="number"
-						   ng-model="extParticipant.meta.participation" onchange="uploadData()">
-				</div>
-			</div>
-
-			<div class="flex padding5-0 bg">
-				<div class="balance">
-					<h5>Баланс</h5>
-					<h5 class="text-uppercase">
-						{{roundOff(getBalance(extParticipant))}}
-						{{getAccountCurrency()}}
-					</h5>
-				</div>
-				<div class="share">
-					<h5>Доля</h5>
-					<h5 class="text-uppercase">
-						{{roundOff(getParticipantShare(extParticipantIndex))}}
-						{{getAccountCurrency()}}
-					</h5>
-				</div>
-			</div>
-
-			<ul class="part-list">
-				<li class="bg" ng-repeat="intParticipant in account.participants track by $index">
-					<hr/>
-
-					<ul class="part-list">
-						<li class="padding5-0 clearfix" ng-repeat="expense in intParticipant.expenses track by $index">
-							<label>
-								<input type="checkbox" class="big-checkbox"
-									   ng-model="expense.partList[extParticipantIndex]"
-									   ng-change="checkPartList(expense.partList, extParticipantIndex)"
-									   onchange="uploadData()">
-							</label>
-
-							{{expense.title}} ({{intParticipant.meta.title}})
-
-											<span class="float-right text-uppercase">
-												<b>{{roundOff(getExpenseShare(expense, extParticipantIndex))}}</b>
-											</span>
-						</li>
-					</ul>
-					<hr/>
-				</li>
-			</ul>
-
-		</li>
-	</ul>
-</li>
-
-<li class="step3">
-<!--=========== STEP 3 ============-->
-<h5 class="margin5-0">Шаг 3: Фиксация возвратов</h5>
-
-<div class="padding10-0">
-	<label>
-		<input type="checkbox" class="big-checkbox" ng-model="account.settings.fixationDirectly" />
-		Расчет напрямую
-	</label>
-</div>
-
-<div class="fixation-directly"
-	 ng-class="(account.meta.negBalance == 0 && account.meta.posBalance == 0) ? 'completed' : ''"
-	 ng-if="account.settings.fixationDirectly">
-
-	<h5 class="margin5-0 flex">
-		<span class="flex-grow1">Баланс возвратов:</span>
-							<span class="text-uppercase">
-								<b>
-									{{getReturnsBalance()}}
-									{{getAccountCurrency()}}
-								</b>
-							</span>
-	</h5>
-	<h5 class="text-center">Расчет напрямую</h5>
-
-	<ul class="participants">
-		<li class="padding5-0" ng-repeat="participant in account.participants track by $index"
-			ng-class="{'debtor': participant.meta.fullBalance < 0, 'sponsor': participant.meta.fullBalance > 0}"
-			ng-init="participantIndex = $index">
-
-			<div class="padding5-0 bg">
-				<h5 class="nowrap">{{participant.meta.title}}</h5>
-
-				<h5 class="margin5-0">
-					<span>{{participant.meta.fullBalance >= 0 ? 'Получит' : 'Вернет:'}}</span>
-										<span class="text-uppercase inline-block" ng-if="participant.meta.fullBalance >= 0">
-											<select class="form-control currency-select" ng-model="participant.meta.preferredCurrency"
-													ng-options="key as value for (key, value) in expCalc.settings.currencies.names"
-													onchange="uploadData()">
-											</select>
-										</span>
-										<span class="text-uppercase"
-											  ng-if="participant.meta.fullBalance >= 0 && participant.meta.preferredCurrency != account.settings.accountCurrency">
-											<b>
-												{{getParticipantFullBalance(participant, participantIndex, true)}}
-												<!--{{expCalc.settings.currencies.names[participant.meta.preferredCurrency]}}-->
-											</b>
-										</span>
-										<span class="text-uppercase float-right">
-											<b>{{getParticipantFullBalance(participant, participantIndex, false)}} {{getAccountCurrency()}}</b>
-										</span>
-				</h5>
-			</div>
-
-			<ul class="part-list">
-				<li class="padding5-0" ng-if="participant.fixation.whom.length > 0">Вернул:</li>
-
-				<li class="bg padding5-0 it-was-returned"
-					ng-repeat="refund in participant.fixation.whom track by $index"
-					ng-init="refundIndex = $index">
-
-					<div class="flex">
-						<div ng-if="!refund.isFixed">
-							<button class="btn btn-danger" ng-click="removePayment(participant, refundIndex)">
-								<i class="fa fa-minus"></i>
-							</button>
-						</div>
-						<div>
-							<select class="form-control paddingD-0" style="min-width: 110px;"
-									ng-model="refund.number"
-									ng-change="fillRefundFields(participant, refund)"
-									ng-disabled="refund.isFixed">
-								<option value="" hidden disabled selected>Выберите участника</option>
-
-								<option ng-repeat="sponsor in account.participants track by $index"
-										value="{{$index}}" ng-if="participantIndex != $index">
-									{{getParticipantOption(sponsor, participant)}}
-								</option>
-							</select>
-						</div>
-						<div>
-							<select class="form-control currency-select"
-									ng-model="refund.currency"
-									ng-disabled="refund.isFixed">
-								<option value="" hidden disabled selected>- - -</option>
-								<option ng-repeat="currency in expCalc.settings.currencies.names track by $index"
-										value="{{$index}}">
-									{{currency}}
-								</option>
-							</select>
-						</div>
-						<div class="flex-grow1">
-							<input type="number" class="form-control" placeholder="сумма"
-								   ng-model="refund.value"
-								   ng-disabled="refund.isFixed">
-						</div>
-						<div>
-							<input class="big-checkbox" type="checkbox" ng-model="refund.isFixed"
-								   ng-change="checkRefundFields(refund)" />
-						</div>
-					</div>
-					<div class="text-right">
-						{{formatDate(refund.date)}}
-					</div>
-
-				</li>
-
-				<li class="bg padding5-0" ng-if="isAllRefundsFixed(participant)">
-					<button class="btn btn-primary" ng-click="addNewPayment(participant)">
-						<i class="fa fa-plus"></i>
-					</button>
-					Сделать новый взнос
-				</li>
-			</ul>
-
-		</li>
-	</ul>
-
-</div>
-
-
-<div class="fixation-by-bank"
-	 ng-class="(account.meta.negBalanceByBank == 0 && account.meta.posBalanceByBank == 0) ? 'completed' : ''"
-	 ng-if="!account.settings.fixationDirectly">
-	<h5 class="margin5-0 flex">
-		<span class="flex-grow1">Баланс возвратов:</span>
-							<span class="text-uppercase">
-								<b>
-									{{getReturnsBalance('byBank')}}
-									{{getAccountCurrency()}}
-								</b>
-							</span>
-	</h5>
-
-	<h5 class="text-center">Расчет через общий банк</h5>
-
-	<div class="padding10-0 font-weight-bold text-uppercase" style="background: white">
-		<span>Банк:</span>
-		<span class="float-right">{{getAccountBank()}} {{getAccountCurrency()}}</span>
-	</div>
-
-	<ul class="participants">
-		<li class="padding5-0" ng-repeat="participant in account.participants track by $index"
-			ng-class="{'debtor': participant.meta.fullBalanceByBank < 0, 'sponsor': participant.meta.fullBalanceByBank > 0}"
-			ng-init="participantIndex = $index">
-
-			<div class="padding5-0 bg">
-				<h5 class="nowrap">{{participant.meta.title}}</h5>
-
-				<h5 class="margin5-0 clearfix">
-					<span ng-if="participant.meta.fullBalanceByBank != 0">{{participant.meta.fullBalanceByBank >= 0 ? 'Получит' : 'Вернет:'}}</span>
-
-										<span class="text-uppercase float-right">
-											<b>{{getParticipantFullBalanceByBank(participant)}} {{getAccountCurrency()}}</b>
-										</span>
-				</h5>
-			</div>
-
-			<ul class="part-list history">
-				<li class="padding5-0 bg" ng-repeat="byBankObject in participant.fixation.byBank track by $index"
-					ng-init="byBankObjectIndex = $index">
-					<div class="flex">
-						<div>
-							<button class="btn btn-danger" ng-click="removePaymentByBank(participant, byBankObjectIndex)"
-									ng-if="!byBankObject.isFixed">
-								<i class="fa fa-minus"></i>
-							</button>
-						</div>
-						<div>
-							<span ng-if="byBankObject.token > 0">Получил</span>
-							<span ng-if="byBankObject.token < 0">Вернул</span>
-						</div>
-						<div class="text-uppercase">
-							<b>{{getAccountCurrency()}}</b>
-						</div>
-						<div class="flex-grow1">
-							<input type="number" class="form-control" placeholder="сумма"
-								   ng-model="byBankObject.value"
-								   ng-disabled="byBankObject.isFixed">
-						</div>
-						<div>
-							<input class="big-checkbox" type="checkbox"
-								   ng-model="byBankObject.isFixed"
-								   ng-change="checkPaymentByBank(byBankObject)" />
-						</div>
-					</div>
-
-					<div class="text-right">{{formatDate(byBankObject.date)}}</div>
-				</li>
-
-				<li class="padding5-0 bg">
-					<button class="btn btn-primary" ng-click="addNewPaymentByBank(participant, 1)">
-						<i class="fa fa-exchange"></i>
-						Получить
-					</button>
-
-					<button class="btn btn-primary" ng-click="addNewPaymentByBank(participant, -1)">
-						<i class="fa fa-exchange"></i>
-						Отдать
-					</button>
-				</li>
-			</ul>
-
-		</li>
-	</ul>
-</div>
-</li>
-</ul>
-</li>
-</ul>
-
-
-<div class="print-view"
-	 ng-if="expCalc.settings.isPrintView && expCalc.settings.currentAccount == $index"
-	 ng-repeat="account in expCalc.accounts track by $index">
-
-	<table class="currencies" ng-init="currencies = expCalc.settings.currencies">
-		<thead>
-		<tr>
-			<th> </th>
-			<th colspan="100">Курс, по которому покупается указанная валюта</th>
-		</tr>
-		<tr>
-			<th>Основная валюта</th>
-			<th ng-repeat="name in currencies.names track by $index">
-				{{currencies.names[$index]}}
-			</th>
-		</tr>
-		</thead>
-
-		<tbody>
-		<tr ng-repeat="name in expCalc.settings.currencies.names track by $index" ng-init="nameIndex = $index">
-			<td>
-				{{expCalc.settings.currencies.names[$index]}}
-			</td>
-			<td ng-repeat="array in currencies.rates[nameIndex] track by $index">
-				{{currencies.rates[nameIndex][$index]}}
-			</td>
-		</tr>
-		</tbody>
-	</table>
-
-	<table class="expenses-table">
-		<thead>
-		<tr>
-			<th colspan="4" class="border-right"></th>
-
-			<th ng-repeat="participant in account.participants track by $index">
-				{{participant.meta.title}}<br/>(Участие {{participant.meta.participation * 100}}%)
-			</th>
-		</tr>
-		</thead>
-
-		<tbody>
-		<tr>
-			<td class="font-weight-bold">Расходы</td>
-			<td class="font-weight-bold">Тип</td>
-			<td class="font-weight-bold">Дата</td>
-			<td class="font-weight-bold border-right">Сумма</td>
-			<td colspan="100" class="font-weight-bold">Доля участника в каждом расходе</td>
-		</tr>
-		</tbody>
-
-		<tbody ng-repeat="participant in account.participants track by $index"
-			   ng-init="extParticipantIndex = $index">
-		<tr>
-			<td colspan="3" class="font-weight-bold">{{participant.meta.title}}</td>
-			<td class="border-right">Все расходы:
-				<span class="nowrap font-weight-bold">{{roundOff(participant.meta.total)}} {{getAccountCurrency()}}</span>
-			</td>
-
-			<td ng-repeat="extParticipant in account.participants track by $index"> </td>
-		</tr>
-
-		<tr ng-repeat="expense in participant.expenses track by $index">
-			<td>
-				<span class="float-left">{{$index + 1}}.</span>
-				{{expense.title}}
-			</td>
-			<td><span class="small">{{expCalc.settings.expensesTypes[expense.type].name}}</span></td>
-			<td><span class="small">{{formatDate(expense.date)}}</span></td>
-			<td class="border-right"><span class="nowrap">{{expense.value}} {{expCalc.settings.currencies.names[expense.currency].toUpperCase()}}</span></td>
-
-			<td ng-repeat="extParticipant in account.participants track by $index"
-				ng-init="extParticipantIndex = $index">
-					<span class="nowrap">
-						{{roundOff(getExpenseShare(expense, extParticipantIndex))}}
-						<span ng-if="roundOff(getExpenseShare(expense, extParticipantIndex)) != 0">{{getAccountCurrency()}}</span>
-					</span>
-			</td>
-		</tr>
-
-		</tbody>
-
-		<tbody>
-		<tr>
-			<td colspan="3"></td>
-			<td class="font-weight-bold border-right">Всех расходов: <span class="nowrap">{{roundOff(getAccountTotal())}} {{getAccountCurrency()}}</span></td>
-
-			<td ng-repeat="participant in account.participants track by $index"
-				ng-init="participantIndex = $index">
-				Всего:
-				<span class="nowrap font-weight-bold">{{roundOff(getParticipantShare(participantIndex))}} {{getAccountCurrency()}}</span>
-			</td>
-		</tr>
-		</tbody>
-
-		<thead><tr><th colspan="100"><hr/></th><tr></thead>
-
-		<tbody>
-		<tr>
-			<td colspan="4" class="font-weight-bold text-right border-right">Расходы по типам:</td>
-			<td colspan="100"></td>
-		</tr>
-		<tr ng-repeat="expensesType in expCalc.settings.expensesTypes track by $index"
-			ng-init="typeIndex = $index">
-			<td colspan="4" class="text-right border-right">{{expensesType.name}}</td>
-
-			<td ng-repeat="participant in account.participants track by $index">
-				<span class="nowrap">{{participant.meta.expensesByTypes[typeIndex]}} {{getAccountCurrency()}}</span>
-			</td>
-		</tr>
-		</tbody>
-
-		<thead><tr><th colspan="100"><hr/></th><tr></thead>
-
-		<tbody>
-		<tr>
-			<td colspan="4" class="font-weight-bold text-right border-right">
-				Взносы
-				<span ng-if="account.settings.fixationDirectly">от участника -> участнику</span>
-				<span ng-if="!account.settings.fixationDirectly">через общий банк</span>
-				:
-			</td>
-			<td colspan="100">
-					<span class="font-weight-bold" ng-if="!account.settings.fixationDirectly">
-						В общем банке: {{account.meta.bank}} {{getAccountCurrency()}}
-					</span>
-			</td>
-		</tr>
-		</tbody>
-
-		<tbody ng-repeat="participant in account.participants track by $index"
-			   ng-if="account.settings.fixationDirectly">
-		<tr ng-repeat="whom in participant.fixation.whom track by $index">
-			<td colspan="2"></td>
-			<td><span class="small">{{formatDate(whom.date)}}</span></td>
-			<td class="border-right">{{participant.meta.title}} -></td>
-
-			<td ng-repeat="participant in account.participants track by $index">
-					<span class="nowrap" ng-if="whom.number == $index">
-						{{whom.value}} {{expCalc.settings.currencies.names[whom.currency].toUpperCase()}}
-					</span>
-			</td>
-		</tr>
-		</tbody>
-
-		<tbody ng-repeat="participant in account.participants track by $index"
-			   ng-init="participantIndex = $index"
-			   ng-if="!account.settings.fixationDirectly">
-		<tr ng-repeat="byBank in participant.fixation.byBank track by $index">
-			<td colspan="2"></td>
-			<td><span class="small">{{formatDate(byBank.date)}}</span></td>
-			<td class="border-right">
-				<span ng-if="byBank.token > 0">Получил</span>
-				<span ng-if="byBank.token < 0">Вернул</span>
-			</td>
-
-			<td ng-repeat="participant in account.participants track by $index">
-					<span class="nowrap" ng-if="participantIndex == $index">
-						<span ng-if="byBank.token > 0">+</span>
-						<span ng-if="byBank.token < 0">-</span>
-						{{byBank.value}} {{getAccountCurrency()}}
-					</span>
-			</td>
-		</tr>
-		</tbody>
-
-		<tbody>
-		<tr>
-			<td colspan="4" class="border-right"></td>
-			<td colspan="100" class="font-weight-bold"><hr/>Окончательный расчет<hr/></td>
-		</tr>
-		<tr ng-if="account.settings.fixationDirectly">
-			<td colspan="4" class="border-right"></td>
-
-			<td class="font-weight-bold" ng-repeat="participant in account.participants track by $index">
-				<div ng-if="participant.meta.fullBalance > 0">Получить</div>
-				<div ng-if="participant.meta.fullBalance < 0">Вернуть</div>
-					<span class="nowrap" style="font-size: 1.5rem">
-						<span ng-if="participant.meta.fullBalance > 0">+</span>{{participant.meta.fullBalance}} {{getAccountCurrency()}}
-					</span>
-			</td>
-		</tr>
-		<tr ng-if="!account.settings.fixationDirectly">
-			<td colspan="4" class="border-right"></td>
-
-			<td class="font-weight-bold" ng-repeat="participant in account.participants track by $index">
-				<div ng-if="participant.meta.fullBalanceByBank > 0">Получить</div>
-				<div ng-if="participant.meta.fullBalanceByBank < 0">Вернуть</div>
-					<span class="nowrap" style="font-size: 1.5rem">
-						<span ng-if="participant.meta.fullBalanceByBank > 0">+</span>{{participant.meta.fullBalanceByBank}} {{getAccountCurrency()}}
-					</span>
-			</td>
-		</tr>
-		</tbody>
-	</table>
-
-
-</div>
-</main>
-
-
-
-
-
-
-<div style="padding: 30px 15px 10px;" ng-if="!expCalc.settings.isPrintView">
-	<button class="btn-lg margin5-0" ng-click="copyObjectToBuffer()">Скопировать объект данных в буфер</button>
-	<div id="angularObject">{{expCalc}}</div>
-</div>
-</div>
-
-<div id="testing" class="testing"></div>
-</div>

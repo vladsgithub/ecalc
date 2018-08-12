@@ -7,33 +7,6 @@
 //@import (less) "../css/app.css";
 
 
-// BEGIN: FOR WORKING ON THE PROTOTYPE
-#dataHiddenAria {
-	position: absolute;
-	border: 5px solid black;
-	z-index: 9999;
-	width: 20px;
-	height: 20px;
-
-	&:checked ~ [data-hidden-aria] {
-		display: block;
-	}
-	&:checked ~ main {
-		display: none;
-	}
-}
-
-[data-hidden-aria] {
-	display: none;
-	margin-top: 50px;
-
-	.btn {
-		font-size: 1rem;
-	}
-}
-// END: FOR WORKING ON THE PROTOTYPE
-
-
 
 
 @keyframes hiddenWithDelay {

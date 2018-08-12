@@ -4523,6 +4523,8 @@ label.toggle i::after {
 .complex-input > .text-field:first-child > b {
   min-width: 0;
   line-height: 1;
+  text-transform: none;
+  text-decoration: none;
   font-size: 0.9rem;
   font-weight: bold;
 }
@@ -4922,26 +4924,6 @@ label.toggle i::after {
 .multiple-field > .text-select.currency {
   flex-grow: 0;
   flex-shrink: 0;
-}
-#dataHiddenAria {
-  position: absolute;
-  border: 5px solid black;
-  z-index: 9999;
-  width: 20px;
-  height: 20px;
-}
-#dataHiddenAria:checked ~ [data-hidden-aria] {
-  display: block;
-}
-#dataHiddenAria:checked ~ main {
-  display: none;
-}
-[data-hidden-aria] {
-  display: none;
-  margin-top: 50px;
-}
-[data-hidden-aria] .btn {
-  font-size: 1rem;
 }
 @keyframes hiddenWithDelay {
   0% {
