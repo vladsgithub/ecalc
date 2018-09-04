@@ -1,4 +1,4 @@
-var uploadData, loadData, layoutControl;
+var loadData, layoutControl;
 
 function forEach(elements, callback) {
 	Array.prototype.forEach.call(elements, callback);
@@ -17,88 +17,86 @@ function forEach(elements, callback) {
 
         // WORKING WITH LAYOUT ==============================
 
-		$scope.layout = {
-			isOpenMenu: false,
-			isOpenAside: false,
-			isEditAccountsMode: false,
+        $scope.layout = {
+            isOpenMenu: false,
+            isOpenAside: false,
+            isEditAccountsMode: false,
             isRemoveMode: false,
             isPrintMode: false,
-			activeWindow: 3,
+            activeWindow: 1,
 
             openMenu: function() {
                 this.isOpenMenu = true;
                 this.isOpenAside = false;
             },
-			openAside: function() {
-				this.isOpenAside = !this.isOpenAside;
+            openAside: function() {
+                this.isOpenAside = !this.isOpenAside;
 
-				if (this.isOpenAside) {
-					this.isOpenMenu = false;
-					this.isEditAccountsMode = false;
-				}
-			}
-		};
+                if (this.isOpenAside) {
+                    this.isOpenMenu = false;
+                    this.isEditAccountsMode = false;
+                }
+            }
+        };
 
-		layoutControl = {
-			navBody: document.getElementById('navBody'),
+        $scope.layoutControl = {
+            navBody: document.getElementById('navBody'),
 
-			init: function () {
-				this.navMenuInit();
-			},
-			navMenuInit: function() {
-				var self = this;
-				var dataNextButtons = self.navBody.querySelectorAll('[data-next]');
-				var dataPreviousButtons = self.navBody.querySelectorAll('[data-previous]');
+            init: function () {
+                this.navMenuInit();
+            },
+            navMenuInit: function() {
+                var self = this;
+                var dataNextButtons = self.navBody.querySelectorAll('[data-next]');
+                var dataPreviousButtons = self.navBody.querySelectorAll('[data-previous]');
 
-				var activateMenu = function(menu) {
-					self.navBody.querySelectorAll('.active')[0].classList.remove('active');
-					menu.classList.add('active');
-				}
+                var activateMenu = function(menu) {
+                    self.navBody.querySelectorAll('.active')[0].classList.remove('active');
+                    menu.classList.add('active');
+                }
 
-				forEach(dataNextButtons, function(button, i, arr) {
-					button.addEventListener('click', function() {
-						var section = button.nextElementSibling;
+                forEach(dataNextButtons, function(button, i, arr) {
+                    button.addEventListener('click', function() {
+                        var section = button.nextElementSibling;
 
-						if (section) {
-							section.classList.add('open');
-							activateMenu(section);
+                        if (section) {
+                            section.classList.add('open');
+                            activateMenu(section);
 
-							setTimeout(function() {
-								var firstButton = section.querySelectorAll('button')[0];
+                            setTimeout(function() {
+                                var firstButton = section.querySelectorAll('button')[0];
 
-								if (firstButton) firstButton.focus();
-							}, 220);
-						}
-					});
-				});
+                                if (firstButton) firstButton.focus();
+                            }, 220);
+                        }
+                    });
+                });
 
-				forEach(dataPreviousButtons, function(button, i, arr) {
-					button.addEventListener('click', function() {
-						var activeSection = button.parentNode.parentNode;
+                forEach(dataPreviousButtons, function(button, i, arr) {
+                    button.addEventListener('click', function() {
+                        var activeSection = button.parentNode.parentNode;
 
-						activateMenu(activeSection);
-						forEach(activeSection.querySelectorAll('.open'), function(section, i, arr) {
-							section.classList.remove('open');
-						});
-					});
-				});
-			},
-            collapseAllBodiesView: function(elm) {
-                var bodyArr = elm.parentNode.parentNode.parentNode.parentNode.querySelectorAll('.open-body');   //.classList.remove('open-body');
+                        activateMenu(activeSection);
+                        forEach(activeSection.querySelectorAll('.open'), function(section, i, arr) {
+                            section.classList.remove('open');
+                        });
+                    });
+                });
+            },
+            collapseAllBodiesView: function(id) {
+                var bodyArr = document.getElementById(id).querySelectorAll('.open-body');
 
                 forEach(bodyArr, function(body, i, arr) {
                     body.classList.remove('open-body');
                 });
             },
-            toggleBodyView: function(elm) {
-                elm.parentNode.parentNode.parentNode.parentNode.classList.toggle('open-body');
+            toggleBodyView: function(id) {
+                document.getElementById(id).classList.toggle('open-body');
             },
-            toggleDetailsView1: function(elm) {
-                elm.parentNode.parentNode.parentNode.parentNode.classList.toggle('open-details');
+            toggleDetailsView1: function(id) {
+                document.getElementById(id).classList.toggle('open-details');
             }
-		};
-
-        layoutControl.init();
+        };
 
 
 
@@ -139,7 +137,7 @@ function forEach(elements, callback) {
             event.target.value = '';
         };
 
-		uploadData = function (isFullObject) {
+		$scope.uploadData = function (isFullObject) {
 			var xhr, localStringJSON, serverStringAccountJSON, currentAccountNumber;
 
 			currentAccountNumber = $scope.expCalc.settings.currentAccount;
@@ -233,7 +231,7 @@ console.log('Именно здесь поставить setTimeout на отпр
                 expenses: [],
                 fixation: {
                     whom: [],
-                    byBank: [], // it will be added objects: { value: null, reserve: null, date: null} (participants can return money by some parts)
+                    byBank: [],
                     reserve: 0
                 }
             };
@@ -242,7 +240,7 @@ console.log('Именно здесь поставить setTimeout на отпр
 
             $scope.addParticipantToPartList();
 
-			uploadData(updateFullDataOnServer);
+			$scope.uploadData(updateFullDataOnServer);
         };
 
 
@@ -269,7 +267,7 @@ console.log('Именно здесь поставить setTimeout на отпр
 
                 $scope.expCalc.settings.expensesTypes.splice(typeIndex, 1);
 
-				uploadData(true);
+				$scope.uploadData(true);
             }
         };
 
@@ -315,7 +313,7 @@ console.log('Именно здесь поставить setTimeout на отпр
                     rateArr.splice(currencyIndex, 1);
                 });
 
-				uploadData(true);
+				$scope.uploadData(true);
             }
         };
 
@@ -333,7 +331,7 @@ console.log('Именно здесь поставить setTimeout на отпр
                 }
             }
 
-			uploadData(true);
+			$scope.uploadData(true);
         };
 
         $scope.removeParticipant = function (participantIndex) {
@@ -346,7 +344,7 @@ console.log('Именно здесь поставить setTimeout на отпр
                 $scope.expCalc.accounts[accountIndex].participants.splice(participantIndex, 1);
                 $scope.removeParticipantFromPartList(participantIndex);
 
-				uploadData();
+				$scope.uploadData();
             }
         };
 
@@ -355,13 +353,13 @@ console.log('Именно здесь поставить setTimeout на отпр
 
             $scope.expCalc.accounts[accountIndex].participants[participantIndex].expenses.splice(expenseIndex, 1);
 
-			uploadData();
+			$scope.uploadData();
         };
 
         $scope.removeDetailsFromExpense = function (expense, detailIndex) {
             expense.details.splice(detailIndex, 1);
 
-            uploadData();
+            $scope.uploadData();
         };
 
         $scope.removeParticipantFromPartList = function (participantIndex) {
@@ -377,13 +375,13 @@ console.log('Именно здесь поставить setTimeout на отпр
         $scope.removePayment = function (debtor, refundIndex) {
             debtor.fixation.whom.splice(refundIndex, 1);
 
-			uploadData();
+			$scope.uploadData();
         };
 
         $scope.removePaymentByBank = function (participant, byBankObjectIndex) {
             participant.fixation.byBank.splice(byBankObjectIndex, 1);
 
-			uploadData();
+			$scope.uploadData();
         };
 
 
@@ -404,10 +402,10 @@ console.log('Именно здесь поставить setTimeout на отпр
 
             $scope.expCalc.settings.currencies.names.push('');
             $scope.expCalc.settings.currencies.rates.forEach(function(rateArr, i, arr) {
-                rateArr.push(null);
-                newRateArr.push(null);
+                rateArr.push(1);
+                newRateArr.push(1);
             });
-            newRateArr.push(null);
+            newRateArr.push(1);
 
             $scope.expCalc.settings.currencies.rates.push( newRateArr );
         };
@@ -847,7 +845,7 @@ console.log('Именно здесь поставить setTimeout на отпр
             if (refund.number == null || refund.value == null || refund.currency == null) {
 				refund.isFixed = false;
 			} else {
-				uploadData();
+				$scope.uploadData();
 			}
         };
 
@@ -861,6 +859,8 @@ console.log('Именно здесь поставить setTimeout на отпр
             if (!isValid) {
                 partList[extParticipantIndex] = true;
                 alert('Нельзя отменить участие в одном и том же расходе для всех участников');
+            } else {
+                $scope.uploadData();
             }
         };
 
@@ -1006,7 +1006,7 @@ console.log('Именно здесь поставить setTimeout на отпр
             var currentAccount = $scope.expCalc.accounts[$scope.expCalc.settings.currentAccount];
 
             if (!byBankObject.isFixed) {
-				uploadData();
+				$scope.uploadData();
 				return;
 			}
 
@@ -1022,7 +1022,7 @@ console.log('Именно здесь поставить setTimeout на отпр
 
 					byBankObject.value = currentAccount.meta.bank;
 				} else {
-					uploadData();
+					$scope.uploadData();
 				}
 			}
         };
@@ -1089,7 +1089,7 @@ console.log('Именно здесь поставить setTimeout на отпр
                 });
             });
 
-			uploadData(true);
+			$scope.uploadData(true);
         };
 
         $scope.completedDetails = function (expense) {

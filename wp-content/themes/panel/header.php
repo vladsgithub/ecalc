@@ -58,6 +58,17 @@
 		$loadedData = str_replace('"{"', '{"', $loadedData);
 		$loadedData = str_replace('}"', '}', $loadedData);
 
+		$userName = $current_user->user_firstname.' '.$current_user->user_lastname;
+
+		if ($userName == ' ') {
+		    $userName = $current_user->user_login;
+		}
+
+		$userNameWords = explode(" ", $userName);
+		$firstLetter = mb_substr($userName,0,1,'UTF-8');
+		$secondLetter = mb_substr(end($userNameWords),0,1,'UTF-8');
+		if (count($userNameWords) <= 1) { $secondLetter = ''; }
+
 		echo "<script language='JavaScript'>var fromServerData = '$loadedData';</script>";
     ?>
 
@@ -84,9 +95,11 @@
 			<h1>Cost panel</h1>
 			<h2>{{expCalc.accounts[expCalc.settings.currentAccount].meta.title}}</h2>
 		</li>
-		<li class="separator">
-			<button class="btn solid" disabled title="Все изменения сохранены">
-				<b class="status-line">ВС</b>
+		<li class="separator <? if ($current_user->ID == 0) { echo 'hidden'; } ?>">
+			<button class="btn solid" title="Все изменения сохранены">
+				<b class="status-line">
+				    <? echo $firstLetter.$secondLetter; ?>
+				</b>
 				<i class="fas fa-save no-mobile"></i>
 			</button>
 		</li>
@@ -106,17 +119,20 @@
 
         </li>
         <li class="flex-grow">
-            <div class="text-field name solid">
+            <div class="text-field name solid capitalize">
                 <b>
                     <?
-                        echo $current_user->user_firstname.' '.$current_user->user_lastname;
-
-                    //			echo 'Username: ' . $current_user->user_login . '<br />';
-                    //			echo 'email: ' . $current_user->user_email . '<br />';
-                    //			echo 'first name: ' . $current_user->user_firstname . '<br />';
-                    //			echo 'last name: ' . $current_user->user_lastname . '<br />';
-                    //			echo 'Отображаемое имя: ' . $current_user->display_name . '<br />';
-                    //			echo 'ID: ' . $current_user->ID . '<br />';
+                        echo $userName;
+                    ?>
+                </b>
+                <b class="hidden">
+                    <?
+                        echo 'Username: ' . $current_user->user_login . '<br />';
+                        echo 'email: ' . $current_user->user_email . '<br />';
+                        echo 'first name: ' . $current_user->user_firstname . '<br />';
+                        echo 'last name: ' . $current_user->user_lastname . '<br />';
+                        echo 'Отображаемое имя: ' . $current_user->display_name . '<br />';
+                        echo 'ID: ' . $current_user->ID . '<br />';
                     ?>
                 </b>
             </div>
@@ -128,7 +144,7 @@
         </li>
     </ul>
 
-    <div id="navBody" class="nav-body">
+    <div id="navBody" class="nav-body" ng-init="layoutControl.init()">
 
         <ul class="section open active" data-level="1">
             <li class="section-title">
@@ -138,7 +154,7 @@
                 <div class="text-field title"><b>Главное меню</b></div>
             </li>
 
-            <li>
+            <li class="hidden">
                 <button class="btn solid no-shadow" data-next title="Авторизация">
                     <i class="fas fa-user-circle"></i>
                     <b>Авторизация</b>
@@ -175,6 +191,12 @@
                 // этот плагин будет нормально работать
 
                                         echo do_shortcode('[clean-login]');
+
+
+
+                                        if ($current_user->ID == 0) {
+                                            echo '<script src="//ulogin.ru/js/ulogin.js"></script><div class="text-field title"><b>Войти с помощью:</b></div><div id="uLogin_f2d7104d" data-uloginid="f2d7104d"></div>';
+                                        }
                                     ?>
                                 </div>
                             </li>
@@ -303,12 +325,12 @@
                                             <li class="flex-grow s-p1">
                                                 <div class="multiple-field">
                                                     <label class="text-input flex-grow">
-                                                        <input type="text" ng-model="expensesType.name" onchange="uploadData()">
+                                                        <input type="text" ng-model="expensesType.name" ng-change="uploadData()">
                                                         <b>{{expensesType.name}}</b>
                                                     </label>
 
                                                     <label class="text-input flex-grow">
-                                                        <input type="text" ng-model="expensesType.icon" onchange="uploadData()">
+                                                        <input type="text" ng-model="expensesType.icon" ng-change="uploadData()">
                                                         <b>{{expensesType.icon}}</b>
                                                     </label>
                                                 </div>
@@ -411,7 +433,7 @@
                                                             </div>
 
                                                             <label class="head">
-                                                                <input type="text" ng-model="expCalc.settings.currencies.names[nameIndex]" onchange="uploadData()">
+                                                                <input type="text" ng-model="expCalc.settings.currencies.names[nameIndex]" ng-change="uploadData()">
                                                                 <b>{{expCalc.settings.currencies.names[nameIndex]}}</b>
                                                             </label>
                                                         </div>
@@ -438,7 +460,7 @@
                                                                     </div>
 
                                                                     <label class="head">
-                                                                        <input type="number" ng-model="currencies.rates[nameIndex][$index]" onchange="uploadData()">
+                                                                        <input type="number" ng-model="currencies.rates[nameIndex][$index]" ng-change="uploadData()">
                                                                         <b>{{currencies.rates[nameIndex][$index]}}</b>
                                                                     </label>
                                                                 </div>
@@ -519,6 +541,52 @@
                                     </li>
                                 </ul>
 
+
+                                <ul class="settings-list hidden" data-for-android-app>
+                                    <li>
+                                        <ul class="flex s-p1">
+                                            <li class="flex-shrink s-p1">
+                                                <button id="writeFile" class="btn solid">
+                                                    <i class="fas fa-file-export"></i>
+                                                </button>
+                                            </li>
+
+                                            <li class="flex-grow s-p1">
+                                                <div class="text-field title">
+                                                    <b>Экспорт данных</b>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <ul class="flex s-p1">
+                                            <li class="flex-shrink s-p1">
+                                                <button id="readFile" class="btn solid">
+                                                    <i class="fas fa-file-import"></i>
+                                                </button>
+                                            </li>
+
+                                            <li class="flex-grow s-p1">
+                                                <div class="text-field title">
+                                                    <b>Импорт данных</b>
+                                                </div>
+                                            </li>
+                                        </ul>
+
+                                        <div class="s-p2">
+                                            <textarea id="textarea" class="textarea"></textarea>
+                                        </div>
+
+                                        <div class="s-p2">
+                                            <button class="btn solid" ng-click="applyTextareaObject()">
+                                                <i class="fas fa-save"></i>
+                                                <b class="small">Применить новый объект</b>
+                                            </button>
+                                        </div>
+                                    </li>
+                                </ul>
+
                             </li>
                         </ul>
                     </li>
@@ -547,7 +615,7 @@
                                     <li class="s-p1">
                                         <label class="text-select currency">
                                             <select ng-model="expCalc.accounts[expCalc.settings.currentAccount].settings.accountCurrency"
-                                                    ng-options="key as value for (key, value) in expCalc.settings.currencies.names" onchange="uploadData()">
+                                                    ng-options="key as value for (key, value) in expCalc.settings.currencies.names" ng-change="uploadData()">
                                             </select>
                                             <b>{{expCalc.settings.currencies.names[expCalc.accounts[expCalc.settings.currentAccount].settings.accountCurrency].substring(0, 3)}}</b>
                                         </label>

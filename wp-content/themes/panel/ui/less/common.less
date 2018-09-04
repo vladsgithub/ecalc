@@ -120,6 +120,12 @@ a {
 .s-p3 { .side-padding(@padding * 3); }
 .s-p4 { .side-padding(@padding * 4); }
 
+.small-bold {
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 12px;
+}
+
 .tooltip {
 	z-index: @z-tooltip;
 	position: absolute; left: 20%; top: 80%;
@@ -278,14 +284,16 @@ a {
 			display: inline-block;
 			position: relative;
 			bottom: 3px;
+			max-width: 40px;
 			line-height: 1;
+			overflow: visible;
 
 			&::before {
 				content: "";
 				position: absolute;
 				left: -1px;
 				right: -1px;
-				bottom: -4px;
+				bottom: 0;
 				height: 3px;
 				border-radius: 2px;
 			}
@@ -946,6 +954,9 @@ label {
 	&.thin {
 		min-height: 30px;
 		line-height: 30px;
+	}
+	&.capitalize {
+		text-transform: capitalize;
 	}
 	&.subtitle {
 		display: block;

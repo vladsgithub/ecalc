@@ -3915,6 +3915,11 @@ a:focus {
   padding-left: 16px !important;
   padding-right: 16px !important;
 }
+.small-bold {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+}
 .tooltip {
   z-index: 1000;
   position: absolute;
@@ -4089,14 +4094,16 @@ a:focus {
   display: inline-block;
   position: relative;
   bottom: 3px;
+  max-width: 40px;
   line-height: 1;
+  overflow: visible;
 }
 .btn b.status-line::before {
   content: "";
   position: absolute;
   left: -1px;
   right: -1px;
-  bottom: -4px;
+  bottom: 0;
   height: 3px;
   border-radius: 2px;
 }
@@ -4768,6 +4775,9 @@ label.toggle i::after {
   min-height: 30px;
   line-height: 30px;
 }
+.text-field.capitalize {
+  text-transform: capitalize;
+}
 .text-field.subtitle {
   display: block;
   padding: 0 16px;
@@ -4997,6 +5007,14 @@ body.print-mode .three-window-lt {
 }
 body.print-mode .print-view-lt {
   display: block;
+}
+body.customize-support header,
+body.customize-support aside.menu,
+body.customize-support aside.accounts {
+  top: 32px;
+}
+body.customize-support .three-window-lt {
+  top: 64px;
 }
 header {
   z-index: 100;
@@ -5768,10 +5786,10 @@ footer {
   height: 16px;
   margin-top: -16px;
 }
-@media print {
-  html {
-    font-size: 10px;
-  }
+.cleanlogin-container input[type=text],
+.cleanlogin-container input[type=password],
+.cleanlogin-container input[type=email] {
+  background: #fff;
 }
 .print-view-lt {
   display: none;
@@ -5812,4 +5830,16 @@ footer {
 }
 .print-view-lt .expenses-table tr:last-child td {
   border-bottom: 20px solid lightgray;
+}
+@media print {
+  html {
+    font-size: 10px;
+  }
+  header,
+  footer {
+    display: none;
+  }
+  .print-view-lt {
+    padding: 0;
+  }
 }

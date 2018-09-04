@@ -75,6 +75,17 @@ body {
 		.three-window-lt { display: none; }
 		.print-view-lt { display: block; }
 	}
+
+	&.customize-support {
+		header,
+		aside.menu,
+		aside.accounts {
+			top: 32px;
+		}
+		.three-window-lt {
+			top: 64px;
+		}
+	}
 }
 
 header {
@@ -864,9 +875,17 @@ footer {
 
 
 
-@media print {
-	html { font-size: 10px; }
+.cleanlogin-container input {
+	&[type=text],
+	&[type=password],
+	&[type=email] {
+		background: @white;
+	}
 }
+
+
+
+
 .print-view-lt {
 	display: none;
 	padding: 56px 20px 0;
@@ -907,4 +926,10 @@ footer {
 }
 .print-view-lt .expenses-table tr:last-child td {
 	border-bottom: 20px solid lightgray;
+}
+
+@media print {
+	html { font-size: 10px; }
+	header, footer { display: none; }
+	.print-view-lt { padding: 0; }
 }

@@ -32,7 +32,7 @@
 					</button>
 
 					<label class="text-input edit-mode">
-						<input type="text" ng-model="account.meta.title" onchange="uploadData()">
+						<input type="text" ng-model="account.meta.title" ng-change="uploadData()">
 						<b>{{account.meta.title}}</b>
 					</label>
 				</div>
@@ -91,7 +91,7 @@
 			ng-repeat="account in expCalc.accounts track by $index"
 			ng-if="expCalc.settings.currentAccount == $index">
 
-			<li class="left-lt step-1" ng-class="(layout.activeWindow == 1) ? 'active' : ''" ng-click="layout.activeWindow = 1">
+			<li id="window-1" class="left-lt step-1" ng-class="(layout.activeWindow == 1) ? 'active' : ''" ng-click="layout.activeWindow = 1">
 				<div class="title-lt flex">
 					<div class="flex-grow s-p3">1. Список</div>
 					<div class="s-p3">1</div>
@@ -114,7 +114,7 @@
 							</li>
 
 							<li class="flex-shrink">
-								<button class="btn solid" onclick="layoutControl.collapseAllBodiesView(this)">
+								<button class="btn solid" ng-click="layoutControl.collapseAllBodiesView('window-1')">
 									<i class="fas fa-angle-double-up"></i>
 								</button>
 							</li>
@@ -144,7 +144,7 @@
 					<div class="section-body">
 
 						<ul class="participants">
-							<li class="participant"
+							<li id="participant.1.{{participantIndex}}" class="participant"
 								ng-repeat="participant in account.participants track by $index"
 								ng-init="participantIndex = $index">
 
@@ -166,7 +166,7 @@
 											<label class="text-input">
 												<input type="text"
 													   ng-model="participant.meta.title"
-													   onchange="uploadData()">
+													   ng-change="uploadData()">
 												<b>{{participant.meta.title}}</b>
 											</label>
 										</li>
@@ -181,7 +181,7 @@
 										</li>
 
 										<li class="flex-shrink s-p0">
-											<button class="btn solid border collapse-btn" onclick="layoutControl.toggleBodyView(this)">
+											<button class="btn solid border collapse-btn" ng-click="layoutControl.toggleBodyView('participant.1.' + participantIndex)">
 												<i class="fas fa-chevron-down"></i>
 											</button>
 										</li>
@@ -222,6 +222,7 @@
 																	{{expensesType.name}}
 																</option>
 															</select>
+															{{expCalc.settings.expensesTypes[expense.type]}}
 															<b>
 																<i class="fas fa-{{expCalc.settings.expensesTypes[expense.type].icon}}"></i>
 															</b>
@@ -230,7 +231,9 @@
 												</li>
 											</ul>
 
-											<div data-state class="expense-data clearfix" ng-class="{'completed': completedDetails(expense)}">
+											<div id="details{{participantIndex}}.{{expenseIndex}}"
+												 class="expense-data clearfix"
+												 ng-class="{'completed': completedDetails(expense)}">
 
 												<ul class="flex expense-values">
 													<li class="flex-shrink s-p0">
@@ -292,7 +295,7 @@
 																ng-init="detailIndex = $index">
 																<li class="s-p0">
 																	<label class="checkbox remove-mode-false">
-																		<input type="checkbox" ng-model="detail.isChecked" onchange="uploadData()">
+																		<input type="checkbox" ng-model="detail.isChecked" ng-change="uploadData()">
 																		<i></i>
 																		<b>{{expenseIndex + 1}}.{{detailIndex + 1}}</b>
 																	</label>
@@ -307,12 +310,12 @@
 																<li class="flex-grow s-p0">
 																	<div class="multiple-field">
 																		<label class="text-input" ng-disabled="detail.isChecked">
-																			<input type="text" ng-model="detail.title" onchange="uploadData()">
+																			<input type="text" ng-model="detail.title" ng-change="uploadData()">
 																			<b>{{detail.title}}</b>
 																		</label>
 
 																		<label class="text-input text-center min-field" ng-disabled="detail.isChecked">
-																			<input type="text" ng-model="detail.qty" onchange="uploadData()">
+																			<input type="text" ng-model="detail.qty" ng-change="uploadData()">
 																			<b>{{detail.qty}}</b>
 																		</label>
 																	</div>
@@ -320,7 +323,7 @@
 
 																<li class="cost s-p0">
 																	<label class="number-input" ng-disabled="detail.isChecked">
-																		<input type="number" ng-model="detail.value" onchange="uploadData()">
+																		<input type="number" ng-model="detail.value" ng-change="uploadData()">
 																		<b>{{detail.value}}</b>
 																	</label>
 																</li>
@@ -345,7 +348,8 @@
 														</li>
 
 														<li class="s-p0">
-															<button class="btn solid details-btn" onclick="layoutControl.toggleDetailsView1(this)">
+															<button class="btn solid details-btn"
+																	ng-click="layoutControl.toggleDetailsView1('details' + participantIndex + '.' + expenseIndex)">
 																<i class="fas fa-folder"></i>
 																<b class="small no-middle-mobile">Детали</b>
 															</button>
@@ -357,7 +361,7 @@
 											</div>
 
 											<label class="checkbox paid-out">
-												<input type="checkbox" ng-model="expense.isPaid" onchange="uploadData()">
+												<input type="checkbox" ng-model="expense.isPaid" ng-change="uploadData()">
 												<i></i>
 											</label>
 
@@ -409,7 +413,7 @@
 				</div>
 			</li>
 
-			<li class="center-lt step-2" ng-class="(layout.activeWindow == 2) ? 'active' : ''" ng-click="layout.activeWindow = 2">
+			<li id="window-2" class="center-lt step-2" ng-class="(layout.activeWindow == 2) ? 'active' : ''" ng-click="layout.activeWindow = 2">
 				<div class="title-lt flex">
 					<div class="flex-grow s-p3">2. Вычисление</div>
 					<div class="s-p3">2</div>
@@ -432,7 +436,7 @@
 							</li>
 
 							<li class="flex-shrink">
-								<button class="btn solid" onclick="layoutControl.collapseAllBodiesView(this)">
+								<button class="btn solid" ng-click="layoutControl.collapseAllBodiesView('window-2')">
 									<i class="fas fa-angle-double-up"></i>
 								</button>
 							</li>
@@ -462,7 +466,7 @@
 					<div class="section-body">
 						<ul class="participants">
 
-							<li class="participant"
+							<li id="participant.2.{{extParticipantIndex}}" class="participant"
 								ng-repeat="extParticipant in account.participants track by $index"
 								ng-init="extParticipantIndex = $index">
 								<div class="participant-head">
@@ -486,14 +490,14 @@
 												</div>
 
 												<label class="text-center">
-													<input type="number" ng-model="extParticipant.meta.participation" onchange="uploadData()" />
+													<input type="number" ng-model="extParticipant.meta.participation" ng-change="uploadData()" />
 													<b>{{extParticipant.meta.participation}}</b>
 												</label>
 											</div>
 										</li>
 
 										<li class="flex-shrink s-p0">
-											<button class="btn solid border collapse-btn" onclick="layoutControl.toggleBodyView(this)">
+											<button class="btn solid border collapse-btn" ng-click="layoutControl.toggleBodyView('participant.2.' + extParticipantIndex)">
 												<i class="fas fa-chevron-down"></i>
 											</button>
 										</li>
@@ -530,8 +534,7 @@
 													<label class="checkbox">
 														<input type="checkbox"
 															   ng-model="expense.partList[extParticipantIndex]"
-															   ng-change="checkPartList(expense.partList, extParticipantIndex)"
-															   onchange="uploadData()">
+															   ng-change="checkPartList(expense.partList, extParticipantIndex)">
 														<i></i>
 													</label>
 												</li>
@@ -564,7 +567,7 @@
 				</div>
 			</li>
 
-			<li class="right-lt step-3" ng-class="(layout.activeWindow == 3) ? 'active' : ''" ng-click="layout.activeWindow = 3">
+			<li id="window-3" class="right-lt step-3" ng-class="(layout.activeWindow == 3) ? 'active' : ''" ng-click="layout.activeWindow = 3">
 				<div class="title-lt flex">
 					<div class="flex-grow s-p3">3. Возврат</div>
 					<div class="s-p3">3</div>
@@ -587,7 +590,7 @@
 							</li>
 
 							<li class="flex-shrink">
-								<button class="btn solid" onclick="layoutControl.collapseAllBodiesView(this)">
+								<button class="btn solid" ng-click="layoutControl.collapseAllBodiesView('window-3')">
 									<i class="fas fa-angle-double-up"></i>
 								</button>
 							</li>
@@ -667,7 +670,7 @@
 						<!-- Возвраты напрямую -->
 						<ul class="participants" ng-if="account.settings.fixationDirectly">
 
-							<li class="participant"
+							<li id="participant.3.{{participantIndex}}" class="participant"
 								ng-repeat="participant in account.participants track by $index"
 								ng-class="{'debtor': participant.meta.fullBalance < 0, 'sponsor': participant.meta.fullBalance > 0}"
 								ng-init="participantIndex = $index">
@@ -691,7 +694,7 @@
 												<label class="currency">
 													<select ng-model="participant.meta.preferredCurrency"
 															ng-options="key as value for (key, value) in expCalc.settings.currencies.names"
-															onchange="uploadData()">
+															ng-change="uploadData()">
 													</select>
 													<b>{{expCalc.settings.currencies.names[participant.meta.preferredCurrency].substring(0, 3)}}</b>
 												</label>
@@ -718,7 +721,7 @@
 										</li>
 
 										<li class="flex-shrink s-p0">
-											<button class="btn solid border collapse-btn" onclick="layoutControl.toggleBodyView(this)">
+											<button class="btn solid border collapse-btn" ng-click="layoutControl.toggleBodyView('participant.3.' + participantIndex)">
 												<i class="fas fa-chevron-down"></i>
 											</button>
 										</li>
@@ -826,7 +829,7 @@
 
 						<!-- Через общий банк -->
 						<ul class="participants" ng-if="!account.settings.fixationDirectly">
-							<li class="participant"
+							<li id="participantByBank.3.{{participantIndex}}" class="participant"
 								ng-repeat="participant in account.participants track by $index"
 								ng-class="{'debtor': participant.meta.fullBalanceByBank < 0, 'sponsor': participant.meta.fullBalanceByBank > 0}"
 								ng-init="participantIndex = $index">
@@ -855,7 +858,7 @@
 										</li>
 
 										<li class="flex-shrink s-p0">
-											<button class="btn solid border collapse-btn" onclick="layoutControl.toggleBodyView(this)">
+											<button class="btn solid border collapse-btn" ng-click="layoutControl.toggleBodyView('participantByBank.3.' + participantIndex)">
 												<i class="fas fa-chevron-down"></i>
 											</button>
 										</li>
@@ -961,24 +964,24 @@
 		<table class="currencies" ng-init="currencies = expCalc.settings.currencies">
 			<thead>
 			<tr>
-				<th> </th>
+				<th class="hidden"> </th>
 				<th colspan="100">Курс, по которому покупается указанная валюта</th>
 			</tr>
 			<tr>
-				<th>Основная валюта</th>
+				<th class="hidden">Основная валюта</th>
 				<th ng-repeat="name in currencies.names track by $index">
-					{{currencies.names[$index]}}
+					1 {{currencies.names[$index]}} =
 				</th>
 			</tr>
 			</thead>
 
 			<tbody>
 			<tr ng-repeat="name in expCalc.settings.currencies.names track by $index" ng-init="nameIndex = $index">
-				<td>
+				<td class="hidden">
 					{{expCalc.settings.currencies.names[$index]}}
 				</td>
 				<td ng-repeat="array in currencies.rates[nameIndex] track by $index">
-					{{currencies.rates[nameIndex][$index]}}
+					{{currencies.rates[nameIndex][$index]}} <b class="small-bold">{{expCalc.settings.currencies.names[nameIndex]}}</b>
 				</td>
 			</tr>
 			</tbody>
