@@ -86,6 +86,29 @@ body {
 			top: 64px;
 		}
 	}
+
+	&.logged-in {
+		.clean-login-widgets {
+			> .clean-login-edit {
+				display: block;
+			}
+			> .clean-login-register,
+			> .clean-login-restore {
+				display: none;
+			}
+		}
+	}
+}
+
+.clean-login-widgets {
+	> li {
+		margin-bottom: 20px;
+	}
+
+	> .clean-login,
+	> .clean-login-edit {
+		display: none;
+	}
 }
 
 header {
@@ -298,6 +321,12 @@ aside.menu {
 	.currency-table {
 		font-size: 0.9rem;
 	}
+	.cleanlogin-container {
+		a {
+			line-height: 2rem;
+			font-size: 1rem;
+		}
+	}
 }
 
 aside.accounts {
@@ -399,6 +428,23 @@ aside.accounts {
 		.text-input {
 			width: 100%;
 		}
+	}
+}
+
+section {
+	padding: 80px 50px 40px;
+
+	@media only screen and (max-width: (@mobile - 1)) {
+		padding: 50px 5px 20px;
+	}
+
+	h1 {
+		font-size: 2rem;
+		line-height: 3rem;
+	}
+	a {
+		line-height: 2rem;
+		font-size: 1rem;
 	}
 }
 

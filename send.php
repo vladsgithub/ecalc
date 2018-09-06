@@ -16,9 +16,9 @@ $userId = $current_user->ID;
 
 if ($userId > 0) {
 	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "ecalc";
+	$username = "host1638368_1647";
+	$password = "vl@d161010";
+	$dbname = "host1638368_1647";
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);

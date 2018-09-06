@@ -1116,8 +1116,6 @@ try {
 <?php } ?>
 </script>
 
-<?php echo do_shortcode('[clean-login-edit]'); ?>
-
 <?php
 login_footer();
 

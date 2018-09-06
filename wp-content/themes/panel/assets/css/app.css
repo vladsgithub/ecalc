@@ -5016,6 +5016,20 @@ body.customize-support aside.accounts {
 body.customize-support .three-window-lt {
   top: 64px;
 }
+body.logged-in .clean-login-widgets > .clean-login-edit {
+  display: block;
+}
+body.logged-in .clean-login-widgets > .clean-login-register,
+body.logged-in .clean-login-widgets > .clean-login-restore {
+  display: none;
+}
+.clean-login-widgets > li {
+  margin-bottom: 20px;
+}
+.clean-login-widgets > .clean-login,
+.clean-login-widgets > .clean-login-edit {
+  display: none;
+}
 header {
   z-index: 100;
   position: fixed;
@@ -5219,6 +5233,10 @@ aside.menu .currency-line .complex-input > .text-field {
 aside.menu .currency-table {
   font-size: 0.9rem;
 }
+aside.menu .cleanlogin-container a {
+  line-height: 2rem;
+  font-size: 1rem;
+}
 aside.accounts {
   z-index: 99;
   visibility: hidden;
@@ -5316,6 +5334,22 @@ aside.accounts .account > .flex-grow {
 aside.accounts .account .btn,
 aside.accounts .account .text-input {
   width: 100%;
+}
+section {
+  padding: 80px 50px 40px;
+}
+@media only screen and (max-width: 639px) {
+  section {
+    padding: 50px 5px 20px;
+  }
+}
+section h1 {
+  font-size: 2rem;
+  line-height: 3rem;
+}
+section a {
+  line-height: 2rem;
+  font-size: 1rem;
 }
 .three-window-lt {
   position: absolute;

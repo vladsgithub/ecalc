@@ -28,9 +28,9 @@
 
 		if ($userID > 0) {
 			$servername = "localhost";
-			$username = "root";
-			$password = "";
-			$dbname = "ecalc";
+			$username = "host1638368_1647";
+			$password = "vl@d161010";
+			$dbname = "host1638368_1647";
 
 			// Create connection
 			$conn = new mysqli($servername, $username, $password, $dbname);
@@ -69,12 +69,14 @@
 		$secondLetter = mb_substr(end($userNameWords),0,1,'UTF-8');
 		if (count($userNameWords) <= 1) { $secondLetter = ''; }
 
-		echo "<script language='JavaScript'>var fromServerData = '$loadedData';</script>";
+		$loggedIn = ($current_user->ID > 0) ? 'true' : 'false';
+
+		echo "<script language='JavaScript'>var loggedIn = $loggedIn; var fromServerData = '$loadedData';</script>";
     ?>
 
 </head>
 
-<body id="body" ng-app="app" ng-controller="calculatorCtrl" ng-cloak="true"
+<body id="body" ng-app="app" ng-controller="calculatorCtrl" ng-cloak="true" class="<? if ($current_user->ID > 0) { echo 'logged-in'; } ?>" 
 	ng-class="{'open-menu': layout.isOpenMenu, 'open-aside': layout.isOpenAside, 'remove-mode': layout.isRemoveMode, 'print-mode': layout.isPrintMode}"
 	data-upload-status="1">
 
@@ -92,7 +94,7 @@
 			</button>
 		</li>
 		<li class="title flex-grow separator">
-			<h1>Cost panel</h1>
+			<h1>Cost panel (бета-версия)</h1>
 			<h2>{{expCalc.accounts[expCalc.settings.currentAccount].meta.title}}</h2>
 		</li>
 		<li class="separator <? if ($current_user->ID == 0) { echo 'hidden'; } ?>">
@@ -154,7 +156,7 @@
                 <div class="text-field title"><b>Главное меню</b></div>
             </li>
 
-            <li class="hidden">
+            <li>
                 <button class="btn solid no-shadow" data-next title="Авторизация">
                     <i class="fas fa-user-circle"></i>
                     <b>Авторизация</b>
@@ -168,111 +170,20 @@
                         <div class="text-field title"><b>Авторизация</b></div>
                     </li>
 
-                    <li>
-                        <button class="btn solid no-shadow" data-next>
-                            <i class="fas fa-sign-in-alt"></i>
-                            <b>Войти / Выйти</b>
-                        </button>
+                    <li class="section-body">
+                        <div class="section-page">
+                            <?
+        // В админке в разделе 'страницы', обязательно необходимо вставить (активировать) шорткод на какой-нибудь странице [clean-login]
+        // можно просто выделить целую страницу для авторизации - login,
+        // после этого в настройках Clean Login можно будет увидеть вверху, что указанный шорткод уже используется и тогда
+        // этот плагин будет нормально работать
+        // Но чтобы проводить изменения с аккаунтом - необходимо это делать на отдельной статической странице login
 
-                        <ul class="section" data-level="3">
-                            <li class="section-title">
-                                <button class="btn no-shadow" data-previous title="Войти / Выйти">
-                                    <i class="fas fa-sign-in-alt"></i>
-                                </button>
-                                <div class="text-field title"><b>Войти / Выйти</b></div>
-                            </li>
+                                echo do_shortcode('[clean-login]');
 
-                            <li class="section-body">
-                                <div class="section-page">
-                                    <?
-                // В админке в разделе 'страницы', обязательно необходимо вставить (активировать) шорткод на какой-нибудь странице [clean-login]
-                // пусть даже неиспользуемой на сайте (можно просто выделить целую страницу для авторизации - login),
-                // после этого в настройках Clean Login можно будет увидеть вверху, что указанный шорткод уже используется и тогда
-                // этот плагин будет нормально работать
-
-                                        echo do_shortcode('[clean-login]');
-
-
-
-                                        if ($current_user->ID == 0) {
-                                            echo '<script src="//ulogin.ru/js/ulogin.js"></script><div class="text-field title"><b>Войти с помощью:</b></div><div id="uLogin_f2d7104d" data-uloginid="f2d7104d"></div>';
-                                        }
-                                    ?>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <button class="btn solid no-shadow" data-next>
-                            <i class="fas fa-user-plus"></i>
-                            <b>Регистрация</b>
-                        </button>
-
-                        <ul class="section" data-level="3">
-                            <li class="section-title">
-                                <button class="btn no-shadow" data-previous title="Регистрация">
-                                    <i class="fas fa-user-plus"></i>
-                                </button>
-                                <div class="text-field title"><b>Регистрация</b></div>
-                            </li>
-
-                            <li class="section-body">
-                                <div class="section-page">
-                                    <?
-                                        echo do_shortcode('[clean-login-register]');
-                                    ?>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <button class="btn solid no-shadow" data-next>
-                            <i class="fas fa-user-edit"></i>
-                            <b>Редактирование</b>
-                        </button>
-
-                        <ul class="section" data-level="3">
-                            <li class="section-title">
-                                <button class="btn no-shadow" data-previous title="Редактирование">
-                                    <i class="fas fa-user-edit"></i>
-                                </button>
-                                <div class="text-field title"><b>Редактирование</b></div>
-                            </li>
-
-                            <li class="section-body">
-                                <div class="section-page">
-                                    <?
-                                        echo do_shortcode('[clean-login-edit]');
-                                    ?>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <button class="btn solid no-shadow" data-next>
-                            <i class="fas fa-user-check"></i>
-                            <b>Восстановление</b>
-                        </button>
-
-                        <ul class="section" data-level="3">
-                            <li class="section-title">
-                                <button class="btn no-shadow" data-previous title="Восстановление">
-                                    <i class="fas fa-user-check"></i>
-                                </button>
-                                <div class="text-field title"><b>Восстановление</b></div>
-                            </li>
-
-                            <li class="section-body">
-                                <div class="section-page">
-                                    <?
-                                        echo do_shortcode('[clean-login-restore]');
-                                    ?>
-                                </div>
-                            </li>
-                        </ul>
+                                echo get_ulogin_panel();
+                            ?>
+                        </div>
                     </li>
                 </ul>
             </li>
@@ -306,6 +217,7 @@
                             </li>
 
                             <li class="section-body">
+
 
                                 <ul class="settings-list">
                                     <li ng-repeat="expensesType in expCalc.settings.expensesTypes track by $index">

@@ -33691,14 +33691,24 @@ function forEach(elements, callback) {
 		$scope.uploadData = function (isFullObject) {
 			var xhr, localStringJSON, serverStringAccountJSON, currentAccountNumber;
 
+            localStringJSON = JSON.stringify($scope.expCalc);
+
+            localStorage.setItem('expensesCalc', localStringJSON);
+
+			if (!loggedIn) {
+			    console.info('Не выполнен вход пользователя. Данные сохраняются только локально.');
+			    return false;
+            }
+
+console.log('Именно здесь поставить setTimeout на отправку данных');
+
+
 			currentAccountNumber = $scope.expCalc.settings.currentAccount;
 
 			xhr = new XMLHttpRequest();
-			localStringJSON = JSON.stringify($scope.expCalc);
+
 			serverStringAccountJSON = JSON.stringify($scope.expCalc.accounts[currentAccountNumber]);
 
-			localStorage.setItem('expensesCalc', localStringJSON);
-console.log('Именно здесь поставить setTimeout на отправку данных');
 			updateUploadStatus(0);
 
 			xhr.open("POST", '/send.php', true);
@@ -34717,6 +34727,8 @@ console.log('Именно здесь поставить setTimeout на отпр
         $scope.expCalc = getDataService;
 
         if (!$scope.expCalc.accounts.length) $scope.createAccount();
+
+        if (!fromServerData && loggedIn) $scope.uploadData(true);
     }];
 
     module.controller('calculatorCtrl', calculatorCtrl);
@@ -34736,13 +34748,13 @@ console.log('Именно здесь поставить setTimeout на отпр
 			fromServerData = false; // если не весь объект сохранился на сервере, то брать надо из localStorage
 		}
 
-		if (fromServerData.meta && fromLocalStorage.meta) {
-			if (fromServerData.meta.savedDate > fromLocalStorage.meta.savedDate) {
-				return fromServerData;
-			} else {
-				return fromLocalStorage;
-			}
-		}
+		// if (fromServerData.meta && fromLocalStorage.meta) {
+		// 	if (fromServerData.meta.savedDate > fromLocalStorage.meta.savedDate) {
+		// 		return fromServerData;
+		// 	} else {
+		// 		return fromLocalStorage;
+		// 	}
+		// }
 
 		if (fromServerData.meta) return fromServerData;
 

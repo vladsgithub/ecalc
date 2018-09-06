@@ -91,11 +91,24 @@ if (!function_exists('pagination')) { // если ф-я уже есть в до�
 	}
 }
 
+// область виджета на страницах
+if (function_exists('register_sidebar')){
+   register_sidebar( array(
+        'name'          => 'Область на страницах', //название виджета в админ-панели
+        'id'            => 'wsidebar-2', //идентификатор виджета
+        'description'   => 'контент для страниц', //описание виджета в админ-панели
+        'before_widget' => '<div id="%1$s" class="widget %2$s">', //открывающий тег виджета с динамичным идентификатором
+        'after_widget'  => '<div class="clear"></div></div>', //закрывающий тег виджета с очищающим блоком
+        'before_title'  => '<span class="widget-title">', //открывающий тег заголовка виджета
+        'after_title'   => '</span>',//закрывающий тег заголовка виджета
+        ) );
+}
+
 add_action( 'wp_enqueue_scripts', 'add_scripts_to_head' );
 if (!function_exists('add_scripts_to_head')) {
     function add_scripts_to_head() {
-//        wp_enqueue_script('production', get_template_directory_uri().'/assets/js/production.js?ver=1','','',false);
-        wp_enqueue_script('production', get_template_directory_uri().'/assets/js/production.min.js','','',false);
+        wp_enqueue_script('production', get_template_directory_uri().'/assets/js/production.js?ver=2','','',false);
+//        wp_enqueue_script('production', get_template_directory_uri().'/assets/js/production.min.js?ver=2','','',false);
     }
 }
 
@@ -111,13 +124,24 @@ if (!function_exists('add_scripts')) { // если ф-я уже есть в до
 	}
 }
 
+// Без этого условия не выводится контент на страницах, созданные из админки WordPress
+if (!function_exists('content_class_by_sidebar')) { // если ф-я уже есть в дочерней теме - нам не надо её определять
+	function content_class_by_sidebar() { // функция для вывода класса в зависимости от существования виджетов в сайдбаре
+		if (is_active_sidebar( 'sidebar' )) { // если есть
+			echo 'col-sm-9'; // пишем класс на 80% ширины
+		} else { // если нет
+			echo 'col-sm-12'; // контент на всю ширину
+		}
+	}
+}
+
 add_action('wp_print_styles', 'add_styles'); // приклеем ф-ю на добавление стилей в хедер
 if (!function_exists('add_styles')) { // если ф-я уже есть в дочерней теме - нам не надо её определять
 	function add_styles() { // добавление стилей
 	    if(is_admin()) return false; // если мы в админке - ничего не делаем
 //	    wp_enqueue_style( 'bs', get_template_directory_uri().'/ui/css/app-old.css' );
-//		wp_enqueue_style( 'style', get_template_directory_uri().'/assets/css/app.css?ver=1' ); // основные стили шаблона
-		wp_enqueue_style( 'style', get_template_directory_uri().'/assets/css/app.pref.css' ); // основные стили шаблона
+		wp_enqueue_style( 'style', get_template_directory_uri().'/assets/css/app.css?ver=2' ); // основные стили шаблона
+//		wp_enqueue_style( 'style', get_template_directory_uri().'/assets/css/app.pref.css?ver=2' ); // основные стили шаблона
 	}
 }
 
@@ -181,9 +205,9 @@ add_action( 'wp_head', 'mw_clear_wp_head', 1 );
 add_action( 'user_register', 'add_user_json_id' );
 function add_user_json_id( $user_id ) {
 	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "ecalc";
+	$username = "host1638368_1647";
+	$password = "vl@d161010";
+	$dbname = "host1638368_1647";
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
