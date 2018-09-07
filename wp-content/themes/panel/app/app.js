@@ -145,11 +145,13 @@ function forEach(elements, callback) {
 
 		$scope.uploadData = function (isFullObject, isDirectSave) {
 //todo: менять тайтл кнопки сохранения в зависимости от статуса
+            if (!isDirectSave) $scope.layout.isUpdatedObject = true;
+            if (!$scope.layout.isUpdatedObject) return false; // если объект не менялся, то выход
+
             var delay = (isDirectSave) ? 0 : 4000;
             var localStringJSON = JSON.stringify($scope.expCalc);
 
             $scope.layout.updatedDataTime = +new Date();
-            if (!isDirectSave) $scope.layout.isUpdatedObject = true;
 
             localStorage.setItem('expensesCalc', localStringJSON);
 

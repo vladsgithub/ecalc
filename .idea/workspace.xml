@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44bc63fb-9e01-4d9b-a8dc-1a1fc190dee4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" afterDir="false" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -85,8 +81,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="164" column="21" selection-start-line="164" selection-start-column="21" selection-end-line="164" selection-end-column="21" />
+            <state relative-caret-position="187">
+              <caret line="147" column="68" selection-start-line="147" selection-start-column="68" selection-end-line="147" selection-end-column="68" />
               <folding>
                 <element signature="e#1032#3393#0" />
               </folding>
@@ -206,7 +202,7 @@
       <path value="$PROJECT_DIR$/wp-content/themes/panel/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1932" />
@@ -362,12 +358,12 @@
       <workItem from="1533707277495" duration="1729000" />
       <workItem from="1536033078751" duration="4668000" />
       <workItem from="1536126104277" duration="11775000" />
-      <workItem from="1536297152149" duration="3960000" />
+      <workItem from="1536297152149" duration="4560000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180416000" />
+    <option name="totallyTimeSpent" value="181016000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -707,8 +703,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="164" column="21" selection-start-line="164" selection-start-column="21" selection-end-line="164" selection-end-column="21" />
+        <state relative-caret-position="187">
+          <caret line="147" column="68" selection-start-line="147" selection-start-column="68" selection-end-line="147" selection-end-column="68" />
           <folding>
             <element signature="e#1032#3393#0" />
           </folding>
