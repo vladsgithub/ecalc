@@ -33574,6 +33574,8 @@ function forEach(elements, callback) {
             isEditAccountsMode: false,
             isRemoveMode: false,
             isPrintMode: false,
+            isUpdatedObject: false,
+            updatedDataTime: 0,
             activeWindow: 1,
 
             openMenu: function() {
@@ -33581,6 +33583,10 @@ function forEach(elements, callback) {
                 this.isOpenAside = false;
             },
             openAside: function() {
+                if (window.location.href.indexOf('login') + 1) {
+                    window.location.href = "/";
+                }
+
                 this.isOpenAside = !this.isOpenAside;
 
                 if (this.isOpenAside) {
@@ -33688,10 +33694,13 @@ function forEach(elements, callback) {
             event.target.value = '';
         };
 
-		$scope.uploadData = function (isFullObject) {
-			var xhr, localStringJSON, serverStringAccountJSON, currentAccountNumber;
+		$scope.uploadData = function (isFullObject, isDirectSave) {
+//todo: менять тайтл кнопки сохранения в зависимости от статуса
+            var delay = (isDirectSave) ? 0 : 4000;
+            var localStringJSON = JSON.stringify($scope.expCalc);
 
-            localStringJSON = JSON.stringify($scope.expCalc);
+            $scope.layout.updatedDataTime = +new Date();
+            if (!isDirectSave) $scope.layout.isUpdatedObject = true;
 
             localStorage.setItem('expensesCalc', localStringJSON);
 
@@ -33700,33 +33709,41 @@ function forEach(elements, callback) {
 			    return false;
             }
 
-console.log('Именно здесь поставить setTimeout на отправку данных');
+            updateUploadStatus(0);
 
+            setTimeout(function () {
+                var now = +new Date();
 
-			currentAccountNumber = $scope.expCalc.settings.currentAccount;
+                if (!isDirectSave && (now - $scope.layout.updatedDataTime) < delay) return false;
 
-			xhr = new XMLHttpRequest();
+                var xhr, serverStringAccountJSON, currentAccountNumber;
 
-			serverStringAccountJSON = JSON.stringify($scope.expCalc.accounts[currentAccountNumber]);
+                currentAccountNumber = $scope.expCalc.settings.currentAccount;
 
-			updateUploadStatus(0);
+                xhr = new XMLHttpRequest();
 
-			xhr.open("POST", '/send.php', true);
-			xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+                serverStringAccountJSON = JSON.stringify($scope.expCalc.accounts[currentAccountNumber]);
 
-			xhr.onreadystatechange = function() {
-				if (this.readyState != 4) return;
+                xhr.open("POST", '/send.php', true);
+                xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
-				if (xhr.status != 200) {
-					console.error( '!!! We have a problem: ' + xhr.status + ': ' + xhr.statusText );
-                    updateUploadStatus(2);
-				} else {
-					console.info( 'We have received a response: ' + xhr.responseText ); // responseText -- текст ответа.
-                    updateUploadStatus(1);
-				}
-			};
+                xhr.onreadystatechange = function () {
+                    if (this.readyState != 4) return;
 
-			xhr.send( (isFullObject) ? localStringJSON : serverStringAccountJSON );
+                    if (xhr.status != 200) {
+                        console.error('!!! We have a problem: ' + xhr.status + ': ' + xhr.statusText);
+                        updateUploadStatus(2);
+                    } else {
+                        console.info('We have received a response: ' + xhr.responseText); // responseText -- текст ответа.
+                        updateUploadStatus(1);
+                        $scope.layout.isUpdatedObject = false;
+                    }
+                };
+
+                xhr.send((isFullObject) ? localStringJSON : serverStringAccountJSON);
+
+            }, delay);
+
 		};
 
 		$scope.downloadData = function () {

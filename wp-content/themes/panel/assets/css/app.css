@@ -5113,6 +5113,16 @@ aside.menu .nav-head {
 }
 aside.menu .nav-head .photo {
   width: 44px;
+  line-height: 44px;
+  text-align: center;
+  font-size: 0;
+}
+aside.menu .nav-head .photo > img {
+  display: inline-block;
+  max-height: 36px;
+  max-width: 36px;
+  vertical-align: middle;
+  outline: 2px solid #fff;
 }
 aside.menu .nav-body {
   flex-grow: 1;

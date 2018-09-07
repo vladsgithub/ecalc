@@ -98,7 +98,7 @@
 			<h2>{{expCalc.accounts[expCalc.settings.currentAccount].meta.title}}</h2>
 		</li>
 		<li class="separator <? if ($current_user->ID == 0) { echo 'hidden'; } ?>">
-			<button class="btn solid" title="Все изменения сохранены">
+			<button class="btn solid" title="Все изменения сохранены" ng-click="uploadData(true, true)">
 				<b class="status-line">
 				    <? echo $firstLetter.$secondLetter; ?>
 				</b>
@@ -118,9 +118,9 @@
 <aside class="menu">
     <ul class="nav-head flex">
         <li class="photo">
-
+            <img class="<? if ($current_user->ID == 0) { echo 'hidden'; } ?>" src="<? echo get_avatar_url($current_user->ID) ?>" />
         </li>
-        <li class="flex-grow">
+        <li class="flex-grow s-p2">
             <div class="text-field name solid capitalize">
                 <b>
                     <?
@@ -129,6 +129,7 @@
                 </b>
                 <b class="hidden">
                     <?
+                        echo 'User photo: ' . get_avatar_url($current_user->ID) . '<br />';
                         echo 'Username: ' . $current_user->user_login . '<br />';
                         echo 'email: ' . $current_user->user_email . '<br />';
                         echo 'first name: ' . $current_user->user_firstname . '<br />';
