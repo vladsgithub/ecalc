@@ -33549,7 +33549,7 @@ var saveAs = saveAs || (function(view) {
         || typeof window !== "undefined" && window
         || this
     ));
-var loadData, layoutControl;
+var loadData;
 
 function forEach(elements, callback) {
 	Array.prototype.forEach.call(elements, callback);
@@ -33577,6 +33577,7 @@ function forEach(elements, callback) {
             isUpdatedObject: false,
             updatedDataTime: 0,
             activeWindow: 1,
+            saveButtonTooltip: null,
 
             openMenu: function() {
                 this.isOpenMenu = true;
@@ -33667,6 +33668,22 @@ function forEach(elements, callback) {
             // 0 - pending
             // 1 - success
             // 2 - failure
+
+            var tooltip = '';
+
+            switch(status) {
+                case 0:
+                    tooltip = 'Проводится синхронизация данных ...';
+                    break;
+                case 1:
+                    tooltip = 'Данные синхронизированы успешно';
+                    break;
+                case 2:
+                    tooltip = 'Не удалось синхронизировать данные';
+                    break;
+            }
+
+            document.getElementById('saveButton').setAttribute('title', tooltip);
             document.getElementById('body').setAttribute('data-upload-status', status);
         };
 
@@ -33695,7 +33712,7 @@ function forEach(elements, callback) {
         };
 
 		$scope.uploadData = function (isFullObject, isDirectSave) {
-//todo: менять тайтл кнопки сохранения в зависимости от статуса
+
             if (!isDirectSave) $scope.layout.isUpdatedObject = true;
             if (!$scope.layout.isUpdatedObject) return false; // если объект не менялся, то выход
 
@@ -33706,7 +33723,7 @@ function forEach(elements, callback) {
 
             localStorage.setItem('expensesCalc', localStringJSON);
 
-			if (!loggedIn) {
+			if (!$scope.expCalc.meta.userID) {
 			    console.info('Не выполнен вход пользователя. Данные сохраняются только локально.');
 			    return false;
             }
@@ -34747,7 +34764,10 @@ function forEach(elements, callback) {
 
         if (!$scope.expCalc.accounts.length) $scope.createAccount();
 
-        if (!fromServerData && loggedIn) $scope.uploadData(true);
+        if ($scope.expCalc.meta.userID && (!fromServerData || fromServerData.meta.userID !== $scope.expCalc.meta.userID)) $scope.uploadData(true, true);
+//todo: не синхронизируются данные - в первом браузере (test2) меняем данные и теряем интернет, потом во втором браузере
+//todo: открываем и меняем данные подругому, а потом в первом браузере восстанавливает соединение и рефрешаем страницу
+//todo: и данные не синхронизированы - в каждом браузере остаются свои данные
     }];
 
     module.controller('calculatorCtrl', calculatorCtrl);
@@ -34767,13 +34787,13 @@ function forEach(elements, callback) {
 			fromServerData = false; // если не весь объект сохранился на сервере, то брать надо из localStorage
 		}
 
-		// if (fromServerData.meta && fromLocalStorage.meta) {
-		// 	if (fromServerData.meta.savedDate > fromLocalStorage.meta.savedDate) {
-		// 		return fromServerData;
-		// 	} else {
-		// 		return fromLocalStorage;
-		// 	}
-		// }
+		if (fromServerData.meta && fromLocalStorage.meta && fromServerData.meta.userID === fromLocalStorage.meta.userID) {
+			if (fromServerData.meta.savedDate > fromLocalStorage.meta.savedDate) {
+				return fromServerData;
+			} else {
+				return fromLocalStorage;
+			}
+		}
 
 		if (fromServerData.meta) return fromServerData;
 
@@ -34800,7 +34820,8 @@ function forEach(elements, callback) {
 
 		expensesCalc = {
 			meta: {
-				savedDate: 0
+				savedDate: 0,
+                userID: null
 			},
 			settings: {
 				currentAccount: 0,

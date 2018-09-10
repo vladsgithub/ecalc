@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44bc63fb-9e01-4d9b-a8dc-1a1fc190dee4" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/header.php" afterDir="false" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,8 +28,8 @@
       <file leaf-file-name="header.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/header.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="100" column="101" selection-start-line="100" selection-start-column="101" selection-end-line="100" selection-end-column="101" />
+            <state relative-caret-position="258">
+              <caret line="69" column="63" selection-start-line="69" selection-start-column="63" selection-end-line="69" selection-end-column="63" />
             </state>
           </provider>
         </entry>
@@ -81,11 +83,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="147" column="68" selection-start-line="147" selection-start-column="68" selection-end-line="147" selection-end-column="68" />
-              <folding>
-                <element signature="e#1032#3393#0" />
-              </folding>
+            <state relative-caret-position="428">
+              <caret line="1218" column="7" selection-start-line="1218" selection-start-column="7" selection-end-line="1218" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -112,12 +111,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Именно здесь поставить setTimeout на отправку данных</find>
-      <find>text-field</find>
-      <find>.icons</find>
-      <find>settings-list</find>
-      <find>toggle-box</find>
-      <find>ng-if</find>
       <find>complex</find>
       <find>settings-lis</find>
       <find>curr</find>
@@ -141,7 +134,13 @@
       <find>openAside</find>
       <find>setTimeout</find>
       <find>date()</find>
+      <find>updateUploadStatus</find>
+      <find>switch</find>
+      <find>layoutControl</find>
+      <find>loadData</find>
       <find>расч</find>
+      <find>userID</find>
+      <find>loggedIn</find>
     </findStrings>
     <replaceStrings>
       <replace>Название группы расходов</replace>
@@ -363,10 +362,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="181016000" />
+    <option name="totallyTimeSpent" value="186311000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7127193" visible="true" weight="0.17334037" />
@@ -381,31 +380,42 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Changes" order="7" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-    </layout>
-    <layout-to-restore>
-      <window_info anchor="bottom" id="Find" order="1" weight="0.28663793" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7127193" visible="true" weight="0.17334037" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.22591007" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Changes" order="7" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.28663793" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.3290461" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.21443966" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+    </layout>
+    <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7127193" visible="true" weight="0.17334037" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.22591007" />
       <window_info anchor="bottom" id="Changes" order="8" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.21538462" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3290461" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="11" weight="0.22591007" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.28663793" />
       <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
@@ -684,6 +694,9 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/page.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="700">
@@ -691,23 +704,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/page.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="100" column="101" selection-start-line="100" selection-start-column="101" selection-end-line="100" selection-end-column="101" />
+        <state relative-caret-position="258">
+          <caret line="69" column="63" selection-start-line="69" selection-start-column="63" selection-end-line="69" selection-end-column="63" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="147" column="68" selection-start-line="147" selection-start-column="68" selection-end-line="147" selection-end-column="68" />
-          <folding>
-            <element signature="e#1032#3393#0" />
-          </folding>
+        <state relative-caret-position="428">
+          <caret line="1218" column="7" selection-start-line="1218" selection-start-column="7" selection-end-line="1218" selection-end-column="7" />
         </state>
       </provider>
     </entry>

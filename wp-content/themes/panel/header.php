@@ -69,15 +69,14 @@
 		$secondLetter = mb_substr(end($userNameWords),0,1,'UTF-8');
 		if (count($userNameWords) <= 1) { $secondLetter = ''; }
 
-		$loggedIn = ($current_user->ID > 0) ? 'true' : 'false';
-
-		echo "<script language='JavaScript'>var loggedIn = $loggedIn; var fromServerData = '$loadedData';</script>";
+		echo "<script language='JavaScript'>var fromServerData = '$loadedData';</script>";
     ?>
 
 </head>
 
 <body id="body" ng-app="app" ng-controller="calculatorCtrl" ng-cloak="true" class="<? if ($current_user->ID > 0) { echo 'logged-in'; } ?>" 
 	ng-class="{'open-menu': layout.isOpenMenu, 'open-aside': layout.isOpenAside, 'remove-mode': layout.isRemoveMode, 'print-mode': layout.isPrintMode}"
+	ng-init="expCalc.meta.userID = <? echo $userID; ?>"
 	data-upload-status="1">
 
 
@@ -98,7 +97,7 @@
 			<h2>{{expCalc.accounts[expCalc.settings.currentAccount].meta.title}}</h2>
 		</li>
 		<li class="separator <? if ($current_user->ID == 0) { echo 'hidden'; } ?>">
-			<button class="btn solid" title="Все изменения сохранены" ng-click="uploadData(true, true)">
+			<button id="saveButton" class="btn solid" title="" ng-click="uploadData(true, true)">
 				<b class="status-line">
 				    <? echo $firstLetter.$secondLetter; ?>
 				</b>
