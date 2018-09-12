@@ -4364,7 +4364,7 @@ label.toggle i::after {
   text-align: right;
 }
 .number-input[disabled] s {
-  display: inline-block;
+  display: block;
 }
 .number-input input,
 .number-input b {

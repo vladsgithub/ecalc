@@ -33711,6 +33711,17 @@ function forEach(elements, callback) {
             event.target.value = '';
         };
 
+        $scope.validateJSON = function(obj, propertyName) {
+            try {
+                JSON.parse('[\"' + obj[propertyName] + '\"]');
+            } catch (e) {
+                alert('Здесь нельзя использовать спец.символы:\n' + obj[propertyName]);
+                obj[propertyName] = '???';
+                return false;
+            }
+            return true;
+        };
+
 		$scope.uploadData = function (isFullObject, isDirectSave) {
 
             if (!isDirectSave) $scope.layout.isUpdatedObject = true;
@@ -33988,6 +33999,7 @@ function forEach(elements, callback) {
 
 
         // METHODS OF ADDING ===============================
+//todo: Добавлять новые айтемы только если предыдущий не пустой
         $scope.addNewExpensesType = function () {
             $scope.expCalc.settings.expensesTypes.push({
                 name: '',

@@ -242,12 +242,12 @@
                                             <li class="flex-grow s-p1">
                                                 <div class="multiple-field">
                                                     <label class="text-input flex-grow">
-                                                        <input type="text" ng-model="expensesType.name" ng-change="uploadData()">
+                                                        <input type="text" ng-model="expensesType.name" ng-change="validateJSON(expensesType, 'name') && uploadData()">
                                                         <b>{{expensesType.name}}</b>
                                                     </label>
 
                                                     <label class="text-input flex-grow">
-                                                        <input type="text" ng-model="expensesType.icon" ng-change="uploadData()">
+                                                        <input type="text" ng-model="expensesType.icon" ng-change="validateJSON(expensesType, 'icon') && uploadData()">
                                                         <b>{{expensesType.icon}}</b>
                                                     </label>
                                                 </div>
@@ -364,7 +364,8 @@
                                                             </div>
 
                                                             <label class="head">
-                                                                <input type="text" ng-model="expCalc.settings.currencies.names[nameIndex]" ng-change="uploadData()">
+                                                                <input type="text" ng-model="expCalc.settings.currencies.names[nameIndex]"
+                                                                       ng-change="validateJSON(expCalc.settings.currencies.names, nameIndex) && uploadData()">
                                                                 <b>{{expCalc.settings.currencies.names[nameIndex]}}</b>
                                                             </label>
                                                         </div>
