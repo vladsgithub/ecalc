@@ -94,7 +94,12 @@
 		</li>
 		<li class="title flex-grow separator">
 			<h1>Cost panel (бета-версия)</h1>
-			<h2>{{expCalc.accounts[expCalc.settings.currentAccount].meta.title}}</h2>
+			<h2>
+			    {{expCalc.accounts[expCalc.settings.currentAccount].meta.title}}
+			    <b ng-if="expCalc.accounts[expCalc.settings.currentAccount].meta.savedDate > 0">
+			        [{{formatDate(expCalc.accounts[expCalc.settings.currentAccount].meta.savedDate)}}]
+			    </b>
+			</h2>
 		</li>
 		<li class="separator <? if ($current_user->ID == 0) { echo 'hidden'; } ?>">
 			<button id="saveButton" class="btn solid" title="" ng-click="uploadData(true, true)">
@@ -272,6 +277,20 @@
                                                 </div>
                                             </li>
                                         </ul>
+                                    </li>
+
+                                    <li class="s-p2">
+                                        <div class="text-field">
+                                            <b>
+                                                Названия иконок для новых типов расходов можно посмотреть по этой ссылке:
+                                                <a href="https://fontawesome.com/icons?d=gallery&s=solid&m=free" target="_blank">fontawesome icons</a>
+                                            </b>
+                                        </div>
+                                        <div class="text-field">
+                                            <b>
+                                                В бета-версии калькулятора необходимо написать название иконки, чтобы отобразить ее. В будущем будет реализован более удобный подход.
+                                            </b>
+                                        </div>
                                     </li>
                                 </ul>
 

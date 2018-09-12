@@ -209,6 +209,193 @@
 												</li>
 
 												<li class="flex-hidden flex-grow s-p0">
+													<label class="text-input" ng-disabled="expense.isPaid">
+														<input type="text" ng-model="expense.title">
+														<b>{{expense.title}}</b>
+													</label>
+												</li>
+
+												<li class="flex-hidden flex-grow s-p0">
+													<label class="number-input" ng-disabled="expense.isPaid">
+														<input type="number" ng-model="expense.value">
+														<b>
+															{{expense.value}}
+															<s>{{expCalc.settings.currencies.names[expense.currency].substring(0, 3)}}</s>
+														</b>
+													</label>
+												</li>
+											</ul>
+
+											<div id="details{{participantIndex}}.{{expenseIndex}}"
+												 class="expense-data clearfix"
+												 ng-class="{'completed': completedDetails(expense)}">
+
+												<ul class="flex expense-values">
+													<li class="s-p0">
+														<label class="text-select icons" ng-disabled="expense.isPaid">
+															<select ng-model="expense.type">
+																<option ng-repeat="expensesType in expCalc.settings.expensesTypes track by $index"
+																		value="{{$index}}" ng-selected="expense.type == $index">
+																	{{expensesType.name}}
+																</option>
+															</select>
+															{{expCalc.settings.expensesTypes[expense.type]}}
+															<b>
+																<i class="fas fa-{{expCalc.settings.expensesTypes[expense.type].icon}}"></i>
+															</b>
+														</label>
+													</li>
+
+													<li class="flex-grow flex-hidden s-p0 text-center">
+														<div class="text-field">
+															<b>{{formatDate(expense.date)}}</b>
+														</div>
+													</li>
+
+													<li class="s-p0">
+														<label class="text-select currency" ng-disabled="expense.isPaid">
+															<select ng-model="expense.currency"
+																	ng-options="key as value for (key, value) in expCalc.settings.currencies.names">
+															</select>
+															<b>{{expCalc.settings.currencies.names[expense.currency].substring(0, 3)}}</b>
+														</label>
+													</li>
+												</ul>
+
+												<div class="expense-details">
+
+													<div class="details-view">
+
+														<ul class="members flex flex-wrap space-between">
+															<li>
+																<div class="text-field name thin">
+																	<b>Участники:</b>
+																</div>
+															</li>
+
+															<li ng-repeat="participation in expense.partList track by $index">
+																<label class="checkbox decoration thin" ng-disabled="expense.isPaid">
+																	<input type="checkbox"
+																		   ng-model="expense.partList[$index]"
+																		   ng-change="checkPartList(expense.partList, $index)">
+																	<i></i>
+																	<b>{{account.participants[$index].meta.title}}</b>
+																</label>
+															</li>
+														</ul>
+
+														<div class="details">
+
+															<div class="text-field name thin block s-p2">
+																<b class="s-p0">Подробности: (Назв./Кол./Цена)</b>
+															</div>
+
+															<ul class="flex details-item"
+																ng-class="{'checked': detail.isChecked}"
+																ng-repeat="detail in expense.details track by $index"
+																ng-init="detailIndex = $index">
+																<li class="s-p0">
+																	<label class="checkbox remove-mode-false">
+																		<input type="checkbox" ng-model="detail.isChecked" ng-change="uploadData()">
+																		<i></i>
+																		<b>{{expenseIndex + 1}}.{{detailIndex + 1}}</b>
+																	</label>
+
+																	<button class="btn solid warning remove-mode-true" title="Удалить этот пункт"
+																			ng-click="removeDetailsFromExpense(expense, detailIndex)">
+																		<i class="fas fa-trash-alt"></i>
+																		<b>{{expenseIndex + 1}}.{{detailIndex + 1}}</b>
+																	</button>
+																</li>
+
+																<li class="flex-grow s-p0">
+																	<div class="multiple-field">
+																		<label class="text-input" ng-disabled="detail.isChecked">
+																			<input type="text" ng-model="detail.title" ng-change="uploadData()">
+																			<b>{{detail.title}}</b>
+																		</label>
+
+																		<label class="text-input text-center min-field" ng-disabled="detail.isChecked">
+																			<input type="text" ng-model="detail.qty" ng-change="uploadData()">
+																			<b>{{detail.qty}}</b>
+																		</label>
+																	</div>
+																</li>
+
+																<li class="cost s-p0">
+																	<label class="number-input" ng-disabled="detail.isChecked">
+																		<input type="number" ng-model="detail.value" ng-change="uploadData()">
+																		<b>{{detail.value}}</b>
+																	</label>
+																</li>
+															</ul>
+
+														</div>
+
+													</div>
+
+													<ul class="flex details-item details-control">
+														<li class="details-buttons flex-grow s-p0">
+															<button class="btn solid success new-point-btn" ng-click="addNewDetailsToExpense(expense)">
+																<i class="fas fa-plus"></i>
+																<b class="small">Пункт</b>
+															</button>
+														</li>
+
+														<li class="details-title">
+															<div class="text-field name">
+																<b>Детали этого расхода</b>
+															</div>
+														</li>
+
+														<li class="s-p0">
+															<button class="btn solid details-btn"
+																	ng-click="layoutControl.toggleDetailsView1('details' + participantIndex + '.' + expenseIndex)">
+																<i class="fas fa-folder"></i>
+																<b class="small no-middle-mobile">Детали</b>
+															</button>
+														</li>
+													</ul>
+
+												</div>
+
+											</div>
+
+											<label class="checkbox paid-out">
+												<input type="checkbox" ng-model="expense.isPaid" ng-change="uploadData()">
+												<i></i>
+											</label>
+
+										</li>
+
+
+
+
+
+
+
+
+
+
+
+										<li class="expense"
+											ng-repeat="expense in participant.expenses track by $index"
+											ng-init="expenseIndex = $index">
+
+											<ul class="flex expense-title">
+												<li class="flex-shrink expense-number s-p0">
+													<div class="text-field title remove-mode-false">
+														<b>{{participantIndex + 1}}.{{expenseIndex + 1}}</b>
+													</div>
+
+													<button class="btn solid warning remove-mode-true" title="Удалить этот расход"
+															ng-click="removeExpense(participantIndex, expenseIndex)">
+														<i class="fas fa-trash-alt"></i>
+														<b>{{participantIndex + 1}}.{{expenseIndex + 1}}</b>
+													</button>
+												</li>
+
+												<li class="flex-hidden flex-grow s-p0">
 													<div class="multiple-field">
 														<label class="text-input flex-grow" ng-disabled="expense.isPaid">
 															<input type="text" ng-model="expense.title">

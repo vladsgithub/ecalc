@@ -4363,11 +4363,23 @@ label.toggle i::after {
 .number-input {
   text-align: right;
 }
+.number-input[disabled] s {
+  display: inline-block;
+}
 .number-input input,
 .number-input b {
   line-height: 15px;
   font-size: 1.3rem;
   font-weight: bold;
+}
+.number-input s {
+  display: none;
+  margin-left: 2px;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  text-decoration: underline;
 }
 .text-select {
   position: relative;
@@ -5074,6 +5086,10 @@ header .head h2 {
   header .head h2 {
     margin-top: 9px;
   }
+}
+header .head h2 > b {
+  margin-left: 10px;
+  font-size: 0.8rem;
 }
 header .head .title {
   display: flex;

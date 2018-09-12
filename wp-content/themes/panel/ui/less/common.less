@@ -543,11 +543,24 @@ label {
 .number-input {
 	text-align: right;
 
+	&[disabled] s {
+		display: inline-block;
+	}
+
 	input,
 	b {
 		line-height: 15px;
 		font-size: 1.3rem;
 		font-weight: bold;
+	}
+	s {
+		display: none;
+		margin-left: 2px;
+		vertical-align: middle;
+		white-space: nowrap;
+		font-size: 0.9rem;
+		text-transform: uppercase;
+		text-decoration: underline;
 	}
 }
 

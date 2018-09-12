@@ -205,6 +205,7 @@ function forEach(elements, callback) {
                         console.info('We have received a response: ' + xhr.responseText); // responseText -- текст ответа.
                         updateUploadStatus(1);
                         $scope.layout.isUpdatedObject = false;
+                        // console.log(JSON.parse(xhr.responseText));
                     }
                 };
 
@@ -1214,9 +1215,7 @@ function forEach(elements, callback) {
         if (!$scope.expCalc.accounts.length) $scope.createAccount();
 
         if ($scope.expCalc.meta.userID && (!fromServerData || fromServerData.meta.userID !== $scope.expCalc.meta.userID)) $scope.uploadData(true, true);
-//todo: не синхронизируются данные - в первом браузере (test2) меняем данные и теряем интернет, потом во втором браузере
-//todo: открываем и меняем данные подругому, а потом в первом браузере восстанавливает соединение и рефрешаем страницу
-//todo: и данные не синхронизированы - в каждом браузере остаются свои данные
+
     }];
 
     module.controller('calculatorCtrl', calculatorCtrl);
@@ -1230,7 +1229,13 @@ function forEach(elements, callback) {
         var currencies, expensesTypes, expensesCalc;
 
 		var fromLocalStorage = (localStorage.getItem('expensesCalc')) ? JSON.parse(localStorage.getItem("expensesCalc")) : false;
-		fromServerData = (fromServerData) ? JSON.parse(fromServerData) : false;
+
+        try {
+            fromServerData = (fromServerData) ? JSON.parse(fromServerData) : false;
+        } catch (err) {
+            fromServerData = false;
+            console.error('Данные от сервера повреждены, поэтому используются локальные данные!');
+        }
 
 		if (!fromServerData.accounts) {
 			fromServerData = false; // если не весь объект сохранился на сервере, то брать надо из localStorage
