@@ -809,17 +809,21 @@ section {
 	}
 	.expense-details {
 		float: right;
-		margin: 16px -8px 0;
+		margin: 8px -8px 0;
 		padding: 8px 6px;
 		width: 100%; min-width: 296px;
 		border: 2px solid @brand-strong;
 		border-radius: 8px;
 
 		@media only screen and (max-width: (@mobile - 1)) {
+			margin-top: 4px;
 			margin-right: -4px;
 			padding-right: 2px;
 			border-right: 0;
 			border-radius: 8px 0 0 8px;
+		}
+		@media only screen and (min-width: @middle-mobile) and (max-width: (@mobile - 1)) {
+			margin-top: 8px;
 		}
 
 		.details-view {

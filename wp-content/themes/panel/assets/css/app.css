@@ -3823,6 +3823,11 @@ table {
     display: none !important;
   }
 }
+@media only screen and (min-width: 640px) {
+  .only-mobile {
+    display: none !important;
+  }
+}
 @media only screen and (min-width: 480px) {
   .only-middle-mobile {
     display: none !important;
@@ -4287,6 +4292,18 @@ label.toggle i::after {
 .number-input[disabled] input {
   display: none;
 }
+.text-input[disabled] i,
+.number-input[disabled] i {
+  display: inline-block;
+  height: 10px;
+  width: 24px;
+}
+.text-input[disabled] i::before,
+.number-input[disabled] i::before {
+  position: absolute;
+  top: 1px;
+  font-size: 16px;
+}
 .text-input input,
 .number-input input {
   position: absolute;
@@ -4359,6 +4376,10 @@ label.toggle i::after {
   word-wrap: break-word;
   transform: translateY(0);
   transition: transform 0.2s;
+}
+.text-input i,
+.number-input i {
+  display: none;
 }
 .number-input {
   text-align: right;
@@ -4592,6 +4613,22 @@ label.toggle i::after {
 }
 .checkbox input:focus + i::after {
   content: "";
+}
+.checkbox input[disabled]:checked + i {
+  opacity: 1;
+  background: transparent;
+  color: #696969;
+}
+.checkbox input[disabled]:checked ~ b {
+  color: #696969;
+}
+.checkbox input[disabled] + i {
+  opacity: 0.7;
+  background: #888;
+  color: #888;
+}
+.checkbox input[disabled] ~ b {
+  color: #888;
 }
 .checkbox i {
   float: left;
@@ -4928,6 +4965,12 @@ label.toggle i::after {
 }
 .multiple-field > label[disabled] {
   height: auto;
+}
+@media only screen and (max-width: 639px) {
+  .multiple-field > label.no-mobile + label,
+  .multiple-field > label.no-mobile + label[disabled] {
+    margin-left: 0;
+  }
 }
 .multiple-field > label + label {
   display: block;
@@ -5734,7 +5777,7 @@ section a {
 }
 .step-1 .expense-details {
   float: right;
-  margin: 16px -8px 0;
+  margin: 8px -8px 0;
   padding: 8px 6px;
   width: 100%;
   min-width: 296px;
@@ -5743,10 +5786,16 @@ section a {
 }
 @media only screen and (max-width: 639px) {
   .step-1 .expense-details {
+    margin-top: 4px;
     margin-right: -4px;
     padding-right: 2px;
     border-right: 0;
     border-radius: 8px 0 0 8px;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 639px) {
+  .step-1 .expense-details {
+    margin-top: 8px;
   }
 }
 .step-1 .expense-details .details-view {
