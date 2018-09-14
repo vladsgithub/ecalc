@@ -4343,6 +4343,12 @@ label.toggle i::after {
   -webkit-appearance: none;
   margin: 0;
 }
+.text-input input::placeholder,
+.number-input input::placeholder {
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: #888;
+}
 .text-input input[disabled] + b,
 .number-input input[disabled] + b {
   z-index: 2;
@@ -4376,6 +4382,13 @@ label.toggle i::after {
   word-wrap: break-word;
   transform: translateY(0);
   transition: transform 0.2s;
+}
+.text-input b:empty::before,
+.number-input b:empty::before {
+  content: attr(data-placeholder);
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: #888;
 }
 .text-input i,
 .number-input i {
@@ -5518,14 +5531,8 @@ section a {
   padding: 0 1px;
   box-sizing: border-box;
 }
-.three-window-lt > .header-lt li:nth-child(1) .btn {
-  background: #f0fff0;
-}
-.three-window-lt > .header-lt li:nth-child(2) .btn {
-  background: #ffffe2;
-}
-.three-window-lt > .header-lt li:nth-child(3) .btn {
-  background: #fff3f3;
+.three-window-lt > .header-lt li .btn {
+  background: #fff;
 }
 .three-window-lt > .header-lt .btn {
   width: 100%;
@@ -5716,6 +5723,10 @@ section a {
 .participant-head .collapse-btn i {
   transition: transform 0.2s;
 }
+.participant-head .report {
+  margin-top: 2px;
+  border-top: 1px solid #fff;
+}
 .participant-body {
   padding-bottom: 16px;
 }
@@ -5888,6 +5899,7 @@ section a {
 footer {
   height: 16px;
   margin-top: -16px;
+  font-size: 0.8rem;
 }
 .cleanlogin-container input[type=text],
 .cleanlogin-container input[type=password],

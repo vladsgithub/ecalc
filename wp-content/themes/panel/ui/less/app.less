@@ -555,15 +555,9 @@ section {
 			width: 33.33%;
 			padding: 0 1px;
 			box-sizing: border-box;
-
-			&:nth-child(1) {
-				.btn { background: @low-green; }
-			}
-			&:nth-child(2) {
-				.btn { background: @low-yellow; }
-			}
-			&:nth-child(3) {
-				.btn { background: @low-red; }
+			
+			.btn {
+				background: @white;
 			}
 		}
 		.btn {
@@ -736,6 +730,10 @@ section {
 	}
 	.collapse-btn i {
 		transition: transform @delay;
+	}
+	.report {
+		margin-top: 2px;
+		border-top: 1px solid @white;
 	}
 }
 
@@ -926,6 +924,7 @@ section {
 footer {
 	height: 16px;
 	margin-top: -16px;
+	font-size: 0.8rem;
 }
 
 

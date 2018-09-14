@@ -518,6 +518,11 @@ label {
 			-webkit-appearance: none;
 			margin: 0;
 		}
+		&::placeholder {
+			font-size: 0.9rem;
+			font-weight: normal;
+			color: @gray;
+		}
 
 		&[disabled] {
 			+ b {
@@ -553,6 +558,13 @@ label {
 		word-wrap: break-word;
 		transform: translateY(0);
 		transition: transform @delay;
+
+		&:empty::before {
+			content: attr(data-placeholder);
+			font-size: 0.9rem;
+			font-weight: normal;
+			color: @gray;
+		}
 	}
 	i {
 		display: none;

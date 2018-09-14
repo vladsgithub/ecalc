@@ -33810,7 +33810,7 @@ function forEach(elements, callback) {
                 },
                 meta: {
 					index: accountIndex,
-                    title: 'Новый расчет ' + accountIndex,
+                    title: '',
                     total: 0,
                     fullRefund: 0,
                     negBalance: 0,
@@ -33834,7 +33834,7 @@ function forEach(elements, callback) {
             var participantIndex = currentAccount.participants.length;
             var newParticipant = {
                 meta: {
-                    title: 'Участник ' + $scope.expCalc.settings.currentAccount + '.' + participantIndex,
+                    title: '',
                     participation: 1,
                     preferredCurrency: currentAccount.settings.accountCurrency,
                     total: 0,
@@ -34007,7 +34007,6 @@ function forEach(elements, callback) {
 
 
         // METHODS OF ADDING ===============================
-//todo: Добавлять новые айтемы только если предыдущий не пустой
         $scope.addNewExpensesType = function () {
             $scope.expCalc.settings.expensesTypes.push({
                 name: '',
@@ -34033,7 +34032,7 @@ function forEach(elements, callback) {
             var accountIndex = $scope.expCalc.settings.currentAccount;
             var expenseIndex = participant.expenses.length;
             var newExpense = {
-                title: null,
+                title: '',
                 type: '0',
                 date: '' + new Date(),
                 value: null,
@@ -34387,6 +34386,14 @@ function forEach(elements, callback) {
             participant.meta.fullBalanceByBank = $scope.roundOff(participant.meta.balance - result);
 
             return participant.meta.fullBalanceByBank;
+        };
+
+        $scope.getIconSymbol = function (iconName, title) {
+            return (title.length) ? '<i class="fas fa-' + iconName + ' only-mobile"></i>' : '';
+        };
+
+        $scope.getCurrencySymbol = function (currency, expenseValue) {
+            return $sce.trustAsHtml((expenseValue) ? '<s class="only-mobile">' + currency + '</s>' : '');
         };
 
 

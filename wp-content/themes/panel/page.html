@@ -120,6 +120,17 @@
 							</li>
 						</ul>
 
+						<div class="s-p1">
+							<label class="toggle">
+								<input type="checkbox" ng-model="layout.isRemoveMode">
+								<i></i>
+							</label>
+
+							<div class="text-field s-p2">
+								<b>Режим удаления данных</b>
+							</div>
+						</div>
+
 						<ul class="flex">
 							<li class="flex-shrink">
 								<div class="text-field title">
@@ -164,10 +175,10 @@
 
 										<li class="flex-grow s-p0">
 											<label class="text-input">
-												<input type="text"
+												<input type="text" placeholder="Имя участника"
 													   ng-model="participant.meta.title"
 													   ng-change="validateJSON(participant.meta, 'title') && uploadData()">
-												<b>{{participant.meta.title}}</b>
+												<b data-placeholder="Имя участника">{{participant.meta.title}}</b>
 											</label>
 										</li>
 
@@ -211,8 +222,11 @@
 												<li class="flex-hidden flex-grow s-p0">
 													<div class="multiple-field">
 														<label class="text-input" ng-disabled="expense.isPaid">
-															<input type="text" ng-model="expense.title" ng-change="validateJSON(expense, 'title') && uploadData()">
-															<b>
+															<input type="text" placeholder="Название расхода"
+																   ng-model="expense.title"
+																   ng-change="validateJSON(expense, 'title') && uploadData()">
+															<b data-placeholder="Название расхода" ng-if="!expense.title.length"></b>
+															<b ng-if="expense.title.length">
 																<i class="fas fa-{{expCalc.settings.expensesTypes[expense.type].icon}} only-mobile"></i>
 																{{expense.title}}
 															</b>
@@ -244,8 +258,11 @@
 														</label>
 
 														<label class="number-input" ng-disabled="expense.isPaid">
-															<input type="number" ng-model="expense.value" ng-change="uploadData()">
-															<b>
+															<input type="number" placeholder="Стоимость"
+																   ng-model="expense.value"
+																   ng-change="uploadData()">
+															<b data-placeholder="Стоимость" ng-if="expense.value === null"></b>
+															<b ng-if="expense.value !== null">
 																{{expense.value}}
 																<s class="only-mobile">{{expCalc.settings.currencies.names[expense.currency].substring(0, 3)}}</s>
 															</b>
@@ -551,7 +568,7 @@
 										</li>
 									</ul>
 
-									<ul class="flex s-p1">
+									<ul class="flex s-p1 report">
 										<li class="flex-grow">
 											<div class="number-field solid marker text-left">
 												<b>
