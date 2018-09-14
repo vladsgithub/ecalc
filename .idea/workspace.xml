@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="44bc63fb-9e01-4d9b-a8dc-1a1fc190dee4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide.html" beforeDir="false" afterPath="$PROJECT_DIR$/guide.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/page.html" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less" afterDir="false" />
@@ -36,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="page.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="page.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="235" column="99" lean-forward="true" selection-start-line="235" selection-start-column="99" selection-end-line="235" selection-end-column="99" />
+            <state relative-caret-position="649">
+              <caret line="285" column="91" selection-start-line="285" selection-start-column="91" selection-end-line="285" selection-end-column="91" />
             </state>
           </provider>
         </entry>
@@ -48,8 +49,8 @@
       <file leaf-file-name="variables.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="14" selection-start-line="2" selection-end-line="2" selection-end-column="14" />
+            <state relative-caret-position="697">
+              <caret line="41" column="12" selection-start-line="41" selection-end-line="41" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -75,8 +76,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="450" column="63" selection-start-line="450" selection-start-column="63" selection-end-line="450" selection-end-column="63" />
+            <state relative-caret-position="335">
+              <caret line="105" column="82" selection-start-line="105" selection-start-column="82" selection-end-line="105" selection-end-column="82" />
             </state>
           </provider>
         </entry>
@@ -84,8 +85,8 @@
       <file leaf-file-name="app.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="817" column="8" lean-forward="true" selection-start-line="817" selection-start-column="8" selection-end-line="817" selection-end-column="59" />
+            <state relative-caret-position="275">
+              <caret line="761" column="21" selection-start-line="761" selection-start-column="12" selection-end-line="761" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -103,11 +104,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="common.less" pinned="false" current-in-tab="true">
+      <file leaf-file-name="common.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="1172" column="29" lean-forward="true" selection-start-line="1172" selection-start-column="29" selection-end-line="1172" selection-end-column="29" />
+            <state relative-caret-position="190">
+              <caret line="478" column="26" selection-start-line="478" selection-start-column="26" selection-end-line="478" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -125,12 +126,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>date()</find>
-      <find>updateUploadStatus</find>
-      <find>switch</find>
-      <find>layoutControl</find>
-      <find>loadData</find>
-      <find>расч</find>
       <find>userID</find>
       <find>date</find>
       <find>formatDate</find>
@@ -152,9 +147,15 @@
       <find>checkbox</find>
       <find>with-icon</find>
       <find>only-mobile</find>
-      <find>ng-class</find>
-      <find>multiple-field</find>
       <find>margin-top: 4px;</find>
+      <find>multiple-field</find>
+      <find>ng-class</find>
+      <find>window-lt</find>
+      <find>layoutControl</find>
+      <find>width: 24</find>
+      <find>expense-data</find>
+      <find>toggleDetailsView1</find>
+      <find>&lt;select</find>
     </findStrings>
     <replaceStrings>
       <replace>Название группы расходов</replace>
@@ -196,11 +197,11 @@
         <option value="$PROJECT_DIR$/wp-content/themes/panel/functions.php" />
         <option value="$PROJECT_DIR$/send.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/header.php" />
-        <option value="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" />
         <option value="$PROJECT_DIR$/guide.html" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" />
-        <option value="$PROJECT_DIR$/wp-content/themes/panel/page.html" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/page.html" />
       </list>
     </option>
   </component>
@@ -376,7 +377,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="211771000" />
+    <option name="totallyTimeSpent" value="215871000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -687,13 +688,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="450" column="63" selection-start-line="450" selection-start-column="63" selection-end-line="450" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/header.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
@@ -714,29 +708,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="14" selection-start-line="2" selection-end-line="2" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="235" column="99" lean-forward="true" selection-start-line="235" selection-start-column="99" selection-end-line="235" selection-end-column="99" />
+        <state relative-caret-position="697">
+          <caret line="41" column="12" selection-start-line="41" selection-end-line="41" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="817" column="8" lean-forward="true" selection-start-line="817" selection-start-column="8" selection-end-line="817" selection-end-column="59" />
+        <state relative-caret-position="275">
+          <caret line="761" column="21" selection-start-line="761" selection-start-column="12" selection-end-line="761" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="1172" column="29" lean-forward="true" selection-start-line="1172" selection-start-column="29" selection-end-line="1172" selection-end-column="29" />
+        <state relative-caret-position="190">
+          <caret line="478" column="26" selection-start-line="478" selection-start-column="26" selection-end-line="478" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="105" column="82" selection-start-line="105" selection-start-column="82" selection-end-line="105" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="649">
+          <caret line="285" column="91" selection-start-line="285" selection-start-column="91" selection-end-line="285" selection-end-column="91" />
         </state>
       </provider>
     </entry>

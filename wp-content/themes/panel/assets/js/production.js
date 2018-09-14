@@ -33651,8 +33651,16 @@ function forEach(elements, callback) {
             toggleBodyView: function(id) {
                 document.getElementById(id).classList.toggle('open-body');
             },
-            toggleDetailsView1: function(id) {
-                document.getElementById(id).classList.toggle('open-details');
+            toggleDetailsView1: function(id, action) {
+                if (action) {
+                    if (action > 0) {
+                        document.getElementById(id).classList.add('open-details');
+                    } else {
+                        document.getElementById(id).classList.remove('open-details');
+                    }
+                } else {
+                    document.getElementById(id).classList.toggle('open-details');
+                }
             }
         };
 
@@ -34025,7 +34033,7 @@ function forEach(elements, callback) {
             var accountIndex = $scope.expCalc.settings.currentAccount;
             var expenseIndex = participant.expenses.length;
             var newExpense = {
-                title: 'Расход ' + accountIndex + '.' + participantIndex + '.' + expenseIndex,
+                title: null,
                 type: '0',
                 date: '' + new Date(),
                 value: null,

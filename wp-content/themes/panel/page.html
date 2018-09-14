@@ -211,7 +211,7 @@
 												<li class="flex-hidden flex-grow s-p0">
 													<div class="multiple-field">
 														<label class="text-input" ng-disabled="expense.isPaid">
-															<input type="text" ng-model="expense.title" ng-change="validateJSON(expense, 'title')">
+															<input type="text" ng-model="expense.title" ng-change="validateJSON(expense, 'title') && uploadData()">
 															<b>
 																<i class="fas fa-{{expCalc.settings.expensesTypes[expense.type].icon}} only-mobile"></i>
 																{{expense.title}}
@@ -219,7 +219,7 @@
 														</label>
 
 														<label class="text-select icons no-mobile" ng-disabled="expense.isPaid">
-															<select ng-model="expense.type">
+															<select ng-model="expense.type" ng-change="uploadData()">
 																<option ng-repeat="expensesType in expCalc.settings.expensesTypes track by $index"
 																		value="{{$index}}" ng-selected="expense.type == $index">
 																	{{expensesType.name}}
@@ -237,13 +237,14 @@
 													<div class="multiple-field">
 														<label class="text-select currency no-mobile" ng-disabled="expense.isPaid">
 															<select ng-model="expense.currency"
+																	ng-change="uploadData()"
 																	ng-options="key as value for (key, value) in expCalc.settings.currencies.names">
 															</select>
 															<b>{{expCalc.settings.currencies.names[expense.currency].substring(0, 3)}}</b>
 														</label>
 
 														<label class="number-input" ng-disabled="expense.isPaid">
-															<input type="number" ng-model="expense.value">
+															<input type="number" ng-model="expense.value" ng-change="uploadData()">
 															<b>
 																{{expense.value}}
 																<s class="only-mobile">{{expCalc.settings.currencies.names[expense.currency].substring(0, 3)}}</s>
@@ -255,12 +256,13 @@
 
 											<div id="details{{participantIndex}}.{{expenseIndex}}"
 												 class="expense-data clearfix"
-												 ng-class="{'completed': completedDetails(expense)}">
+												 ng-init="isOpenDetails = !expense.title && !expense.value"
+												 ng-class="{'completed': completedDetails(expense), 'open-details': isOpenDetails}">
 
 												<ul class="flex expense-values only-mobile" ng-class="{'hidden': expense.isPaid}">
 													<li class="s-p0">
 														<label class="text-select icons">
-															<select ng-model="expense.type">
+															<select ng-model="expense.type" ng-change="uploadData()">
 																<option ng-repeat="expensesType in expCalc.settings.expensesTypes track by $index"
 																		value="{{$index}}" ng-selected="expense.type == $index">
 																	{{expensesType.name}}
@@ -282,6 +284,7 @@
 													<li class="s-p0">
 														<label class="text-select currency">
 															<select ng-model="expense.currency"
+																	ng-change="uploadData()"
 																	ng-options="key as value for (key, value) in expCalc.settings.currencies.names">
 															</select>
 															<b>{{expCalc.settings.currencies.names[expense.currency].substring(0, 3)}}</b>
@@ -404,7 +407,9 @@
 											</div>
 
 											<label class="checkbox paid-out">
-												<input type="checkbox" ng-model="expense.isPaid" ng-change="uploadData()">
+												<input type="checkbox" ng-model="expense.isPaid"
+													   ng-change="uploadData()"
+													   ng-click="layoutControl.toggleDetailsView1('details' + participantIndex + '.' + expenseIndex, (expense.isPaid) ? -1 : 1)">
 												<i></i>
 											</label>
 

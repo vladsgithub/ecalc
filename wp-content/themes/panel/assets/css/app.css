@@ -4296,7 +4296,7 @@ label.toggle i::after {
 .number-input[disabled] i {
   display: inline-block;
   height: 10px;
-  width: 24px;
+  width: 20px;
 }
 .text-input[disabled] i::before,
 .number-input[disabled] i::before {
@@ -5632,21 +5632,15 @@ section a {
 .three-window-lt .windows-lt > li.left-lt {
   left: 0;
 }
-.three-window-lt .windows-lt > li.left-lt > .window-lt {
-  background: #f0fff0;
-}
 .three-window-lt .windows-lt > li.center-lt {
   position: relative;
   margin: auto;
 }
-.three-window-lt .windows-lt > li.center-lt > .window-lt {
-  background: #ffffe2;
-}
 .three-window-lt .windows-lt > li.right-lt {
   right: 0;
 }
-.three-window-lt .windows-lt > li.right-lt > .window-lt {
-  background: #fff3f3;
+.three-window-lt .windows-lt > li > .window-lt {
+  background: #e2e8ff;
 }
 .three-window-lt .title-lt {
   z-index: 1;
