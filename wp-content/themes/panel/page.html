@@ -14,8 +14,24 @@
 		</li>
 	</ul>
 
-	<div class="aside-body">
+	<ul class="aside-head flex s-p1">
+		<li class="s-p1">
+			<label class="text-select currency">
+				<select ng-model="expCalc.accounts[expCalc.settings.currentAccount].settings.accountCurrency"
+						ng-options="key as value for (key, value) in expCalc.settings.currencies.names" ng-change="uploadData()">
+				</select>
+				<b>{{expCalc.settings.currencies.names[expCalc.accounts[expCalc.settings.currentAccount].settings.accountCurrency].substring(0, 3)}}</b>
+			</label>
+		</li>
 
+		<li class="flex-grow s-p1">
+			<div class="text-field">
+				<b>Основная валюта в текущем расчете</b>
+			</div>
+		</li>
+	</ul>
+
+	<div class="aside-body">
 		<ul>
 			<li class="account flex"
 				ng-class="{'active': expCalc.settings.currentAccount == $index}"
@@ -175,10 +191,10 @@
 
 										<li class="flex-grow s-p0">
 											<label class="text-input">
-												<input type="text" placeholder="Имя участника"
+												<input type="text" placeholder="Имя участника {{participantIndex + 1}}"
 													   ng-model="participant.meta.title"
 													   ng-change="validateJSON(participant.meta, 'title') && uploadData()">
-												<b data-placeholder="Имя участника">{{participant.meta.title}}</b>
+												<b data-placeholder="Имя участника {{participantIndex + 1}}">{{participant.meta.title}}</b>
 											</label>
 										</li>
 
@@ -568,7 +584,7 @@
 										</li>
 									</ul>
 
-									<ul class="flex s-p1 report">
+									<ul class="flex report">
 										<li class="flex-grow">
 											<div class="number-field solid marker text-left">
 												<b>
@@ -741,13 +757,13 @@
 								ng-init="participantIndex = $index">
 
 								<div class="participant-head">
-									<ul class="flex s-p0">
+									<ul class="flex s-p0 with-separator">
 										<li class="flex flex-grow flex-wrap s-p0">
 											<div class="text-field solid title">
 												<b>{{participantIndex + 1}}.</b>
 											</div>
 
-											<div class="flex-grow text-field name solid s-p1">
+											<div class="flex-grow text-field name solid s-p1 title-max-width">
 												<b>{{participant.meta.title}}</b>
 											</div>
 
@@ -764,19 +780,19 @@
 													<b>{{expCalc.settings.currencies.names[participant.meta.preferredCurrency].substring(0, 3)}}</b>
 												</label>
 											</div>
-											<div class="text-field name solid" ng-if="participant.meta.fullBalance < 0">
+											<div class="text-field name solid s-p1" ng-if="participant.meta.fullBalance < 0">
 												<b>вернет</b>
 											</div>
 
 											<div class="flex flex-grow">
-												<div class="flex-grow number-field solid text-left uppercase"
+												<div class="flex-grow number-field solid text-left uppercase s-p1"
 													 ng-if="participant.meta.fullBalance >= 0 && participant.meta.preferredCurrency != account.settings.accountCurrency">
 													<b>
 														{{getParticipantFullBalance(participant, participantIndex, true)}}
 														<s>{{expCalc.settings.currencies.names[participant.meta.preferredCurrency].substring(0, 3)}}</s>
 													</b>
 												</div>
-												<div class="flex-grow number-field solid">
+												<div class="flex-grow number-field solid s-p1">
 													<b>
 														{{getParticipantFullBalance(participant, participantIndex, false)}}
 														<s>{{getAccountCurrency()}}</s>
@@ -900,13 +916,13 @@
 								ng-init="participantIndex = $index">
 
 								<div class="participant-head">
-									<ul class="flex s-p0">
+									<ul class="flex s-p0 with-separator">
 										<li class="flex flex-grow flex-wrap s-p0">
 											<div class="text-field solid title">
 												<b>{{participantIndex + 1}}.</b>
 											</div>
 
-											<div class="flex-grow text-field name solid s-p1">
+											<div class="flex-grow text-field name solid s-p1 title-max-width">
 												<b>{{participant.meta.title}}</b>
 											</div>
 

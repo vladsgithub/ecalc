@@ -5,7 +5,7 @@
  * @subpackage ecalc-template
  */
 ?>
-	<footer style="position: fixed; bottom: 0; z-index: 3;">
+	<footer>
         <p>Курсы валют: <a href="https://ru.exchange-rates.org/" target="_blank" rel="nofollow">ru.exchange-rates.org</a></p>
 	</footer>
 

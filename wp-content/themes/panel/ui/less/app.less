@@ -20,8 +20,6 @@
 	-webkit-font-smoothing: antialiased; }
 
 html, body {
-//	-webkit-user-select: none;
-//	-webkit-touch-callout: none;
 	height: 100%;
 }
 html {
@@ -157,13 +155,16 @@ header {
 				font-size: 0.8rem;
 			}
 		}
+		.btn {
+			background: @brand-dark;
+		}
 		.title {
 			display: flex;
 			flex-direction: column;
 			margin-top: 4px;
 			height: 38px;
 			overflow: hidden;
-			background: @brand-strong;
+			background: @brand-dark;
 
 			@media only screen and (min-width: @mobile) {
 				flex-direction: row;
@@ -187,7 +188,8 @@ aside.menu {
 	width: 320px;
 	overflow: hidden;
 	background: @brand-strong;
-	outline: 2px solid @brand-light;
+	outline: 1px solid @brand-light;
+	box-sizing: border-box;
 	border-left: 2px solid @brand-strong;
 	transform: translateX(-101%);
 	transition: transform @delay;
@@ -285,18 +287,19 @@ aside.menu {
 			border-color: transparent;
 		}
 	}
-	.section-body {
+	.section-box {
 		position: absolute;
 		top: 44px;
 		bottom: 0;
 		left: 0;
 		right: 0;
+		overflow: auto;
 		border: 2px solid @brand-strong;
 		border-top-width: 4px;
 		border-left: 0;
 	}
 	.section-page {
-		height: 100%;
+		min-height: 100%;
 		padding: 8px;
 		box-sizing: border-box;
 		background: @brand-light;
@@ -312,8 +315,11 @@ aside.menu {
 		}
 	}
 	.settings-list {
-		overflow: auto;
+		overflow-y: auto;
+		overflow-x: hidden;
 		height: 100%;
+		padding-top: 8px;
+		padding-bottom: 8px;
 		box-sizing: border-box;
 		background: @brand-light;
 
@@ -359,7 +365,7 @@ aside.accounts {
 	box-sizing: border-box;
 	overflow: hidden;
 	background: @brand-strong;
-	outline: 2px solid @brand-light;
+	outline: 1px solid @brand-light;
 	border-left: 2px solid @brand-strong;
 	border-right: 2px solid @brand-strong;
 	transform: translateX(101%);
@@ -385,6 +391,11 @@ aside.accounts {
 		flex-shrink: 0;
 		background: @brand-light;
 		border-top: 4px solid @brand-strong;
+
+		+ .aside-head {
+			padding-bottom: 8px;
+			border-top: 0;
+		}
 	}
 	.aside-body {
 		flex-grow: 1;
@@ -481,6 +492,7 @@ section {
 		position: static;
 		min-height: 100vh;
 		padding-top: 46px;
+		padding-bottom: 14px;
 		box-sizing: border-box;
 	}
 
@@ -488,7 +500,8 @@ section {
 	&[data-active-window="2"] .header-lt li:nth-child(2),
 	&[data-active-window="3"] .header-lt li:nth-child(3) {
 		.btn {
-			background: @brand-strong;
+			background: @brand-dark;
+			border-color: @brand-dark;
 			color: @white;
 
 			@media only screen and (max-width: (@middle-mobile - 1)) {
@@ -539,7 +552,7 @@ section {
 			right: 2px;
 			bottom: -@winBorder;
 			height: (@winBorder * 2);
-			border-top: @winBorder solid @brand-strong;
+			border-top: @winBorder solid @brand-dark;
 			border-radius: (@winBorder * 2);
 
 			@media only screen and (max-width: (@middle-mobile - 1)) {
@@ -548,20 +561,27 @@ section {
 		}
 
 		ul {
-			padding: 2px 1px;
+			padding: 2px 4px;
 			background: @brand-light;
+
+			@media only screen and (min-width: @middle-mobile) {
+				padding-left: 0; padding-right: 0;
+			}
 		}
 		li {
 			width: 33.33%;
-			padding: 0 1px;
+			padding: 2px;
 			box-sizing: border-box;
-			
-			.btn {
-				background: @white;
-			}
+
+			//.btn {
+			//	background: @white;
+			//}
 		}
 		.btn {
 			width: 100%;
+			background: @white;
+			border-color: @brand-dark;
+			color: @brand-dark;
 		}
 	}
 	.windows-lt {
@@ -603,7 +623,7 @@ section {
 			}
 
 			&::before {
-				position: absolute; top: (@winIndent + @winHeader); right: -@winBorder; bottom: (@winIndent - @winBorder); left: -@winBorder;
+				position: absolute; top: (@winIndent + @winHeader - @winBorder); right: -1px; bottom: (@winIndent - @winBorder); left: -1px;
 				border: @winBorder solid @brand-light;
 				border-radius: 0 0 (@winBorder * 3) (@winBorder * 3);
 
@@ -614,15 +634,28 @@ section {
 					left: (@winIndent - @winBorder);
 				}
 			}
-			&::after {
-				z-index: -1;
-				position: absolute; top: (@winIndent * 2 + @winHeader); right: (-@winBorder - @winBorder / 2); bottom: (@winIndent + @winBorder); left: (-@winBorder - @winBorder / 2);
-				border: (@winBorder / 2) solid @brand-strong; border-top: 0; border-bottom: 0;
-
-				@media only screen and (min-width: @mobile) and (max-width: (@windowMinWidth * 3 - 1)) {
-					content: "";
-				}
-			}
+			// FOR THE CHANGES ###double-border-for-window
+			//&::before {
+			//	position: absolute; top: (@winIndent + @winHeader); right: -@winBorder; bottom: (@winIndent - @winBorder); left: -@winBorder;
+			//	border: @winBorder solid @brand-light;
+			//	border-radius: 0 0 (@winBorder * 3) (@winBorder * 3);
+            //
+			//	@media only screen and (min-width: @middle-mobile) {
+			//		content: "";
+			//	}
+			//	@media only screen and (min-width: (@windowMinWidth * 3)) {
+			//		left: (@winIndent - @winBorder);
+			//	}
+			//}
+			//&::after {
+			//	z-index: -1;
+			//	position: absolute; top: (@winIndent * 2 + @winHeader); right: (-@winBorder - @winBorder / 2); bottom: (@winIndent + @winBorder); left: (-@winBorder - @winBorder / 2);
+			//	border: (@winBorder / 2) solid @brand-strong; border-top: 0; border-bottom: 0;
+            //
+			//	@media only screen and (min-width: @mobile) and (max-width: (@windowMinWidth * 3 - 1)) {
+			//		content: "";
+			//	}
+			//}
 			&:first-child::after {
 				border-left: 0;
 			}
@@ -654,13 +687,15 @@ section {
 	}
 	.title-lt {
 		z-index: 1;
-		position: absolute; left: -@winBorder; right: -@winBorder; top: (@winIndent - @winBorder);
+		//position: absolute; left: -@winBorder; right: -@winBorder; top: (@winIndent - @winBorder); // FOR THE CHANGES ###double-border-for-window
+		position: absolute; left: -1px; right: -1px; top: (@winIndent - @winBorder);
 		height: @winHeader;
 		line-height: 42px;
-		border: @winBorder solid @brand-light;
+		//border: @winBorder solid @brand-light; // FOR THE CHANGES ###double-border-for-window
+		border: 1px solid @brand-light;
 		border-bottom: 0;
 		border-radius: (@winBorder * 2) (@winBorder * 2) 0 0;
-		background: @brand-strong;
+		background: @brand-dark;
 		text-transform: uppercase;
 		font-size: 1.3rem;
 		font-weight: bold;
@@ -674,7 +709,8 @@ section {
 			transition: transform .2s;
 		}
 		@media only screen and (min-width: (@windowMinWidth * 3)) {
-			left: (@winIndent - @winBorder);
+			//left: (@winIndent - @winBorder); // FOR THE CHANGES ###double-border-for-window
+			left: (@winIndent - 1px);
 			transform: translateY(0);
 		}
 	}
@@ -683,12 +719,16 @@ section {
 		height: 100%;
 		min-height: 300px;
 		box-sizing: border-box;
-		border: @winBorder solid @brand-strong;
+		border: @winBorder solid @brand-dark;
 		border-radius: 0 0 (@winBorder * 2) (@winBorder * 2);
 		background: white;
 		overflow-y: auto;
 
+		@media only screen and (max-width: (@mobile - 1)) {
+			height: calc(~"100vh - 192px");
+		}
 		@media only screen and (max-width: (@middle-mobile - 1)) {
+			height: calc(~"100vh - 114px");
 			border-radius: (@winBorder * 2);
 		}
 	}
@@ -719,6 +759,8 @@ section {
 }
 
 .participant-head {
+	overflow: hidden;
+	margin: 0 1px;
 	padding: @padding 0;
 	background: @brand-strong;
 
@@ -732,8 +774,24 @@ section {
 		transition: transform @delay;
 	}
 	.report {
-		margin-top: 2px;
+		margin: 4px 4px -2px;
 		border-top: 1px solid @white;
+	}
+	.title-max-width {
+		max-width: 90%;
+	}
+	.with-separator {
+		position: relative;
+
+		&::before {
+			content: "";
+			z-index: 1;
+			position: absolute;
+			top: 48px;
+			left: 6px;
+			right: 6px;
+			border-top: 1px solid @white;
+		}
 	}
 }
 
@@ -922,21 +980,75 @@ section {
 }
 
 footer {
-	height: 16px;
+	z-index: 3;
+	position: fixed;
+	bottom: 0;
+	height: 14px;
 	margin-top: -16px;
 	font-size: 0.8rem;
+
+	@media only screen and (max-width: (@mobile - 1)) {
+		position: static;
+		text-align: center;
+	}
 }
 
 
 
 
-
+article.page {
+	padding-bottom: 30px;
+}
+.cleanlogin-field-remember {
+	margin-top: 30px;
+}
 .cleanlogin-container input {
 	&[type=text],
 	&[type=password],
 	&[type=email] {
 		background: @white;
 	}
+}
+.cleanlogin-full-width form .cleanlogin-field {
+	@media only screen and (max-width: (@mobile - 1)) {
+		float: none;
+		width: auto;
+	}
+}
+.cleanlogin-form input {
+	&[type="text"],
+	&[type="password"],
+	&[type="email"] {
+		border: 2px solid @brand-strong;
+	}
+}
+.cleanlogin-form input[type="submit"] {
+	display: block;
+	width: auto;
+	margin: auto;
+	height: 44px;
+	border-radius: 4px;
+	color: white;
+	background: @brand-strong;
+	border: 2px solid @brand-strong;
+	border-bottom-color: black;
+	border-right-color: black;
+	cursor: pointer;
+
+	&:focus {
+		outline: 1px dashed @white;
+		outline-offset: -5px;
+	}
+	&:active {
+		border: 2px solid @brand-strong;
+		border-top-color: @black;
+		border-left-color: @black;
+	}
+}
+.cleanlogin-container {
+	border-color: @brand-strong;
+	box-shadow: none;
+	border-radius: 0;
 }
 
 

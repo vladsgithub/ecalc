@@ -102,7 +102,7 @@
 			</h2>
 		</li>
 		<li class="separator <? if ($current_user->ID == 0) { echo 'hidden'; } ?>">
-			<button id="saveButton" class="btn solid" title="" ng-click="uploadData(true, true)">
+			<button id="saveButton" class="btn solid" title="Сохранение на сервере" ng-click="uploadData(true, true)">
 				<b class="status-line">
 				    <? echo $firstLetter.$secondLetter; ?>
 				</b>
@@ -145,7 +145,7 @@
             </div>
         </li>
         <li>
-            <button class="btn solid no-shadow" title="Меню" ng-click="layout.isOpenMenu = false">
+            <button class="btn solid no-shadow" title="Меню" ng-click="layout.closeMenu()">
                 <i class="fas fa-window-close"></i>
             </button>
         </li>
@@ -175,7 +175,7 @@
                         <div class="text-field title"><b>Авторизация</b></div>
                     </li>
 
-                    <li class="section-body">
+                    <li class="section-box">
                         <div class="section-page">
                             <?
         // В админке в разделе 'страницы', обязательно необходимо вставить (активировать) шорткод на какой-нибудь странице [clean-login]
@@ -221,7 +221,7 @@
                                 <div class="text-field title"><b>Типы расходов</b></div>
                             </li>
 
-                            <li class="section-body">
+                            <li class="section-box">
 
 
                                 <ul class="settings-list">
@@ -242,12 +242,12 @@
                                             <li class="flex-grow s-p1">
                                                 <div class="multiple-field">
                                                     <label class="text-input flex-grow">
-                                                        <input type="text" ng-model="expensesType.name" ng-change="validateJSON(expensesType, 'name') && uploadData()">
+                                                        <input type="text" ng-model="expensesType.name" ng-change="validateJSON(expensesType, 'name') && uploadData(true)">
                                                         <b>{{expensesType.name}}</b>
                                                     </label>
 
                                                     <label class="text-input flex-grow">
-                                                        <input type="text" ng-model="expensesType.icon" ng-change="validateJSON(expensesType, 'icon') && uploadData()">
+                                                        <input type="text" ng-model="expensesType.icon" ng-change="validateJSON(expensesType, 'icon') && uploadData(true)">
                                                         <b>{{expensesType.icon}}</b>
                                                     </label>
                                                 </div>
@@ -312,7 +312,7 @@
                                 <div class="text-field title"><b>Валюта</b></div>
                             </li>
 
-                            <li class="section-body">
+                            <li class="section-box">
 
                                 <ul class="settings-list" ng-init="currencies = expCalc.settings.currencies">
                                     <li>
@@ -365,7 +365,7 @@
 
                                                             <label class="head">
                                                                 <input type="text" ng-model="expCalc.settings.currencies.names[nameIndex]"
-                                                                       ng-change="validateJSON(expCalc.settings.currencies.names, nameIndex) && uploadData()">
+                                                                       ng-change="validateJSON(expCalc.settings.currencies.names, nameIndex) && uploadData(true)">
                                                                 <b>{{expCalc.settings.currencies.names[nameIndex]}}</b>
                                                             </label>
                                                         </div>
@@ -392,7 +392,7 @@
                                                                     </div>
 
                                                                     <label class="head">
-                                                                        <input type="number" ng-model="currencies.rates[nameIndex][$index]" ng-change="uploadData()">
+                                                                        <input type="number" ng-model="currencies.rates[nameIndex][$index]" ng-change="uploadData(true)">
                                                                         <b>{{currencies.rates[nameIndex][$index]}}</b>
                                                                     </label>
                                                                 </div>
@@ -445,7 +445,7 @@
                                 <div class="text-field title"><b>Экспорт / Импорт</b></div>
                             </li>
 
-                            <li class="section-body">
+                            <li class="section-box">
 
                                 <ul class="settings-list">
                                     <li>
@@ -539,23 +539,23 @@
                         <div class="text-field title"><b>Настройки и режимы</b></div>
                     </li>
 
-                    <li class="section-body">
+                    <li class="section-box">
 
                         <ul class="settings-list">
                             <li>
                                 <ul class="flex s-p1">
                                     <li class="s-p1">
                                         <label class="text-select currency">
-                                            <select ng-model="expCalc.accounts[expCalc.settings.currentAccount].settings.accountCurrency"
-                                                    ng-options="key as value for (key, value) in expCalc.settings.currencies.names" ng-change="uploadData()">
+                                            <select ng-model="expCalc.settings.baseCurrency"
+                                                    ng-options="key as value for (key, value) in expCalc.settings.currencies.names" ng-change="uploadData(true)">
                                             </select>
-                                            <b>{{expCalc.settings.currencies.names[expCalc.accounts[expCalc.settings.currentAccount].settings.accountCurrency].substring(0, 3)}}</b>
+                                            <b>{{expCalc.settings.currencies.names[expCalc.settings.baseCurrency].substring(0, 3)}}</b>
                                         </label>
                                     </li>
 
                                     <li class="flex-grow s-p1">
                                         <div class="text-field">
-                                            <b>Основная валюта в текущем расчете</b>
+                                            <b>Базовая валюта по умолчанию</b>
                                         </div>
                                     </li>
                                 </ul>

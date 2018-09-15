@@ -32,6 +32,10 @@ function forEach(elements, callback) {
                 this.isOpenMenu = true;
                 this.isOpenAside = false;
             },
+            closeMenu: function() {
+                this.isOpenMenu = false;
+                $scope.layoutControl.closeNavMenuItems();
+            },
             openAside: function() {
                 if (window.location.href.indexOf('login') + 1) {
                     window.location.href = "/";
@@ -90,6 +94,17 @@ function forEach(elements, callback) {
                     });
                 });
             },
+            closeNavMenuItems: function() {
+                var ulMenu = self.navBody.children[0];
+
+                setTimeout(function() {
+                    forEach(ulMenu.querySelectorAll('.open'), function(item, i, arr) {
+                        item.classList.remove('active');
+                        item.classList.remove('open');
+                        ulMenu.classList.add('active');
+                    });
+                }, 200);
+            },
             collapseAllBodiesView: function(id) {
                 var bodyArr = document.getElementById(id).querySelectorAll('.open-body');
 
@@ -130,13 +145,13 @@ function forEach(elements, callback) {
 
             switch(status) {
                 case 0:
-                    tooltip = 'Проводится синхронизация данных ...';
+                    tooltip = 'Сохранение на сервере: в процессе ...';
                     break;
                 case 1:
-                    tooltip = 'Данные синхронизированы успешно';
+                    tooltip = 'Сохранение на сервере: успешно';
                     break;
                 case 2:
-                    tooltip = 'Не удалось синхронизировать данные';
+                    tooltip = 'Сохранение на сервере: не удалось (проверьте интернет-соединение)';
                     break;
             }
 
@@ -203,7 +218,7 @@ function forEach(elements, callback) {
 
                 if (!isDirectSave && (now - $scope.layout.updatedDataTime) < delay) return false;
 
-                var xhr, serverStringAccountJSON, currentAccountNumber;
+                var xhr, serverStringAccountJSON, currentAccountNumber, responseArray, fromServerData;
 
                 currentAccountNumber = $scope.expCalc.settings.currentAccount;
 
@@ -221,10 +236,22 @@ function forEach(elements, callback) {
                         console.error('!!! We have a problem: ' + xhr.status + ': ' + xhr.statusText);
                         updateUploadStatus(2);
                     } else {
-                        console.info('We have received a response: ' + xhr.responseText); // responseText -- текст ответа.
+                        responseArray = xhr.responseText.split('"""""');
+                        console.info('We have received a response: ' + responseArray[1]); // responseText -- текст ответа.
                         updateUploadStatus(1);
                         $scope.layout.isUpdatedObject = false;
-                        // console.log(JSON.parse(xhr.responseText));
+
+                        fromServerData = JSON.parse(responseArray[2]);
+
+                        switch(responseArray[0]) {
+                            case '010':
+                                $scope.expCalc.accounts[currentAccountNumber].meta.savedDate = fromServerData.meta.savedDate;
+                                $scope.$digest();
+                                break;
+                            case '100':
+                                $scope.expCalc.meta.savedDate = fromServerData.meta.savedDate
+                                break;
+                        }
                     }
                 };
 
@@ -1281,13 +1308,17 @@ function forEach(elements, callback) {
 		if (fromLocalStorage.meta) return fromLocalStorage;
 
 		currencies = {
-			names: ['usd', 'eur', 'rub', 'byn'], // The currency number of 0, 1, 2 and 3
-			rates: [ // Banks sell by these rates
-				[1,1.1934,0.0174,0.5186], // rates of the currency number 0
-				[0.8379,1,0.0146,0.4345], // rates of the currency number 1
-				[57.322,68.4158,1,29.7271], // rates of the currency number 2
-				[1.928,2.2963,0.0336,1] // rates of the currency number 3
-			],
+			// names: ['usd', 'eur', 'rub', 'byn'], // The currency number of 0, 1, 2 and 3
+			// rates: [ // Banks sell by these rates
+			// 	[1,1.1934,0.0174,0.5186], // rates of the currency number 0
+			// 	[0.8379,1,0.0146,0.4345], // rates of the currency number 1
+			// 	[57.322,68.4158,1,29.7271], // rates of the currency number 2
+			// 	[1.928,2.2963,0.0336,1] // rates of the currency number 3
+			// ],
+            names: ['byn'],
+            rates: [
+                [1]
+            ],
 			commonSurcharge: 0.4
 		};
 		expensesTypes = [
@@ -1307,7 +1338,7 @@ function forEach(elements, callback) {
 			settings: {
 				currentAccount: 0,
 				currencies: currencies,
-				baseCurrency: '3', // String type is necessary for select elements - we can see a selected option by default
+				baseCurrency: '0', // String type is necessary for select elements - we can see a selected option by default
 				expensesTypes: expensesTypes
 			},
 			accounts: []

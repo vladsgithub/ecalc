@@ -79,6 +79,10 @@ a {
 	}
 }
 
+button {
+	user-select: none;
+}
+
 .clearfix {
 	&::before,
 	&::after {
@@ -96,6 +100,7 @@ a {
 
 	&.flex-wrap {
 		flex-wrap: wrap;
+		justify-content: space-between;
 	}
 	&.space-between {
 		justify-content: space-between;
@@ -225,13 +230,13 @@ a {
 			border-color: @white;
 
 			&:not(.no-shadow) {
-				border-right-color: @gray;
-				border-bottom-color: @gray;
+				border-right-color: @black;
+				border-bottom-color: @black;
 
 				&:active {
 					border-color: @white;
-					border-top-color: @gray;
-					border-left-color: @gray;
+					border-top-color: @black;
+					border-left-color: @black;
 				}
 			}
 		}
@@ -447,6 +452,7 @@ label {
 	overflow: hidden;
 	box-sizing: border-box;
 	border: 2px solid @brand-strong;
+	border-radius: 4px;
 	background: @white;
 	font-size: 0;
 	cursor: text;
@@ -604,6 +610,7 @@ label {
 	overflow: hidden;
 	box-sizing: border-box;
 	border: 2px solid @brand-strong;
+	border-radius: 4px;
 	background: @white;
 	font-size: 0;
 	cursor: text;
@@ -803,6 +810,7 @@ label {
 		position: absolute;
 		left: 0;
 		opacity: 0;
+		user-select: none;
 
 		&:checked {
 			+ i { background-color: transparent; }
@@ -1177,6 +1185,7 @@ label {
 
 	> label {
 		flex-grow: 1;
+		border-radius: 4px 0 0 4px;
 
 		&[disabled] {
 			height: auto;
@@ -1193,6 +1202,7 @@ label {
 		+ label {
 			display: block;
 			margin-left: -2px;
+			border-radius: 0 4px 4px 0;
 
 			&[disabled] {
 				margin-left: -1px;

@@ -23,8 +23,11 @@
 			<input type="hidden" name="action" value="login">
 			
 			<div class="cleanlogin-field cleanlogin-field-remember">
-				<input type="checkbox" name="rememberme" value="forever">
-				<label><?php echo __( 'Remember?', 'clean-login' ); ?></label>
+				<label class="checkbox thin block">
+                    <input type="checkbox" name="rememberme" value="forever">
+                    <i></i>
+                    <b><?php echo __( 'Remember?', 'clean-login' ); ?></b>
+                </label>
 			</div>
 		</fieldset>
 		
