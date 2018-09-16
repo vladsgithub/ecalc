@@ -95,7 +95,7 @@
 		<li class="title flex-grow separator">
 			<h1>Cost panel (бета-версия)</h1>
 			<h2>
-			    {{expCalc.accounts[expCalc.settings.currentAccount].meta.title}}
+			    {{(expCalc.accounts[expCalc.settings.currentAccount].meta.title) ? expCalc.accounts[expCalc.settings.currentAccount].meta.title : '--- расчет без названия ---'}}
 			    <b ng-if="expCalc.accounts[expCalc.settings.currentAccount].meta.savedDate > 0">
 			        [{{formatDate(expCalc.accounts[expCalc.settings.currentAccount].meta.savedDate)}}]
 			    </b>
@@ -242,13 +242,15 @@
                                             <li class="flex-grow s-p1">
                                                 <div class="multiple-field">
                                                     <label class="text-input flex-grow">
-                                                        <input type="text" ng-model="expensesType.name" ng-change="validateJSON(expensesType, 'name') && uploadData(true)">
-                                                        <b>{{expensesType.name}}</b>
+                                                        <input type="text" placeholder="Название типа"
+                                                               ng-model="expensesType.name" ng-change="validateJSON(expensesType, 'name') && uploadData(true)">
+                                                        <b data-placeholder="Название типа">{{expensesType.name}}</b>
                                                     </label>
 
                                                     <label class="text-input flex-grow">
-                                                        <input type="text" ng-model="expensesType.icon" ng-change="validateJSON(expensesType, 'icon') && uploadData(true)">
-                                                        <b>{{expensesType.icon}}</b>
+                                                        <input type="text" placeholder="Название иконки типа"
+                                                               ng-model="expensesType.icon" ng-change="validateJSON(expensesType, 'icon') && uploadData(true)">
+                                                        <b data-placeholder="Название иконки типа">{{expensesType.icon}}</b>
                                                     </label>
                                                 </div>
                                             </li>
@@ -315,6 +317,26 @@
                             <li class="section-box">
 
                                 <ul class="settings-list" ng-init="currencies = expCalc.settings.currencies">
+
+                                    <li>
+                                        <ul class="flex s-p1">
+                                            <li class="s-p1">
+                                                <label class="text-select currency">
+                                                    <select ng-model="expCalc.settings.baseCurrency"
+                                                            ng-options="key as value for (key, value) in expCalc.settings.currencies.names" ng-change="uploadData(true)">
+                                                    </select>
+                                                    <b>{{expCalc.settings.currencies.names[expCalc.settings.baseCurrency].substring(0, 3)}}</b>
+                                                </label>
+                                            </li>
+
+                                            <li class="flex-grow s-p1">
+                                                <div class="text-field">
+                                                    <b>Базовая валюта по умолчанию (валюта той страны, в которой проживаете)</b>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+
                                     <li>
 
                                         <ul class="flex s-p1">
@@ -346,6 +368,15 @@
 
                                     </li>
 
+                                    <li>
+                                        <div class="text-field small s-p2">
+                                            <b class="text-justify">Обновленная таблица показывает точные значения курсов валют. Банки продают валюту по курсам немного выше от этих значений и
+                                            чтобы получить максимально реальный курс в расчетах, используйте процент надбавки.<br/>
+                                            Первые 3 буквы названия валюты должны соответствовать мировому стандарту.
+                                            </b>
+                                        </div>
+                                    </li>
+
                                     <li ng-repeat="name in expCalc.settings.currencies.names track by $index" ng-init="nameIndex = $index">
 
                                         <ul class="flex s-p1">
@@ -364,9 +395,10 @@
                                                             </div>
 
                                                             <label class="head">
-                                                                <input type="text" ng-model="expCalc.settings.currencies.names[nameIndex]"
+                                                                <input type="text" placeholder="XXX - название валюты"
+                                                                       ng-model="expCalc.settings.currencies.names[nameIndex]"
                                                                        ng-change="validateJSON(expCalc.settings.currencies.names, nameIndex) && uploadData(true)">
-                                                                <b>{{expCalc.settings.currencies.names[nameIndex]}}</b>
+                                                                <b data-placeholder="XXX - название валюты">{{expCalc.settings.currencies.names[nameIndex]}}</b>
                                                             </label>
                                                         </div>
                                                     </li>
@@ -375,7 +407,7 @@
                                                         <ul class="flex currency-line">
                                                             <li class="flex-shrink flex-hidden">
                                                                 <div class="text-field name uppercase">
-                                                                    <b>1 {{currencies.names[$index]}}</b>
+                                                                    <b>1 {{(currencies.names[$index]) ? currencies.names[$index] : "???"}}</b>
                                                                 </div>
                                                             </li>
 
@@ -387,12 +419,14 @@
 
                                                             <li class="flex-grow flex-hidden">
                                                                 <div class="text-input complex-input">
-                                                                    <div class="text-field uppercase">
-                                                                        <b>{{expCalc.settings.currencies.names[nameIndex].substring(0, 3)}}</b>
+                                                                    <div class="text-field">
+                                                                        <b class="uppercase">{{expCalc.settings.currencies.names[nameIndex].substring(0, 3)}}</b>
                                                                     </div>
 
                                                                     <label class="head">
-                                                                        <input type="number" ng-model="currencies.rates[nameIndex][$index]" ng-change="uploadData(true)">
+                                                                        <input type="number"
+                                                                               title="Курс, по которому банк продает 1 {{currencies.names[$index]}}"
+                                                                               ng-model="currencies.rates[nameIndex][$index]" ng-change="uploadData(true)">
                                                                         <b>{{currencies.rates[nameIndex][$index]}}</b>
                                                                     </label>
                                                                 </div>
@@ -528,7 +562,7 @@
             <li>
                 <button class="btn solid no-shadow" data-next>
                     <i class="fas fa-cog"></i>
-                    <b>Настройки и режимы</b>
+                    <b>Режимы</b>
                 </button>
 
                 <ul class="section" data-level="2">
@@ -542,25 +576,6 @@
                     <li class="section-box">
 
                         <ul class="settings-list">
-                            <li>
-                                <ul class="flex s-p1">
-                                    <li class="s-p1">
-                                        <label class="text-select currency">
-                                            <select ng-model="expCalc.settings.baseCurrency"
-                                                    ng-options="key as value for (key, value) in expCalc.settings.currencies.names" ng-change="uploadData(true)">
-                                            </select>
-                                            <b>{{expCalc.settings.currencies.names[expCalc.settings.baseCurrency].substring(0, 3)}}</b>
-                                        </label>
-                                    </li>
-
-                                    <li class="flex-grow s-p1">
-                                        <div class="text-field">
-                                            <b>Базовая валюта по умолчанию</b>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-
                             <li>
                                 <ul class="flex s-p1">
                                     <li class="s-p1">
@@ -596,6 +611,49 @@
                             </li>
                         </ul>
 
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <button class="btn solid no-shadow" data-next title="О сервисе">
+                    <i class="fas fa-info"></i>
+                    <b>О сервисе</b>
+                </button>
+
+                <ul class="section" data-level="2">
+                    <li class="section-title">
+                        <button class="btn no-shadow" data-previous title="О сервисе">
+                            <i class="fas fa-info"></i>
+                        </button>
+                        <div class="text-field title"><b>О сервисе</b></div>
+                    </li>
+
+                    <li class="section-box">
+                        <div class="section-page">
+
+                            <div class="text-field text-justify">
+                                <b>
+                                Cost Panel - калькулятор учета и распределения расходов между участниками.
+                                Калькулятор поможет быстро рассчитать доли каждого участника общего расхода и подскажет
+                                как рассчитаться между собой. Вносите траты в любой валюте, указывайте для кого их
+                                рассчитать и калькулятор распределения расходов покажет - кто кому и в какой валюте
+                                должен вернуть с учетом ранее внесенных средств. А статистика распределения расходов
+                                отобразит полезную информацию: тип расхода, дата, доля, взнос, остаток.<br/>
+                                <br/>
+                                Весь расчет состоит из 3 шагов:<br/>
+                                &nbsp;&nbsp;1) Добавить участников и их расходы<br/>
+                                &nbsp;&nbsp;2) Настройка расчета<br/>
+                                &nbsp;&nbsp;3) Зафиксировать возвраты
+                                <br/>
+                                <br/>
+                                <a href="/info">Больше информации</a><br/>
+                                <br/>
+                                Версия <? echo $GLOBALS['cost_panel_version'] ?>
+                                </b>
+                            </div>
+
+                        </div>
                     </li>
                 </ul>
             </li>

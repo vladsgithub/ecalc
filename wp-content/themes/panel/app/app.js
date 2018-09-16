@@ -37,7 +37,7 @@ function forEach(elements, callback) {
                 $scope.layoutControl.closeNavMenuItems();
             },
             openAside: function() {
-                if (window.location.href.indexOf('login') + 1) {
+                if (window.location.pathname !== '/') {
                     window.location.href = "/";
                 }
 
@@ -286,7 +286,7 @@ function forEach(elements, callback) {
                 },
                 meta: {
 					index: accountIndex,
-                    title: '',
+                    title: (accountIndex) ? '' : 'Новый расчет 1',
                     total: 0,
                     fullRefund: 0,
                     negBalance: 0,
@@ -1268,7 +1268,8 @@ function forEach(elements, callback) {
 
         if (!$scope.expCalc.accounts.length) $scope.createAccount();
 
-        if ($scope.expCalc.meta.userID && (!fromServerData || fromServerData.meta.userID !== $scope.expCalc.meta.userID)) $scope.uploadData(true, true);
+        // if ($scope.expCalc.meta.userID && (!fromServerData || fromServerData.meta.userID !== $scope.expCalc.meta.userID)) $scope.uploadData(true, true);
+        if ($scope.expCalc.meta.userID && !fromServerData) $scope.uploadData(true, true);
 
     }];
 

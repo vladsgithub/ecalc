@@ -58,6 +58,9 @@
 .text-left {
 	text-align: left !important;
 }
+.text-justify {
+	text-align: justify !important;
+}
 
 a {
 	color: @brand-strong;
@@ -159,6 +162,7 @@ button {
 }
 
 .btn {
+	display: inline-block;
 	position: relative;
 	min-height: 44px; min-width: 44px; line-height: 40px;
 	padding: 0 10px;
@@ -227,14 +231,14 @@ button {
 			color: @white;
 		}
 		&.border {
-			border-color: @white;
+			border-color: @brand-light;
 
 			&:not(.no-shadow) {
 				border-right-color: @black;
 				border-bottom-color: @black;
 
 				&:active {
-					border-color: @white;
+					border-color: @brand-light;
 					border-top-color: @black;
 					border-left-color: @black;
 				}
@@ -262,8 +266,9 @@ button {
 	}
 
 	i {
-		max-width: 20px;
+		width: 20px;
 		vertical-align: middle;
+		text-align: center;
 		font-size: 22px;
 
 		+ b {
@@ -1060,6 +1065,10 @@ label {
 		font-size: 1.4rem;
 		min-width: 30px;
 		text-align: center;
+	}
+	&.small > b {
+		font-size: 0.9rem;
+		line-height: 1.2;
 	}
 
 	> b {

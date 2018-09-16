@@ -44,12 +44,14 @@
 
 				<div class="flex-grow">
 					<button class="btn solid view-mode" ng-click="expCalc.settings.currentAccount = $index">
-						<b>{{account.meta.title}}</b>
+						<b>{{(account.meta.title) ? account.meta.title : '--- без названия ---'}}</b>
 					</button>
 
 					<label class="text-input edit-mode">
-						<input type="text" ng-model="account.meta.title" ng-change="validateJSON(account.meta, 'title') && uploadData()">
-						<b>{{account.meta.title}}</b>
+						<input type="text" placeholder="Название расчета"
+							   ng-model="account.meta.title"
+							   ng-change="validateJSON(account.meta, 'title') && uploadData()">
+						<b data-placeholder="Название расчета">{{account.meta.title}}</b>
 					</label>
 				</div>
 			</li>
@@ -130,7 +132,8 @@
 							</li>
 
 							<li class="flex-shrink">
-								<button class="btn solid" ng-click="layoutControl.collapseAllBodiesView('window-1')">
+								<button class="btn solid" title="Спрятать всё"
+										ng-click="layoutControl.collapseAllBodiesView('window-1')">
 									<i class="fas fa-angle-double-up"></i>
 								</button>
 							</li>
@@ -208,7 +211,8 @@
 										</li>
 
 										<li class="flex-shrink s-p0">
-											<button class="btn solid border collapse-btn" ng-click="layoutControl.toggleBodyView('participant.1.' + participantIndex)">
+											<button class="btn solid border collapse-btn" title="Показать/Спрятать"
+													ng-click="layoutControl.toggleBodyView('participant.1.' + participantIndex)">
 												<i class="fas fa-chevron-down"></i>
 											</button>
 										</li>
@@ -365,7 +369,7 @@
 														<div class="details">
 
 															<div class="text-field name thin block s-p2">
-																<b class="s-p0">Подробности: (Назв./Кол./Цена)</b>
+																<b class="s-p0">Подробности:</b>
 															</div>
 
 															<ul class="flex details-item"
@@ -389,21 +393,25 @@
 																<li class="flex-grow s-p0">
 																	<div class="multiple-field">
 																		<label class="text-input" ng-disabled="detail.isChecked">
-																			<input type="text" ng-model="detail.title" ng-change="validateJSON(detail, 'title') && uploadData()">
-																			<b>{{detail.title}}</b>
+																			<input type="text" placeholder="Название"
+																				   ng-model="detail.title" ng-change="validateJSON(detail, 'title') && uploadData()">
+																			<b data-placeholder="Название">{{detail.title}}</b>
 																		</label>
 
-																		<label class="text-input text-center min-field" ng-disabled="detail.isChecked">
-																			<input type="text" ng-model="detail.qty" ng-change="validateJSON(detail, 'qty') && uploadData()">
-																			<b>{{detail.qty}}</b>
+																		<label class="text-input text-center min-field"
+																			   ng-disabled="detail.isChecked">
+																			<input type="text" placeholder="Кол."
+																				   ng-model="detail.qty" ng-change="validateJSON(detail, 'qty') && uploadData()">
+																			<b data-placeholder="Кол.">{{detail.qty}}</b>
 																		</label>
 																	</div>
 																</li>
 
 																<li class="cost s-p0">
 																	<label class="number-input" ng-disabled="detail.isChecked">
-																		<input type="number" ng-model="detail.value" ng-change="uploadData()">
-																		<b>{{detail.value}}</b>
+																		<input type="number" placeholder="Цена"
+																			   ng-model="detail.value" ng-change="uploadData()">
+																		<b data-placeholder="Цена">{{detail.value}}</b>
 																	</label>
 																</li>
 															</ul>
@@ -517,7 +525,8 @@
 							</li>
 
 							<li class="flex-shrink">
-								<button class="btn solid" ng-click="layoutControl.collapseAllBodiesView('window-2')">
+								<button class="btn solid" title="Спрятать всё"
+										ng-click="layoutControl.collapseAllBodiesView('window-2')">
 									<i class="fas fa-angle-double-up"></i>
 								</button>
 							</li>
@@ -578,7 +587,8 @@
 										</li>
 
 										<li class="flex-shrink s-p0">
-											<button class="btn solid border collapse-btn" ng-click="layoutControl.toggleBodyView('participant.2.' + extParticipantIndex)">
+											<button class="btn solid border collapse-btn" title="Показать/Спрятать"
+													ng-click="layoutControl.toggleBodyView('participant.2.' + extParticipantIndex)">
 												<i class="fas fa-chevron-down"></i>
 											</button>
 										</li>
@@ -610,6 +620,10 @@
 									<ul class="body-view shares">
 
 										<li class="share" ng-repeat="intParticipant in account.participants track by $index">
+											<div class="text-field text-center block s-p2" ng-if="!intParticipant.expenses.length">
+												<b>Участник <em>[{{intParticipant.meta.title}}]</em> не имеет расходов</b>
+											</div>
+
 											<ul class="flex s-p0" ng-repeat="expense in intParticipant.expenses track by $index">
 												<li class="s-p0">
 													<label class="checkbox">
@@ -671,7 +685,8 @@
 							</li>
 
 							<li class="flex-shrink">
-								<button class="btn solid" ng-click="layoutControl.collapseAllBodiesView('window-3')">
+								<button class="btn solid" title="Спрятать всё"
+										ng-click="layoutControl.collapseAllBodiesView('window-3')">
 									<i class="fas fa-angle-double-up"></i>
 								</button>
 							</li>
@@ -802,7 +817,8 @@
 										</li>
 
 										<li class="flex-shrink s-p0">
-											<button class="btn solid border collapse-btn" ng-click="layoutControl.toggleBodyView('participant.3.' + participantIndex)">
+											<button class="btn solid border collapse-btn" title="Показать/Спрятать"
+													ng-click="layoutControl.toggleBodyView('participant.3.' + participantIndex)">
 												<i class="fas fa-chevron-down"></i>
 											</button>
 										</li>
@@ -939,7 +955,8 @@
 										</li>
 
 										<li class="flex-shrink s-p0">
-											<button class="btn solid border collapse-btn" ng-click="layoutControl.toggleBodyView('participantByBank.3.' + participantIndex)">
+											<button class="btn solid border collapse-btn" title="Показать/Спрятать"
+													ng-click="layoutControl.toggleBodyView('participantByBank.3.' + participantIndex)">
 												<i class="fas fa-chevron-down"></i>
 											</button>
 										</li>

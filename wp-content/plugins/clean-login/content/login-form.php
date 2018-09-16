@@ -18,7 +18,7 @@
 			</div>
 		</fieldset>
 		
-		<fieldset>
+		<div class="flex flex-wrap">
 			<input class="cleanlogin-field" type="submit" value="<?php echo __( 'Log in', 'clean-login' ); ?>" name="submit">
 			<input type="hidden" name="action" value="login">
 			
@@ -29,7 +29,7 @@
                     <b><?php echo __( 'Remember?', 'clean-login' ); ?></b>
                 </label>
 			</div>
-		</fieldset>
+		</div>
 		
 		<?php echo do_shortcode( apply_filters( 'cl_login_form', '') ); ?>
 

@@ -3851,6 +3851,9 @@ table {
 .text-left {
   text-align: left !important;
 }
+.text-justify {
+  text-align: justify !important;
+}
 a {
   color: #4c69bd;
 }
@@ -3962,6 +3965,7 @@ button {
   border-bottom-color: #000;
 }
 .btn {
+  display: inline-block;
   position: relative;
   min-height: 44px;
   min-width: 44px;
@@ -4038,14 +4042,14 @@ button {
   color: #fff;
 }
 .btn.solid.border {
-  border-color: #fff;
+  border-color: #e2e8ff;
 }
 .btn.solid.border:not(.no-shadow) {
   border-right-color: #000;
   border-bottom-color: #000;
 }
 .btn.solid.border:not(.no-shadow):active {
-  border-color: #fff;
+  border-color: #e2e8ff;
   border-top-color: #000;
   border-left-color: #000;
 }
@@ -4072,8 +4076,9 @@ button {
   transform: scale(0.8);
 }
 .btn i {
-  max-width: 20px;
+  width: 20px;
   vertical-align: middle;
+  text-align: center;
   font-size: 22px;
 }
 .btn i + b {
@@ -4874,6 +4879,10 @@ label.toggle i::after {
   font-size: 1.4rem;
   min-width: 30px;
   text-align: center;
+}
+.text-field.small > b {
+  font-size: 0.9rem;
+  line-height: 1.2;
 }
 .text-field > b {
   display: inline-block;
@@ -5903,6 +5912,9 @@ section a {
 .step-1 .expense-details .details-buttons {
   display: none;
 }
+.step-1 .expense-details .remove-mode-false {
+  min-width: 62px;
+}
 .step-1 .paid-out {
   position: absolute;
   right: 2px;
@@ -5947,10 +5959,29 @@ footer {
   }
 }
 article.page {
+  margin: auto;
   padding-bottom: 30px;
+  max-width: 800px;
+  line-height: 1.5;
+}
+@media only screen and (max-width: 639px) {
+  article.page h1 {
+    text-align: center;
+  }
+}
+article.page h2 {
+  font-size: 1.7rem;
+  line-height: 3rem;
+}
+article.page h3 {
+  font-size: 1.4rem;
+  line-height: 2rem;
+}
+article.page strong {
+  font-weight: bold;
 }
 .cleanlogin-field-remember {
-  margin-top: 30px;
+  margin-top: 8px;
 }
 .cleanlogin-container input[type=text],
 .cleanlogin-container input[type=password],
@@ -5970,8 +6001,8 @@ article.page {
 }
 .cleanlogin-form input[type="submit"] {
   display: block;
-  width: auto;
   margin: auto;
+  width: auto;
   height: 44px;
   border-radius: 4px;
   color: white;
@@ -5989,6 +6020,9 @@ article.page {
   border: 2px solid #4c69bd;
   border-top-color: #000;
   border-left-color: #000;
+}
+.cleanlogin-form .flex input[type="submit"] {
+  margin: 0;
 }
 .cleanlogin-container {
   border-color: #4c69bd;

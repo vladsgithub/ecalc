@@ -938,6 +938,9 @@ section {
 		.details-buttons {
 			display: none;
 		}
+		.remove-mode-false {
+			min-width: 62px;
+		}
 	}
 	.paid-out {
 		position: absolute;
@@ -997,10 +1000,30 @@ footer {
 
 
 article.page {
+	margin: auto;
 	padding-bottom: 30px;
+	max-width: 800px;
+	line-height: 1.5;
+
+	h1 {
+		@media only screen and (max-width: (@mobile - 1)) {
+			text-align: center;
+		}
+	}
+	h2 {
+		font-size: 1.7rem;
+		line-height: 3rem;
+	}
+	h3 {
+		font-size: 1.4rem;
+		line-height: 2rem;
+	}
+	strong {
+		font-weight: bold;
+	}
 }
 .cleanlogin-field-remember {
-	margin-top: 30px;
+	margin-top: 8px;
 }
 .cleanlogin-container input {
 	&[type=text],
@@ -1024,8 +1047,8 @@ article.page {
 }
 .cleanlogin-form input[type="submit"] {
 	display: block;
-	width: auto;
 	margin: auto;
+	width: auto;
 	height: 44px;
 	border-radius: 4px;
 	color: white;
@@ -1044,6 +1067,9 @@ article.page {
 		border-top-color: @black;
 		border-left-color: @black;
 	}
+}
+.cleanlogin-form .flex input[type="submit"] {
+	margin: 0;
 }
 .cleanlogin-container {
 	border-color: @brand-strong;

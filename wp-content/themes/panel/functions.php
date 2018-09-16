@@ -107,8 +107,8 @@ if (function_exists('register_sidebar')){
 add_action( 'wp_enqueue_scripts', 'add_scripts_to_head' );
 if (!function_exists('add_scripts_to_head')) {
     function add_scripts_to_head() {
-        wp_enqueue_script('production', get_template_directory_uri().'/assets/js/production.js?ver=2','','',false);
-//        wp_enqueue_script('production', get_template_directory_uri().'/assets/js/production.min.js?ver=2','','',false);
+//        wp_enqueue_script('production', get_template_directory_uri().'/assets/js/production.js?cpv='.$GLOBALS['cost_panel_version'],'','',false);
+        wp_enqueue_script('production', get_template_directory_uri().'/assets/js/production.min.js?cpv='.$GLOBALS['cost_panel_version'],'','',false);
     }
 }
 
@@ -140,8 +140,8 @@ if (!function_exists('add_styles')) { // если ф-я уже есть в до�
 	function add_styles() { // добавление стилей
 	    if(is_admin()) return false; // если мы в админке - ничего не делаем
 //	    wp_enqueue_style( 'bs', get_template_directory_uri().'/ui/css/app-old.css' );
-		wp_enqueue_style( 'style', get_template_directory_uri().'/assets/css/app.css?ver=2' ); // основные стили шаблона
-//		wp_enqueue_style( 'style', get_template_directory_uri().'/assets/css/app.pref.css?ver=2' ); // основные стили шаблона
+//		wp_enqueue_style( 'style', get_template_directory_uri().'/assets/css/app.css?cpv='.$GLOBALS['cost_panel_version'] ); // основные стили шаблона
+		wp_enqueue_style( 'style', get_template_directory_uri().'/assets/css/app.pref.css?cpv='.$GLOBALS['cost_panel_version'] ); // основные стили шаблона
 	}
 }
 
