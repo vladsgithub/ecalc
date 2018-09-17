@@ -23,7 +23,7 @@ function forEach(elements, callback) {
             isEditAccountsMode: false,
             isRemoveMode: false,
             isPrintMode: false,
-            isUpdatedObject: false,
+            isChangedObject: false,
             updatedDataTime: 0,
             activeWindow: 1,
             saveButtonTooltip: null,
@@ -55,6 +55,16 @@ function forEach(elements, callback) {
 
             init: function () {
                 this.navMenuInit();
+                this.checkAuthenticationIssues();
+            },
+            checkAuthenticationIssues: function () {
+                var isIssues = window.location.href.indexOf('authentication') + 1;
+                // var isLogoPageNow = window.location.href.indexOf('login') + 1;
+
+                if (isIssues) {
+                    this.closeNavMenuItems();
+                    this.openAuthentication();
+                }
             },
             navMenuInit: function() {
                 var self = this;
@@ -94,8 +104,20 @@ function forEach(elements, callback) {
                     });
                 });
             },
+            openAuthentication: function() {
+                //TODO: Переделать здесь - при ошибке аутентификации показвать пункт главного меню
+                var self = this;
+
+                $scope.layout.openMenu();
+
+                setTimeout(function() {
+                    self.navBody.children[0].classList.remove('active');
+                    document.getElementById('authentication').classList.add('open');
+                    document.getElementById('authentication').classList.add('active');
+                }, 300);
+            },
             closeNavMenuItems: function() {
-                var ulMenu = self.navBody.children[0];
+                var ulMenu = this.navBody.children[0];
 
                 setTimeout(function() {
                     forEach(ulMenu.querySelectorAll('.open'), function(item, i, arr) {
@@ -196,8 +218,8 @@ function forEach(elements, callback) {
 
 		$scope.uploadData = function (isFullObject, isDirectSave) {
 
-            if (!isDirectSave) $scope.layout.isUpdatedObject = true;
-            if (!$scope.layout.isUpdatedObject) return false; // если объект не менялся, то выход
+            if (!isDirectSave) $scope.layout.isChangedObject = true;
+            if (!$scope.layout.isChangedObject) return false; // если объект не менялся, то выход
 
             var delay = (isDirectSave) ? 0 : 4000;
             var localStringJSON = JSON.stringify($scope.expCalc);
@@ -239,7 +261,7 @@ function forEach(elements, callback) {
                         responseArray = xhr.responseText.split('"""""');
                         console.info('We have received a response: ' + responseArray[1]); // responseText -- текст ответа.
                         updateUploadStatus(1);
-                        $scope.layout.isUpdatedObject = false;
+                        $scope.layout.isChangedObject = false;
 
                         fromServerData = JSON.parse(responseArray[2]);
 
@@ -1265,11 +1287,14 @@ function forEach(elements, callback) {
 
 
         $scope.expCalc = getDataService;
+        $scope.expCalc.meta.userID = userID;
 
         if (!$scope.expCalc.accounts.length) $scope.createAccount();
 
-        // if ($scope.expCalc.meta.userID && (!fromServerData || fromServerData.meta.userID !== $scope.expCalc.meta.userID)) $scope.uploadData(true, true);
-        if ($scope.expCalc.meta.userID && !fromServerData) $scope.uploadData(true, true);
+        if ($scope.expCalc.meta.userID && !fromServerData) {
+            $scope.layout.isChangedObject = true;
+            $scope.uploadData(true, true);
+        }
 
     }];
 

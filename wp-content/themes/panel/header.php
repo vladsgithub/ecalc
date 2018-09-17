@@ -69,14 +69,13 @@
 		$secondLetter = mb_substr(end($userNameWords),0,1,'UTF-8');
 		if (count($userNameWords) <= 1) { $secondLetter = ''; }
 
-		echo "<script language='JavaScript'>var fromServerData = '$loadedData';</script>";
+		echo "<script language='JavaScript'>var userID = $userID; var fromServerData = '$loadedData';</script>";
     ?>
 
 </head>
 
 <body id="body" ng-app="app" ng-controller="calculatorCtrl" ng-cloak="true" class="<? if ($current_user->ID > 0) { echo 'logged-in'; } ?>" 
 	ng-class="{'open-menu': layout.isOpenMenu, 'open-aside': layout.isOpenAside, 'remove-mode': layout.isRemoveMode, 'print-mode': layout.isPrintMode}"
-	ng-init="expCalc.meta.userID = <? echo $userID; ?>"
 	data-upload-status="1">
 
 
@@ -167,7 +166,7 @@
                     <b>Авторизация</b>
                 </button>
 
-                <ul class="section" data-level="2">
+                <ul id="authentication" class="section" data-level="2">
                     <li class="section-title">
                         <button class="btn no-shadow" data-previous title="Авторизация">
                             <i class="fas fa-user-circle"></i>

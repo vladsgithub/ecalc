@@ -21,7 +21,7 @@ require( ABSPATH . WPINC . '/default-constants.php' );
 require_once( ABSPATH . WPINC . '/plugin.php' );
 
 
-$GLOBALS['cost_panel_version'] = '1.1'; /* version of the cost panel application */
+$GLOBALS['cost_panel_version'] = '1.3'; /* version of the cost panel application */
 
 /*
  * These can't be directly globalized in version.php. When updating,
