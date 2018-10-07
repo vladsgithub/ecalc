@@ -120,7 +120,7 @@ function clean_login_register_show($atts) {
 		if ( $_GET['created'] == 'success' )
 			echo "<div class='cleanlogin-notification success'><p>". __( 'User created', 'clean-login' ) ."</p></div>";
 		else if ( $_GET['created'] == 'success-link' )
-			echo "<div class='cleanlogin-notification success'><p>". __( 'User created', 'clean-login' ) ."<br>На указанный емайл было отправлено письмо со ссылкой - нажмите на нее, чтобы подтвердить ваш аккаунт. Без этой активации Вы не сможете воспользоваться созданным аккаунтом.</p></div>";
+			echo "<div class='cleanlogin-notification success'><p>". __( 'User created', 'clean-login' ) ."<br>". __( 'Please confirm your account, you will receive an email', 'clean-login' ) ."</p></div>";
 		else if ( $_GET['created'] == 'created' )
 			echo "<div class='cleanlogin-notification success'><p>". __( 'New user created', 'clean-login' ) ."</p></div>";
 		else if ( $_GET['created'] == 'passcomplex' )
@@ -455,7 +455,7 @@ function clean_login_load_before_headers() {
 							$url_msg = wp_nonce_url( $url_msg, $user->ID );
 
 							$blog_title = get_bloginfo();
-							$message = sprintf( __( "Здравствуйте! Ваш email был указан при регистрации нового аккаунта на сайте www.costpanel.info. Для активации аккаунта перейдите по этой ссылке: <a href='%s'>Активировать аккаунт на www.costpanel.info</a>.<br/>Если Вы не регистрировались на нашем сайте - просто проигнорируйте и удалите это письмо.<br/><br/>%s<br/>", 'clean-login' ), $url_msg, $blog_title );
+							$message = sprintf( __( "Use the following link to activate your account: <a href='%s'>activate your account</a>.<br/><br/>%s<br/>", 'clean-login' ), $url_msg, $blog_title );
 
 							$subject = "[$blog_title] " . __( 'Activate your account', 'clean-login' );
 							add_filter( 'wp_mail_content_type', 'clean_login_set_html_content_type' );

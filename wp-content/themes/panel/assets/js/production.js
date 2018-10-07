@@ -33549,11 +33549,30 @@ var saveAs = saveAs || (function(view) {
         || typeof window !== "undefined" && window
         || this
     ));
-var loadData;
+var loadData, scrollTimeout, isFirstVisit;
 
 function forEach(elements, callback) {
 	Array.prototype.forEach.call(elements, callback);
-};
+}
+function animateScrollTo(value) {
+    var speed = 50;
+    var windowLt = document.querySelectorAll('.windows-lt > .active > .window-lt')[0];
+    var scrollTop = windowLt.scrollTop;
+    var direct = (value > scrollTop) ? 1 : -1;
+    var mainSpeed = Math.abs(value - scrollTop) / 2;
+    var delta = mainSpeed * direct;
+
+    if (mainSpeed > (speed / 8)) {
+        windowLt.scrollBy(0, delta);
+        if (scrollTop == windowLt.scrollTop) return false;
+
+        scrollTimeout = setTimeout(function() {animateScrollTo(value);} ,20);
+    } else {
+        windowLt.scrollTop = value;
+        clearTimeout(scrollTimeout);
+    }
+    return false;
+}
 
 
 
@@ -33564,7 +33583,11 @@ function forEach(elements, callback) {
 
 (function (module) {
 
-    var calculatorCtrl = ['$scope', 'getDataService', function ($scope, getDataService) {
+    var calculatorCtrl = ['$scope', '$timeout', 'getDataService', function ($scope, $timeout, getDataService) {
+
+        window.onblur = function () {
+            $scope.uploadData(true, true);
+        };
 
         // WORKING WITH LAYOUT ==============================
 
@@ -33575,6 +33598,7 @@ function forEach(elements, callback) {
             isRemoveMode: false,
             isPrintMode: false,
             isChangedObject: false,
+            isDataUpdating: false,
             updatedDataTime: 0,
             activeWindow: 1,
             saveButtonTooltip: null,
@@ -33614,7 +33638,7 @@ function forEach(elements, callback) {
 
                 if (isIssues) {
                     this.closeNavMenuItems();
-                    this.openAuthentication();
+                    this.openNavMenuFirstSection('authentication');
                 }
             },
             navMenuInit: function() {
@@ -33655,16 +33679,15 @@ function forEach(elements, callback) {
                     });
                 });
             },
-            openAuthentication: function() {
-                //TODO: Переделать здесь - при ошибке аутентификации показвать пункт главного меню
+            openNavMenuFirstSection: function(sectionId) {
                 var self = this;
 
                 $scope.layout.openMenu();
 
                 setTimeout(function() {
                     self.navBody.children[0].classList.remove('active');
-                    document.getElementById('authentication').classList.add('open');
-                    document.getElementById('authentication').classList.add('active');
+                    document.getElementById(sectionId).classList.add('open');
+                    document.getElementById(sectionId).classList.add('active');
                 }, 300);
             },
             closeNavMenuItems: function() {
@@ -33679,10 +33702,15 @@ function forEach(elements, callback) {
                 }, 200);
             },
             collapseAllBodiesView: function(id) {
-                var bodyArr = document.getElementById(id).querySelectorAll('.open-body');
+                var viewWindow = document.getElementById(id);
+                var bodyArr = viewWindow.querySelectorAll('.open-body');
+                var detailsArr = viewWindow.querySelectorAll('.open-details');
 
                 forEach(bodyArr, function(body, i, arr) {
                     body.classList.remove('open-body');
+                });
+                forEach(detailsArr, function(details, i, arr) {
+                    details.classList.remove('open-details');
                 });
             },
             toggleBodyView: function(id) {
@@ -33698,6 +33726,13 @@ function forEach(elements, callback) {
                 } else {
                     document.getElementById(id).classList.toggle('open-details');
                 }
+            },
+            scrollToLastExpense: function(participantId) {
+                var participant = document.getElementById(participantId);
+                var body = document.getElementById('body');
+                var delta = (body.clientWidth >= 480 && body.clientWidth < 640) ? 212 : 132;
+
+                animateScrollTo(participant.offsetHeight + participant.offsetTop - document.getElementById('body').clientHeight + delta);
             }
         };
 
@@ -33717,14 +33752,17 @@ function forEach(elements, callback) {
             var tooltip = '';
 
             switch(status) {
+                case -1:
+                    tooltip = 'Автоматическое сохранение на сервере: ожидание перед сохранением';
+                    break;
                 case 0:
-                    tooltip = 'Сохранение на сервере: в процессе ...';
+                    tooltip = 'Автоматическое сохранение на сервере: в процессе ...';
                     break;
                 case 1:
-                    tooltip = 'Сохранение на сервере: успешно';
+                    tooltip = 'Автоматическое сохранение на сервере: успешно';
                     break;
                 case 2:
-                    tooltip = 'Сохранение на сервере: не удалось (проверьте интернет-соединение)';
+                    tooltip = 'Автоматическое сохранение на сервере: не удалось (проверьте интернет-соединение)';
                     break;
             }
 
@@ -33768,11 +33806,10 @@ function forEach(elements, callback) {
         };
 
 		$scope.uploadData = function (isFullObject, isDirectSave) {
-
             if (!isDirectSave) $scope.layout.isChangedObject = true;
             if (!$scope.layout.isChangedObject) return false; // если объект не менялся, то выход
 
-            var delay = (isDirectSave) ? 0 : 4000;
+            var delay = (isDirectSave) ? 0 : 5000;
             var localStringJSON = JSON.stringify($scope.expCalc);
 
             $scope.layout.updatedDataTime = +new Date();
@@ -33784,7 +33821,7 @@ function forEach(elements, callback) {
 			    return false;
             }
 
-            updateUploadStatus(0);
+            updateUploadStatus(-1);
 
             setTimeout(function () {
                 var now = +new Date();
@@ -33792,6 +33829,8 @@ function forEach(elements, callback) {
                 if (!isDirectSave && (now - $scope.layout.updatedDataTime) < delay) return false;
 
                 var xhr, serverStringAccountJSON, currentAccountNumber, responseArray, fromServerData;
+
+                updateUploadStatus(0);
 
                 currentAccountNumber = $scope.expCalc.settings.currentAccount;
 
@@ -33855,6 +33894,7 @@ function forEach(elements, callback) {
             var newAccount = {
                 settings: {
                     accountCurrency: $scope.expCalc.settings.baseCurrency,
+                    advancedMode: false,
                     fixationDirectly: true
                 },
                 meta: {
@@ -33907,6 +33947,10 @@ function forEach(elements, callback) {
             $scope.addParticipantToPartList();
 
 			$scope.uploadData(updateFullDataOnServer);
+
+			setTimeout(function() {
+                $scope.layoutControl.toggleBodyView('participant.1.' + participantIndex);
+            }, 0);
         };
 
 
@@ -33984,6 +34028,8 @@ function forEach(elements, callback) {
         };
 
         $scope.removeCurrentAccount = function (removedAccountIndex) {
+            if (!confirm('Вы действительно хотите удалить расчет: ' + $scope.expCalc.accounts[removedAccountIndex].meta.title)) return false;
+
             $scope.expCalc.accounts.splice(removedAccountIndex, 1);
 			$scope.expCalc.accounts.forEach(function(account, accountIndex, accountArr) {
 				account.meta.index = accountIndex;
@@ -34002,15 +34048,18 @@ function forEach(elements, callback) {
 
         $scope.removeParticipant = function (participantIndex) {
             var accountIndex = $scope.expCalc.settings.currentAccount,
-                error = $scope.werePaymentsFromParticipant(participantIndex);
+                error = $scope.werePaymentsFromParticipant(participantIndex),
+                participants = $scope.expCalc.accounts[accountIndex].participants;
 
             if (error) {
                 alert(error);
             } else {
-                $scope.expCalc.accounts[accountIndex].participants.splice(participantIndex, 1);
-                $scope.removeParticipantFromPartList(participantIndex);
+                if (confirm('Вы действительно хотите удалить участника: ' + participants[participantIndex].meta.title)) {
+                    participants.splice(participantIndex, 1);
+                    $scope.removeParticipantFromPartList(participantIndex);
 
-				$scope.uploadData();
+                    $scope.uploadData();
+                }
             }
         };
 
@@ -34776,6 +34825,18 @@ function forEach(elements, callback) {
             return result;
         };
 
+        $scope.openCurrentAccount = function (index) {
+            $scope.layout.isDataUpdating = true;
+
+            $timeout(function () {
+                $scope.expCalc.settings.currentAccount = index;
+            }, 10);
+        };
+
+        $scope.stopEvents = function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        };
 
 
 
@@ -34783,6 +34844,15 @@ function forEach(elements, callback) {
 
 
 
+
+
+        $scope.$watch('expCalc', function (newValue, oldValue) {
+            if ($scope.layout.isDataUpdating) {
+                $timeout(function () {
+                    $scope.layout.isDataUpdating = false;
+                }, 100);
+            }
+        }, true);
 
         // $scope.$watch('expCalc', function (newValue, oldValue) {
         //    localStorage.setItem('expensesCalc', JSON.stringify(newValue));
@@ -34847,6 +34917,7 @@ function forEach(elements, callback) {
             $scope.uploadData(true, true);
         }
 
+        if (isFirstVisit) $scope.layoutControl.openNavMenuFirstSection('aboutService');
     }];
 
     module.controller('calculatorCtrl', calculatorCtrl);
@@ -34863,6 +34934,8 @@ function forEach(elements, callback) {
 
         try {
             fromServerData = (fromServerData) ? JSON.parse(fromServerData) : false;
+
+            //if (!fromLocalStorage && !fromServerData) window.location.href = '/info';
         } catch (err) {
             fromServerData = false;
             console.error('Данные от сервера повреждены, поэтому используются локальные данные!');
@@ -34884,6 +34957,7 @@ function forEach(elements, callback) {
 
 		if (fromLocalStorage.meta) return fromLocalStorage;
 
+        isFirstVisit = true;
 		currencies = {
 			// names: ['usd', 'eur', 'rub', 'byn'], // The currency number of 0, 1, 2 and 3
 			// rates: [ // Banks sell by these rates
@@ -34900,7 +34974,7 @@ function forEach(elements, callback) {
 		};
 		expensesTypes = [
 			{name: 'Общие расходы', icon: 'donate'},
-			{name: 'Продукты питания', icon: 'utensils'},
+			{name: 'Питание', icon: 'utensils'},
 			{name: 'Жильё', icon: 'home'},
 			{name: 'Машина', icon: 'car'},
 			{name: 'Развлечение', icon: 'theater-masks'},

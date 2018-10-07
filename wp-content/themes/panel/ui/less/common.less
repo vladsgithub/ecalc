@@ -502,10 +502,17 @@ label {
 		}
 	}
 
+	&.big-font {
+		input, b {
+			font-size: 1.2rem;
+		}
+	}
+
 	input {
 		position: absolute;
 		margin: 0; padding: 0 5px;
 		height: 100%; width: 100%;
+		line-height: 40px;
 		box-sizing: border-box;
 		border: none; outline: none;
 		vertical-align: top;
@@ -1016,16 +1023,25 @@ label {
 	&.bold {
 		font-weight: bold;
 	}
+	&.big-font > b {
+		font-size: 1.2rem;
+	}
 	&.title,
 	&.name {
-		> b {
+		&:not(.word-wrap) > b {
 			overflow: hidden;
 			line-height: 1;
 			white-space: nowrap;
 			text-overflow: ellipsis;
+		}
+
+		> b {
 			font-size: 1.2rem;
 			font-weight: bold;
 		}
+	}
+	&.title > b {
+		line-height: 1.1;
 	}
 	&.name > b {
 		font-size: 1rem;
@@ -1088,6 +1104,9 @@ label {
 			color: inherit;
 			font-weight: bold;
 		}
+	}
+	span {
+		display: inline-block;
 	}
 }
 
@@ -1221,7 +1240,7 @@ label {
 	> .min-field {
 		flex-grow: 0;
 		flex-shrink: 0;
-		max-width: 25%;
+		max-width: 30%;
 		min-width: 44px;
 	}
 	> .text-select {

@@ -1,4 +1,4 @@
-<aside class="accounts" ng-class="{'edit-mode': layout.isEditAccountsMode}">
+<aside class="accounts" role="menu" ng-class="{'edit-mode': layout.isEditAccountsMode}">
 	<ul class="aside-head flex">
 		<li class="s-p2">
 			<label class="toggle">
@@ -10,6 +10,27 @@
 		<li class="flex-grow">
 			<div class="text-field bold">
 				<b>Режим редактирования</b>
+			</div>
+		</li>
+	</ul>
+
+	<div class="text-field solid title thin uppercase text-center">
+		<b>Выбор и настройка расчета:</b>
+	</div>
+
+	<ul class="aside-head flex">
+		<li class="s-p2">
+			<label class="toggle">
+				<input type="checkbox"
+					   ng-model="expCalc.accounts[expCalc.settings.currentAccount].settings.advancedMode"
+					   ng-change="uploadData()">
+				<i></i>
+			</label>
+		</li>
+
+		<li class="flex-grow">
+			<div class="text-field">
+				<b>Расширенный режим расчета<br/>(типы расходов и мультивалюта)</b>
 			</div>
 		</li>
 	</ul>
@@ -43,7 +64,7 @@
 				</div>
 
 				<div class="flex-grow">
-					<button class="btn solid view-mode" ng-click="expCalc.settings.currentAccount = $index">
+					<button class="btn solid border view-mode" ng-click="openCurrentAccount($index)">
 						<b>{{(account.meta.title) ? account.meta.title : '--- без названия ---'}}</b>
 					</button>
 
@@ -74,11 +95,21 @@
 	</div>
 </aside>
 
-<main ng-click="layout.isOpenMenu = false; layout.isOpenAside = false;">
+<main ng-click="layout.isOpenMenu = false; layout.isOpenAside = false;" role="main">
+
+	<p class="about-service">
+		Cost Panel - калькулятор учета и распределения расходов между участниками.
+		Калькулятор поможет быстро рассчитать доли каждого участника общего расхода и подскажет как рассчитаться между собой.
+		Вносите траты в любой валюте, указывайте для кого их рассчитать и калькулятор распределения расходов покажет -
+		кто кому и в какой валюте должен вернуть с учетом ранее внесенных средств. Также в этом калькуляторе можно создавать
+		список будущих покупок онлайн одним человеком и в это же время в магазине открыть его на любом девайсе другим
+		человеком, чтобы строго следовать этому перечню. А статистика распределения расходов отобразит полезную информацию:
+		тип расхода, дата, доля, взнос, остаток.
+	</p>
 
 	<div class="three-window-lt" data-active-window="{{layout.activeWindow}}">
 		<div class="header-lt">
-			<ul class="flex">
+			<ul class="flex" role="tablist">
 				<li>
 					<button class="btn no-shadow" ng-click="layout.activeWindow = 1">
 						<b>1.</b>
@@ -105,7 +136,7 @@
 			</ul>
 		</div>
 
-		<ul class="windows-lt"
+		<ul class="windows-lt" role="tabpanel"
 			ng-repeat="account in expCalc.accounts track by $index"
 			ng-if="expCalc.settings.currentAccount == $index">
 
@@ -126,7 +157,7 @@
 							</li>
 
 							<li class="flex-grow s-p2">
-								<div class="text-field border-bottom">
+								<div class="text-field name word-wrap border-bottom">
 									<b>Список участников и расходов</b>
 								</div>
 							</li>
@@ -193,7 +224,7 @@
 										</li>
 
 										<li class="flex-grow s-p0">
-											<label class="text-input">
+											<label class="text-input big-font">
 												<input type="text" placeholder="Имя участника {{participantIndex + 1}}"
 													   ng-model="participant.meta.title"
 													   ng-change="validateJSON(participant.meta, 'title') && uploadData()">
@@ -222,6 +253,23 @@
 								<div class="participant-body">
 
 									<ul class="body-view expenses s-p0">
+										<li class="flex meta-bar" ng-if="participant.expenses.length > 5">
+											<div class="text-field name word-wrap s-p0">
+												<b>Количество расходов: {{participant.expenses.length}}</b>
+											</div>
+
+											<div class="flex-grow text-field text-right s-p0">
+												<b>Прокрутка к последнему расходу участника</b>
+											</div>
+
+											<div class="s-p0">
+												<button class="btn solid"
+														ng-click="layoutControl.scrollToLastExpense('participant.1.' + participantIndex)">
+													<i class="fas fa-arrow-circle-down"></i>
+												</button>
+											</div>
+										</li>
+
 										<li class="expense"
 											ng-repeat="expense in participant.expenses track by $index"
 											ng-init="expenseIndex = $index">
@@ -252,7 +300,9 @@
 															</b>
 														</label>
 
-														<label class="text-select icons no-mobile" ng-disabled="expense.isPaid">
+														<label class="text-select icons no-mobile"
+															   ng-disabled="expense.isPaid"
+															   ng-if="expCalc.accounts[expCalc.settings.currentAccount].settings.advancedMode">
 															<select ng-model="expense.type" ng-change="uploadData()">
 																<option ng-repeat="expensesType in expCalc.settings.expensesTypes track by $index"
 																		value="{{$index}}" ng-selected="expense.type == $index">
@@ -269,7 +319,9 @@
 
 												<li class="flex-hidden flex-grow flex-shrink s-p0">
 													<div class="multiple-field">
-														<label class="text-select currency no-mobile" ng-disabled="expense.isPaid">
+														<label class="text-select currency no-mobile"
+															   ng-class="{'hidden': !expCalc.accounts[expCalc.settings.currentAccount].settings.advancedMode}"
+															   ng-disabled="expense.isPaid">
 															<select ng-model="expense.currency"
 																	ng-change="uploadData()"
 																	ng-options="key as value for (key, value) in expCalc.settings.currencies.names">
@@ -296,7 +348,9 @@
 												 ng-init="isOpenDetails = !expense.title && !expense.value"
 												 ng-class="{'completed': completedDetails(expense), 'open-details': isOpenDetails}">
 
-												<ul class="flex expense-values only-mobile" ng-class="{'hidden': expense.isPaid}">
+												<ul class="flex expense-values only-mobile"
+													ng-class="{'hidden': expense.isPaid}"
+													ng-if="expCalc.accounts[expCalc.settings.currentAccount].settings.advancedMode">
 													<li class="s-p0">
 														<label class="text-select icons">
 															<select ng-model="expense.type" ng-change="uploadData()">
@@ -333,7 +387,7 @@
 
 													<div class="details-view">
 
-														<ul class="flex flex-wrap s-p2" ng-class="{'hidden': !expense.isPaid}">
+														<ul class="flex flex-wrap s-p2">
 															<li class="s-p0">
 																<div class="text-field name thin">
 																	<b>Дата и время:</b>
@@ -380,13 +434,13 @@
 																	<label class="checkbox remove-mode-false">
 																		<input type="checkbox" ng-model="detail.isChecked" ng-change="uploadData()">
 																		<i></i>
-																		<b>{{expenseIndex + 1}}.{{detailIndex + 1}}</b>
+																		<b>{{detailIndex + 1}}.</b>
 																	</label>
 
 																	<button class="btn solid warning remove-mode-true" title="Удалить этот пункт"
 																			ng-click="removeDetailsFromExpense(expense, detailIndex)">
 																		<i class="fas fa-trash-alt"></i>
-																		<b>{{expenseIndex + 1}}.{{detailIndex + 1}}</b>
+																		<b>{{detailIndex + 1}}.</b>
 																	</button>
 																</li>
 
@@ -466,8 +520,10 @@
 												</li>
 
 												<li class="s-p2">
-													<div class="text-field name">
-														<b>Добавить новый расход</b>
+													<div class="text-field name word-wrap">
+														<b>Новый расход участнику:
+															<span>{{(participant.meta.title) ? participant.meta.title : participantIndex + 1}}</span>
+														</b>
 													</div>
 												</li>
 											</ul>
@@ -478,7 +534,7 @@
 								</div>
 							</li>
 
-							<li>
+							<li class="participant">
 								<div class="participant-head">
 									<ul class="flex s-p0">
 										<li class="flex-shrink s-p0">
@@ -519,7 +575,7 @@
 							</li>
 
 							<li class="flex-grow s-p2">
-								<div class="text-field border-bottom">
+								<div class="text-field name word-wrap border-bottom">
 									<b>Расчет на каждого участника</b>
 								</div>
 							</li>
@@ -568,7 +624,7 @@
 										</li>
 
 										<li class="flex-grow s-p0">
-											<div class="text-field name solid">
+											<div class="text-field title bold solid">
 												<b>{{extParticipant.meta.title}}</b>
 											</div>
 										</li>
@@ -621,7 +677,7 @@
 
 										<li class="share" ng-repeat="intParticipant in account.participants track by $index">
 											<div class="text-field text-center block s-p2" ng-if="!intParticipant.expenses.length">
-												<b>Участник <em>[{{intParticipant.meta.title}}]</em> не имеет расходов</b>
+												<b>Участник <em>[{{(intParticipant.meta.title) ? intParticipant.meta.title : $index + 1}}]</em> не имеет расходов</b>
 											</div>
 
 											<ul class="flex s-p0" ng-repeat="expense in intParticipant.expenses track by $index">
@@ -679,7 +735,7 @@
 							</li>
 
 							<li class="flex-grow s-p2">
-								<div class="text-field border-bottom">
+								<div class="text-field name word-wrap border-bottom">
 									<b>Фиксация возвратов</b>
 								</div>
 							</li>
@@ -778,11 +834,12 @@
 												<b>{{participantIndex + 1}}.</b>
 											</div>
 
-											<div class="flex-grow text-field name solid s-p1 title-max-width">
+											<div class="flex-grow text-field title solid s-p1 title-max-width">
 												<b>{{participant.meta.title}}</b>
 											</div>
 
-											<div class="text-select complex-input" ng-if="participant.meta.fullBalance > 0">
+											<div class="text-select complex-input"
+												 ng-if="participant.meta.fullBalance > 0 && expCalc.accounts[expCalc.settings.currentAccount].settings.advancedMode">
 												<div class="text-field">
 													<b>получит</b>
 												</div>
@@ -795,7 +852,12 @@
 													<b>{{expCalc.settings.currencies.names[participant.meta.preferredCurrency].substring(0, 3)}}</b>
 												</label>
 											</div>
-											<div class="text-field name solid s-p1" ng-if="participant.meta.fullBalance < 0">
+											<div class="text-field title solid s-p1"
+												 ng-if="participant.meta.fullBalance > 0 && !expCalc.accounts[expCalc.settings.currentAccount].settings.advancedMode">
+												<b>получит</b>
+											</div>
+											<div class="text-field title solid s-p1"
+												 ng-if="participant.meta.fullBalance < 0">
 												<b>вернет</b>
 											</div>
 
@@ -869,7 +931,9 @@
 
 													<li class="s-p0">
 														<div class="multiple-field">
-															<label class="text-select currency" ng-disabled="refund.isFixed">
+															<label class="text-select currency"
+																   ng-disabled="refund.isFixed"
+																   ng-if="expCalc.accounts[expCalc.settings.currentAccount].settings.advancedMode">
 																<select ng-model="refund.currency">
 																	<option value="" hidden disabled selected>---</option>
 																	<option ng-repeat="currency in expCalc.settings.currencies.names track by $index"

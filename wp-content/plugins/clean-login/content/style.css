@@ -268,3 +268,9 @@ to your current WordPress template, and if something behaves abnormal please con
 	float: left;
 	text-decoration: none;
 }
+
+
+/*custom styles*/
+.cleanlogin-notification {
+	animation: none;
+}

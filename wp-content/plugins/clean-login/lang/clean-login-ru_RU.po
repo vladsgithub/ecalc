@@ -122,6 +122,18 @@ msgstr ""
 "Кликните по ссылке, чтобы восстановить пароль: <a href='%s'>восстановление "
 "пароля</a> <br/><br/>%s<br/>"
 
+#: ../clean-login.php:408
+#, php-format
+msgid ""
+"Use the following link to activate your account: <a href='%s'>activate your "
+"account</a>.<br/><br/>%s<br/>"
+msgstr ""
+"Используйте эту ссылку, чтобы активировать ваш аккаунт на сайте costpanel.info (или проигнорируйте это письмо, если вы не регистрировались на этом сайте): <a href='%s'>Активировать ваш аккаунт</a> <br/>%s<br/>"
+
+#: ../clean-login.php:410
+msgid "Activate your account"
+msgstr "Активируйте ваш аккаунт из письма, которое пришло на ваш email"
+
 #: /Users/ahornero/Documents/wordpress.org/clean-login/trunk/clean-login.php:547
 msgid "Admin area"
 msgstr "Заповедная зона"

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+		<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url>
+	<loc>https://costpanel.info/</loc>
+	<lastmod>2018-09-20T07:16:13+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://costpanel.info/info/</loc>
+	<lastmod>2018-09-20T07:16:14+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://costpanel.info/login/</loc>
+	<lastmod>2018-09-20T07:16:13+01:00</lastmod>
+	<priority>0.5</priority>
+</url>
+</urlset>

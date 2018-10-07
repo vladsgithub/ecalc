@@ -10,8 +10,23 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); // кодировка ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-    <title>Cost panel</title>
+    <meta name="keywords" content="калькулятор распределения расходов, сервис распределения расходов, расчет доли
+    каждого участника, расчет между участниками, подсчет расходов, калькулятор учета расходов, калькулятор расходов,
+    сервис учета расходов, сервис расходов, распределение расходов, расчет доли участника, доля участника в расходе,
+    доля в расходе, доля в расходах, онлайн список покупок, онлайн перечень покупок, список покупок, перечень покупок,
+    список расходов, статистика расходов, статистика покупок, возврат долгов, учет долгов">
+
+
+    <meta name="description" content="Cost Panel - калькулятор учета и распределения расходов между участниками.
+    Калькулятор поможет быстро рассчитать доли каждого участника общего расхода и подскажет как рассчитаться между собой.
+    Вносите траты в любой валюте, указывайте для кого их рассчитать и калькулятор распределения расходов покажет -
+    кто кому и в какой валюте должен вернуть с учетом ранее внесенных средств. Также в этом калькуляторе можно создавать
+    список будущих покупок онлайн одним человеком и в это же время в магазине открыть его на любом девайсе другим
+    человеком, чтобы строго следовать этому перечню. А статистика распределения расходов отобразит полезную информацию:
+    тип расхода, дата, доля, взнос, остаток.">
+
 
 	<?php /* Все скрипты и стили теперь подключаются в functions.php */ ?>
 
@@ -20,6 +35,36 @@
 	<![endif]-->
 	
 	<?php wp_head(); // необходимо для работы плагинов и функционала ?>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounter50412597 = new Ya.Metrika2({
+                        id:50412597,
+                        clickmap:true,
+                        trackLinks:true,
+                        accurateTrackBounce:true,
+                        webvisor:true
+                    });
+                } catch(e) { }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/tag.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks2");
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/50412597" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
 
 	<?
 		$current_user = wp_get_current_user();
@@ -69,13 +114,13 @@
 		$secondLetter = mb_substr(end($userNameWords),0,1,'UTF-8');
 		if (count($userNameWords) <= 1) { $secondLetter = ''; }
 
-		echo "<script language='JavaScript'>var userID = $userID; var fromServerData = '$loadedData';</script>";
+		echo "<script type='text/javascript'>var userID = $userID; var fromServerData = '$loadedData';</script>";
     ?>
 
 </head>
 
-<body id="body" ng-app="app" ng-controller="calculatorCtrl" ng-cloak="true" class="<? if ($current_user->ID > 0) { echo 'logged-in'; } ?>" 
-	ng-class="{'open-menu': layout.isOpenMenu, 'open-aside': layout.isOpenAside, 'remove-mode': layout.isRemoveMode, 'print-mode': layout.isPrintMode}"
+<body id="body" ng-app="app" ng-controller="calculatorCtrl" ng-cloak="true" class="<? if ($current_user->ID > 0) { echo 'logged-in'; } ?>"
+	ng-class="{'open-menu': layout.isOpenMenu, 'open-aside': layout.isOpenAside, 'remove-mode': layout.isRemoveMode, 'print-mode': layout.isPrintMode, 'advanced-mode': expCalc.accounts[expCalc.settings.currentAccount].settings.advancedMode, 'data-updating': layout.isDataUpdating}"
 	data-upload-status="1">
 
 
@@ -101,7 +146,7 @@
 			</h2>
 		</li>
 		<li class="separator <? if ($current_user->ID == 0) { echo 'hidden'; } ?>">
-			<button id="saveButton" class="btn solid" title="Сохранение на сервере" ng-click="uploadData(true, true)">
+			<button id="saveButton" class="btn solid" title="Автоматическое сохранение на сервере" ng-click="uploadData(true, true)">
 				<b class="status-line">
 				    <? echo $firstLetter.$secondLetter; ?>
 				</b>
@@ -118,7 +163,7 @@
 
 </header>
 
-<aside class="menu">
+<aside class="menu" role="menu">
     <ul class="nav-head flex">
         <li class="photo">
             <img class="<? if ($current_user->ID == 0) { echo 'hidden'; } ?>" src="<? echo get_avatar_url($current_user->ID) ?>" />
@@ -620,7 +665,7 @@
                     <b>О сервисе</b>
                 </button>
 
-                <ul class="section" data-level="2">
+                <ul id="aboutService" class="section" data-level="2">
                     <li class="section-title">
                         <button class="btn no-shadow" data-previous title="О сервисе">
                             <i class="fas fa-info"></i>
@@ -649,6 +694,9 @@
                                 <a href="/info">Больше информации</a><br/>
                                 <br/>
                                 Версия <? echo $GLOBALS['cost_panel_version'] ?>
+                                <br/>
+                                <br/>
+                                <img style="width: 100%; margin-bottom: 60px;" src="/pictures/hello.jpg" />
                                 </b>
                             </div>
 
