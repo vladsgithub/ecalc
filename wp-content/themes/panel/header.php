@@ -13,8 +13,10 @@
 
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <meta name="keywords" content="калькулятор распределения расходов, сервис распределения расходов, расчет доли
-    каждого участника, расчет между участниками, подсчет расходов, калькулятор учета расходов, калькулятор расходов,
-    сервис учета расходов, сервис расходов, распределение расходов, расчет доли участника, доля участника в расходе,
+    каждого участника, расчет между участниками, расчет расходов, подсчет расходов, распределение расходов,
+    распределение расходов между участниками, распределение расходов между сторонами, калькулятор расходов,
+    сервис учета расходов, сервис расходов, распределение расходов, калькулятор учета расходов,
+    распределение расходов поровну, расчет доли участника, доля участника в расходе,
     доля в расходе, доля в расходах, онлайн список покупок, онлайн перечень покупок, список покупок, перечень покупок,
     список расходов, статистика расходов, статистика покупок, возврат долгов, учет долгов">
 
@@ -22,10 +24,10 @@
     <meta name="description" content="Cost Panel - калькулятор учета и распределения расходов между участниками.
     Калькулятор поможет быстро рассчитать доли каждого участника общего расхода и подскажет как рассчитаться между собой.
     Вносите траты в любой валюте, указывайте для кого их рассчитать и калькулятор распределения расходов покажет -
-    кто кому и в какой валюте должен вернуть с учетом ранее внесенных средств. Также в этом калькуляторе можно создавать
-    список будущих покупок онлайн одним человеком и в это же время в магазине открыть его на любом девайсе другим
-    человеком, чтобы строго следовать этому перечню. А статистика распределения расходов отобразит полезную информацию:
-    тип расхода, дата, доля, взнос, остаток.">
+    кто кому и в какой валюте должен вернуть с учетом ранее внесенных средств. Распределение расходов настраивается поровну.
+    Также в этом калькуляторе можно создавать список будущих покупок онлайн одним человеком и в это же время в магазине
+    открыть его на любом девайсе другим человеком, чтобы строго следовать этому перечню. А статистика распределения расходов
+    отобразит полезную информацию: тип расхода, дата, доля, взнос, остаток.">
 
 
 	<?php /* Все скрипты и стили теперь подключаются в functions.php */ ?>
@@ -113,6 +115,15 @@
 		$firstLetter = mb_substr($userName,0,1,'UTF-8');
 		$secondLetter = mb_substr(end($userNameWords),0,1,'UTF-8');
 		if (count($userNameWords) <= 1) { $secondLetter = ''; }
+
+
+//		$parts = parse_url($url);
+//        parse_str($parts['query'], $query);
+//        echo $query['email'];
+if (isset($_GET['key1'])) {
+    $key1 = $_GET['key1'];
+    echo "<script type='text/javascript'>var key1 = $key1;</script>";
+}
 
 		echo "<script type='text/javascript'>var userID = $userID; var fromServerData = '$loadedData';</script>";
     ?>
@@ -502,6 +513,52 @@
                                     <li id="currenciesTable" class="currency-table s-p2">
                                         <script type="text/javascript" src="https://ru.exchange-rates.org/GetCustomContent.aspx?sid=RT000JU97&amp;type=RatesTable&amp;stk=-0L8O3U15SJ" charset="utf-8">
                                         </script>
+                                    </li>
+                                </ul>
+
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <button class="btn solid no-shadow" data-next>
+                            <i class="fas fa-share-alt"></i>
+                            <b>Поделиться</b>
+                        </button>
+
+                        <ul class="section" data-level="3">
+                            <li class="section-title">
+                                <button class="btn no-shadow" data-previous title="Поделиться">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <div class="text-field title"><b>Поделиться</b></div>
+                            </li>
+
+                            <li class="section-box">
+
+                                <ul class="settings-list">
+                                    <li class="s-p2">
+                                        <div class="text-field title block">
+                                            <b>Ссылка на текущий расчет:</b>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <ul class="flex s-p1">
+                                            <li class="flex-shrink s-p1">
+                                                <button class="btn solid"
+                                                        title="Скопировать ссылку в буфер"
+                                                        ng-click="copyToBufferByID('linkToAccount')">
+                                                    <i class="fas fa-copy"></i>
+                                                </button>
+                                            </li>
+
+                                            <li class="flex-grow s-p1">
+                                                <label class="text-input" disabled>
+                                                    <b id="linkToAccount">https://costpanel.info/?link={{expCalc.accounts[expCalc.settings.currentAccount].meta.id}}</b>
+                                                </label>
+                                            </li>
+                                        </ul>
                                     </li>
                                 </ul>
 

@@ -33828,15 +33828,20 @@ function animateScrollTo(value) {
 
                 if (!isDirectSave && (now - $scope.layout.updatedDataTime) < delay) return false;
 
-                var xhr, serverStringAccountJSON, currentAccountNumber, responseArray, fromServerData;
+                var xhr, serverStringAccountJSON, currentAccountNumber, currentAccount, responseArray, fromServerData;
 
                 updateUploadStatus(0);
 
                 currentAccountNumber = $scope.expCalc.settings.currentAccount;
+                currentAccount = $scope.expCalc.accounts[currentAccountNumber];
 
                 xhr = new XMLHttpRequest();
 
-                serverStringAccountJSON = JSON.stringify($scope.expCalc.accounts[currentAccountNumber]);
+                if (!isFullObject && $scope.expCalc.meta.userID && !currentAccount.meta.id) {
+                    currentAccount.meta.id = $scope.expCalc.meta.userID + (+new Date() + '').slice(-11);
+                }
+
+                serverStringAccountJSON = JSON.stringify(currentAccount);
 
                 xhr.open("POST", '/send.php', true);
                 xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
@@ -33857,7 +33862,7 @@ function animateScrollTo(value) {
 
                         switch(responseArray[0]) {
                             case '010':
-                                $scope.expCalc.accounts[currentAccountNumber].meta.savedDate = fromServerData.meta.savedDate;
+                                currentAccount.meta.savedDate = fromServerData.meta.savedDate;
                                 $scope.$digest();
                                 break;
                             case '100':
@@ -34880,31 +34885,31 @@ function animateScrollTo(value) {
 			// }
         // }, true);
 
-        // $scope.copyObjectToBuffer = function () {
-        //     var objectDiv = document.getElementById('angularObject');
-        //     var range = document.createRange();
-        //     range.selectNode(objectDiv);
-        //     var selection = window.getSelection();
-        //     selection.addRange(range);
-        //
-        //     try {
-        //         // Теперь, когда мы выбрали текст ссылки, выполним команду копирования
-        //         var successful = document.execCommand('copy');
-        //         var msg = successful ? 'УСПЕШНО' : 'ПЛОХО!!!';
-        //         var selectedObject = selection.toString();
-        //
-        //         msg = (selectedObject.length) ? msg : 'неудачно. Повторите попытку копирования';
-        //         alert('Объект скопировался ' + msg + ': ' + selectedObject);
-        //     } catch(err) {
-        //         alert('Проблема с копированием');
-        //     }
-        //
-        //     // Снятие выделения - ВНИМАНИЕ: вы должны использовать
-        //     // removeRange(range) когда это возможно
-        //     window.getSelection().removeAllRanges();
-        //     // window.getSelection().removeRange(range);
-        //     selection.removeAllRanges();
-        // };
+        $scope.copyToBufferByID = function (id) {
+            var objectDiv = document.getElementById(id);
+            var range = document.createRange();
+            range.selectNode(objectDiv);
+            var selection = window.getSelection();
+            selection.addRange(range);
+
+            try {
+                // Теперь, когда мы выбрали текст ссылки, выполним команду копирования
+                var successful = document.execCommand('copy');
+                var msg = successful ? 'успешно' : 'неудачно';
+                var selectedObject = selection.toString();
+
+                msg = (selectedObject.length) ? msg : 'неудачно. Повторите попытку копирования';
+                alert('Объект скопировался ' + msg + ': ' + selectedObject);
+            } catch(err) {
+                alert('Проблема с копированием');
+            }
+
+            // Снятие выделения - ВНИМАНИЕ: вы должны использовать
+            // removeRange(range) когда это возможно
+            window.getSelection().removeAllRanges();
+            // window.getSelection().removeRange(range);
+            selection.removeAllRanges();
+        };
 
 
         $scope.expCalc = getDataService;
