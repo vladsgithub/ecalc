@@ -246,6 +246,10 @@ function animateScrollTo(value) {
         $scope.validateJSON = function(obj, propertyName) {
             try {
                 JSON.parse('[\"' + obj[propertyName] + '\"]');
+
+                if (obj[propertyName].toString().search(/['&=%]/) + 1) { // и эти символы не должны быть в адресной строке
+                    throw new SyntaxError("Недопустимый символ");
+                }
             } catch (e) {
                 alert('Здесь нельзя использовать спец.символы:\n' + obj[propertyName]);
                 obj[propertyName] = '???';

@@ -37,8 +37,8 @@
       <file leaf-file-name="page.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="751">
-              <caret line="1320" column="7" selection-start-line="1320" selection-start-column="7" selection-end-line="1320" selection-end-column="7" />
+            <state relative-caret-position="284">
+              <caret line="73" column="31" selection-start-line="73" selection-start-column="31" selection-end-line="73" selection-end-column="94" />
             </state>
           </provider>
         </entry>
@@ -46,8 +46,8 @@
       <file leaf-file-name="header.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/header.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="485">
-              <caret line="549" column="89" selection-start-line="549" selection-start-column="89" selection-end-line="549" selection-end-column="89" />
+            <state relative-caret-position="598">
+              <caret line="563" column="128" selection-start-line="563" selection-start-column="128" selection-end-line="563" selection-end-column="128" />
             </state>
           </provider>
         </entry>
@@ -55,8 +55,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="583">
-              <caret line="284" column="79" selection-start-line="284" selection-start-column="79" selection-end-line="284" selection-end-column="79" />
+            <state relative-caret-position="335">
+              <caret line="248" column="78" selection-start-line="248" selection-start-column="78" selection-end-line="248" selection-end-column="78" />
             </state>
           </provider>
         </entry>
@@ -122,11 +122,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>participant-body</find>
-      <find>setting</find>
-      <find>settings:</find>
-      <find>aside-head flex</find>
-      <find>btn solid view-mode</find>
       <find>flex expense-values only-mobile</find>
       <find>{'hidden': !expCalc.accounts[expCalc.settings.currentAccount].settings.advancedMode}</find>
       <find>saveButton</find>
@@ -152,6 +147,11 @@
       <find>$userID</find>
       <find>Экспорт / Импорт</find>
       <find>$scope.expCalc.accounts[currentAccountNumber]</find>
+      <find>распределение расходов поровну</find>
+      <find>input</find>
+      <find>validateJSON</find>
+      <find>ng-change</find>
+      <find>class=&quot;section-box&quot;</find>
     </findStrings>
     <replaceStrings>
       <replace>Название группы расходов</replace>
@@ -232,7 +232,7 @@
       <path value="$PROJECT_DIR$/wp-content/themes/panel/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1932" />
@@ -359,12 +359,12 @@
       <workItem from="1537595277479" duration="572000" />
       <workItem from="1537596003306" duration="274000" />
       <workItem from="1537596543874" duration="36224000" />
-      <workItem from="1538807061379" duration="25541000" />
+      <workItem from="1538807061379" duration="32720000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="350983000" />
+    <option name="totallyTimeSpent" value="358162000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -645,13 +645,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="751">
-          <caret line="1320" column="7" selection-start-line="1320" selection-start-column="7" selection-end-line="1320" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/css/fontawesome.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24072">
@@ -697,17 +690,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="73" column="31" selection-start-line="73" selection-start-column="31" selection-end-line="73" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="549" column="89" selection-start-line="549" selection-start-column="89" selection-end-line="549" selection-end-column="89" />
+        <state relative-caret-position="598">
+          <caret line="563" column="128" selection-start-line="563" selection-start-column="128" selection-end-line="563" selection-end-column="128" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="583">
-          <caret line="284" column="79" selection-start-line="284" selection-start-column="79" selection-end-line="284" selection-end-column="79" />
+        <state relative-caret-position="335">
+          <caret line="248" column="78" selection-start-line="248" selection-start-column="78" selection-end-line="248" selection-end-column="78" />
         </state>
       </provider>
     </entry>

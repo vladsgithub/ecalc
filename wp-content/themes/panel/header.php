@@ -14,9 +14,9 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <meta name="keywords" content="калькулятор распределения расходов, сервис распределения расходов, расчет доли
     каждого участника, расчет между участниками, расчет расходов, подсчет расходов, распределение расходов,
-    распределение расходов между участниками, распределение расходов между сторонами, калькулятор расходов,
-    сервис учета расходов, сервис расходов, распределение расходов, калькулятор учета расходов,
-    распределение расходов поровну, расчет доли участника, доля участника в расходе,
+    распределение расходов поровну, распределение расходов между участниками, распределение расходов между сторонами,
+    сервис учета расходов, учет расходов, калькулятор расходов, распределение затрат между сторонами,
+    калькулятор учета расходов, расчет доли участника, доля участника в расходе,
     доля в расходе, доля в расходах, онлайн список покупок, онлайн перечень покупок, список покупок, перечень покупок,
     список расходов, статистика расходов, статистика покупок, возврат долгов, учет долгов">
 
@@ -536,11 +536,36 @@ if (isset($_GET['key1'])) {
 
                             <li class="section-box">
 
-                                <ul class="settings-list">
+                                <div class="section-page" ng-if="!expCalc.meta.userID">
+                                    <div class="text-field name word-wrap s-p2">
+                                        <b>Необходимо войти в аккаунт, чтобы получить ссылку на текущий расчет и поделиться ей с остальными участниками</b>
+                                    </div>
+                                </div>
+
+                                <ul class="settings-list" ng-if="expCalc.meta.userID">
                                     <li class="s-p2">
                                         <div class="text-field title block">
                                             <b>Ссылка на текущий расчет:</b>
                                         </div>
+                                    </li>
+
+                                    <li>
+                                        <ul class="flex s-p1">
+                                            <li class="flex-shrink s-p1">
+                                                <div class="text-field name">
+                                                    <b>ID расчета:</b>
+                                                </div>
+                                            </li>
+
+                                            <li class="flex-grow s-p1">
+                                                <label class="text-input">
+                                                    <input type="text"
+                                                           ng-change="validateJSON(expCalc.accounts[expCalc.settings.currentAccount].meta, 'id') && uploadData()"
+                                                           ng-model="expCalc.accounts[expCalc.settings.currentAccount].meta.id">
+                                                    <b>{{expCalc.accounts[expCalc.settings.currentAccount].meta.id}}</b>
+                                                </label>
+                                            </li>
+                                        </ul>
                                     </li>
 
                                     <li>
@@ -554,8 +579,8 @@ if (isset($_GET['key1'])) {
                                             </li>
 
                                             <li class="flex-grow s-p1">
-                                                <label class="text-input" disabled>
-                                                    <b id="linkToAccount">https://costpanel.info/?link={{expCalc.accounts[expCalc.settings.currentAccount].meta.id}}</b>
+                                                <label class="text-input block" disabled>
+                                                    <b id="linkToAccount">https://costpanel.info/?u={{expCalc.meta.userID}}&ac={{expCalc.accounts[expCalc.settings.currentAccount].meta.id}}</b>
                                                 </label>
                                             </li>
                                         </ul>
