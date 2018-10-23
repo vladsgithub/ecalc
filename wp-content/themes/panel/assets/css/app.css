@@ -4320,6 +4320,10 @@ label.toggle i::after {
 .number-input.big-font b {
   font-size: 1.2rem;
 }
+.text-input.break-all b,
+.number-input.break-all b {
+  word-break: break-all;
+}
 .text-input input,
 .number-input input {
   position: absolute;
@@ -5546,6 +5550,16 @@ section a {
 .about-service {
   position: absolute;
   z-index: -1;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 60px 20px 30px;
+  box-sizing: border-box;
+}
+.about-service h1 {
+  margin: 20px 0 30px;
+  line-height: 1;
+  font-size: 1.8rem;
 }
 .three-window-lt {
   position: absolute;

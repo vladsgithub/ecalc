@@ -73,6 +73,12 @@
 		$userID = $current_user->ID;
 		$loadedData = '';
 
+		if (isset($_GET['u']) && isset($_GET['ac'])) {
+            $userID = $_GET['u'];
+            $viewModeAccountID = $_GET['ac'];
+            echo "<script type='text/javascript'>var viewModeAccountID = '$viewModeAccountID';</script>";
+        }
+
 		if ($userID > 0) {
 			$servername = "localhost";
 			$username = "host1638368_1647";
@@ -116,16 +122,7 @@
 		$secondLetter = mb_substr(end($userNameWords),0,1,'UTF-8');
 		if (count($userNameWords) <= 1) { $secondLetter = ''; }
 
-
-//		$parts = parse_url($url);
-//        parse_str($parts['query'], $query);
-//        echo $query['email'];
-if (isset($_GET['key1'])) {
-    $key1 = $_GET['key1'];
-    echo "<script type='text/javascript'>var key1 = $key1;</script>";
-}
-
-		echo "<script type='text/javascript'>var userID = $userID; var fromServerData = '$loadedData';</script>";
+		echo "<script id='serverDataScript' type='text/javascript'>var userID = $userID; var fromServerData = '$loadedData';</script>";
     ?>
 
 </head>
@@ -156,7 +153,7 @@ if (isset($_GET['key1'])) {
 			    </b>
 			</h2>
 		</li>
-		<li class="separator <? if ($current_user->ID == 0) { echo 'hidden'; } ?>">
+		<li class="separator <? if ($current_user->ID == 0) { echo 'hidden'; } ?>" ng-if="!expCalc.meta.isViewMode">
 			<button id="saveButton" class="btn solid" title="Автоматическое сохранение на сервере" ng-click="uploadData(true, true)">
 				<b class="status-line">
 				    <? echo $firstLetter.$secondLetter; ?>
@@ -164,7 +161,7 @@ if (isset($_GET['key1'])) {
 				<i class="fas fa-save no-mobile"></i>
 			</button>
 		</li>
-		<li class="separator">
+		<li class="separator" ng-if="!expCalc.meta.isViewMode">
 			<button class="btn solid" title="Все расчеты" ng-click="layout.openAside()">
 				<i class="fas fa-ellipsis-v"></i>
 				<b class="no-mobile">Расчеты</b>
@@ -520,7 +517,7 @@ if (isset($_GET['key1'])) {
                         </ul>
                     </li>
 
-                    <li>
+                    <li ng-class="{'hidden': expCalc.meta.isViewMode}">
                         <button class="btn solid no-shadow" data-next>
                             <i class="fas fa-share-alt"></i>
                             <b>Поделиться</b>
@@ -538,7 +535,7 @@ if (isset($_GET['key1'])) {
 
                                 <div class="section-page" ng-if="!expCalc.meta.userID">
                                     <div class="text-field name word-wrap s-p2">
-                                        <b>Необходимо войти в аккаунт, чтобы получить ссылку на текущий расчет и поделиться ей с остальными участниками</b>
+                                        <b>Необходимо войти в аккаунт, чтобы получить ссылку на текущий расчет и поделиться с остальными участниками</b>
                                     </div>
                                 </div>
 
@@ -579,8 +576,8 @@ if (isset($_GET['key1'])) {
                                             </li>
 
                                             <li class="flex-grow s-p1">
-                                                <label class="text-input block" disabled>
-                                                    <b id="linkToAccount">https://costpanel.info/?u={{expCalc.meta.userID}}&ac={{expCalc.accounts[expCalc.settings.currentAccount].meta.id}}</b>
+                                                <label class="text-input break-all block" disabled>
+                                                    <b id="linkToAccount">{{linkToAccount()}}</b>
                                                 </label>
                                             </li>
                                         </ul>

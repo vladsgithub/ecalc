@@ -1,4 +1,4 @@
-<aside class="accounts" role="menu" ng-class="{'edit-mode': layout.isEditAccountsMode}">
+<aside class="accounts" role="menu" ng-class="{'edit-mode': layout.isEditAccountsMode}" ng-if="!expCalc.meta.isViewMode">
 	<ul class="aside-head flex">
 		<li class="s-p2">
 			<label class="toggle">
@@ -97,7 +97,12 @@
 
 <main ng-click="layout.isOpenMenu = false; layout.isOpenAside = false;" role="main">
 
-	<p class="about-service">
+	<article class="about-service">
+		<h1 ng-if="expCalc.meta.isViewMode && !expCalc.accounts.length">
+			Эта ссылка устаревшая. Данных по этой ссылке не существует!
+		</h1>
+
+		<p>
 		Cost Panel - калькулятор учета и распределения расходов между участниками.
 		Калькулятор поможет быстро рассчитать доли каждого участника общего расхода и подскажет как рассчитаться между собой.
 		Вносите траты в любой валюте, указывайте для кого их рассчитать и калькулятор распределения расходов покажет -
@@ -105,9 +110,10 @@
 		список будущих покупок онлайн одним человеком и в это же время в магазине открыть его на любом девайсе другим
 		человеком, чтобы строго следовать этому перечню. А статистика распределения расходов отобразит полезную информацию:
 		тип расхода, дата, доля, взнос, остаток.
-	</p>
+		</p>
+	</article>
 
-	<div class="three-window-lt" data-active-window="{{layout.activeWindow}}">
+	<div class="three-window-lt" data-active-window="{{layout.activeWindow}}" ng-if="expCalc.accounts.length">
 		<div class="header-lt">
 			<ul class="flex" role="tablist">
 				<li>
@@ -932,8 +938,7 @@
 													<li class="s-p0">
 														<div class="multiple-field">
 															<label class="text-select currency"
-																   ng-disabled="refund.isFixed"
-																   ng-if="expCalc.accounts[expCalc.settings.currentAccount].settings.advancedMode">
+																   ng-disabled="refund.isFixed || !expCalc.accounts[expCalc.settings.currentAccount].settings.advancedMode">
 																<select ng-model="refund.currency">
 																	<option value="" hidden disabled selected>---</option>
 																	<option ng-repeat="currency in expCalc.settings.currencies.names track by $index"
@@ -1258,6 +1263,7 @@
 
 				<td ng-repeat="participant in account.participants track by $index">
 				<span class="nowrap" ng-if="whom.number == $index">
+					{{(!whom.isFixed) ? 'вернет' : ''}}
 					{{whom.value}} {{expCalc.settings.currencies.names[whom.currency].toUpperCase()}}
 				</span>
 				</td>

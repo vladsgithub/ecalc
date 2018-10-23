@@ -247,7 +247,7 @@ function animateScrollTo(value) {
             try {
                 JSON.parse('[\"' + obj[propertyName] + '\"]');
 
-                if (obj[propertyName].toString().search(/['&=%]/) + 1) { // и эти символы не должны быть в адресной строке
+                if (obj[propertyName].toString().search(/[']/) + 1) { // и этот символ не должен быть в адресной строке
                     throw new SyntaxError("Недопустимый символ");
                 }
             } catch (e) {
@@ -259,6 +259,8 @@ function animateScrollTo(value) {
         };
 
 		$scope.uploadData = function (isFullObject, isDirectSave) {
+		    if ($scope.expCalc.meta.isViewMode) return false; // в режиме просмотра ничего не сохраняется
+
             if (!isDirectSave) $scope.layout.isChangedObject = true;
             if (!$scope.layout.isChangedObject) return false; // если объект не менялся, то выход
 
@@ -334,6 +336,26 @@ function animateScrollTo(value) {
 		$scope.downloadData = function () {
             var blob = new Blob([JSON.stringify($scope.expCalc)], {type: "text/plain;charset=utf-8"});
             saveAs(blob, "CostPanel-" + $scope.expCalc.meta.savedDate + ".txt");
+        };
+
+		$scope.linkToAccount = function () {
+		    var isIdUnique = true;
+		    var currentAccountIndex = $scope.expCalc.settings.currentAccount;
+		    var currentAccountId = $scope.expCalc.accounts[currentAccountIndex].meta.id;
+            var link = window.location.host;
+
+            forEach($scope.expCalc.accounts, function(account, index, arr) {
+                if (currentAccountIndex != index && currentAccountId == account.meta.id) isIdUnique = false;
+            });
+
+            if (isIdUnique) {
+                link += '/?u=' + $scope.expCalc.meta.userID;
+                link += '&ac=' + encodeURIComponent(currentAccountId);
+            } else {
+                link = 'Такой ID уже существует!!!';
+            }
+
+            return link;
         };
 
 
@@ -1338,23 +1360,26 @@ function animateScrollTo(value) {
 			// }
         // }, true);
 
-        $scope.copyToBufferByID = function (id) {
+        $scope.copyToBufferByID = function (id, counter) {
+            var selectedObject;
             var objectDiv = document.getElementById(id);
             var range = document.createRange();
             range.selectNode(objectDiv);
             var selection = window.getSelection();
             selection.addRange(range);
 
+            counter = (counter) ? counter + 1 : 1;
+
             try {
                 // Теперь, когда мы выбрали текст ссылки, выполним команду копирования
                 var successful = document.execCommand('copy');
                 var msg = successful ? 'успешно' : 'неудачно';
-                var selectedObject = selection.toString();
+                selectedObject = selection.toString();
 
                 msg = (selectedObject.length) ? msg : 'неудачно. Повторите попытку копирования';
-                alert('Объект скопировался ' + msg + ': ' + selectedObject);
+                console.info('Объект скопировался ' + msg + ': ' + selectedObject);
             } catch(err) {
-                alert('Проблема с копированием');
+                alert('Проблема с копированием: попробуйте самостоятельно скопировать текст ссылки');
             }
 
             // Снятие выделения - ВНИМАНИЕ: вы должны использовать
@@ -1362,20 +1387,40 @@ function animateScrollTo(value) {
             window.getSelection().removeAllRanges();
             // window.getSelection().removeRange(range);
             selection.removeAllRanges();
+
+            if (!selectedObject.length && counter < 4) $scope.copyToBufferByID(id, counter);
         };
 
 
         $scope.expCalc = getDataService;
         $scope.expCalc.meta.userID = userID;
+        $scope.expCalc.meta.isViewMode = !!window.viewModeAccountID;
 
-        if (!$scope.expCalc.accounts.length) $scope.createAccount();
+        if ($scope.expCalc.meta.isViewMode) {
+            var onlyAccount;
+            var serverDataScript = document.getElementById('serverDataScript');
 
-        if ($scope.expCalc.meta.userID && !fromServerData) {
-            $scope.layout.isChangedObject = true;
-            $scope.uploadData(true, true);
+            serverDataScript.parentNode.removeChild(serverDataScript);
+
+            forEach($scope.expCalc.accounts, function (account, i, arr) {
+                if (viewModeAccountID == account.meta.id) {
+                    onlyAccount = account;
+                }
+            });
+
+            $scope.expCalc.settings.currentAccount = 0;
+            $scope.expCalc.accounts = [];
+            if (onlyAccount) $scope.expCalc.accounts.push(onlyAccount);
+        } else {
+            if (!$scope.expCalc.accounts.length) $scope.createAccount();
+
+            if ($scope.expCalc.meta.userID && !fromServerData) {
+                $scope.layout.isChangedObject = true;
+                $scope.uploadData(true, true);
+            }
+
+            if (isFirstVisit) $scope.layoutControl.openNavMenuFirstSection('aboutService');
         }
-
-        if (isFirstVisit) $scope.layoutControl.openNavMenuFirstSection('aboutService');
     }];
 
     module.controller('calculatorCtrl', calculatorCtrl);
