@@ -291,7 +291,7 @@
                                                 </div>
                                             </li>
 
-                                            <li class="flex-grow s-p1">
+                                            <li class="flex-grow flex-hidden s-p1">
                                                 <div class="multiple-field">
                                                     <label class="text-input flex-grow">
                                                         <input type="text" placeholder="Название типа"
@@ -554,7 +554,7 @@
                                                 </div>
                                             </li>
 
-                                            <li class="flex-grow s-p1">
+                                            <li class="flex-grow flex-hidden s-p1">
                                                 <label class="text-input">
                                                     <input type="text"
                                                            ng-change="validateJSON(expCalc.accounts[expCalc.settings.currentAccount].meta, 'id') && uploadData()"

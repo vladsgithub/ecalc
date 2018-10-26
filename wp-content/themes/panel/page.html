@@ -117,7 +117,7 @@
 		<div class="header-lt">
 			<ul class="flex" role="tablist">
 				<li>
-					<button class="btn no-shadow" ng-click="layout.activeWindow = 1">
+					<button class="btn no-shadow" ng-mobile-click="layout.activeWindow = 1">
 						<b>1.</b>
 						<i class="fas fa-list only-middle-mobile"></i>
 						<b class="small no-middle-mobile">Список</b>
@@ -125,7 +125,7 @@
 				</li>
 
 				<li>
-					<button class="btn no-shadow" ng-click="layout.activeWindow = 2">
+					<button class="btn no-shadow" ng-mobile-click="layout.activeWindow = 2">
 						<b>2.</b>
 						<i class="fas fa-calculator only-middle-mobile"></i>
 						<b class="small no-middle-mobile">Вычисление</b>
@@ -133,7 +133,7 @@
 				</li>
 
 				<li>
-					<button class="btn no-shadow" ng-click="layout.activeWindow = 3">
+					<button class="btn no-shadow" ng-mobile-click="layout.activeWindow = 3">
 						<b>3.</b>
 						<i class="fas fa-exchange-alt only-middle-mobile"></i>
 						<b class="small no-middle-mobile">Возврат</b>
@@ -170,7 +170,7 @@
 
 							<li class="flex-shrink">
 								<button class="btn solid" title="Спрятать всё"
-										ng-click="layoutControl.collapseAllBodiesView('window-1')">
+										ng-mobile-click="layoutControl.collapseAllBodiesView('window-1')">
 									<i class="fas fa-angle-double-up"></i>
 								</button>
 							</li>
@@ -249,7 +249,7 @@
 
 										<li class="flex-shrink s-p0">
 											<button class="btn solid border collapse-btn" title="Показать/Спрятать"
-													ng-click="layoutControl.toggleBodyView('participant.1.' + participantIndex)">
+													ng-mobile-click="layoutControl.toggleBodyView('participant.1.' + participantIndex)">
 												<i class="fas fa-chevron-down"></i>
 											</button>
 										</li>
@@ -270,7 +270,7 @@
 
 											<div class="s-p0">
 												<button class="btn solid"
-														ng-click="layoutControl.scrollToLastExpense('participant.1.' + participantIndex)">
+														ng-mobile-click="layoutControl.scrollToLastExpense('participant.1.' + participantIndex)">
 													<i class="fas fa-arrow-circle-down"></i>
 												</button>
 											</div>
@@ -436,7 +436,7 @@
 																ng-class="{'checked': detail.isChecked}"
 																ng-repeat="detail in expense.details track by $index"
 																ng-init="detailIndex = $index">
-																<li class="s-p0">
+																<li class="s-p0" ng-class="{'local-remove-mode': !detail.title.length}">
 																	<label class="checkbox remove-mode-false">
 																		<input type="checkbox" ng-model="detail.isChecked" ng-change="uploadData()">
 																		<i></i>
@@ -588,7 +588,7 @@
 
 							<li class="flex-shrink">
 								<button class="btn solid" title="Спрятать всё"
-										ng-click="layoutControl.collapseAllBodiesView('window-2')">
+										ng-mobile-click="layoutControl.collapseAllBodiesView('window-2')">
 									<i class="fas fa-angle-double-up"></i>
 								</button>
 							</li>
@@ -650,7 +650,7 @@
 
 										<li class="flex-shrink s-p0">
 											<button class="btn solid border collapse-btn" title="Показать/Спрятать"
-													ng-click="layoutControl.toggleBodyView('participant.2.' + extParticipantIndex)">
+													ng-mobile-click="layoutControl.toggleBodyView('participant.2.' + extParticipantIndex)">
 												<i class="fas fa-chevron-down"></i>
 											</button>
 										</li>
@@ -748,7 +748,7 @@
 
 							<li class="flex-shrink">
 								<button class="btn solid" title="Спрятать всё"
-										ng-click="layoutControl.collapseAllBodiesView('window-3')">
+										ng-mobile-click="layoutControl.collapseAllBodiesView('window-3')">
 									<i class="fas fa-angle-double-up"></i>
 								</button>
 							</li>
@@ -886,7 +886,7 @@
 
 										<li class="flex-shrink s-p0">
 											<button class="btn solid border collapse-btn" title="Показать/Спрятать"
-													ng-click="layoutControl.toggleBodyView('participant.3.' + participantIndex)">
+													ng-mobile-click="layoutControl.toggleBodyView('participant.3.' + participantIndex)">
 												<i class="fas fa-chevron-down"></i>
 											</button>
 										</li>
@@ -1025,7 +1025,7 @@
 
 										<li class="flex-shrink s-p0">
 											<button class="btn solid border collapse-btn" title="Показать/Спрятать"
-													ng-click="layoutControl.toggleBodyView('participantByBank.3.' + participantIndex)">
+													ng-mobile-click="layoutControl.toggleBodyView('participantByBank.3.' + participantIndex)">
 												<i class="fas fa-chevron-down"></i>
 											</button>
 										</li>
@@ -1180,7 +1180,7 @@
 			<tr>
 				<td colspan="3" class="font-weight-bold">{{participant.meta.title}}</td>
 				<td class="border-right">Все расходы:
-					<span class="nowrap font-weight-bold">{{roundOff(participant.meta.total)}} {{getAccountCurrency()}}</span>
+					<span class="nowrap font-weight-bold">{{roundOff(participant.meta.total)}}&nbsp;{{getAccountCurrency()}}</span>
 				</td>
 
 				<td ng-repeat="extParticipant in account.participants track by $index"> </td>
@@ -1193,7 +1193,7 @@
 				</td>
 				<td><span class="small">{{expCalc.settings.expensesTypes[expense.type].name}}</span></td>
 				<td><span class="small">{{formatDate(expense.date)}}</span></td>
-				<td class="border-right"><span class="nowrap">{{expense.value}} {{expCalc.settings.currencies.names[expense.currency].toUpperCase()}}</span></td>
+				<td class="border-right"><span class="nowrap">{{expense.value}}&nbsp;{{expCalc.settings.currencies.names[expense.currency].toUpperCase()}}</span></td>
 
 				<td ng-repeat="extParticipant in account.participants track by $index"
 					ng-init="extParticipantIndex = $index">
@@ -1209,12 +1209,12 @@
 			<tbody>
 			<tr>
 				<td colspan="3"></td>
-				<td class="font-weight-bold border-right">Всех расходов: <span class="nowrap">{{roundOff(getAccountTotal())}} {{getAccountCurrency()}}</span></td>
+				<td class="font-weight-bold border-right">Всех расходов: <span class="nowrap">{{roundOff(getAccountTotal())}}&nbsp;{{getAccountCurrency()}}</span></td>
 
 				<td ng-repeat="participant in account.participants track by $index"
 					ng-init="participantIndex = $index">
 					Всего:
-					<span class="nowrap font-weight-bold">{{roundOff(getParticipantShare(participantIndex))}} {{getAccountCurrency()}}</span>
+					<span class="nowrap font-weight-bold">{{roundOff(getParticipantShare(participantIndex))}}&nbsp;{{getAccountCurrency()}}</span>
 				</td>
 			</tr>
 			</tbody>
@@ -1231,7 +1231,7 @@
 				<td colspan="4" class="text-right border-right">{{expensesType.name}}</td>
 
 				<td ng-repeat="participant in account.participants track by $index">
-					<span class="nowrap">{{participant.meta.expensesByTypes[typeIndex]}} {{getAccountCurrency()}}</span>
+					<span class="nowrap">{{participant.meta.expensesByTypes[typeIndex]}}&nbsp;{{getAccountCurrency()}}</span>
 				</td>
 			</tr>
 			</tbody>
@@ -1248,7 +1248,7 @@
 				</td>
 				<td colspan="100">
 				<span class="font-weight-bold" ng-if="!account.settings.fixationDirectly">
-					В общем банке: {{account.meta.bank}} {{getAccountCurrency()}}
+					В общем банке: {{account.meta.bank}}&nbsp;{{getAccountCurrency()}}
 				</span>
 				</td>
 			</tr>
@@ -1264,7 +1264,7 @@
 				<td ng-repeat="participant in account.participants track by $index">
 				<span class="nowrap" ng-if="whom.number == $index">
 					{{(!whom.isFixed) ? 'вернет' : ''}}
-					{{whom.value}} {{expCalc.settings.currencies.names[whom.currency].toUpperCase()}}
+					{{whom.value}}&nbsp;{{expCalc.settings.currencies.names[whom.currency].toUpperCase()}}
 				</span>
 				</td>
 			</tr>
@@ -1285,7 +1285,7 @@
 				<span class="nowrap" ng-if="participantIndex == $index">
 					<span ng-if="byBank.token > 0">+</span>
 					<span ng-if="byBank.token < 0">-</span>
-					{{byBank.value}} {{getAccountCurrency()}}
+					{{byBank.value}}&nbsp;{{getAccountCurrency()}}
 				</span>
 				</td>
 			</tr>
@@ -1303,7 +1303,7 @@
 					<div ng-if="participant.meta.fullBalance > 0">Получить</div>
 					<div ng-if="participant.meta.fullBalance < 0">Вернуть</div>
 					<span class="nowrap" style="font-size: 1.5rem">
-					<span ng-if="participant.meta.fullBalance > 0">+</span>{{participant.meta.fullBalance}} {{getAccountCurrency()}}
+					<span ng-if="participant.meta.fullBalance > 0">+</span>{{participant.meta.fullBalance}}&nbsp;{{getAccountCurrency()}}
 				</span>
 				</td>
 			</tr>
@@ -1314,7 +1314,7 @@
 					<div ng-if="participant.meta.fullBalanceByBank > 0">Получить</div>
 					<div ng-if="participant.meta.fullBalanceByBank < 0">Вернуть</div>
 					<span class="nowrap" style="font-size: 1.5rem">
-					<span ng-if="participant.meta.fullBalanceByBank > 0">+</span>{{participant.meta.fullBalanceByBank}} {{getAccountCurrency()}}
+					<span ng-if="participant.meta.fullBalanceByBank > 0">+</span>{{participant.meta.fullBalanceByBank}}&nbsp;{{getAccountCurrency()}}
 				</span>
 				</td>
 			</tr>

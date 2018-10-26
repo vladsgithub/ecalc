@@ -11,28 +11,58 @@ function animateScrollTo(value) {
     var mainSpeed = Math.abs(value - scrollTop) / 2;
     var delta = mainSpeed * direct;
 
-    if (mainSpeed > (speed / 8)) {
-        windowLt.scrollBy(0, delta);
-        if (scrollTop == windowLt.scrollTop) return false;
+    if (windowLt.scrollBy) {
+        if (mainSpeed > (speed / 8)) {
+            windowLt.scrollBy(0, delta);
+            if (scrollTop == windowLt.scrollTop) return false;
 
-        scrollTimeout = setTimeout(function() {animateScrollTo(value);} ,20);
+            scrollTimeout = setTimeout(function () {
+                animateScrollTo(value);
+            }, 20);
+        } else {
+            windowLt.scrollTop = value;
+            clearTimeout(scrollTimeout);
+        }
     } else {
         windowLt.scrollTop = value;
-        clearTimeout(scrollTimeout);
     }
+
     return false;
 }
 
 
 
+
+
+
+"use strict";
+
+angular.module("ngMobileClick", [])
+    .directive("ngMobileClick", [function () {
+        return function (scope, elem, attrs) {
+            elem.bind("touchstart click", function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                scope.$apply(attrs["ngMobileClick"]);
+            });
+        }
+    }]);
+
 (function () {
     'use strict';
-    angular.module('app', []);
+    angular.module('app', ['ngMobileClick']);
 })();
 
 (function (module) {
 
     var calculatorCtrl = ['$scope', '$timeout', 'getDataService', function ($scope, $timeout, getDataService) {
+
+        window.onload = function () {
+            $scope.layout.isDomReady = true;
+            $scope.layout.isDataUpdating = false;
+            $scope.$apply();
+        };
 
         window.onblur = function () {
             $scope.uploadData(true, true);
@@ -47,7 +77,8 @@ function animateScrollTo(value) {
             isRemoveMode: false,
             isPrintMode: false,
             isChangedObject: false,
-            isDataUpdating: false,
+            isDomReady: false,
+            isDataUpdating: true,
             updatedDataTime: 0,
             activeWindow: 1,
             saveButtonTooltip: null,
@@ -98,7 +129,7 @@ function animateScrollTo(value) {
                 var activateMenu = function(menu) {
                     self.navBody.querySelectorAll('.active')[0].classList.remove('active');
                     menu.classList.add('active');
-                }
+                };
 
                 forEach(dataNextButtons, function(button, i, arr) {
                     button.addEventListener('click', function() {
@@ -1253,7 +1284,7 @@ function animateScrollTo(value) {
                 currenciesNames.push(currencyName.split(' ')[0].toUpperCase());
             });
 
-            rows.forEach(function(row, i) {
+            forEach(rows, function(row, i) {
                 var tds = row.querySelectorAll('td');
 
                 currenciesNames.forEach(function(currency, j) {
@@ -1264,7 +1295,6 @@ function animateScrollTo(value) {
                         });
                     }
                 });
-
             });
 
             currenciesNames.forEach(function(currencyName, i) {
@@ -1327,7 +1357,7 @@ function animateScrollTo(value) {
 
 
         $scope.$watch('expCalc', function (newValue, oldValue) {
-            if ($scope.layout.isDataUpdating) {
+            if ($scope.layout.isDomReady && $scope.layout.isDataUpdating) {
                 $timeout(function () {
                     $scope.layout.isDataUpdating = false;
                 }, 100);

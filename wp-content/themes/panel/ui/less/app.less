@@ -96,8 +96,9 @@ body {
 		transform: translateX(0);
 	}
 
-	&:not(.remove-mode) .remove-mode-true { display: none; }
-	&.remove-mode .remove-mode-false { display: none; }
+	&:not(.remove-mode) :not(.local-remove-mode) > .remove-mode-true,
+	&.remove-mode .remove-mode-false,
+	.local-remove-mode > .remove-mode-false { display: none; }
 
 	&.print-mode {
 		background: @white;
@@ -125,6 +126,23 @@ body {
 			> .clean-login-register,
 			> .clean-login-restore {
 				display: none;
+			}
+		}
+	}
+	&:not(.logged-in) {
+		header {
+			.title,
+			.btn {
+				background-color: @dark-gray;
+			}
+			.btn {
+				border-top-color: @gray;
+				border-left-color: @gray;
+
+				&:active {
+					border-bottom-color: @gray;
+					border-right-color: @gray;
+				}
 			}
 		}
 	}

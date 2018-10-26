@@ -5142,10 +5142,9 @@ body.open-aside aside.accounts {
   visibility: visible;
   transform: translateX(0);
 }
-body:not(.remove-mode) .remove-mode-true {
-  display: none;
-}
-body.remove-mode .remove-mode-false {
+body:not(.remove-mode) :not(.local-remove-mode) > .remove-mode-true,
+body.remove-mode .remove-mode-false,
+body .local-remove-mode > .remove-mode-false {
   display: none;
 }
 body.print-mode {
@@ -5171,6 +5170,18 @@ body.logged-in .clean-login-widgets > .clean-login-edit {
 body.logged-in .clean-login-widgets > .clean-login-register,
 body.logged-in .clean-login-widgets > .clean-login-restore {
   display: none;
+}
+body:not(.logged-in) header .title,
+body:not(.logged-in) header .btn {
+  background-color: #333;
+}
+body:not(.logged-in) header .btn {
+  border-top-color: #888;
+  border-left-color: #888;
+}
+body:not(.logged-in) header .btn:active {
+  border-bottom-color: #888;
+  border-right-color: #888;
 }
 body > .substrate {
   position: fixed;

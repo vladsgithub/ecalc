@@ -4311,6 +4311,10 @@ label.toggle i::after {
 .number-input.big-font b {
   font-size: 1.2rem;
 }
+.text-input.break-all b,
+.number-input.break-all b {
+  word-break: break-all;
+}
 .text-input input,
 .number-input input {
   position: absolute;
@@ -5058,6 +5062,14 @@ label.toggle i::after {
     visibility: hidden;
   }
 }
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 * {
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
@@ -5081,6 +5093,38 @@ body {
   body {
     font-size: 1.2rem;
   }
+}
+body::after {
+  z-index: 999;
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+  margin: -25px 0 0 -25px;
+  line-height: 1;
+  font-size: 50px;
+  color: #fff;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  font-family: 'Font Awesome 5 Free';
+  font-weight: normal;
+  animation: spinner 1.5s infinite linear;
+}
+body.data-updating {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+body.data-updating::after {
+  content: '\f110';
+}
+body.data-updating > .substrate {
+  top: 0;
+  left: 0;
+  opacity: 0.5;
 }
 body[data-upload-status="-1"] .status-line::before {
   background: #fff;
@@ -5111,10 +5155,9 @@ body.open-aside aside.accounts {
   visibility: visible;
   transform: translateX(0);
 }
-body:not(.remove-mode) .remove-mode-true {
-  display: none;
-}
-body.remove-mode .remove-mode-false {
+body:not(.remove-mode) :not(.local-remove-mode) > .remove-mode-true,
+body.remove-mode .remove-mode-false,
+body .local-remove-mode > .remove-mode-false {
   display: none;
 }
 body.print-mode {
@@ -5140,6 +5183,28 @@ body.logged-in .clean-login-widgets > .clean-login-edit {
 body.logged-in .clean-login-widgets > .clean-login-register,
 body.logged-in .clean-login-widgets > .clean-login-restore {
   display: none;
+}
+body:not(.logged-in) header .title,
+body:not(.logged-in) header .btn {
+  background-color: #333;
+}
+body:not(.logged-in) header .btn {
+  border-top-color: #888;
+  border-left-color: #888;
+}
+body:not(.logged-in) header .btn:active {
+  border-bottom-color: #888;
+  border-right-color: #888;
+}
+body > .substrate {
+  position: fixed;
+  z-index: 998;
+  height: 100vh;
+  width: 100vw;
+  left: -100vw;
+  background: #4c69bd;
+  opacity: 0;
+  transition: opacity 0.2s;
 }
 .clean-login-widgets > li {
   margin-bottom: 20px;
@@ -5522,6 +5587,16 @@ section a {
 .about-service {
   position: absolute;
   z-index: -1;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 60px 20px 30px;
+  box-sizing: border-box;
+}
+.about-service h1 {
+  margin: 20px 0 30px;
+  line-height: 1;
+  font-size: 1.8rem;
 }
 .three-window-lt {
   position: absolute;
