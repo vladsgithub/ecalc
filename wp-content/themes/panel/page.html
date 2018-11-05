@@ -113,6 +113,7 @@
 		</p>
 	</article>
 
+
 	<div class="three-window-lt" data-active-window="{{layout.activeWindow}}" ng-if="expCalc.accounts.length">
 		<div class="header-lt">
 			<ul class="flex" role="tablist">
@@ -170,7 +171,7 @@
 
 							<li class="flex-shrink">
 								<button class="btn solid" title="Спрятать всё"
-										ng-mobile-click="layoutControl.collapseAllBodiesView('window-1')">
+										ng-mobile-click="layoutControl.collapseAllBodiesView(1, 'window-1')">
 									<i class="fas fa-angle-double-up"></i>
 								</button>
 							</li>
@@ -249,7 +250,7 @@
 
 										<li class="flex-shrink s-p0">
 											<button class="btn solid border collapse-btn" title="Показать/Спрятать"
-													ng-mobile-click="layoutControl.toggleBodyView('participant.1.' + participantIndex)">
+													ng-mobile-click="layoutControl.toggleBodyView(1, 'participant.1.' + participantIndex)">
 												<i class="fas fa-chevron-down"></i>
 											</button>
 										</li>
@@ -270,9 +271,16 @@
 
 											<div class="s-p0">
 												<button class="btn solid"
-														ng-mobile-click="layoutControl.scrollToLastExpense('participant.1.' + participantIndex)">
+														title="Прокрутка к последнему расходу участника"
+														ng-mobile-click="layoutControl.scrollToLastExpense(1, 'participant.1.' + participantIndex)">
 													<i class="fas fa-arrow-circle-down"></i>
 												</button>
+											</div>
+										</li>
+
+										<li class="help-bar text-right s-p1" ng-if="expCalc.settings.isHelpMode && participant.expenses.length > 0">
+											<div class="help-text bottom right">
+												<b><i class="fas fa-info-circle"></i> После заполнения расхода, не забудьте применить его</b>
 											</div>
 										</li>
 
@@ -281,7 +289,7 @@
 											ng-init="expenseIndex = $index">
 
 											<ul class="flex expense-title">
-												<li class="flex-shrink expense-number s-p0">
+												<li class="flex-shrink expense-number s-p0" ng-class="{'local-remove-mode': !expense.title.length}">
 													<div class="text-field title remove-mode-false">
 														<b>{{participantIndex + 1}}.{{expenseIndex + 1}}</b>
 													</div>
@@ -432,10 +440,15 @@
 																<b class="s-p0">Подробности:</b>
 															</div>
 
+															<div class="help-text bottom" ng-if="expCalc.settings.isHelpMode && !expense.details.length">
+																<b><i class="fas fa-info-circle"></i> Здесь можно создать подробный список пунктов, из которых состоит текущий расход</b>
+															</div>
+
 															<ul class="flex details-item"
 																ng-class="{'checked': detail.isChecked}"
 																ng-repeat="detail in expense.details track by $index"
 																ng-init="detailIndex = $index">
+
 																<li class="s-p0" ng-class="{'local-remove-mode': !detail.title.length}">
 																	<label class="checkbox remove-mode-false">
 																		<input type="checkbox" ng-model="detail.isChecked" ng-change="uploadData()">
@@ -562,6 +575,14 @@
 					</div>
 
 				</div>
+
+				<div class="control-lt">
+					<button class="btn solid border"
+							title="Прокрутка вверх к началу"
+							ng-click="layoutControl.scrollUp(1)">
+						<i class="fas fa-arrow-circle-up"></i>
+					</button>
+				</div>
 			</li>
 
 			<li id="window-2" class="center-lt step-2" ng-class="(layout.activeWindow == 2) ? 'active' : ''" ng-click="layout.activeWindow = 2">
@@ -588,7 +609,7 @@
 
 							<li class="flex-shrink">
 								<button class="btn solid" title="Спрятать всё"
-										ng-mobile-click="layoutControl.collapseAllBodiesView('window-2')">
+										ng-mobile-click="layoutControl.collapseAllBodiesView(2, 'window-2')">
 									<i class="fas fa-angle-double-up"></i>
 								</button>
 							</li>
@@ -650,7 +671,7 @@
 
 										<li class="flex-shrink s-p0">
 											<button class="btn solid border collapse-btn" title="Показать/Спрятать"
-													ng-mobile-click="layoutControl.toggleBodyView('participant.2.' + extParticipantIndex)">
+													ng-mobile-click="layoutControl.toggleBodyView(2, 'participant.2.' + extParticipantIndex)">
 												<i class="fas fa-chevron-down"></i>
 											</button>
 										</li>
@@ -688,7 +709,7 @@
 
 											<ul class="flex s-p0" ng-repeat="expense in intParticipant.expenses track by $index">
 												<li class="s-p0">
-													<label class="checkbox">
+													<label class="checkbox line-through">
 														<input type="checkbox"
 															   ng-model="expense.partList[extParticipantIndex]"
 															   ng-change="checkPartList(expense.partList, extParticipantIndex)">
@@ -697,7 +718,7 @@
 												</li>
 
 												<li class="flex-grow flex-hidden s-p0">
-													<div class="text-field">
+													<div class="text-field" ng-class="{'line-through': !expense.partList[extParticipantIndex]}">
 														<b>
 															{{expense.title}}
 															<em>[от: {{intParticipant.meta.title}}]</em>
@@ -706,7 +727,7 @@
 												</li>
 
 												<li class="flex-grow s-p0 share-price">
-													<div class="number-field">
+													<div class="number-field" ng-class="{'hidden': !expense.partList[extParticipantIndex]}">
 														<b>{{roundOff(getExpenseShare(expense, extParticipantIndex))}}</b>
 													</div>
 												</li>
@@ -721,6 +742,14 @@
 						</ul>
 					</div>
 
+				</div>
+
+				<div class="control-lt">
+					<button class="btn solid border"
+							title="Прокрутка вверх к началу"
+							ng-click="layoutControl.scrollUp(2)">
+						<i class="fas fa-arrow-circle-up"></i>
+					</button>
 				</div>
 			</li>
 
@@ -748,7 +777,7 @@
 
 							<li class="flex-shrink">
 								<button class="btn solid" title="Спрятать всё"
-										ng-mobile-click="layoutControl.collapseAllBodiesView('window-3')">
+										ng-mobile-click="layoutControl.collapseAllBodiesView(3, 'window-3')">
 									<i class="fas fa-angle-double-up"></i>
 								</button>
 							</li>
@@ -886,7 +915,7 @@
 
 										<li class="flex-shrink s-p0">
 											<button class="btn solid border collapse-btn" title="Показать/Спрятать"
-													ng-mobile-click="layoutControl.toggleBodyView('participant.3.' + participantIndex)">
+													ng-mobile-click="layoutControl.toggleBodyView(3, 'participant.3.' + participantIndex)">
 												<i class="fas fa-chevron-down"></i>
 											</button>
 										</li>
@@ -1025,7 +1054,7 @@
 
 										<li class="flex-shrink s-p0">
 											<button class="btn solid border collapse-btn" title="Показать/Спрятать"
-													ng-mobile-click="layoutControl.toggleBodyView('participantByBank.3.' + participantIndex)">
+													ng-mobile-click="layoutControl.toggleBodyView(3, 'participantByBank.3.' + participantIndex)">
 												<i class="fas fa-chevron-down"></i>
 											</button>
 										</li>
@@ -1117,6 +1146,14 @@
 						</ul>
 					</div>
 
+				</div>
+
+				<div class="control-lt">
+					<button class="btn solid border"
+							title="Прокрутка вверх к началу"
+							ng-click="layoutControl.scrollUp(3)">
+						<i class="fas fa-arrow-circle-up"></i>
+					</button>
 				</div>
 			</li>
 		</ul>

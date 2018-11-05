@@ -3,9 +3,9 @@ var loadData, scrollTimeout, isFirstVisit;
 function forEach(elements, callback) {
 	Array.prototype.forEach.call(elements, callback);
 }
-function animateScrollTo(value) {
+function animateScrollTo(activeWindow, value, windowLt) {
     var speed = 50;
-    var windowLt = document.querySelectorAll('.windows-lt > .active > .window-lt')[0];
+    var windowLt = (windowLt) ? windowLt : document.querySelectorAll('.windows-lt > li:nth-child(' + activeWindow + ') > .window-lt')[0];
     var scrollTop = windowLt.scrollTop;
     var direct = (value > scrollTop) ? 1 : -1;
     var mainSpeed = Math.abs(value - scrollTop) / 2;
@@ -17,7 +17,7 @@ function animateScrollTo(value) {
             if (scrollTop == windowLt.scrollTop) return false;
 
             scrollTimeout = setTimeout(function () {
-                animateScrollTo(value);
+                animateScrollTo(activeWindow, value, windowLt);
             }, 20);
         } else {
             windowLt.scrollTop = value;
@@ -58,15 +58,17 @@ angular.module("ngMobileClick", [])
 
     var calculatorCtrl = ['$scope', '$timeout', 'getDataService', function ($scope, $timeout, getDataService) {
 
-        window.onload = function () {
+        window.addEventListener('load', function () {
             $scope.layout.isDomReady = true;
             $scope.layout.isDataUpdating = false;
             $scope.$apply();
-        };
+        });
 
-        window.onblur = function () {
+        window.addEventListener('blur', function () {
             $scope.uploadData(true, true);
-        };
+        });
+
+
 
         // WORKING WITH LAYOUT ==============================
 
@@ -181,10 +183,12 @@ angular.module("ngMobileClick", [])
                     });
                 }, 200);
             },
-            collapseAllBodiesView: function(id) {
+            collapseAllBodiesView: function(activeWindow, id) {
                 var viewWindow = document.getElementById(id);
                 var bodyArr = viewWindow.querySelectorAll('.open-body');
                 var detailsArr = viewWindow.querySelectorAll('.open-details');
+
+                $scope.layout.activeWindow = activeWindow;
 
                 forEach(bodyArr, function(body, i, arr) {
                     body.classList.remove('open-body');
@@ -193,7 +197,9 @@ angular.module("ngMobileClick", [])
                     details.classList.remove('open-details');
                 });
             },
-            toggleBodyView: function(id) {
+            toggleBodyView: function(activeWindow, id) {
+                $scope.layout.activeWindow = activeWindow;
+
                 document.getElementById(id).classList.toggle('open-body');
             },
             toggleDetailsView1: function(id, action) {
@@ -207,12 +213,18 @@ angular.module("ngMobileClick", [])
                     document.getElementById(id).classList.toggle('open-details');
                 }
             },
-            scrollToLastExpense: function(participantId) {
+            scrollToLastExpense: function(activeWindow, participantId) {
+                $scope.layout.activeWindow = activeWindow;
+
                 var participant = document.getElementById(participantId);
                 var body = document.getElementById('body');
                 var delta = (body.clientWidth >= 480 && body.clientWidth < 640) ? 212 : 132;
 
-                animateScrollTo(participant.offsetHeight + participant.offsetTop - document.getElementById('body').clientHeight + delta);
+                animateScrollTo(activeWindow, participant.offsetHeight + participant.offsetTop - document.getElementById('body').clientHeight + delta);
+            },
+            scrollUp: function(activeWindow) {
+                $scope.layout.activeWindow = activeWindow;
+                animateScrollTo(activeWindow, 0);
             }
         };
 
@@ -460,7 +472,7 @@ angular.module("ngMobileClick", [])
 			$scope.uploadData(updateFullDataOnServer);
 
 			setTimeout(function() {
-                $scope.layoutControl.toggleBodyView('participant.1.' + participantIndex);
+                $scope.layoutControl.toggleBodyView(1, 'participant.1.' + participantIndex);
             }, 0);
         };
 
@@ -728,7 +740,7 @@ angular.module("ngMobileClick", [])
         $scope.getAccountCurrency = function() {
             var currentAccount = $scope.expCalc.accounts[$scope.expCalc.settings.currentAccount];
 
-            return $scope.expCalc.settings.currencies.names[currentAccount.settings.accountCurrency].toUpperCase();
+            return $scope.expCalc.settings.currencies.names[currentAccount.settings.accountCurrency].slice(0, 3).toUpperCase();
         };
 
         $scope.getAccountTotal = function () {
@@ -1266,7 +1278,7 @@ angular.module("ngMobileClick", [])
         };
 
         $scope.updateCurrencies = function () {
-            var rows, currentCurrencies, exactRate;
+            var rows, currentCurrencies, exactRate, currenciesNames, currenciesByUSD;
             var surchargePercent = $scope.expCalc.settings.currencies.commonSurcharge;
             var table = document.getElementById('currenciesTable').querySelectorAll('table')[0];
 
@@ -1336,6 +1348,8 @@ angular.module("ngMobileClick", [])
         };
 
         $scope.openCurrentAccount = function (index) {
+            if (index === $scope.expCalc.settings.currentAccount) return false;
+
             $scope.layout.isDataUpdating = true;
 
             $timeout(function () {
@@ -1449,7 +1463,9 @@ angular.module("ngMobileClick", [])
                 $scope.uploadData(true, true);
             }
 
-            if (isFirstVisit) $scope.layoutControl.openNavMenuFirstSection('aboutService');
+            if (isFirstVisit) {
+                $scope.layoutControl.openNavMenuFirstSection('aboutService');
+            }
         }
     }];
 
@@ -1499,7 +1515,7 @@ angular.module("ngMobileClick", [])
 			// 	[57.322,68.4158,1,29.7271], // rates of the currency number 2
 			// 	[1.928,2.2963,0.0336,1] // rates of the currency number 3
 			// ],
-            names: ['byn'],
+            names: ['BYN'],
             rates: [
                 [1]
             ],
@@ -1508,6 +1524,7 @@ angular.module("ngMobileClick", [])
 		expensesTypes = [
 			{name: 'Общие расходы', icon: 'donate'},
 			{name: 'Питание', icon: 'utensils'},
+            {name: 'Лечение', icon: 'briefcase-medical'},
 			{name: 'Жильё', icon: 'home'},
 			{name: 'Машина', icon: 'car'},
 			{name: 'Развлечение', icon: 'theater-masks'},
@@ -1523,7 +1540,8 @@ angular.module("ngMobileClick", [])
 				currentAccount: 0,
 				currencies: currencies,
 				baseCurrency: '0', // String type is necessary for select elements - we can see a selected option by default
-				expensesTypes: expensesTypes
+				expensesTypes: expensesTypes,
+                isHelpMode: true
 			},
 			accounts: []
 		};

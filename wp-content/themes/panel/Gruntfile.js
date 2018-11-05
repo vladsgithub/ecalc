@@ -71,6 +71,6 @@ module.exports = function(grunt) {
 	//grunt.loadNpmTasks('grunt-contrib-imagemin');
 
 	grunt.registerTask('default', ['less', 'concat', 'watch']); // 'watch'
-	// 'uglify', 'autoprefixer' - to run by command "grunt uglify" and "grunt autoprefixer"
+	// 'uglify', 'autoprefixer' - to run by command "grunt autoprefixer" and "grunt uglify"
 
 };

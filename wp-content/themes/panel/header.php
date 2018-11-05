@@ -12,8 +12,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-    <meta name="keywords" content="калькулятор распределения расходов, сервис распределения расходов, расчет доли
-    каждого участника, расчет между участниками, расчет расходов, подсчет расходов, распределение расходов,
+    <meta name="keywords" content="калькулятор распределения расходов, калькулятор распределения долей, калькулятор расчета долей, калькулятор расчета расходов,
+    расчет доли каждого участника, расчет между участниками, расчет расходов, подсчет расходов, распределение расходов, распределение долей,
     распределение расходов поровну, распределение расходов между участниками, распределение расходов между сторонами,
     сервис учета расходов, учет расходов, калькулятор расходов, распределение затрат между сторонами,
     калькулятор учета расходов, расчет доли участника, доля участника в расходе,
@@ -508,7 +508,7 @@
                                     </li>
 
                                     <li id="currenciesTable" class="currency-table s-p2">
-                                        <script type="text/javascript" src="https://ru.exchange-rates.org/GetCustomContent.aspx?sid=RT000JU97&amp;type=RatesTable&amp;stk=-0L8O3U15SJ" charset="utf-8">
+                                        <script type="text/javascript" src="https://ru.exchange-rates.org/GetCustomContent.aspx?sid=RT000LM8X&amp;type=RatesTable&amp;stk=02LYTNC6H9" charset="utf-8">
                                         </script>
                                     </li>
                                 </ul>
@@ -728,6 +728,23 @@
                                     <li class="flex-grow s-p1">
                                         <div class="text-field">
                                             <b>Режим отображения для вывода на печать</b>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <ul class="flex s-p1">
+                                    <li class="s-p1">
+                                        <label class="toggle">
+                                            <input type="checkbox" ng-model="expCalc.settings.isHelpMode" ng-change="uploadData(true)">
+                                            <i></i>
+                                        </label>
+                                    </li>
+
+                                    <li class="flex-grow s-p1">
+                                        <div class="text-field">
+                                            <b>Режим отображения подсказок</b>
                                         </div>
                                     </li>
                                 </ul>

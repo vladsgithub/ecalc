@@ -161,6 +161,50 @@ button {
 	}
 }
 
+.help-text {
+	z-index: @z-tooltip;
+	position: relative;
+	display: inline-block;
+
+	&::before {
+		content: "";
+		position: absolute;
+		height: 20px;
+		border-left: 2px solid @white;
+	}
+	&::after {
+		content: "";
+		position: absolute;
+		height: 8px;
+		width: 8px;
+		margin: -3px;
+		background: @white;
+		border-radius: 50%;
+	}
+
+	&:not(.bottom) {
+		&::before, &::after { top: -20px; }
+	}
+	&:not(.right) {
+		&::before, &::after { left: 19px; }
+	}
+	&.bottom {
+		&::before, &::after { bottom: -20px; }
+	}
+	&.right {
+		&::before, &::after { right: 19px; }
+	}
+
+	> b {
+		display: block;
+		background: @white;
+		padding: (@padding * 2);
+		border-radius: (@padding * 2);
+		font-size: 1rem;
+		color: @strong-gray;
+	}
+}
+
 .btn {
 	display: inline-block;
 	position: relative;
@@ -329,7 +373,7 @@ label {
 		font-weight: bold;
 	}
 	&.head {
-		text-transform: uppercase;
+		//text-transform: uppercase;
 		font-weight: bold;
 	}
 
@@ -797,6 +841,7 @@ label {
 	padding: 0 4px 0 40px;
 	box-sizing: border-box;
 	min-height: 44px; min-width: 44px;
+	overflow: hidden;
 	line-height: 44px;
 	font-size: 0;
 	cursor: default;
@@ -821,10 +866,14 @@ label {
 			}
 		}
 	}
+	&.line-through input:not(:checked) + i {
+		color: @gray;
+		background-color: @gray;
+	}
 
 	input {
 		position: absolute;
-		left: 0;
+		left: -44px;
 		opacity: 0;
 		user-select: none;
 
@@ -1080,6 +1129,7 @@ label {
 	}
 	&.line-through > b {
 		text-decoration: line-through;
+		color: @strong-gray;
 	}
 	&.icon > b {
 		font-size: 1.4rem;
