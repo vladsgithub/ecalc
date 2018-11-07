@@ -3971,39 +3971,53 @@ button {
 }
 .help-text::before {
   content: "";
+  z-index: 1;
   position: absolute;
-  height: 20px;
-  border-left: 2px solid #fff;
+  height: 15px;
+  width: 1px;
+  border: 1px solid #696969;
+  border-top: 0;
+  border-bottom: 0;
+  background: #fff;
 }
 .help-text::after {
   content: "";
   position: absolute;
-  height: 8px;
-  width: 8px;
-  margin: -3px;
+  height: 9px;
+  width: 9px;
+  margin: -10px -4px;
   background: #fff;
   border-radius: 50%;
+  border: 1px solid #696969;
 }
 .help-text:not(.bottom)::before,
 .help-text:not(.bottom)::after {
-  top: -20px;
+  top: -14px;
 }
 .help-text:not(.right)::before,
 .help-text:not(.right)::after {
-  left: 19px;
+  left: 18px;
 }
 .help-text.bottom::before,
 .help-text.bottom::after {
-  bottom: -20px;
+  bottom: -14px;
 }
 .help-text.right::before,
 .help-text.right::after {
-  right: 19px;
+  right: 18px;
+}
+.help-text.no-arrow {
+  z-index: 0;
+}
+.help-text.no-arrow::before,
+.help-text.no-arrow:after {
+  display: none;
 }
 .help-text > b {
   display: block;
   background: #fff;
   padding: 8px;
+  border: 1px solid #696969;
   border-radius: 8px;
   font-size: 1rem;
   color: #696969;
@@ -5917,6 +5931,9 @@ section a {
 .section-head {
   padding: 4px;
 }
+.section-head > .help-text {
+  margin-bottom: 4px;
+}
 .section-head .border-bottom {
   border-bottom: 1px solid #000;
 }
@@ -6062,6 +6079,9 @@ section a {
 }
 .step-1 .expense-data.open-details .details-btn::before {
   transform: translateY(0) scaleY(1);
+}
+.step-1 .expense-data > .help-text {
+  margin-top: 4px;
 }
 @media only screen and (max-width: 639px) {
   .step-1 .expense-values {

@@ -156,6 +156,11 @@
 				<div class="window-lt">
 
 					<div class="section-head">
+						<div class="help-text no-arrow"
+							 ng-if="expCalc.settings.isHelpMode">
+							<b><i class="fas fa-info-circle"></i> Включен режим отображения подсказок! Выключить можно в МЕНЮ > РЕЖИМЫ</b>
+						</div>
+
 						<ul class="flex">
 							<li class="flex-shrink">
 								<div class="text-field title">
@@ -397,6 +402,11 @@
 													</li>
 												</ul>
 
+												<div class="help-text no-arrow"
+													 ng-if="expCalc.settings.isHelpMode && expCalc.accounts[expCalc.settings.currentAccount].settings.advancedMode && !expenseIndex">
+													<b><i class="fas fa-info-circle"></i> Тип расхода и валюту можно добавлять, редактировать, получать актуальные курсы в МЕНЮ > ДАННЫЕ</b>
+												</div>
+
 												<div class="expense-details">
 
 													<div class="details-view">
@@ -441,7 +451,15 @@
 															</div>
 
 															<div class="help-text bottom" ng-if="expCalc.settings.isHelpMode && !expense.details.length">
-																<b><i class="fas fa-info-circle"></i> Здесь можно создать подробный список пунктов, из которых состоит текущий расход</b>
+																<b>
+																	<i class="fas fa-info-circle"></i> Здесь можно создать подробный список пунктов, из которых состоит текущий расход.
+
+																	<div ng-if="!$index">
+																		Этот список можно создать заранее, чтобы потом в магазине строго ему следовать.<br/>
+																		Работать с данными возможно с разных устройств, если войти под одним и тем же аккаунтом:<br/>
+																		на одном устройстве данные вносятся, а на другом - просматриваются/редактируются.
+																	</div>
+																</b>
 															</div>
 
 															<ul class="flex details-item"
@@ -594,6 +612,11 @@
 				<div class="window-lt">
 
 					<div class="section-head">
+						<div class="help-text no-arrow"
+							 ng-if="expCalc.settings.isHelpMode">
+							<b><i class="fas fa-info-circle"></i> Включен режим отображения подсказок! Выключить можно в МЕНЮ > РЕЖИМЫ</b>
+						</div>
+
 						<ul class="flex">
 							<li class="flex-shrink">
 								<div class="text-field title">
@@ -762,6 +785,11 @@
 				<div class="window-lt">
 
 					<div class="section-head">
+						<div class="help-text no-arrow"
+							 ng-if="expCalc.settings.isHelpMode">
+							<b><i class="fas fa-info-circle"></i> Включен режим отображения подсказок! Выключить можно в МЕНЮ > РЕЖИМЫ</b>
+						</div>
+						
 						<ul class="flex">
 							<li class="flex-shrink">
 								<div class="text-field title">

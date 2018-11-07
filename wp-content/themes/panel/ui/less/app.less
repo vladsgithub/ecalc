@@ -854,6 +854,9 @@ section {
 .section-head {
 	padding: @padding;
 
+	> .help-text {
+		margin-bottom: 4px;
+	}
 	.border-bottom {
 		border-bottom: 1px solid @black;
 	}
@@ -1023,6 +1026,10 @@ section {
 			.details-btn::before {
 				transform: translateY(0) scaleY(1);
 			}
+		}
+
+		> .help-text {
+			margin-top: 4px;
 		}
 	}
 	.expense-values {

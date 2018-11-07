@@ -168,37 +168,52 @@ button {
 
 	&::before {
 		content: "";
+		z-index: 1;
 		position: absolute;
-		height: 20px;
-		border-left: 2px solid @white;
+		height: 15px;
+		width: 1px;
+		border: 1px solid @strong-gray;
+		border-top: 0;
+		border-bottom: 0;
+		background: @white;
 	}
 	&::after {
 		content: "";
 		position: absolute;
-		height: 8px;
-		width: 8px;
-		margin: -3px;
+		height: 9px;
+		width: 9px;
+		margin: -10px -4px;
 		background: @white;
 		border-radius: 50%;
+		border: 1px solid @strong-gray;
 	}
 
 	&:not(.bottom) {
-		&::before, &::after { top: -20px; }
+		&::before, &::after { top: -14px; }
 	}
 	&:not(.right) {
-		&::before, &::after { left: 19px; }
+		&::before, &::after { left: 18px; }
 	}
 	&.bottom {
-		&::before, &::after { bottom: -20px; }
+		&::before, &::after { bottom: -14px; }
 	}
 	&.right {
-		&::before, &::after { right: 19px; }
+		&::before, &::after { right: 18px; }
+	}
+	&.no-arrow {
+		z-index: 0;
+
+		&::before,
+		&:after {
+			display: none;
+		}
 	}
 
 	> b {
 		display: block;
 		background: @white;
 		padding: (@padding * 2);
+		border: 1px solid @strong-gray;
 		border-radius: (@padding * 2);
 		font-size: 1rem;
 		color: @strong-gray;
