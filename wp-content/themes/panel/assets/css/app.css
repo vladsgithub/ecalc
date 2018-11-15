@@ -3839,6 +3839,9 @@ table {
 .hidden {
   display: none !important;
 }
+.float-right {
+  float: right !important;
+}
 .uppercase {
   text-transform: uppercase !important;
 }
@@ -3996,7 +3999,7 @@ button {
 }
 .help-text:not(.right)::before,
 .help-text:not(.right)::after {
-  left: 18px;
+  left: 21px;
 }
 .help-text.bottom::before,
 .help-text.bottom::after {
@@ -4004,7 +4007,7 @@ button {
 }
 .help-text.right::before,
 .help-text.right::after {
-  right: 18px;
+  right: 21px;
 }
 .help-text.no-arrow {
   z-index: 0;
@@ -4012,6 +4015,11 @@ button {
 .help-text.no-arrow::before,
 .help-text.no-arrow:after {
   display: none;
+}
+.help-text.small > b {
+  font-size: 0.8rem;
+  line-height: 0.9rem;
+  padding: 2px 4px;
 }
 .help-text > b {
   display: block;
@@ -5027,6 +5035,11 @@ label.toggle i::after {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.number-field.dashed > b {
+  padding-bottom: 2px;
+  border-bottom: 1px dashed;
+  border-color: inherit;
+}
 .number-field > b {
   display: inline-block;
   width: 100%;
@@ -5329,7 +5342,15 @@ header .head .title {
   }
 }
 header .head .separator {
+  position: relative;
   border-left: 2px solid #e2e8ff;
+}
+header .head .help-text {
+  position: absolute;
+  top: 3px;
+  width: 200px;
+  margin-top: -9px;
+  transform: translateX(-95%);
 }
 aside.menu {
   z-index: 100;
@@ -5729,7 +5750,6 @@ section a {
 }
 .three-window-lt > .header-lt ul {
   padding: 2px 4px;
-  background: #e2e8ff;
 }
 @media only screen and (min-width: 480px) {
   .three-window-lt > .header-lt ul {
@@ -5964,6 +5984,9 @@ section a {
 .participant.debtor .participant-head .text-select {
   border-color: #ce1d1d;
 }
+.participant > .help-text {
+  margin: 0 55px 12px 4px;
+}
 .participant + .participant {
   margin-top: 16px;
 }
@@ -6037,6 +6060,9 @@ section a {
 .participant-body > .body-view > .help-bar {
   margin-top: 6px;
   margin-bottom: -6px;
+}
+.participant-body > .body-view > .help-text {
+  margin: 0 4px 12px;
 }
 .step-1 .expense {
   position: relative;
@@ -6126,7 +6152,7 @@ section a {
   border-top: 1px solid #000;
 }
 .step-1 .expense-details .details > .help-text {
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 .step-1 .expense-details .details-item.checked label {
   border-color: transparent;
@@ -6194,6 +6220,9 @@ section a {
 }
 .step-2 .shares .share:first-child {
   border-top: none;
+}
+.step-2 .shares .share > .help-text {
+  margin: 0 3px 8px;
 }
 .step-2 .shares .share-price {
   min-width: 70px;

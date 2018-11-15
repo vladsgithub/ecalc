@@ -158,7 +158,8 @@
 					<div class="section-head">
 						<div class="help-text no-arrow"
 							 ng-if="expCalc.settings.isHelpMode">
-							<b><i class="fas fa-info-circle"></i> Включен режим отображения подсказок! Выключить можно в МЕНЮ > РЕЖИМЫ</b>
+							<b><i class="fas fa-info-circle"></i> Включен режим отображения подсказок!
+								Выключить можно в МЕНЮ <i class="fas fa-arrow-right"></i> РЕЖИМЫ</b>
 						</div>
 
 						<ul class="flex">
@@ -201,7 +202,7 @@
 							</li>
 
 							<li class="flex-grow s-p1">
-								<div class="number-field bold">
+								<div class="number-field dashed bold" title="Сумма абсолютно всех расходов всех участников">
 									<b>{{roundOff(getAccountTotal())}}</b>
 								</div>
 							</li>
@@ -245,7 +246,7 @@
 										</li>
 
 										<li class="flex-shrink s-p0">
-											<div class="number-field solid">
+											<div class="number-field solid" title="Сумма всех расходов этого участника">
 												<b>
 													{{roundOff(getParticipantTotal(participant))}}
 													<s>{{getAccountCurrency()}}</s>
@@ -283,7 +284,7 @@
 											</div>
 										</li>
 
-										<li class="help-bar text-right s-p1" ng-if="expCalc.settings.isHelpMode && participant.expenses.length > 0">
+										<li class="help-bar text-right s-p0" ng-if="expCalc.settings.isHelpMode && participant.expenses.length > 0">
 											<div class="help-text bottom right">
 												<b><i class="fas fa-info-circle"></i> После заполнения расхода, не забудьте применить его</b>
 											</div>
@@ -404,7 +405,8 @@
 
 												<div class="help-text no-arrow"
 													 ng-if="expCalc.settings.isHelpMode && expCalc.accounts[expCalc.settings.currentAccount].settings.advancedMode && !expenseIndex">
-													<b><i class="fas fa-info-circle"></i> Тип расхода и валюту можно добавлять, редактировать, получать актуальные курсы в МЕНЮ > ДАННЫЕ</b>
+													<b><i class="fas fa-info-circle"></i> Тип расхода и валюту можно добавлять, редактировать,
+														получать актуальные курсы в МЕНЮ <i class="fas fa-arrow-right"></i> ДАННЫЕ</b>
 												</div>
 
 												<div class="expense-details">
@@ -439,7 +441,7 @@
 																		   ng-disabled="expense.isPaid"
 																		   ng-change="checkPartList(expense.partList, $index)">
 																	<i></i>
-																	<b>{{account.participants[$index].meta.title}}</b>
+																	<b>{{(account.participants[$index].meta.title) ? account.participants[$index].meta.title : 'Участник ' + ($index + 1)}}</b>
 																</label>
 															</li>
 														</ul>
@@ -455,7 +457,7 @@
 																	<i class="fas fa-info-circle"></i> Здесь можно создать подробный список пунктов, из которых состоит текущий расход.
 
 																	<div ng-if="!$index">
-																		Этот список можно создать заранее, чтобы потом в магазине строго ему следовать.<br/>
+																		Список можно создать заранее, чтобы потом в магазине строго ему следовать.<br/>
 																		Работать с данными возможно с разных устройств, если войти под одним и тем же аккаунтом:<br/>
 																		на одном устройстве данные вносятся, а на другом - просматриваются/редактируются.
 																	</div>
@@ -614,7 +616,8 @@
 					<div class="section-head">
 						<div class="help-text no-arrow"
 							 ng-if="expCalc.settings.isHelpMode">
-							<b><i class="fas fa-info-circle"></i> Включен режим отображения подсказок! Выключить можно в МЕНЮ > РЕЖИМЫ</b>
+							<b><i class="fas fa-info-circle"></i> Включен режим отображения подсказок!
+								Выключить можно в МЕНЮ <i class="fas fa-arrow-right"></i> РЕЖИМЫ</b>
 						</div>
 
 						<ul class="flex">
@@ -646,7 +649,7 @@
 							</li>
 
 							<li class="flex-grow s-p1">
-								<div class="number-field bold">
+								<div class="number-field dashed bold">
 									<b>{{roundOff(getFullRefund())}}</b>
 								</div>
 							</li>
@@ -665,6 +668,12 @@
 							<li id="participant.2.{{extParticipantIndex}}" class="participant"
 								ng-repeat="extParticipant in account.participants track by $index"
 								ng-init="extParticipantIndex = $index">
+
+								<div class="help-text bottom right" ng-if="expCalc.settings.isHelpMode && !$index">
+									<b><i class="fas fa-info-circle"></i> Если в качестве участника будет выступать не 1 человек, а семья из 2-х, 3-х и т.д. людей,
+										поменяйте коэффициент участия — укажите соответствующее количество человек, чтобы расчет прошел в правильных пропорциях</b>
+								</div>
+
 								<div class="participant-head">
 									<ul class="flex s-p0">
 										<li class="flex-shrink s-p0">
@@ -702,7 +711,7 @@
 
 									<ul class="flex report">
 										<li class="flex-grow">
-											<div class="number-field solid marker text-left">
+											<div class="number-field solid marker text-left" title="Отрицательный баланс означает долг участника, положительный - ему столько вернут">
 												<b>
 													{{roundOff(getBalance(extParticipant))}}
 													<s>Баланс ({{getAccountCurrency()}}):</s>
@@ -711,7 +720,7 @@
 										</li>
 
 										<li class="flex-grow">
-											<div class="number-field solid marker">
+											<div class="number-field solid marker" title="Доля участника в общем расходе">
 												<b>
 													{{roundOff(getParticipantShare(extParticipantIndex))}}
 													<s>Доля ({{getAccountCurrency()}}):</s>
@@ -728,6 +737,10 @@
 										<li class="share" ng-repeat="intParticipant in account.participants track by $index">
 											<div class="text-field text-center block s-p2" ng-if="!intParticipant.expenses.length">
 												<b>Участник <em>[{{(intParticipant.meta.title) ? intParticipant.meta.title : $index + 1}}]</em> не имеет расходов</b>
+											</div>
+
+											<div class="help-text bottom" ng-if="expCalc.settings.isHelpMode && !$index">
+												<b><i class="fas fa-info-circle"></i> Здесь полный список всех расходов и доли для каждого из них. Отмеченный расход означает, что он учитывается для данного участника</b>
 											</div>
 
 											<ul class="flex s-p0" ng-repeat="expense in intParticipant.expenses track by $index">
@@ -787,9 +800,10 @@
 					<div class="section-head">
 						<div class="help-text no-arrow"
 							 ng-if="expCalc.settings.isHelpMode">
-							<b><i class="fas fa-info-circle"></i> Включен режим отображения подсказок! Выключить можно в МЕНЮ > РЕЖИМЫ</b>
+							<b><i class="fas fa-info-circle"></i> Включен режим отображения подсказок!
+								Выключить можно в МЕНЮ <i class="fas fa-arrow-right"></i> РЕЖИМЫ</b>
 						</div>
-						
+
 						<ul class="flex">
 							<li class="flex-shrink">
 								<div class="text-field title">
@@ -832,7 +846,7 @@
 								</li>
 
 								<li class="flex-grow s-p1">
-									<div class="number-field thin">
+									<div class="number-field dashed thin" title="всего вернуть / всего получить">
 										<b>
 											{{getReturnsBalance()}} <s>{{getAccountCurrency()}}</s>
 										</b>
@@ -852,7 +866,7 @@
 								</li>
 							</span>
 								<li class="flex-grow s-p1">
-									<div class="number-field thin">
+									<div class="number-field dashed thin" title="всего вернуть / всего получить">
 										<b>
 											{{getReturnsBalance('byBank')}}
 											<s>{{getAccountCurrency()}}</s>
@@ -869,7 +883,7 @@
 								</li>
 
 								<li class="flex-grow s-p1">
-									<div class="number-field thin">
+									<div class="number-field dashed thin" title="сумма в общем банке">
 										<b>
 											{{getAccountBank()}}
 											<s>{{getAccountCurrency()}}</s>
@@ -955,6 +969,10 @@
 									<div class="body-view" >
 										<div class="text-field name thin s-p1">
 											<b>Сделал взносы участникам:</b>
+										</div>
+
+										<div class="help-text bottom" ng-if="expCalc.settings.isHelpMode && !participant.fixation.whom.length">
+											<b><i class="fas fa-info-circle"></i> Добавляйте взносы, чтобы зафиксировать возврат долгов либо просто учесть эти взносы в будущих расчётах</b>
 										</div>
 
 										<ul class="payments">
@@ -1093,6 +1111,13 @@
 
 									<div class="body-view">
 										<ul class="payments to-bank">
+											<li class="s-p1">
+												<div class="help-text no-arrow"
+													 ng-if="expCalc.settings.isHelpMode">
+													<b><i class="fas fa-info-circle"></i> Чтобы рассчитаться через общий банк, должники должны отдать свои долги в общий банк,
+														а спонсоры потом смогут получить свои суммы из банка. А все эти манипуляции здесь фиксируются.</b>
+												</div>
+											</li>
 
 											<li ng-repeat="byBankObject in participant.fixation.byBank track by $index"
 												ng-init="byBankObjectIndex = $index">

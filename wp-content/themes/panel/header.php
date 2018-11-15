@@ -160,6 +160,10 @@
 				</b>
 				<i class="fas fa-save no-mobile"></i>
 			</button>
+
+			<div class="help-text small no-arrow" ng-if="expCalc.settings.isHelpMode">
+                <b><i class="fas fa-info-circle"></i> <span id="statusHelpText">Автоматическое сохранение на сервере</span> <i class="fas fa-arrow-right float-right"></i></b>
+            </div>
 		</li>
 		<li class="separator" ng-if="!expCalc.meta.isViewMode">
 			<button class="btn solid" title="Все расчеты" ng-click="layout.openAside()">

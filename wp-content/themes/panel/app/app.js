@@ -242,24 +242,29 @@ angular.module("ngMobileClick", [])
             // 2 - failure
 
             var tooltip = '';
+            var statusHelpTextElm;
 
             switch(status) {
                 case -1:
                     tooltip = 'Автоматическое сохранение на сервере: ожидание перед сохранением';
                     break;
                 case 0:
-                    tooltip = 'Автоматическое сохранение на сервере: в процессе ...';
+                    tooltip = 'Автоматическое сохранение на сервере: в процессе .....';
                     break;
                 case 1:
                     tooltip = 'Автоматическое сохранение на сервере: успешно';
                     break;
                 case 2:
-                    tooltip = 'Автоматическое сохранение на сервере: не удалось (проверьте интернет-соединение)';
+                    tooltip = 'Автоматическое сохранение на сервере: НЕ УДАЛОСЬ (проверьте интернет)';
                     break;
             }
 
-            document.getElementById('saveButton').setAttribute('title', tooltip);
+            document.getElementById('saveButton').setAttribute('title', tooltip)
             document.getElementById('body').setAttribute('data-upload-status', status);
+
+            statusHelpTextElm = document.getElementById('statusHelpText');
+            if (statusHelpTextElm) statusHelpTextElm.innerText = tooltip;
+
         };
 
         loadData = function (event) {
@@ -307,7 +312,7 @@ angular.module("ngMobileClick", [])
             if (!isDirectSave) $scope.layout.isChangedObject = true;
             if (!$scope.layout.isChangedObject) return false; // если объект не менялся, то выход
 
-            var delay = (isDirectSave) ? 0 : 5000;
+            var delay = (isDirectSave) ? 0 : 1000;
             var localStringJSON = JSON.stringify($scope.expCalc);
 
             $scope.layout.updatedDataTime = +new Date();

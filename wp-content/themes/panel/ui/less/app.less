@@ -235,7 +235,15 @@ header {
 			}
 		}
 		.separator {
+			position: relative;
 			border-left: 2px solid @brand-light;
+		}
+		.help-text {
+			position: absolute;
+			top: 3px;
+			width: 200px;
+			margin-top: -9px;
+			transform: translateX(-95%);
 		}
 	}
 }
@@ -658,7 +666,6 @@ section {
 
 		ul {
 			padding: 2px 4px;
-			background: @brand-light;
 
 			@media only screen and (min-width: @middle-mobile) {
 				padding-left: 0; padding-right: 0;
@@ -901,6 +908,9 @@ section {
 		}
 	}
 
+	> .help-text {
+		margin: 0 55px 12px 4px;
+	}
 	+ .participant {
 		margin-top: 16px;
 	}
@@ -978,6 +988,9 @@ section {
 		> .help-bar {
 			margin-top: 6px;
 			margin-bottom: -6px;
+		}
+		> .help-text {
+			margin: 0 4px 12px;
 		}
 	}
 }
@@ -1072,7 +1085,7 @@ section {
 			border-top: 1px solid @black;
 
 			> .help-text {
-				margin-bottom: 16px;
+				margin-bottom: 14px;
 			}
 		}
 		.details-item {
@@ -1144,6 +1157,10 @@ section {
 			border-top: 1px solid @brand-strong;
 
 			&:first-child { border-top: none; }
+
+			> .help-text {
+				margin: 0 3px 8px;
+			}
 		}
 		.share-price {
 			min-width: 70px;

@@ -46,6 +46,9 @@
 .hidden {
 	display: none !important;
 }
+.float-right {
+	float: right !important;
+}
 .uppercase {
 	text-transform: uppercase !important;
 }
@@ -192,13 +195,13 @@ button {
 		&::before, &::after { top: -14px; }
 	}
 	&:not(.right) {
-		&::before, &::after { left: 18px; }
+		&::before, &::after { left: 21px; }
 	}
 	&.bottom {
 		&::before, &::after { bottom: -14px; }
 	}
 	&.right {
-		&::before, &::after { right: 18px; }
+		&::before, &::after { right: 21px; }
 	}
 	&.no-arrow {
 		z-index: 0;
@@ -206,6 +209,13 @@ button {
 		&::before,
 		&:after {
 			display: none;
+		}
+	}
+	&.small {
+		> b {
+			font-size: 0.8rem;
+			line-height: 0.9rem;
+			padding: 2px 4px;
 		}
 	}
 
@@ -1220,6 +1230,13 @@ label {
 				text-overflow: ellipsis;
 				white-space: nowrap;
 			}
+		}
+	}
+	&.dashed {
+		> b {
+			padding-bottom: 2px;
+			border-bottom: 1px dashed;
+			border-color: inherit;
 		}
 	}
 
