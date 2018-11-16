@@ -244,6 +244,8 @@
 
                                 echo get_ulogin_panel();
                             ?>
+
+                            <button ng-click="getUserData()">getUserData</button>
                         </div>
                     </li>
                 </ul>

@@ -369,7 +369,7 @@ angular.module("ngMobileClick", [])
                                 $scope.$digest();
                                 break;
                             case '100':
-                                $scope.expCalc.meta.savedDate = fromServerData.meta.savedDate
+                                $scope.expCalc.meta.savedDate = fromServerData.meta.savedDate;
                                 break;
                         }
                     }
@@ -404,6 +404,26 @@ angular.module("ngMobileClick", [])
             }
 
             return link;
+        };
+
+		$scope.getUserData = function() {
+            var xhr = new XMLHttpRequest();
+
+            xhr.open("POST", 'http://192.168.0.121/app-get.php', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded; charset=utf-8');
+
+            xhr.onreadystatechange = function () {
+
+                if (this.readyState != 4) return;
+
+                if (xhr.status != 200) {
+                    console.error('!!! We have a problem: ' + xhr.status + ': ' + xhr.statusText);
+                } else {
+                    console.info('We have received a response: ' + xhr.responseText); // responseText -- текст ответа.
+                }
+            };
+
+            xhr.send('userID=9');
         };
 
 
