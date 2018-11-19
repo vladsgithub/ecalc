@@ -3,10 +3,10 @@
 $userID = $_POST["userID"];
 
 if ($userID > 0) {
-    $servername = "localhost";
-    $username = "host1638368_1647";
-    $password = "vl@d161010";
-    $dbname = "host1638368_1647";
+    $servername = $GLOBALS['server_name_php'];
+    $username = $GLOBALS['user_name_php'];
+    $password = $GLOBALS['password_php'];
+    $dbname = $GLOBALS['dbname_php'];
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -29,7 +29,7 @@ if ($userID > 0) {
         $loadedData = str_replace('"{"', '{"', $loadedData);
         $loadedData = str_replace('}"', '}', $loadedData);
 
-        echo 'DONE!!! '.$loadedData;
+        echo $loadedData;
     }
 
     $conn->close();

@@ -80,10 +80,10 @@
         }
 
 		if ($userID > 0) {
-			$servername = "localhost";
-			$username = "host1638368_1647";
-			$password = "vl@d161010";
-			$dbname = "host1638368_1647";
+			$servername = $GLOBALS['server_name_php'];
+			$username = $GLOBALS['user_name_php'];
+			$password = $GLOBALS['password_php'];
+			$dbname = $GLOBALS['dbname_php'];
 
 			// Create connection
 			$conn = new mysqli($servername, $username, $password, $dbname);
@@ -122,13 +122,13 @@
 		$secondLetter = mb_substr(end($userNameWords),0,1,'UTF-8');
 		if (count($userNameWords) <= 1) { $secondLetter = ''; }
 
-		echo "<script id='serverDataScript' type='text/javascript'>var userID = $userID; var fromServerData = '$loadedData';</script>";
+		echo "<script id='serverDataScript' type='text/javascript'>userID = $userID; fromServerData = '$loadedData';</script>";
     ?>
 
 </head>
 
-<body id="body" ng-app="app" ng-controller="calculatorCtrl" ng-cloak="true" class="<? if ($current_user->ID > 0) { echo 'logged-in'; } ?>"
-	ng-class="{'open-menu': layout.isOpenMenu, 'open-aside': layout.isOpenAside, 'remove-mode': layout.isRemoveMode, 'print-mode': layout.isPrintMode, 'advanced-mode': expCalc.accounts[expCalc.settings.currentAccount].settings.advancedMode, 'data-updating': layout.isDataUpdating}"
+<body id="body" ng-app="app" ng-controller="calculatorCtrl" ng-cloak="true"
+	ng-class="{'logged-in': expCalc.meta.userID > 0, 'open-menu': layout.isOpenMenu, 'open-aside': layout.isOpenAside, 'remove-mode': layout.isRemoveMode, 'print-mode': layout.isPrintMode, 'advanced-mode': expCalc.accounts[expCalc.settings.currentAccount].settings.advancedMode, 'data-updating': layout.isDataUpdating}"
 	data-upload-status="1">
 
 
@@ -153,7 +153,7 @@
 			    </b>
 			</h2>
 		</li>
-		<li class="separator <? if ($current_user->ID == 0) { echo 'hidden'; } ?>" ng-if="!expCalc.meta.isViewMode">
+		<li class="separator" ng-class="{'hidden': expCalc.meta.userID == 0}" ng-if="!expCalc.meta.isViewMode">
 			<button id="saveButton" class="btn solid" title="Автоматическое сохранение на сервере" ng-click="uploadData(true, true)">
 				<b class="status-line">
 				    <? echo $firstLetter.$secondLetter; ?>
@@ -180,9 +180,9 @@
         <li class="photo">
             <img class="<? if ($current_user->ID == 0) { echo 'hidden'; } ?>" src="<? echo get_avatar_url($current_user->ID) ?>" />
         </li>
-        <li class="flex-grow s-p2">
+        <li class="flex-grow flex-hidden s-p2">
             <div class="text-field name solid capitalize">
-                <b>
+                <b id="userNameBlock">
                     <?
                         echo $userName;
                     ?>
@@ -245,7 +245,33 @@
                                 echo get_ulogin_panel();
                             ?>
 
-                            <button ng-click="getUserData()">getUserData</button>
+
+                            <div class="cleanlogin-container" ng-if="true" data-for-android-app>
+
+                                <form class="cleanlogin-form" ng-submit="getUserDataForApp()">
+                            		<fieldset>
+                            			<div class="cleanlogin-field">
+                            				<input id="username" class="cleanlogin-field-username" type="text" name="log" placeholder="Имя участника (username)">
+                            			</div>
+
+                            			<div class="cleanlogin-field">
+                            				<input id="password" class="cleanlogin-field-password" type="password" name="pwd" placeholder="Пароль">
+                            			</div>
+                            		</fieldset>
+
+                            		<div class="flex flex-wrap">
+                            			<input class="cleanlogin-field" type="submit" value="Войти" name="submit">
+                            		</div>
+
+
+                            		<div class="cleanlogin-form-bottom">
+                            			<a href="https://costpanel.info/login" target="_blank" class="cleanlogin-form-pwd-link">Восстановить пароль?</a>
+                            			<a href="https://costpanel.info/login" target="_blank" class="cleanlogin-form-register-link">Регистрация</a>
+                            		</div>
+                                </form>
+
+                            </div>
+
                         </div>
                     </li>
                 </ul>
@@ -449,7 +475,7 @@
                                                     <li>
                                                         <div class="text-input complex-input">
                                                             <div class="text-field">
-                                                                <b>Название:</b>
+                                                                <b>Название: </b>
                                                             </div>
 
                                                             <label class="head">
@@ -461,11 +487,12 @@
                                                         </div>
                                                     </li>
 
-                                                    <li ng-repeat="array in currencies.rates[nameIndex] track by $index" ng-if="expCalc.settings.currencies.names[nameIndex] != currencies.names[$index]">
+                                                    <li ng-repeat="array in expCalc.settings.currencies.rates[nameIndex] track by $index"
+                                                        ng-if="expCalc.settings.currencies.names[nameIndex] != expCalc.settings.currencies.names[$index]">
                                                         <ul class="flex currency-line">
                                                             <li class="flex-shrink flex-hidden">
                                                                 <div class="text-field name uppercase">
-                                                                    <b>1 {{(currencies.names[$index]) ? currencies.names[$index] : "???"}}</b>
+                                                                    <b>1 {{(expCalc.settings.currencies.names[$index]) ? expCalc.settings.currencies.names[$index] : "???"}}</b>
                                                                 </div>
                                                             </li>
 
@@ -483,9 +510,9 @@
 
                                                                     <label class="head">
                                                                         <input type="number"
-                                                                               title="Курс, по которому банк продает 1 {{currencies.names[$index]}}"
-                                                                               ng-model="currencies.rates[nameIndex][$index]" ng-change="uploadData(true)">
-                                                                        <b>{{currencies.rates[nameIndex][$index]}}</b>
+                                                                               title="Курс, по которому банк продает 1 {{expCalc.settings.currencies.names[$index]}}"
+                                                                               ng-model="expCalc.settings.currencies.rates[nameIndex][$index]" ng-change="uploadData(true)">
+                                                                        <b>{{expCalc.settings.currencies.rates[nameIndex][$index]}}</b>
                                                                     </label>
                                                                 </div>
                                                             </li>
@@ -637,7 +664,7 @@
                                 </ul>
 
 
-                                <ul class="settings-list hidden" data-for-android-app>
+                                <ul class="settings-list" ng-if="false" data-for-android-app>
                                     <li>
                                         <ul class="flex s-p1">
                                             <li class="flex-shrink s-p1">

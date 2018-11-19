@@ -3,8 +3,7 @@
 // to connect wp-load.php on this file in order to use wordpress functions
 require( dirname(__FILE__) . '/wp-load.php' );
 
-$current_user = wp_get_current_user();
-
+//$current_user = wp_get_current_user();
 //echo 'Username: ' . $current_user->user_login . '<br />';
 //echo 'email: ' . $current_user->user_email . '<br />';
 //echo 'first name: ' . $current_user->user_firstname . '<br />';
@@ -12,13 +11,17 @@ $current_user = wp_get_current_user();
 //echo 'Отображаемое имя: ' . $current_user->display_name . '<br />';
 //echo 'ID: ' . $current_user->ID . '<br />';
 
-$userId = $current_user->ID;
+//$userId = $current_user->ID;
+
+$data = file_get_contents("php://input"); // Read body
+$dataJSON = json_decode($data);
+$userId = $dataJSON->{'meta'}->{'userID'};
 
 if ($userId > 0) {
-	$servername = "localhost";
-	$username = "host1638368_1647";
-	$password = "vl@d161010";
-	$dbname = "host1638368_1647";
+	$servername = $GLOBALS['server_name_php'];
+	$username = $GLOBALS['user_name_php'];
+	$password = $GLOBALS['password_php'];
+	$dbname = $GLOBALS['dbname_php'];
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
@@ -28,11 +31,10 @@ if ($userId > 0) {
 		die("Connection failed: " . $conn->connect_error);
 	}
 
-	$data = file_get_contents("php://input"); // Read body
-
+//	$data = file_get_contents("php://input"); // Read body
 //	echo "\n\n data from currentAccount = ".$data;
 
-	$dataJSON = json_decode($data);
+//	$dataJSON = json_decode($data);
 	$now = microtime(true) * 1000; // at millisecond
 	$dataJSON->{'meta'}->{'savedDate'} = $now;
 	$DBdata = json_encode($dataJSON, JSON_UNESCAPED_UNICODE);

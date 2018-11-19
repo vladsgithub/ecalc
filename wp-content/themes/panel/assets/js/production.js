@@ -33810,7 +33810,7 @@ angular.module("ngMobileClick", [])
                     break;
             }
 
-            document.getElementById('saveButton').setAttribute('title', tooltip)
+            document.getElementById('saveButton') && document.getElementById('saveButton').setAttribute('title', tooltip);
             document.getElementById('body').setAttribute('data-upload-status', status);
 
             statusHelpTextElm = document.getElementById('statusHelpText');
@@ -33894,6 +33894,9 @@ angular.module("ngMobileClick", [])
                 if (!isFullObject && $scope.expCalc.meta.userID && !currentAccount.meta.id) {
                     currentAccount.meta.id = $scope.expCalc.meta.userID + (+new Date() + '').slice(-11);
                 }
+                if (!isFullObject && $scope.expCalc.meta.userID) {
+                    currentAccount.meta.userID = $scope.expCalc.meta.userID;
+                }
 
                 serverStringAccountJSON = JSON.stringify(currentAccount);
 
@@ -33912,16 +33915,21 @@ angular.module("ngMobileClick", [])
                         updateUploadStatus(1);
                         $scope.layout.isChangedObject = false;
 
-                        fromServerData = JSON.parse(responseArray[2]);
+                        try {
+                            fromServerData = JSON.parse(responseArray[2]);
 
-                        switch(responseArray[0]) {
-                            case '010':
-                                currentAccount.meta.savedDate = fromServerData.meta.savedDate;
-                                $scope.$digest();
-                                break;
-                            case '100':
-                                $scope.expCalc.meta.savedDate = fromServerData.meta.savedDate;
-                                break;
+                            switch(responseArray[0]) {
+                                case '010':
+                                    currentAccount.meta.savedDate = fromServerData.meta.savedDate;
+                                    $scope.$digest();
+                                    break;
+                                case '100':
+                                    $scope.expCalc.meta.savedDate = fromServerData.meta.savedDate;
+                                    break;
+                            }
+                        } catch (e) {
+                            updateUploadStatus(2);
+                            console.error('Данные могли не сохраниться. Returned data with issues =>', xhr.responseText);
                         }
                     }
                 };
@@ -33957,10 +33965,39 @@ angular.module("ngMobileClick", [])
             return link;
         };
 
-		$scope.getUserData = function() {
+        $scope.getUserDataForApp = function() {
+            var userNameBlock = document.getElementById('userNameBlock');
             var xhr = new XMLHttpRequest();
+            var host = 'https://costpanel.info';
+var host = 'http://192.168.43.121'; // FOR TESTING !!!
+            var username = document.getElementById('username').value;
+            var pass = document.getElementById('password').value;
+            var request = 'username=' + username + '&pass=' + pass;
+            var getNameObject = function(firstName, lastName) {
+                var fullName, initials;
+                var loginName = username;
+                var firstName = (firstName) ? firstName : '';
+                var lastName = (lastName) ? lastName : '';
 
-            xhr.open("POST", 'http://192.168.0.121/app-get.php', true);
+                if (!firstName && !lastName) {
+                    firstName = loginName.split(' ');
+                    lastName = (firstName.length > 1) ? firstName.slice(1).join(' ') : '';
+                    firstName = firstName[0];
+                }
+
+                fullName = firstName + ' ' + lastName;
+                initials = (firstName && firstName.length > 0) ? firstName[0] : '';
+                initials += (lastName && lastName.length > 0) ? lastName[0] : '';
+
+                return {
+                    fullName: fullName,
+                    initials: initials
+                }
+            };
+
+            userNameBlock.innerText = '... Авторизация ...';
+
+            xhr.open("POST", host + '/app-login.php', true);
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded; charset=utf-8');
 
             xhr.onreadystatechange = function () {
@@ -33970,11 +34007,29 @@ angular.module("ngMobileClick", [])
                 if (xhr.status != 200) {
                     console.error('!!! We have a problem: ' + xhr.status + ': ' + xhr.statusText);
                 } else {
-                    console.info('We have received a response: ' + xhr.responseText); // responseText -- текст ответа.
+                    if (xhr.responseText != 'Login failed') {
+                        try {
+                            var responseArray = xhr.responseText.split('"""""'); // xhr.responseText -- текст ответа.
+                            // responseArray: 0 - first name, 1 - last name, 2 - user ID, 3 - data object
+                            userNameBlock.innerText = getNameObject(responseArray[0], responseArray[1]).fullName;
+                            fromServerData = JSON.parse(responseArray[3]);
+                            $scope.expCalc = fromServerData;
+                            $scope.expCalc.meta.userID = parseInt(responseArray[2]);
+                            $scope.$apply($scope.expCalc);
+
+                            console.info('Success! We have received a response:', fromServerData);
+                        } catch (e) {
+                            userNameBlock.innerText = '';
+                            console.log('Произошла ошибка в getUserDataForApp:', e);
+                        }
+                    } else {
+                        userNameBlock.innerText = '';
+                        alert('Авторизация не удалась. Логин или пароль введены неверно :(');
+                    }
                 }
             };
 
-            xhr.send('userID=9');
+            xhr.send(request);
         };
 
 
@@ -34947,7 +35002,7 @@ angular.module("ngMobileClick", [])
 
 
         $scope.$watch('expCalc', function (newValue, oldValue) {
-            if ($scope.layout.isDomReady && $scope.layout.isDataUpdating) {
+            if ($scope.layout.isDomReady && $scope.layout.isDataUpdating) { // необходимо для показа спиннера пока весь дом не обновится
                 $timeout(function () {
                     $scope.layout.isDataUpdating = false;
                 }, 100);
