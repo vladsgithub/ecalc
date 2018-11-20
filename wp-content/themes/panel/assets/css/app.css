@@ -3857,6 +3857,9 @@ table {
 .text-justify {
   text-align: justify !important;
 }
+.width100 {
+  width: 100%;
+}
 a {
   color: #4c69bd;
 }

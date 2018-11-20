@@ -1,4 +1,4 @@
-var loadData, scrollTimeout, isFirstVisit;
+var fromServerData, userID, loadData, scrollTimeout, isFirstVisit;
 
 function forEach(elements, callback) {
 	Array.prototype.forEach.call(elements, callback);
@@ -94,7 +94,7 @@ angular.module("ngMobileClick", [])
                 $scope.layoutControl.closeNavMenuItems();
             },
             openAside: function() {
-                if (window.location.pathname !== '/') {
+                if (window.location.host && window.location.pathname !== '/') { // window.location.host - check for mobile app
                     window.location.href = "/";
                 }
 
@@ -327,6 +327,8 @@ angular.module("ngMobileClick", [])
             updateUploadStatus(-1);
 
             setTimeout(function () {
+                var host = 'https://costpanel.info';
+// var host = 'http://192.168.43.121'; // FOR TESTING !!!
                 var now = +new Date();
 
                 if (!isDirectSave && (now - $scope.layout.updatedDataTime) < delay) return false;
@@ -349,7 +351,7 @@ angular.module("ngMobileClick", [])
 
                 serverStringAccountJSON = JSON.stringify(currentAccount);
 
-                xhr.open("POST", '/send.php', true);
+                xhr.open("POST", host + '/send.php', true);
                 xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
                 xhr.onreadystatechange = function () {
@@ -416,9 +418,10 @@ angular.module("ngMobileClick", [])
 
         $scope.getUserDataForApp = function() {
             var userNameBlock = document.getElementById('userNameBlock');
+            var saveButtonText = document.getElementById('saveButton').querySelector('b');
             var xhr = new XMLHttpRequest();
             var host = 'https://costpanel.info';
-var host = 'http://192.168.43.121'; // FOR TESTING !!!
+// var host = 'http://192.168.43.121'; // FOR TESTING !!!
             var username = document.getElementById('username').value;
             var pass = document.getElementById('password').value;
             var request = 'username=' + username + '&pass=' + pass;
@@ -460,13 +463,16 @@ var host = 'http://192.168.43.121'; // FOR TESTING !!!
                         try {
                             var responseArray = xhr.responseText.split('"""""'); // xhr.responseText -- текст ответа.
                             // responseArray: 0 - first name, 1 - last name, 2 - user ID, 3 - data object
-                            userNameBlock.innerText = getNameObject(responseArray[0], responseArray[1]).fullName;
+
                             fromServerData = JSON.parse(responseArray[3]);
                             $scope.expCalc = fromServerData;
                             $scope.expCalc.meta.userID = parseInt(responseArray[2]);
                             $scope.$apply($scope.expCalc);
 
-                            console.info('Success! We have received a response:', fromServerData);
+                            userNameBlock.innerText = getNameObject(responseArray[0], responseArray[1]).fullName;
+                            saveButtonText.innerText = getNameObject(responseArray[0], responseArray[1]).initials;
+
+                            console.info('[getUserDataForApp] Success! We have received a response:', fromServerData);
                         } catch (e) {
                             userNameBlock.innerText = '';
                             console.log('Произошла ошибка в getUserDataForApp:', e);

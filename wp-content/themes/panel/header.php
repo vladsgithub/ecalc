@@ -246,32 +246,46 @@
                             ?>
 
 
-                            <div class="cleanlogin-container" ng-if="true" data-for-android-app>
+                            <ul class="settings-list" ng-if="true" data-for-android-app>
+                                <li>
+                                    <div class="block text-field name word-wrap text-center">
+                                        <b>Авторизация в мобильном приложении</b>
+                                    </div>
+                                </li>
 
-                                <form class="cleanlogin-form" ng-submit="getUserDataForApp()">
-                            		<fieldset>
-                            			<div class="cleanlogin-field">
-                            				<input id="username" class="cleanlogin-field-username" type="text" name="log" placeholder="Имя участника (username)">
-                            			</div>
+                                <li>
+                                    <div class="cleanlogin-container">
+                                        <form class="cleanlogin-form" ng-submit="getUserDataForApp()">
+                                            <fieldset>
+                                                <div class="cleanlogin-field">
+                                                    <input id="username" class="cleanlogin-field-username" type="text" name="log" placeholder="Имя участника (username)">
+                                                </div>
 
-                            			<div class="cleanlogin-field">
-                            				<input id="password" class="cleanlogin-field-password" type="password" name="pwd" placeholder="Пароль">
-                            			</div>
-                            		</fieldset>
+                                                <div class="cleanlogin-field">
+                                                    <input id="password" class="cleanlogin-field-password" type="password" name="pwd" placeholder="Пароль">
+                                                </div>
+                                            </fieldset>
 
-                            		<div class="flex flex-wrap">
-                            			<input class="cleanlogin-field" type="submit" value="Войти" name="submit">
-                            		</div>
+                                            <div class="flex flex-wrap">
+                                                <input class="cleanlogin-field" type="submit" value="Войти" name="submit">
+                                            </div>
 
 
-                            		<div class="cleanlogin-form-bottom">
-                            			<a href="https://costpanel.info/login" target="_blank" class="cleanlogin-form-pwd-link">Восстановить пароль?</a>
-                            			<a href="https://costpanel.info/login" target="_blank" class="cleanlogin-form-register-link">Регистрация</a>
-                            		</div>
-                                </form>
+                                            <div class="cleanlogin-form-bottom">
+                                                <a href="https://costpanel.info/login" target="_blank" class="cleanlogin-form-pwd-link">Восстановить пароль?</a>
+                                                <a href="https://costpanel.info/login" target="_blank" class="cleanlogin-form-register-link">Регистрация</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </li>
 
-                            </div>
-
+                                <li>
+                                    <button id="userLogin" class="btn solid border block width100">
+                                        <i class="fas fa-user-friends"></i>
+                                        <b class="small">Авторизация через соц.сети</b>
+                                    </button>
+                                </li>
+                            </ul>
                         </div>
                     </li>
                 </ul>
