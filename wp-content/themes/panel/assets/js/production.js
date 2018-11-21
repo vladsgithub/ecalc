@@ -33549,7 +33549,7 @@ var saveAs = saveAs || (function(view) {
         || typeof window !== "undefined" && window
         || this
     ));
-var fromServerData, userID, loadData, scrollTimeout, isFirstVisit;
+var fromServerData, userID, userKey, loadData, scrollTimeout, isFirstVisit;
 
 function forEach(elements, callback) {
 	Array.prototype.forEach.call(elements, callback);
@@ -33580,6 +33580,76 @@ function animateScrollTo(activeWindow, value, windowLt) {
 
     return false;
 }
+function getUserDataForApp(scope, usernameValue, passValue) {
+    var userNameBlock = document.getElementById('userNameBlock');
+    var saveButtonText = document.getElementById('saveButton').querySelector('b');
+    var xhr = new XMLHttpRequest();
+    var host = 'https://costpanel.info';
+var host = 'http://192.168.43.121'; // FOR TESTING !!!
+    var request = 'username=' + usernameValue + '&pass=' + passValue;
+    var getNameObject = function(firstName, lastName) {
+        var fullName, initials;
+        var loginName = usernameValue;
+        var firstName = (firstName) ? firstName : '';
+        var lastName = (lastName) ? lastName : '';
+
+        if (!firstName && !lastName) {
+            firstName = loginName.split(' ');
+            lastName = (firstName.length > 1) ? firstName.slice(1).join(' ') : '';
+            firstName = firstName[0];
+        }
+
+        fullName = firstName + ' ' + lastName;
+        initials = (firstName && firstName.length > 0) ? firstName[0] : '';
+        initials += (lastName && lastName.length > 0) ? lastName[0] : '';
+
+        return {
+            fullName: fullName,
+            initials: initials
+        }
+    };
+
+    userNameBlock.innerText = '... Авторизация ...';
+
+    xhr.open("POST", host + '/app-login.php', true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded; charset=utf-8');
+
+    xhr.onreadystatechange = function () {
+
+        if (this.readyState != 4) return;
+
+        if (xhr.status != 200) {
+            console.error('!!! We have a problem: ' + xhr.status + ': ' + xhr.statusText);
+        } else {
+            if (xhr.responseText != 'Login failed') {
+                try {
+                    var responseArray = xhr.responseText.split('"""""'); // xhr.responseText -- текст ответа.
+                    // responseArray: 0 - first name, 1 - last name, 2 - user ID, 3 - user key, 4 - data object
+
+                    fromServerData = JSON.parse(responseArray[4]);
+                    scope.expCalc = fromServerData;
+                    scope.expCalc.meta.userID = parseInt(responseArray[2]);
+                    scope.expCalc.meta.userKey = responseArray[3];
+                    scope.$apply(scope.expCalc);
+
+                    userNameBlock.innerText = getNameObject(responseArray[0], responseArray[1]).fullName;
+                    saveButtonText.innerText = getNameObject(responseArray[0], responseArray[1]).initials;
+
+                    console.info('[getUserDataForApp] Success! We have received a response:', fromServerData);
+alert('Good!');
+                } catch (e) {
+                    userNameBlock.innerText = '';
+                    console.log('Произошла ошибка в getUserDataForApp:', e);
+                }
+            } else {
+                userNameBlock.innerText = '';
+                alert('Авторизация не удалась. Логин или пароль введены неверно :(');
+            }
+        }
+    };
+
+    xhr.send(request);
+};
 
 
 
@@ -33879,7 +33949,7 @@ angular.module("ngMobileClick", [])
 
             setTimeout(function () {
                 var host = 'https://costpanel.info';
-// var host = 'http://192.168.43.121'; // FOR TESTING !!!
+var host = 'http://192.168.43.121'; // FOR TESTING !!!
                 var now = +new Date();
 
                 if (!isDirectSave && (now - $scope.layout.updatedDataTime) < delay) return false;
@@ -33898,6 +33968,7 @@ angular.module("ngMobileClick", [])
                 }
                 if (!isFullObject && $scope.expCalc.meta.userID) {
                     currentAccount.meta.userID = $scope.expCalc.meta.userID;
+                    currentAccount.meta.userKey = $scope.expCalc.meta.userKey;
                 }
 
                 serverStringAccountJSON = JSON.stringify(currentAccount);
@@ -33932,6 +34003,7 @@ angular.module("ngMobileClick", [])
                         } catch (e) {
                             updateUploadStatus(2);
                             console.error('Данные могли не сохраниться. Returned data with issues =>', xhr.responseText);
+                            if (xhr.responseText == 'The user key is not correct') alert('Не получается сохранить новые данные. Авторизуйтесь заново.');
                         }
                     }
                 };
@@ -33968,74 +34040,10 @@ angular.module("ngMobileClick", [])
         };
 
         $scope.getUserDataForApp = function() {
-            var userNameBlock = document.getElementById('userNameBlock');
-            var saveButtonText = document.getElementById('saveButton').querySelector('b');
-            var xhr = new XMLHttpRequest();
-            var host = 'https://costpanel.info';
-// var host = 'http://192.168.43.121'; // FOR TESTING !!!
-            var username = document.getElementById('username').value;
-            var pass = document.getElementById('password').value;
-            var request = 'username=' + username + '&pass=' + pass;
-            var getNameObject = function(firstName, lastName) {
-                var fullName, initials;
-                var loginName = username;
-                var firstName = (firstName) ? firstName : '';
-                var lastName = (lastName) ? lastName : '';
+            var usernameValue = document.getElementById('username').value;
+            var passValue = document.getElementById('password').value;
 
-                if (!firstName && !lastName) {
-                    firstName = loginName.split(' ');
-                    lastName = (firstName.length > 1) ? firstName.slice(1).join(' ') : '';
-                    firstName = firstName[0];
-                }
-
-                fullName = firstName + ' ' + lastName;
-                initials = (firstName && firstName.length > 0) ? firstName[0] : '';
-                initials += (lastName && lastName.length > 0) ? lastName[0] : '';
-
-                return {
-                    fullName: fullName,
-                    initials: initials
-                }
-            };
-
-            userNameBlock.innerText = '... Авторизация ...';
-
-            xhr.open("POST", host + '/app-login.php', true);
-            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded; charset=utf-8');
-
-            xhr.onreadystatechange = function () {
-
-                if (this.readyState != 4) return;
-
-                if (xhr.status != 200) {
-                    console.error('!!! We have a problem: ' + xhr.status + ': ' + xhr.statusText);
-                } else {
-                    if (xhr.responseText != 'Login failed') {
-                        try {
-                            var responseArray = xhr.responseText.split('"""""'); // xhr.responseText -- текст ответа.
-                            // responseArray: 0 - first name, 1 - last name, 2 - user ID, 3 - data object
-
-                            fromServerData = JSON.parse(responseArray[3]);
-                            $scope.expCalc = fromServerData;
-                            $scope.expCalc.meta.userID = parseInt(responseArray[2]);
-                            $scope.$apply($scope.expCalc);
-
-                            userNameBlock.innerText = getNameObject(responseArray[0], responseArray[1]).fullName;
-                            saveButtonText.innerText = getNameObject(responseArray[0], responseArray[1]).initials;
-
-                            console.info('[getUserDataForApp] Success! We have received a response:', fromServerData);
-                        } catch (e) {
-                            userNameBlock.innerText = '';
-                            console.log('Произошла ошибка в getUserDataForApp:', e);
-                        }
-                    } else {
-                        userNameBlock.innerText = '';
-                        alert('Авторизация не удалась. Логин или пароль введены неверно :(');
-                    }
-                }
-            };
-
-            xhr.send(request);
+            getUserDataForApp($scope, usernameValue, passValue);
         };
 
 
@@ -35074,8 +35082,13 @@ angular.module("ngMobileClick", [])
 
 
         $scope.expCalc = getDataService;
-        $scope.expCalc.meta.userID = userID;
-        $scope.expCalc.meta.isViewMode = !!window.viewModeAccountID;
+
+        if (window.location.host) { // если это сайт то использовать этот подход:
+            $scope.expCalc.meta.userID = userID;
+            $scope.expCalc.meta.userKey = userKey;
+            $scope.expCalc.meta.isViewMode = !!window.viewModeAccountID;
+        }
+
 
         if ($scope.expCalc.meta.isViewMode) {
             var onlyAccount;

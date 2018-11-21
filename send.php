@@ -16,42 +16,52 @@ require( dirname(__FILE__) . '/wp-load.php' );
 $data = file_get_contents("php://input"); // Read body
 $dataJSON = json_decode($data);
 $userId = $dataJSON->{'meta'}->{'userID'};
+$client_key = $dataJSON->{'meta'}->{'userKey'};
 
 if ($userId > 0) {
-	$servername = $GLOBALS['server_name_php'];
-	$username = $GLOBALS['user_name_php'];
-	$password = $GLOBALS['password_php'];
-	$dbname = $GLOBALS['dbname_php'];
 
-	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbname);
+    $current_user = get_userdata( $userId );
+    $password = $current_user->user_pass;
+    $user_key = substr($password, -round(strlen($password) * 0.4));
 
-	// Check connection
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
+    if ($user_key == $client_key) {
 
-//	$data = file_get_contents("php://input"); // Read body
-//	echo "\n\n data from currentAccount = ".$data;
+        $servername = $GLOBALS['server_name_php'];
+        $username = $GLOBALS['user_name_php'];
+        $password = $GLOBALS['password_php'];
+        $dbname = $GLOBALS['dbname_php'];
 
-//	$dataJSON = json_decode($data);
-	$now = microtime(true) * 1000; // at millisecond
-	$dataJSON->{'meta'}->{'savedDate'} = $now;
-	$DBdata = json_encode($dataJSON, JSON_UNESCAPED_UNICODE);
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-	if ($dataJSON->{'accounts'}) {
-		$sql = "INSERT INTO json_data(json_id, data) VALUES($userId, '$DBdata') ON DUPLICATE KEY UPDATE data='$DBdata'";
-		echo '100"""""Full object was saved"""""';
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $now = microtime(true) * 1000; // at millisecond
+        $dataJSON->{'meta'}->{'savedDate'} = $now;
+        $DBdata = json_encode($dataJSON, JSON_UNESCAPED_UNICODE);
+
+        if ($dataJSON->{'accounts'}) {
+            $sql = "INSERT INTO json_data(json_id, data) VALUES($userId, '$DBdata') ON DUPLICATE KEY UPDATE data='$DBdata'";
+            echo '100"""""Full object was saved"""""';
+        } else {
+            $accountIndex = json_encode($dataJSON->{'meta'}->{'index'});
+            $sql = "UPDATE json_data SET data=JSON_SET(data, '$.accounts[$accountIndex]', '$DBdata', '$.meta.savedDate', $now, '$.settings.currentAccount', $accountIndex) where json_id = $userId";
+            echo '010"""""Only current account was saved"""""';
+        }
+
+        if ($conn->query($sql) === TRUE) {
+            echo $DBdata;
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+        $conn->close();
+
 	} else {
-		$accountIndex = json_encode($dataJSON->{'meta'}->{'index'});
-		$sql = "UPDATE json_data SET data=JSON_SET(data, '$.accounts[$accountIndex]', '$DBdata', '$.meta.savedDate', $now, '$.settings.currentAccount', $accountIndex) where json_id = $userId";
-		echo '010"""""Only current account was saved"""""';
-	}
-
-	if ($conn->query($sql) === TRUE) {
-		echo $DBdata;
-	} else {
-		echo "Error: " . $sql . "<br>" . $conn->error;
+	    echo 'The user key is not correct';
 	}
 
 //	$accountIndex = json_encode($dataJSON->{'meta'}->{'index'});
@@ -72,7 +82,6 @@ if ($userId > 0) {
 //		echo "Error: " . $sql . "<br>" . $conn->error;
 //	}
 
-	$conn->close();
 } else {
 	echo 'The user is not registered';
 }

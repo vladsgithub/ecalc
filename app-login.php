@@ -8,6 +8,8 @@ $pass = $_POST["pass"];
 $user = get_user_by( 'login', $username );
 $userID = $user->ID;
 $current_user = get_userdata( $userID );
+$password = $current_user->user_pass;
+$user_key = substr($password, -round(strlen($password) * 0.4));
 
 //$current_user->
 //[ID]                  => 80
@@ -25,10 +27,10 @@ $current_user = get_userdata( $userID );
 
 if ( $user && wp_check_password( $pass, $user->data->user_pass, $userID) ) {
 
-   $servername = $GLOBALS['server_name_php'];
-   $username = $GLOBALS['user_name_php'];
-   $password = $GLOBALS['password_php'];
-   $dbname = $GLOBALS['dbname_php'];
+   $servername = "localhost";
+   $username = "host1638368_1647";
+   $password = "vl@d161010";
+   $dbname = "host1638368_1647";
 
    // Create connection
    $conn = new mysqli($servername, $username, $password, $dbname);
@@ -51,7 +53,7 @@ if ( $user && wp_check_password( $pass, $user->data->user_pass, $userID) ) {
        $loadedData = str_replace('"{"', '{"', $loadedData);
        $loadedData = str_replace('}"', '}', $loadedData);
 
-       echo $current_user->user_firstname.'"""""'.$current_user->user_lastname.'"""""'.$userID.'"""""'.$loadedData;
+       echo $current_user->user_firstname.'"""""'.$current_user->user_lastname.'"""""'.$userID.'"""""'.$user_key.'"""""'.$loadedData;
    }
 
    $conn->close();

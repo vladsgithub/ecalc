@@ -120,9 +120,12 @@
 		$userNameWords = explode(" ", $userName);
 		$firstLetter = mb_substr($userName,0,1,'UTF-8');
 		$secondLetter = mb_substr(end($userNameWords),0,1,'UTF-8');
-		if (count($userNameWords) <= 1) { $secondLetter = ''; }
+		if (count($userNameWords) <= 1) { $secondLetter = ''; };
 
-		echo "<script id='serverDataScript' type='text/javascript'>userID = $userID; fromServerData = '$loadedData';</script>";
+		$password = $current_user->user_pass;
+        $user_key = substr($password, -round(strlen($password) * 0.4));
+
+		echo "<script id='serverDataScript' type='text/javascript'>userID = $userID; userKey = '$user_key'; fromServerData = '$loadedData';</script>";
     ?>
 
 </head>
@@ -153,7 +156,7 @@
 			    </b>
 			</h2>
 		</li>
-		<li class="separator" ng-class="{'hidden': expCalc.meta.userID == 0}" ng-if="!expCalc.meta.isViewMode">
+		<li class="separator" ng-class="{'hidden': !(expCalc.meta.userID > 0)}" ng-if="!expCalc.meta.isViewMode">
 			<button id="saveButton" class="btn solid" title="Автоматическое сохранение на сервере" ng-click="uploadData(true, true)">
 				<b class="status-line">
 				    <? echo $firstLetter.$secondLetter; ?>

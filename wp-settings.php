@@ -23,10 +23,10 @@ require_once( ABSPATH . WPINC . '/plugin.php' );
 
 $GLOBALS['cost_panel_version'] = '1.16'; /* version of the cost panel application */
 
-$GLOBALS['server_name_php'] = "localhost";
-$GLOBALS['user_name_php'] = "host1638368_1647";
-$GLOBALS['password_php'] = "vl@d161010";
-$GLOBALS['dbname_php'] = "host1638368_1647";
+$GLOBALS['server_name_php'] = "localhost"; /* and also into app-login.php */
+$GLOBALS['user_name_php'] = "host1638368_1647"; /* and also into app-login.php */
+$GLOBALS['password_php'] = "vl@d161010"; /* and also into app-login.php */
+$GLOBALS['dbname_php'] = "host1638368_1647"; /* and also into app-login.php */
 
 /*
  * These can't be directly globalized in version.php. When updating,
