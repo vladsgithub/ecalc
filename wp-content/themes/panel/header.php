@@ -117,15 +117,10 @@
 		    $userName = $current_user->user_login;
 		}
 
-		$userNameWords = explode(" ", $userName);
-		$firstLetter = mb_substr($userName,0,1,'UTF-8');
-		$secondLetter = mb_substr(end($userNameWords),0,1,'UTF-8');
-		if (count($userNameWords) <= 1) { $secondLetter = ''; };
-
 		$password = $current_user->user_pass;
         $user_key = substr($password, -round(strlen($password) * 0.4));
 
-		echo "<script id='serverDataScript' type='text/javascript'>userID = $userID; userKey = '$user_key'; fromServerData = '$loadedData';</script>";
+		echo "<script id='serverDataScript' type='text/javascript'>userID = $userID; userKey = '$user_key'; userName = '$userName'; fromServerData = '$loadedData';</script>";
     ?>
 
 </head>
@@ -152,14 +147,14 @@
 			<h2>
 			    {{(expCalc.accounts[expCalc.settings.currentAccount].meta.title) ? expCalc.accounts[expCalc.settings.currentAccount].meta.title : '--- расчет без названия ---'}}
 			    <b ng-if="expCalc.accounts[expCalc.settings.currentAccount].meta.savedDate > 0">
-			        [{{formatDate(expCalc.accounts[expCalc.settings.currentAccount].meta.savedDate)}}]
+			        [{{formatDate(expCalc.meta.userName)}}]
 			    </b>
 			</h2>
 		</li>
 		<li class="separator" ng-class="{'hidden': !(expCalc.meta.userID > 0)}" ng-if="!expCalc.meta.isViewMode">
 			<button id="saveButton" class="btn solid" title="Автоматическое сохранение на сервере" ng-click="uploadData(true, true)">
 				<b class="status-line">
-				    <? echo $firstLetter.$secondLetter; ?>
+                    {{expCalc.meta.userInitials}}
 				</b>
 				<i class="fas fa-save no-mobile"></i>
 			</button>
@@ -186,9 +181,7 @@
         <li class="flex-grow flex-hidden s-p2">
             <div class="text-field name solid capitalize">
                 <b id="userNameBlock">
-                    <?
-                        echo $userName;
-                    ?>
+                    {{expCalc.meta.userName}}
                 </b>
                 <b class="hidden">
                     <?
@@ -258,7 +251,7 @@
 
                                 <li>
                                     <div class="cleanlogin-container">
-                                        <form class="cleanlogin-form" ng-submit="getUserDataForApp()">
+                                        <form class="cleanlogin-form" ng-submit="getUserDataForApp('login')">
                                             <fieldset>
                                                 <div class="cleanlogin-field">
                                                     <input id="username" class="cleanlogin-field-username" type="text" name="log" placeholder="Имя участника (username)">

@@ -4,11 +4,21 @@ require( dirname(__FILE__) . '/wp-load.php' );
 
 $username = $_POST["username"];
 $pass = $_POST["pass"];
+$email = $_POST["Email0pen"];
+$authbyemail = $_POST["ByEmail0pen"];
 
-$user = get_user_by( 'login', $username );
+if ($authbyemail) {
+    $user = get_user_by( 'email', $email );
+} else {
+    $user = get_user_by( 'login', $username );
+}
+
 $userID = $user->ID;
 $current_user = get_userdata( $userID );
+$login = $current_user->user_login;
 $password = $current_user->user_pass;
+$firstname = $current_user->user_firstname;
+$lastname = $current_user->user_lastname;
 $user_key = substr($password, -round(strlen($password) * 0.4));
 
 //$current_user->
@@ -25,8 +35,13 @@ $user_key = substr($password, -round(strlen($password) * 0.4));
 //[user_status]         =>
 //[display_name]        => kogian
 
-if ( $user && wp_check_password( $pass, $user->data->user_pass, $userID) ) {
+if ($authbyemail) {
+    $auth = $authbyemail && $userID;
+} else {
+    $auth = $user && wp_check_password( $pass, $user->data->user_pass, $userID);
+}
 
+if ( $auth ) {
    $servername = "localhost";
    $username = "host1638368_1647";
    $password = "vl@d161010";
@@ -53,7 +68,7 @@ if ( $user && wp_check_password( $pass, $user->data->user_pass, $userID) ) {
        $loadedData = str_replace('"{"', '{"', $loadedData);
        $loadedData = str_replace('}"', '}', $loadedData);
 
-       echo $current_user->user_firstname.'"""""'.$current_user->user_lastname.'"""""'.$userID.'"""""'.$user_key.'"""""'.$loadedData;
+       echo $login.'"""""'.$firstname.' '.$lastname.'"""""'.$userID.'"""""'.$user_key.'"""""'.$loadedData;
    }
 
    $conn->close();
