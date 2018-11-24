@@ -5960,6 +5960,9 @@ section a {
 .section-head .border-bottom {
   border-bottom: 1px solid #000;
 }
+.section-body {
+  padding-bottom: 80px;
+}
 .participant.open-body .collapse-btn > i {
   transform: scaleY(-1);
 }
@@ -6055,7 +6058,7 @@ section a {
   position: relative;
   z-index: 1;
   margin-bottom: -8px;
-  margin-top: 4px;
+  padding-top: 4px;
 }
 .participant-body > .body-view > .meta-bar + .help-bar {
   margin-top: 16px;
@@ -6070,10 +6073,10 @@ section a {
 .step-1 .expense {
   position: relative;
   padding-top: 16px;
+  padding-bottom: 16px;
   padding-right: 48px;
 }
 .step-1 .expense + .expense {
-  margin-top: 16px;
   border-top: 2px dashed #4c69bd;
 }
 .step-1 .expense-number {

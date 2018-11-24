@@ -147,7 +147,7 @@
 			<h2>
 			    {{(expCalc.accounts[expCalc.settings.currentAccount].meta.title) ? expCalc.accounts[expCalc.settings.currentAccount].meta.title : '--- расчет без названия ---'}}
 			    <b ng-if="expCalc.accounts[expCalc.settings.currentAccount].meta.savedDate > 0">
-			        [{{formatDate(expCalc.meta.userName)}}]
+			        [{{formatDate(expCalc.meta.savedDate)}}]
 			    </b>
 			</h2>
 		</li>
@@ -240,9 +240,7 @@
 
                                 echo get_ulogin_panel();
                             ?>
-
-
-                            <ul class="settings-list" ng-if="true" data-for-android-app>
+                            <ul class="settings-list" ng-if="false" data-for-android-app>
                                 <li>
                                     <div class="block text-field name word-wrap text-center">
                                         <b>Авторизация в мобильном приложении</b>
@@ -251,7 +249,7 @@
 
                                 <li>
                                     <div class="cleanlogin-container">
-                                        <form class="cleanlogin-form" ng-submit="getUserDataForApp('login')">
+                                        <form name="loginFormForApp" class="cleanlogin-form" ng-submit="getUserDataForApp('login')">
                                             <fieldset>
                                                 <div class="cleanlogin-field">
                                                     <input id="username" class="cleanlogin-field-username" type="text" name="log" placeholder="Имя участника (username)">

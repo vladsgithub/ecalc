@@ -38,18 +38,19 @@ function getUserNameObject(userName, loginName) {
 
     var mainName = (userName) ? userName : loginName;
     var words = mainName.split(' ');
-    var firstLetter = words[0][0];
-    var secondLetter = (words.length > 0) ? words[1][0] : '';
+    var firstLetter = (words.length && words[0].length) ? words[0][0] : '';
+    var secondLetter = (words.length > 1 && words[1].length) ? words[1][0] : '';
+    var initials = firstLetter + secondLetter;
 
     return {
-        name: mainName,
-        initials: firstLetter + secondLetter
+        name: (initials) ? mainName : 'Без имени',
+        initials: (initials) ? initials : '--'
     }
 }
 function getUserDataForApp(scope, request) {
     var xhr = new XMLHttpRequest();
     var host = 'https://costpanel.info';
-var host = 'http://192.168.43.121'; // FOR TESTING !!!
+// var host = 'http://192.168.43.121'; // FOR TESTING !!!
 
     scope.expCalc.meta.userName = '... Авторизация ...';
 
@@ -68,13 +69,17 @@ var host = 'http://192.168.43.121'; // FOR TESTING !!!
                     var responseArray = xhr.responseText.split('"""""'); // xhr.responseText -- текст ответа.
                     // responseArray: 0 - login, 1 - full name, 2 - user ID, 3 - user key, 4 - data object
 
-                    fromServerData = JSON.parse(responseArray[4]);
+                    fromServerData = (responseArray[4] && responseArray[4].length > 5) ? JSON.parse(responseArray[4]) : getNewExpensesCalc();
                     scope.expCalc = fromServerData;
                     scope.expCalc.meta.userID = parseInt(responseArray[2]);
                     scope.expCalc.meta.userKey = responseArray[3];
                     scope.expCalc.meta.userName = getUserNameObject(responseArray[1], responseArray[0]).name;
                     scope.expCalc.meta.userInitials = getUserNameObject(responseArray[1], responseArray[0]).initials;
+
+                    if (!scope.expCalc.accounts.length) scope.createAccount();
                     scope.$apply(scope.expCalc);
+
+                    if (document.loginFormForApp) document.loginFormForApp.reset();
 
                     console.info('[getUserDataForApp] Success! We have received a response:', fromServerData);
                 } catch (e) {
@@ -90,6 +95,50 @@ var host = 'http://192.168.43.121'; // FOR TESTING !!!
     };
 
     xhr.send(request);
+};
+function getNewExpensesCalc() {
+    var currencies = {
+        // names: ['usd', 'eur', 'rub', 'byn'], // The currency number of 0, 1, 2 and 3
+        // rates: [ // Banks sell by these rates
+        // 	[1,1.1934,0.0174,0.5186], // rates of the currency number 0
+        // 	[0.8379,1,0.0146,0.4345], // rates of the currency number 1
+        // 	[57.322,68.4158,1,29.7271], // rates of the currency number 2
+        // 	[1.928,2.2963,0.0336,1] // rates of the currency number 3
+        // ],
+        names: ['BYN'],
+        rates: [
+            [1]
+        ],
+        commonSurcharge: 0.4
+    };
+    var expensesTypes = [
+        {name: 'Общие расходы', icon: 'donate'},
+        {name: 'Питание', icon: 'utensils'},
+        {name: 'Лечение', icon: 'briefcase-medical'},
+        {name: 'Жильё', icon: 'home'},
+        {name: 'Машина', icon: 'car'},
+        {name: 'Развлечение', icon: 'theater-masks'},
+        {name: 'Другое', icon: 'shopping-cart'}
+    ];
+
+    var expensesCalc = {
+        meta: {
+            savedDate: 0,
+            userID: null
+        },
+        settings: {
+            currentAccount: 0,
+            currencies: currencies,
+            baseCurrency: '0', // String type is necessary for select elements - we can see a selected option by default
+            expensesTypes: expensesTypes,
+            isHelpMode: true
+        },
+        accounts: []
+    };
+
+    localStorage.setItem('expensesCalc', JSON.stringify(expensesCalc));
+
+    return expensesCalc;
 };
 
 
@@ -390,7 +439,7 @@ angular.module("ngMobileClick", [])
 
             setTimeout(function () {
                 var host = 'https://costpanel.info';
-var host = 'http://192.168.43.121'; // FOR TESTING !!!
+// var host = 'http://192.168.43.121'; // FOR TESTING !!!
                 var now = +new Date();
 
                 if (!isDirectSave && (now - $scope.layout.updatedDataTime) < delay) return false;
@@ -1144,9 +1193,10 @@ var host = 'http://192.168.43.121'; // FOR TESTING !!!
         };
 
         $scope.formatDate = function (value, type) {
+console.log('value, type',value, type);
             if (value) {
                 value = new Date(value);
-
+console.log('new Date', value);
                 switch(type) {
                     case 1:
                         return value.getFullYear();
@@ -1600,49 +1650,8 @@ var host = 'http://192.168.43.121'; // FOR TESTING !!!
 		if (fromLocalStorage.meta) return fromLocalStorage;
 
         isFirstVisit = true;
-		currencies = {
-			// names: ['usd', 'eur', 'rub', 'byn'], // The currency number of 0, 1, 2 and 3
-			// rates: [ // Banks sell by these rates
-			// 	[1,1.1934,0.0174,0.5186], // rates of the currency number 0
-			// 	[0.8379,1,0.0146,0.4345], // rates of the currency number 1
-			// 	[57.322,68.4158,1,29.7271], // rates of the currency number 2
-			// 	[1.928,2.2963,0.0336,1] // rates of the currency number 3
-			// ],
-            names: ['BYN'],
-            rates: [
-                [1]
-            ],
-			commonSurcharge: 0.4
-		};
-		expensesTypes = [
-			{name: 'Общие расходы', icon: 'donate'},
-			{name: 'Питание', icon: 'utensils'},
-            {name: 'Лечение', icon: 'briefcase-medical'},
-			{name: 'Жильё', icon: 'home'},
-			{name: 'Машина', icon: 'car'},
-			{name: 'Развлечение', icon: 'theater-masks'},
-			{name: 'Другое', icon: 'shopping-cart'}
-		];
 
-		expensesCalc = {
-			meta: {
-				savedDate: 0,
-                userID: null
-			},
-			settings: {
-				currentAccount: 0,
-				currencies: currencies,
-				baseCurrency: '0', // String type is necessary for select elements - we can see a selected option by default
-				expensesTypes: expensesTypes,
-                isHelpMode: true
-			},
-			accounts: []
-		};
-
-		localStorage.setItem('expensesCalc', JSON.stringify(expensesCalc));
-
-
-        return expensesCalc;
+        return getNewExpensesCalc();
     };
 
     module.factory('getDataService', getDataService);
