@@ -39,23 +39,52 @@ if ($userId > 0) {
             die("Connection failed: " . $conn->connect_error);
         }
 
+        $oldDataResponse = mysqli_query($conn, "SELECT data FROM json_data WHERE json_id = $userId");
+
+        $oldDataJSON = 0;
+        $oldSavedDate = 911;
+        if ($oldDataResponse) {
+            $oldData = mysqli_fetch_row($oldDataResponse)[0];
+            $oldDataJSON = json_decode($oldData);
+        }
+
+        $response = 'Empty';
+        $responseForChangedData = '';
+        $savedDateFromData = $dataJSON->{'meta'}->{'savedDate'};
         $now = microtime(true) * 1000; // at millisecond
         $dataJSON->{'meta'}->{'savedDate'} = $now;
         $DBdata = json_encode($dataJSON, JSON_UNESCAPED_UNICODE);
 
         if ($dataJSON->{'accounts'}) {
+            $oldSavedDate = ($oldDataJSON) ? $oldDataJSON->{'meta'}->{'savedDate'} : 0;
+
             $sql = "INSERT INTO json_data(json_id, data) VALUES($userId, '$DBdata') ON DUPLICATE KEY UPDATE data='$DBdata'";
-            echo '100"""""Full object was saved"""""';
+            $response = '100"""""Full object was saved ['.$now.']"""""0"""""';
+
+            $deltaTime = intval(($oldSavedDate - $savedDateFromData) / 1000);
+            $timeAgo = intval(($now - $oldSavedDate) / 1000);
+            if ($deltaTime != 0) $responseForChangedData = '200"""""Object was not saved. Data was changed before ['.$oldSavedDate.'-->'.$timeAgo.' sec. ago]"""""'.$timeAgo.'"""""';
+
         } else {
             $accountIndex = json_encode($dataJSON->{'meta'}->{'index'});
+            $oldSavedDate = ($oldDataJSON) ? $oldDataJSON->{'meta'}->{'savedDate'} : 0;
+
             $sql = "UPDATE json_data SET data=JSON_SET(data, '$.accounts[$accountIndex]', '$DBdata', '$.meta.savedDate', $now, '$.settings.currentAccount', $accountIndex) where json_id = $userId";
-            echo '010"""""Only current account was saved"""""';
+            $response = '010"""""Only current account was saved ['.$now.']"""""0"""""';
+
+            $deltaTime = intval(($oldSavedDate - $savedDateFromData) / 1000);
+            $timeAgo = intval(($now - $oldSavedDate) / 1000);
+            if ($deltaTime != 0) $responseForChangedData = '200"""""Object was not saved. Data was changed before ['.$oldSavedDate.'-->'.$timeAgo.' sec. ago]"""""'.$timeAgo.'"""""';
         }
 
-        if ($conn->query($sql) === TRUE) {
-            echo $DBdata;
+        if ($responseForChangedData) {
+            echo $responseForChangedData.$oldData;
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            if ($conn->query($sql) === TRUE) {
+                echo $response.$DBdata;
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
         }
 
         $conn->close();

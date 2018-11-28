@@ -440,20 +440,15 @@ angular.module("ngMobileClick", [])
             }
 
 			$scope.layout.onceAgainLaterSave = !$scope.layout.uploadStatus;
-// console.log('$scope.layout.onceAgainLaterSave = ',$scope.layout.onceAgainLaterSave);
+
             updateUploadStatus(-1);
-console.log('start!', $scope.layout.uploadStatus);
+
             setTimeout(function () {
                 var host = 'https://costpanel.info';
 var host = 'http://192.168.43.121'; // FOR TESTING !!!
-
-// var isFullData = isFullObject;
-// console.log('isFullData=',isFullData);
                 var now = +new Date();
 
-// console.log('1) $scope.layout.onceAgainLaterSave = ',$scope.layout.onceAgainLaterSave);
                 if ($scope.layout.onceAgainLaterSave) return false; // еще раз аплоад произойдет после того как ответ от сервера прийдет
-
                 if (!isDirectSave && (now - $scope.layout.updatedDataTime) < delay) return false;
 
                 var xhr, serverStringAccountJSON, currentAccountNumber, currentAccount;
@@ -536,7 +531,6 @@ var host = 'http://192.168.43.121'; // FOR TESTING !!!
                     if ($scope.layout.onceAgainLaterSave) {
                         $scope.layout.onceAgainLaterSave = false;
                         $scope.layout.isChangedObject = true;
-console.log('$scope.uploadData',$scope.uploadData);
                         $scope.uploadData(isFullObject, true);
                     }
 

@@ -33601,7 +33601,7 @@ function getUserNameObject(userName, loginName) {
 function getUserDataForApp(scope, request) {
     var xhr = new XMLHttpRequest();
     var host = 'https://costpanel.info';
-// var host = 'http://192.168.43.121'; // FOR TESTING !!!
+var host = 'http://192.168.43.121'; // FOR TESTING !!!
 
     scope.expCalc.meta.userName = '... Авторизация ...';
 
@@ -33746,6 +33746,8 @@ angular.module("ngMobileClick", [])
             updatedDataTime: 0,
             activeWindow: 1,
             saveButtonTooltip: null,
+            uploadStatus: 1,
+            onceAgainLaterSave: false,
 
             openMenu: function() {
                 this.isOpenMenu = true;
@@ -33906,6 +33908,8 @@ angular.module("ngMobileClick", [])
             var tooltip = '';
             var statusHelpTextElm;
 
+            $scope.layout.uploadStatus = status;
+
             switch(status) {
                 case -1:
                     tooltip = 'Автоматическое сохранение на сервере: ожидание перед сохранением';
@@ -33986,16 +33990,24 @@ angular.module("ngMobileClick", [])
 			    return false;
             }
 
+			$scope.layout.onceAgainLaterSave = !$scope.layout.uploadStatus;
+// console.log('$scope.layout.onceAgainLaterSave = ',$scope.layout.onceAgainLaterSave);
             updateUploadStatus(-1);
-
+console.log('start!', $scope.layout.uploadStatus);
             setTimeout(function () {
                 var host = 'https://costpanel.info';
-// var host = 'http://192.168.43.121'; // FOR TESTING !!!
+var host = 'http://192.168.43.121'; // FOR TESTING !!!
+
+// var isFullData = isFullObject;
+// console.log('isFullData=',isFullData);
                 var now = +new Date();
+
+// console.log('1) $scope.layout.onceAgainLaterSave = ',$scope.layout.onceAgainLaterSave);
+                if ($scope.layout.onceAgainLaterSave) return false; // еще раз аплоад произойдет после того как ответ от сервера прийдет
 
                 if (!isDirectSave && (now - $scope.layout.updatedDataTime) < delay) return false;
 
-                var xhr, serverStringAccountJSON, currentAccountNumber, currentAccount, responseArray, fromServerData;
+                var xhr, serverStringAccountJSON, currentAccountNumber, currentAccount;
 
                 updateUploadStatus(0);
 
@@ -34010,6 +34022,7 @@ angular.module("ngMobileClick", [])
                 if (!isFullObject && $scope.expCalc.meta.userID) {
                     currentAccount.meta.userID = $scope.expCalc.meta.userID;
                     currentAccount.meta.userKey = $scope.expCalc.meta.userKey;
+                    currentAccount.meta.savedDate = $scope.expCalc.meta.savedDate;
                 }
 
                 serverStringAccountJSON = JSON.stringify(currentAccount);
@@ -34024,22 +34037,45 @@ angular.module("ngMobileClick", [])
                         console.error('!!! We have a problem: ' + xhr.status + ': ' + xhr.statusText);
                         updateUploadStatus(2);
                     } else {
-                        responseArray = xhr.responseText.split('"""""');
+                        // responseArray[0] - тип сохранения (100 - весь объект, 010 - текущий расчет),
+                        // [1] - текст сообщения,
+                        // [2] - было послед.сохранени на сервере,
+                        // [3] - сохраненный объект
+                        var responseArray = xhr.responseText.split('"""""');
                         console.info('We have received a response: ' + responseArray[1]); // responseText -- текст ответа.
                         updateUploadStatus(1);
                         $scope.layout.isChangedObject = false;
 
                         try {
-                            fromServerData = JSON.parse(responseArray[2]);
+                            var fromServerData = JSON.parse(responseArray[3]);
 
                             switch(responseArray[0]) {
                                 case '010':
                                     currentAccount.meta.savedDate = fromServerData.meta.savedDate;
+                                    $scope.expCalc.meta.savedDate = fromServerData.meta.savedDate;
                                     $scope.$digest();
+                                    localStorage.setItem('expensesCalc', JSON.stringify($scope.expCalc));
                                     break;
+
                                 case '100':
                                     $scope.expCalc.meta.savedDate = fromServerData.meta.savedDate;
+                                    localStorage.setItem('expensesCalc', responseArray[3]);
                                     break;
+
+                                case '200':
+                                    var confirmMessage = 'Внимание! Некоторые данные были изменены другим пользователем ' + responseArray[2] + ' сек. назад. Перед тем как продолжить и подгрузить последние данные, рекомендуем сделать экспорт текущих данных в МЕНЮ->ДАННЫЕ->ЭКСПОРТ/ИМПОРТ: \n\nОК - продолжить и подгрузить последние данные \nОТМЕНА - оставить текущие данные, чтобы сделать экспорт';
+
+                                    forEach(fromServerData.accounts, function(account, index, arr) {
+                                        if (typeof account == 'string') {
+                                            fromServerData.accounts[index] = JSON.parse(account);
+                                        }
+                                    });
+
+                                    if (confirm(confirmMessage)) {
+                                        $scope.expCalc = fromServerData;
+                                        $scope.$digest();
+                                        localStorage.setItem('expensesCalc', JSON.stringify($scope.expCalc));
+                                    }
                             }
                         } catch (e) {
                             updateUploadStatus(2);
@@ -34047,6 +34083,14 @@ angular.module("ngMobileClick", [])
                             if (xhr.responseText == 'The user key is not correct') alert('Не получается сохранить новые данные. Авторизуйтесь заново.');
                         }
                     }
+
+                    if ($scope.layout.onceAgainLaterSave) {
+                        $scope.layout.onceAgainLaterSave = false;
+                        $scope.layout.isChangedObject = true;
+console.log('$scope.uploadData',$scope.uploadData);
+                        $scope.uploadData(isFullObject, true);
+                    }
+
                 };
 
                 xhr.send((isFullObject) ? localStringJSON : serverStringAccountJSON);
@@ -34744,10 +34788,8 @@ angular.module("ngMobileClick", [])
         };
 
         $scope.formatDate = function (value, type) {
-console.log('value, type',value, type);
             if (value) {
                 value = new Date(value);
-console.log('new Date', value);
                 switch(type) {
                     case 1:
                         return value.getFullYear();

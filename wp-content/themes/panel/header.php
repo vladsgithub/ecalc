@@ -94,12 +94,12 @@
 			}
 
 			$result = mysqli_query($conn, "SELECT data FROM json_data WHERE json_id = (SELECT json_id FROM wp_users WHERE ID = '$userID')");
-			if (!$result) {
-				echo 'Request error: ' . mysql_error();
-				exit;
-			} else {
+			if ($result) {
 				$row = mysqli_fetch_row($result);
-				$loadedData = $row[0];
+                $loadedData = $row[0];
+			} else {
+				echo 'Request error: ' . mysql_error();
+                exit;
 			}
 
 			$conn->close();
@@ -147,7 +147,7 @@
 			<h2>
 			    {{(expCalc.accounts[expCalc.settings.currentAccount].meta.title) ? expCalc.accounts[expCalc.settings.currentAccount].meta.title : '--- расчет без названия ---'}}
 			    <b ng-if="expCalc.accounts[expCalc.settings.currentAccount].meta.savedDate > 0">
-			        [{{formatDate(expCalc.meta.savedDate)}}]
+			        [{{formatDate(expCalc.accounts[expCalc.settings.currentAccount].meta.savedDate)}}]
 			    </b>
 			</h2>
 		</li>
@@ -175,8 +175,10 @@
 
 <aside class="menu" role="menu">
     <ul class="nav-head flex">
-        <li class="photo">
-            <img class="<? if ($current_user->ID == 0) { echo 'hidden'; } ?>" src="<? echo get_avatar_url($current_user->ID) ?>" />
+        <li class="photo" ng-if="true" data-for-android-app>
+        <?
+            if ($current_user->ID > 0) echo '<img src="'.get_avatar_url($current_user->ID).'" />';
+        ?>
         </li>
         <li class="flex-grow flex-hidden s-p2">
             <div class="text-field name solid capitalize">
@@ -830,10 +832,10 @@
                                 <br/>
                                 <a href="/info">Больше информации</a><br/>
                                 <br/>
-                                Версия <? echo $GLOBALS['cost_panel_version'] ?>
+                                Версия: <span id="appVersion"><? echo $GLOBALS['cost_panel_version'] ?></span>
                                 <br/>
                                 <br/>
-                                <img style="width: 100%; margin-bottom: 60px;" src="/pictures/hello.jpg" />
+                                <img style="width: 100%; margin-bottom: 60px;" src="pictures/hello.jpg" />
                                 </b>
                             </div>
 
