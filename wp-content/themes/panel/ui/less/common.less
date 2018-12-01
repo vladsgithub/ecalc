@@ -544,7 +544,7 @@ label {
 	&:not([disabled]):hover input:not([disabled]) {
 		transform: translateY(0);
 
-		+ b { transform: translateY(40px); }
+		+ b { transform: translateY(200%); } // it was 40px
 	}
 
 	&[disabled] {
@@ -574,6 +574,15 @@ label {
 		}
 	}
 
+	&.not-fixed-height {
+		height: auto;
+		min-height: 44px;
+
+		> input {
+			height: 40px;
+		}
+	}
+
 	&.big-font {
 		input, b {
 			font-size: 1.2rem;
@@ -596,13 +605,13 @@ label {
 		text-transform: inherit;
 		font-family: inherit; font-size: 1rem; font-weight: inherit;
 		-moz-appearance: textfield;
-		transform: translateY(-40px);
+		transform: translateY(-100%); // it was 40px   (-40px)
 		transition: transform @delay;
 
 		&:focus {
 			transform: translateY(0);
 
-			+ b { transform: translateY(40px); }
+			+ b { transform: translateY(100%); } // it was 40px
 		}
 		&::-ms-clear {
 			display: none;

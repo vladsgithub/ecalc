@@ -4352,7 +4352,7 @@ label.toggle i::after {
 }
 .text-input:not([disabled]):hover input:not([disabled]) + b,
 .number-input:not([disabled]):hover input:not([disabled]) + b {
-  transform: translateY(40px);
+  transform: translateY(200%);
 }
 .text-input[disabled],
 .number-input[disabled] {
@@ -4382,6 +4382,15 @@ label.toggle i::after {
   top: 1px;
   font-size: 16px;
 }
+.text-input.not-fixed-height,
+.number-input.not-fixed-height {
+  height: auto;
+  min-height: 44px;
+}
+.text-input.not-fixed-height > input,
+.number-input.not-fixed-height > input {
+  height: 40px;
+}
 .text-input.big-font input,
 .number-input.big-font input,
 .text-input.big-font b,
@@ -4410,7 +4419,7 @@ label.toggle i::after {
   font-size: 1rem;
   font-weight: inherit;
   -moz-appearance: textfield;
-  transform: translateY(-40px);
+  transform: translateY(-100%);
   transition: transform 0.2s;
 }
 .text-input input:focus,
@@ -4419,7 +4428,7 @@ label.toggle i::after {
 }
 .text-input input:focus + b,
 .number-input input:focus + b {
-  transform: translateY(40px);
+  transform: translateY(100%);
 }
 .text-input input::-ms-clear,
 .number-input input::-ms-clear {
