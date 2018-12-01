@@ -47,6 +47,7 @@ if ($userId > 0) {
             $oldData = mysqli_fetch_row($oldDataResponse)[0];
             $oldDataJSON = json_decode($oldData);
         }
+        $oldSavedDate = ($oldDataJSON) ? $oldDataJSON->{'meta'}->{'savedDate'} : 0;
 
         $response = 'Empty';
         $responseForChangedData = '';
@@ -56,25 +57,22 @@ if ($userId > 0) {
         $DBdata = json_encode($dataJSON, JSON_UNESCAPED_UNICODE);
 
         if ($dataJSON->{'accounts'}) {
-            $oldSavedDate = ($oldDataJSON) ? $oldDataJSON->{'meta'}->{'savedDate'} : 0;
-
             $sql = "INSERT INTO json_data(json_id, data) VALUES($userId, '$DBdata') ON DUPLICATE KEY UPDATE data='$DBdata'";
             $response = '100"""""Full object was saved ['.$now.']"""""0"""""';
 
             $deltaTime = intval(($oldSavedDate - $savedDateFromData) / 1000);
             $timeAgo = intval(($now - $oldSavedDate) / 1000);
-            if ($deltaTime != 0) $responseForChangedData = '200"""""Object was not saved. Data was changed before ['.$oldSavedDate.'-->'.$timeAgo.' sec. ago]"""""'.$timeAgo.'"""""';
+            if ($deltaTime != 0) $responseForChangedData = '200"""""Object was not saved. Data was changed before ['.$deltaTime.'-->'.$timeAgo.' sec. ago]"""""'.$timeAgo.'"""""';
 
         } else {
             $accountIndex = json_encode($dataJSON->{'meta'}->{'index'});
-            $oldSavedDate = ($oldDataJSON) ? $oldDataJSON->{'meta'}->{'savedDate'} : 0;
 
             $sql = "UPDATE json_data SET data=JSON_SET(data, '$.accounts[$accountIndex]', '$DBdata', '$.meta.savedDate', $now, '$.settings.currentAccount', $accountIndex) where json_id = $userId";
-            $response = '010"""""Only current account was saved ['.$now.']"""""0"""""';
+            $response = '010"""""Only current account was saved ['.$oldSavedDate.']"""""0"""""';  // $now
 
             $deltaTime = intval(($oldSavedDate - $savedDateFromData) / 1000);
             $timeAgo = intval(($now - $oldSavedDate) / 1000);
-            if ($deltaTime != 0) $responseForChangedData = '200"""""Object was not saved. Data was changed before ['.$oldSavedDate.'-->'.$timeAgo.' sec. ago]"""""'.$timeAgo.'"""""';
+            if ($deltaTime != 0) $responseForChangedData = '200"""""Object was not saved. Data was changed before ['.$deltaTime.'-->'.$timeAgo.' sec. ago]"""""'.$timeAgo.'"""""';
         }
 
         if ($responseForChangedData) {

@@ -4773,6 +4773,7 @@ label.toggle i::after {
   border-radius: 4px;
 }
 .checkbox b {
+  position: relative;
   display: inline-block;
   width: 100%;
   padding: 8px 0;
@@ -5349,6 +5350,7 @@ header .head .separator {
   border-left: 2px solid #e2e8ff;
 }
 header .head .help-text {
+  z-index: 1;
   position: absolute;
   top: 3px;
   width: 200px;

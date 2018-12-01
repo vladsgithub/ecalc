@@ -51,16 +51,16 @@ msgstr "Нужно войти, чтобы редактировать профи�
 
 #: /Users/ahornero/Documents/wordpress.org/clean-login/trunk/clean-login.php:104
 msgid "User created"
-msgstr "Новый участник создан"
+msgstr "Новый участник создан. На указанный email отправлено письмо. Откройте это письмо и перейдите по ссылке, чтобы активировать вашу учётную запись."
 
 #: /Users/ahornero/Documents/wordpress.org/clean-login/trunk/clean-login.php:106
 msgid "New user created"
-msgstr "Новый участник создан"
+msgstr "Новый участник создан. На указанный email отправлено письмо. Откройте это письмо и перейдите по ссылке, чтобы активировать вашу учётную запись."
 
 #: /Users/ahornero/Documents/wordpress.org/clean-login/trunk/clean-login.php:108
 #: /Users/ahornero/Documents/wordpress.org/clean-login/trunk/clean-login.php:151
 msgid "Username is not valid"
-msgstr "Имя участника (username) указано неверно"
+msgstr "Имя участника (username) указано неверно. Или пользователь с таким именем уже существует."
 
 #: /Users/ahornero/Documents/wordpress.org/clean-login/trunk/clean-login.php:110
 msgid "Passwords must be identical and filled"
@@ -68,7 +68,7 @@ msgstr "Пароли должны совпадать и быть указаны 
 
 #: /Users/ahornero/Documents/wordpress.org/clean-login/trunk/clean-login.php:112
 msgid "Email is not valid"
-msgstr "email указан неверно"
+msgstr "Email указан неверно. Или пользователь уже существует с таким email."
 
 #: /Users/ahornero/Documents/wordpress.org/clean-login/trunk/clean-login.php:114
 msgid "CAPTCHA is not valid, please try again"

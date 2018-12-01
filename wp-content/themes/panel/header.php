@@ -152,16 +152,16 @@
 			</h2>
 		</li>
 		<li class="separator" ng-class="{'hidden': !(expCalc.meta.userID > 0)}" ng-if="!expCalc.meta.isViewMode">
+		    <div class="help-text small no-arrow" ng-if="expCalc.settings.isHelpMode">
+                <b><i class="fas fa-info-circle"></i> <span id="statusHelpText">Автоматическое сохранение на сервере</span> <i class="fas fa-arrow-right float-right"></i></b>
+            </div>
+
 			<button id="saveButton" class="btn solid" title="Автоматическое сохранение на сервере" ng-click="uploadData(true, true)">
 				<b class="status-line">
                     {{expCalc.meta.userInitials}}
 				</b>
 				<i class="fas fa-save no-mobile"></i>
 			</button>
-
-			<div class="help-text small no-arrow" ng-if="expCalc.settings.isHelpMode">
-                <b><i class="fas fa-info-circle"></i> <span id="statusHelpText">Автоматическое сохранение на сервере</span> <i class="fas fa-arrow-right float-right"></i></b>
-            </div>
 		</li>
 		<li class="separator" ng-if="!expCalc.meta.isViewMode">
 			<button class="btn solid" title="Все расчеты" ng-click="layout.openAside()">

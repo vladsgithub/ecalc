@@ -29,6 +29,12 @@ function animateScrollTo(activeWindow, value, windowLt) {
 
     return false;
 }
+function getNormalDate(date) { // date в милисекундах с 1970г.
+    date = new Date(date);
+
+    return date.toISOString().replace(/:/g,'.');
+    // return date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate() + ' [' + date.getHours() + '.' + date.getMinutes() + '.' + date.getSeconds() + ']';
+}
 function getUserNameObject(userName, loginName) {
     if (!userName) userName = '';
     if (!loginName) loginName = '';
@@ -96,7 +102,7 @@ var host = 'http://192.168.43.121'; // FOR TESTING !!!
 
     xhr.send(request);
 };
-function getNewExpensesCalc() {
+function getNewExpensesCalc(isHelpMode) {
     var currencies = {
         // names: ['usd', 'eur', 'rub', 'byn'], // The currency number of 0, 1, 2 and 3
         // rates: [ // Banks sell by these rates
@@ -131,12 +137,12 @@ function getNewExpensesCalc() {
             currencies: currencies,
             baseCurrency: '0', // String type is necessary for select elements - we can see a selected option by default
             expensesTypes: expensesTypes,
-            isHelpMode: true
+            isHelpMode: isHelpMode
         },
         accounts: []
     };
 
-    localStorage.setItem('expensesCalc', JSON.stringify(expensesCalc));
+    localStorage.setItem('costpanel.info', JSON.stringify(expensesCalc));
 
     return expensesCalc;
 };
@@ -176,7 +182,9 @@ angular.module("ngMobileClick", [])
         });
 
         window.addEventListener('blur', function () {
-            $scope.uploadData(true, true);
+            // запись при потере фокуса создает дополнительные проблемы, когда появляются алерты может происходит двойная моментальная запись
+            // и появляется сообщение о том что ктото раньше успел записать!!!
+            // $scope.uploadData(true, true);
         });
 
 
@@ -350,6 +358,7 @@ angular.module("ngMobileClick", [])
 		// WORKING WITH DATA TO UPLOAD/DOWNLOAD ==============================
 
         var updateUploadStatus = function(status) {
+            // -1 - waiting
             // 0 - pending
             // 1 - success
             // 2 - failure
@@ -392,9 +401,20 @@ angular.module("ngMobileClick", [])
                     '\nВы действительно хотите заменить текущие данные на новые?');
 
                     if (question) {
+                        var userData = {
+                            userID: $scope.expCalc.meta.userID,
+                            userKey: $scope.expCalc.meta.userKey,
+                            userName: $scope.expCalc.meta.userName,
+                            userInitials: $scope.expCalc.meta.userInitials,
+                            savedDate: $scope.expCalc.meta.savedDate
+                        };
+
                         $scope.expCalc = newExpCalc;
+                        $scope.expCalc = $scope.setUserDataObject(userData);
+                        $scope.layout.isChangedObject = true;
                         $scope.$apply();
                         alert('Новые данные загружены успешно!');
+                        $scope.uploadData(true, true);
                     }
                 } catch (err) {
                     alert('ОШИБКА: Файл данных повреждён!');
@@ -432,7 +452,7 @@ angular.module("ngMobileClick", [])
 
             $scope.layout.updatedDataTime = +new Date();
 
-            localStorage.setItem('expensesCalc', localStringJSON);
+            localStorage.setItem('costpanel.info', localStringJSON);
 
 			if (!$scope.expCalc.meta.userID) {
 			    console.info('Не выполнен вход пользователя. Данные сохраняются только локально.');
@@ -440,20 +460,17 @@ angular.module("ngMobileClick", [])
             }
 
 			$scope.layout.onceAgainLaterSave = !$scope.layout.uploadStatus;
-// console.log('$scope.layout.onceAgainLaterSave = ',$scope.layout.onceAgainLaterSave);
-            updateUploadStatus(-1);
-console.log('start!', $scope.layout.uploadStatus);
+
+            if ($scope.layout.uploadStatus !== 0) updateUploadStatus(-1);
+
             setTimeout(function () {
                 var host = 'https://costpanel.info';
 var host = 'http://192.168.43.121'; // FOR TESTING !!!
-
-// var isFullData = isFullObject;
-// console.log('isFullData=',isFullData);
                 var now = +new Date();
 
-// console.log('1) $scope.layout.onceAgainLaterSave = ',$scope.layout.onceAgainLaterSave);
-                if ($scope.layout.onceAgainLaterSave) return false; // еще раз аплоад произойдет после того как ответ от сервера прийдет
+                $scope.layout.onceAgainLaterSave = !$scope.layout.uploadStatus;
 
+                if ($scope.layout.onceAgainLaterSave) return false; // еще раз аплоад произойдет только после того как ответ от сервера прийдет
                 if (!isDirectSave && (now - $scope.layout.updatedDataTime) < delay) return false;
 
                 var xhr, serverStringAccountJSON, currentAccountNumber, currentAccount;
@@ -468,6 +485,7 @@ var host = 'http://192.168.43.121'; // FOR TESTING !!!
                 if (!isFullObject && $scope.expCalc.meta.userID && !currentAccount.meta.id) {
                     currentAccount.meta.id = $scope.expCalc.meta.userID + (+new Date() + '').slice(-11);
                 }
+
                 if (!isFullObject && $scope.expCalc.meta.userID) {
                     currentAccount.meta.userID = $scope.expCalc.meta.userID;
                     currentAccount.meta.userKey = $scope.expCalc.meta.userKey;
@@ -486,14 +504,11 @@ var host = 'http://192.168.43.121'; // FOR TESTING !!!
                         console.error('!!! We have a problem: ' + xhr.status + ': ' + xhr.statusText);
                         updateUploadStatus(2);
                     } else {
-                        // responseArray[0] - тип сохранения (100 - весь объект, 010 - текущий расчет),
+                        // responseArray[0] - тип сохранения (100 - весь объект, 010 - текущий расчет, 200 - объект не сохранился т.к. устарел, ктото под этим же аккаунтом внес изменения раньше),
                         // [1] - текст сообщения,
                         // [2] - было послед.сохранени на сервере,
                         // [3] - сохраненный объект
                         var responseArray = xhr.responseText.split('"""""');
-                        console.info('We have received a response: ' + responseArray[1]); // responseText -- текст ответа.
-                        updateUploadStatus(1);
-                        $scope.layout.isChangedObject = false;
 
                         try {
                             var fromServerData = JSON.parse(responseArray[3]);
@@ -503,12 +518,12 @@ var host = 'http://192.168.43.121'; // FOR TESTING !!!
                                     currentAccount.meta.savedDate = fromServerData.meta.savedDate;
                                     $scope.expCalc.meta.savedDate = fromServerData.meta.savedDate;
                                     $scope.$digest();
-                                    localStorage.setItem('expensesCalc', JSON.stringify($scope.expCalc));
+                                    localStorage.setItem('costpanel.info', JSON.stringify($scope.expCalc));
                                     break;
 
                                 case '100':
                                     $scope.expCalc.meta.savedDate = fromServerData.meta.savedDate;
-                                    localStorage.setItem('expensesCalc', responseArray[3]);
+                                    localStorage.setItem('costpanel.info', responseArray[3]);
                                     break;
 
                                 case '200':
@@ -523,34 +538,66 @@ var host = 'http://192.168.43.121'; // FOR TESTING !!!
                                     if (confirm(confirmMessage)) {
                                         $scope.expCalc = fromServerData;
                                         $scope.$digest();
-                                        localStorage.setItem('expensesCalc', JSON.stringify($scope.expCalc));
+                                        localStorage.setItem('costpanel.info', JSON.stringify($scope.expCalc));
                                     }
+                                    break;
                             }
                         } catch (e) {
                             updateUploadStatus(2);
                             console.error('Данные могли не сохраниться. Returned data with issues =>', xhr.responseText);
                             if (xhr.responseText == 'The user key is not correct') alert('Не получается сохранить новые данные. Авторизуйтесь заново.');
                         }
-                    }
 
-                    if ($scope.layout.onceAgainLaterSave) {
-                        $scope.layout.onceAgainLaterSave = false;
-                        $scope.layout.isChangedObject = true;
-console.log('$scope.uploadData',$scope.uploadData);
-                        $scope.uploadData(isFullObject, true);
-                    }
+                        console.info('We have received a response: ' + responseArray[1]); // responseText -- текст ответа.
+                        $scope.layout.isChangedObject = false;
+                        updateUploadStatus(1);
 
+                        if ($scope.layout.onceAgainLaterSave) {
+                            $scope.layout.onceAgainLaterSave = false;
+                            $scope.layout.isChangedObject = true;
+                            $scope.uploadData(isFullObject, true);
+                        }
+                    }
                 };
 
-                xhr.send((isFullObject) ? localStringJSON : serverStringAccountJSON);
-
+                if (!$scope.layout.onceAgainLaterSave) {
+                    xhr.send((isFullObject) ? localStringJSON : serverStringAccountJSON);
+                }
+// testclicking // var counter = 0; var lbl = $0; function testClick(){var a = Math.round(Math.random()*3000), b = Math.round(Math.random()*3000); lbl.click(); setTimeout(function(){lbl.click()}, a); setTimeout(function(){lbl.click()}, b); counter++; console.log(counter, '--------------a,b',a,b);}; for(var i=0; i<3; i++) {setTimeout(testClick, 7000*i);}
             }, delay);
 
 		};
 
+		$scope.getEmptyUserDataObject = function () {
+            var workData = JSON.parse(JSON.stringify($scope.expCalc));
+            workData.meta.userID = workData.meta.userInitials = workData.meta.userKey = workData.meta.userName = null;
+            forEach(workData.accounts, function(account, index, arr) {
+                arr[index].meta.userID = arr[index].meta.userKey = null;
+            });
+            return workData;
+        };
+
+        $scope.setUserDataObject = function (userData) {
+            var workData = JSON.parse(JSON.stringify($scope.expCalc));
+            workData.meta.userID = userData.userID;
+            workData.meta.userKey = userData.userKey;
+            workData.meta.userName =  userData.userName;
+            workData.meta.userInitials = userData.userInitials;
+            workData.meta.savedDate = userData.savedDate;
+
+            forEach(workData.accounts, function(account, index, arr) {
+                arr[index].meta.userID = userData.userID;
+                arr[index].meta.userKey = userData.userKey;
+                workData.meta.savedDate = userData.savedDate;
+            });
+            return workData;
+        };
+
 		$scope.downloadData = function () {
-            var blob = new Blob([JSON.stringify($scope.expCalc)], {type: "text/plain;charset=utf-8"});
-            saveAs(blob, "CostPanel-" + $scope.expCalc.meta.savedDate + ".txt");
+		    var dataWithoutID = $scope.getEmptyUserDataObject();
+            var lastChangedDate = getNormalDate($scope.expCalc.meta.savedDate);
+            var blob = new Blob([JSON.stringify(dataWithoutID)], {type: "text/plain;charset=utf-8"});
+            saveAs(blob, "CostPanel-" + lastChangedDate + ".txt");
         };
 
 		$scope.linkToAccount = function () {
@@ -1558,7 +1605,7 @@ console.log('$scope.uploadData',$scope.uploadData);
         }, true);
 
         // $scope.$watch('expCalc', function (newValue, oldValue) {
-        //    localStorage.setItem('expensesCalc', JSON.stringify(newValue));
+        //    localStorage.setItem('costpanel.info', JSON.stringify(newValue));
         //
         //
 			// if (document.getElementById('testing')) {
@@ -1639,7 +1686,10 @@ console.log('$scope.uploadData',$scope.uploadData);
 
             $scope.expCalc.settings.currentAccount = 0;
             $scope.expCalc.accounts = [];
-            if (onlyAccount) $scope.expCalc.accounts.push(onlyAccount);
+            if (onlyAccount) {
+                $scope.expCalc.accounts.push(onlyAccount);
+                $scope.expCalc = $scope.getEmptyUserDataObject();
+            }
         } else {
             if (!$scope.expCalc.accounts.length) $scope.createAccount();
 
@@ -1664,7 +1714,7 @@ console.log('$scope.uploadData',$scope.uploadData);
     var getDataService = function () {
         var currencies, expensesTypes, expensesCalc;
 
-		var fromLocalStorage = (localStorage.getItem('expensesCalc')) ? JSON.parse(localStorage.getItem("expensesCalc")) : false;
+		var fromLocalStorage = (localStorage.getItem('costpanel.info')) ? JSON.parse(localStorage.getItem('costpanel.info')) : false;
 
         try {
             fromServerData = (fromServerData) ? JSON.parse(fromServerData) : false;
@@ -1689,11 +1739,17 @@ console.log('$scope.uploadData',$scope.uploadData);
 
 		if (fromServerData.meta) return fromServerData;
 
-		if (fromLocalStorage.meta) return fromLocalStorage;
+		if (fromLocalStorage.meta) {
+		    if (fromLocalStorage.meta.userID > 0) {
+                return getNewExpensesCalc();
+            } else {
+                return fromLocalStorage;
+            }
+        }
 
         isFirstVisit = true;
 
-        return getNewExpensesCalc();
+        return getNewExpensesCalc(true);
     };
 
     module.factory('getDataService', getDataService);
