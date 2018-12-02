@@ -541,10 +541,13 @@ label {
 		height: 8px;
 		background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
 	}
-	&:not([disabled]):hover input:not([disabled]) {
-		transform: translateY(0);
+	&:not([disabled]):hover {
+		input:not([disabled]),
+		textarea:not([disabled]) {
+			transform: translateY(0);
 
-		+ b { transform: translateY(200%); } // it was 40px
+			+ b { transform: translateY(200%); } // it was 40px
+		}
 	}
 
 	&[disabled] {
@@ -558,8 +561,13 @@ label {
 			display: none;
 		}
 
-		input {
+		input,
+		textarea {
 			display: none;
+		}
+		textarea + b {
+			padding: 4px 8px;
+			margin: 0 -2px;
 		}
 		i {
 			display: inline-block;
@@ -578,13 +586,17 @@ label {
 		height: auto;
 		min-height: 44px;
 
+		&::before {
+			display: none;
+		}
+
 		> input {
 			height: 40px;
 		}
 	}
 
 	&.big-font {
-		input, b {
+		input, textarea, b {
 			font-size: 1.2rem;
 		}
 	}
@@ -593,7 +605,8 @@ label {
 		word-break: break-all;
 	}
 
-	input {
+	input,
+	textarea {
 		position: absolute;
 		margin: 0; padding: 0 5px;
 		height: 100%; width: 100%;
@@ -611,7 +624,7 @@ label {
 		&:focus {
 			transform: translateY(0);
 
-			+ b { transform: translateY(100%); } // it was 40px
+			+ b { transform: translateY(200%); } // it was 40px
 		}
 		&::-ms-clear {
 			display: none;
@@ -646,6 +659,12 @@ label {
 				}
 			}
 		}
+	}
+	textarea {
+		padding: 3px 5px;
+		overflow: hidden;
+		line-height: 1;
+		resize: none;
 	}
 	b {
 		display: inline-block;

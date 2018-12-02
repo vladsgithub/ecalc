@@ -4347,11 +4347,15 @@ label.toggle i::after {
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
 }
 .text-input:not([disabled]):hover input:not([disabled]),
-.number-input:not([disabled]):hover input:not([disabled]) {
+.number-input:not([disabled]):hover input:not([disabled]),
+.text-input:not([disabled]):hover textarea:not([disabled]),
+.number-input:not([disabled]):hover textarea:not([disabled]) {
   transform: translateY(0);
 }
 .text-input:not([disabled]):hover input:not([disabled]) + b,
-.number-input:not([disabled]):hover input:not([disabled]) + b {
+.number-input:not([disabled]):hover input:not([disabled]) + b,
+.text-input:not([disabled]):hover textarea:not([disabled]) + b,
+.number-input:not([disabled]):hover textarea:not([disabled]) + b {
   transform: translateY(200%);
 }
 .text-input[disabled],
@@ -4367,8 +4371,15 @@ label.toggle i::after {
   display: none;
 }
 .text-input[disabled] input,
-.number-input[disabled] input {
+.number-input[disabled] input,
+.text-input[disabled] textarea,
+.number-input[disabled] textarea {
   display: none;
+}
+.text-input[disabled] textarea + b,
+.number-input[disabled] textarea + b {
+  padding: 4px 8px;
+  margin: 0 -2px;
 }
 .text-input[disabled] i,
 .number-input[disabled] i {
@@ -4387,12 +4398,18 @@ label.toggle i::after {
   height: auto;
   min-height: 44px;
 }
+.text-input.not-fixed-height::before,
+.number-input.not-fixed-height::before {
+  display: none;
+}
 .text-input.not-fixed-height > input,
 .number-input.not-fixed-height > input {
   height: 40px;
 }
 .text-input.big-font input,
 .number-input.big-font input,
+.text-input.big-font textarea,
+.number-input.big-font textarea,
 .text-input.big-font b,
 .number-input.big-font b {
   font-size: 1.2rem;
@@ -4402,7 +4419,9 @@ label.toggle i::after {
   word-break: break-all;
 }
 .text-input input,
-.number-input input {
+.number-input input,
+.text-input textarea,
+.number-input textarea {
   position: absolute;
   margin: 0;
   padding: 0 5px;
@@ -4423,39 +4442,55 @@ label.toggle i::after {
   transition: transform 0.2s;
 }
 .text-input input:focus,
-.number-input input:focus {
+.number-input input:focus,
+.text-input textarea:focus,
+.number-input textarea:focus {
   transform: translateY(0);
 }
 .text-input input:focus + b,
-.number-input input:focus + b {
-  transform: translateY(100%);
+.number-input input:focus + b,
+.text-input textarea:focus + b,
+.number-input textarea:focus + b {
+  transform: translateY(200%);
 }
 .text-input input::-ms-clear,
-.number-input input::-ms-clear {
+.number-input input::-ms-clear,
+.text-input textarea::-ms-clear,
+.number-input textarea::-ms-clear {
   display: none;
 }
 .text-input input::-webkit-outer-spin-button,
 .number-input input::-webkit-outer-spin-button,
+.text-input textarea::-webkit-outer-spin-button,
+.number-input textarea::-webkit-outer-spin-button,
 .text-input input::-webkit-inner-spin-button,
-.number-input input::-webkit-inner-spin-button {
+.number-input input::-webkit-inner-spin-button,
+.text-input textarea::-webkit-inner-spin-button,
+.number-input textarea::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 .text-input input::placeholder,
-.number-input input::placeholder {
+.number-input input::placeholder,
+.text-input textarea::placeholder,
+.number-input textarea::placeholder {
   font-size: 0.9rem;
   font-weight: normal;
   color: #888;
 }
 .text-input input[disabled] + b,
-.number-input input[disabled] + b {
+.number-input input[disabled] + b,
+.text-input textarea[disabled] + b,
+.number-input textarea[disabled] + b {
   z-index: 2;
   position: relative;
   overflow: visible;
   transform: translateY(0);
 }
 .text-input input[disabled] + b::before,
-.number-input input[disabled] + b::before {
+.number-input input[disabled] + b::before,
+.text-input textarea[disabled] + b::before,
+.number-input textarea[disabled] + b::before {
   content: "";
   z-index: -1;
   position: absolute;
@@ -4464,6 +4499,13 @@ label.toggle i::after {
   bottom: -40px;
   left: 0;
   background: #efefef;
+}
+.text-input textarea,
+.number-input textarea {
+  padding: 3px 5px;
+  overflow: hidden;
+  line-height: 1;
+  resize: none;
 }
 .text-input b,
 .number-input b {

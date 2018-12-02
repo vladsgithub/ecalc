@@ -56,7 +56,7 @@ function getUserNameObject(userName, loginName) {
 function getUserDataForApp(scope, request) {
     var xhr = new XMLHttpRequest();
     var host = 'https://costpanel.info';
-var host = 'http://192.168.43.121'; // FOR TESTING !!!
+// var host = 'http://192.168.43.121'; // FOR TESTING !!!
 
     scope.expCalc.meta.userName = '... Авторизация ...';
 
@@ -465,7 +465,7 @@ angular.module("ngMobileClick", [])
 
             setTimeout(function () {
                 var host = 'https://costpanel.info';
-var host = 'http://192.168.43.121'; // FOR TESTING !!!
+// var host = 'http://192.168.43.121'; // FOR TESTING !!!
                 var now = +new Date();
 
                 $scope.layout.onceAgainLaterSave = !$scope.layout.uploadStatus;
