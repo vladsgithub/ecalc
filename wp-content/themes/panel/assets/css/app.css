@@ -5806,6 +5806,7 @@ section a {
 }
 .three-window-lt > .header-lt ul {
   padding: 2px 4px;
+  background: #e2e8ff;
 }
 @media only screen and (min-width: 480px) {
   .three-window-lt > .header-lt ul {

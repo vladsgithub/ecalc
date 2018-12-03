@@ -58,7 +58,9 @@ function getUserDataForApp(scope, request) {
     var host = 'https://costpanel.info';
 // var host = 'http://192.168.43.121'; // FOR TESTING !!!
 
-    scope.expCalc.meta.userName = '... Авторизация ...';
+    if (!request) return false;
+
+    scope.expCalc.meta.userName = '... Инициализация ...';
 
     xhr.open("POST", host + '/app-login.php', true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded; charset=utf-8');
@@ -94,7 +96,7 @@ function getUserDataForApp(scope, request) {
                     console.log('Пришел ответ в getUserDataForApp:', xhr.responseText);
                 }
             } else {
-                scope.expCalc.meta.userName = '';
+                scope.expCalc.meta.userName += ' [Ошибка]';
                 alert('Авторизация не удалась. Логин или пароль введены неверно :(');
             }
         }
@@ -623,9 +625,9 @@ angular.module("ngMobileClick", [])
         $scope.getUserDataForApp = function(login) {
             var usernameValue = document.getElementById('username').value;
             var passValue = document.getElementById('password').value;
-            var request = 'username=' + usernameValue + '&pass=' + passValue;
+            var initUserRequest = 'username=' + usernameValue + '&pass=' + passValue;
 
-            getUserDataForApp($scope, request);
+            getUserDataForApp($scope, initUserRequest);
         };
 
 
@@ -1740,7 +1742,7 @@ angular.module("ngMobileClick", [])
 		if (fromServerData.meta) return fromServerData;
 
 		if (fromLocalStorage.meta) {
-		    if (fromLocalStorage.meta.userID > 0) {
+		    if (window.location.host && fromLocalStorage.meta.userID > 0) { // window.location.host == false ---> this is mobile app
                 return getNewExpensesCalc();
             } else {
                 return fromLocalStorage;

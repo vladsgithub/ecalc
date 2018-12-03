@@ -62,7 +62,7 @@ if ($userId > 0) {
 
             $deltaTime = intval(($oldSavedDate - $savedDateFromData) / 1000);
             $timeAgo = intval(($now - $oldSavedDate) / 1000);
-            if ($deltaTime != 0) $responseForChangedData = '200"""""Object was not saved. Data was changed before ['.$deltaTime.'-->'.$timeAgo.' sec. ago]"""""'.$timeAgo.'"""""';
+            if ($deltaTime != 0) $responseForChangedData = '200"""""Object was not saved. Data was changed before ['.$oldSavedDate.'-->'.$timeAgo.' sec. ago]"""""'.$timeAgo.'"""""';
 
         } else {
             $accountIndex = json_encode($dataJSON->{'meta'}->{'index'});
@@ -72,7 +72,7 @@ if ($userId > 0) {
 
             $deltaTime = intval(($oldSavedDate - $savedDateFromData) / 1000);
             $timeAgo = intval(($now - $oldSavedDate) / 1000);
-            if ($deltaTime != 0) $responseForChangedData = '200"""""Object was not saved. Data was changed before ['.$deltaTime.'-->'.$timeAgo.' sec. ago]"""""'.$timeAgo.'"""""';
+            if ($deltaTime != 0) $responseForChangedData = '200"""""Object was not saved. Data was changed before ['.$oldSavedDate.'-->'.$timeAgo.' sec. ago]"""""'.$timeAgo.'"""""';
         }
 
         if ($responseForChangedData) {

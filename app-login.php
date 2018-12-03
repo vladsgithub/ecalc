@@ -6,11 +6,19 @@ $username = $_POST["username"];
 $pass = $_POST["pass"];
 $email = $_POST["Email0pen"];
 $authbyemail = $_POST["ByEmail0pen"];
+$requestUserID = $_POST["userID"];
+$requestUserKey = $_POST["userKey"];
 
 if ($authbyemail) {
     $user = get_user_by( 'email', $email );
 } else {
     $user = get_user_by( 'login', $username );
+
+    if ($requestUserID) {
+        $user = get_user_by( 'id', $requestUserID );
+    } else {
+        $user = get_user_by( 'login', $username );
+    }
 }
 
 $userID = $user->ID;
@@ -38,7 +46,12 @@ $user_key = substr($password, -round(strlen($password) * 0.4));
 if ($authbyemail) {
     $auth = $authbyemail && $userID;
 } else {
-    $auth = $user && wp_check_password( $pass, $user->data->user_pass, $userID);
+
+    if ($requestUserID) {
+        $auth = ($requestUserKey == $user_key) ? true : false;
+    } else {
+        $auth = $user && wp_check_password( $pass, $user->data->user_pass, $userID);
+    }
 }
 
 if ( $auth ) {
