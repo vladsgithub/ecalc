@@ -68,7 +68,7 @@ if ($userId > 0) {
             $accountIndex = json_encode($dataJSON->{'meta'}->{'index'});
 
             $sql = "UPDATE json_data SET data=JSON_SET(data, '$.accounts[$accountIndex]', '$DBdata', '$.meta.savedDate', $now, '$.settings.currentAccount', $accountIndex) where json_id = $userId";
-            $response = '010"""""Only current account was saved ['.$oldSavedDate.']"""""0"""""';  // $now
+            $response = '010"""""Only current account was saved ['.$now.']"""""0"""""';  // $now
 
             $deltaTime = intval(($oldSavedDate - $savedDateFromData) / 1000);
             $timeAgo = intval(($now - $oldSavedDate) / 1000);

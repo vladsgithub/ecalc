@@ -5259,6 +5259,9 @@ body[data-upload-status="2"] .status-line::before {
 body[data-upload-status="2"] .status-line + i {
   transform: rotate(45deg);
 }
+body[data-upload-status="3"] .status-line::before {
+  background: #dd0000;
+}
 body:not(.open-menu) aside.menu {
   animation: hiddenWithDelay 0.2s 1 steps(1, end) forwards;
 }

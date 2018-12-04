@@ -705,17 +705,6 @@
                                                 </div>
                                             </li>
                                         </ul>
-
-                                        <div class="s-p2">
-                                            <textarea id="textarea" class="textarea"></textarea>
-                                        </div>
-
-                                        <div class="s-p2">
-                                            <button class="btn solid" ng-click="applyTextareaObject()">
-                                                <i class="fas fa-save"></i>
-                                                <b class="small">Применить новый объект</b>
-                                            </button>
-                                        </div>
                                     </li>
                                 </ul>
 

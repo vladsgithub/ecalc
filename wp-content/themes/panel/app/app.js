@@ -1,4 +1,5 @@
 var fromServerData, userID, userKey, userName, loadData, scrollTimeout, isFirstVisit;
+var isGetUserDataForAppProcessing = false;
 
 function forEach(elements, callback) {
 	Array.prototype.forEach.call(elements, callback);
@@ -54,6 +55,9 @@ function getUserNameObject(userName, loginName) {
     }
 }
 function getUserDataForApp(scope, request) {
+    if (isGetUserDataForAppProcessing) return false;
+    isGetUserDataForAppProcessing = true;
+
     var xhr = new XMLHttpRequest();
     var host = 'https://costpanel.info';
 // var host = 'http://192.168.43.121'; // FOR TESTING !!!
@@ -100,10 +104,38 @@ function getUserDataForApp(scope, request) {
                 alert('Авторизация не удалась. Логин или пароль введены неверно :(');
             }
         }
+
+        isGetUserDataForAppProcessing = false;
     };
 
     xhr.send(request);
 };
+function applyNewData($scope, stringNewData) {
+    try {
+        var newExpCalc = JSON.parse(stringNewData);
+        var question = confirm('Загружаемые данные были созданы: ' + $scope.formatDate(newExpCalc.meta.savedDate) +
+            '\nВы действительно хотите заменить текущие данные на новые?');
+
+        if (question) {
+            var userData = {
+                userID: $scope.expCalc.meta.userID,
+                userKey: $scope.expCalc.meta.userKey,
+                userName: $scope.expCalc.meta.userName,
+                userInitials: $scope.expCalc.meta.userInitials,
+                savedDate: $scope.expCalc.meta.savedDate
+            };
+
+            $scope.expCalc = newExpCalc;
+            $scope.expCalc = $scope.setUserDataObject(userData);
+            $scope.layout.isChangedObject = true;
+            $scope.$apply();
+            alert('Новые данные загружены успешно!');
+            $scope.uploadData(true, true);
+        }
+    } catch (err) {
+        alert('ОШИБКА: Файл данных повреждён!');
+    }
+}
 function getNewExpensesCalc(isHelpMode) {
     var currencies = {
         // names: ['usd', 'eur', 'rub', 'byn'], // The currency number of 0, 1, 2 and 3
@@ -383,6 +415,9 @@ angular.module("ngMobileClick", [])
                 case 2:
                     tooltip = 'Автоматическое сохранение на сервере: НЕ УДАЛОСЬ (проверьте интернет)';
                     break;
+                case 3:
+                    tooltip = 'Автоматическое сохранение на сервере: ОТМЕНА';
+                    break;
             }
 
             document.getElementById('saveButton') && document.getElementById('saveButton').setAttribute('title', tooltip);
@@ -397,30 +432,7 @@ angular.module("ngMobileClick", [])
             var file = event.target.files[0];
             var reader = new FileReader();
             reader.onload = function(event) {
-                try {
-                    var newExpCalc = JSON.parse(event.target.result);
-                    var question = confirm('Загружаемые данные были созданы: ' + $scope.formatDate(newExpCalc.meta.savedDate) +
-                    '\nВы действительно хотите заменить текущие данные на новые?');
-
-                    if (question) {
-                        var userData = {
-                            userID: $scope.expCalc.meta.userID,
-                            userKey: $scope.expCalc.meta.userKey,
-                            userName: $scope.expCalc.meta.userName,
-                            userInitials: $scope.expCalc.meta.userInitials,
-                            savedDate: $scope.expCalc.meta.savedDate
-                        };
-
-                        $scope.expCalc = newExpCalc;
-                        $scope.expCalc = $scope.setUserDataObject(userData);
-                        $scope.layout.isChangedObject = true;
-                        $scope.$apply();
-                        alert('Новые данные загружены успешно!');
-                        $scope.uploadData(true, true);
-                    }
-                } catch (err) {
-                    alert('ОШИБКА: Файл данных повреждён!');
-                }
+                applyNewData($scope, event.target.result);
             };
 
             reader.readAsText(file);
@@ -541,6 +553,8 @@ angular.module("ngMobileClick", [])
                                         $scope.expCalc = fromServerData;
                                         $scope.$digest();
                                         localStorage.setItem('costpanel.info', JSON.stringify($scope.expCalc));
+                                    } else {
+                                        updateUploadStatus(3);
                                     }
                                     break;
                             }
@@ -550,14 +564,16 @@ angular.module("ngMobileClick", [])
                             if (xhr.responseText == 'The user key is not correct') alert('Не получается сохранить новые данные. Авторизуйтесь заново.');
                         }
 
-                        console.info('We have received a response: ' + responseArray[1]); // responseText -- текст ответа.
-                        $scope.layout.isChangedObject = false;
-                        updateUploadStatus(1);
+                        if ($scope.layout.uploadStatus !== 3) {
+                            console.info('We have received a response: ' + responseArray[1]); // responseText -- текст ответа.
+                            $scope.layout.isChangedObject = false;
+                            updateUploadStatus(1);
 
-                        if ($scope.layout.onceAgainLaterSave) {
-                            $scope.layout.onceAgainLaterSave = false;
-                            $scope.layout.isChangedObject = true;
-                            $scope.uploadData(isFullObject, true);
+                            if ($scope.layout.onceAgainLaterSave) {
+                                $scope.layout.onceAgainLaterSave = false;
+                                $scope.layout.isChangedObject = true;
+                                $scope.uploadData(isFullObject, true);
+                            }
                         }
                     }
                 };

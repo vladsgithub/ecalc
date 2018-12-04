@@ -74,6 +74,7 @@ body {
 		&::before { background: @warning; }
 		+ i { transform: rotate(45deg); }
 	}
+	&[data-upload-status="3"] .status-line::before { background: @warning; }
 
 	&:not(.open-menu) aside.menu {
 		animation: hiddenWithDelay @delay 1 steps(1,end) forwards;
