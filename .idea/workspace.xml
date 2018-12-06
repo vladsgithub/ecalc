@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44bc63fb-9e01-4d9b-a8dc-1a1fc190dee4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide.html" beforeDir="false" afterPath="$PROJECT_DIR$/guide.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.pref.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.pref.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/page.html" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" afterDir="false" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,29 +22,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app-login.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app-login.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="50" column="62" selection-start-line="50" selection-start-column="62" selection-end-line="50" selection-end-column="62" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="send.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/send.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="70" column="71" selection-start-line="70" selection-start-column="71" selection-end-line="70" selection-end-column="71" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="57" column="49" selection-start-line="57" selection-start-column="49" selection-end-line="57" selection-end-column="49" />
+            <state relative-caret-position="284">
+              <caret line="629" column="43" lean-forward="true" selection-start-line="629" selection-start-column="43" selection-end-line="629" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wp-settings.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wp-settings.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -70,13 +52,13 @@
       <file leaf-file-name="header.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/header.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
+            <state relative-caret-position="213">
               <caret line="804" column="50" selection-start-line="804" selection-start-column="50" selection-end-line="804" selection-end-column="50" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="page.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="page.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/page.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
@@ -88,23 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="guide.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/guide.html">
+      <file leaf-file-name="app-login.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app-login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="93" selection-start-line="93" selection-end-line="93" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#li#1;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="wp-settings.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wp-settings.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="38" />
+            <state relative-caret-position="359">
+              <caret line="50" column="62" selection-start-line="50" selection-start-column="62" selection-end-line="50" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -112,8 +82,17 @@
       <file leaf-file-name="app.pref.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.pref.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="5290" column="51" selection-start-line="5290" selection-start-column="51" selection-end-line="5290" selection-end-column="51" />
+            <state relative-caret-position="692">
+              <caret line="5314" column="1" lean-forward="true" selection-start-line="5314" selection-start-column="1" selection-end-line="5314" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="send.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/send.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="70" column="71" selection-start-line="70" selection-start-column="71" selection-end-line="70" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -121,8 +100,17 @@
       <file leaf-file-name="production.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="35274" column="58" selection-start-line="35274" selection-start-column="58" selection-end-line="35274" selection-end-column="58" />
+            <state relative-caret-position="-21652">
+              <caret line="34028" lean-forward="true" selection-start-line="34028" selection-end-line="34028" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="production.min.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.min.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="850">
+              <caret column="10590" lean-forward="true" selection-end-column="206301" />
             </state>
           </provider>
         </entry>
@@ -138,8 +126,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>$pass</find>
-      <find>$user_key</find>
       <find>for test</find>
       <find>отмена</find>
       <find>m('Загружаемые данные были с</find>
@@ -155,19 +141,21 @@
       <find>Эта ссылка устаревшая. Данных по этой</find>
       <find>textare</find>
       <find>https://costpanel.info/</find>
-      <find>not-fixed-height</find>
       <find>setTimeout</find>
       <find>isSynchronization</find>
       <find>getNewExpensesCalc</find>
       <find>getUserDataForApp</find>
       <find>экспор</find>
-      <find>statu</find>
       <find>status</find>
       <find>saveButton</find>
       <find>updateUploadStatus</find>
-      <find>// непонятно для чего это нужно было</find>
+      <find>not-fixed-height</find>
+      <find>ng-class=&quot;{'local-remove-mode': !detail.title.length}&quot;</find>
       <find>больш</find>
+      <find>statu</find>
+      <find>// непонятно для чего это нужно было</find>
       <find>не удала</find>
+      <find>for testi</find>
     </findStrings>
     <replaceStrings>
       <replace>Название группы расходов</replace>
@@ -235,7 +223,6 @@
         <option value="$PROJECT_DIR$/get.php" />
         <option value="$PROJECT_DIR$/wp-login.php" />
         <option value="$PROJECT_DIR$/app-get.php" />
-        <option value="$PROJECT_DIR$/wp-settings.php" />
         <option value="$PROJECT_DIR$/wp-content/plugins/clean-login/lang/clean-login-ru_RU.mo" />
         <option value="$PROJECT_DIR$/wp-content/plugins/clean-login/lang/clean-login-ru_RU.po" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less" />
@@ -246,6 +233,7 @@
         <option value="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/header.php" />
+        <option value="$PROJECT_DIR$/wp-settings.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" />
       </list>
     </option>
@@ -261,7 +249,7 @@
       <path value="$PROJECT_DIR$/wp-content/themes/panel/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1" />
     <option name="width" value="1932" />
     <option name="height" value="1066" />
@@ -338,6 +326,16 @@
               <item name="panel" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="www" type="b2602c69:ProjectViewProjectNode" />
+              <item name="www" type="462c0819:PsiDirectoryNode" />
+              <item name="wp-content" type="462c0819:PsiDirectoryNode" />
+              <item name="themes" type="462c0819:PsiDirectoryNode" />
+              <item name="panel" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="production.js" type="620a8d5e:NestingTreeNode" />
             </path>
             <path>
               <item name="www" type="b2602c69:ProjectViewProjectNode" />
@@ -468,12 +466,12 @@
       <workItem from="1542688140366" duration="31894000" />
       <workItem from="1542949248749" duration="59563000" />
       <workItem from="1543467661631" duration="47206000" />
-      <workItem from="1543859219206" duration="20780000" />
+      <workItem from="1543859219206" duration="23548000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="663089000" />
+    <option name="totallyTimeSpent" value="665857000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -715,13 +713,6 @@
     <entry file="file://$PROJECT_DIR$/pictures/example.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret column="6369" selection-start-column="6369" selection-end-column="6369" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/clean-login/lang/clean-login-ru_RU___original.mo">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -753,34 +744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app-login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="50" column="62" selection-start-line="50" selection-start-column="62" selection-end-line="50" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/send.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="70" column="71" selection-start-line="70" selection-start-column="71" selection-end-line="70" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.pref.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="5290" column="51" selection-start-line="5290" selection-start-column="51" selection-end-line="5290" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/guide.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
@@ -791,31 +754,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
+    <entry file="file://$PROJECT_DIR$/app-login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="607">
-          <caret line="92" column="74" selection-start-line="92" selection-start-column="74" selection-end-line="92" selection-end-column="74" />
+        <state relative-caret-position="359">
+          <caret line="50" column="62" selection-start-line="50" selection-start-column="62" selection-end-line="50" selection-end-column="62" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js">
+    <entry file="file://$PROJECT_DIR$/send.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="35274" column="58" selection-start-line="35274" selection-start-column="58" selection-end-line="35274" selection-end-column="58" />
+        <state relative-caret-position="578">
+          <caret line="70" column="71" selection-start-line="70" selection-start-column="71" selection-end-line="70" selection-end-column="71" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/header.php">
+    <entry file="file://$PROJECT_DIR$/wp-settings.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="804" column="50" selection-start-line="804" selection-start-column="50" selection-end-line="804" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="57" column="49" selection-start-line="57" selection-start-column="49" selection-end-line="57" selection-end-column="49" />
+        <state relative-caret-position="170">
+          <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -826,6 +782,48 @@
           <folding>
             <element signature="n#div#1;n#main#0;n#!!top" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="804" column="50" selection-start-line="804" selection-start-column="50" selection-end-line="804" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="607">
+          <caret line="92" column="74" selection-start-line="92" selection-start-column="74" selection-end-line="92" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.pref.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="692">
+          <caret line="5314" column="1" lean-forward="true" selection-start-line="5314" selection-start-column="1" selection-end-line="5314" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret column="10590" lean-forward="true" selection-end-column="206301" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-21652">
+          <caret line="34028" lean-forward="true" selection-start-line="34028" selection-end-line="34028" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="629" column="43" lean-forward="true" selection-start-line="629" selection-start-column="43" selection-end-line="629" selection-end-column="43" />
         </state>
       </provider>
     </entry>

@@ -55,7 +55,7 @@ function getUserNameObject(userName, loginName) {
     }
 }
 function getUserDataForApp(scope, request, isSynchronization) {
-    if (!scope.expCalc.meta.userID) return false;
+    if (isSynchronization && !scope.expCalc.meta.userID) return false; // если это синхронизация данных, но пользователь не авторизован, то выход
     if (isGetUserDataForAppProcessing) return false;
     isGetUserDataForAppProcessing = true;
 
@@ -629,7 +629,7 @@ angular.module("ngMobileClick", [])
 
 		$scope.downloadData = function () {
 		    var dataWithoutID = $scope.getEmptyUserDataObject();
-            var lastChangedDate = getNormalDate($scope.expCalc.meta.savedDate);
+            var lastChangedDate = ($scope.expCalc.meta.userID > 0) ? getNormalDate($scope.expCalc.meta.savedDate) : 'local-' + getNormalDate(+new Date());
             var blob = new Blob([JSON.stringify(dataWithoutID)], {type: "text/plain;charset=utf-8"});
             saveAs(blob, "CostPanel-" + lastChangedDate + ".txt");
         };
