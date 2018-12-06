@@ -76,6 +76,22 @@ body {
 	}
 	&[data-upload-status="3"] .status-line::before { background: @warning; }
 
+	@keyframes blinking {
+		0% {
+			background: transparent;
+			transform: scale(0.5);
+		}
+		50% {
+			background: @success;
+			transform: scale(1);
+		}
+		100% {
+			background: transparent;
+			transform: scale(0.5);
+		}
+	}
+	&[data-upload-status="4"] .status-line::before { animation: blinking 0.5s infinite; }
+
 	&:not(.open-menu) aside.menu {
 		animation: hiddenWithDelay @delay 1 steps(1,end) forwards;
 	}

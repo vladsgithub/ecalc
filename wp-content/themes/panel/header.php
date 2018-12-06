@@ -819,7 +819,7 @@
                                 &nbsp;&nbsp;3) Зафиксировать возвраты
                                 <br/>
                                 <br/>
-                                <a href="/info">Больше информации</a><br/>
+                                <a href="https://costpanel.info/info">Больше информации</a><br/>
                                 <br/>
                                 Версия: <span id="appVersion"><? echo $GLOBALS['cost_panel_version'] ?></span>
                                 <br/>

@@ -5277,6 +5277,23 @@ body[data-upload-status="2"] .status-line + i {
 body[data-upload-status="3"] .status-line::before {
   background: #dd0000;
 }
+@keyframes blinking {
+  0% {
+    background: transparent;
+    transform: scale(0.5);
+  }
+  50% {
+    background: #00c900;
+    transform: scale(1);
+  }
+  100% {
+    background: transparent;
+    transform: scale(0.5);
+  }
+}
+body[data-upload-status="4"] .status-line::before {
+  animation: blinking 0.5s infinite;
+}
 body:not(.open-menu) aside.menu {
   animation: hiddenWithDelay 0.2s 1 steps(1, end) forwards;
 }

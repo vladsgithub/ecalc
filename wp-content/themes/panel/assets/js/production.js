@@ -33549,7 +33549,7 @@ var saveAs = saveAs || (function(view) {
         || typeof window !== "undefined" && window
         || this
     ));
-var fromServerData, userID, userKey, userName, loadData, scrollTimeout, isFirstVisit;
+var fromServerData, userID, userKey, userName, loadData, scrollTimeout, isFirstVisit, updateUploadStatus;
 var isGetUserDataForAppProcessing = false;
 
 function forEach(elements, callback) {
@@ -33605,9 +33605,12 @@ function getUserNameObject(userName, loginName) {
         initials: (initials) ? initials : '--'
     }
 }
-function getUserDataForApp(scope, request) {
+function getUserDataForApp(scope, request, isSynchronization) {
+    if (!scope.expCalc.meta.userID) return false;
     if (isGetUserDataForAppProcessing) return false;
     isGetUserDataForAppProcessing = true;
+
+    if (isSynchronization) updateUploadStatus(4);
 
     var xhr = new XMLHttpRequest();
     var host = 'https://costpanel.info';
@@ -33644,7 +33647,10 @@ function getUserDataForApp(scope, request) {
 
                     if (document.loginFormForApp) document.loginFormForApp.reset();
 
+                    localStorage.setItem('costpanel.info', JSON.stringify(fromServerData));
+
                     console.info('[getUserDataForApp] Success! We have received a response:', fromServerData);
+                    if (!isSynchronization) alert('Добро пожаловать, ' + scope.expCalc.meta.userName + '!');
                 } catch (e) {
                     scope.expCalc.meta.userName = '';
                     console.log('Произошла ошибка в getUserDataForApp:', e);
@@ -33656,6 +33662,7 @@ function getUserDataForApp(scope, request) {
             }
         }
 
+        updateUploadStatus(1);
         isGetUserDataForAppProcessing = false;
     };
 
@@ -33942,11 +33949,13 @@ angular.module("ngMobileClick", [])
 
 		// WORKING WITH DATA TO UPLOAD/DOWNLOAD ==============================
 
-        var updateUploadStatus = function(status) {
+        updateUploadStatus = function(status) {
             // -1 - waiting
             // 0 - pending
             // 1 - success
             // 2 - failure
+            // 3 - cancel
+            // 4 - synchronization
 
             var tooltip = '';
             var statusHelpTextElm;
@@ -33964,10 +33973,13 @@ angular.module("ngMobileClick", [])
                     tooltip = 'Автоматическое сохранение на сервере: успешно';
                     break;
                 case 2:
-                    tooltip = 'Автоматическое сохранение на сервере: НЕ УДАЛОСЬ (проверьте интернет)';
+                    tooltip = 'Автоматическое сохранение на сервере: НЕ УДАЛОСЬ (восстановите интернет и нажмите здесь)';
                     break;
                 case 3:
                     tooltip = 'Автоматическое сохранение на сервере: ОТМЕНА';
+                    break;
+                case 4:
+                    tooltip = 'Синхронизация данных';
                     break;
             }
 
@@ -34069,53 +34081,55 @@ angular.module("ngMobileClick", [])
                         console.error('!!! We have a problem: ' + xhr.status + ': ' + xhr.statusText);
                         updateUploadStatus(2);
                     } else {
-                        // responseArray[0] - тип сохранения (100 - весь объект, 010 - текущий расчет, 200 - объект не сохранился т.к. устарел, ктото под этим же аккаунтом внес изменения раньше),
-                        // [1] - текст сообщения,
-                        // [2] - было послед.сохранени на сервере,
-                        // [3] - сохраненный объект
-                        var responseArray = xhr.responseText.split('"""""');
 
-                        try {
-                            var fromServerData = JSON.parse(responseArray[3]);
+                        setTimeout(function() { // setTimeout поставлен в попытке исправить выкидывание из приложения при первом запуске и появляется confirm
+                            // responseArray[0] - тип сохранения (100 - весь объект, 010 - текущий расчет, 200 - объект не сохранился т.к. устарел, ктото под этим же аккаунтом внес изменения раньше),
+                            // [1] - текст сообщения,
+                            // [2] - было послед.сохранени на сервере,
+                            // [3] - сохраненный объект
+                            var responseArray = xhr.responseText.split('"""""');
 
-                            switch(responseArray[0]) {
-                                case '010':
-                                    currentAccount.meta.savedDate = fromServerData.meta.savedDate;
-                                    $scope.expCalc.meta.savedDate = fromServerData.meta.savedDate;
-                                    $scope.$digest();
-                                    localStorage.setItem('costpanel.info', JSON.stringify($scope.expCalc));
-                                    break;
+                            try {
+                                var fromServerData = JSON.parse(responseArray[3]);
 
-                                case '100':
-                                    $scope.expCalc.meta.savedDate = fromServerData.meta.savedDate;
-                                    localStorage.setItem('costpanel.info', responseArray[3]);
-                                    break;
-
-                                case '200':
-                                    var confirmMessage = 'Внимание! Некоторые данные были изменены другим пользователем ' + responseArray[2] + ' сек. назад. Перед тем как продолжить и подгрузить последние данные, рекомендуем сделать экспорт текущих данных в МЕНЮ->ДАННЫЕ->ЭКСПОРТ/ИМПОРТ: \n\nОК - продолжить и подгрузить последние данные \nОТМЕНА - оставить текущие данные, чтобы сделать экспорт';
-
-                                    forEach(fromServerData.accounts, function(account, index, arr) {
-                                        if (typeof account == 'string') {
-                                            fromServerData.accounts[index] = JSON.parse(account);
-                                        }
-                                    });
-
-                                    if (confirm(confirmMessage)) {
-                                        $scope.expCalc = fromServerData;
+                                switch(responseArray[0]) {
+                                    case '010':
+                                        currentAccount.meta.savedDate = fromServerData.meta.savedDate;
+                                        $scope.expCalc.meta.savedDate = fromServerData.meta.savedDate;
                                         $scope.$digest();
                                         localStorage.setItem('costpanel.info', JSON.stringify($scope.expCalc));
-                                    } else {
-                                        updateUploadStatus(3);
-                                    }
-                                    break;
-                            }
-                        } catch (e) {
-                            updateUploadStatus(2);
-                            console.error('Данные могли не сохраниться. Returned data with issues =>', xhr.responseText);
-                            if (xhr.responseText == 'The user key is not correct') alert('Не получается сохранить новые данные. Авторизуйтесь заново.');
-                        }
+                                        break;
 
-                        if ($scope.layout.uploadStatus !== 3) {
+                                    case '100':
+                                        $scope.expCalc.meta.savedDate = fromServerData.meta.savedDate;
+                                        localStorage.setItem('costpanel.info', responseArray[3]);
+                                        break;
+
+                                    case '200':
+                                        var confirmMessage = 'Внимание! Некоторые данные были изменены другим пользователем ' + responseArray[2] + ' сек. назад. Чтобы не потерять текущие данные, можно сделать экспорт (сохранить копию) в МЕНЮ -> ДАННЫЕ -> ЭКСПОРТ/ИМПОРТ: \n\nОК - продолжить и подгрузить последние данные \nОТМЕНА - оставить текущие данные, чтобы сделать экспорт';
+
+                                        forEach(fromServerData.accounts, function(account, index, arr) {
+                                            if (typeof account == 'string') {
+                                                fromServerData.accounts[index] = JSON.parse(account);
+                                            }
+                                        });
+
+                                        if (confirm(confirmMessage)) {
+                                            $scope.expCalc = fromServerData;
+                                            $scope.$digest();
+                                            localStorage.setItem('costpanel.info', JSON.stringify($scope.expCalc));
+                                        } else {
+                                            updateUploadStatus(3);
+                                        }
+                                        break;
+                                }
+                            } catch (e) {
+                                updateUploadStatus(2);
+                                console.error('Данные могли не сохраниться. Returned data with issues =>', xhr.responseText);
+                                if (xhr.responseText == 'The user key is not correct') alert('Не получается сохранить новые данные. Авторизуйтесь заново.');
+                            }
+
+                            if ($scope.layout.uploadStatus !== 3) {
                             console.info('We have received a response: ' + responseArray[1]); // responseText -- текст ответа.
                             $scope.layout.isChangedObject = false;
                             updateUploadStatus(1);
@@ -34126,6 +34140,8 @@ angular.module("ngMobileClick", [])
                                 $scope.uploadData(isFullObject, true);
                             }
                         }
+                        }, 1);
+
                     }
                 };
 
@@ -34173,7 +34189,7 @@ angular.module("ngMobileClick", [])
 		    var isIdUnique = true;
 		    var currentAccountIndex = $scope.expCalc.settings.currentAccount;
 		    var currentAccountId = $scope.expCalc.accounts[currentAccountIndex].meta.id;
-            var link = window.location.host;
+            var link = 'https://costpanel.info';
 
             forEach($scope.expCalc.accounts, function(account, index, arr) {
                 if (currentAccountIndex != index && currentAccountId == account.meta.id) isIdUnique = false;
@@ -35262,9 +35278,13 @@ angular.module("ngMobileClick", [])
         } else {
             if (!$scope.expCalc.accounts.length) $scope.createAccount();
 
-            if ($scope.expCalc.meta.userID && !fromServerData) {
-                $scope.layout.isChangedObject = true;
-                $scope.uploadData(true, true);
+            // if ($scope.expCalc.meta.userID && !fromServerData) { // непонятно для чего это нужно было
+            //     $scope.layout.isChangedObject = true;
+            //     $scope.uploadData(true, true);
+            // }
+
+            if (!window.location.host && $scope.expCalc.meta.userID > 0) { // если это приложение и userID > 0 то синхронизтровать данные с сервера
+                getUserDataForApp($scope, 'userID=' + $scope.expCalc.meta.userID + '&userKey=' + $scope.expCalc.meta.userKey, true);
             }
 
             if (isFirstVisit) {
@@ -35309,7 +35329,7 @@ angular.module("ngMobileClick", [])
 		if (fromServerData.meta) return fromServerData;
 
 		if (fromLocalStorage.meta) {
-		    if (window.location.host && fromLocalStorage.meta.userID > 0) { // window.location.host == false ---> this is mobile app
+		    if (window.location.host && fromLocalStorage.meta.userID > 0) { // window.location.host == true ---> это веб-сайт и если с сервера не пришли данные, значит юзер вылогинился и его данные надо стереть
                 return getNewExpensesCalc();
             } else {
                 return fromLocalStorage;
