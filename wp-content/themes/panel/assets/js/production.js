@@ -33658,6 +33658,9 @@ function getUserDataForApp(scope, request, isSynchronization) {
                 }
             } else {
                 scope.expCalc = getNewExpensesCalc();
+                scope.createAccount();
+
+                scope.$apply(scope.expCalc);
                 alert('Авторизация не удалась. Логин или пароль введены неверно :(');
             }
         }
