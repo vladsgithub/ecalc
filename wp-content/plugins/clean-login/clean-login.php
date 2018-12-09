@@ -49,7 +49,7 @@ function clean_login_show($atts) {
 				else if ( $_GET['authentication'] == 'disabled' )
 			echo "<div class='cleanlogin-notification error'><p>". __( 'Your account is currently disabled', 'clean-login' ) ."</p></div>";
 		else if ( $_GET['authentication'] == 'success-activation' )
-			echo "<div class='cleanlogin-notification success'><p>". __( 'Successfully activated', 'clean-login' ) ."</p></div>";
+			echo "<div class='cleanlogin-notification success'><p>". __( 'Ваш аккаунт успешно активирован. Теперь под этим аккаунтом вы можете войти на веб-странице или в приложении под Android (Cost Panel).', 'clean-login' ) ."</p></div>";
 	}
 
 	if ( is_user_logged_in() ) {

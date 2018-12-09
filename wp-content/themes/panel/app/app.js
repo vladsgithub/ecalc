@@ -106,7 +106,7 @@ function getUserDataForApp(scope, request, isSynchronization) {
                     console.log('Пришел ответ в getUserDataForApp:', xhr.responseText);
                 }
             } else {
-                scope.expCalc.meta.userName += ' [Ошибка]';
+                scope.expCalc = getNewExpensesCalc();
                 alert('Авторизация не удалась. Логин или пароль введены неверно :(');
             }
         }
@@ -171,7 +171,10 @@ function getNewExpensesCalc(isHelpMode) {
     var expensesCalc = {
         meta: {
             savedDate: 0,
-            userID: null
+            userID: null,
+            userKey: null,
+            userName: null,
+            userInitials: null
         },
         settings: {
             currentAccount: 0,
@@ -186,7 +189,7 @@ function getNewExpensesCalc(isHelpMode) {
     localStorage.setItem('costpanel.info', JSON.stringify(expensesCalc));
 
     return expensesCalc;
-};
+}
 
 
 

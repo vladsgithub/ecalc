@@ -268,8 +268,8 @@
 
 
                                             <div class="cleanlogin-form-bottom">
-                                                <a href="https://costpanel.info/login" target="_blank" class="cleanlogin-form-pwd-link">Восстановить пароль?</a>
-                                                <a href="https://costpanel.info/login" target="_blank" class="cleanlogin-form-register-link">Регистрация</a>
+                                                <p>Чтобы восстановить пароль или зарегистрировать новый аккаунт, необходимо перейти на сайт:</p>
+                                                <a href="https://costpanel.info/login/?action=logout" class="cleanlogin-form-register-link">costpanel.info</a>
                                             </div>
                                         </form>
                                     </div>
