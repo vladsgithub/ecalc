@@ -33635,22 +33635,30 @@ function getUserDataForApp(scope, request, isSynchronization) {
                     var responseArray = xhr.responseText.split('"""""'); // xhr.responseText -- текст ответа.
                     // responseArray: 0 - login, 1 - full name, 2 - user ID, 3 - user key, 4 - data object
 
+                    var fromLocalStorage = (localStorage.getItem('costpanel.info')) ? JSON.parse(localStorage.getItem('costpanel.info')) : false;
+
                     fromServerData = (responseArray[4] && responseArray[4].length > 5) ? JSON.parse(responseArray[4]) : getNewExpensesCalc();
-                    scope.expCalc = fromServerData;
-                    scope.expCalc.meta.userID = parseInt(responseArray[2]);
-                    scope.expCalc.meta.userKey = responseArray[3];
-                    scope.expCalc.meta.userName = getUserNameObject(responseArray[1], responseArray[0]).name;
-                    scope.expCalc.meta.userInitials = getUserNameObject(responseArray[1], responseArray[0]).initials;
 
-                    if (!scope.expCalc.accounts.length) scope.createAccount();
-                    scope.$apply(scope.expCalc);
+                    console.info('Date fromServerData and fromLocalStorage:', fromServerData.meta.savedDate, '>', fromLocalStorage.meta.savedDate);
+                    if (fromServerData.meta.savedDate > fromLocalStorage.meta.savedDate) {
+                        scope.expCalc = fromServerData;
+                        scope.expCalc.meta.userID = parseInt(responseArray[2]);
+                        scope.expCalc.meta.userKey = responseArray[3];
+                        scope.expCalc.meta.userName = getUserNameObject(responseArray[1], responseArray[0]).name;
+                        scope.expCalc.meta.userInitials = getUserNameObject(responseArray[1], responseArray[0]).initials;
 
-                    if (document.loginFormForApp) document.loginFormForApp.reset();
+                        if (!scope.expCalc.accounts.length) scope.createAccount();
+                        scope.$apply(scope.expCalc);
 
-                    localStorage.setItem('costpanel.info', JSON.stringify(fromServerData));
+                        if (document.loginFormForApp) document.loginFormForApp.reset();
 
-                    console.info('[getUserDataForApp] Success! We have received a response:', fromServerData);
-                    if (!isSynchronization) alert('Добро пожаловать, ' + scope.expCalc.meta.userName + '!');
+                        localStorage.setItem('costpanel.info', JSON.stringify(fromServerData));
+
+                        console.info('[getUserDataForApp] Success! We have received a response:', fromServerData);
+                        if (!isSynchronization) alert('Добро пожаловать, ' + scope.expCalc.meta.userName + '!');
+                    } else {
+                        console.info('[getUserDataForApp] Data is used from localStorage:', fromLocalStorage);
+                    }
                 } catch (e) {
                     scope.expCalc.meta.userName = '';
                     console.log('Произошла ошибка в getUserDataForApp:', e);
@@ -33665,7 +33673,7 @@ function getUserDataForApp(scope, request, isSynchronization) {
             }
         }
 
-        updateUploadStatus(1);
+        updateUploadStatus(-1);
         isGetUserDataForAppProcessing = false;
     };
 
@@ -33970,7 +33978,8 @@ angular.module("ngMobileClick", [])
 
             switch(status) {
                 case -1:
-                    tooltip = 'Автоматическое сохранение на сервере: ожидание перед сохранением';
+                    tooltip = 'Автоматическое сохранение на сервере: ожидание';
+                    // ожидание перед сохранением, а еще для приложения этот статус появляется при запуске приложения
                     break;
                 case 0:
                     tooltip = 'Автоматическое сохранение на сервере: в процессе .....';
@@ -34053,7 +34062,7 @@ angular.module("ngMobileClick", [])
 
                 $scope.layout.onceAgainLaterSave = !$scope.layout.uploadStatus;
 
-                if ($scope.layout.onceAgainLaterSave) return false; // еще раз аплоад произойдет только после того как ответ от сервера прийдет
+                if ($scope.layout.onceAgainLaterSave) return false; // еще раз аплоад произойдет только после того как ответ от сервера придет
                 if (!isDirectSave && (now - $scope.layout.updatedDataTime) < delay) return false;
 
                 var xhr, serverStringAccountJSON, currentAccountNumber, currentAccount;
@@ -34112,7 +34121,7 @@ angular.module("ngMobileClick", [])
                                         break;
 
                                     case '200':
-                                        var confirmMessage = 'Внимание! Некоторые данные были изменены другим пользователем ' + responseArray[2] + ' сек. назад. Чтобы не потерять текущие данные, можно сделать экспорт (сохранить копию) в МЕНЮ -> ДАННЫЕ -> ЭКСПОРТ/ИМПОРТ: \n\nОК - продолжить и подгрузить последние данные \nОТМЕНА - оставить текущие данные, чтобы сделать экспорт';
+                                        var confirmMessage = 'Внимание! Некоторые данные были изменены на другом устройстве ' + responseArray[2] + ' сек. назад. Чтобы не потерять текущие данные, можно сделать экспорт (сохранить копию) в МЕНЮ -> ДАННЫЕ -> ЭКСПОРТ/ИМПОРТ: \n\nОК - продолжить и подгрузить последние данные \nОТМЕНА - оставить текущие данные, чтобы сделать экспорт';
 
                                         forEach(fromServerData.accounts, function(account, index, arr) {
                                             if (typeof account == 'string') {
@@ -35284,12 +35293,12 @@ angular.module("ngMobileClick", [])
         } else {
             if (!$scope.expCalc.accounts.length) $scope.createAccount();
 
-            // if ($scope.expCalc.meta.userID && !fromServerData) { // непонятно для чего это нужно было
-            //     $scope.layout.isChangedObject = true;
-            //     $scope.uploadData(true, true);
-            // }
+            if ($scope.expCalc.meta.userID && !fromServerData) { // для правильного сохранения данных (иначе массив accounts пустой)
+                $scope.layout.isChangedObject = true;
+                $scope.uploadData(true, true);
+            }
 
-            if (!window.location.host && $scope.expCalc.meta.userID > 0) { // если это приложение и userID > 0 то синхронизтровать данные с сервера
+            if (!window.location.host && $scope.expCalc.meta.userID > 0) { // если это приложение и userID > 0 то синхронизтровать данные (с сервера или localStorage)
                 getUserDataForApp($scope, 'userID=' + $scope.expCalc.meta.userID + '&userKey=' + $scope.expCalc.meta.userKey, true);
             }
 

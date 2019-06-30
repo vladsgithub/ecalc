@@ -3,18 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="44bc63fb-9e01-4d9b-a8dc-1a1fc190dee4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.pref.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.pref.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/fonts/fa-solid-900.eot" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/fonts/fa-solid-900.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/fonts/fa-solid-900.svg" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/fonts/fa-solid-900.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/fonts/fa-solid-900.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/fonts/fa-solid-900.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/fonts/fa-solid-900.woff" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/fonts/fa-solid-900.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/fonts/fa-solid-900.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/fonts/fa-solid-900.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/ui/css/app-old.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/ui/css/app-old.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/ui/css/fontawesome.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/fontawesome.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-settings.php" afterDir="false" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,7 +25,7 @@
       <file leaf-file-name="functions.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/functions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
+            <state relative-caret-position="2380">
               <caret line="140" column="76" selection-start-line="140" selection-start-column="76" selection-end-line="140" selection-end-column="76" />
             </state>
           </provider>
@@ -61,11 +49,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="fontawesome.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/css/fontawesome.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="63665">
+              <caret line="3745" column="21" selection-start-line="3745" selection-start-column="21" selection-end-line="3745" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="wp-settings.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-settings.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="48" lean-forward="true" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
+            <state relative-caret-position="17">
+              <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -73,7 +70,7 @@
       <file leaf-file-name="page.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="846">
+            <state relative-caret-position="8245">
               <caret line="485" column="103" selection-start-line="485" selection-start-column="103" selection-end-line="485" selection-end-column="103" />
               <folding>
                 <element signature="n#div#1;n#main#0;n#!!top" />
@@ -94,7 +91,7 @@
       <file leaf-file-name="production.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
+            <state relative-caret-position="578986">
               <caret line="34058" column="25" selection-start-line="34058" selection-start-column="25" selection-end-line="34058" selection-end-column="25" />
             </state>
           </provider>
@@ -103,7 +100,7 @@
       <file leaf-file-name="production.min.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.min.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
+            <state relative-caret-position="3179">
               <caret column="187400" selection-start-column="187400" selection-end-column="187400" />
             </state>
           </provider>
@@ -120,7 +117,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>for te</find>
       <find>// responseArray[0] - тип сохранения (100 - весь объект,</find>
       <find>updateUploadStatus</find>
       <find>status=&quot;4&quot;]</find>
@@ -150,6 +146,7 @@
       <find>реги</find>
       <find>getNewExpensesCalc</find>
       <find>app</find>
+      <find>tools</find>
     </findStrings>
     <replaceStrings>
       <replace>Название группы расходов</replace>
@@ -259,6 +256,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -370,7 +368,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -378,7 +375,7 @@
     <property name="FullScreen" value="false" />
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../school/www" />
     <property name="options.lastSelected" value="preferences.sourceCode.LESS" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -387,8 +384,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\WebServers\home\192.168.43.121\www\wp-content\themes\panel\assets\fonts" />
       <recent name="D:\WebServers\home\192.168.43.121\www\wp-content\themes\panel\assets\css" />
+      <recent name="D:\WebServers\home\192.168.43.121\www\wp-content\themes\panel\assets\fonts" />
       <recent name="D:\WebServers\home\192.168.43.121\www\wp-content\plugins\clean-login\lang" />
       <recent name="D:\WebServers\home\192.168.0.121\www" />
       <recent name="D:\WebServers\home\192.168.0.121\www\wp-content\plugins\clean-login" />
@@ -482,22 +479,21 @@
       <workItem from="1544357825405" duration="7662000" />
       <workItem from="1545576637251" duration="607000" />
       <workItem from="1545635218402" duration="57000" />
-      <workItem from="1549090420537" duration="1968000" />
+      <workItem from="1549090420537" duration="2150000" />
+      <workItem from="1556172027632" duration="85000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="676153000" />
+    <option name="totallyTimeSpent" value="676420000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7127193" visible="true" weight="0.15542677" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.3290461" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.28663793" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.22591007" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -511,25 +507,26 @@
       <window_info anchor="bottom" id="Changes" order="9" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.28663793" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7127193" visible="true" weight="0.15542677" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.22591007" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Changes" order="9" />
-      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.21443966" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.3290461" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.28663793" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.22591007" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
@@ -764,7 +761,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
+        <state relative-caret-position="3179">
           <caret column="187400" selection-start-column="187400" selection-end-column="187400" />
         </state>
       </provider>
@@ -783,19 +780,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/css/fontawesome.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23681">
-          <caret line="1393" column="21" lean-forward="true" selection-start-line="1393" selection-start-column="21" selection-end-line="1393" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/css/fontawesome.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/css/fontawesome.css" />
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="846">
+        <state relative-caret-position="8245">
           <caret line="485" column="103" selection-start-line="485" selection-start-column="103" selection-end-line="485" selection-end-column="103" />
           <folding>
             <element signature="n#div#1;n#main#0;n#!!top" />
@@ -805,7 +793,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
+        <state relative-caret-position="578986">
           <caret line="34058" column="25" selection-start-line="34058" selection-start-column="25" selection-end-line="34058" selection-end-column="25" />
         </state>
       </provider>
@@ -826,15 +814,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
+        <state relative-caret-position="2380">
           <caret line="140" column="76" selection-start-line="140" selection-start-column="76" selection-end-line="140" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/css/fontawesome.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63665">
+          <caret line="3745" column="21" selection-start-line="3745" selection-start-column="21" selection-end-line="3745" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-settings.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="48" lean-forward="true" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
+        <state relative-caret-position="17">
+          <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
         </state>
       </provider>
     </entry>
