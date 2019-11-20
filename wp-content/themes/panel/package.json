@@ -2,7 +2,7 @@
   "name": "Ecalc",
   "version": "0.0.1",
   "devDependencies": {
-    "angular": "~1.6.4",
+    "angular": "~1.7.9",
     "angular-resource": "~1.6.4",
     "angular-ui-router": "~1.0.3",
     "grunt": "~0.4.5",
