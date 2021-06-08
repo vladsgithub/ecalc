@@ -1752,6 +1752,12 @@ header .head h2 > b {
   margin-left: 10px;
   font-size: 0.8rem;
 }
+header .head h3 {
+  flex-grow: 1;
+  text-align: right;
+  padding: 3px 10px;
+  text-transform: uppercase;
+}
 header .head .btn {
   background: #344e98;
 }

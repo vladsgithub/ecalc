@@ -81,6 +81,7 @@
 	<?
 		$current_user = wp_get_current_user();
 		$userID = $current_user->ID;
+		$viewModeAccountID = 0;
 		$loadedData = '';
 
 		if (isset($_GET['u']) && isset($_GET['ac'])) {
@@ -153,13 +154,14 @@
 			</button>
 		</li>
 		<li class="title flex-grow separator">
-			<h1>Cost panel (бета-версия)</h1>
+			<h1>Cost panel</h1>
 			<h2>
 			    {{(expCalc.accounts[expCalc.settings.currentAccount].meta.title) ? expCalc.accounts[expCalc.settings.currentAccount].meta.title : '--- расчет без названия ---'}}
 			    <b ng-if="expCalc.accounts[expCalc.settings.currentAccount].meta.savedDate > 0">
 			        [{{formatDate(expCalc.accounts[expCalc.settings.currentAccount].meta.savedDate)}}]
 			    </b>
 			</h2>
+			<h3 class="<? if (!$viewModeAccountID) { echo 'hidden'; } ?>"><div>Это расчет расходов</div><div>от другого участника</div></h3>
 		</li>
 		<li class="separator" ng-class="{'hidden': !(expCalc.meta.userID > 0)}" ng-if="!expCalc.meta.isViewMode">
 		    <div class="help-text small no-arrow" ng-if="expCalc.settings.isHelpMode">
@@ -225,7 +227,7 @@
                 <div class="text-field title"><b>Главное меню</b></div>
             </li>
 
-            <li>
+            <li class="<? if ($viewModeAccountID) { echo 'hidden'; } ?>">
                 <button class="btn solid no-shadow" data-next title="Авторизация">
                     <i class="fas fa-user-circle"></i>
                     <b>Авторизация</b>
@@ -248,9 +250,10 @@
         // этот плагин будет нормально работать
         // Но чтобы проводить изменения с аккаунтом - необходимо это делать на отдельной статической странице login
 
-                                echo do_shortcode('[clean-login]');
-
-                                echo get_ulogin_panel();
+                                if (!$viewModeAccountID) {
+                                    echo do_shortcode('[clean-login]');
+                                    echo get_ulogin_panel();
+                                }
                             ?>
                             <ul class="settings-list" ng-if="false" data-for-android-app>
                                 <li>
@@ -259,16 +262,22 @@
                                     </div>
                                 </li>
 
-                                <li>
+                                <li class="text-center" ng-if="expCalc.meta.userID">
+                                    <button class="btn solid warning" ng-click="addNewPayment(participant)">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        <b>Выйти</b>
+                                    </button>
+                                </li>
+                                <li ng-if="!expCalc.meta.userID">
                                     <div class="cleanlogin-container">
                                         <form name="loginFormForApp" class="cleanlogin-form" ng-submit="getUserDataForApp('login')">
                                             <fieldset>
                                                 <div class="cleanlogin-field">
-                                                    <input id="username" class="cleanlogin-field-username" type="text" name="log" placeholder="Имя участника (username)">
+                                                    <input id="username" class="cleanlogin-field-username" type="text" name="log" placeholder="Имя участника (user) или e-mail">
                                                 </div>
 
                                                 <div class="cleanlogin-field">
-                                                    <input id="password" class="cleanlogin-field-password" type="password" name="pwd" placeholder="Пароль">
+                                                    <input id="password" class="cleanlogin-field-password" type="password" name="pwd" placeholder="Пароль (Password)">
                                                 </div>
                                             </fieldset>
 
@@ -285,7 +294,7 @@
                                     </div>
                                 </li>
 
-                                <li>
+                                <li ng-if="!expCalc.meta.userID">
                                     <button id="userLogin" class="btn solid border block width100">
                                         <i class="fas fa-user-friends"></i>
                                         <b class="small">Авторизация через соц.сети</b>
@@ -297,7 +306,7 @@
                 </ul>
             </li>
 
-            <li>
+            <li class="<? if ($viewModeAccountID) { echo 'hidden'; } ?>">
                 <button class="btn solid no-shadow" data-next>
                     <i class="fas fa-database"></i>
                     <b>Данные</b>
@@ -394,7 +403,7 @@
                                         </div>
                                         <div class="text-field">
                                             <b>
-                                                В бета-версии калькулятора необходимо написать название иконки, чтобы отобразить ее. В будущем будет реализован более удобный подход.
+                                                В этой версии калькулятора необходимо написать название иконки, чтобы отобразить ее. В будущем будет реализован более удобный подход.
                                             </b>
                                         </div>
                                     </li>

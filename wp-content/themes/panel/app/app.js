@@ -64,6 +64,7 @@ function getUserDataForApp(scope, request, isSynchronization) {
     var xhr = new XMLHttpRequest();
     var host = 'https://costpanel.info';
 // var host = 'http://192.168.43.121'; // FOR TESTING !!!
+    var prevUserName = scope.expCalc.meta.userName;
 
     if (!request) return false;
 
@@ -96,7 +97,10 @@ function getUserDataForApp(scope, request, isSynchronization) {
                         scope.expCalc.meta.userName = getUserNameObject(responseArray[1], responseArray[0]).name;
                         scope.expCalc.meta.userInitials = getUserNameObject(responseArray[1], responseArray[0]).initials;
 
-                        if (!scope.expCalc.accounts.length) scope.createAccount();
+                        if (!scope.expCalc.accounts.length) {
+                            scope.createAccount();
+                            scope.updateCurrencies(1);
+                        }
                         scope.$apply(scope.expCalc);
 
                         if (document.loginFormForApp) document.loginFormForApp.reset();
@@ -107,6 +111,7 @@ function getUserDataForApp(scope, request, isSynchronization) {
                         if (!isSynchronization) alert('Добро пожаловать, ' + scope.expCalc.meta.userName + '!');
                     } else {
                         console.info('[getUserDataForApp] Data is used from localStorage:', fromLocalStorage);
+                        scope.expCalc.meta.userName = prevUserName;
                     }
                 } catch (e) {
                     scope.expCalc.meta.userName = '';
@@ -114,10 +119,8 @@ function getUserDataForApp(scope, request, isSynchronization) {
                     console.log('Пришел ответ в getUserDataForApp:', xhr.responseText);
                 }
             } else {
-                scope.expCalc = getNewExpensesCalc();
-                scope.createAccount();
+                resetUserData(scope);
 
-                scope.$apply(scope.expCalc);
                 alert('Авторизация не удалась. Логин или пароль введены неверно :(');
             }
         }
@@ -128,6 +131,13 @@ function getUserDataForApp(scope, request, isSynchronization) {
 
     xhr.send(request);
 };
+function resetUserData(scope) {
+    scope.expCalc = getNewExpensesCalc();
+    scope.createAccount();
+    scope.updateCurrencies(1);
+
+    scope.$apply(scope.expCalc);
+}
 function applyNewData($scope, stringNewData) {
     try {
         var newExpCalc = JSON.parse(stringNewData);
@@ -163,9 +173,13 @@ function getNewExpensesCalc(isHelpMode) {
         // 	[57.322,68.4158,1,29.7271], // rates of the currency number 2
         // 	[1.928,2.2963,0.0336,1] // rates of the currency number 3
         // ],
-        names: ['BYN'],
+        names: ['RUB', 'BYN', 'UAH', 'USD', 'EUR'],
         rates: [
-            [1]
+            [1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1]
         ],
         commonSurcharge: 0.4
     };
@@ -677,6 +691,9 @@ angular.module("ngMobileClick", [])
             getUserDataForApp($scope, initUserRequest);
         };
 
+        $scope.resetUserDataForApp = function() {
+            resetUserData($scope);
+        };
 
 
 
@@ -1552,14 +1569,22 @@ angular.module("ngMobileClick", [])
             return $scope.formatDate('' + new Date());
         };
 
-        $scope.updateCurrencies = function () {
+        $scope.updateCurrencies = function (tryNumber) {
             var rows, currentCurrencies, exactRate, currenciesNames, currenciesByUSD;
             var surchargePercent = $scope.expCalc.settings.currencies.commonSurcharge;
             var table = document.getElementById('currenciesTable').querySelectorAll('table')[0];
 
             if (!table) {
-                alert('Не удалось получить данные');
-                return;
+                if (tryNumber) { // чтобы сразу загрузить актуальные курсы, когда пользователь впервые зашел
+                    if (tryNumber < 20) setTimeout(function() {
+                        $scope.updateCurrencies(++tryNumber);
+                    }, 500); // попытки через каждые n секунды, но не бесконечно
+
+                    return;
+                } else {
+                    alert('Не удалось получить данные. Отсутствует таблица с курсами. Попробуйте обновить страницу.');
+                    return;
+                }
             }
 
             rows = table.querySelectorAll('tr');
@@ -1610,6 +1635,8 @@ angular.module("ngMobileClick", [])
             });
 
 			$scope.uploadData(true);
+
+            if (tryNumber) $scope.$apply($scope.expCalc);
         };
 
         $scope.completedDetails = function (expense) {
@@ -1740,7 +1767,10 @@ angular.module("ngMobileClick", [])
                 $scope.expCalc = $scope.getEmptyUserDataObject();
             }
         } else {
-            if (!$scope.expCalc.accounts.length) $scope.createAccount();
+            if (!$scope.expCalc.accounts.length) {
+                $scope.createAccount();
+                $scope.updateCurrencies(1);
+            }
 
             if ($scope.expCalc.meta.userID && !fromServerData) { // для правильного сохранения данных (иначе массив accounts пустой)
                 $scope.layout.isChangedObject = true;
