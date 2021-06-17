@@ -8,6 +8,7 @@ $email = $_POST["Email0pen"];
 $authbyemail = $_POST["ByEmail0pen"];
 $requestUserID = $_POST["userID"];
 $requestUserKey = $_POST["userKey"];
+$appVersion = $_POST["av"];
 
 if ($authbyemail) {
     $user = get_user_by( 'email', $email );
@@ -81,7 +82,7 @@ if ( $auth ) {
        $loadedData = str_replace('"{"', '{"', $loadedData);
        $loadedData = str_replace('}"', '}', $loadedData);
 
-       echo $login.'"""""'.$firstname.' '.$lastname.'"""""'.$userID.'"""""'.$user_key.'"""""'.$loadedData;
+       echo $login.'"""""'.$firstname.' '.$lastname.'"""""'.$userID.'"""""'.$user_key.'"""""'.$loadedData.'"""""'; // the last item can be used for some message in the app on start running
    }
 
    $conn->close();

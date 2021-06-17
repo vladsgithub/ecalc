@@ -33552,6 +33552,9 @@ var saveAs = saveAs || (function(view) {
 var fromServerData, userID, userKey, userName, loadData, scrollTimeout, isFirstVisit, updateUploadStatus;
 var isGetUserDataForAppProcessing = false;
 
+var costPanelServer = 'https://costpanel.info';
+//var costPanelServer = 'http://192.168.43.121'; // FOR TESTING !!!
+
 function forEach(elements, callback) {
 	Array.prototype.forEach.call(elements, callback);
 }
@@ -33587,6 +33590,31 @@ function getNormalDate(date) { // date в милисекундах с 1970г.
     return date.toISOString().replace(/:/g,'.');
     // return date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate() + ' [' + date.getHours() + '.' + date.getMinutes() + '.' + date.getSeconds() + ']';
 }
+function reformatSecToNormalTime(time) {
+    var unit = 'сек.';
+
+    if (time > 60) {
+        time = time / 60;
+        unit = 'мин.';
+
+        if (time > 60) {
+            time = time / 60;
+            unit = 'час.';
+
+            if (time > 24) {
+                time = time / 24;
+                unit = 'дн.';
+
+                if (time > 30) {
+                    time = time / 30;
+                    unit = 'мес.';
+                }
+            }
+        }
+    }
+
+    return Math.round(time) + ' ' + unit;
+}
 function getUserNameObject(userName, loginName) {
     if (!userName) userName = '';
     if (!loginName) loginName = '';
@@ -33613,8 +33641,7 @@ function getUserDataForApp(scope, request, isSynchronization) {
     if (isSynchronization) updateUploadStatus(4);
 
     var xhr = new XMLHttpRequest();
-    var host = 'https://costpanel.info';
-// var host = 'http://192.168.43.121'; // FOR TESTING !!!
+    var host = costPanelServer;
     var prevUserName = scope.expCalc.meta.userName;
 
     if (!request) return false;
@@ -33623,6 +33650,8 @@ function getUserDataForApp(scope, request, isSynchronization) {
 
     xhr.open("POST", host + '/app-login.php', true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded; charset=utf-8');
+    if (ecalc) request += '&av=' + ecalc.version;
+
 
     xhr.onreadystatechange = function () {
 
@@ -33630,11 +33659,12 @@ function getUserDataForApp(scope, request, isSynchronization) {
 
         if (xhr.status != 200) {
             console.error('!!! We have a problem: ' + xhr.status + ': ' + xhr.statusText);
+            scope.expCalc.meta.userName = prevUserName;
         } else {
             if (xhr.responseText != 'Login failed') {
                 try {
                     var responseArray = xhr.responseText.split('"""""'); // xhr.responseText -- текст ответа.
-                    // responseArray: 0 - login, 1 - full name, 2 - user ID, 3 - user key, 4 - data object
+                    // responseArray: 0 - login, 1 - full name, 2 - user ID, 3 - user key, 4 - data object, 5 - some message from backend if you need
 
                     var fromLocalStorage = (localStorage.getItem('costpanel.info')) ? JSON.parse(localStorage.getItem('costpanel.info')) : false;
 
@@ -33660,12 +33690,13 @@ function getUserDataForApp(scope, request, isSynchronization) {
 
                         console.info('[getUserDataForApp] Success! We have received a response:', fromServerData);
                         if (!isSynchronization) alert('Добро пожаловать, ' + scope.expCalc.meta.userName + '!');
+                        if (responseArray[5]) alert(responseArray[5]);
                     } else {
                         console.info('[getUserDataForApp] Data is used from localStorage:', fromLocalStorage);
                         scope.expCalc.meta.userName = prevUserName;
                     }
                 } catch (e) {
-                    scope.expCalc.meta.userName = '';
+                    scope.expCalc.meta.userName = 'Error in getUserDataForApp';
                     console.log('Произошла ошибка в getUserDataForApp:', e);
                     console.log('Пришел ответ в getUserDataForApp:', xhr.responseText);
                 }
@@ -34070,8 +34101,7 @@ angular.module("ngMobileClick", [])
             if ($scope.layout.uploadStatus !== 0) updateUploadStatus(-1);
 
             setTimeout(function () {
-                var host = 'https://costpanel.info';
-// var host = 'http://192.168.43.121'; // FOR TESTING !!!
+                var host = costPanelServer;
                 var now = +new Date();
 
                 $scope.layout.onceAgainLaterSave = !$scope.layout.uploadStatus;
@@ -34135,7 +34165,7 @@ angular.module("ngMobileClick", [])
                                         break;
 
                                     case '200':
-                                        var confirmMessage = 'Внимание! Некоторые данные были изменены на другом устройстве ' + responseArray[2] + ' сек. назад. Чтобы не потерять текущие данные, можно сделать экспорт (сохранить копию) в МЕНЮ -> ДАННЫЕ -> ЭКСПОРТ/ИМПОРТ: \n\nОК - продолжить и подгрузить последние данные \nОТМЕНА - оставить текущие данные, чтобы сделать экспорт';
+                                        var confirmMessage = 'ВНИМАНИЕ! Некоторые данные были изменены на другом устройстве ' + reformatSecToNormalTime(responseArray[2]) + ' назад. \n\nОК - продолжить и подгрузить последние данные \nОТМЕНА - оставить текущие данные, чтобы сохранить копию (МЕНЮ -> ДАННЫЕ -> ЭКСПОРТ/ИМПОРТ)';
 
                                         forEach(fromServerData.accounts, function(account, index, arr) {
                                             if (typeof account == 'string') {

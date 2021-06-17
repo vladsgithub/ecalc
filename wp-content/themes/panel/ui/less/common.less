@@ -1,3 +1,7 @@
+*, ::after, ::before {
+	box-sizing: content-box; // rewrite styles of the bootstrap
+}
+
 .guide {
   padding: 30px;
   box-sizing: border-box;
@@ -278,6 +282,7 @@ button {
 	}
 	&:focus {
 		outline: none;
+		box-shadow: none; // rewrite styles of the bootstrap
 
 		&::after {
 			content: "";
