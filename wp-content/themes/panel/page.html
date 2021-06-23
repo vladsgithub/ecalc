@@ -459,9 +459,19 @@
 
 														<div class="details">
 
-															<div class="text-field name thin block s-p2">
-																<b class="s-p0">Подробности:</b>
-															</div>
+                                                            <div class="flex flex-wrap to-right-content">
+                                                                <div class="flex-grow text-field name thin s-p2">
+                                                                    <b class="s-p0">Подробности:</b>
+                                                                </div>
+                                                                <div class="text-field thin small" ng-if="expense.details.length" title="Суммарная цена пунктов - отмеченных/всех">
+                                                                    <b class="s-p0">Суммарная цена:</b>
+                                                                </div>
+                                                                <div class="text-field name thin currency" ng-if="expense.details.length" title="Суммарная цена пунктов - отмеченных/всех">
+                                                                    <b class="s-p0">
+                                                                        {{getExpenseDetailsTotal(expense.details, true)}} / {{getExpenseDetailsTotal(expense.details, false)}}
+                                                                    </b>
+                                                                </div>
+                                                            </div>
 
 															<div class="help-text bottom" ng-if="expCalc.settings.isHelpMode && !expense.details.length">
 																<b>

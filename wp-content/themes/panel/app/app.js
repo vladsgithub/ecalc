@@ -614,7 +614,7 @@ angular.module("ngMobileClick", [])
                                         break;
 
                                     case '200':
-                                        var confirmMessage = 'ВНИМАНИЕ! Некоторые данные были изменены на другом устройстве ' + reformatSecToNormalTime(responseArray[2]) + ' назад. \n\nОК - продолжить и подгрузить последние данные \nОТМЕНА - оставить текущие данные, чтобы сохранить копию (МЕНЮ -> ДАННЫЕ -> ЭКСПОРТ/ИМПОРТ)';
+                                        var confirmMessage = 'ВНИМАНИЕ! Некоторые данные были изменены на другом устройстве ' + reformatSecToNormalTime(responseArray[2]) + ' назад. \n\nОК - продолжить и подгрузить последние данные \n\nОТМЕНА - оставить текущие данные, чтобы сохранить копию (МЕНЮ -> ДАННЫЕ -> ЭКСПОРТ/ИМПОРТ)';
 
                                         forEach(fromServerData.accounts, function(account, index, arr) {
                                             if (typeof account == 'string') {
@@ -1091,6 +1091,16 @@ angular.module("ngMobileClick", [])
             });
 
             return participant.meta.total;
+        };
+
+        $scope.getExpenseDetailsTotal = function (expenseDetails, isSumChecked) {
+            var expenseDetailsTotal = 0;
+
+            expenseDetails.forEach(function (expense, i, arr) {
+                if (!isSumChecked || expense.isChecked) expenseDetailsTotal += expense.value;
+            });
+
+            return expenseDetailsTotal;
         };
 
         $scope.getMoneyByAccountCurrency = function (value, exchangeCurrency) {

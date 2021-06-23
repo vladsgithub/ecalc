@@ -14,8 +14,8 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <meta name="keywords" content="как разделить расходы между партнерами, калькулятор расходов, разделить совместные затраты,
     калькулятор распределения долей, кто кому сколько должен, расчет доли каждого участника, расчет между участниками,
-    распределение расходов поровну, распределение расходов между участниками, посчитать расходы на троих,
-    посчитать траты и разделить на людей, поделить расходы между друзьями, онлайн список покупок, перечень покупок,
+    распределение расходов поровну, распределение расходов между участниками, посчитать расходы на троих, поделить расходы
+    на компанию, посчитать траты и разделить на людей, поделить расходы между друзьями, онлайн список покупок, перечень покупок,
     возврат долгов, учет долгов">
 
 
@@ -159,7 +159,7 @@
 			        [{{formatDate(expCalc.accounts[expCalc.settings.currentAccount].meta.savedDate)}}]
 			    </b>
 			</h2>
-			<h3 class="<? if (!$viewModeAccountID) { echo 'hidden'; } ?>"><div>Это расчет расходов</div><div>от другого участника</div></h3>
+			<h3 class="<? if (!$viewModeAccountID) { echo 'hidden'; } ?>"><div>Расчет расходов</div><div>от другого участника</div></h3>
 		</li>
 		<li class="separator" ng-class="{'hidden': !(expCalc.meta.userID > 0)}" ng-if="!expCalc.meta.isViewMode">
 		    <div class="help-text small no-arrow" ng-if="expCalc.settings.isHelpMode">
@@ -185,6 +185,9 @@
 
 <aside class="menu" role="menu">
     <ul class="nav-head flex">
+        <li class="logo">
+            <img src="/pictures/logo/CostPanel.jpg" />
+        </li>
         <li class="photo" ng-if="true" data-for-android-app>
         <?
             if ($current_user->ID > 0) echo '<img src="'.get_avatar_url($current_user->ID).'" />';

@@ -8338,6 +8338,10 @@ button {
   -ms-flex-pack: justify;
       justify-content: space-between;
 }
+.flex.to-right-content {
+  -ms-flex-pack: end;
+      justify-content: flex-end;
+}
 .flex.center-align {
   -ms-flex-align: center;
       align-items: center;
@@ -9931,7 +9935,17 @@ aside.menu .nav-head {
   -ms-flex-negative: 0;
       flex-shrink: 0;
 }
+aside.menu .nav-head .logo {
+  width: 40px;
+  padding: 2px 0;
+}
+aside.menu .nav-head .logo > img {
+  display: block;
+  width: 100%;
+  border-radius: 4px;
+}
 aside.menu .nav-head .photo {
+  margin-left: -42px;
   width: 44px;
   line-height: 44px;
   text-align: center;
@@ -10506,7 +10520,7 @@ section a {
   }
 }
 .three-window-lt .control-lt {
-  z-index: 1;
+  z-index: 1000;
   position: absolute;
   right: 0;
   margin-top: -90px;
