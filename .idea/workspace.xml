@@ -2,22 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44bc63fb-9e01-4d9b-a8dc-1a1fc190dee4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/themes/panel/app/icons.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pictures/logo/CostPanel.psd" afterPath="$PROJECT_DIR$/pictures/logo/CostPanel.psd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/fonts/fa-solid-900.eot" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/fonts/fa-solid-900.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/fonts/fa-solid-900.ttf" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/fonts/fa-solid-900.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/fonts/fa-solid-900.woff2" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/fonts/fa-solid-900.woff2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/fonts/fa-solid-900.woff" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/fonts/fa-solid-900.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" afterPath="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.43.121\www\wp-content\themes\panel\assets\fonts\900\fa-solid-900.eot" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.43.121\www\wp-content\themes\panel\assets\fonts\900\fa-solid-900.svg" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.43.121\www\wp-content\themes\panel\assets\fonts\900\fa-solid-900.ttf" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.43.121\www\wp-content\themes\panel\assets\fonts\900\fa-solid-900.woff" afterPath="" />
+      <change type="DELETED" beforePath="D:\WebServers\home\192.168.43.121\www\wp-content\themes\panel\assets\fonts\900\fa-solid-900.woff2" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" afterPath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.pref.css" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.pref.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/fonts/fa-solid-900.svg" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/fonts/fa-solid-900.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/header.php" afterPath="$PROJECT_DIR$/wp-content/themes/panel/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.min.js" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-settings.php" afterPath="$PROJECT_DIR$/wp-settings.php" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,10 +32,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.less" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.less" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="446" column="44" selection-start="7901" selection-end="7901" vertical-scroll-proportion="-10.254902" vertical-offset="7059" max-vertical-offset="24565">
+            <state line="306" column="23" selection-start="5437" selection-end="5437" vertical-scroll-proportion="0.57468" vertical-offset="4798" max-vertical-offset="24582">
               <folding />
             </state>
           </provider>
@@ -91,10 +82,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wp-settings.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="wp-settings.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-settings.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="84" selection-start="654" selection-end="654" vertical-scroll-proportion="0.5185676" vertical-offset="0" max-vertical-offset="8245">
+            <state line="23" column="84" selection-start="654" selection-end="654" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8245">
               <folding />
             </state>
           </provider>
@@ -239,10 +230,10 @@
         <option value="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/page.html" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/header.php" />
-        <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/app/icons.js" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" />
         <option value="$PROJECT_DIR$/wp-settings.php" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" />
       </list>
     </option>
   </component>
@@ -636,10 +627,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14473684" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14473684" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32747254" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -735,13 +726,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="446" column="44" selection-start="7901" selection-end="7901" vertical-scroll-proportion="-10.254902" vertical-offset="7059" max-vertical-offset="24565">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/icons.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="908" column="12" selection-start="15879" selection-end="15879" vertical-scroll-proportion="-12.84" vertical-offset="15115" max-vertical-offset="15844">
@@ -800,7 +784,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-settings.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="84" selection-start="654" selection-end="654" vertical-scroll-proportion="0.5185676" vertical-offset="0" max-vertical-offset="8245">
+        <state line="23" column="84" selection-start="654" selection-end="654" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8245">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="306" column="23" selection-start="5437" selection-end="5437" vertical-scroll-proportion="0.57468" vertical-offset="4798" max-vertical-offset="24582">
           <folding />
         </state>
       </provider>

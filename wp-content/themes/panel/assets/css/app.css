@@ -10625,6 +10625,7 @@ aside.menu .nav-head .logo > img {
   border-radius: 4px;
 }
 aside.menu .nav-head .photo {
+  z-index: 1;
   margin-left: -42px;
   width: 44px;
   line-height: 44px;
