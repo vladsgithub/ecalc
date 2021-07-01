@@ -295,6 +295,7 @@ aside.menu {
 		.logo {
 			width: 40px;
 			padding: 2px 0;
+			opacity: 0.1;
 
 			> img {
 				display: block;
@@ -431,6 +432,27 @@ aside.menu {
 
 		> li {
 			padding-top: 8px;
+		}
+	}
+	.icons-list {
+		display: flex;
+		flex-wrap: wrap;
+
+		> li{
+			width: 50%;
+			position: relative;
+			padding: 0 5px;
+			box-sizing: border-box;
+			border-left: 30px solid white;
+			border-bottom: thin solid white;
+
+			> i{
+				position: absolute;
+				left: -15px;
+				top: 15px;
+				transform: translate(-50%,-50%);
+				font-size: 22px;
+			}
 		}
 	}
 	.currencies-list {

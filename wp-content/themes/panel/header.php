@@ -195,8 +195,9 @@
         </li>
         <li class="flex-grow flex-hidden s-p2">
             <div class="text-field name solid capitalize">
-                <b id="userNameBlock">
-                    {{expCalc.meta.userName}}
+                <b>
+                    <span>{{expCalc.meta.userName}}</span>
+                    <span id="userNameBlock"></span>
                 </b>
                 <b class="hidden">
                     <?
@@ -295,7 +296,7 @@
                                     </div>
                                 </li>
 
-                                <li ng-if="!expCalc.meta.userID">
+                                <li ng-class="{'hidden': expCalc.meta.userID}">
                                     <button id="userLogin" class="btn solid border block width100">
                                         <i class="fas fa-user-friends"></i>
                                         <b class="small">Авторизация через соц.сети</b>
@@ -361,19 +362,17 @@
                                                         <b data-placeholder="Название типа">{{expensesType.name}}</b>
                                                     </label>
 
-                                                    <label class="text-input flex-grow">
-                                                        <input type="text" placeholder="Название иконки типа"
-                                                               ng-model="expensesType.icon" ng-change="validateJSON(expensesType, 'icon') && uploadData(true)">
-                                                        <b data-placeholder="Название иконки типа">{{expensesType.icon}}</b>
+                                                    <label class="text-select icons">
+                                                        <select ng-model="expensesType.icon" ng-change="validateJSON(expensesType, 'icon') && uploadData(true)">
+                                                            <option ng-repeat="fontIcon in fontAwesomeIcons track by $index"
+                                                                    value="{{fontIcon}}">
+                                                                {{fontIcon}}
+                                                            </option>
+                                                        </select>
+                                                        <b>
+                                                            <i class="fas fa-{{expensesType.icon}}"></i>
+                                                        </b>
                                                     </label>
-                                                </div>
-                                            </li>
-
-                                            <li class="flex-shrink s-p1">
-                                                <div class="text-field icon">
-                                                    <b>
-                                                        <i class="fas fa-{{expensesType.icon}}"></i>
-                                                    </b>
                                                 </div>
                                             </li>
                                         </ul>
@@ -396,17 +395,18 @@
                                     </li>
 
                                     <li class="s-p2">
-                                        <div class="text-field">
-                                            <b>
-                                                Названия иконок для новых типов расходов можно посмотреть по этой ссылке:
-                                                <a href="https://fontawesome.com/icons?d=gallery&s=solid&m=free" target="_blank">fontawesome icons</a>
-                                            </b>
+                                        <div class="text-field name word-wrap">
+                                            <b>Все доступные иконки:</b>
                                         </div>
-                                        <div class="text-field">
-                                            <b>
-                                                В этой версии калькулятора необходимо написать название иконки, чтобы отобразить ее. В будущем будет реализован более удобный подход.
-                                            </b>
-                                        </div>
+
+                                        <ul class="icons-list">
+                                            <li ng-repeat="fontIcon in fontAwesomeIcons track by $index">
+                                                <i class="fas fa-{{fontIcon}}"></i>
+                                                <div class="text-field thin">
+                                                    <b>{{fontIcon}}</b>
+                                                </div>
+                                            </li>
+                                        </ul>
                                     </li>
                                 </ul>
 

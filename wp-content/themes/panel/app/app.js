@@ -95,6 +95,7 @@ function getUserDataForApp(scope, request, isSynchronization) {
 
     if (!request) return false;
 
+    document.getElementById('userNameBlock').innerText = '';
     scope.expCalc.meta.userName = '... Инициализация ...';
 
     xhr.open("POST", host + '/app-login.php', true);
@@ -161,13 +162,11 @@ function getUserDataForApp(scope, request, isSynchronization) {
     };
 
     xhr.send(request);
-};
+}
 function resetUserData(scope) {
     scope.expCalc = getNewExpensesCalc();
     scope.createAccount();
     scope.updateCurrencies(1);
-
-    scope.$apply(scope.expCalc);
 }
 function applyNewData($scope, stringNewData) {
     try {
@@ -287,6 +286,8 @@ angular.module("ngMobileClick", [])
             // $scope.uploadData(true, true);
         });
 
+
+        $scope.fontAwesomeIcons = fontAwesomeIcons;
 
 
         // WORKING WITH LAYOUT ==============================
@@ -1676,7 +1677,6 @@ angular.module("ngMobileClick", [])
 
 			$scope.uploadData(true);
 
-            if (tryNumber) $scope.$apply($scope.expCalc);
         };
 
         $scope.completedDetails = function (expense) {
