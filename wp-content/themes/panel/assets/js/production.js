@@ -33622,7 +33622,9 @@ var checkSuspiciousScripts = {
 Object.freeze(checkSuspiciousScripts);
 Object.freeze(console); // запретить обнулять методы объекта console (ulogin подгружает левый скрипт, он это делает для своих хаков в рекламных айфреймах)
 
-checkSuspiciousScripts.init();
+if (window.location.host) { // актуально только для веб-версии, в приложении пока не замечены подозрительные скрипты или айфреймы
+    checkSuspiciousScripts.init();
+}
 
 
 
@@ -34014,7 +34016,7 @@ angular.module("ngMobileClick", [])
                     button.addEventListener('click', function() {
                         var activeSection = button.parentNode.parentNode;
 
-                        showAndHideSectionBoxes(activeSection.querySelectorAll('.section-box'));
+                        showAndHideSectionBoxes(activeSection.querySelectorAll('.section.open > .section-box'));
                         activateMenu(activeSection);
                         forEach(activeSection.querySelectorAll('.open'), function(section, i, arr) {
                             section.classList.remove('open');

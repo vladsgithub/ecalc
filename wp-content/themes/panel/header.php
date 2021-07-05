@@ -223,7 +223,7 @@
 
         <ul class="section open active" data-level="1">
             <li class="section-title">
-                <button class="btn no-shadow" data-previous title="Меню">
+                <button class="btn no-shadow" data-previous title="Меню" ng-click="layout.closeBigData()">
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="text-field title"><b>Главное меню</b></div>
