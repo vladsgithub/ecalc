@@ -8592,11 +8592,15 @@ button {
 .btn.toggle.pressed i {
   transform: scale(0.8);
 }
+.btn.rotated-icon i {
+  transform: scaleY(-1);
+}
 .btn i {
   width: 20px;
   vertical-align: middle;
   text-align: center;
   font-size: 22px;
+  transition: transform 0.2s;
 }
 .btn i + b {
   margin-left: 10px;
@@ -10012,6 +10016,9 @@ aside.menu .section.open > .section-title {
   display: flex;
   outline: 2px solid #4c69bd;
 }
+aside.menu .section.open > .section-box {
+  display: block;
+}
 aside.menu .section.active > li,
 aside.menu .section.open > li {
   visibility: visible;
@@ -10036,6 +10043,7 @@ aside.menu .section-title > .btn {
   border-color: transparent;
 }
 aside.menu .section-box {
+  display: none;
   position: absolute;
   top: 44px;
   bottom: 0;

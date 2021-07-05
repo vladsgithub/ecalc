@@ -316,7 +316,7 @@
 
                 <ul class="section" data-level="2">
                     <li class="section-title">
-                        <button class="btn no-shadow" data-previous title="Данные">
+                        <button class="btn no-shadow" data-previous title="Данные" ng-click="layout.closeBigData()">
                             <i class="fas fa-database"></i>
                         </button>
                         <div class="text-field title"><b>Данные</b></div>
@@ -394,12 +394,22 @@
                                         </ul>
                                     </li>
 
-                                    <li class="s-p2">
-                                        <div class="text-field name word-wrap">
-                                            <b>Все доступные иконки:</b>
-                                        </div>
+                                    <li class="s-p2 mb-5">
+                                        <ul class="flex background">
+                                            <li class="flex-grow s-p2">
+                                                <div class="name solid text-field word-wrap">
+                                                    <b>Все доступные иконки:</b>
+                                                </div>
+                                            </li>
+                                            <li class="flex-shrink s-p0">
+                                                <button data-id="iconsListBlock" class="btn" title="Показать/Спрятать"
+                                                        ng-click="layoutControl.toggleListView('iconsListBlock', false)">
+                                                    <i class="fas fa-chevron-down"></i>
+                                                </button>
+                                            </li>
+                                        </ul>
 
-                                        <ul class="icons-list">
+                                        <ul id="iconsListBlock" class="icons-list hidden">
                                             <li ng-repeat="fontIcon in fontAwesomeIcons track by $index">
                                                 <i class="fas fa-{{fontIcon}}"></i>
                                                 <div class="text-field thin">
@@ -570,10 +580,28 @@
                                         </ul>
                                     </li>
 
-                                    <li id="currenciesTable" class="currency-table s-p2">
+                                    <li>
+                                        <ul class="flex background">
+                                            <li class="flex-grow s-p2">
+                                                <div class="name solid text-field word-wrap">
+                                                    <b>Все курсы обмена США Доллара:</b>
+                                                </div>
+                                            </li>
+                                            <li class="flex-shrink s-p0">
+                                                <button data-id="currenciesTable" class="btn" title="Показать/Спрятать"
+                                                        ng-click="layoutControl.toggleListView('currenciesTable', false)">
+                                                    <i class="fas fa-chevron-down"></i>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li id="currenciesTable" class="currency-table s-p2 hidden">
                                         <script type="text/javascript" src="https://ru.exchange-rates.org/GetCustomContent.aspx?sid=RT000LM8X&amp;type=RatesTable&amp;stk=02LYTNC6H9" charset="utf-8">
                                         </script>
                                     </li>
+
+                                    <li class="mb-5"></li>
                                 </ul>
 
                             </li>

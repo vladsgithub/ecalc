@@ -7,7 +7,6 @@
 
 
 
-
 @keyframes hiddenWithDelay {
 	0% { visibility: visible; }
 	100% { visibility: hidden; }
@@ -366,6 +365,9 @@ aside.menu {
 				display: flex;
 				outline: 2px solid @brand-strong;
 			}
+			> .section-box {
+				display: block;
+			}
 		}
 		&.active,
 		&.open {
@@ -396,6 +398,7 @@ aside.menu {
 		}
 	}
 	.section-box {
+		display: none;
 		position: absolute;
 		top: 44px;
 		bottom: 0;

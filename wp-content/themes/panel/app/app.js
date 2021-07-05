@@ -4,6 +4,77 @@ var isGetUserDataForAppProcessing = false;
 var costPanelServer = 'https://costpanel.info';
 //var costPanelServer = 'http://192.168.43.121'; // FOR TESTING !!!
 
+var checkSuspiciousScripts = {
+    allowedResources: [
+        'yandex.ru',
+        'google-analytics.com',
+        'ulogin.ru'
+    ],
+    observerConfig: {
+        attributes: true,
+        childList: false,
+        subtree: false
+    },
+
+    init: function() {
+        var self = this;
+
+        document.getElementsByTagName('html')[0].addEventListener('DOMNodeInserted', function(event) {
+            self.check(event);
+        }, false);
+    },
+    contentAllowedResources: function(verifiableContent) {
+        var isAllowed = false;
+
+        this.allowedResources.forEach(function(expression, i){
+            if (!isAllowed) {
+                isAllowed = ((verifiableContent.indexOf(expression) + 1)) ? true : false;
+            }
+        });
+
+        return isAllowed;
+    },
+    check: function(event) {
+        if (event.target) {
+            if (event.target.nodeName === 'SCRIPT' || event.target.nodeName === 'IFRAME') {
+                if (this.contentAllowedResources(event.target.src)) {
+                    console.info('<' + event.target.nodeName + '> has been allowed:', event.target.src);
+                } else {
+                    if (event.target.src == 'javascript:false') {
+                        const observer = new MutationObserver(this.observer.bind(this));
+                        observer.observe(event.target, this.observerConfig);
+                    } else {
+                        event.target.remove();
+                        console.warn('<' + event.target.nodeName + '> has been REMOVED:', event.target.src);
+                    }
+                }
+            }
+        }
+    },
+    observer: function(mutationsList, observer) {
+        var self = this;
+
+        mutationsList.forEach(function(mutation) {
+            if (mutation.attributeName == "src") {
+                if (!self.contentAllowedResources(mutation.target.src)) {
+                    mutation.target.remove();
+                    console.warn('Observer: <' + mutation.target.nodeName + '> has been REMOVED:', mutation.target.src);
+                } else {
+                    console.info('Observer: <' + mutation.target.nodeName + '> has been allowed:', mutation.target.src);
+                }
+
+                observer.disconnect();
+            }
+        });
+    }
+}
+Object.freeze(checkSuspiciousScripts);
+Object.freeze(console); // запретить обнулять методы объекта console (ulogin подгружает левый скрипт, он это делает для своих хаков в рекламных айфреймах)
+
+checkSuspiciousScripts.init();
+
+
+
 function forEach(elements, callback) {
 	Array.prototype.forEach.call(elements, callback);
 }
@@ -313,7 +384,13 @@ angular.module("ngMobileClick", [])
             },
             closeMenu: function() {
                 this.isOpenMenu = false;
+
+                this.closeBigData();
                 $scope.layoutControl.closeNavMenuItems();
+            },
+            closeBigData: function() {
+                $scope.layoutControl.toggleListView('iconsListBlock', true);
+                $scope.layoutControl.toggleListView('currenciesTable', true);
             },
             openAside: function() {
                 if (window.location.host && window.location.pathname !== '/') { // window.location.host - check for mobile app
@@ -355,6 +432,16 @@ angular.module("ngMobileClick", [])
                     menu.classList.add('active');
                 };
 
+                var showAndHideSectionBoxes = function(sectionBoxes) {
+                    forEach(sectionBoxes, function(sectionBox, i, arr) {
+                        sectionBox.classList.add('block');
+
+                        setTimeout(function() {
+                            sectionBox.classList.remove('block');
+                        }, 200);
+                    });
+                };
+
                 forEach(dataNextButtons, function(button, i, arr) {
                     button.addEventListener('click', function() {
                         var section = button.nextElementSibling;
@@ -376,6 +463,7 @@ angular.module("ngMobileClick", [])
                     button.addEventListener('click', function() {
                         var activeSection = button.parentNode.parentNode;
 
+                        showAndHideSectionBoxes(activeSection.querySelectorAll('.section-box'));
                         activateMenu(activeSection);
                         forEach(activeSection.querySelectorAll('.open'), function(section, i, arr) {
                             section.classList.remove('open');
@@ -433,6 +521,18 @@ angular.module("ngMobileClick", [])
                     }
                 } else {
                     document.getElementById(id).classList.toggle('open-details');
+                }
+            },
+            toggleListView: function(id, isClosed) {
+                var toggleList = document.getElementById(id);
+                var button = document.querySelector('[data-id=' + id + ']');
+
+                if (isClosed) {
+                    toggleList.classList.add('hidden');
+                    button.classList.remove('rotated-icon');
+                } else {
+                    toggleList.classList.toggle('hidden');
+                    button.classList.toggle('rotated-icon');
                 }
             },
             scrollToLastExpense: function(activeWindow, participantId) {

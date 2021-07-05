@@ -344,12 +344,16 @@ button {
 			i { transform: scale(0.8); }
 		}
 	}
+	&.rotated-icon i {
+		transform: scaleY(-1);
+	}
 
 	i {
 		width: 20px;
 		vertical-align: middle;
 		text-align: center;
 		font-size: 22px;
+		transition: transform @delay;
 
 		+ b {
 			margin-left: 10px;
