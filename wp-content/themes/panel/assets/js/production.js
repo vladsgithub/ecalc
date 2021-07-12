@@ -33912,11 +33912,11 @@ angular.module("ngMobileClick", [])
             $scope.$apply();
         });
 
-        window.addEventListener('blur', function () {
+        //window.addEventListener('blur', function () {
             // запись при потере фокуса создает дополнительные проблемы, когда появляются алерты может происходит двойная моментальная запись
             // и появляется сообщение о том что ктото раньше успел записать!!!
             // $scope.uploadData(true, true);
-        });
+        //});
 
 
         $scope.fontAwesomeIcons = fontAwesomeIcons;
@@ -34770,7 +34770,7 @@ angular.module("ngMobileClick", [])
                 if (!isSumChecked || expense.isChecked) expenseDetailsTotal += expense.value;
             });
 
-            return expenseDetailsTotal;
+            return $scope.roundOff(expenseDetailsTotal);
         };
 
         $scope.getMoneyByAccountCurrency = function (value, exchangeCurrency) {

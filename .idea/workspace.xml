@@ -2,23 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44bc63fb-9e01-4d9b-a8dc-1a1fc190dee4" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.43.121\www\pictures\logo\CostPanel-32.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.43.121\www\pictures\logo\CostPanel-32.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.43.121\www\pictures\logo\CostPanel-logo.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.43.121\www\pictures\logo\CostPanel-white-32.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\WebServers\home\192.168.43.121\www\pictures\logo\CostPanel-white.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pictures/logo/CostPanel.jpg" afterPath="$PROJECT_DIR$/pictures/logo/CostPanel.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pictures/logo/CostPanel.psd" afterPath="$PROJECT_DIR$/pictures/logo/CostPanel.psd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" afterPath="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" afterPath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.pref.css" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.pref.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/header.php" afterPath="$PROJECT_DIR$/wp-content/themes/panel/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/app/icons.js" afterPath="$PROJECT_DIR$/wp-content/themes/panel/app/icons.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.min.js" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-settings.php" afterPath="$PROJECT_DIR$/wp-settings.php" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -69,11 +56,42 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="467" column="0" selection-start="17325" selection-end="17325" vertical-scroll-proportion="-12.92" vertical-offset="7616" max-vertical-offset="34051">
-              <folding />
+            <state line="1221" column="56" selection-start="48505" selection-end="48505" vertical-scroll-proportion="0.49657065" vertical-offset="4925" max-vertical-offset="18581">
+              <folding>
+                <element signature="e#296#2543#0" expanded="false" />
+                <element signature="n#!!block;n#animateScrollTo#0" expanded="false" />
+                <element signature="n#!!block;n#reformatSecToNormalTime#0" expanded="false" />
+                <element signature="n#!!block;n#getUserNameObject#0" expanded="false" />
+                <element signature="n#!!block;n#getUserDataForApp#0" expanded="false" />
+                <element signature="n#!!block;n#applyNewData#0" expanded="false" />
+                <element signature="n#!!block;n#getNewExpensesCalc#0" expanded="false" />
+                <element signature="e#13816#15340#0" expanded="false" />
+                <element signature="e#15374#22088#0" expanded="false" />
+                <element signature="e#22217#23847#0" expanded="false" />
+                <element signature="e#23886#24182#0" expanded="false" />
+                <element signature="e#24243#24766#0" expanded="false" />
+                <element signature="e#24829#32106#0" expanded="false" />
+                <element signature="e#32155#32545#0" expanded="false" />
+                <element signature="e#32603#33267#0" expanded="false" />
+                <element signature="e#33306#33700#0" expanded="false" />
+                <element signature="e#33740#34464#0" expanded="false" />
+                <element signature="e#34518#34818#0" expanded="false" />
+                <element signature="e#34869#34915#0" expanded="false" />
+                <element signature="e#35031#35979#0" expanded="false" />
+                <element signature="e#36051#37178#0" expanded="false" />
+                <element signature="e#37306#38117#0" expanded="false" />
+                <element signature="e#38177#40207#0" expanded="false" />
+                <element signature="e#40279#40980#0" expanded="false" />
+                <element signature="e#41046#41700#0" expanded="false" />
+                <element signature="e#41776#41999#0" expanded="false" />
+                <element signature="e#42076#42173#0" expanded="false" />
+                <element signature="e#42251#42618#0" expanded="false" />
+                <element signature="e#42683#42776#0" expanded="false" />
+                <element signature="e#42858#42964#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -90,22 +108,21 @@
       <file leaf-file-name="page.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="554" column="110" selection-start="22623" selection-end="22641" vertical-scroll-proportion="-6.509804" vertical-offset="5618" max-vertical-offset="21114">
+            <state line="470" column="96" selection-start="18602" selection-end="18624" vertical-scroll-proportion="-6.1764708" vertical-offset="5482" max-vertical-offset="22389">
               <folding>
                 <element signature="tag#ul#0;tag#li#2;tag#ul#0;tag#div#1;tag#li#0;tag#ul#0;tag#div#1;tag#div#1;tag#li#0;tag#ul#0;tag#div#0;tag#main#0" expanded="false" />
                 <element signature="tag#ul#0;tag#div#0;tag#li#2;tag#ul#0;tag#div#1;tag#li#0;tag#ul#0;tag#div#1;tag#div#1;tag#li#0;tag#ul#0;tag#div#0;tag#main#0" expanded="false" />
                 <element signature="tag#ul#0;tag#div#0;tag#div#1;tag#div#0;tag#li#2;tag#ul#0;tag#div#1;tag#li#0;tag#ul#0;tag#div#1;tag#div#1;tag#li#0;tag#ul#0;tag#div#0;tag#main#0" expanded="false" />
                 <element signature="tag#ul#1;tag#div#0;tag#div#1;tag#div#0;tag#li#2;tag#ul#0;tag#div#1;tag#li#0;tag#ul#0;tag#div#1;tag#div#1;tag#li#0;tag#ul#0;tag#div#0;tag#main#0" expanded="false" />
-                <element signature="tag#div#0;tag#div#0;tag#div#1;tag#div#0;tag#li#2;tag#ul#0;tag#div#1;tag#li#0;tag#ul#0;tag#div#1;tag#div#1;tag#li#0;tag#ul#0;tag#div#0;tag#main#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wp-settings.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="wp-settings.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-settings.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="84" selection-start="654" selection-end="654" vertical-scroll-proportion="0.40583554" vertical-offset="85" max-vertical-offset="8245">
+            <state line="23" column="84" selection-start="654" selection-end="654" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="8245">
               <folding />
             </state>
           </provider>
@@ -114,17 +131,17 @@
       <file leaf-file-name="production.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33318" column="7" selection-start="0" selection-end="1341810" vertical-scroll-proportion="0.0" vertical-offset="566253" max-vertical-offset="608787">
+            <state line="33318" column="7" selection-start="0" selection-end="1341831" vertical-scroll-proportion="0.0" vertical-offset="566253" max-vertical-offset="608787">
               <folding>
-                <marker date="1626071339170" expanded="true" signature="1257318:1257325" placeholder="{...}" />
-                <marker date="1626071339170" expanded="true" signature="1260345:1261093" placeholder="{...}" />
-                <marker date="1626071339170" expanded="true" signature="1260381:1260782" placeholder="{...}" />
-                <marker date="1626071339170" expanded="true" signature="1260381:1260696" placeholder="{...}" />
-                <marker date="1626071339170" expanded="true" signature="1260486:1260559" placeholder="{...}" />
-                <marker date="1626071339170" expanded="true" signature="1260563:1260735" placeholder="{...}" />
-                <marker date="1626071339170" expanded="true" signature="1260896:1261041" placeholder="{...}" />
-                <marker date="1626071339170" expanded="true" signature="1261195:1261807" placeholder="{...}" />
-                <marker date="1626071339170" expanded="true" signature="1261243:1261741" placeholder="{...}" />
+                <marker date="1626110288009" expanded="true" signature="1257318:1257325" placeholder="{...}" />
+                <marker date="1626110288009" expanded="true" signature="1260345:1261093" placeholder="{...}" />
+                <marker date="1626110288009" expanded="true" signature="1260381:1260782" placeholder="{...}" />
+                <marker date="1626110288009" expanded="true" signature="1260381:1260696" placeholder="{...}" />
+                <marker date="1626110288009" expanded="true" signature="1260486:1260559" placeholder="{...}" />
+                <marker date="1626110288009" expanded="true" signature="1260563:1260735" placeholder="{...}" />
+                <marker date="1626110288009" expanded="true" signature="1260896:1261041" placeholder="{...}" />
+                <marker date="1626110288009" expanded="true" signature="1261195:1261807" placeholder="{...}" />
+                <marker date="1626110288009" expanded="true" signature="1261243:1261741" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -246,8 +263,8 @@
         <option value="$PROJECT_DIR$/wp-content/themes/panel/header.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" />
-        <option value="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" />
         <option value="$PROJECT_DIR$/wp-settings.php" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" />
       </list>
     </option>
   </component>
@@ -794,17 +811,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33318" column="7" selection-start="0" selection-end="1341810" vertical-scroll-proportion="0.0" vertical-offset="566253" max-vertical-offset="608787">
+        <state line="33318" column="7" selection-start="0" selection-end="1341831" vertical-scroll-proportion="0.0" vertical-offset="566253" max-vertical-offset="608787">
           <folding>
-            <marker date="1626071339170" expanded="true" signature="1257318:1257325" placeholder="{...}" />
-            <marker date="1626071339170" expanded="true" signature="1260345:1261093" placeholder="{...}" />
-            <marker date="1626071339170" expanded="true" signature="1260381:1260782" placeholder="{...}" />
-            <marker date="1626071339170" expanded="true" signature="1260381:1260696" placeholder="{...}" />
-            <marker date="1626071339170" expanded="true" signature="1260486:1260559" placeholder="{...}" />
-            <marker date="1626071339170" expanded="true" signature="1260563:1260735" placeholder="{...}" />
-            <marker date="1626071339170" expanded="true" signature="1260896:1261041" placeholder="{...}" />
-            <marker date="1626071339170" expanded="true" signature="1261195:1261807" placeholder="{...}" />
-            <marker date="1626071339170" expanded="true" signature="1261243:1261741" placeholder="{...}" />
+            <marker date="1626110288009" expanded="true" signature="1257318:1257325" placeholder="{...}" />
+            <marker date="1626110288009" expanded="true" signature="1260345:1261093" placeholder="{...}" />
+            <marker date="1626110288009" expanded="true" signature="1260381:1260782" placeholder="{...}" />
+            <marker date="1626110288009" expanded="true" signature="1260381:1260696" placeholder="{...}" />
+            <marker date="1626110288009" expanded="true" signature="1260486:1260559" placeholder="{...}" />
+            <marker date="1626110288009" expanded="true" signature="1260563:1260735" placeholder="{...}" />
+            <marker date="1626110288009" expanded="true" signature="1260896:1261041" placeholder="{...}" />
+            <marker date="1626110288009" expanded="true" signature="1261195:1261807" placeholder="{...}" />
+            <marker date="1626110288009" expanded="true" signature="1261243:1261741" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -813,19 +830,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="29" selection-start="29" selection-end="29" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="554" column="110" selection-start="22623" selection-end="22641" vertical-scroll-proportion="-6.509804" vertical-offset="5618" max-vertical-offset="21114">
-          <folding>
-            <element signature="tag#ul#0;tag#li#2;tag#ul#0;tag#div#1;tag#li#0;tag#ul#0;tag#div#1;tag#div#1;tag#li#0;tag#ul#0;tag#div#0;tag#main#0" expanded="false" />
-            <element signature="tag#ul#0;tag#div#0;tag#li#2;tag#ul#0;tag#div#1;tag#li#0;tag#ul#0;tag#div#1;tag#div#1;tag#li#0;tag#ul#0;tag#div#0;tag#main#0" expanded="false" />
-            <element signature="tag#ul#0;tag#div#0;tag#div#1;tag#div#0;tag#li#2;tag#ul#0;tag#div#1;tag#li#0;tag#ul#0;tag#div#1;tag#div#1;tag#li#0;tag#ul#0;tag#div#0;tag#main#0" expanded="false" />
-            <element signature="tag#ul#1;tag#div#0;tag#div#1;tag#div#0;tag#li#2;tag#ul#0;tag#div#1;tag#li#0;tag#ul#0;tag#div#1;tag#div#1;tag#li#0;tag#ul#0;tag#div#0;tag#main#0" expanded="false" />
-            <element signature="tag#div#0;tag#div#0;tag#div#1;tag#div#0;tag#li#2;tag#ul#0;tag#div#1;tag#li#0;tag#ul#0;tag#div#1;tag#div#1;tag#li#0;tag#ul#0;tag#div#0;tag#main#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -850,17 +854,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
+    <entry file="file://$PROJECT_DIR$/wp-settings.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="467" column="0" selection-start="17325" selection-end="17325" vertical-scroll-proportion="-12.92" vertical-offset="7616" max-vertical-offset="34051">
+        <state line="23" column="84" selection-start="654" selection-end="654" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="8245">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-settings.php">
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="84" selection-start="654" selection-end="654" vertical-scroll-proportion="0.40583554" vertical-offset="85" max-vertical-offset="8245">
-          <folding />
+        <state line="470" column="96" selection-start="18602" selection-end="18624" vertical-scroll-proportion="-6.1764708" vertical-offset="5482" max-vertical-offset="22389">
+          <folding>
+            <element signature="tag#ul#0;tag#li#2;tag#ul#0;tag#div#1;tag#li#0;tag#ul#0;tag#div#1;tag#div#1;tag#li#0;tag#ul#0;tag#div#0;tag#main#0" expanded="false" />
+            <element signature="tag#ul#0;tag#div#0;tag#li#2;tag#ul#0;tag#div#1;tag#li#0;tag#ul#0;tag#div#1;tag#div#1;tag#li#0;tag#ul#0;tag#div#0;tag#main#0" expanded="false" />
+            <element signature="tag#ul#0;tag#div#0;tag#div#1;tag#div#0;tag#li#2;tag#ul#0;tag#div#1;tag#li#0;tag#ul#0;tag#div#1;tag#div#1;tag#li#0;tag#ul#0;tag#div#0;tag#main#0" expanded="false" />
+            <element signature="tag#ul#1;tag#div#0;tag#div#1;tag#div#0;tag#li#2;tag#ul#0;tag#div#1;tag#li#0;tag#ul#0;tag#div#1;tag#div#1;tag#li#0;tag#ul#0;tag#div#0;tag#main#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1221" column="56" selection-start="48505" selection-end="48505" vertical-scroll-proportion="0.49657065" vertical-offset="4925" max-vertical-offset="18581">
+          <folding>
+            <element signature="e#296#2543#0" expanded="false" />
+            <element signature="n#!!block;n#animateScrollTo#0" expanded="false" />
+            <element signature="n#!!block;n#reformatSecToNormalTime#0" expanded="false" />
+            <element signature="n#!!block;n#getUserNameObject#0" expanded="false" />
+            <element signature="n#!!block;n#getUserDataForApp#0" expanded="false" />
+            <element signature="n#!!block;n#applyNewData#0" expanded="false" />
+            <element signature="n#!!block;n#getNewExpensesCalc#0" expanded="false" />
+            <element signature="e#13816#15340#0" expanded="false" />
+            <element signature="e#15374#22088#0" expanded="false" />
+            <element signature="e#22217#23847#0" expanded="false" />
+            <element signature="e#23886#24182#0" expanded="false" />
+            <element signature="e#24243#24766#0" expanded="false" />
+            <element signature="e#24829#32106#0" expanded="false" />
+            <element signature="e#32155#32545#0" expanded="false" />
+            <element signature="e#32603#33267#0" expanded="false" />
+            <element signature="e#33306#33700#0" expanded="false" />
+            <element signature="e#33740#34464#0" expanded="false" />
+            <element signature="e#34518#34818#0" expanded="false" />
+            <element signature="e#34869#34915#0" expanded="false" />
+            <element signature="e#35031#35979#0" expanded="false" />
+            <element signature="e#36051#37178#0" expanded="false" />
+            <element signature="e#37306#38117#0" expanded="false" />
+            <element signature="e#38177#40207#0" expanded="false" />
+            <element signature="e#40279#40980#0" expanded="false" />
+            <element signature="e#41046#41700#0" expanded="false" />
+            <element signature="e#41776#41999#0" expanded="false" />
+            <element signature="e#42076#42173#0" expanded="false" />
+            <element signature="e#42251#42618#0" expanded="false" />
+            <element signature="e#42683#42776#0" expanded="false" />
+            <element signature="e#42858#42964#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
