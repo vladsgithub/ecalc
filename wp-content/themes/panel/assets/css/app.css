@@ -10449,6 +10449,9 @@ body.open-menu aside.menu {
   visibility: visible;
   transform: translateX(0);
 }
+body.open-menu aside.menu > .nav-body {
+  display: block;
+}
 body:not(.open-aside) aside.accounts {
   animation: hiddenWithDelay 0.2s 1 steps(1, end) forwards;
 }
@@ -10614,6 +10617,7 @@ aside.menu {
   border-left: 2px solid #4c69bd;
   transform: translateX(-101%);
   transition: transform 0.2s;
+  opacity: 0.999;
 }
 aside.menu .nav-head {
   flex-shrink: 0;
@@ -10644,6 +10648,7 @@ aside.menu .nav-head .photo > img {
   outline: 2px solid #fff;
 }
 aside.menu .nav-body {
+  display: none;
   flex-grow: 1;
   position: relative;
   overflow-y: auto;

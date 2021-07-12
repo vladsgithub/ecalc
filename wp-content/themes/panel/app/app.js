@@ -165,11 +165,11 @@ function getUserDataForApp(scope, request, isSynchronization) {
     var xhr = new XMLHttpRequest();
     var host = costPanelServer;
     var prevUserName = scope.expCalc.meta.userName;
+    var userNameBlock = document.getElementById('userNameBlock');
 
     if (!request) return false;
 
-    document.getElementById('userNameBlock').innerText = '';
-    scope.expCalc.meta.userName = '... Инициализация ...';
+    scope.expCalc.meta.userName = 'Инициализация...';
 
     xhr.open("POST", host + '/app-login.php', true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded; charset=utf-8');
@@ -182,6 +182,7 @@ function getUserDataForApp(scope, request, isSynchronization) {
 
         if (xhr.status != 200) {
             console.error('!!! We have a problem: ' + xhr.status + ': ' + xhr.statusText);
+            userNameBlock.innerText = '';
             scope.expCalc.meta.userName = prevUserName;
         } else {
             if (xhr.responseText != 'Login failed') {
@@ -195,6 +196,7 @@ function getUserDataForApp(scope, request, isSynchronization) {
 
                     console.info('Date fromServerData and fromLocalStorage:', fromServerData.meta.savedDate, '>', fromLocalStorage.meta.savedDate);
                     if (fromServerData.meta.savedDate > fromLocalStorage.meta.savedDate) {
+                        userNameBlock.innerText = '';
                         scope.expCalc = fromServerData;
                         scope.expCalc.meta.userID = parseInt(responseArray[2]);
                         scope.expCalc.meta.userKey = responseArray[3];
@@ -216,16 +218,18 @@ function getUserDataForApp(scope, request, isSynchronization) {
                         if (responseArray[5]) alert(responseArray[5]);
                     } else {
                         console.info('[getUserDataForApp] Data is used from localStorage:', fromLocalStorage);
+                        userNameBlock.innerText = '';
                         scope.expCalc.meta.userName = prevUserName;
                     }
                 } catch (e) {
+                    userNameBlock.innerText = '';
                     scope.expCalc.meta.userName = 'Error in getUserDataForApp';
                     console.log('Произошла ошибка в getUserDataForApp:', e);
                     console.log('Пришел ответ в getUserDataForApp:', xhr.responseText);
                 }
             } else {
+                userNameBlock.innerText = '';
                 resetUserData(scope);
-
                 alert('Авторизация не удалась. Логин или пароль введены неверно :(');
             }
         }
@@ -240,6 +244,10 @@ function resetUserData(scope) {
     scope.expCalc = getNewExpensesCalc();
     scope.createAccount();
     scope.updateCurrencies(1);
+
+    setTimeout(function() {
+        scope.$apply(scope.expCalc);
+    }, 100);
 }
 function applyNewData($scope, stringNewData) {
     try {
@@ -301,7 +309,7 @@ function getNewExpensesCalc(isHelpMode) {
             savedDate: 0,
             userID: null,
             userKey: null,
-            userName: null,
+            userName: '',
             userInitials: null
         },
         settings: {
@@ -387,8 +395,9 @@ angular.module("ngMobileClick", [])
             closeMenu: function() {
                 this.isOpenMenu = false;
 
-                this.closeBigData();
+                $scope.layoutControl.showAndHideBlocks([document.getElementById('navBody')]);
                 $scope.layoutControl.closeNavMenuItems();
+                this.closeBigData();
             },
             closeBigData: function() {
                 $scope.layoutControl.toggleListView('iconsListBlock', true);
@@ -424,6 +433,21 @@ angular.module("ngMobileClick", [])
                     this.openNavMenuFirstSection('authentication');
                 }
             },
+            showAndHideBlocks: function(block) {
+                var classManipulation = function(sectionBox) {
+                    sectionBox.classList.add('block');
+
+                    setTimeout(function() {
+                        sectionBox.classList.remove('block');
+                    }, 200);
+                };
+                
+                if (block.length) {
+                    forEach(block, function(sectionBox, i, arr) {
+                        classManipulation(sectionBox);
+                    });
+                }
+            },
             navMenuInit: function() {
                 var self = this;
                 var dataNextButtons = self.navBody.querySelectorAll('[data-next]');
@@ -432,16 +456,6 @@ angular.module("ngMobileClick", [])
                 var activateMenu = function(menu) {
                     self.navBody.querySelectorAll('.active')[0].classList.remove('active');
                     menu.classList.add('active');
-                };
-
-                var showAndHideSectionBoxes = function(sectionBoxes) {
-                    forEach(sectionBoxes, function(sectionBox, i, arr) {
-                        sectionBox.classList.add('block');
-
-                        setTimeout(function() {
-                            sectionBox.classList.remove('block');
-                        }, 200);
-                    });
                 };
 
                 forEach(dataNextButtons, function(button, i, arr) {
@@ -456,7 +470,9 @@ angular.module("ngMobileClick", [])
                                 var firstButton = section.querySelectorAll('button')[0];
 
                                 if (firstButton) firstButton.focus();
-                            }, 220);
+                            }, 400); // здесь должно было быть 200, чтобы сразу после анимации ставить фокус на кнопку,
+                            // но на мобильнике часто фокус ставился раньше чем закончится анимация и получался
+                            // странный сдвиг всей менюшки (браузер подскролиил к сфокусированному элементу). Поэтому это значение было увеличено аж до 400мс
                         }
                     });
                 });
@@ -465,7 +481,7 @@ angular.module("ngMobileClick", [])
                     button.addEventListener('click', function() {
                         var activeSection = button.parentNode.parentNode;
 
-                        showAndHideSectionBoxes(activeSection.querySelectorAll('.section.open > .section-box'));
+                        self.showAndHideBlocks(activeSection.querySelectorAll('.section.open > .section-box'));
                         activateMenu(activeSection);
                         forEach(activeSection.querySelectorAll('.open'), function(section, i, arr) {
                             section.classList.remove('open');

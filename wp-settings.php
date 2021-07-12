@@ -21,7 +21,7 @@ require( ABSPATH . WPINC . '/default-constants.php' );
 require_once( ABSPATH . WPINC . '/plugin.php' );
 
 
-$GLOBALS['cost_panel_version'] = '1.27'; /* version of the cost panel application */
+$GLOBALS['cost_panel_version'] = '1.28'; /* version of the cost panel application */
 
 $GLOBALS['server_name_php'] = "localhost"; /* and also into app-login.php */
 $GLOBALS['user_name_php'] = "host1638368_1647"; /* and also into app-login.php */
