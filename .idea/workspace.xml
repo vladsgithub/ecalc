@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44bc63fb-9e01-4d9b-a8dc-1a1fc190dee4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" afterPath="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.min.js" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/header.php" afterPath="$PROJECT_DIR$/wp-content/themes/panel/header.php" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -56,10 +53,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1221" column="56" selection-start="48505" selection-end="48505" vertical-scroll-proportion="0.49657065" vertical-offset="4925" max-vertical-offset="18581">
+            <state line="1221" column="56" selection-start="48505" selection-end="48505" vertical-scroll-proportion="-14.48" vertical-offset="4925" max-vertical-offset="18581">
               <folding>
                 <element signature="e#296#2543#0" expanded="false" />
                 <element signature="n#!!block;n#animateScrollTo#0" expanded="false" />
@@ -156,10 +153,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="header.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/header.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="38" selection-start="152" selection-end="152" vertical-scroll-proportion="-4.76" vertical-offset="17" max-vertical-offset="15147">
+            <state line="62" column="36" selection-start="3045" selection-end="3045" vertical-scroll-proportion="0.58274233" vertical-offset="561" max-vertical-offset="14909">
               <folding />
             </state>
           </provider>
@@ -260,11 +257,11 @@
         <option value="$PROJECT_DIR$/wp-content/themes/panel/app/icons.js" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.min.js" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/page.html" />
-        <option value="$PROJECT_DIR$/wp-content/themes/panel/header.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" />
         <option value="$PROJECT_DIR$/wp-settings.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/header.php" />
       </list>
     </option>
   </component>
@@ -721,11 +718,11 @@
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14473684" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14473684" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3267544" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15709014" sideWeight="0.8552632" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15709014" sideWeight="0.85494506" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -833,13 +830,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="38" selection-start="152" selection-end="152" vertical-scroll-proportion="-4.76" vertical-offset="17" max-vertical-offset="15147">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="14" selection-start="262" selection-end="262" vertical-scroll-proportion="-6.6666665" vertical-offset="0" max-vertical-offset="1224">
@@ -875,7 +865,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1221" column="56" selection-start="48505" selection-end="48505" vertical-scroll-proportion="0.49657065" vertical-offset="4925" max-vertical-offset="18581">
+        <state line="1221" column="56" selection-start="48505" selection-end="48505" vertical-scroll-proportion="-14.48" vertical-offset="4925" max-vertical-offset="18581">
           <folding>
             <element signature="e#296#2543#0" expanded="false" />
             <element signature="n#!!block;n#animateScrollTo#0" expanded="false" />
@@ -908,6 +898,13 @@
             <element signature="e#42683#42776#0" expanded="false" />
             <element signature="e#42858#42964#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="36" selection-start="3045" selection-end="3045" vertical-scroll-proportion="0.58274233" vertical-offset="561" max-vertical-offset="14909">
+          <folding />
         </state>
       </provider>
     </entry>
