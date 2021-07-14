@@ -9128,6 +9128,25 @@ button {
   border-left-color: #000;
   border-bottom-color: #000;
 }
+@keyframes attention-icon {
+  0% {
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(0.5);
+  }
+}
+@keyframes attention-text {
+  0% {
+    text-decoration: none;
+  }
+  50% {
+    text-decoration: underline;
+  }
+}
 .help-text {
   z-index: 1000;
   position: relative;
@@ -9161,6 +9180,12 @@ button {
 .help-text:not(.right)::before,
 .help-text:not(.right)::after {
   left: 21px;
+}
+.help-text.attention {
+  animation: attention-text 1s infinite;
+}
+.help-text.attention .fas:first-child {
+  animation: attention-icon 1s infinite;
 }
 .help-text.bottom::before,
 .help-text.bottom::after {
