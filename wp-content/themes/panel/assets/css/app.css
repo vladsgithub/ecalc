@@ -11546,6 +11546,7 @@ section a {
 .step-2 .shares .share {
   padding-right: 8px;
   border-top: 1px solid #4c69bd;
+  min-height: 44px;
 }
 @media only screen and (min-width: 1600px) {
   .step-2 .shares .share {

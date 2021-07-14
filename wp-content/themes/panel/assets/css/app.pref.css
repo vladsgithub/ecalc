@@ -8422,7 +8422,7 @@ button {
     transform: scale(0.5);
   }
   50% {
-    transform: scale(1);
+    transform: scale(1.1);
   }
   100% {
     transform: scale(0.5);
@@ -10880,6 +10880,7 @@ section a {
 .step-2 .shares .share {
   padding-right: 8px;
   border-top: 1px solid #4c69bd;
+  min-height: 44px;
 }
 @media only screen and (min-width: 1600px) {
   .step-2 .shares .share {

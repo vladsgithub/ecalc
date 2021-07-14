@@ -95,7 +95,7 @@
 	</div>
 </aside>
 
-<main ng-click="layout.isOpenMenu = false; layout.isOpenAside = false;" role="main">
+<main ng-click="layout.closeMenu(); layout.isOpenAside = false;" role="main">
 
 	<article class="about-service">
 		<h1 ng-if="expCalc.meta.isViewMode && !expCalc.accounts.length">
@@ -692,9 +692,11 @@
 								ng-repeat="extParticipant in account.participants track by $index"
 								ng-init="extParticipantIndex = $index">
 
-								<div class="help-text bottom right" ng-if="expCalc.settings.isHelpMode && !$index">
-									<b><i class="fas fa-info-circle"></i> Если в качестве участника выступает не 1 человек, а семья из 2-х, 3-х и т.д. людей,
-										поменяйте коэффициент участия — укажите соответствующее количество человек, чтобы расчет прошел в правильных пропорциях</b>
+								<div class="help-text bottom right"
+                                     ng-class="{'attention': layout.activeWindow == 2}"
+                                     ng-if="expCalc.settings.isHelpMode && !$index">
+									<b><i class="fas fa-info-circle"></i> Если в качестве участника выступает не 1 человек, а группа из 2-х, 3-х и т.д. людей,
+										поменяйте коэффициент участия — укажите соответствующее количество человек (2, 3 и т.д.), чтобы расчет прошел в правильных пропорциях</b>
 								</div>
 
 								<div class="participant-head">
@@ -713,7 +715,7 @@
 
 										<li class="flex-shrink s-p0">
 											<div class="number-input complex-input"
-												 title="Если в качестве участника выступает не 1 человек, а семья из 2-х, 3-х и т.д. людей, укажите соответствующее количество человек, чтобы расчет прошел в правильных пропорциях">
+												 title="Если в качестве участника выступает не 1 человек, а группа из 2-х, 3-х и т.д. людей, укажите соответствующее количество человек (2, 3 и т.д.), чтобы расчет прошел в правильных пропорциях">
 												<div class="text-field">
 													<b>Коэфф.<br/>участия</b>
 												</div>
@@ -757,17 +759,21 @@
 								<div class="participant-body">
 
 									<ul class="body-view shares">
-
 										<li class="share" ng-repeat="intParticipant in account.participants track by $index">
+                                            <div class="text-right small" ng-if="!$index">
+                                                <div class="float-left s-p2">Все расходы для [{{extParticipant.meta.title}}]</div>
+                                                Доли от каждого расхода:
+                                            </div>
+
 											<div class="text-field text-center block s-p2" ng-if="!intParticipant.expenses.length">
-												<b>Участник <em>[{{(intParticipant.meta.title) ? intParticipant.meta.title : $index + 1}}]</em> не имеет расходов</b>
+												<b>Участник <em>{{(intParticipant.meta.title) ? intParticipant.meta.title : $index + 1}}</em> не имеет расходов</b>
 											</div>
 
 											<div class="help-text bottom" ng-if="expCalc.settings.isHelpMode && !$index">
 												<b><i class="fas fa-info-circle"></i> Здесь полный список всех расходов и доли для каждого из них. Отмеченный расход означает, что он учитывается для данного участника</b>
 											</div>
 
-											<ul class="flex s-p0" ng-repeat="expense in intParticipant.expenses track by $index">
+											<ul class="flex s-p0" ng-repeat="expense in intParticipant.expenses track by $index" ng-if="expense.isPaid">
 												<li class="s-p0">
 													<label class="checkbox line-through">
 														<input type="checkbox"
@@ -788,7 +794,13 @@
 
 												<li class="flex-grow s-p0 share-price">
 													<div class="number-field" ng-class="{'hidden': !expense.partList[extParticipantIndex]}">
-														<b>{{roundOff(getExpenseShare(expense, extParticipantIndex))}}</b>
+														<b>
+                                                            {{roundOff(getExpenseShare(expense, extParticipantIndex))}}
+                                                            <s>{{getAccountCurrency()}}</s>
+                                                            <s class="block mt-1">
+                                                                от&nbsp;{{roundOff(intParticipant.expenses[$index].value)}}{{expCalc.settings.currencies.names[intParticipant.expenses[$index].currency].toUpperCase()}}
+                                                            </s>
+                                                        </b>
 													</div>
 												</li>
 											</ul>
@@ -1300,7 +1312,7 @@
 				<td ng-repeat="extParticipant in account.participants track by $index"> </td>
 			</tr>
 
-			<tr ng-repeat="expense in participant.expenses track by $index">
+			<tr ng-repeat="expense in participant.expenses track by $index" ng-if="expense.isPaid">
 				<td>
 					<span class="float-left">{{$index + 1}}.</span>
 					{{expense.title}}
