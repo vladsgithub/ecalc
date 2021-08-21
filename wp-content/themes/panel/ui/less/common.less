@@ -224,8 +224,17 @@ button {
 	&:not(.bottom) {
 		&::before, &::after { top: -14px; }
 	}
-	&:not(.right) {
+	&:not(.right):not(.center) {
 		&::before, &::after { left: 21px; }
+	}
+	&.center {
+		&::before, &::after { left: 50%; }
+	}
+	&.bottom {
+		&::before, &::after { bottom: -14px; }
+	}
+	&.right {
+		&::before, &::after { right: 21px; }
 	}
 	&.attention {
 		animation: attention-text 1s infinite;
@@ -233,12 +242,6 @@ button {
 		.fas:first-child {
 			animation: attention-icon 1s infinite;
 		}
-	}
-	&.bottom {
-		&::before, &::after { bottom: -14px; }
-	}
-	&.right {
-		&::before, &::after { right: 21px; }
 	}
 	&.no-arrow {
 		z-index: 0;

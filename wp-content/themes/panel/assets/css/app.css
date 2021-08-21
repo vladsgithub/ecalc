@@ -9177,15 +9177,13 @@ button {
 .help-text:not(.bottom)::after {
   top: -14px;
 }
-.help-text:not(.right)::before,
-.help-text:not(.right)::after {
+.help-text:not(.right):not(.center)::before,
+.help-text:not(.right):not(.center)::after {
   left: 21px;
 }
-.help-text.attention {
-  animation: attention-text 1s infinite;
-}
-.help-text.attention .fas:first-child {
-  animation: attention-icon 1s infinite;
+.help-text.center::before,
+.help-text.center::after {
+  left: 50%;
 }
 .help-text.bottom::before,
 .help-text.bottom::after {
@@ -9194,6 +9192,12 @@ button {
 .help-text.right::before,
 .help-text.right::after {
   right: 21px;
+}
+.help-text.attention {
+  animation: attention-text 1s infinite;
+}
+.help-text.attention .fas:first-child {
+  animation: attention-icon 1s infinite;
 }
 .help-text.no-arrow {
   z-index: 0;

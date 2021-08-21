@@ -884,6 +884,10 @@
 							</li>
 						</ul>
 
+                        <div ng-if="expCalc.settings.isHelpMode" class="help-text bottom center m-0 mt-2">
+                            <b><i class="fas fa-info-circle"></i> Выбирайте способ расчета между собой: "возвраты напрямую" или "через общий банк".</b>
+                        </div>
+
 						<div class="mode-toggle">
 							<input type="checkbox" ng-model="account.settings.fixationDirectly">
 							<i></i>
@@ -961,7 +965,7 @@
 
 							<li id="participant.3.{{participantIndex}}" class="participant"
 								ng-repeat="participant in account.participants track by $index"
-								ng-class="{'debtor': participant.meta.fullBalance < 0, 'sponsor': participant.meta.fullBalance > 0}"
+								ng-class="{'debtor': participant.meta.fullBalance < 0, 'sponsor': participant.meta.fullBalance > 0, 'open-body': expCalc.settings.isHelpMode}"
 								ng-init="participantIndex = $index">
 
 								<div class="participant-head">
@@ -1033,7 +1037,9 @@
                                         <div class="help-text no-arrow mb-1"
                                              ng-if="expCalc.settings.isHelpMode && participant.meta.fullBalance < 0"
                                              ng-class="{'hidden': participant.meta.fullBalance && (!account.meta.posBalance || !account.meta.negBalance)}">
-                                            <b><i class="fas fa-info-circle"></i> [{{getParticipantName(participant.meta.title, participantIndex)}}] может рассчитаться следующим способом:
+                                            <b><i class="fas fa-info-circle"></i>
+                                                [{{getParticipantName(participant.meta.title, participantIndex)}}] должен(а) вернуть {{-getParticipantFullBalance(participant, participantIndex, false)}} {{getAccountCurrency()}}.
+                                                Рассчитаться можно следующим способом:
                                                 <ul class="debt-help">
                                                     <li class="debt-item-help"
                                                           ng-repeat="sponsor in account.participants track by $index"
@@ -1154,7 +1160,7 @@
 						<ul class="participants" ng-if="!account.settings.fixationDirectly">
 							<li id="participantByBank.3.{{participantIndex}}" class="participant"
 								ng-repeat="participant in account.participants track by $index"
-								ng-class="{'debtor': participant.meta.fullBalanceByBank < 0, 'sponsor': participant.meta.fullBalanceByBank > 0}"
+								ng-class="{'debtor': participant.meta.fullBalanceByBank < 0, 'sponsor': participant.meta.fullBalanceByBank > 0, 'open-body': expCalc.settings.isHelpMode}"
 								ng-init="participantIndex = $index">
 
 								<div class="participant-head">
