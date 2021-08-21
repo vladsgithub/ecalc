@@ -1030,7 +1030,9 @@
 								<div class="participant-body">
 
 									<div class="body-view pt-2">
-                                        <div class="help-text no-arrow mb-1" ng-if="expCalc.settings.isHelpMode && participant.meta.fullBalance < 0">
+                                        <div class="help-text no-arrow mb-1"
+                                             ng-if="expCalc.settings.isHelpMode && participant.meta.fullBalance < 0"
+                                             ng-class="{'hidden': participant.meta.fullBalance && (!account.meta.posBalance || !account.meta.negBalance)}">
                                             <b><i class="fas fa-info-circle"></i> [{{getParticipantName(participant.meta.title, participantIndex)}}] может рассчитаться следующим способом:
                                                 <ul class="debt-help">
                                                     <li class="debt-item-help"
@@ -1039,7 +1041,7 @@
                                                         -
                                                         <span ng-if="-getParticipantFullBalance(participant, participantIndex, false) <= getRest(sponsor, participant).rest">сразу всё </span>
                                                         <span>вернуть участнику [{{(sponsor.meta.title) ? sponsor.meta.title : 'Участник ' + ($index + 1)}}] -
-                                                            {{getRest(sponsor, participant).rest}} {{expCalc.settings.currencies.names[getRest(sponsor, participant).currency].toUpperCase()}}</span>
+                                                            <span class="text-nowrap">{{getRest(sponsor, participant).rest}} {{expCalc.settings.currencies.names[getRest(sponsor, participant).currency].toUpperCase()}}</span></span>
                                                         <span ng-if="-getParticipantFullBalance(participant, participantIndex, false) > getRest(sponsor, participant).rest">
                                                             , а остальное отдать другому участнику (приложение покажет кому именно после фиксации этого возврата)
                                                         </span>
