@@ -179,7 +179,7 @@ button {
 		transform: scale(0.5);
 	}
 	50% {
-		transform: scale(1.1);
+		transform: scale(1.3);
 	}
 	100% {
 		transform: scale(0.5);
@@ -244,7 +244,7 @@ button {
 		z-index: 0;
 
 		&::before,
-		&:after {
+		&::after {
 			display: none;
 		}
 	}
@@ -264,6 +264,32 @@ button {
 		border-radius: (@padding * 2);
 		font-size: 1rem;
 		color: @strong-gray;
+	}
+
+	.debt-help {
+		overflow: hidden;
+		margin-top: 6px;
+
+		> li {
+			position: relative;
+			padding-top: 26px;
+			text-indent: 9px;
+			font-weight: bold;
+
+			&::after {
+				content: "ИЛИ";
+				position: absolute;
+				top: 0;
+				left: 0;
+				padding-left: 10px;
+				line-height: 26px;
+				font-weight: normal;
+			}
+
+			&:first-child {
+				margin-top: -26px;
+			}
+		}
 	}
 }
 
@@ -1407,4 +1433,8 @@ label {
 			flex-shrink: 0;
 		}
 	}
+}
+
+.line-through-text {
+	text-decoration: line-through;
 }

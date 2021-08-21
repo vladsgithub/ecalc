@@ -140,7 +140,7 @@
 		<li class="title flex-grow separator">
 			<h1>Cost panel</h1>
 			<h2>
-			    {{(expCalc.accounts[expCalc.settings.currentAccount].meta.title) ? expCalc.accounts[expCalc.settings.currentAccount].meta.title : '--- расчет без названия ---'}}
+			    {{(expCalc.accounts[expCalc.settings.currentAccount].meta.title) ? expCalc.accounts[expCalc.settings.currentAccount].meta.title : 'Расчёт ' + (expCalc.settings.currentAccount + 1)}}
 			    <b ng-if="expCalc.accounts[expCalc.settings.currentAccount].meta.savedDate > 0">
 			        [{{formatDate(expCalc.accounts[expCalc.settings.currentAccount].meta.savedDate)}}]
 			    </b>
@@ -857,6 +857,9 @@
                                 <br/>
                                 Версия: <span id="appVersion"><? echo $GLOBALS['cost_panel_version'] ?></span>
                                 <br/>
+                                <a href="https://play.google.com/store/apps/details?id=com.costpanel.info" target="_blank">
+                                    <img style="width: 100%;" src="pictures/CostPanelQR-gplay.jpg">
+                                </a>
                                 <br/>
                                 <img style="width: 100%; margin-bottom: 60px;" src="pictures/hello.jpg" />
                                 </b>

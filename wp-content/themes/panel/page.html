@@ -18,7 +18,7 @@
 		<b>Выбор и настройка расчета:</b>
 	</div>
 
-	<ul class="aside-head flex">
+	<ul class="aside-head flex" ng-if="expCalc.accounts.length">
 		<li class="s-p2">
 			<label class="toggle">
 				<input type="checkbox"
@@ -35,7 +35,7 @@
 		</li>
 	</ul>
 
-	<ul class="aside-head flex s-p1">
+	<ul class="aside-head flex s-p1" ng-if="expCalc.accounts.length">
 		<li class="s-p1">
 			<label class="text-select currency">
 				<select ng-model="expCalc.accounts[expCalc.settings.currentAccount].settings.accountCurrency"
@@ -65,7 +65,7 @@
 
 				<div class="flex-grow">
 					<button class="btn solid border view-mode" ng-click="openCurrentAccount($index)">
-						<b>{{(account.meta.title) ? account.meta.title : '--- без названия ---'}}</b>
+						<b>{{(account.meta.title) ? account.meta.title : 'Расчёт ' + ($index + 1)}}</b>
 					</button>
 
 					<label class="text-input edit-mode">
@@ -376,8 +376,7 @@
 
 											<div id="details{{participantIndex}}.{{expenseIndex}}"
 												 class="expense-data clearfix"
-												 ng-init="isOpenDetails = !expense.title && !expense.value"
-												 ng-class="{'completed': completedDetails(expense), 'open-details': isOpenDetails}">
+												 ng-class="{'completed': completedDetails(expense)}">
 
 												<ul class="flex expense-values only-mobile"
 													ng-class="{'hidden': expense.isPaid}"
@@ -438,21 +437,27 @@
 															</li>
 														</ul>
 
-														<ul class="members flex flex-wrap space-between">
-															<li>
+                                                        <div class="p-2" ng-if="expCalc.settings.isHelpMode">
+                                                            <div class="help-text bottom">
+                                                                <b><i class="fas fa-info-circle"></i> {{getParticipationTooltip(expense.partList)}}<br/>Редактировать это распределение можно после отмены этого расхода (снять галочку) или во втором окне (шаг 2: вычисление).</b>
+                                                            </div>
+                                                        </div>
+
+														<ul class="members flex flex-wrap justify-content-start">
+															<li class="py-1 pr-3">
 																<div class="text-field name thin">
 																	<b>Участники:</b>
 																</div>
 															</li>
 
-															<li ng-repeat="participation in expense.partList track by $index">
+															<li class="py-1" ng-repeat="participation in expense.partList track by $index">
 																<label class="checkbox decoration thin">
 																	<input type="checkbox"
 																		   ng-model="expense.partList[$index]"
 																		   ng-disabled="expense.isPaid"
 																		   ng-change="checkPartList(expense.partList, $index)">
 																	<i></i>
-																	<b>{{(account.participants[$index].meta.title) ? account.participants[$index].meta.title : 'Участник ' + ($index + 1)}}</b>
+																	<b>{{getParticipantName(account.participants[$index].meta.title, $index)}}</b>
 																</label>
 															</li>
 														</ul>
@@ -566,7 +571,7 @@
 											<label class="checkbox paid-out">
 												<input type="checkbox" ng-model="expense.isPaid"
 													   ng-change="uploadData()"
-													   ng-click="layoutControl.toggleDetailsView1('details' + participantIndex + '.' + expenseIndex, (expense.isPaid) ? -1 : 1)">
+													   ng-click="expense.isPaid ? layoutControl.toggleDetailsView1('details' + participantIndex + '.' + expenseIndex, -1) : false">
 												<i></i>
 											</label>
 
@@ -583,7 +588,7 @@
 
 												<li class="s-p2">
 													<div class="text-field name word-wrap">
-														<b>Новый расход участнику:
+														<b>Новый расход участнику
 															<span>{{(participant.meta.title) ? participant.meta.title : participantIndex + 1}}</span>
 														</b>
 													</div>
@@ -709,7 +714,7 @@
 
 										<li class="flex-grow s-p0">
 											<div class="text-field title bold solid">
-												<b>{{extParticipant.meta.title}}</b>
+                                                <b>{{getParticipantName(extParticipant.meta.title, extParticipantIndex)}}</b>
 											</div>
 										</li>
 
@@ -759,53 +764,71 @@
 								<div class="participant-body">
 
 									<ul class="body-view shares">
-										<li class="share" ng-repeat="intParticipant in account.participants track by $index">
-                                            <div class="text-right small" ng-if="!$index">
-                                                <div class="float-left s-p2">Все расходы для [{{extParticipant.meta.title}}]</div>
+                                        <li class="p-2" ng-if="expCalc.settings.isHelpMode">
+                                            <div class="help-text bottom">
+                                                <b><i class="fas fa-info-circle"></i> Здесь полный список всех расходов. Отмеченный расход означает, что он учитывается для данного участника. А указанные суммы означают долю участника от полной стоимости расхода.</b>
+                                            </div>
+                                        </li>
+
+										<li class="share" ng-repeat="intParticipant in account.participants track by $index"
+                                            ng-init="intParticipantIndex = $index"
+                                            ng-if="intParticipant.expenses.length">
+                                            <div class="text-right small" ng-if="!intParticipantIndex">
                                                 Доли от каждого расхода:
                                             </div>
 
-											<div class="text-field text-center block s-p2" ng-if="!intParticipant.expenses.length">
-												<b>Участник <em>{{(intParticipant.meta.title) ? intParticipant.meta.title : $index + 1}}</em> не имеет расходов</b>
-											</div>
+                                            <div ng-repeat="expense in intParticipant.expenses track by $index"
+                                                 ng-init="intParticipantExpenseIndex = $index"
+                                                 ng-if="expense.isPaid && expense.value > 0">
 
-											<div class="help-text bottom" ng-if="expCalc.settings.isHelpMode && !$index">
-												<b><i class="fas fa-info-circle"></i> Здесь полный список всех расходов и доли для каждого из них. Отмеченный расход означает, что он учитывается для данного участника</b>
-											</div>
+											    <ul class="flex s-p0"
+                                                title="Доля участника [{{getParticipantName(extParticipant.meta.title, extParticipantIndex)}}] в расходах [{{getExpenseName(expense.title, intParticipantIndex, intParticipantExpenseIndex, true)}} от {{getParticipantName(intParticipant.meta.title, intParticipantIndex)}}]
+составляет {{roundOff(getExpenseShare(expense, extParticipantIndex))}} {{getAccountCurrency()}} - это {{getPercentage(roundOff(getExpenseShare(expense, extParticipantIndex)), roundOff(intParticipant.expenses[intParticipantExpenseIndex].value))}}% от полной стоимости этого расхода - {{roundOff(intParticipant.expenses[intParticipantExpenseIndex].value)}} {{expCalc.settings.currencies.names[intParticipant.expenses[intParticipantExpenseIndex].currency].toUpperCase()}}">
+                                                    <li class="s-p0">
+                                                        <label class="checkbox line-through">
+                                                            <input type="checkbox"
+                                                                   ng-model="expense.partList[extParticipantIndex]"
+                                                                   ng-change="checkPartList(expense.partList, extParticipantIndex)">
+                                                            <i></i>
+                                                        </label>
+                                                    </li>
 
-											<ul class="flex s-p0" ng-repeat="expense in intParticipant.expenses track by $index" ng-if="expense.isPaid">
-												<li class="s-p0">
-													<label class="checkbox line-through">
-														<input type="checkbox"
-															   ng-model="expense.partList[extParticipantIndex]"
-															   ng-change="checkPartList(expense.partList, extParticipantIndex)">
-														<i></i>
-													</label>
-												</li>
+                                                    <li class="flex-grow flex-hidden s-p0">
+                                                        <div class="text-field" ng-class="{'line-through': !expense.partList[extParticipantIndex]}">
+                                                            <b>
+                                                                {{getExpenseName(expense.title, intParticipantIndex, intParticipantExpenseIndex)}}
+                                                                <em>[от: {{getParticipantName(intParticipant.meta.title, intParticipantIndex)}}]</em>
+                                                            </b>
+                                                        </div>
+                                                    </li>
 
-												<li class="flex-grow flex-hidden s-p0">
-													<div class="text-field" ng-class="{'line-through': !expense.partList[extParticipantIndex]}">
-														<b>
-															{{expense.title}}
-															<em>[от: {{intParticipant.meta.title}}]</em>
-														</b>
-													</div>
-												</li>
+                                                    <li class="flex-shrink s-p0 share-price">
+                                                        <div class="number-field" ng-class="{'hidden': !expense.partList[extParticipantIndex]}">
+                                                            <b class="text-nowrap">
+                                                                <s>доля</s>
+                                                                {{roundOff(getExpenseShare(expense, extParticipantIndex))}}
+                                                                <s>{{getAccountCurrency()}}</s>
+                                                                <s class="block mt-1">
+                                                                    от&nbsp;{{roundOff(intParticipant.expenses[intParticipantExpenseIndex].value)}}
+                                                                    {{expCalc.settings.currencies.names[intParticipant.expenses[intParticipantExpenseIndex].currency].toUpperCase()}}
+                                                                </s>
+                                                            </b>
+                                                        </div>
+                                                    </li>
+                                                </ul>
 
-												<li class="flex-grow s-p0 share-price">
-													<div class="number-field" ng-class="{'hidden': !expense.partList[extParticipantIndex]}">
-														<b>
-                                                            {{roundOff(getExpenseShare(expense, extParticipantIndex))}}
-                                                            <s>{{getAccountCurrency()}}</s>
-                                                            <s class="block mt-1">
-                                                                от&nbsp;{{roundOff(intParticipant.expenses[$index].value)}}{{expCalc.settings.currencies.names[intParticipant.expenses[$index].currency].toUpperCase()}}
-                                                            </s>
-                                                        </b>
-													</div>
-												</li>
-											</ul>
+                                                <div class="help-text small right pl-3" ng-if="expCalc.settings.isHelpMode && roundOff(getExpenseShare(expense, extParticipantIndex))">
+                                                    <b><i class="fas fa-info-circle"></i> Доля участника [{{getParticipantName(extParticipant.meta.title, extParticipantIndex)}}] в расходах [{{getExpenseName(expense.title, intParticipantIndex, intParticipantExpenseIndex, true)}} от {{getParticipantName(intParticipant.meta.title, intParticipantIndex)}}]
+                                                        составляет {{roundOff(getExpenseShare(expense, extParticipantIndex))}} {{getAccountCurrency()}} - это {{getPercentage(getExpenseShare(expense, extParticipantIndex), intParticipant.expenses[intParticipantExpenseIndex].value)}}% от полной стоимости этого расхода - {{roundOff(intParticipant.expenses[intParticipantExpenseIndex].value)}} {{expCalc.settings.currencies.names[intParticipant.expenses[intParticipantExpenseIndex].currency].toUpperCase()}}</b>
+                                                </div>
+                                            </div>
 										</li>
 
+                                        <li class="share" ng-if="!getShareTotal()">
+                                            <div class="text-field text-center block s-p2">
+                                                <b><em>Нет никаких расходов</em></b>
+                                            </div>
+                                        </li>
 									</ul>
 
 								</div>
@@ -882,7 +905,8 @@
 								</li>
 
 								<li class="flex-grow s-p1">
-									<div class="number-field dashed thin" title="всего вернуть / всего получить">
+									<div class="number-field dashed thin" title="всего вернуть / всего получить.
+{{((account.meta.posBalance + account.meta.negBalance) != 0) ? 'Неделимый остаток ' + exact(account.meta.posBalance + account.meta.negBalance) : ''}}">
 										<b>
 											{{getReturnsBalance()}} <s>{{getAccountCurrency()}}</s>
 										</b>
@@ -948,7 +972,7 @@
 											</div>
 
 											<div class="flex-grow text-field title solid s-p1 title-max-width">
-												<b>{{participant.meta.title}}</b>
+                                                <b>{{getParticipantName(participant.meta.title, participantIndex)}}</b>
 											</div>
 
 											<div class="text-select complex-input"
@@ -978,13 +1002,16 @@
 												<div class="flex-grow number-field solid text-left uppercase s-p1"
 													 ng-if="participant.meta.fullBalance >= 0 && participant.meta.preferredCurrency != account.settings.accountCurrency">
 													<b>
-														{{getParticipantFullBalance(participant, participantIndex, true)}}
+                                                        {{getParticipantFullBalance(participant, participantIndex, true)}}
 														<s>{{expCalc.settings.currencies.names[participant.meta.preferredCurrency].substring(0, 3)}}</s>
 													</b>
 												</div>
-												<div class="flex-grow number-field solid s-p1">
+												<div class="flex-grow number-field solid s-p1"
+                                                     title="{{(participant.meta.fullBalance && (!account.meta.posBalance || !account.meta.negBalance)) ? 'Неделимый остаток' : ''}}">
 													<b>
-														{{getParticipantFullBalance(participant, participantIndex, false)}}
+														<span ng-class="{'line-through-text': participant.meta.fullBalance && (!account.meta.posBalance || !account.meta.negBalance)}">
+                                                            {{getParticipantFullBalance(participant, participantIndex, false)}}
+                                                        </span>
 														<s>{{getAccountCurrency()}}</s>
 													</b>
 												</div>
@@ -1002,18 +1029,32 @@
 
 								<div class="participant-body">
 
-									<div class="body-view" >
-										<div class="text-field name thin s-p4">
-											<b>Сделал взносы участникам:</b>
-										</div>
+									<div class="body-view pt-2">
+                                        <div class="help-text no-arrow mb-1" ng-if="expCalc.settings.isHelpMode && participant.meta.fullBalance < 0">
+                                            <b><i class="fas fa-info-circle"></i> [{{getParticipantName(participant.meta.title, participantIndex)}}] может рассчитаться следующим способом:
+                                                <ul class="debt-help">
+                                                    <li class="debt-item-help"
+                                                          ng-repeat="sponsor in account.participants track by $index"
+                                                          ng-if="participant.meta.fullBalance < 0 && getRest(sponsor, participant).rest > 0">
+                                                        -
+                                                        <span ng-if="-getParticipantFullBalance(participant, participantIndex, false) <= getRest(sponsor, participant).rest">сразу всё </span>
+                                                        <span>вернуть участнику [{{(sponsor.meta.title) ? sponsor.meta.title : 'Участник ' + ($index + 1)}}] -
+                                                            {{getRest(sponsor, participant).rest}} {{expCalc.settings.currencies.names[getRest(sponsor, participant).currency].toUpperCase()}}</span>
+                                                        <span ng-if="-getParticipantFullBalance(participant, participantIndex, false) > getRest(sponsor, participant).rest">
+                                                            , а остальное отдать другому участнику (приложение покажет кому именно после фиксации этого возврата)
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </b>
+                                        </div>
 
-										<div class="help-text bottom" ng-if="expCalc.settings.isHelpMode && !participant.fixation.whom.length">
-											<b><i class="fas fa-info-circle"></i> Добавляйте взносы, чтобы зафиксировать возврат долгов либо просто учесть эти взносы в будущих расчётах</b>
+										<div class="text-field name thin s-p4" ng-if="participant.fixation.whom.length">
+											<b>Сделал взносы участникам:</b>
 										</div>
 
 										<ul class="payments">
 											<li ng-repeat="refund in participant.fixation.whom track by $index"
-												ng-init="refundIndex = $index">
+												ng-init="refundIndex = $index; refundNumber = refund.number">
 
 												<ul class="flex s-p0">
 													<li class="flex-shrink s-p0" ng-if="!refund.isFixed">
@@ -1024,7 +1065,7 @@
 													</li>
 
 													<li class="flex-shrink s-p0" ng-if="refund.isFixed">
-														<div class="date-field">
+														<div class="date-field text-nowrap">
 															<b>{{formatDate(refund.date, 1)}}</b>
 															<b>{{formatDate(refund.date, 2)}}</b>
 															<b>{{formatDate(refund.date, 3)}}</b>
@@ -1039,10 +1080,10 @@
 
 																<option ng-repeat="sponsor in account.participants track by $index"
 																		value="{{$index}}" ng-if="participantIndex != $index">
-																	{{getParticipantOption(sponsor, participant)}}
+																	{{getParticipantOption(sponsor, participant, $index + 1)}}
 																</option>
 															</select>
-															<b>{{(refund.number) ? account.participants[refund.number].meta.title : 'Выберите участника' }}</b>
+															<b>{{(refund.number) ? getParticipantName(account.participants[refund.number].meta.title, refund.number * 1) : 'Выберите участника' }}</b>
 														</label>
 													</li>
 
@@ -1096,6 +1137,9 @@
 											</li>
 										</ul>
 
+                                        <div class="help-text" ng-if="expCalc.settings.isHelpMode && !participant.fixation.whom.length">
+                                            <b><i class="fas fa-info-circle"></i> Добавляйте взносы, чтобы зафиксировать возврат долгов или просто чтобы учесть эти взносы в будущих расчётах</b>
+                                        </div>
 									</div>
 
 								</div>
@@ -1119,7 +1163,7 @@
 											</div>
 
 											<div class="flex-grow text-field name solid s-p1 title-max-width">
-												<b>{{participant.meta.title}}</b>
+                                                <b>{{getParticipantName(participant.meta.title, participantIndex)}}</b>
 											</div>
 
 											<div class="flex-grow number-field solid marker">
@@ -1366,18 +1410,24 @@
 
 			<tbody>
 			<tr>
-				<td colspan="4" class="font-weight-bold text-right border-right">
-					Взносы
-					<span ng-if="account.settings.fixationDirectly">от участника -> участнику</span>
-					<span ng-if="!account.settings.fixationDirectly">через общий банк</span>
-					:
-				</td>
-				<td colspan="100">
+				<td colspan="4" class="font-weight-bold text-right border-right"></td>
+                <td ng-repeat="participant in account.participants track by $index">
+                    {{participant.meta.title}}<br/>(Участие {{participant.meta.participation * 100}}%)
+                </td>
+			</tr>
+            <tr>
+                <td colspan="4" class="font-weight-bold text-right border-right">
+                    Взносы
+                    <span ng-if="account.settings.fixationDirectly">от участника -> участнику</span>
+                    <span ng-if="!account.settings.fixationDirectly">через общий банк</span>
+                    :
+                </td>
+                <td colspan="100">
 				<span class="font-weight-bold" ng-if="!account.settings.fixationDirectly">
 					В общем банке: {{account.meta.bank}}&nbsp;{{getAccountCurrency()}}
 				</span>
-				</td>
-			</tr>
+                </td>
+            </tr>
 			</tbody>
 
 			<tbody ng-repeat="participant in account.participants track by $index"

@@ -34366,8 +34366,11 @@ angular.module("ngMobileClick", [])
 		$scope.linkToAccount = function () {
 		    var isIdUnique = true;
 		    var currentAccountIndex = $scope.expCalc.settings.currentAccount;
+
+            if (!$scope.expCalc.accounts.length) return false;
+
 		    var currentAccountId = $scope.expCalc.accounts[currentAccountIndex].meta.id;
-            var link = 'https://costpanel.info';
+            var link = costPanelServer;
 
             forEach($scope.expCalc.accounts, function(account, index, arr) {
                 if (currentAccountIndex != index && currentAccountId == account.meta.id) isIdUnique = false;
@@ -34573,6 +34576,7 @@ angular.module("ngMobileClick", [])
                 if (confirm('Вы действительно хотите удалить участника: ' + participants[participantIndex].meta.title)) {
                     participants.splice(participantIndex, 1);
                     $scope.removeParticipantFromPartList(participantIndex);
+                    $scope.updatePaymentsFromParticipant(participantIndex);
 
                     $scope.uploadData();
                 }
@@ -34838,9 +34842,9 @@ angular.module("ngMobileClick", [])
             });
 
             currentAccount.participants[extParticipantIndex].meta.expensesByTypes = expensesByTypes;
-            currentAccount.participants[extParticipantIndex].meta.share = $scope.exact(participantShare);
+            currentAccount.participants[extParticipantIndex].meta.share = $scope.roundOff(participantShare);
 
-            return participantShare;
+            return $scope.roundOff(participantShare);
         };
 
         $scope.getShareTotal = function () {
@@ -34851,7 +34855,7 @@ angular.module("ngMobileClick", [])
                 shareTotal += currentAccount.participants[i].meta.share;
             });
 
-            return shareTotal;
+            return $scope.exact(shareTotal);
         };
 
         $scope.getFullRefund = function () {
@@ -34865,22 +34869,18 @@ angular.module("ngMobileClick", [])
 
             currentAccount.meta.fullRefund = $scope.exact(fullRefund);
 
-            return fullRefund;
+            return $scope.exact(fullRefund);
         };
 
         $scope.getBalance = function (participant) {
-            participant.meta.balance = $scope.exact(participant.meta.total - participant.meta.share);
-
+            participant.meta.balance = $scope.roundOff($scope.exact(participant.meta.total - participant.meta.share));
             return participant.meta.balance;
         };
 
-        $scope.getParticipantOption = function (sponsor, debtor) {
-            var currencyNumber, option = sponsor.meta.title;
+        $scope.getParticipantOption = function (sponsor, debtor, participantIndex) {
+            var currencyNumber, option = (sponsor.meta.title) ? sponsor.meta.title : 'Участник ' + participantIndex;
             var rest = $scope.getRest(sponsor, debtor).rest;
 
-            // if (debtor.meta.balance < 0 &&
-            //     $scope.roundOff(sponsor.meta.balance - sponsor.meta.receivedSum) > 0 &&
-            //     $scope.roundOff(debtor.meta.balance + debtor.meta.givenSum) < 0) {
             if (debtor.meta.fullBalance < 0 && rest > 0) {
                 currencyNumber = $scope.getRest(sponsor, debtor).currency;
                 option += ' - [' + $scope.expCalc.settings.currencies.names[currencyNumber].toUpperCase() + ' ' + rest + ']';
@@ -34897,14 +34897,12 @@ angular.module("ngMobileClick", [])
             currentAccount.participants.forEach(function(person, i, arr) {
                 person.fixation.whom.forEach(function(refund, n, arr) {
                     if (refund.isFixed && participantIndex == refund.number && refund.number !== null && refund.currency !== null) {
-                        participant.meta.receivedSum += $scope.roundOff($scope.getMoneyByAccountCurrency(refund.value, refund.currency), true);
+                        participant.meta.receivedSum += $scope.getMoneyByAccountCurrency(refund.value, refund.currency);
                     }
                 });
             });
 
-            participant.meta.receivedSum = $scope.roundOff(participant.meta.receivedSum);
-
-            return participant.meta.receivedSum;
+            return participant.meta.receivedSum = $scope.roundOff(participant.meta.receivedSum);
         };
 
         $scope.getGivenSum = function (participant) {
@@ -34912,13 +34910,11 @@ angular.module("ngMobileClick", [])
 
             participant.fixation.whom.forEach(function(refund, i, arr) {
                 if (refund.isFixed && refund.number !== null && refund.currency !== null) {
-                    participant.meta.givenSum += $scope.roundOff($scope.getMoneyByAccountCurrency(refund.value, refund.currency), true);
+                    participant.meta.givenSum += $scope.getMoneyByAccountCurrency(refund.value, refund.currency);
                 }
             });
 
-            participant.meta.givenSum = $scope.roundOff(participant.meta.givenSum);
-
-            return participant.meta.givenSum;
+            return participant.meta.givenSum = $scope.roundOff(participant.meta.givenSum);
         };
 
         $scope.getRest = function (sponsor, debtor) {
@@ -34927,8 +34923,6 @@ angular.module("ngMobileClick", [])
                 accountCurrency = currentAccount.settings.accountCurrency,
                 isRoundDown = (sponsor.meta.preferredCurrency != accountCurrency);
 
-            // sponsorWillReceive = sponsor.meta.balance - sponsor.meta.receivedSum;
-            // debtorWillGive = Math.abs(debtor.meta.balance + debtor.meta.givenSum);
             sponsorWillReceive = sponsor.meta.fullBalance;
             debtorWillGive = Math.abs(debtor.meta.fullBalance);
 
@@ -35020,7 +35014,45 @@ angular.module("ngMobileClick", [])
             return $sce.trustAsHtml((expenseValue) ? '<s class="only-mobile">' + currency + '</s>' : '');
         };
 
+        $scope.getParticipantName = function (title, index) {
+            return title ? title : 'Участник ' + (index + 1);
+        };
 
+        $scope.getExpenseName = function (title, index, expenseIndex, isTruncated) {
+            if (isTruncated) {
+                title = (title.length > 30) ? title.slice(0, 29) + '...' : title;
+            }
+
+            return title ? title : 'Расход ' + (index + 1) + '.' + (expenseIndex + 1);
+        };
+
+        $scope.getPercentage = function (value, fromValue) {
+            return Math.floor((value * 100 / fromValue) * 100) / 100;
+        };
+
+        $scope.getParticipationTooltip = function (partList) {
+            var currentAccount = $scope.expCalc.accounts[$scope.expCalc.settings.currentAccount],
+                participantsQty = 0,
+                participantsNames = '',
+                message;
+
+            partList.forEach(function(participation, i, arr) {
+                if (participation) {
+                    participantsQty++;
+                    participantsNames += ', ' + $scope.getParticipantName(currentAccount.participants[i].meta.title, i);
+                }
+            });
+
+            participantsNames = participantsNames.slice(2);
+
+            if (participantsQty == 1) {
+                message = 'Этот расход предназначен только для участника ' + participantsNames + '.';
+            } else {
+                message = 'Этот расход распределяется между участниками: ' + participantsNames + '.';
+            }
+
+            return message;
+        }
 
 
 
@@ -35060,15 +35092,19 @@ angular.module("ngMobileClick", [])
         };
 
         $scope.formatDate = function (value, type) {
+            var dateReformater = function(reformatValue) {
+                return (reformatValue < 10) ? '0' + reformatValue : reformatValue;
+            }
+
             if (value) {
                 value = new Date(value);
                 switch(type) {
                     case 1:
                         return value.getFullYear();
                     case 2:
-                        return (value.getMonth() + 1) + '-' + value.getDate();
+                        return (value.getMonth() + 1) + '-' + dateReformater(value.getDate());
                     case 3:
-                        return value.getHours() + ':' + value.getMinutes();
+                        return value.getHours() + ':' + dateReformater(value.getMinutes());
 
                     default:
                         return value.toLocaleString();
@@ -35248,6 +35284,16 @@ angular.module("ngMobileClick", [])
             }
 
             return result;
+        };
+
+        $scope.updatePaymentsFromParticipant = function(verifiableParticipantIndex) {
+            var currentAccount = $scope.expCalc.accounts[$scope.expCalc.settings.currentAccount];
+
+            currentAccount.participants.forEach(function(participant, participantIndex, participantArr) {
+                participant.fixation.whom.forEach(function(whom, whomIndex, whomArr) {
+                    if (whom.number > verifiableParticipantIndex) --whom.number;
+                });
+            });
         };
 
         $scope.checkPaymentByBank = function (byBankObject) {

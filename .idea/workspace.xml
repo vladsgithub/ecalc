@@ -3,10 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="44bc63fb-9e01-4d9b-a8dc-1a1fc190dee4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" afterPath="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" afterPath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.pref.css" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.pref.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less" afterPath="$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/header.php" afterPath="$PROJECT_DIR$/wp-content/themes/panel/header.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/page.html" afterPath="$PROJECT_DIR$/wp-content/themes/panel/page.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.min.js" afterPath="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-settings.php" afterPath="$PROJECT_DIR$/wp-settings.php" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,7 +39,7 @@
       <file leaf-file-name="app.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1234" column="29" selection-start="24555" selection-end="24555" vertical-scroll-proportion="-6.5882354" vertical-offset="20642" max-vertical-offset="24684">
+            <state line="960" column="16" selection-start="19975" selection-end="19975" vertical-scroll-proportion="-4.423077" vertical-offset="16205" max-vertical-offset="24701">
               <folding />
             </state>
           </provider>
@@ -42,7 +48,7 @@
       <file leaf-file-name="variables.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="17" selection-start="620" selection-end="622" vertical-scroll-proportion="-4.5882354" vertical-offset="480" max-vertical-offset="1224">
+            <state line="42" column="17" selection-start="620" selection-end="622" vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="1224">
               <folding />
             </state>
           </provider>
@@ -51,7 +57,7 @@
       <file leaf-file-name="common.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="181" column="30" selection-start="2770" selection-end="2770" vertical-scroll-proportion="-8.333333" vertical-offset="2652" max-vertical-offset="24055">
+            <state line="1421" column="5" selection-start="22910" selection-end="22910" vertical-scroll-proportion="-12.346154" vertical-offset="23836" max-vertical-offset="24565">
               <folding />
             </state>
           </provider>
@@ -60,59 +66,34 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="413" column="44" selection-start="15226" selection-end="15245" vertical-scroll-proportion="-15.8" vertical-offset="1730" max-vertical-offset="19295">
-              <folding>
-                <element signature="e#296#2543#0" expanded="false" />
-                <element signature="n#!!block;n#animateScrollTo#0" expanded="false" />
-                <element signature="n#!!block;n#reformatSecToNormalTime#0" expanded="false" />
-                <element signature="n#!!block;n#getUserNameObject#0" expanded="false" />
-                <element signature="n#!!block;n#getUserDataForApp#0" expanded="false" />
-                <element signature="n#!!block;n#applyNewData#0" expanded="false" />
-                <element signature="n#!!block;n#getNewExpensesCalc#0" expanded="false" />
-                <element signature="e#15374#22088#0" expanded="false" />
-                <element signature="e#22217#23847#0" expanded="false" />
-                <element signature="e#23886#24182#0" expanded="false" />
-                <element signature="e#24243#24766#0" expanded="false" />
-                <element signature="e#24829#32106#0" expanded="false" />
-                <element signature="e#32155#32545#0" expanded="false" />
-                <element signature="e#32603#33267#0" expanded="false" />
-                <element signature="e#33306#33700#0" expanded="false" />
-                <element signature="e#33740#34464#0" expanded="false" />
-                <element signature="e#34518#34818#0" expanded="false" />
-                <element signature="e#34869#34915#0" expanded="false" />
-                <element signature="e#35031#35979#0" expanded="false" />
-                <element signature="e#36051#37178#0" expanded="false" />
-                <element signature="e#37306#38117#0" expanded="false" />
-                <element signature="e#38177#40207#0" expanded="false" />
-                <element signature="e#40279#40980#0" expanded="false" />
-                <element signature="e#41046#41700#0" expanded="false" />
-                <element signature="e#41776#41999#0" expanded="false" />
-                <element signature="e#42076#42173#0" expanded="false" />
-                <element signature="e#42251#42618#0" expanded="false" />
-                <element signature="e#42683#42776#0" expanded="false" />
-                <element signature="e#42858#42964#0" expanded="false" />
-              </folding>
+            <state line="1510" column="0" selection-start="61043" selection-end="61043" vertical-scroll-proportion="0.0" vertical-offset="25203" max-vertical-offset="34833">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="page.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="page.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="763" column="123" selection-start="29743" selection-end="29743" vertical-scroll-proportion="0.45573294" vertical-offset="11025" max-vertical-offset="23154">
-              <folding>
-                <element signature="tag#ul#0;tag#li#2;tag#ul#0;tag#div#1;tag#li#0;tag#ul#0;tag#div#1;tag#div#1;tag#li#0;tag#ul#0;tag#div#0;tag#main#0" expanded="false" />
-                <element signature="tag#ul#0;tag#div#0;tag#div#1;tag#div#0;tag#li#2;tag#ul#0;tag#div#1;tag#li#0;tag#ul#0;tag#div#1;tag#div#1;tag#li#0;tag#ul#0;tag#div#0;tag#main#0" expanded="false" />
-                <element signature="tag#ul#1;tag#div#0;tag#div#1;tag#div#0;tag#li#2;tag#ul#0;tag#div#1;tag#li#0;tag#ul#0;tag#div#1;tag#div#1;tag#li#0;tag#ul#0;tag#div#0;tag#main#0" expanded="false" />
-              </folding>
+            <state line="1413" column="84" selection-start="59186" selection-end="59186" vertical-scroll-proportion="-7.5384617" vertical-offset="23825" max-vertical-offset="25636">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wp-settings.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="bootstrap.min.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/css/bootstrap.min.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="81" selection-start="300" selection-end="300" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="187">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wp-settings.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-settings.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="84" selection-start="654" selection-end="654" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="8245">
+            <state line="23" column="84" selection-start="654" selection-end="654" vertical-scroll-proportion="0.40529802" vertical-offset="85" max-vertical-offset="8245">
               <folding />
             </state>
           </provider>
@@ -121,8 +102,19 @@
       <file leaf-file-name="production.min.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.min.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="29" selection-start="29" selection-end="29" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
+            <state line="0" column="213472" selection-start="213472" selection-end="213472" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="production.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10236" column="0" selection-start="373120" selection-end="373124" vertical-scroll-proportion="0.0" vertical-offset="173773" max-vertical-offset="609569">
+              <folding>
+                <marker date="1629537891863" expanded="true" signature="1270493:1338132" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -130,7 +122,7 @@
       <file leaf-file-name="header.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/header.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="123" column="63" selection-start="4989" selection-end="4998" vertical-scroll-proportion="-5.44" vertical-offset="1955" max-vertical-offset="14909">
+            <state line="284" column="36" selection-start="13181" selection-end="13223" vertical-scroll-proportion="0.0" vertical-offset="4589" max-vertical-offset="14960">
               <folding />
             </state>
           </provider>
@@ -222,22 +214,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/wp-content/plugins/clean-login/lang/clean-login-ru_RU.po" />
         <option value="$PROJECT_DIR$/../cordova/ecalc/www/index.html" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/functions.php" />
         <option value="$PROJECT_DIR$/app-login.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/app/icons.js" />
-        <option value="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.min.js" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less" />
-        <option value="$PROJECT_DIR$/wp-settings.php" />
-        <option value="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" />
-        <option value="$PROJECT_DIR$/wp-content/themes/panel/header.php" />
-        <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less" />
         <option value="$PROJECT_DIR$/_temp.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.min.js" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/header.php" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less" />
         <option value="$PROJECT_DIR$/wp-content/themes/panel/page.html" />
+        <option value="$PROJECT_DIR$/wp-content/themes/panel/app/app.js" />
+        <option value="$PROJECT_DIR$/wp-settings.php" />
       </list>
     </option>
   </component>
@@ -255,7 +247,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
+    <option name="width" value="1932" />
     <option name="height" value="1066" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -302,6 +294,202 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-content" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-content" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-content" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="panel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-content" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="panel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-content" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="panel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-content" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="panel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-content" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="panel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-content" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="panel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -316,8 +504,8 @@
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Less" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -346,14 +534,6 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -362,6 +542,14 @@
       <option name="saveOutputToFile" value="false" />
       <option name="showConsoleOnStdErr" value="false" />
       <option name="showConsoleOnStdOut" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
       <method />
     </configuration>
     <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
@@ -446,15 +634,14 @@
     <option name="totallyTimeSpent" value="676420000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1932" height="1066" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14395605" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14364035" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3267544" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15709014" sideWeight="0.85604393" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15689382" sideWeight="0.85635966" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -463,6 +650,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3267544" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -484,60 +672,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="6" />
+      <option name="time" value="9" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10776" column="1" selection-start="223634" selection-end="223644" vertical-scroll-proportion="-9.52" vertical-offset="182954" max-vertical-offset="199223">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.pref.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10043" column="26" selection-start="198510" selection-end="198510" vertical-scroll-proportion="0.0" vertical-offset="170544" max-vertical-offset="188003">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/css/fontawesome.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="21" selection-start="153" selection-end="153" vertical-scroll-proportion="-5.44" vertical-offset="0" max-vertical-offset="72403" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/css/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="149765" selection-start="149977" selection-end="149984" vertical-scroll-proportion="0.118715085" vertical-offset="0" max-vertical-offset="716">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/icons.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="11" selection-start="390" selection-end="390" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="4454">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33318" column="7" selection-start="0" selection-end="1341831" vertical-scroll-proportion="0.0" vertical-offset="566253" max-vertical-offset="608787">
-          <folding>
-            <marker date="1626195925678" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1626195925678" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1626195925678" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1626195925678" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1626195925678" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1626195925678" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1626195925678" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1626195925678" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1626195925678" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="29" selection-start="29" selection-end="29" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
@@ -545,86 +683,104 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-settings.php">
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="84" selection-start="654" selection-end="654" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="8245">
+        <state line="123" column="63" selection-start="4989" selection-end="4998" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="14909">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less">
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.pref.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="181" column="30" selection-start="2770" selection-end="2770" vertical-scroll-proportion="-8.333333" vertical-offset="2652" max-vertical-offset="24055">
-          <folding />
-        </state>
+        <state line="10043" column="26" selection-start="198510" selection-end="198510" vertical-scroll-proportion="0.0" vertical-offset="170544" max-vertical-offset="188003" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/css/fontawesome.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="21" selection-start="153" selection-end="153" vertical-scroll-proportion="-5.44" vertical-offset="0" max-vertical-offset="72403" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/icons.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="11" selection-start="390" selection-end="390" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="4454" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/variables.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="17" selection-start="620" selection-end="622" vertical-scroll-proportion="-4.5882354" vertical-offset="480" max-vertical-offset="1224">
+        <state line="42" column="17" selection-start="620" selection-end="622" vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="1224">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1234" column="29" selection-start="24555" selection-end="24555" vertical-scroll-proportion="-6.5882354" vertical-offset="20642" max-vertical-offset="24684">
+        <state line="0" column="213472" selection-start="213472" selection-end="213472" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/css/app.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="413" column="44" selection-start="15226" selection-end="15245" vertical-scroll-proportion="-15.8" vertical-offset="1730" max-vertical-offset="19295">
+        <state line="9135" column="26" selection-start="191722" selection-end="191722" vertical-scroll-proportion="0.4245283" vertical-offset="154980" max-vertical-offset="199869">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/assets/js/production.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10236" column="0" selection-start="373120" selection-end="373124" vertical-scroll-proportion="0.0" vertical-offset="173773" max-vertical-offset="609569">
           <folding>
-            <element signature="e#296#2543#0" expanded="false" />
-            <element signature="n#!!block;n#animateScrollTo#0" expanded="false" />
-            <element signature="n#!!block;n#reformatSecToNormalTime#0" expanded="false" />
-            <element signature="n#!!block;n#getUserNameObject#0" expanded="false" />
-            <element signature="n#!!block;n#getUserDataForApp#0" expanded="false" />
-            <element signature="n#!!block;n#applyNewData#0" expanded="false" />
-            <element signature="n#!!block;n#getNewExpensesCalc#0" expanded="false" />
-            <element signature="e#15374#22088#0" expanded="false" />
-            <element signature="e#22217#23847#0" expanded="false" />
-            <element signature="e#23886#24182#0" expanded="false" />
-            <element signature="e#24243#24766#0" expanded="false" />
-            <element signature="e#24829#32106#0" expanded="false" />
-            <element signature="e#32155#32545#0" expanded="false" />
-            <element signature="e#32603#33267#0" expanded="false" />
-            <element signature="e#33306#33700#0" expanded="false" />
-            <element signature="e#33740#34464#0" expanded="false" />
-            <element signature="e#34518#34818#0" expanded="false" />
-            <element signature="e#34869#34915#0" expanded="false" />
-            <element signature="e#35031#35979#0" expanded="false" />
-            <element signature="e#36051#37178#0" expanded="false" />
-            <element signature="e#37306#38117#0" expanded="false" />
-            <element signature="e#38177#40207#0" expanded="false" />
-            <element signature="e#40279#40980#0" expanded="false" />
-            <element signature="e#41046#41700#0" expanded="false" />
-            <element signature="e#41776#41999#0" expanded="false" />
-            <element signature="e#42076#42173#0" expanded="false" />
-            <element signature="e#42251#42618#0" expanded="false" />
-            <element signature="e#42683#42776#0" expanded="false" />
-            <element signature="e#42858#42964#0" expanded="false" />
+            <marker date="1629537891863" expanded="true" signature="1270493:1338132" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="123" column="63" selection-start="4989" selection-end="4998" vertical-scroll-proportion="-5.44" vertical-offset="1955" max-vertical-offset="14909">
+        <state line="284" column="36" selection-start="13181" selection-end="13223" vertical-scroll-proportion="0.0" vertical-offset="4589" max-vertical-offset="14960">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/css/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="81" selection-start="300" selection-end="300" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="187">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/common.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1421" column="5" selection-start="22910" selection-end="22910" vertical-scroll-proportion="-12.346154" vertical-offset="23836" max-vertical-offset="24565">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/ui/less/app.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="960" column="16" selection-start="19975" selection-end="19975" vertical-scroll-proportion="-4.423077" vertical-offset="16205" max-vertical-offset="24701">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1510" column="0" selection-start="61043" selection-end="61043" vertical-scroll-proportion="0.0" vertical-offset="25203" max-vertical-offset="34833">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/panel/page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="763" column="123" selection-start="29743" selection-end="29743" vertical-scroll-proportion="0.45573294" vertical-offset="11025" max-vertical-offset="23154">
-          <folding>
-            <element signature="tag#ul#0;tag#li#2;tag#ul#0;tag#div#1;tag#li#0;tag#ul#0;tag#div#1;tag#div#1;tag#li#0;tag#ul#0;tag#div#0;tag#main#0" expanded="false" />
-            <element signature="tag#ul#0;tag#div#0;tag#div#1;tag#div#0;tag#li#2;tag#ul#0;tag#div#1;tag#li#0;tag#ul#0;tag#div#1;tag#div#1;tag#li#0;tag#ul#0;tag#div#0;tag#main#0" expanded="false" />
-            <element signature="tag#ul#1;tag#div#0;tag#div#1;tag#div#0;tag#li#2;tag#ul#0;tag#div#1;tag#li#0;tag#ul#0;tag#div#1;tag#div#1;tag#li#0;tag#ul#0;tag#div#0;tag#main#0" expanded="false" />
-          </folding>
+        <state line="1413" column="84" selection-start="59186" selection-end="59186" vertical-scroll-proportion="-7.5384617" vertical-offset="23825" max-vertical-offset="25636">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="84" selection-start="654" selection-end="654" vertical-scroll-proportion="0.40529802" vertical-offset="85" max-vertical-offset="8245">
+          <folding />
         </state>
       </provider>
     </entry>
