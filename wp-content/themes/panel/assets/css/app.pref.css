@@ -8421,8 +8421,8 @@ button {
   0% {
     transform: scale(0.5);
   }
-  50% {
-    transform: scale(1.3);
+  10% {
+    transform: scale(1.4);
   }
   100% {
     transform: scale(0.5);
@@ -8432,9 +8432,20 @@ button {
   0% {
     text-decoration: none;
   }
-  50% {
+  10% {
     text-decoration: underline;
   }
+}
+@keyframes accent {
+  0% {
+    background: #95a1c5;
+  }
+  100% {
+    background: inherit;
+  }
+}
+.accent {
+  animation: accent 1s ease-in 1 forwards;
 }
 .help-text {
   z-index: 1000;
@@ -8482,7 +8493,14 @@ button {
 .help-text.right::after {
   right: 21px;
 }
-.help-text.attention {
+.help-text.attention::before,
+.help-text.attention::after {
+  border-color: #ce1d1d;
+}
+.help-text.attention > b {
+  border-color: #ce1d1d;
+  color: #ce1d1d;
+  font-weight: bold;
   animation: attention-text 1s infinite;
 }
 .help-text.attention .fas:first-child {
@@ -8556,6 +8574,10 @@ button {
   border-color: #ce1d1d;
   color: #ce1d1d;
 }
+.btn.note {
+  border-color: #ff8d00;
+  color: #ff8d00;
+}
 .btn:not(.no-shadow) {
   border-right-color: #000;
   border-bottom-color: #000;
@@ -8607,6 +8629,10 @@ button {
 }
 .btn.solid.warning {
   background: #ce1d1d;
+  color: #fff;
+}
+.btn.solid.note {
+  background: #ff8d00;
   color: #fff;
 }
 .btn.solid.border {
@@ -10621,6 +10647,11 @@ section a {
 }
 .section-head {
   padding: 4px;
+}
+@media screen and (min-width: 1600px) {
+  .section-head {
+    padding: 0;
+  }
 }
 .section-head > .help-text {
   margin-bottom: 4px;

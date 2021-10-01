@@ -178,8 +178,8 @@ button {
 	0% {
 		transform: scale(0.5);
 	}
-	50% {
-		transform: scale(1.3);
+	10% {
+		transform: scale(1.4);
 	}
 	100% {
 		transform: scale(0.5);
@@ -189,9 +189,21 @@ button {
 	0% {
 		text-decoration: none;
 	}
-	50% {
+	10% {
 		text-decoration: underline;
 	}
+}
+@keyframes accent {
+	0% {
+		background: @focus;
+	}
+	100% {
+		background: inherit;
+	}
+}
+
+.accent {
+	animation: accent 1s ease-in 1 forwards;
 }
 
 .help-text {
@@ -237,8 +249,17 @@ button {
 		&::before, &::after { right: 21px; }
 	}
 	&.attention {
-		animation: attention-text 1s infinite;
+		&::before,
+		&::after {
+			border-color: @warning-dark;
+		}
 
+		> b {
+			border-color: @warning-dark;
+			color: @warning-dark;
+			font-weight: bold;
+			animation: attention-text 1s infinite;
+		}
 		.fas:first-child {
 			animation: attention-icon 1s infinite;
 		}
@@ -319,6 +340,10 @@ button {
 		border-color: @warning-dark;
 		color: @warning-dark;
 	}
+	&.note {
+		border-color: @note-dark;
+		color: @note-dark;
+	}
 	&:not(.no-shadow) {
 		border-right-color: @black;
 		border-bottom-color: @black;
@@ -364,6 +389,10 @@ button {
 		}
 		&.warning {
 			background: @warning-dark;
+			color: @white;
+		}
+		&.note {
+			background: @note-dark;
 			color: @white;
 		}
 		&.border {

@@ -33632,7 +33632,7 @@ function forEach(elements, callback) {
 	Array.prototype.forEach.call(elements, callback);
 }
 function animateScrollTo(activeWindow, value, windowLt) {
-    var speed = 50;
+    var speed = 100;
     var windowLt = (windowLt) ? windowLt : document.querySelectorAll('.windows-lt > li:nth-child(' + activeWindow + ') > .window-lt')[0];
     var scrollTop = windowLt.scrollTop;
     var direct = (value > scrollTop) ? 1 : -1;
@@ -33907,8 +33907,8 @@ angular.module("ngMobileClick", [])
     var calculatorCtrl = ['$scope', '$timeout', 'getDataService', function ($scope, $timeout, getDataService) {
 
         window.addEventListener('load', function () {
-            $scope.layout.isDomReady = true;
-            $scope.layout.isDataUpdating = false;
+//            $scope.layout.isDomReady = true;
+//            $scope.layout.isDataUpdating = false;
             $scope.$apply();
         });
 
@@ -33931,8 +33931,9 @@ angular.module("ngMobileClick", [])
             isRemoveMode: false,
             isPrintMode: false,
             isChangedObject: false,
-            isDomReady: false,
+            isDomReady: true, // it was 'false'
             isDataUpdating: true,
+            isCalcUpdating: false,
             updatedDataTime: 0,
             activeWindow: 1,
             saveButtonTooltip: null,
@@ -34609,6 +34610,7 @@ angular.module("ngMobileClick", [])
 
         $scope.removePayment = function (debtor, refundIndex) {
             debtor.fixation.whom.splice(refundIndex, 1);
+            $scope.checkAllFixedRefunds(debtor);
 
 			$scope.uploadData();
         };
@@ -34703,6 +34705,7 @@ angular.module("ngMobileClick", [])
                 date: '' + new Date(),
                 isFixed: false
             });
+            $scope.checkAllFixedRefunds(participant);
         };
 
         $scope.addNewPaymentByBank = function(participant, direction) {
@@ -35125,12 +35128,14 @@ angular.module("ngMobileClick", [])
             return result;
         };
 
-        $scope.checkRefundFields = function (refund) {
+        $scope.checkRefundFields = function (refund, participant) {
             if (refund.number == null || refund.value == null || refund.currency == null) {
 				refund.isFixed = false;
 			} else {
 				$scope.uploadData();
 			}
+
+            $scope.checkAllFixedRefunds(participant);
         };
 
         $scope.checkPartList = function (partList, extParticipantIndex) {
@@ -35419,6 +35424,155 @@ angular.module("ngMobileClick", [])
             event.stopPropagation();
         };
 
+        $scope.checkAllFixedRefunds = function(participant) {
+            var index = 0;
+            var areNotAllRefundsFixed = false;
+
+            while(index < participant.fixation.whom.length) {
+                if (participant.fixation.whom[index].isFixed) {
+                    index++;
+                } else {
+                    areNotAllRefundsFixed = true;
+                    index = participant.fixation.whom.length;
+                }
+            }
+
+            participant.meta.areNotAllRefundsFixed = areNotAllRefundsFixed;
+        };
+
+        $scope.autoPaymentsFixation = function() {
+            var currentAccount = $scope.expCalc.accounts[$scope.expCalc.settings.currentAccount];
+            var currentParticipantNumber = 0;
+            var currentRefunds = {
+                participantIndex: [],
+                whomIndex: []
+            };
+            var hasUncheckedCurrentRefunds = false;
+            var qty = 0;
+            var delay, refund, whomIndex, checkNextParticipant;
+
+            var uncheckedCurrentRefunds = function() {
+                currentRefunds.participantIndex.forEach(function (participantIndex, i, arr) {
+                    currentAccount.participants[participantIndex].fixation.whom[currentRefunds.whomIndex[i]].isFixed = false;
+                });
+            }
+
+            var focusOnRefund = function(participantNumber) {
+                var participant = document.getElementById('participant.3.' + participantNumber);
+                var items = participant.querySelectorAll('button');
+                var focusedItem = items[items.length - 1];
+
+                animateScrollTo(3, participant.offsetTop + focusedItem.offsetTop - 100);
+            }
+
+            var endProcess = function(hasAlert) {
+                uncheckedCurrentRefunds();
+                animateScrollTo(3, 0);
+                $scope.uploadData();
+
+                $timeout(function () {
+                    $scope.layout.isCalcUpdating = false;
+                    if (hasAlert) alert('Автоматическое распределение возвратов выполнено успешно! Зафиксируйте их после того как должники вернут указанные суммы.');
+                }, 200);
+            }
+
+            var fixRefund = function(participantIndex) {
+                var participant = currentAccount.participants[participantIndex];
+                var partRefundSponsorIndex = -1;
+                var fullRefundSponsorIndex = -1;
+
+                qty++;
+                delay = 200 + (1000 / qty);
+
+                if (qty > 100)  {
+                    alert('Слишком большое количество взносов в автоматическом режиме. Пожалуйста, зафиксируйте текущие возвраты, а остальные взносы добавьте самостоятельно.');
+                    endProcess(false);
+                    return false;
+                }
+
+                currentAccount.participants.forEach(function (sponsor, i, arr) {
+                    var sponsorRest = $scope.getRest(sponsor, participant).rest;
+                    var participantFullBalance = $scope.getParticipantFullBalance(participant, participantIndex, false);
+
+                    if (participantFullBalance < 0 && sponsorRest > 0 && participantIndex != i) {
+                        if (-participantFullBalance <= sponsorRest) {
+                            fullRefundSponsorIndex = (fullRefundSponsorIndex == -1) ? i : fullRefundSponsorIndex;
+                        } else {
+                            partRefundSponsorIndex = (partRefundSponsorIndex == -1) ? i : partRefundSponsorIndex;
+                        }
+                    }
+                });
+
+                if (partRefundSponsorIndex != -1 || fullRefundSponsorIndex != -1) {
+                    $scope.addNewPayment(participant);
+                    whomIndex = participant.fixation.whom.length - 1;
+                    refund = participant.fixation.whom[whomIndex];
+                    refund.number = (fullRefundSponsorIndex >= 0) ? fullRefundSponsorIndex.toString() : partRefundSponsorIndex.toString();
+                    refund.currency = currentAccount.participants[refund.number].meta.preferredCurrency;
+                    $scope.fillRefundFields(participant, refund);
+                    refund.isFixed = true;
+
+                    currentRefunds.participantIndex.push(participantIndex);
+                    currentRefunds.whomIndex.push(whomIndex);
+
+                    $timeout(function () {
+                        focusOnRefund(participantIndex);
+                    }, 100);
+                }
+
+                currentParticipantNumber++;
+
+                checkNextParticipant = true;
+                while (checkNextParticipant && currentParticipantNumber < currentAccount.participants.length) {
+                    var nextParticipantFullBalance = $scope.getParticipantFullBalance(currentAccount.participants[currentParticipantNumber], currentParticipantNumber, false);
+
+                    if (nextParticipantFullBalance >= 0) {
+                        currentParticipantNumber++;
+
+                        if (currentParticipantNumber < currentAccount.participants.length) checkNextParticipant = false;
+                    } else {
+                        checkNextParticipant = false;
+                    }
+                }
+
+                if (currentParticipantNumber < currentAccount.participants.length) {
+                    $timeout(function () {
+                        fixRefund(currentParticipantNumber);
+                    }, delay);
+                } else {
+                    if (currentAccount.meta.negBalance != 0 && currentAccount.meta.posBalance != 0) {
+                        currentParticipantNumber = 0;
+
+                        $timeout(function () {
+                            fixRefund(currentParticipantNumber);
+                        }, delay);
+                    } else {
+                        endProcess(true);
+                    }
+                }
+            }
+
+            currentAccount.participants.forEach(function (participant, i, arr) {
+                hasUncheckedCurrentRefunds = (participant.meta.areNotAllRefundsFixed) ? true : hasUncheckedCurrentRefunds;
+            });
+
+            if (hasUncheckedCurrentRefunds) {
+                alert('Нельзя воспользоваться автоматическим распределением возвратов. Сперва зафиксируйте текущие взносы.');
+                return false;
+            }
+
+            $scope.layout.isCalcUpdating = true;
+
+            $scope.layoutControl.collapseAllBodiesView(3, 'window-3');
+            currentAccount.participants.forEach(function (participant, i, arr) {
+                if ($scope.getParticipantFullBalance(participant, i, false) < 0) $scope.layoutControl.toggleBodyView(3, 'participant.3.' + i);
+            });
+
+            fixRefund(currentParticipantNumber);
+        }
+
+
+
 
 
 
@@ -35428,7 +35582,7 @@ angular.module("ngMobileClick", [])
 
 
         $scope.$watch('expCalc', function (newValue, oldValue) {
-            if ($scope.layout.isDomReady && $scope.layout.isDataUpdating) { // необходимо для показа спиннера пока весь дом не обновится
+            if ($scope.layout.isDataUpdating) { // необходимо для показа спиннера пока весь дом не обновится
                 $timeout(function () {
                     $scope.layout.isDataUpdating = false;
                 }, 100);

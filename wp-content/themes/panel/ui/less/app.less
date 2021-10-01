@@ -921,6 +921,10 @@ section {
 .section-head {
 	padding: @padding;
 
+	@media screen and (min-width: @middle-desktop) {
+		padding: 0;
+	}
+
 	> .help-text {
 		margin-bottom: 4px;
 	}
