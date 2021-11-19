@@ -33557,6 +33557,7 @@ var costPanelServer = 'https://costpanel.info';
 
 var checkSuspiciousScripts = {
     allowedResources: [
+        'youtube.com',
         'yandex.ru',
         'google-analytics.com',
         'ulogin.ru'
@@ -33632,7 +33633,7 @@ function forEach(elements, callback) {
 	Array.prototype.forEach.call(elements, callback);
 }
 function animateScrollTo(activeWindow, value, windowLt) {
-    var speed = 100;
+    var speed = 50;
     var windowLt = (windowLt) ? windowLt : document.querySelectorAll('.windows-lt > li:nth-child(' + activeWindow + ') > .window-lt')[0];
     var scrollTop = windowLt.scrollTop;
     var direct = (value > scrollTop) ? 1 : -1;
@@ -33927,6 +33928,7 @@ angular.module("ngMobileClick", [])
         $scope.layout = {
             isOpenMenu: false,
             isOpenAside: false,
+            isOpenGuidePopup: false,
             isEditAccountsMode: false,
             isRemoveMode: false,
             isPrintMode: false,
@@ -33965,6 +33967,15 @@ angular.module("ngMobileClick", [])
                 if (this.isOpenAside) {
                     this.isOpenMenu = false;
                     this.isEditAccountsMode = false;
+                }
+            },
+            openGuidePopup: function(isOpen) {
+                this.isOpenGuidePopup = isOpen;
+
+                if (isOpen) {
+                    guidePopupPlayer.playVideo(); // guidePopupPlayer определена в файле www\wp-content\themes\panel\footer.php
+                } else {
+                    guidePopupPlayer.pauseVideo();
                 }
             }
         };
@@ -35343,7 +35354,11 @@ angular.module("ngMobileClick", [])
 
                     return;
                 } else {
-                    alert('Не удалось получить данные. Отсутствует таблица с курсами. Попробуйте обновить страницу.');
+                    if (window.location.host) {
+                        alert('Не удалось получить данные. Отсутствует таблица с курсами.\nПопробуйте обновить страницу.');
+                    } else {
+                        alert('Не удалось получить данные. Отсутствует таблица с курсами.\nПроверьте соединение с интернетом и попробуйте перезапустить приложение.');
+                    }
                     return;
                 }
             }
@@ -35459,19 +35474,19 @@ angular.module("ngMobileClick", [])
 
             var focusOnRefund = function(participantNumber) {
                 var participant = document.getElementById('participant.3.' + participantNumber);
-                var items = participant.querySelectorAll('button');
+                var items = participant.querySelectorAll('input[type="checkbox"]');
                 var focusedItem = items[items.length - 1];
 
-                animateScrollTo(3, participant.offsetTop + focusedItem.offsetTop - 100);
+                focusedItem.focus();
             }
 
             var endProcess = function(hasAlert) {
                 uncheckedCurrentRefunds();
-                animateScrollTo(3, 0);
                 $scope.uploadData();
 
                 $timeout(function () {
                     $scope.layout.isCalcUpdating = false;
+                    document.getElementById('autoRefunds').focus();
                     if (hasAlert) alert('Автоматическое распределение возвратов выполнено успешно! Зафиксируйте их после того как должники вернут указанные суммы.');
                 }, 200);
             }
@@ -35747,6 +35762,7 @@ angular.module("ngMobileClick", [])
     module.factory('getDataService', getDataService);
 
 }(angular.module('app')));
+
 var fontAwesomeIcons = [
     "adjust",
     "air-freshener",

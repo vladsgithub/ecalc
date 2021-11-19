@@ -109,6 +109,17 @@ body {
 		visibility: visible;
 		transform: translateX(0);
 	}
+	&.open-guide-popup .guide-popup-overlay {
+		left: 0;
+
+		&::before {
+			opacity: 0.5;
+		}
+
+		.guide-popup {
+			display: block;
+		}
+	}
 
 	&:not(.remove-mode) :not(.local-remove-mode) > .remove-mode-true,
 	&.remove-mode .remove-mode-false,
@@ -171,9 +182,6 @@ body {
 		opacity: 0;
 		transition: opacity @delay;
 	}
-
-
-
 }
 
 .clean-login-widgets {

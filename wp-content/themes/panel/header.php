@@ -121,7 +121,7 @@
 </head>
 
 <body id="body" ng-app="app" ng-controller="calculatorCtrl" ng-cloak="true"
-	ng-class="{'logged-in': expCalc.meta.userID > 0, 'open-menu': layout.isOpenMenu, 'open-aside': layout.isOpenAside, 'remove-mode': layout.isRemoveMode, 'print-mode': layout.isPrintMode, 'advanced-mode': expCalc.accounts[expCalc.settings.currentAccount].settings.advancedMode, 'data-updating': layout.isDataUpdating || layout.isCalcUpdating}"
+	ng-class="{'logged-in': expCalc.meta.userID > 0, 'open-menu': layout.isOpenMenu, 'open-aside': layout.isOpenAside, 'open-guide-popup': layout.isOpenGuidePopup, 'remove-mode': layout.isRemoveMode, 'print-mode': layout.isPrintMode, 'advanced-mode': expCalc.accounts[expCalc.settings.currentAccount].settings.advancedMode, 'data-updating': layout.isDataUpdating || layout.isCalcUpdating}"
 	data-upload-status="1">
 
 
@@ -853,7 +853,15 @@
                                 &nbsp;&nbsp;3) Зафиксировать возвраты
                                 <br/>
                                 <br/>
-                                <a href="https://costpanel.info/info">Больше информации</a><br/>
+                                <div class="text-center">
+                                    <button class="btn solid details-btn" ng-click="layout.openGuidePopup(true)">
+                                        <i class="fas fa-play"></i>
+                                        <b class="small">Видео инструкция</b>
+                                    </button>
+                                    <br/>
+                                    <br/>
+                                    <a href="https://costpanel.info/info">Больше информации</a>
+                                </div>
                                 <br/>
                                 Версия: <span id="appVersion"><? echo $GLOBALS['cost_panel_version'] ?></span>
                                 <br/>

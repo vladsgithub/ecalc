@@ -9,7 +9,7 @@
 
 		<li class="flex-grow">
 			<div class="text-field bold">
-				<b>Режим редактирования</b>
+				<b>Режим редактирования расчетов</b>
 			</div>
 		</li>
 	</ul>
@@ -959,14 +959,14 @@
 
                         <ul class="flex mt-2 mb-2" ng-if="account.settings.fixationDirectly && account.meta.negBalance != 0 && account.meta.posBalance != 0">
                             <li class="flex-shrink s-p0">
-                                <button class="btn solid note" title="Автоматическое распределение возвратов"
+                                <button id="autoRefunds" class="btn solid note" title="Автоматическое распределение возвратов"
                                         ng-click="autoPaymentsFixation()">
                                     <i class="fas fa-magic"></i>
                                 </button>
                             </li>
 
                             <li class="flex-grow flex-hidden s-p0">
-                                <div class="text-field name">
+                                <div class="text-field name word-wrap">
                                     <b>Автоматическое распределение возвратов</b>
                                 </div>
                             </li>
@@ -1105,7 +1105,6 @@
 
 													<li class="flex-grow flex-hidden s-p0 selected-participant">
 														<label class="text-select" ng-disabled="refund.isFixed">
-                                                            {{refund}}
 															<select	ng-model="refund.number"
 																	ng-change="fillRefundFields(participant, refund)">
 																<option value="" hidden disabled selected>Выберите участника</option>
