@@ -10424,6 +10424,7 @@ label.toggle i::after {
   height: 100vh;
   width: 100vw;
   left: -100vw;
+  top: 0;
 }
 .guide-popup-overlay::before {
   content: "";
@@ -10443,17 +10444,27 @@ label.toggle i::after {
   left: 50%;
   min-width: 200px;
   min-height: 200px;
-  padding: 10px;
+  padding: 0 20px;
   background: #fff;
   border: 4px solid #4c69bd;
+  box-shadow: 0 0 80px #ffffff;
   border-radius: 8px;
   transform: translate(-50%, -50%);
 }
 .guide-popup-overlay .guide-popup > iframe {
   max-width: calc(100vw - 80px);
-  max-height: calc(100vh - 40px);
+  max-height: calc(100vh - 110px);
 }
-.guide-popup-overlay .btn {
+.guide-popup-overlay .guide-popup-tabs {
+  display: flex;
+  margin: 0 -20px;
+  padding: 10px;
+  background: #4c69bd;
+}
+.guide-popup-overlay .guide-popup-tabs > .btn {
+  flex-grow: 1;
+}
+.guide-popup-overlay .close-btn {
   position: absolute;
   right: -22px;
   top: -22px;

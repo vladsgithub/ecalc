@@ -421,6 +421,11 @@ angular.module("ngMobileClick", [])
             openGuidePopup: function(isOpen) {
                 this.isOpenGuidePopup = isOpen;
 
+                if(!guidePopupPlayer) {
+                    console.log('Player is not found!');
+                    return false;
+                }
+
                 if (isOpen) {
                     guidePopupPlayer.playVideo(); // guidePopupPlayer определена в файле www\wp-content\themes\panel\footer.php
                 } else {
@@ -2156,6 +2161,7 @@ angular.module("ngMobileClick", [])
 
             if (isFirstVisit) {
                 $scope.layoutControl.openNavMenuFirstSection('aboutService');
+                $scope.layout.openGuidePopup(true);
             }
         }
     }];

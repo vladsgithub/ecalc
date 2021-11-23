@@ -866,10 +866,10 @@
                                 Версия: <span id="appVersion"><? echo $GLOBALS['cost_panel_version'] ?></span>
                                 <br/>
                                 <a href="https://play.google.com/store/apps/details?id=com.costpanel.info" target="_blank">
-                                    <img style="width: 100%;" src="pictures/CostPanelQR-gplay.jpg">
+                                    <img style="width: 100%;" src="https://costpanel.info/pictures/CostPanelQR-gplay.jpg">
                                 </a>
                                 <br/>
-                                <img style="width: 100%; margin-bottom: 60px;" src="pictures/hello.jpg" />
+                                <img style="width: 100%; margin-bottom: 60px;" src="https://costpanel.info/pictures/hello.jpg" />
                                 </b>
                             </div>
 
