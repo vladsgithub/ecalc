@@ -360,7 +360,7 @@ msgstr "Обновить профиль"
 #: /Users/ahornero/Documents/wordpress.org/clean-login/trunk/content/login-form.php:11
 #: /Users/ahornero/Documents/wordpress.org/clean-login/trunk/content/register-form.php:7
 msgid "Username"
-msgstr "Имя участника (user) или e-mail"
+msgstr "Имя (user или email)"
 
 #: /Users/ahornero/Documents/wordpress.org/clean-login/trunk/content/login-form.php:15
 msgid "Password"

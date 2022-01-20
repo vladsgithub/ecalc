@@ -12,11 +12,11 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-    <meta name="keywords" content="как разделить расходы между партнерами, калькулятор расходов, разделить совместные затраты,
-    калькулятор разделения счетов, кто кому сколько должен, расчет кто сколько потратил, расчет между участниками,
-    распределение расходов поровну, распределение расходов между участниками, посчитать расходы на троих, поделить расходы
-    на компанию, посчитать траты и разделить на людей, поделить расходы между друзьями, онлайн список покупок, перечень покупок,
-    возврат долгов, учет долгов">
+    <meta name="keywords" content="как посчитать кто сколько должен в большой компании, расчет совместных расходов,
+    как посчитать кто кому сколько должен, как посчитать кто сколько потратил, калькулятор кто кому сколько должен
+    как посчитать кто сколько кому должен, как поделить расходы если платили трое, калькулятор распределения расходов,
+    кто кому сколько должен, расчет кто сколько потратил, распределение расходов поровну, разделить расходы между друзьями,
+    посчитать расходы на троих, как рассчитать кто кому сколько должен, онлайн список покупок">
 
 
     <meta name="description" content="Cost Panel - калькулятор учета и распределения расходов между участниками.
@@ -261,7 +261,7 @@
                                         <form name="loginFormForApp" class="cleanlogin-form" ng-submit="getUserDataForApp('login')">
                                             <fieldset>
                                                 <div class="cleanlogin-field">
-                                                    <input id="username" class="cleanlogin-field-username" type="text" name="log" placeholder="Имя участника (user) или e-mail">
+                                                    <input id="username" class="cleanlogin-field-username" type="text" name="log" placeholder="Имя (user или email)">
                                                 </div>
 
                                                 <div class="cleanlogin-field">

@@ -72,7 +72,9 @@ var checkSuspiciousScripts = {
 Object.freeze(checkSuspiciousScripts);
 Object.freeze(console); // запретить обнулять методы объекта console (ulogin подгружает левый скрипт, он это делает для своих хаков в рекламных айфреймах)
 
-if (window.location.host) { // актуально только для веб-версии, в приложении пока не замечены подозрительные скрипты или айфреймы
+var isWebVersion = !!window.location.host;
+
+if (isWebVersion) { // актуально только для веб-версии, в приложении пока не замечены подозрительные скрипты или айфреймы
     checkSuspiciousScripts.init();
 }
 
@@ -167,6 +169,10 @@ function getUserDataForApp(scope, request, isSynchronization) {
     var host = costPanelServer;
     var prevUserName = scope.expCalc.meta.userName;
     var userNameBlock = document.getElementById('userNameBlock');
+    var setUserName = function(name) {
+        userNameBlock.innerText = '';
+        scope.expCalc.meta.userName = name;
+    }
 
     if (!request) return false;
 
@@ -179,12 +185,14 @@ function getUserDataForApp(scope, request, isSynchronization) {
 
     xhr.onreadystatechange = function () {
 
-        if (this.readyState != 4) return;
+        if (this.readyState != 4) {
+            setUserName(prevUserName);
+            return;
+        }
 
         if (xhr.status != 200) {
             console.error('!!! We have a problem: ' + xhr.status + ': ' + xhr.statusText);
-            userNameBlock.innerText = '';
-            scope.expCalc.meta.userName = prevUserName;
+            setUserName(prevUserName);
         } else {
             if (xhr.responseText != 'Login failed') {
                 try {
@@ -197,12 +205,12 @@ function getUserDataForApp(scope, request, isSynchronization) {
 
                     console.info('Date fromServerData and fromLocalStorage:', fromServerData.meta.savedDate, '>', fromLocalStorage.meta.savedDate);
                     if (fromServerData.meta.savedDate > fromLocalStorage.meta.savedDate) {
-                        userNameBlock.innerText = '';
                         scope.expCalc = fromServerData;
                         scope.expCalc.meta.userID = parseInt(responseArray[2]);
                         scope.expCalc.meta.userKey = responseArray[3];
-                        scope.expCalc.meta.userName = getUserNameObject(responseArray[1], responseArray[0]).name;
                         scope.expCalc.meta.userInitials = getUserNameObject(responseArray[1], responseArray[0]).initials;
+
+                        setUserName(getUserNameObject(responseArray[1], responseArray[0]).name);
 
                         if (!scope.expCalc.accounts.length) {
                             scope.createAccount();
@@ -219,17 +227,15 @@ function getUserDataForApp(scope, request, isSynchronization) {
                         if (responseArray[5]) alert(responseArray[5]);
                     } else {
                         console.info('[getUserDataForApp] Data is used from localStorage:', fromLocalStorage);
-                        userNameBlock.innerText = '';
-                        scope.expCalc.meta.userName = prevUserName;
+                        setUserName(prevUserName);
                     }
                 } catch (e) {
-                    userNameBlock.innerText = '';
-                    scope.expCalc.meta.userName = 'Error in getUserDataForApp';
+                    setUserName('Error in getUserDataForApp');
                     console.log('Произошла ошибка в getUserDataForApp:', e);
                     console.log('Пришел ответ в getUserDataForApp:', xhr.responseText);
                 }
             } else {
-                userNameBlock.innerText = '';
+                setUserName('');
                 resetUserData(scope);
                 alert('Авторизация не удалась. Логин или пароль введены неверно :(');
             }
@@ -305,9 +311,11 @@ function getNewExpensesCalc(isHelpMode) {
         {name: 'Другое', icon: 'shopping-cart'}
     ];
 
+    var currentDate = +new Date();
+
     var expensesCalc = {
         meta: {
-            savedDate: 0,
+            savedDate: currentDate,
             userID: null,
             userKey: null,
             userName: '',
@@ -407,7 +415,7 @@ angular.module("ngMobileClick", [])
                 $scope.layoutControl.toggleListView('currenciesTable', true);
             },
             openAside: function() {
-                if (window.location.host && window.location.pathname !== '/') { // window.location.host - check for mobile app
+                if (isWebVersion && window.location.pathname !== '/') {
                     window.location.href = "/";
                 }
 
@@ -421,8 +429,8 @@ angular.module("ngMobileClick", [])
             openGuidePopup: function(isOpen) {
                 this.isOpenGuidePopup = isOpen;
 
-                if(!guidePopupPlayer) {
-                    console.log('Player is not found!');
+                if(!guidePopupPlayer || !guidePopupPlayer.playVideo) {
+                    console.log('Player is not found or not ready!');
                     return false;
                 }
 
@@ -670,9 +678,12 @@ angular.module("ngMobileClick", [])
             if (!$scope.layout.isChangedObject) return false; // если объект не менялся, то выход
 
             var delay = (isDirectSave) ? 0 : 1000;
-            var localStringJSON = JSON.stringify($scope.expCalc);
+            var currentDate = +new Date();
 
-            $scope.layout.updatedDataTime = +new Date();
+            $scope.expCalc.meta.savedDate = currentDate;
+            $scope.layout.updatedDataTime = currentDate;
+
+            var localStringJSON = JSON.stringify($scope.expCalc);
 
             localStorage.setItem('costpanel.info', localStringJSON);
 
@@ -1808,7 +1819,7 @@ angular.module("ngMobileClick", [])
 
                     return;
                 } else {
-                    if (window.location.host) {
+                    if (isWebVersion) {
                         alert('Не удалось получить данные. Отсутствует таблица с курсами.\nПопробуйте обновить страницу.');
                     } else {
                         alert('Не удалось получить данные. Отсутствует таблица с курсами.\nПроверьте соединение с интернетом и попробуйте перезапустить приложение.');
@@ -2118,7 +2129,7 @@ angular.module("ngMobileClick", [])
 
         $scope.expCalc = getDataService;
 
-        if (window.location.host) { // если это сайт, то использовать этот подход:
+        if (isWebVersion) { // если это сайт, то использовать этот подход:
             $scope.expCalc.meta.userID = userID;
             $scope.expCalc.meta.userKey = userKey;
             $scope.expCalc.meta.userName = getUserNameObject(userName).name;
@@ -2155,13 +2166,13 @@ angular.module("ngMobileClick", [])
                 $scope.uploadData(true, true);
             }
 
-            if (!window.location.host && $scope.expCalc.meta.userID > 0) { // если это приложение и userID > 0 то синхронизтровать данные (с сервера или localStorage)
+            if (!isWebVersion && $scope.expCalc.meta.userID > 0) { // если это приложение и userID > 0 то синхронизтровать данные (с сервера или localStorage)
                 getUserDataForApp($scope, 'userID=' + $scope.expCalc.meta.userID + '&userKey=' + $scope.expCalc.meta.userKey, true);
             }
 
             if (isFirstVisit) {
                 $scope.layoutControl.openNavMenuFirstSection('aboutService');
-                $scope.layout.openGuidePopup(true);
+                if (isWebVersion) $scope.layout.openGuidePopup(true); // если это сайт, то открывать попап с демо
             }
         }
     }];
@@ -2202,7 +2213,7 @@ angular.module("ngMobileClick", [])
 		if (fromServerData.meta) return fromServerData;
 
 		if (fromLocalStorage.meta) {
-		    if (window.location.host && fromLocalStorage.meta.userID > 0) { // window.location.host == true ---> это веб-сайт и если с сервера не пришли данные, значит юзер вылогинился и его данные надо стереть
+		    if (isWebVersion && fromLocalStorage.meta.userID > 0) { // isWebVersion == true ---> это веб-сайт и если с сервера не пришли данные, значит юзер вылогинился и его данные надо стереть
                 return getNewExpensesCalc();
             } else {
                 return fromLocalStorage;
