@@ -33738,62 +33738,63 @@ function getUserDataForApp(scope, request, isSynchronization) {
 
         if (this.readyState != 4) {
             setUserName(prevUserName);
-            return;
-        }
-
-        if (xhr.status != 200) {
-            console.error('!!! We have a problem: ' + xhr.status + ': ' + xhr.statusText);
-            setUserName(prevUserName);
         } else {
-            if (xhr.responseText != 'Login failed') {
-                try {
-                    var responseArray = xhr.responseText.split('"""""'); // xhr.responseText -- текст ответа.
-                    // responseArray: 0 - login, 1 - full name, 2 - user ID, 3 - user key, 4 - data object, 5 - some message from backend if you need
-
-                    var fromLocalStorage = (localStorage.getItem('costpanel.info')) ? JSON.parse(localStorage.getItem('costpanel.info')) : false;
-
-                    fromServerData = (responseArray[4] && responseArray[4].length > 5) ? JSON.parse(responseArray[4]) : getNewExpensesCalc();
-
-                    console.info('Date fromServerData and fromLocalStorage:', fromServerData.meta.savedDate, '>', fromLocalStorage.meta.savedDate);
-                    if (fromServerData.meta.savedDate > fromLocalStorage.meta.savedDate) {
-                        scope.expCalc = fromServerData;
-                        scope.expCalc.meta.userID = parseInt(responseArray[2]);
-                        scope.expCalc.meta.userKey = responseArray[3];
-                        scope.expCalc.meta.userInitials = getUserNameObject(responseArray[1], responseArray[0]).initials;
-
-                        setUserName(getUserNameObject(responseArray[1], responseArray[0]).name);
-
-                        if (!scope.expCalc.accounts.length) {
-                            scope.createAccount();
-                            scope.updateCurrencies(1);
-                        }
-                        scope.$apply(scope.expCalc);
-
-                        if (document.loginFormForApp) document.loginFormForApp.reset();
-
-                        localStorage.setItem('costpanel.info', JSON.stringify(fromServerData));
-
-                        console.info('[getUserDataForApp] Success! We have received a response:', fromServerData);
-                        if (!isSynchronization) alert('Добро пожаловать, ' + scope.expCalc.meta.userName + '!');
-                        if (responseArray[5]) alert(responseArray[5]);
-                    } else {
-                        console.info('[getUserDataForApp] Data is used from localStorage:', fromLocalStorage);
-                        setUserName(prevUserName);
-                    }
-                } catch (e) {
-                    setUserName('Error in getUserDataForApp');
-                    console.log('Произошла ошибка в getUserDataForApp:', e);
-                    console.log('Пришел ответ в getUserDataForApp:', xhr.responseText);
-                }
+            if (xhr.status != 200) {
+                console.error('!!! We have a problem: ' + xhr.status + ': ' + xhr.statusText);
+                setUserName(prevUserName);
             } else {
-                setUserName('');
-                resetUserData(scope);
-                alert('Авторизация не удалась. Логин или пароль введены неверно :(');
+                if (xhr.responseText != 'Login failed') {
+                    try {
+                        var responseArray = xhr.responseText.split('"""""'); // xhr.responseText -- текст ответа.
+                        // responseArray: 0 - login, 1 - full name, 2 - user ID, 3 - user key, 4 - data object, 5 - some message from backend if you need
+
+                        var fromLocalStorage = (localStorage.getItem('costpanel.info')) ? JSON.parse(localStorage.getItem('costpanel.info')) : false;
+
+                        fromServerData = (responseArray[4] && responseArray[4].length > 5) ? JSON.parse(responseArray[4]) : getNewExpensesCalc();
+
+                        console.info('Date fromServerData and fromLocalStorage:', fromServerData.meta.savedDate, '>', fromLocalStorage.meta.savedDate);
+                        if (fromServerData.meta.savedDate > fromLocalStorage.meta.savedDate || !scope.expCalc.meta.userID) {
+                            scope.expCalc = fromServerData;
+                            scope.expCalc.meta.userID = parseInt(responseArray[2]);
+                            scope.expCalc.meta.userKey = responseArray[3];
+                            scope.expCalc.meta.userInitials = getUserNameObject(responseArray[1], responseArray[0]).initials;
+
+                            setUserName(getUserNameObject(responseArray[1], responseArray[0]).name);
+
+                            if (!scope.expCalc.accounts.length) {
+                                scope.createAccount();
+                                scope.updateCurrencies(1);
+                            }
+                            //scope.$apply(scope.expCalc);
+
+                            if (document.loginFormForApp) document.loginFormForApp.reset();
+
+                            localStorage.setItem('costpanel.info', JSON.stringify(fromServerData));
+
+                            console.info('[getUserDataForApp] Success! We have received a response:', fromServerData);
+                            if (!isSynchronization) alert('Добро пожаловать, ' + scope.expCalc.meta.userName + '!');
+                            if (responseArray[5]) alert(responseArray[5]);
+                        } else {
+                            console.info('[getUserDataForApp] Data is used from localStorage:', fromLocalStorage);
+                            setUserName(prevUserName);
+                        }
+                    } catch (e) {
+                        setUserName('Error in getUserDataForApp');
+                        console.log('Произошла ошибка в getUserDataForApp:', e);
+                        console.log('Пришел ответ в getUserDataForApp:', xhr.responseText);
+                    }
+                } else {
+                    setUserName('');
+                    resetUserData(scope);
+                    alert('Авторизация не удалась. Логин или пароль введены неверно :(');
+                }
             }
+
+            updateUploadStatus(-1);
+            isGetUserDataForAppProcessing = false;
         }
 
-        updateUploadStatus(-1);
-        isGetUserDataForAppProcessing = false;
+        scope.$apply(scope.expCalc);
     };
 
     xhr.send(request);
@@ -33810,10 +33811,10 @@ function resetUserData(scope) {
 function applyNewData($scope, stringNewData) {
     try {
         var newExpCalc = JSON.parse(stringNewData);
-        var question = confirm('Загружаемые данные были созданы: ' + $scope.formatDate(newExpCalc.meta.savedDate) +
-            '\nВы действительно хотите заменить текущие данные на новые?');
+        var questionText = (newExpCalc.meta.savedDate > 0) ? 'Загружаемые данные были созданы: ' + $scope.formatDate(newExpCalc.meta.savedDate) + '\n' : '';
+        questionText += 'Вы действительно хотите заменить текущие данные на новые?';
 
-        if (question) {
+        if (confirm(questionText)) {
             var userData = {
                 userID: $scope.expCalc.meta.userID,
                 userKey: $scope.expCalc.meta.userKey,
@@ -33861,12 +33862,9 @@ function getNewExpensesCalc(isHelpMode) {
         {name: 'Развлечение', icon: 'theater-masks'},
         {name: 'Другое', icon: 'shopping-cart'}
     ];
-
-    var currentDate = +new Date();
-
     var expensesCalc = {
         meta: {
-            savedDate: currentDate,
+            savedDate: null,
             userID: null,
             userKey: null,
             userName: '',
@@ -34229,12 +34227,9 @@ angular.module("ngMobileClick", [])
             if (!$scope.layout.isChangedObject) return false; // если объект не менялся, то выход
 
             var delay = (isDirectSave) ? 0 : 1000;
-            var currentDate = +new Date();
-
-            $scope.expCalc.meta.savedDate = currentDate;
-            $scope.layout.updatedDataTime = currentDate;
-
             var localStringJSON = JSON.stringify($scope.expCalc);
+
+            $scope.layout.updatedDataTime = +new Date();
 
             localStorage.setItem('costpanel.info', localStringJSON);
 
